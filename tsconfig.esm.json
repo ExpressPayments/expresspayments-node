@@ -1,0 +1,11 @@
+{
+    "extends": "./tsconfig.cjs.json",
+    "compilerOptions": {
+        "outDir": "./esm",
+        "module": "es2022"
+    },
+    "exclude": [
+        "./src/expressplatby.cjs.node.ts",
+        "./src/expressplatby.cjs.worker.ts"
+    ]
+}

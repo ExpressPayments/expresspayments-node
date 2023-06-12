@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "outDir": "./cjs",
+        "module": "commonjs",
+        "target": "es2017",
+        "checkJs": false,
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "types": [
+            "node"
+        ]
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "./src/expressplatby.esm.node.ts",
+        "./src/expressplatby.esm.worker.ts"
+    ]
+}
