@@ -4,7 +4,7 @@
 [![Build Status](https://github.com/expressplatby/expressplatby-node/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/expressplatby/expressplatby-node/actions?query=branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/github/expressplatby/expressplatby-node/badge.svg?branch=master)](https://coveralls.io/github/expressplatby/expressplatby-node?branch=master)
 [![Downloads](https://img.shields.io/npm/dm/expressplatby.svg)](https://www.npmjs.com/package/expressplatby)
-[![Try on RunKit](https://badge.runkitcdn.com/expressplatby.svg)](https://runkit.com/npm/exprressplatby)
+[![Try on RunKit](https://badge.runkitcdn.com/expressplatby.svg)](https://runkit.com/npm/expressplatby)
 
 The ExpressPlatby Node library provides convenient access to the ExpressPlatby API from
 applications written in server-side JavaScript.
