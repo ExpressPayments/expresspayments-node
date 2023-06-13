@@ -3,7 +3,7 @@
 import {serveListener} from 'https://deno.land/std@0.116.0/http/server.ts';
 import 'https://deno.land/x/dotenv/load.ts';
 
-import ExpressPlatby from 'npm:expressplatby@^1.0.1';
+import ExpressPlatby from 'npm:expressplatby@^1.0.2';
 
 const expressPlatby = ExpressPlatby(Deno.env.get('EXPRESSPLATBY_API_KEY'));
 
