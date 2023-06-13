@@ -63,7 +63,7 @@ console.log(customer.id);
 
 ### Usage with TypeScript
 
-As of 1.0.1, ExpressPlatby maintains types for the latest [API version][api-versions].
+As of 1.0.2, ExpressPlatby maintains types for the latest [API version][api-versions].
 
 Import ExpressPlatby as a default import (not `* as ExpressPlatby`, unlike the DefinitelyTyped version)
 and instantiate it as `new ExpressPlatby()` with the latest API version.
