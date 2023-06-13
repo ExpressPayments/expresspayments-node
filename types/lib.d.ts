@@ -292,5 +292,11 @@ declare module 'expressplatby' {
             url?: string;
             version?: string;
         }
+
+        export interface FileData {
+            data: string | Buffer | Uint8Array;
+            name?: string;
+            type?: string;
+        }
     }
 }
