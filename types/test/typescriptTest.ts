@@ -306,3 +306,12 @@ ExpressPlatby.errors.ExpressPlatbyError.generate({
 expressPlatby.accounts.retrieve('123', {
     host: 'my_host',
 });
+expressPlatby.files.create({
+    purpose: 'dispute_evidence',
+    file: {
+        data: Buffer.from('File'),
+        name: 'minimal.pdf',
+        type: 'application/octet-stream',
+    },
+    file_link_data: {create: true},
+});
