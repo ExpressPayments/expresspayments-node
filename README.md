@@ -551,7 +551,7 @@ If you wish, you may run tests using your ExpressPlatby_Test_API key by setting 
 environment variable `EXPRESSPLATBY_TEST_API_KEY` before running the tests:
 
 ```bash
-$ export EP_TEST_API_KEY='sk_test....'
+$ export EXPRESSPLATBY_TEST_API_KEY='sk_test....'
 $ yarn test
 ```
 
