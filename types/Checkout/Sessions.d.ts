@@ -259,7 +259,7 @@ declare module 'expressplatby' {
                  * The URL the customer will be directed to after the payment or
                  * subscription creation is successful.
                  */
-                success_url: string;
+                success_url: string | null;
 
                 tax_id_collection?: Session.TaxIdCollection;
 
