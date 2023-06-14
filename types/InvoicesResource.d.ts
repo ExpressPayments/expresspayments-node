@@ -14,7 +14,7 @@ declare module 'expressplatby' {
             application_fee_amount?: number;
 
             /**
-             * Controls whether ExpressPlatby will perform [automatic collection](https://expressplatby.cz/docs/billing/invoices/workflow/#auto_advance) of the invoice. When `false`, the invoice's state will not automatically advance without an explicit action.
+             * Controls whether ExpressPlatby performs [automatic collection](https://expressplatby.cz/docs/invoicing/integration/automatic-advancement-collection) of the invoice. If `false`, the invoice's state doesn't automatically advance without an explicit action.
              */
             auto_advance?: boolean;
 
@@ -673,7 +673,7 @@ declare module 'expressplatby' {
             application_fee_amount?: number;
 
             /**
-             * Controls whether ExpressPlatby will perform [automatic collection](https://expressplatby.cz/docs/billing/invoices/workflow/#auto_advance) of the invoice.
+             * Controls whether ExpressPlatby performs [automatic collection](https://expressplatby.cz/docs/invoicing/integration/automatic-advancement-collection) of the invoice.
              */
             auto_advance?: boolean;
 
@@ -1318,7 +1318,7 @@ declare module 'expressplatby' {
 
         interface InvoiceFinalizeInvoiceParams {
             /**
-             * Controls whether ExpressPlatby will perform [automatic collection](https://expressplatby.cz/docs/invoicing/automatic-charging) of the invoice. When `false`, the invoice's state will not automatically advance without an explicit action.
+             * Controls whether ExpressPlatby performs [automatic collection](https://expressplatby.cz/docs/invoicing/integration/automatic-advancement-collection) of the invoice. If `false`, the invoice's state doesn't automatically advance without an explicit action.
              */
             auto_advance?: boolean;
 
