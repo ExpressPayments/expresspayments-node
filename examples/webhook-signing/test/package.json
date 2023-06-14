@@ -12,7 +12,7 @@
     "license": "ISC",
     "dependencies": {
         "dotenv": "^8.2.0",
-        "expressplatby": "^1.0.2"
+        "expressplatby": "^1.0.3"
     },
     "devDependencies": {
         "eslint": "^8.33.0",
