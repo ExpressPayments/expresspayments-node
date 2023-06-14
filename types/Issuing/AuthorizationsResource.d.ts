@@ -124,7 +124,7 @@ declare module 'expressplatby' {
 
                 /**
                  * Approves a pending Issuing Authorization object. This request should be made within the timeout window of the [real-time authorization](https://expressplatby.cz/docs/issuing/controls/real-time-authorizations) flow.
-                 * You can also respond directly to the webhook request to approve an authorization (preferred). More details can be found [here](https://site-admin.expressplatby.cz/docs/issuing/controls/real-time-authorizations#authorization-handling).
+                 * You can also respond directly to the webhook request to approve an authorization (preferred). More details can be found [here](https://expressplatby.cz/docs/issuing/controls/real-time-authorizations#authorization-handling).
                  */
                 approve(
                     id: string,
@@ -142,7 +142,7 @@ declare module 'expressplatby' {
 
                 /**
                  * Declines a pending Issuing Authorization object. This request should be made within the timeout window of the [real time authorization](https://expressplatby.cz/docs/issuing/controls/real-time-authorizations) flow.
-                 * You can also respond directly to the webhook request to decline an authorization (preferred). More details can be found [here](https://site-admin.expressplatby.cz/docs/issuing/controls/real-time-authorizations#authorization-handling).
+                 * You can also respond directly to the webhook request to decline an authorization (preferred). More details can be found [here](https://expressplatby.cz/docs/issuing/controls/real-time-authorizations#authorization-handling).
                  */
                 decline(
                     id: string,
