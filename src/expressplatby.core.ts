@@ -54,7 +54,7 @@ export function createExpressPlatby(
     platformFunctions: PlatformFunctions,
     requestSender: RequestSenderFactory = defaultRequestSenderFactory
 ): typeof ExpressPlatby {
-    ExpressPlatby.PACKAGE_VERSION = '12.9.0';
+    ExpressPlatby.PACKAGE_VERSION = '1.0.3';
     ExpressPlatby.USER_AGENT = {
         bindings_version: ExpressPlatby.PACKAGE_VERSION,
         lang: 'node',
