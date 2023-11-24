@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface TopupCreateParams {
             /**
              * A positive integer representing how much to transfer.
@@ -9,7 +9,7 @@ declare module 'expressplatby' {
             amount: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -24,12 +24,12 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
-             * The ID of a source to transfer funds from. For most users, this should be left unspecified which will use the bank account that was set up in the dashboard for the specified currency. In test mode, this can be a test bank token (see [Testing Top-ups](https://expressplatby.cz/docs/connect/testing#testing-top-ups)).
+             * The ID of a source to transfer funds from. For most users, this should be left unspecified which will use the bank account that was set up in the dashboard for the specified currency. In test mode, this can be a test bank token (see [Testing Top-ups](https://docs.epayments.network/connect/testing#testing-top-ups)).
              */
             source?: string;
 
@@ -63,21 +63,21 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
         }
 
         interface TopupListParams extends PaginationParams {
             /**
              * A positive integer representing how much to transfer.
              */
-            amount?: ExpressPlatby.RangeQueryParam | number;
+            amount?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * A filter on the list, based on the object `created` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.
              */
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -108,20 +108,20 @@ declare module 'expressplatby' {
             create(
                 params: TopupCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Topup>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Topup>>;
 
             /**
-             * Retrieves the details of a top-up that has previously been created. Supply the unique top-up ID that was returned from your previous request, and ExpressPlatby will return the corresponding top-up information.
+             * Retrieves the details of a top-up that has previously been created. Supply the unique top-up ID that was returned from your previous request, and ExpressPayments will return the corresponding top-up information.
              */
             retrieve(
                 id: string,
                 params?: TopupRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Topup>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Topup>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Topup>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Topup>>;
 
             /**
              * Updates the metadata of a top-up. Other top-up details are not editable by design.
@@ -130,7 +130,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TopupUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Topup>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Topup>>;
 
             /**
              * Returns a list of top-ups.
@@ -138,8 +138,8 @@ declare module 'expressplatby' {
             list(
                 params?: TopupListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Topup>;
-            list(options?: RequestOptions): ApiListPromise<ExpressPlatby.Topup>;
+            ): ApiListPromise<ExpressPayments.Topup>;
+            list(options?: RequestOptions): ApiListPromise<ExpressPayments.Topup>;
 
             /**
              * Cancels a top-up. Only pending top-ups can be canceled.
@@ -148,11 +148,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TopupCancelParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Topup>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Topup>>;
             cancel(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Topup>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Topup>>;
         }
     }
 }

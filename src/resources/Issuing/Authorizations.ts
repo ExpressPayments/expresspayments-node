@@ -1,32 +1,33 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const Authorizations = ExpressPlatbyResource.extend({
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/issuing/authorizations/{authorization}',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/issuing/authorizations/{authorization}',
-  }),
+export const Authorizations = ExpressPaymentsResource.extend({
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/issuing/authorizations/{authorization}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/issuing/authorizations',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/issuing/authorizations/{authorization}',
+    }),
 
-  approve: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/issuing/authorizations/{authorization}/approve',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/issuing/authorizations',
+        methodType: 'list',
+    }),
 
-  decline: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/issuing/authorizations/{authorization}/decline',
-  }),
+    approve: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/issuing/authorizations/{authorization}/approve',
+    }),
+
+    decline: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/issuing/authorizations/{authorization}/decline',
+    }),
 });

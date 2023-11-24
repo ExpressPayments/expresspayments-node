@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * [Tax codes](https://expressplatby.cz/docs/tax/tax-categories) classify goods and services for tax purposes.
+         * [Tax codes](https://docs.epayments.network/tax/tax-categories) classify goods and services for tax purposes.
          */
         interface TaxCode {
             /**

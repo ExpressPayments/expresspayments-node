@@ -1,32 +1,33 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const WebhookEndpoints = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/webhook_endpoints',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/webhook_endpoints/{webhook_endpoint}',
-  }),
+export const WebhookEndpoints = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/webhook_endpoints',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/webhook_endpoints/{webhook_endpoint}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/webhook_endpoints/{webhook_endpoint}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/webhook_endpoints',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/webhook_endpoints/{webhook_endpoint}',
+    }),
 
-  del: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/webhook_endpoints/{webhook_endpoint}',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/webhook_endpoints',
+        methodType: 'list',
+    }),
+
+    del: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/webhook_endpoints/{webhook_endpoint}',
+    }),
 });

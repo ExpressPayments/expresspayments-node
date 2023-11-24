@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Tax {
             interface TransactionRetrieveParams {
                 /**
@@ -27,9 +27,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
             }
 
             interface TransactionCreateReversalParams {
@@ -44,7 +44,7 @@ declare module 'expressplatby' {
                 original_transaction: string;
 
                 /**
-                 * A custom identifier for this reversal, such as 'myOrder_123-refund_1', which must be unique across all transactions. The reference helps identify this reversal transaction in exported [tax reports](https://expressplatby.cz/docs/tax/reports).
+                 * A custom identifier for this reversal, such as 'myOrder_123-refund_1', which must be unique across all transactions. The reference helps identify this reversal transaction in exported [tax reports](https://docs.epayments.network/tax/reports).
                  */
                 reference: string;
 
@@ -59,9 +59,9 @@ declare module 'expressplatby' {
                 line_items?: Array<TransactionCreateReversalParams.LineItem>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * The shipping cost to reverse.
@@ -82,9 +82,9 @@ declare module 'expressplatby' {
                     amount_tax: number;
 
                     /**
-                     * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                     * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                      */
-                    metadata?: ExpressPlatby.MetadataParam;
+                    metadata?: ExpressPayments.MetadataParam;
 
                     /**
                      * The `id` of the line item to reverse in the original transaction.
@@ -92,7 +92,7 @@ declare module 'expressplatby' {
                     original_line_item: string;
 
                     /**
-                     * The quantity reversed. Appears in [tax exports](https://expressplatby.cz/docs/tax/reports), but does not affect the amount of tax reversed.
+                     * The quantity reversed. Appears in [tax exports](https://docs.epayments.network/tax/reports), but does not affect the amount of tax reversed.
                      */
                     quantity?: number;
 
@@ -133,13 +133,13 @@ declare module 'expressplatby' {
                     params?: TransactionRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Tax.Transaction>
+                    ExpressPayments.Response<ExpressPayments.Tax.Transaction>
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Tax.Transaction>
+                    ExpressPayments.Response<ExpressPayments.Tax.Transaction>
                 >;
 
                 /**
@@ -149,7 +149,7 @@ declare module 'expressplatby' {
                     params: TransactionCreateFromCalculationParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Tax.Transaction>
+                    ExpressPayments.Response<ExpressPayments.Tax.Transaction>
                 >;
 
                 /**
@@ -159,7 +159,7 @@ declare module 'expressplatby' {
                     params: TransactionCreateReversalParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Tax.Transaction>
+                    ExpressPayments.Response<ExpressPayments.Tax.Transaction>
                 >;
 
                 /**
@@ -169,11 +169,11 @@ declare module 'expressplatby' {
                     id: string,
                     params?: TransactionListLineItemsParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Tax.TransactionLineItem>;
+                ): ApiListPromise<ExpressPayments.Tax.TransactionLineItem>;
                 listLineItems(
                     id: string,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Tax.TransactionLineItem>;
+                ): ApiListPromise<ExpressPayments.Tax.TransactionLineItem>;
             }
         }
     }

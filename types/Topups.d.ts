@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * To top up your ExpressPlatby balance, you create a top-up object. You can retrieve
+         * To top up your ExpressPayments balance, you create a top-up object. You can retrieve
          * individual top-ups, as well as list all top-ups. Top-ups are identified by a
          * unique, random ID.
          *
-         * Related guide: [Topping up your platform account](https://expressplatby.cz/docs/connect/top-ups)
+         * Related guide: [Topping up your platform account](https://docs.epayments.network/connect/top-ups)
          */
         interface Topup {
             /**
@@ -30,7 +30,7 @@ declare module 'expressplatby' {
              */
             balance_transaction:
                 | string
-                | ExpressPlatby.BalanceTransaction
+                | ExpressPayments.BalanceTransaction
                 | null;
 
             /**
@@ -39,7 +39,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -49,12 +49,12 @@ declare module 'expressplatby' {
             description: string | null;
 
             /**
-             * Date the funds are expected to arrive in your ExpressPlatby account for payouts. This factors in delays like weekends or bank holidays. May not be specified depending on status of top-up.
+             * Date the funds are expected to arrive in your ExpressPayments account for payouts. This factors in delays like weekends or bank holidays. May not be specified depending on status of top-up.
              */
             expected_availability_date: number | null;
 
             /**
-             * Error code explaining reason for top-up failure if available (see [the errors section](https://expressplatby.cz/docs/api#errors) for a list of codes).
+             * Error code explaining reason for top-up failure if available (see [the errors section](https://docs.epayments.network/api#errors) for a list of codes).
              */
             failure_code: string | null;
 
@@ -69,14 +69,14 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
-             * For most ExpressPlatby users, the source of every top-up is a bank account. This hash is then the [source object](https://expressplatby.cz/docs/api#source_object) describing that bank account.
+             * For most ExpressPayments users, the source of every top-up is a bank account. This hash is then the [source object](https://docs.epayments.network/api#source_object) describing that bank account.
              */
-            source: ExpressPlatby.Source | null;
+            source: ExpressPayments.Source | null;
 
             /**
              * Extra information about a top-up. This will appear on your source's bank statement. It must contain at least one letter.

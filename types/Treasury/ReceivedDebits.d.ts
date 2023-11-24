@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             /**
-             * ReceivedDebits represent funds pulled from a [FinancialAccount](https://expressplatby.cz/docs/api#financial_accounts). These are not initiated from the FinancialAccount.
+             * ReceivedDebits represent funds pulled from a [FinancialAccount](https://docs.epayments.network/api#financial_accounts). These are not initiated from the FinancialAccount.
              */
             interface ReceivedDebit {
                 /**
@@ -28,7 +28,7 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -48,7 +48,7 @@ declare module 'expressplatby' {
                 financial_account: string | null;
 
                 /**
-                 * A [hosted transaction receipt](https://expressplatby.cz/docs/treasury/moving-money/regulatory-receipts) URL that is provided when money movement is considered regulated under ExpressPlatby's money transmission licences.
+                 * A [hosted transaction receipt](https://docs.epayments.network/treasury/moving-money/regulatory-receipts) URL that is provided when money movement is considered regulated under ExpressPayments's money transmission licences.
                  */
                 hosted_regulatory_receipt_url: string | null;
 
@@ -79,7 +79,7 @@ declare module 'expressplatby' {
                 /**
                  * The Transaction associated with this object.
                  */
-                transaction: string | ExpressPlatby.Treasury.Transaction | null;
+                transaction: string | ExpressPayments.Treasury.Transaction | null;
             }
 
             namespace ReceivedDebit {
@@ -100,12 +100,12 @@ declare module 'expressplatby' {
                     financial_account?: InitiatingPaymentMethodDetails.FinancialAccount;
 
                     /**
-                     * Set when `type` is `issuing_card`. This is an [Issuing Card](https://expressplatby.cz/docs/api#issuing_cards) ID.
+                     * Set when `type` is `issuing_card`. This is an [Issuing Card](https://docs.epayments.network/api#issuing_cards) ID.
                      */
                     issuing_card?: string;
 
                     /**
-                     * Polymorphic type matching the originating money movement's source. This can be an external account, an ExpressPlatby balance, or a FinancialAccount.
+                     * Polymorphic type matching the originating money movement's source. This can be an external account, an ExpressPayments balance, or a FinancialAccount.
                      */
                     type: InitiatingPaymentMethodDetails.Type;
 
@@ -114,7 +114,7 @@ declare module 'expressplatby' {
 
                 namespace InitiatingPaymentMethodDetails {
                     interface BillingDetails {
-                        address: ExpressPlatby.Address;
+                        address: ExpressPayments.Address;
 
                         /**
                          * Email address.
@@ -134,16 +134,16 @@ declare module 'expressplatby' {
                         id: string;
 
                         /**
-                         * The rails the ReceivedCredit was sent over. A FinancialAccount can only send funds over `expressplatby`.
+                         * The rails the ReceivedCredit was sent over. A FinancialAccount can only send funds over `expresspayments`.
                          */
-                        network: 'expressplatby';
+                        network: 'expresspayments';
                     }
 
                     type Type =
                         | 'balance'
                         | 'financial_account'
                         | 'issuing_card'
-                        | 'expressplatby'
+                        | 'expresspayments'
                         | 'us_bank_account';
 
                     interface UsBankAccount {
@@ -176,17 +176,17 @@ declare module 'expressplatby' {
                     inbound_transfer: string | null;
 
                     /**
-                     * Set if the ReceivedDebit was created due to an [Issuing Authorization](https://expressplatby.cz/docs/api#issuing_authorizations) object.
+                     * Set if the ReceivedDebit was created due to an [Issuing Authorization](https://docs.epayments.network/api#issuing_authorizations) object.
                      */
                     issuing_authorization: string | null;
 
                     /**
-                     * Set if the ReceivedDebit is also viewable as an [Issuing Dispute](https://expressplatby.cz/docs/api#issuing_disputes) object.
+                     * Set if the ReceivedDebit is also viewable as an [Issuing Dispute](https://docs.epayments.network/api#issuing_disputes) object.
                      */
                     issuing_transaction: string | null;
                 }
 
-                type Network = 'ach' | 'card' | 'expressplatby';
+                type Network = 'ach' | 'card' | 'expresspayments';
 
                 interface ReversalDetails {
                     /**

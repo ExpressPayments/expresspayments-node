@@ -1,80 +1,81 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const Invoices = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/invoices',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/invoices/{invoice}',
-  }),
+export const Invoices = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/invoices',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/invoices/{invoice}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/invoices/{invoice}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/invoices',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/invoices/{invoice}',
+    }),
 
-  del: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/invoices/{invoice}',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/invoices',
+        methodType: 'list',
+    }),
 
-  finalizeInvoice: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/invoices/{invoice}/finalize',
-  }),
+    del: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/invoices/{invoice}',
+    }),
 
-  listLineItems: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/invoices/{invoice}/lines',
-    methodType: 'list',
-  }),
+    finalizeInvoice: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/invoices/{invoice}/finalize',
+    }),
 
-  listUpcomingLines: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/invoices/upcoming/lines',
-    methodType: 'list',
-  }),
+    listLineItems: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/invoices/{invoice}/lines',
+        methodType: 'list',
+    }),
 
-  markUncollectible: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/invoices/{invoice}/mark_uncollectible',
-  }),
+    listUpcomingLines: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/invoices/upcoming/lines',
+        methodType: 'list',
+    }),
 
-  pay: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/invoices/{invoice}/pay',
-  }),
+    markUncollectible: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/invoices/{invoice}/mark_uncollectible',
+    }),
 
-  retrieveUpcoming: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/invoices/upcoming',
-  }),
+    pay: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/invoices/{invoice}/pay',
+    }),
 
-  search: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/invoices/search',
-    methodType: 'search',
-  }),
+    retrieveUpcoming: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/invoices/upcoming',
+    }),
 
-  sendInvoice: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/invoices/{invoice}/send',
-  }),
+    search: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/invoices/search',
+        methodType: 'search',
+    }),
 
-  voidInvoice: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/invoices/{invoice}/void',
-  }),
+    sendInvoice: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/invoices/{invoice}/send',
+    }),
+
+    voidInvoice: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/invoices/{invoice}/void',
+    }),
 });

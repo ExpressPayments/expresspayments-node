@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             /**
-             * TransactionEntries represent individual units of money movements within a single [Transaction](https://expressplatby.cz/docs/api#transactions).
+             * TransactionEntries represent individual units of money movements within a single [Transaction](https://docs.epayments.network/api#transactions).
              */
             interface TransactionEntry {
                 /**
@@ -28,7 +28,7 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -65,7 +65,7 @@ declare module 'expressplatby' {
                 /**
                  * The Transaction associated with this object.
                  */
-                transaction: string | ExpressPlatby.Treasury.Transaction;
+                transaction: string | ExpressPayments.Treasury.Transaction;
 
                 /**
                  * The specific money movement that generated the TransactionEntry.
@@ -93,52 +93,52 @@ declare module 'expressplatby' {
 
                 interface FlowDetails {
                     /**
-                     * You can reverse some [ReceivedCredits](https://expressplatby.cz/docs/api#received_credits) depending on their network and source flow. Reversing a ReceivedCredit leads to the creation of a new object known as a CreditReversal.
+                     * You can reverse some [ReceivedCredits](https://docs.epayments.network/api#received_credits) depending on their network and source flow. Reversing a ReceivedCredit leads to the creation of a new object known as a CreditReversal.
                      */
-                    credit_reversal?: ExpressPlatby.Treasury.CreditReversal;
+                    credit_reversal?: ExpressPayments.Treasury.CreditReversal;
 
                     /**
-                     * You can reverse some [ReceivedDebits](https://expressplatby.cz/docs/api#received_debits) depending on their network and source flow. Reversing a ReceivedDebit leads to the creation of a new object known as a DebitReversal.
+                     * You can reverse some [ReceivedDebits](https://docs.epayments.network/api#received_debits) depending on their network and source flow. Reversing a ReceivedDebit leads to the creation of a new object known as a DebitReversal.
                      */
-                    debit_reversal?: ExpressPlatby.Treasury.DebitReversal;
+                    debit_reversal?: ExpressPayments.Treasury.DebitReversal;
 
                     /**
-                     * Use [InboundTransfers](https://expressplatby.cz/docs/treasury/moving-money/financial-accounts/into/inbound-transfers) to add funds to your [FinancialAccount](https://expressplatby.cz/docs/api#financial_accounts) via a PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
+                     * Use [InboundTransfers](https://docs.epayments.network/treasury/moving-money/financial-accounts/into/inbound-transfers) to add funds to your [FinancialAccount](https://docs.epayments.network/api#financial_accounts) via a PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
                      */
-                    inbound_transfer?: ExpressPlatby.Treasury.InboundTransfer;
+                    inbound_transfer?: ExpressPayments.Treasury.InboundTransfer;
 
                     /**
-                     * When an [issued card](https://expressplatby.cz/docs/issuing) is used to make a purchase, an Issuing `Authorization`
-                     * object is created. [Authorizations](https://expressplatby.cz/docs/issuing/purchases/authorizations) must be approved for the
+                     * When an [issued card](https://docs.epayments.network/issuing) is used to make a purchase, an Issuing `Authorization`
+                     * object is created. [Authorizations](https://docs.epayments.network/issuing/purchases/authorizations) must be approved for the
                      * purchase to be completed successfully.
                      *
-                     * Related guide: [Issued card authorizations](https://expressplatby.cz/docs/issuing/purchases/authorizations)
+                     * Related guide: [Issued card authorizations](https://docs.epayments.network/issuing/purchases/authorizations)
                      */
-                    issuing_authorization?: ExpressPlatby.Issuing.Authorization;
+                    issuing_authorization?: ExpressPayments.Issuing.Authorization;
 
                     /**
-                     * Use OutboundPayments to send funds to another party's external bank account or [FinancialAccount](https://expressplatby.cz/docs/api#financial_accounts). To send money to an account belonging to the same user, use an [OutboundTransfer](https://expressplatby.cz/docs/api#outbound_transfers).
+                     * Use OutboundPayments to send funds to another party's external bank account or [FinancialAccount](https://docs.epayments.network/api#financial_accounts). To send money to an account belonging to the same user, use an [OutboundTransfer](https://docs.epayments.network/api#outbound_transfers).
                      *
                      * Simulate OutboundPayment state changes with the `/v1/test_helpers/treasury/outbound_payments` endpoints. These methods can only be called on test mode objects.
                      */
-                    outbound_payment?: ExpressPlatby.Treasury.OutboundPayment;
+                    outbound_payment?: ExpressPayments.Treasury.OutboundPayment;
 
                     /**
-                     * Use OutboundTransfers to transfer funds from a [FinancialAccount](https://expressplatby.cz/docs/api#financial_accounts) to a PaymentMethod belonging to the same entity. To send funds to a different party, use [OutboundPayments](https://expressplatby.cz/docs/api#outbound_payments) instead. You can send funds over ACH rails or through a domestic wire transfer to a user's own external bank account.
+                     * Use OutboundTransfers to transfer funds from a [FinancialAccount](https://docs.epayments.network/api#financial_accounts) to a PaymentMethod belonging to the same entity. To send funds to a different party, use [OutboundPayments](https://docs.epayments.network/api#outbound_payments) instead. You can send funds over ACH rails or through a domestic wire transfer to a user's own external bank account.
                      *
                      * Simulate OutboundTransfer state changes with the `/v1/test_helpers/treasury/outbound_transfers` endpoints. These methods can only be called on test mode objects.
                      */
-                    outbound_transfer?: ExpressPlatby.Treasury.OutboundTransfer;
+                    outbound_transfer?: ExpressPayments.Treasury.OutboundTransfer;
 
                     /**
-                     * ReceivedCredits represent funds sent to a [FinancialAccount](https://expressplatby.cz/docs/api#financial_accounts) (for example, via ACH or wire). These money movements are not initiated from the FinancialAccount.
+                     * ReceivedCredits represent funds sent to a [FinancialAccount](https://docs.epayments.network/api#financial_accounts) (for example, via ACH or wire). These money movements are not initiated from the FinancialAccount.
                      */
-                    received_credit?: ExpressPlatby.Treasury.ReceivedCredit;
+                    received_credit?: ExpressPayments.Treasury.ReceivedCredit;
 
                     /**
-                     * ReceivedDebits represent funds pulled from a [FinancialAccount](https://expressplatby.cz/docs/api#financial_accounts). These are not initiated from the FinancialAccount.
+                     * ReceivedDebits represent funds pulled from a [FinancialAccount](https://docs.epayments.network/api#financial_accounts). These are not initiated from the FinancialAccount.
                      */
-                    received_debit?: ExpressPlatby.Treasury.ReceivedDebit;
+                    received_debit?: ExpressPayments.Treasury.ReceivedDebit;
 
                     /**
                      * Type of the flow that created the Transaction. Set to the same value as `flow_type`.

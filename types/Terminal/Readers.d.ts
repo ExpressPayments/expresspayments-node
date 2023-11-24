@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Terminal {
             /**
              * A Reader represents a physical device for accepting payment details.
              *
-             * Related guide: [Connecting to a reader](https://expressplatby.cz/docs/terminal/payments/connect-reader)
+             * Related guide: [Connecting to a reader](https://docs.epayments.network/terminal/payments/connect-reader)
              */
             interface Reader {
                 /**
@@ -32,7 +32,7 @@ declare module 'expressplatby' {
                 device_sw_version: string | null;
 
                 /**
-                 * Type of reader, one of `bbpos_wisepad3`, `expressplatby_m2`, `bbpos_chipper2x`, `bbpos_wisepos_e`, `verifone_P400`, or `simulated_wisepos_e`.
+                 * Type of reader, one of `bbpos_wisepad3`, `expresspayments_m2`, `bbpos_chipper2x`, `bbpos_wisepos_e`, `verifone_P400`, or `simulated_wisepos_e`.
                  */
                 device_type: Reader.DeviceType;
 
@@ -54,12 +54,12 @@ declare module 'expressplatby' {
                 /**
                  * The location identifier of the reader.
                  */
-                location: string | ExpressPlatby.Terminal.Location | null;
+                location: string | ExpressPayments.Terminal.Location | null;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * Serial number of the reader.
@@ -120,7 +120,7 @@ declare module 'expressplatby' {
                         /**
                          * Most recent PaymentIntent processed by the reader.
                          */
-                        payment_intent: string | ExpressPlatby.PaymentIntent;
+                        payment_intent: string | ExpressPayments.PaymentIntent;
 
                         /**
                          * Represents a per-transaction override of a reader configuration
@@ -160,7 +160,7 @@ declare module 'expressplatby' {
                         /**
                          * Most recent SetupIntent processed by the reader.
                          */
-                        setup_intent: string | ExpressPlatby.SetupIntent;
+                        setup_intent: string | ExpressPayments.SetupIntent;
                     }
 
                     interface RefundPayment {
@@ -172,17 +172,17 @@ declare module 'expressplatby' {
                         /**
                          * Charge that is being refunded.
                          */
-                        charge?: string | ExpressPlatby.Charge;
+                        charge?: string | ExpressPayments.Charge;
 
                         /**
-                         * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                         * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                          */
-                        metadata?: ExpressPlatby.Metadata;
+                        metadata?: ExpressPayments.Metadata;
 
                         /**
                          * Payment intent that is being refunded.
                          */
-                        payment_intent?: string | ExpressPlatby.PaymentIntent;
+                        payment_intent?: string | ExpressPayments.PaymentIntent;
 
                         /**
                          * The reason for the refund.
@@ -192,7 +192,7 @@ declare module 'expressplatby' {
                         /**
                          * Unique identifier for the refund object.
                          */
-                        refund?: string | ExpressPlatby.Refund;
+                        refund?: string | ExpressPayments.Refund;
 
                         /**
                          * Boolean indicating whether the application fee should be refunded when refunding this charge. If a full charge refund is given, the full application fee will be refunded. Otherwise, the application fee will be refunded in an amount proportional to the amount of the charge refunded. An application fee can be refunded only by the application that created the charge.
@@ -227,7 +227,7 @@ declare module 'expressplatby' {
                     namespace SetReaderDisplay {
                         interface Cart {
                             /**
-                             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                              */
                             currency: string;
 
@@ -237,12 +237,12 @@ declare module 'expressplatby' {
                             line_items: Array<Cart.LineItem>;
 
                             /**
-                             * Tax amount for the entire cart. A positive integer in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                             * Tax amount for the entire cart. A positive integer in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                              */
                             tax: number | null;
 
                             /**
-                             * Total amount for the entire cart, including tax. A positive integer in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                             * Total amount for the entire cart, including tax. A positive integer in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                              */
                             total: number;
                         }
@@ -250,7 +250,7 @@ declare module 'expressplatby' {
                         namespace Cart {
                             interface LineItem {
                                 /**
-                                 * The amount of the line item. A positive integer in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                                 * The amount of the line item. A positive integer in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                                  */
                                 amount: number;
 
@@ -281,7 +281,7 @@ declare module 'expressplatby' {
                     | 'bbpos_wisepad3'
                     | 'bbpos_wisepos_e'
                     | 'simulated_wisepos_e'
-                    | 'expressplatby_m2'
+                    | 'expresspayments_m2'
                     | 'verifone_P400';
             }
 

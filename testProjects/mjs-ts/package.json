@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "dependencies": {
-        "expressplatby": "file:../../",
+        "expresspayments": "file:../../",
         "ts-node": "^10.9.1"
     },
     "scripts": {

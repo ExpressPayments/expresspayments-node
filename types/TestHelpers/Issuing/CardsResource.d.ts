@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace TestHelpers {
             namespace Issuing {
                 interface CardDeliverCardParams {
@@ -49,13 +49,13 @@ declare module 'expressplatby' {
                         params?: CardDeliverCardParams,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Issuing.Card>
+                        ExpressPayments.Response<ExpressPayments.Issuing.Card>
                     >;
                     deliverCard(
                         id: string,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Issuing.Card>
+                        ExpressPayments.Response<ExpressPayments.Issuing.Card>
                     >;
 
                     /**
@@ -66,13 +66,13 @@ declare module 'expressplatby' {
                         params?: CardFailCardParams,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Issuing.Card>
+                        ExpressPayments.Response<ExpressPayments.Issuing.Card>
                     >;
                     failCard(
                         id: string,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Issuing.Card>
+                        ExpressPayments.Response<ExpressPayments.Issuing.Card>
                     >;
 
                     /**
@@ -83,13 +83,13 @@ declare module 'expressplatby' {
                         params?: CardReturnCardParams,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Issuing.Card>
+                        ExpressPayments.Response<ExpressPayments.Issuing.Card>
                     >;
                     returnCard(
                         id: string,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Issuing.Card>
+                        ExpressPayments.Response<ExpressPayments.Issuing.Card>
                     >;
 
                     /**
@@ -100,13 +100,13 @@ declare module 'expressplatby' {
                         params?: CardShipCardParams,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Issuing.Card>
+                        ExpressPayments.Response<ExpressPayments.Issuing.Card>
                     >;
                     shipCard(
                         id: string,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Issuing.Card>
+                        ExpressPayments.Response<ExpressPayments.Issuing.Card>
                     >;
                 }
             }

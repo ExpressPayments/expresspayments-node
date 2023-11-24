@@ -1,37 +1,38 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const VerificationSessions = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/identity/verification_sessions',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/identity/verification_sessions/{session}',
-  }),
+export const VerificationSessions = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/identity/verification_sessions',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/identity/verification_sessions/{session}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/identity/verification_sessions/{session}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/identity/verification_sessions',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/identity/verification_sessions/{session}',
+    }),
 
-  cancel: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/identity/verification_sessions/{session}/cancel',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/identity/verification_sessions',
+        methodType: 'list',
+    }),
 
-  redact: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/identity/verification_sessions/{session}/redact',
-  }),
+    cancel: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/identity/verification_sessions/{session}/cancel',
+    }),
+
+    redact: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/identity/verification_sessions/{session}/redact',
+    }),
 });

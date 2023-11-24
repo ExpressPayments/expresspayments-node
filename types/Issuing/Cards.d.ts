@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Issuing {
             /**
-             * You can [create physical or virtual cards](https://expressplatby.cz/docs/issuing/cards) that are issued to cardholders.
+             * You can [create physical or virtual cards](https://docs.epayments.network/issuing/cards) that are issued to cardholders.
              */
             interface Card {
                 /**
@@ -28,11 +28,11 @@ declare module 'expressplatby' {
                 cancellation_reason: Card.CancellationReason | null;
 
                 /**
-                 * An Issuing `Cardholder` object represents an individual or business entity who is [issued](https://expressplatby.cz/docs/issuing) cards.
+                 * An Issuing `Cardholder` object represents an individual or business entity who is [issued](https://docs.epayments.network/issuing) cards.
                  *
-                 * Related guide: [How to create a cardholder](https://expressplatby.cz/docs/issuing/cards#create-cardholder)
+                 * Related guide: [How to create a cardholder](https://docs.epayments.network/issuing/cards#create-cardholder)
                  */
-                cardholder: ExpressPlatby.Issuing.Cardholder;
+                cardholder: ExpressPayments.Issuing.Cardholder;
 
                 /**
                  * Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -45,7 +45,7 @@ declare module 'expressplatby' {
                 currency: string;
 
                 /**
-                 * The card's CVC. For security reasons, this is only available for virtual cards, and will be omitted unless you explicitly request it with [the `expand` parameter](https://expressplatby.cz/docs/api/expanding_objects). Additionally, it's only available via the ["Retrieve a card" endpoint](https://expressplatby.cz/docs/api/issuing/cards/retrieve), not via "List all cards" or any other endpoint.
+                 * The card's CVC. For security reasons, this is only available for virtual cards, and will be omitted unless you explicitly request it with [the `expand` parameter](https://docs.epayments.network/api/expanding_objects). Additionally, it's only available via the ["Retrieve a card" endpoint](https://docs.epayments.network/api/issuing/cards/retrieve), not via "List all cards" or any other endpoint.
                  */
                 cvc?: string;
 
@@ -75,24 +75,24 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
-                 * The full unredacted card number. For security reasons, this is only available for virtual cards, and will be omitted unless you explicitly request it with [the `expand` parameter](https://expressplatby.cz/docs/api/expanding_objects). Additionally, it's only available via the ["Retrieve a card" endpoint](https://expressplatby.cz/docs/api/issuing/cards/retrieve), not via "List all cards" or any other endpoint.
+                 * The full unredacted card number. For security reasons, this is only available for virtual cards, and will be omitted unless you explicitly request it with [the `expand` parameter](https://docs.epayments.network/api/expanding_objects). Additionally, it's only available via the ["Retrieve a card" endpoint](https://docs.epayments.network/api/issuing/cards/retrieve), not via "List all cards" or any other endpoint.
                  */
                 number?: string;
 
                 /**
                  * The latest card that replaces this card, if any.
                  */
-                replaced_by: string | ExpressPlatby.Issuing.Card | null;
+                replaced_by: string | ExpressPayments.Issuing.Card | null;
 
                 /**
                  * The card this card replaces, if any.
                  */
-                replacement_for: string | ExpressPlatby.Issuing.Card | null;
+                replacement_for: string | ExpressPayments.Issuing.Card | null;
 
                 /**
                  * The reason why the previous card needed to be replaced.
@@ -132,7 +132,7 @@ declare module 'expressplatby' {
                     | 'stolen';
 
                 interface Shipping {
-                    address: ExpressPlatby.Address;
+                    address: ExpressPayments.Address;
 
                     /**
                      * The delivery company that shipped a card.
@@ -215,14 +215,14 @@ declare module 'expressplatby' {
 
                 interface SpendingControls {
                     /**
-                     * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`.
+                     * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`.
                      */
                     allowed_categories: Array<
                         SpendingControls.AllowedCategory
                     > | null;
 
                     /**
-                     * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`.
+                     * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`.
                      */
                     blocked_categories: Array<
                         SpendingControls.BlockedCategory
@@ -838,12 +838,12 @@ declare module 'expressplatby' {
 
                     interface SpendingLimit {
                         /**
-                         * Maximum amount allowed to spend per interval. This amount is in the card's currency and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                         * Maximum amount allowed to spend per interval. This amount is in the card's currency and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                          */
                         amount: number;
 
                         /**
-                         * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories.
+                         * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories.
                          */
                         categories: Array<SpendingLimit.Category> | null;
 

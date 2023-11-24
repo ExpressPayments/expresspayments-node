@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface RefundCreateParams {
             /**
              * A positive integer representing how much to refund.
@@ -11,7 +11,7 @@ declare module 'expressplatby' {
             charge?: string;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency?: string;
 
@@ -31,9 +31,9 @@ declare module 'expressplatby' {
             instructions_email?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Origin of the refund
@@ -67,9 +67,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
         }
 
         interface RefundListParams extends PaginationParams {
@@ -78,7 +78,7 @@ declare module 'expressplatby' {
              */
             charge?: string;
 
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -105,10 +105,10 @@ declare module 'expressplatby' {
             create(
                 params?: RefundCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Refund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Refund>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Refund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Refund>>;
 
             /**
              * Retrieves the details of an existing refund.
@@ -117,11 +117,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: RefundRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Refund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Refund>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Refund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Refund>>;
 
             /**
              * Updates the specified refund by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
@@ -132,7 +132,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: RefundUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Refund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Refund>>;
 
             /**
              * Returns a list of all refunds you've previously created. The refunds are returned in sorted order, with the most recent refunds appearing first. For convenience, the 10 most recent refunds are always available by default on the charge object.
@@ -140,10 +140,10 @@ declare module 'expressplatby' {
             list(
                 params?: RefundListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Refund>;
+            ): ApiListPromise<ExpressPayments.Refund>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Refund>;
+            ): ApiListPromise<ExpressPayments.Refund>;
 
             /**
              * Cancels a refund with a status of requires_action.
@@ -154,11 +154,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: RefundCancelParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Refund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Refund>>;
             cancel(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Refund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Refund>>;
         }
     }
 }

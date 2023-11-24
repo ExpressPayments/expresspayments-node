@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * A coupon contains information about a percent-off or amount-off discount you
-         * might want to apply to a customer. Coupons may be applied to [subscriptions](https://expressplatby.cz/docs/api#subscriptions), [invoices](https://expressplatby.cz/docs/api#invoices),
-         * [checkout sessions](https://expressplatby.cz/docs/api/checkout/sessions), [quotes](https://expressplatby.cz/docs/api#quotes), and more. Coupons do not work with conventional one-off [charges](https://expressplatby.cz/docs/api#create_charge) or [payment intents](https://expressplatby.cz/docs/api/payment_intents).
+         * might want to apply to a customer. Coupons may be applied to [subscriptions](https://docs.epayments.network/api#subscriptions), [invoices](https://docs.epayments.network/api#invoices),
+         * [checkout sessions](https://docs.epayments.network/api/checkout/sessions), [quotes](https://docs.epayments.network/api#quotes), and more. Coupons do not work with conventional one-off [charges](https://docs.epayments.network/api#create_charge) or [payment intents](https://docs.epayments.network/api/payment_intents).
          */
         interface Coupon {
             /**
@@ -31,12 +31,12 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * If `amount_off` has been set, the three-letter [ISO code for the currency](https://expressplatby.cz/docs/currencies) of the amount to take off.
+             * If `amount_off` has been set, the three-letter [ISO code for the currency](https://docs.epayments.network/currencies) of the amount to take off.
              */
             currency: string | null;
 
             /**
-             * Coupons defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Coupons defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
              */
             currency_options?: {
                 [key: string]: Coupon.CurrencyOptions;
@@ -65,9 +65,9 @@ declare module 'expressplatby' {
             max_redemptions: number | null;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             /**
              * Name of the coupon displayed to customers on for instance invoices or receipts.

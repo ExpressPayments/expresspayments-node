@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Issuing {
             /**
-             * When an [issued card](https://expressplatby.cz/docs/issuing) is used to make a purchase, an Issuing `Authorization`
-             * object is created. [Authorizations](https://expressplatby.cz/docs/issuing/purchases/authorizations) must be approved for the
+             * When an [issued card](https://docs.epayments.network/issuing) is used to make a purchase, an Issuing `Authorization`
+             * object is created. [Authorizations](https://docs.epayments.network/issuing/purchases/authorizations) must be approved for the
              * purchase to be completed successfully.
              *
-             * Related guide: [Issued card authorizations](https://expressplatby.cz/docs/issuing/purchases/authorizations)
+             * Related guide: [Issued card authorizations](https://docs.epayments.network/issuing/purchases/authorizations)
              */
             interface Authorization {
                 /**
@@ -22,12 +22,12 @@ declare module 'expressplatby' {
                 object: 'issuing.authorization';
 
                 /**
-                 * The total amount that was authorized or rejected. This amount is in the card's currency and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                 * The total amount that was authorized or rejected. This amount is in the card's currency and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                  */
                 amount: number;
 
                 /**
-                 * Detailed breakdown of amount components. These amounts are denominated in `currency` and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                 * Detailed breakdown of amount components. These amounts are denominated in `currency` and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                  */
                 amount_details: Authorization.AmountDetails | null;
 
@@ -44,17 +44,17 @@ declare module 'expressplatby' {
                 /**
                  * List of balance transactions associated with this authorization.
                  */
-                balance_transactions: Array<ExpressPlatby.BalanceTransaction>;
+                balance_transactions: Array<ExpressPayments.BalanceTransaction>;
 
                 /**
-                 * You can [create physical or virtual cards](https://expressplatby.cz/docs/issuing/cards) that are issued to cardholders.
+                 * You can [create physical or virtual cards](https://docs.epayments.network/issuing/cards) that are issued to cardholders.
                  */
-                card: ExpressPlatby.Issuing.Card;
+                card: ExpressPayments.Issuing.Card;
 
                 /**
                  * The cardholder to whom this authorization belongs.
                  */
-                cardholder: string | ExpressPlatby.Issuing.Cardholder | null;
+                cardholder: string | ExpressPayments.Issuing.Cardholder | null;
 
                 /**
                  * Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -62,7 +62,7 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -72,21 +72,21 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * The total amount that was authorized or rejected. This amount is in the `merchant_currency` and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                 * The total amount that was authorized or rejected. This amount is in the `merchant_currency` and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                  */
                 merchant_amount: number;
 
                 /**
-                 * The currency that was presented to the cardholder for the authorization. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * The currency that was presented to the cardholder for the authorization. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 merchant_currency: string;
 
                 merchant_data: Authorization.MerchantData;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * Details about the authorization, such as identifiers, set by the card network.
@@ -99,7 +99,7 @@ declare module 'expressplatby' {
                 pending_request: Authorization.PendingRequest | null;
 
                 /**
-                 * History of every time a `pending_request` authorization was approved/declined, either by you directly or by ExpressPlatby (e.g. based on your spending_controls). If the merchant changes the authorization by performing an incremental authorization, you can look at this field to see the previous requests for the authorization. This field can be helpful in determining why a given authorization was approved/declined.
+                 * History of every time a `pending_request` authorization was approved/declined, either by you directly or by ExpressPayments (e.g. based on your spending_controls). If the merchant changes the authorization by performing an incremental authorization, you can look at this field to see the previous requests for the authorization. This field can be helpful in determining why a given authorization was approved/declined.
                  */
                 request_history: Array<Authorization.RequestHistory>;
 
@@ -109,12 +109,12 @@ declare module 'expressplatby' {
                 status: Authorization.Status;
 
                 /**
-                 * List of [transactions](https://expressplatby.cz/docs/api/issuing/transactions) associated with this authorization.
+                 * List of [transactions](https://docs.epayments.network/api/issuing/transactions) associated with this authorization.
                  */
-                transactions: Array<ExpressPlatby.Issuing.Transaction>;
+                transactions: Array<ExpressPayments.Issuing.Transaction>;
 
                 /**
-                 * [Treasury](https://expressplatby.cz/docs/api/treasury) details related to this authorization if it was created on a [FinancialAccount](https://expressplatby.cz/docs/api/treasury/financial_accounts).
+                 * [Treasury](https://docs.epayments.network/api/treasury) details related to this authorization if it was created on a [FinancialAccount](https://docs.epayments.network/api/treasury/financial_accounts).
                  */
                 treasury?: Authorization.Treasury | null;
 
@@ -143,7 +143,7 @@ declare module 'expressplatby' {
 
                 interface MerchantData {
                     /**
-                     * A categorization of the seller's type of business. See our [merchant categories guide](https://expressplatby.cz/docs/issuing/merchant-categories) for a list of possible values.
+                     * A categorization of the seller's type of business. See our [merchant categories guide](https://docs.epayments.network/issuing/merchant-categories) for a list of possible values.
                      */
                     category: string;
 
@@ -197,27 +197,27 @@ declare module 'expressplatby' {
 
                 interface PendingRequest {
                     /**
-                     * The additional amount ExpressPlatby will hold if the authorization is approved, in the card's [currency](https://expressplatby.cz/docs/api#issuing_authorization_object-pending-request-currency) and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                     * The additional amount ExpressPayments will hold if the authorization is approved, in the card's [currency](https://docs.epayments.network/api#issuing_authorization_object-pending-request-currency) and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                      */
                     amount: number;
 
                     /**
-                     * Detailed breakdown of amount components. These amounts are denominated in `currency` and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                     * Detailed breakdown of amount components. These amounts are denominated in `currency` and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                      */
                     amount_details: PendingRequest.AmountDetails | null;
 
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
                     /**
-                     * If set `true`, you may provide [amount](https://expressplatby.cz/docs/api/issuing/authorizations/approve#approve_issuing_authorization-amount) to control how much to hold for the authorization.
+                     * If set `true`, you may provide [amount](https://docs.epayments.network/api/issuing/authorizations/approve#approve_issuing_authorization-amount) to control how much to hold for the authorization.
                      */
                     is_amount_controllable: boolean;
 
                     /**
-                     * The amount the merchant is requesting to be authorized in the `merchant_currency`. The amount is in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                     * The amount the merchant is requesting to be authorized in the `merchant_currency`. The amount is in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                      */
                     merchant_amount: number;
 
@@ -238,12 +238,12 @@ declare module 'expressplatby' {
 
                 interface RequestHistory {
                     /**
-                     * The `pending_request.amount` at the time of the request, presented in your card's currency and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal). ExpressPlatby held this amount from your account to fund the authorization if the request was approved.
+                     * The `pending_request.amount` at the time of the request, presented in your card's currency and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal). ExpressPayments held this amount from your account to fund the authorization if the request was approved.
                      */
                     amount: number;
 
                     /**
-                     * Detailed breakdown of amount components. These amounts are denominated in `currency` and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                     * Detailed breakdown of amount components. These amounts are denominated in `currency` and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                      */
                     amount_details: RequestHistory.AmountDetails | null;
 
@@ -258,22 +258,22 @@ declare module 'expressplatby' {
                     created: number;
 
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
                     /**
-                     * The `pending_request.merchant_amount` at the time of the request, presented in the `merchant_currency` and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                     * The `pending_request.merchant_amount` at the time of the request, presented in the `merchant_currency` and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                      */
                     merchant_amount: number;
 
                     /**
-                     * The currency that was collected by the merchant and presented to the cardholder for the authorization. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * The currency that was collected by the merchant and presented to the cardholder for the authorization. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     merchant_currency: string;
 
                     /**
-                     * When an authorization is approved or declined by you or by ExpressPlatby, this field provides additional detail on the reason for the outcome.
+                     * When an authorization is approved or declined by you or by ExpressPayments, this field provides additional detail on the reason for the outcome.
                      */
                     reason: RequestHistory.Reason;
 
@@ -312,17 +312,17 @@ declare module 'expressplatby' {
 
                 interface Treasury {
                     /**
-                     * The array of [ReceivedCredits](https://expressplatby.cz/docs/api/treasury/received_credits) associated with this authorization
+                     * The array of [ReceivedCredits](https://docs.epayments.network/api/treasury/received_credits) associated with this authorization
                      */
                     received_credits: Array<string>;
 
                     /**
-                     * The array of [ReceivedDebits](https://expressplatby.cz/docs/api/treasury/received_debits) associated with this authorization
+                     * The array of [ReceivedDebits](https://docs.epayments.network/api/treasury/received_debits) associated with this authorization
                      */
                     received_debits: Array<string>;
 
                     /**
-                     * The Treasury [Transaction](https://expressplatby.cz/docs/api/treasury/transactions) associated with this authorization
+                     * The Treasury [Transaction](https://docs.epayments.network/api/treasury/transactions) associated with this authorization
                      */
                     transaction: string | null;
                 }
@@ -339,12 +339,12 @@ declare module 'expressplatby' {
                     address_postal_code_check: VerificationData.AddressPostalCodeCheck;
 
                     /**
-                     * Whether the cardholder provided a CVC and if it matched ExpressPlatby's record.
+                     * Whether the cardholder provided a CVC and if it matched ExpressPayments' record.
                      */
                     cvc_check: VerificationData.CvcCheck;
 
                     /**
-                     * Whether the cardholder provided an expiry date and if it matched ExpressPlatby's record.
+                     * Whether the cardholder provided an expiry date and if it matched ExpressPayments' record.
                      */
                     expiry_check: VerificationData.ExpiryCheck;
                 }

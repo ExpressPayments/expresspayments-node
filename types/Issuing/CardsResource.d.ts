@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Issuing {
             interface CardCreateParams {
                 /**
@@ -15,7 +15,7 @@ declare module 'expressplatby' {
                 type: CardCreateParams.Type;
 
                 /**
-                 * The [Cardholder](https://expressplatby.cz/docs/api#issuing_cardholder_object) object with which the card will be associated.
+                 * The [Cardholder](https://docs.epayments.network/api#issuing_cardholder_object) object with which the card will be associated.
                  */
                 cardholder?: string;
 
@@ -27,9 +27,9 @@ declare module 'expressplatby' {
                 financial_account?: string;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * The card this is meant to be a replacement for (if any).
@@ -47,7 +47,7 @@ declare module 'expressplatby' {
                 shipping?: CardCreateParams.Shipping;
 
                 /**
-                 * Rules that control spending for this card. Refer to our [documentation](https://expressplatby.cz/docs/issuing/controls/spending-controls) for more details.
+                 * Rules that control spending for this card. Refer to our [documentation](https://docs.epayments.network/issuing/controls/spending-controls) for more details.
                  */
                 spending_controls?: CardCreateParams.SpendingControls;
 
@@ -148,14 +148,14 @@ declare module 'expressplatby' {
 
                 interface SpendingControls {
                     /**
-                     * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`.
+                     * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`.
                      */
                     allowed_categories?: Array<
                         SpendingControls.AllowedCategory
                     >;
 
                     /**
-                     * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`.
+                     * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`.
                      */
                     blocked_categories?: Array<
                         SpendingControls.BlockedCategory
@@ -769,7 +769,7 @@ declare module 'expressplatby' {
                         amount: number;
 
                         /**
-                         * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories.
+                         * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories.
                          */
                         categories?: Array<SpendingLimit.Category>;
 
@@ -1111,9 +1111,11 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<
+                    ExpressPayments.MetadataParam
+                >;
 
                 /**
                  * The desired new PIN for this card.
@@ -1121,7 +1123,7 @@ declare module 'expressplatby' {
                 pin?: CardUpdateParams.Pin;
 
                 /**
-                 * Rules that control spending for this card. Refer to our [documentation](https://expressplatby.cz/docs/issuing/controls/spending-controls) for more details.
+                 * Rules that control spending for this card. Refer to our [documentation](https://docs.epayments.network/issuing/controls/spending-controls) for more details.
                  */
                 spending_controls?: CardUpdateParams.SpendingControls;
 
@@ -1136,21 +1138,21 @@ declare module 'expressplatby' {
 
                 interface Pin {
                     /**
-                     * The card's desired new PIN, encrypted under ExpressPlatby's public key.
+                     * The card's desired new PIN, encrypted under ExpressPayments' public key.
                      */
                     encrypted_number?: string;
                 }
 
                 interface SpendingControls {
                     /**
-                     * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`.
+                     * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`.
                      */
                     allowed_categories?: Array<
                         SpendingControls.AllowedCategory
                     >;
 
                     /**
-                     * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`.
+                     * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`.
                      */
                     blocked_categories?: Array<
                         SpendingControls.BlockedCategory
@@ -1764,7 +1766,7 @@ declare module 'expressplatby' {
                         amount: number;
 
                         /**
-                         * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories.
+                         * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories.
                          */
                         categories?: Array<SpendingLimit.Category>;
 
@@ -2094,7 +2096,7 @@ declare module 'expressplatby' {
                 /**
                  * Only return cards that were issued during the given date interval.
                  */
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Only return cards that have the given expiration month.
@@ -2140,7 +2142,9 @@ declare module 'expressplatby' {
                 create(
                     params: CardCreateParams,
                     options?: RequestOptions
-                ): Promise<ExpressPlatby.Response<ExpressPlatby.Issuing.Card>>;
+                ): Promise<
+                    ExpressPayments.Response<ExpressPayments.Issuing.Card>
+                >;
 
                 /**
                  * Retrieves an Issuing Card object.
@@ -2149,11 +2153,15 @@ declare module 'expressplatby' {
                     id: string,
                     params?: CardRetrieveParams,
                     options?: RequestOptions
-                ): Promise<ExpressPlatby.Response<ExpressPlatby.Issuing.Card>>;
+                ): Promise<
+                    ExpressPayments.Response<ExpressPayments.Issuing.Card>
+                >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
-                ): Promise<ExpressPlatby.Response<ExpressPlatby.Issuing.Card>>;
+                ): Promise<
+                    ExpressPayments.Response<ExpressPayments.Issuing.Card>
+                >;
 
                 /**
                  * Updates the specified Issuing Card object by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
@@ -2162,7 +2170,9 @@ declare module 'expressplatby' {
                     id: string,
                     params?: CardUpdateParams,
                     options?: RequestOptions
-                ): Promise<ExpressPlatby.Response<ExpressPlatby.Issuing.Card>>;
+                ): Promise<
+                    ExpressPayments.Response<ExpressPayments.Issuing.Card>
+                >;
 
                 /**
                  * Returns a list of Issuing Card objects. The objects are sorted in descending order by creation date, with the most recently created object appearing first.
@@ -2170,10 +2180,10 @@ declare module 'expressplatby' {
                 list(
                     params?: CardListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Issuing.Card>;
+                ): ApiListPromise<ExpressPayments.Issuing.Card>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Issuing.Card>;
+                ): ApiListPromise<ExpressPayments.Issuing.Card>;
             }
         }
     }

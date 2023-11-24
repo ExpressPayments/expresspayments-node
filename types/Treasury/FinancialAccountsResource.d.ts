@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             interface FinancialAccountCreateParams {
                 /**
@@ -15,14 +15,14 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Encodes whether a FinancialAccount has access to a particular feature. ExpressPlatby or the platform can control features via the requested field.
+                 * Encodes whether a FinancialAccount has access to a particular feature. ExpressPayments or the platform can control features via the requested field.
                  */
                 features?: FinancialAccountCreateParams.Features;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * The set of functionalities that the platform can restrict on the FinancialAccount.
@@ -55,7 +55,7 @@ declare module 'expressplatby' {
                     /**
                      * Represents the ability for the FinancialAccount to send money to, or receive money from other FinancialAccounts (for example, via OutboundPayment).
                      */
-                    intra_expressplatby_flows?: Features.IntraExpressPlatbyFlows;
+                    intra_expresspayments_flows?: Features.IntraExpressPaymentsFlows;
 
                     /**
                      * Includes Features related to initiating money movement out of the FinancialAccount to someone else's bucket of money.
@@ -115,7 +115,7 @@ declare module 'expressplatby' {
                         }
                     }
 
-                    interface IntraExpressPlatbyFlows {
+                    interface IntraExpressPaymentsFlows {
                         /**
                          * Whether the FinancialAccount should have the Feature.
                          */
@@ -129,7 +129,7 @@ declare module 'expressplatby' {
                         ach?: OutboundPayments.Ach;
 
                         /**
-                         * Enables US domestic wire tranfers via the OutboundPayments API.
+                         * Enables US domestic wire transfers via the OutboundPayments API.
                          */
                         us_domestic_wire?: OutboundPayments.UsDomesticWire;
                     }
@@ -212,14 +212,14 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Encodes whether a FinancialAccount has access to a particular feature, with a status enum and associated `status_details`. ExpressPlatby or the platform may control features via the requested field.
+                 * Encodes whether a FinancialAccount has access to a particular feature, with a status enum and associated `status_details`. ExpressPayments or the platform may control features via the requested field.
                  */
                 features?: FinancialAccountUpdateParams.Features;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * The set of functionalities that the platform can restrict on the FinancialAccount.
@@ -252,7 +252,7 @@ declare module 'expressplatby' {
                     /**
                      * Represents the ability for the FinancialAccount to send money to, or receive money from other FinancialAccounts (for example, via OutboundPayment).
                      */
-                    intra_expressplatby_flows?: Features.IntraExpressPlatbyFlows;
+                    intra_expresspayments_flows?: Features.IntraExpressPaymentsFlows;
 
                     /**
                      * Includes Features related to initiating money movement out of the FinancialAccount to someone else's bucket of money.
@@ -312,7 +312,7 @@ declare module 'expressplatby' {
                         }
                     }
 
-                    interface IntraExpressPlatbyFlows {
+                    interface IntraExpressPaymentsFlows {
                         /**
                          * Whether the FinancialAccount should have the Feature.
                          */
@@ -396,7 +396,7 @@ declare module 'expressplatby' {
             }
 
             interface FinancialAccountListParams extends PaginationParams {
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -440,7 +440,7 @@ declare module 'expressplatby' {
                 /**
                  * Represents the ability for the FinancialAccount to send money to, or receive money from other FinancialAccounts (for example, via OutboundPayment).
                  */
-                intra_expressplatby_flows?: FinancialAccountUpdateFeaturesParams.IntraExpressPlatbyFlows;
+                intra_expresspayments_flows?: FinancialAccountUpdateFeaturesParams.IntraExpressPaymentsFlows;
 
                 /**
                  * Includes Features related to initiating money movement out of the FinancialAccount to someone else's bucket of money.
@@ -500,7 +500,7 @@ declare module 'expressplatby' {
                     }
                 }
 
-                interface IntraExpressPlatbyFlows {
+                interface IntraExpressPaymentsFlows {
                     /**
                      * Whether the FinancialAccount should have the Feature.
                      */
@@ -572,8 +572,8 @@ declare module 'expressplatby' {
                     params: FinancialAccountCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.FinancialAccount
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.FinancialAccount
                     >
                 >;
 
@@ -585,16 +585,16 @@ declare module 'expressplatby' {
                     params?: FinancialAccountRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.FinancialAccount
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.FinancialAccount
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.FinancialAccount
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.FinancialAccount
                     >
                 >;
 
@@ -606,8 +606,8 @@ declare module 'expressplatby' {
                     params?: FinancialAccountUpdateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.FinancialAccount
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.FinancialAccount
                     >
                 >;
 
@@ -617,10 +617,10 @@ declare module 'expressplatby' {
                 list(
                     params?: FinancialAccountListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Treasury.FinancialAccount>;
+                ): ApiListPromise<ExpressPayments.Treasury.FinancialAccount>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Treasury.FinancialAccount>;
+                ): ApiListPromise<ExpressPayments.Treasury.FinancialAccount>;
 
                 /**
                  * Retrieves Features information associated with the FinancialAccount.
@@ -630,16 +630,16 @@ declare module 'expressplatby' {
                     params?: FinancialAccountRetrieveFeaturesParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.FinancialAccountFeatures
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.FinancialAccountFeatures
                     >
                 >;
                 retrieveFeatures(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.FinancialAccountFeatures
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.FinancialAccountFeatures
                     >
                 >;
 
@@ -651,16 +651,16 @@ declare module 'expressplatby' {
                     params?: FinancialAccountUpdateFeaturesParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.FinancialAccountFeatures
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.FinancialAccountFeatures
                     >
                 >;
                 updateFeatures(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.FinancialAccountFeatures
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.FinancialAccountFeatures
                     >
                 >;
             }

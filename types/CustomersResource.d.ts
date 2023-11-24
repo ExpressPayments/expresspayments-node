@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface CustomerCreateParams {
             /**
              * The customer's address.
              */
-            address?: ExpressPlatby.Emptyable<ExpressPlatby.AddressParam>;
+            address?: ExpressPayments.Emptyable<ExpressPayments.AddressParam>;
 
             /**
              * An integer amount in cents (or local equivalent) that represents the customer's current balance, which affect the customer's future invoices. A negative amount represents a credit that decreases the amount due on an invoice; a positive amount increases the amount due on an invoice.
@@ -46,9 +46,9 @@ declare module 'expressplatby' {
             invoice_settings?: CustomerCreateParams.InvoiceSettings;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * The customer's full name or business name.
@@ -80,7 +80,7 @@ declare module 'expressplatby' {
             /**
              * The customer's shipping information. Appears on invoices emailed to this customer.
              */
-            shipping?: ExpressPlatby.Emptyable<CustomerCreateParams.Shipping>;
+            shipping?: ExpressPayments.Emptyable<CustomerCreateParams.Shipping>;
 
             source?: string;
 
@@ -92,7 +92,7 @@ declare module 'expressplatby' {
             /**
              * The customer's tax exemption. One of `none`, `exempt`, or `reverse`.
              */
-            tax_exempt?: ExpressPlatby.Emptyable<
+            tax_exempt?: ExpressPayments.Emptyable<
                 CustomerCreateParams.TaxExempt
             >;
 
@@ -121,7 +121,7 @@ declare module 'expressplatby' {
             namespace CashBalance {
                 interface Settings {
                     /**
-                     * Controls how funds transferred by the customer are applied to payment intents and invoices. Valid options are `automatic`, `manual`, or `merchant_default`. For more information about these reconciliation modes, see [Reconciliation](https://expressplatby.cz/docs/payments/customer-balance/reconciliation).
+                     * Controls how funds transferred by the customer are applied to payment intents and invoices. Valid options are `automatic`, `manual`, or `merchant_default`. For more information about these reconciliation modes, see [Reconciliation](https://docs.epayments.network/payments/customer-balance/reconciliation).
                      */
                     reconciliation_mode?: Settings.ReconciliationMode;
                 }
@@ -138,7 +138,7 @@ declare module 'expressplatby' {
                 /**
                  * Default custom fields to be displayed on invoices for this customer. When updating, pass an empty string to remove previously-defined fields.
                  */
-                custom_fields?: ExpressPlatby.Emptyable<
+                custom_fields?: ExpressPayments.Emptyable<
                     Array<InvoiceSettings.CustomField>
                 >;
 
@@ -155,7 +155,7 @@ declare module 'expressplatby' {
                 /**
                  * Default options for invoice PDF rendering for this customer.
                  */
-                rendering_options?: ExpressPlatby.Emptyable<
+                rendering_options?: ExpressPayments.Emptyable<
                     InvoiceSettings.RenderingOptions
                 >;
             }
@@ -177,7 +177,7 @@ declare module 'expressplatby' {
                     /**
                      * How line-item prices and amounts will be displayed with respect to tax on invoice PDFs. One of `exclude_tax` or `include_inclusive_tax`. `include_inclusive_tax` will include inclusive tax (and exclude exclusive tax) in invoice PDF amounts. `exclude_tax` will exclude all tax (inclusive and exclusive alike) from invoice PDF amounts.
                      */
-                    amount_tax_display?: ExpressPlatby.Emptyable<
+                    amount_tax_display?: ExpressPayments.Emptyable<
                         RenderingOptions.AmountTaxDisplay
                     >;
                 }
@@ -193,7 +193,7 @@ declare module 'expressplatby' {
                 /**
                  * Customer shipping address.
                  */
-                address: ExpressPlatby.AddressParam;
+                address: ExpressPayments.AddressParam;
 
                 /**
                  * Customer name.
@@ -208,9 +208,9 @@ declare module 'expressplatby' {
 
             interface Tax {
                 /**
-                 * A recent IP address of the customer used for tax reporting and tax location inference. ExpressPlatby recommends updating the IP address when a new PaymentMethod is attached or the address field on the customer is updated. We recommend against updating this field more frequently since it could result in unexpected tax location/reporting outcomes.
+                 * A recent IP address of the customer used for tax reporting and tax location inference. ExpressPayments recommends updating the IP address when a new PaymentMethod is attached or the address field on the customer is updated. We recommend against updating this field more frequently since it could result in unexpected tax location/reporting outcomes.
                  */
-                ip_address?: ExpressPlatby.Emptyable<string>;
+                ip_address?: ExpressPayments.Emptyable<string>;
             }
 
             type TaxExempt = 'exempt' | 'none' | 'reverse';
@@ -294,7 +294,7 @@ declare module 'expressplatby' {
             /**
              * The customer's address.
              */
-            address?: ExpressPlatby.Emptyable<ExpressPlatby.AddressParam>;
+            address?: ExpressPayments.Emptyable<ExpressPayments.AddressParam>;
 
             /**
              * An integer amount in cents (or local equivalent) that represents the customer's current balance, which affect the customer's future invoices. A negative amount represents a credit that decreases the amount due on an invoice; a positive amount increases the amount due on an invoice.
@@ -309,11 +309,11 @@ declare module 'expressplatby' {
             coupon?: string;
 
             /**
-             * If you are using payment methods created via the PaymentMethods API, see the [invoice_settings.default_payment_method](https://expressplatby.cz/docs/api/customers/update#update_customer-invoice_settings-default_payment_method) parameter.
+             * If you are using payment methods created via the PaymentMethods API, see the [invoice_settings.default_payment_method](https://docs.epayments.network/api/customers/update#update_customer-invoice_settings-default_payment_method) parameter.
              *
              * Provide the ID of a payment source already attached to this customer to make it this customer's default payment source.
              *
-             * If you want to add a new payment source and make it the default, see the [source](https://expressplatby.cz/docs/api/customers/update#update_customer-source) property.
+             * If you want to add a new payment source and make it the default, see the [source](https://docs.epayments.network/api/customers/update#update_customer-source) property.
              */
             default_source?: string;
 
@@ -343,9 +343,9 @@ declare module 'expressplatby' {
             invoice_settings?: CustomerUpdateParams.InvoiceSettings;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * The customer's full name or business name.
@@ -375,7 +375,7 @@ declare module 'expressplatby' {
             /**
              * The customer's shipping information. Appears on invoices emailed to this customer.
              */
-            shipping?: ExpressPlatby.Emptyable<CustomerUpdateParams.Shipping>;
+            shipping?: ExpressPayments.Emptyable<CustomerUpdateParams.Shipping>;
 
             source?: string;
 
@@ -387,7 +387,7 @@ declare module 'expressplatby' {
             /**
              * The customer's tax exemption. One of `none`, `exempt`, or `reverse`.
              */
-            tax_exempt?: ExpressPlatby.Emptyable<
+            tax_exempt?: ExpressPayments.Emptyable<
                 CustomerUpdateParams.TaxExempt
             >;
 
@@ -406,7 +406,7 @@ declare module 'expressplatby' {
             namespace CashBalance {
                 interface Settings {
                     /**
-                     * Controls how funds transferred by the customer are applied to payment intents and invoices. Valid options are `automatic`, `manual`, or `merchant_default`. For more information about these reconciliation modes, see [Reconciliation](https://expressplatby.cz/docs/payments/customer-balance/reconciliation).
+                     * Controls how funds transferred by the customer are applied to payment intents and invoices. Valid options are `automatic`, `manual`, or `merchant_default`. For more information about these reconciliation modes, see [Reconciliation](https://docs.epayments.network/payments/customer-balance/reconciliation).
                      */
                     reconciliation_mode?: Settings.ReconciliationMode;
                 }
@@ -423,7 +423,7 @@ declare module 'expressplatby' {
                 /**
                  * Default custom fields to be displayed on invoices for this customer. When updating, pass an empty string to remove previously-defined fields.
                  */
-                custom_fields?: ExpressPlatby.Emptyable<
+                custom_fields?: ExpressPayments.Emptyable<
                     Array<InvoiceSettings.CustomField>
                 >;
 
@@ -440,7 +440,7 @@ declare module 'expressplatby' {
                 /**
                  * Default options for invoice PDF rendering for this customer.
                  */
-                rendering_options?: ExpressPlatby.Emptyable<
+                rendering_options?: ExpressPayments.Emptyable<
                     InvoiceSettings.RenderingOptions
                 >;
             }
@@ -462,7 +462,7 @@ declare module 'expressplatby' {
                     /**
                      * How line-item prices and amounts will be displayed with respect to tax on invoice PDFs. One of `exclude_tax` or `include_inclusive_tax`. `include_inclusive_tax` will include inclusive tax (and exclude exclusive tax) in invoice PDF amounts. `exclude_tax` will exclude all tax (inclusive and exclusive alike) from invoice PDF amounts.
                      */
-                    amount_tax_display?: ExpressPlatby.Emptyable<
+                    amount_tax_display?: ExpressPayments.Emptyable<
                         RenderingOptions.AmountTaxDisplay
                     >;
                 }
@@ -478,7 +478,7 @@ declare module 'expressplatby' {
                 /**
                  * Customer shipping address.
                  */
-                address: ExpressPlatby.AddressParam;
+                address: ExpressPayments.AddressParam;
 
                 /**
                  * Customer name.
@@ -493,16 +493,16 @@ declare module 'expressplatby' {
 
             interface Tax {
                 /**
-                 * A recent IP address of the customer used for tax reporting and tax location inference. ExpressPlatby recommends updating the IP address when a new PaymentMethod is attached or the address field on the customer is updated. We recommend against updating this field more frequently since it could result in unexpected tax location/reporting outcomes.
+                 * A recent IP address of the customer used for tax reporting and tax location inference. ExpressPayments recommends updating the IP address when a new PaymentMethod is attached or the address field on the customer is updated. We recommend against updating this field more frequently since it could result in unexpected tax location/reporting outcomes.
                  */
-                ip_address?: ExpressPlatby.Emptyable<string>;
+                ip_address?: ExpressPayments.Emptyable<string>;
             }
 
             type TaxExempt = 'exempt' | 'none' | 'reverse';
         }
 
         interface CustomerListParams extends PaginationParams {
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * A case-sensitive filter on the list based on the customer's `email` field. The value must be a string.
@@ -529,7 +529,7 @@ declare module 'expressplatby' {
             bank_transfer: CustomerCreateFundingInstructionsParams.BankTransfer;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -596,7 +596,7 @@ declare module 'expressplatby' {
             amount: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies). Specifies the [`invoice_credit_balance`](https://expressplatby.cz/docs/api/customers/object#customer_object-invoice_credit_balance) that this transaction will apply to. If the customer's `currency` is not set, it will be updated to this value.
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies). Specifies the [`invoice_credit_balance`](https://docs.epayments.network/api/customers/object#customer_object-invoice_credit_balance) that this transaction will apply to. If the customer's `currency` is not set, it will be updated to this value.
              */
             currency: string;
 
@@ -611,14 +611,14 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
         }
 
         interface CustomerSourceCreateParams {
             /**
-             * Please refer to full [documentation](https://expressplatby.cz/docs/api) instead.
+             * Please refer to full [documentation](https://docs.epayments.network/api) instead.
              */
             source: string;
 
@@ -628,9 +628,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             validate?: boolean;
         }
@@ -845,7 +845,7 @@ declare module 'expressplatby' {
 
         interface CustomerSearchParams {
             /**
-             * The search query string. See [search query language](https://expressplatby.cz/docs/search#search-query-language) and the list of supported [query fields for customers](https://expressplatby.cz/docs/search#query-fields-for-customers).
+             * The search query string. See [search query language](https://docs.epayments.network/search#search-query-language) and the list of supported [query fields for customers](https://docs.epayments.network/search#query-fields-for-customers).
              */
             query: string;
 
@@ -877,9 +877,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
         }
 
         interface CashBalanceUpdateParams {
@@ -897,7 +897,7 @@ declare module 'expressplatby' {
         namespace CashBalanceUpdateParams {
             interface Settings {
                 /**
-                 * Controls how funds transferred by the customer are applied to payment intents and invoices. Valid options are `automatic`, `manual`, or `merchant_default`. For more information about these reconciliation modes, see [Reconciliation](https://expressplatby.cz/docs/payments/customer-balance/reconciliation).
+                 * Controls how funds transferred by the customer are applied to payment intents and invoices. Valid options are `automatic`, `manual`, or `merchant_default`. For more information about these reconciliation modes, see [Reconciliation](https://docs.epayments.network/payments/customer-balance/reconciliation).
                  */
                 reconciliation_mode?: Settings.ReconciliationMode;
             }
@@ -967,9 +967,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Cardholder name.
@@ -986,7 +986,7 @@ declare module 'expressplatby' {
                 /**
                  * Owner's address.
                  */
-                address?: ExpressPlatby.AddressParam;
+                address?: ExpressPayments.AddressParam;
 
                 /**
                  * Owner's email address.
@@ -1024,10 +1024,10 @@ declare module 'expressplatby' {
             create(
                 params?: CustomerCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Customer>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Customer>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Customer>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Customer>>;
 
             /**
              * Retrieves a Customer object.
@@ -1037,16 +1037,16 @@ declare module 'expressplatby' {
                 params?: CustomerRetrieveParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.Customer | ExpressPlatby.DeletedCustomer
+                ExpressPayments.Response<
+                    ExpressPayments.Customer | ExpressPayments.DeletedCustomer
                 >
             >;
             retrieve(
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.Customer | ExpressPlatby.DeletedCustomer
+                ExpressPayments.Response<
+                    ExpressPayments.Customer | ExpressPayments.DeletedCustomer
                 >
             >;
 
@@ -1059,7 +1059,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CustomerUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Customer>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Customer>>;
 
             /**
              * Returns a list of your customers. The customers are returned sorted by creation date, with the most recent customers appearing first.
@@ -1067,10 +1067,10 @@ declare module 'expressplatby' {
             list(
                 params?: CustomerListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Customer>;
+            ): ApiListPromise<ExpressPayments.Customer>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Customer>;
+            ): ApiListPromise<ExpressPayments.Customer>;
 
             /**
              * Permanently deletes a customer. It cannot be undone. Also, immediately cancels any active subscriptions on the customer.
@@ -1079,11 +1079,15 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CustomerDeleteParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedCustomer>>;
+            ): Promise<
+                ExpressPayments.Response<ExpressPayments.DeletedCustomer>
+            >;
             del(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedCustomer>>;
+            ): Promise<
+                ExpressPayments.Response<ExpressPayments.DeletedCustomer>
+            >;
 
             /**
              * Retrieve funding instructions for a customer cash balance. If funding instructions do not yet exist for the customer, new
@@ -1095,18 +1099,20 @@ declare module 'expressplatby' {
                 params: CustomerCreateFundingInstructionsParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.FundingInstructions>
+                ExpressPayments.Response<ExpressPayments.FundingInstructions>
             >;
 
             /**
-             * Creates an immutable transaction that updates the customer's credit [balance](https://expressplatby.cz/docs/billing/customer/balance).
+             * Creates an immutable transaction that updates the customer's credit [balance](https://docs.epayments.network/billing/customer/balance).
              */
             createBalanceTransaction(
                 id: string,
                 params: CustomerBalanceTransactionCreateParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.CustomerBalanceTransaction>
+                ExpressPayments.Response<
+                    ExpressPayments.CustomerBalanceTransaction
+                >
             >;
 
             /**
@@ -1114,13 +1120,15 @@ declare module 'expressplatby' {
              *
              * If the card's owner has no default card, then the new card will become the default.
              * However, if the owner already has a default, then it will not change.
-             * To change the default, you should [update the customer](https://expressplatby.cz/docs/api#update_customer) to have a new default_source.
+             * To change the default, you should [update the customer](https://docs.epayments.network/api#update_customer) to have a new default_source.
              */
             createSource(
                 id: string,
                 params: CustomerSourceCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CustomerSource>>;
+            ): Promise<
+                ExpressPayments.Response<ExpressPayments.CustomerSource>
+            >;
 
             /**
              * Creates a new TaxID object for a customer.
@@ -1129,7 +1137,7 @@ declare module 'expressplatby' {
                 id: string,
                 params: TaxIdCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TaxId>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TaxId>>;
 
             /**
              * Removes the currently applied discount on a customer.
@@ -1138,11 +1146,15 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CustomerDeleteDiscountParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedDiscount>>;
+            ): Promise<
+                ExpressPayments.Response<ExpressPayments.DeletedDiscount>
+            >;
             deleteDiscount(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedDiscount>>;
+            ): Promise<
+                ExpressPayments.Response<ExpressPayments.DeletedDiscount>
+            >;
 
             /**
              * Delete a specified source for a given customer.
@@ -1153,10 +1165,10 @@ declare module 'expressplatby' {
                 params?: CustomerSourceDeleteParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    | ExpressPlatby.CustomerSource
-                    | ExpressPlatby.DeletedBankAccount
-                    | ExpressPlatby.DeletedCard
+                ExpressPayments.Response<
+                    | ExpressPayments.CustomerSource
+                    | ExpressPayments.DeletedBankAccount
+                    | ExpressPayments.DeletedCard
                 >
             >;
             deleteSource(
@@ -1164,10 +1176,10 @@ declare module 'expressplatby' {
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    | ExpressPlatby.CustomerSource
-                    | ExpressPlatby.DeletedBankAccount
-                    | ExpressPlatby.DeletedCard
+                ExpressPayments.Response<
+                    | ExpressPayments.CustomerSource
+                    | ExpressPayments.DeletedBankAccount
+                    | ExpressPayments.DeletedCard
                 >
             >;
 
@@ -1179,12 +1191,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TaxIdDeleteParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedTaxId>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.DeletedTaxId>>;
             deleteTaxId(
                 customerId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedTaxId>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.DeletedTaxId>>;
 
             /**
              * Returns a list of PaymentMethods for a given Customer
@@ -1193,37 +1205,37 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CustomerListPaymentMethodsParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PaymentMethod>;
+            ): ApiListPromise<ExpressPayments.PaymentMethod>;
             listPaymentMethods(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PaymentMethod>;
+            ): ApiListPromise<ExpressPayments.PaymentMethod>;
 
             /**
-             * Returns a list of transactions that updated the customer's [balances](https://expressplatby.cz/docs/billing/customer/balance).
+             * Returns a list of transactions that updated the customer's [balances](https://docs.epayments.network/billing/customer/balance).
              */
             listBalanceTransactions(
                 id: string,
                 params?: CustomerBalanceTransactionListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CustomerBalanceTransaction>;
+            ): ApiListPromise<ExpressPayments.CustomerBalanceTransaction>;
             listBalanceTransactions(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CustomerBalanceTransaction>;
+            ): ApiListPromise<ExpressPayments.CustomerBalanceTransaction>;
 
             /**
-             * Returns a list of transactions that modified the customer's [cash balance](https://expressplatby.cz/docs/payments/customer-balance).
+             * Returns a list of transactions that modified the customer's [cash balance](https://docs.epayments.network/payments/customer-balance).
              */
             listCashBalanceTransactions(
                 id: string,
                 params?: CustomerCashBalanceTransactionListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CustomerCashBalanceTransaction>;
+            ): ApiListPromise<ExpressPayments.CustomerCashBalanceTransaction>;
             listCashBalanceTransactions(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CustomerCashBalanceTransaction>;
+            ): ApiListPromise<ExpressPayments.CustomerCashBalanceTransaction>;
 
             /**
              * List sources for a specified customer.
@@ -1232,11 +1244,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CustomerSourceListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CustomerSource>;
+            ): ApiListPromise<ExpressPayments.CustomerSource>;
             listSources(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CustomerSource>;
+            ): ApiListPromise<ExpressPayments.CustomerSource>;
 
             /**
              * Returns a list of tax IDs for a customer.
@@ -1245,11 +1257,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TaxIdListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.TaxId>;
+            ): ApiListPromise<ExpressPayments.TaxId>;
             listTaxIds(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.TaxId>;
+            ): ApiListPromise<ExpressPayments.TaxId>;
 
             /**
              * Retrieves a PaymentMethod object for a given Customer.
@@ -1259,15 +1271,15 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CustomerRetrievePaymentMethodParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
             retrievePaymentMethod(
                 customerId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
 
             /**
-             * Retrieves a specific customer balance transaction that updated the customer's [balances](https://expressplatby.cz/docs/billing/customer/balance).
+             * Retrieves a specific customer balance transaction that updated the customer's [balances](https://docs.epayments.network/billing/customer/balance).
              */
             retrieveBalanceTransaction(
                 customerId: string,
@@ -1275,14 +1287,18 @@ declare module 'expressplatby' {
                 params?: CustomerBalanceTransactionRetrieveParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.CustomerBalanceTransaction>
+                ExpressPayments.Response<
+                    ExpressPayments.CustomerBalanceTransaction
+                >
             >;
             retrieveBalanceTransaction(
                 customerId: string,
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.CustomerBalanceTransaction>
+                ExpressPayments.Response<
+                    ExpressPayments.CustomerBalanceTransaction
+                >
             >;
 
             /**
@@ -1292,14 +1308,14 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CashBalanceRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CashBalance>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CashBalance>>;
             retrieveCashBalance(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CashBalance>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CashBalance>>;
 
             /**
-             * Retrieves a specific cash balance transaction, which updated the customer's [cash balance](https://expressplatby.cz/docs/payments/customer-balance).
+             * Retrieves a specific cash balance transaction, which updated the customer's [cash balance](https://docs.epayments.network/payments/customer-balance).
              */
             retrieveCashBalanceTransaction(
                 customerId: string,
@@ -1307,8 +1323,8 @@ declare module 'expressplatby' {
                 params?: CustomerCashBalanceTransactionRetrieveParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.CustomerCashBalanceTransaction
+                ExpressPayments.Response<
+                    ExpressPayments.CustomerCashBalanceTransaction
                 >
             >;
             retrieveCashBalanceTransaction(
@@ -1316,8 +1332,8 @@ declare module 'expressplatby' {
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.CustomerCashBalanceTransaction
+                ExpressPayments.Response<
+                    ExpressPayments.CustomerCashBalanceTransaction
                 >
             >;
 
@@ -1329,12 +1345,16 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CustomerSourceRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CustomerSource>>;
+            ): Promise<
+                ExpressPayments.Response<ExpressPayments.CustomerSource>
+            >;
             retrieveSource(
                 customerId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CustomerSource>>;
+            ): Promise<
+                ExpressPayments.Response<ExpressPayments.CustomerSource>
+            >;
 
             /**
              * Retrieves the TaxID object with the given identifier.
@@ -1344,15 +1364,15 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TaxIdRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TaxId>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TaxId>>;
             retrieveTaxId(
                 customerId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TaxId>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TaxId>>;
 
             /**
-             * Search for customers you've previously created using ExpressPlatby's [Search Query Language](https://expressplatby.cz/docs/search#search-query-language).
+             * Search for customers you've previously created using ExpressPayments' [Search Query Language](https://docs.epayments.network/search#search-query-language).
              * Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating
              * conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up
              * to an hour behind during outages. Search functionality is not available to merchants in India.
@@ -1360,7 +1380,7 @@ declare module 'expressplatby' {
             search(
                 params: CustomerSearchParams,
                 options?: RequestOptions
-            ): ApiSearchResultPromise<ExpressPlatby.Customer>;
+            ): ApiSearchResultPromise<ExpressPayments.Customer>;
 
             /**
              * Most credit balance transaction fields are immutable, but you may update its description and metadata.
@@ -1371,14 +1391,18 @@ declare module 'expressplatby' {
                 params?: CustomerBalanceTransactionUpdateParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.CustomerBalanceTransaction>
+                ExpressPayments.Response<
+                    ExpressPayments.CustomerBalanceTransaction
+                >
             >;
             updateBalanceTransaction(
                 customerId: string,
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.CustomerBalanceTransaction>
+                ExpressPayments.Response<
+                    ExpressPayments.CustomerBalanceTransaction
+                >
             >;
 
             /**
@@ -1388,11 +1412,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CashBalanceUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CashBalance>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CashBalance>>;
             updateCashBalance(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CashBalance>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CashBalance>>;
 
             /**
              * Update a specified source for a given customer.
@@ -1403,10 +1427,10 @@ declare module 'expressplatby' {
                 params?: CustomerSourceUpdateParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    | ExpressPlatby.Card
-                    | ExpressPlatby.BankAccount
-                    | ExpressPlatby.Source
+                ExpressPayments.Response<
+                    | ExpressPayments.Card
+                    | ExpressPayments.BankAccount
+                    | ExpressPayments.Source
                 >
             >;
             updateSource(
@@ -1414,10 +1438,10 @@ declare module 'expressplatby' {
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    | ExpressPlatby.Card
-                    | ExpressPlatby.BankAccount
-                    | ExpressPlatby.Source
+                ExpressPayments.Response<
+                    | ExpressPayments.Card
+                    | ExpressPayments.BankAccount
+                    | ExpressPayments.Source
                 >
             >;
 
@@ -1429,12 +1453,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CustomerSourceVerifyParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.BankAccount>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.BankAccount>>;
             verifySource(
                 customerId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.BankAccount>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.BankAccount>>;
         }
     }
 }

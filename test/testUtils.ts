@@ -2,13 +2,13 @@
 
 require('mocha');
 import http = require('http');
-import expressPlatby = require('../src/expressplatby.cjs.node.js');
+import expressPayments = require('../src/expresspayments.cjs.node.js');
 import {CryptoProvider} from '../src/crypto/CryptoProvider.js';
 import {NodePlatformFunctions} from '../src/platform/NodePlatformFunctions.js';
 import {RequestSender} from '../src/RequestSender.js';
-import {createExpressPlatby} from '../src/expressplatby.core.js';
+import {createExpressPayments} from '../src/expresspayments.core.js';
 import {
-    ExpressPlatbyObject as ExpressPlatbyClient,
+    ExpressPaymentsObject as ExpressPaymentsClient,
     RequestCallback,
     RequestData,
     RequestDataProcessor,
@@ -20,7 +20,7 @@ import {
 const testingHttpAgent = new http.Agent({keepAlive: false});
 
 export const FAKE_API_KEY = 'sk_test_123';
-export const getTestServerExpressPlatby = (
+export const getTestServerExpressPayments = (
     clientOptions: RequestSettings,
     handler: (
         req: http.IncomingMessage,
@@ -28,7 +28,7 @@ export const getTestServerExpressPlatby = (
     ) => {shouldStayOpen?: true} | null,
     callback: (
         err: Error | null,
-        expressPlatby: ExpressPlatbyClient,
+        expressPayments: ExpressPaymentsClient,
         closeServer: () => void
     ) => void
 ): void => {
@@ -42,7 +42,7 @@ export const getTestServerExpressPlatby = (
     });
     server.listen(0, () => {
         const {port} = server.address() as any;
-        const expressPlatby = require('../src/expressplatby.cjs.node.js')(
+        const expressPayments = require('../src/expresspayments.cjs.node.js')(
             FAKE_API_KEY,
             {
                 host: 'localhost',
@@ -52,18 +52,18 @@ export const getTestServerExpressPlatby = (
                 ...clientOptions,
             }
         );
-        return callback(null, expressPlatby, () => {
+        return callback(null, expressPayments, () => {
             server.close();
         });
     });
 };
 
-export const getExpressPlatbyMockClient = (): ExpressPlatbyClient => {
-    const expressPlatby = require('../src/expressplatby.cjs.node.js');
+export const getExpressPaymentsMockClient = (): ExpressPaymentsClient => {
+    const expressPayments = require('../src/expresspayments.cjs.node.js');
 
-    return expressPlatby(FAKE_API_KEY, {
-        host: process.env.EXPRESSPLATBY_MOCK_HOST || 'localhost',
-        port: process.env.EXPRESSPLATBY_MOCK_PORT || 12111,
+    return expressPayments(FAKE_API_KEY, {
+        host: process.env.EP_MOCK_HOST || 'localhost',
+        port: process.env.EP_MOCK_PORT || 12111,
         protocol: 'http',
     });
 };
@@ -81,10 +81,10 @@ export const getMockPlatformFunctions = (
     return new MockPlatformFunctions(cb);
 };
 
-export const getMockExpressPlatby = (
+export const getMockExpressPayments = (
     config: Record<string, unknown>,
     request: RequestSender['_request']
-): ExpressPlatbyClient => {
+): ExpressPaymentsClient => {
     class MockRequestSender extends RequestSender {
         _request(
             method: string,
@@ -109,23 +109,23 @@ export const getMockExpressPlatby = (
         }
     }
 
-    // Provide a testable ExpressPlatby instance
+    // Provide a testable ExpressPayments instance
     // That is, with mock-requests built in and hookable
-    const expressPlatbyFactory: any = createExpressPlatby(
+    const expressPaymentsFactory: any = createExpressPayments(
         new NodePlatformFunctions(),
-        (expressPlatbyInstance) =>
+        (expressPaymentsInstance) =>
             new MockRequestSender(
-                expressPlatbyInstance,
-                (expressPlatby as any).ExpressPlatbyResource.MAX_BUFFERED_REQUEST_METRICS
+                expressPaymentsInstance,
+                (expressPayments as any).ExpressPaymentsResource.MAX_BUFFERED_REQUEST_METRICS
             )
     );
-    return expressPlatbyFactory(FAKE_API_KEY, config);
+    return expressPaymentsFactory(FAKE_API_KEY, config);
 };
 
 export const createMockClient = (
     requests: Array<{method: string; path: string; response: string}>
-): ExpressPlatbyClient => {
-    return getMockExpressPlatby(
+): ExpressPaymentsClient => {
+    return getMockExpressPayments(
         {},
         (method, _host, path, _4, _5, _6, callback) => {
             const request = requests.find(
@@ -142,9 +142,9 @@ export const createMockClient = (
     );
 };
 
-export const getSpyableExpressPlatby = (
+export const getSpyableExpressPayments = (
     config: Record<string, unknown>
-): ExpressPlatbyClient => {
+): ExpressPaymentsClient => {
     class SpyableRequestSender extends RequestSender {
         _request(
             method: string,
@@ -165,7 +165,7 @@ export const getSpyableExpressPlatby = (
                 auth?: string;
                 host?: string;
             };
-            const req: LastRequest = (expressPlatbyInstance.LAST_REQUEST = {
+            const req: LastRequest = (expressPaymentsInstance.LAST_REQUEST = {
                 method,
                 url: path,
                 data,
@@ -183,7 +183,7 @@ export const getSpyableExpressPlatby = (
                 err: Error | null,
                 data: string | LastRequest
             ): void => {
-                expressPlatbyInstance.REQUESTS.push(data);
+                expressPaymentsInstance.REQUESTS.push(data);
                 callback(err, {});
             };
 
@@ -211,19 +211,19 @@ export const getSpyableExpressPlatby = (
         }
     }
 
-    // Provide a testable ExpressPlatby instance
+    // Provide a testable ExpressPayments instance
     // That is, with mock-requests built in and hookable
-    const expressPlatby = require('../src/expressplatby.cjs.node.js');
-    const expressPlatbyInstance = expressPlatby(FAKE_API_KEY, config);
+    const expressPayments = require('../src/expresspayments.cjs.node.js');
+    const expressPaymentsInstance = expressPayments(FAKE_API_KEY, config);
 
-    expressPlatbyInstance.REQUESTS = [];
+    expressPaymentsInstance.REQUESTS = [];
 
-    expressPlatbyInstance._requestSender = new SpyableRequestSender(
-        expressPlatbyInstance,
-        expressPlatby.ExpressPlatbyResource.MAX_BUFFERED_REQUEST_METRICS
+    expressPaymentsInstance._requestSender = new SpyableRequestSender(
+        expressPaymentsInstance,
+        expressPayments.ExpressPaymentsResource.MAX_BUFFERED_REQUEST_METRICS
     );
 
-    return expressPlatbyInstance;
+    return expressPaymentsInstance;
 };
 
 /**

@@ -1,15 +1,15 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * You can configure [webhook endpoints](https://expressplatby.cz/docs/webhooks/) via the API to be
-         * notified about events that happen in your ExpressPlatby account or connected
+         * You can configure [webhook endpoints](https://docs.epayments.network/webhooks/) via the API to be
+         * notified about events that happen in your ExpressPayments account or connected
          * accounts.
          *
-         * Most users configure webhooks from [the dashboard](https://dashboard.expressplatby.cz/webhooks), which provides a user interface for registering and testing your webhook endpoints.
+         * Most users configure webhooks from [the dashboard](https://dashboard.epayments.network/webhooks), which provides a user interface for registering and testing your webhook endpoints.
          *
-         * Related guide: [Setting up webhooks](https://expressplatby.cz/docs/webhooks/configure)
+         * Related guide: [Setting up webhooks](https://docs.epayments.network/webhooks/configure)
          */
         interface WebhookEndpoint {
             /**
@@ -55,12 +55,12 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
-             * The endpoint's secret, used to generate [webhook signatures](https://expressplatby.cz/docs/webhooks/signatures). Only returned at creation.
+             * The endpoint's secret, used to generate [webhook signatures](https://docs.epayments.network/webhooks/signatures). Only returned at creation.
              */
             secret?: string;
 

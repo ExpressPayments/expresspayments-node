@@ -10,7 +10,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "expressplatby": "file:../../"
+        "expresspayments": "file:../../"
     },
     "devDependencies": {
         "wrangler": "^2.9.0"

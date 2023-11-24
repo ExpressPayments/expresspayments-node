@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Tax {
             interface CalculationCreateParams {
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -193,7 +193,7 @@ declare module 'expressplatby' {
                     quantity?: number;
 
                     /**
-                     * A custom identifier for this line item, which must be unique across the line items in the calculation. The reference helps identify each line item in exported [tax reports](https://expressplatby.cz/docs/tax/reports).
+                     * A custom identifier for this line item, which must be unique across the line items in the calculation. The reference helps identify each line item in exported [tax reports](https://docs.epayments.network/tax/reports).
                      */
                     reference?: string;
 
@@ -203,7 +203,7 @@ declare module 'expressplatby' {
                     tax_behavior?: LineItem.TaxBehavior;
 
                     /**
-                     * A [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID to use for this line item. If not provided, we will use the tax code from the provided `product` param. If neither `tax_code` nor `product` is provided, we will use the default tax code from your Tax Settings.
+                     * A [tax code](https://docs.epayments.network/tax/tax-categories) ID to use for this line item. If not provided, we will use the tax code from the provided `product` param. If neither `tax_code` nor `product` is provided, we will use the default tax code from your Tax Settings.
                      */
                     tax_code?: string;
                 }
@@ -219,7 +219,7 @@ declare module 'expressplatby' {
                     amount?: number;
 
                     /**
-                     * If provided, the [shipping rate](https://expressplatby.cz/docs/api/shipping_rates/object)'s `amount`, `tax_code` and `tax_behavior` are used. If you provide a shipping rate, then you cannot pass the `amount`, `tax_code`, or `tax_behavior` parameters.
+                     * If provided, the [shipping rate](https://docs.epayments.network/api/shipping_rates/object)'s `amount`, `tax_code` and `tax_behavior` are used. If you provide a shipping rate, then you cannot pass the `amount`, `tax_code`, or `tax_behavior` parameters.
                      */
                     shipping_rate?: string;
 
@@ -229,7 +229,7 @@ declare module 'expressplatby' {
                     tax_behavior?: ShippingCost.TaxBehavior;
 
                     /**
-                     * The [tax code](https://expressplatby.cz/docs/tax/tax-categories) used to calculate tax on shipping. If not provided, the default shipping tax code from your [Tax Settings](https://expressplatby.cz/settings/tax) is used.
+                     * The [tax code](https://docs.epayments.network/tax/tax-categories) used to calculate tax on shipping. If not provided, the default shipping tax code from your [Tax Settings](https://epayments.network/settings/tax) is used.
                      */
                     tax_code?: string;
                 }
@@ -254,7 +254,7 @@ declare module 'expressplatby' {
                     params: CalculationCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Tax.Calculation>
+                    ExpressPayments.Response<ExpressPayments.Tax.Calculation>
                 >;
 
                 /**
@@ -264,11 +264,11 @@ declare module 'expressplatby' {
                     id: string,
                     params?: CalculationListLineItemsParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Tax.CalculationLineItem>;
+                ): ApiListPromise<ExpressPayments.Tax.CalculationLineItem>;
                 listLineItems(
                     id: string,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Tax.CalculationLineItem>;
+                ): ApiListPromise<ExpressPayments.Tax.CalculationLineItem>;
             }
         }
     }

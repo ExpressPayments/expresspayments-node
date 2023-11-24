@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface PayoutCreateParams {
             /**
              * A positive integer in cents representing how much to payout.
@@ -9,7 +9,7 @@ declare module 'expressplatby' {
             amount: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -29,17 +29,17 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
-             * The method used to send this payout, which can be `standard` or `instant`. `instant` is only supported for payouts to debit cards. (See [Instant payouts for marketplaces for more information](https://expressplatby.cz/blog/instant-payouts-for-marketplaces).)
+             * The method used to send this payout, which can be `standard` or `instant`. `instant` is only supported for payouts to debit cards. (See [Instant payouts for marketplaces for more information](https://epayments.network/blog/instant-payouts-for-marketplaces).)
              */
             method?: PayoutCreateParams.Method;
 
             /**
-             * The balance type of your ExpressPlatby balance to draw this payout from. Balances for different payment sources are kept separately. You can find the amounts with the balances API. One of `bank_account`, `card`, or `fpx`.
+             * The balance type of your ExpressPayments balance to draw this payout from. Balances for different payment sources are kept separately. You can find the amounts with the balances API. One of `bank_account`, `card`, or `fpx`.
              */
             source_type?: PayoutCreateParams.SourceType;
 
@@ -69,15 +69,15 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
         }
 
         interface PayoutListParams extends PaginationParams {
-            arrival_date?: ExpressPlatby.RangeQueryParam | number;
+            arrival_date?: ExpressPayments.RangeQueryParam | number;
 
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * The ID of an external account - only return payouts sent to this external account.
@@ -109,36 +109,36 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
         }
 
         class PayoutsResource {
             /**
-             * To send funds to your own bank account, you create a new payout object. Your [ExpressPlatby balance](https://expressplatby.cz/docs/api#balance) must be able to cover the payout amount, or you'll receive an “Insufficient Funds” error.
+             * To send funds to your own bank account, you create a new payout object. Your [ExpressPayments balance](https://docs.epayments.network/api#balance) must be able to cover the payout amount, or you'll receive an “Insufficient Funds” error.
              *
              * If your API key is in test mode, money won't actually be sent, though everything else will occur as if in live mode.
              *
-             * If you are creating a manual payout on an ExpressPlatby account that uses multiple payment source types, you'll need to specify the source type balance that the payout should draw from. The [balance object](https://expressplatby.cz/docs/api#balance_object) details available and pending amounts by source type.
+             * If you are creating a manual payout on an ExpressPayments account that uses multiple payment source types, you'll need to specify the source type balance that the payout should draw from. The [balance object](https://docs.epayments.network/api#balance_object) details available and pending amounts by source type.
              */
             create(
                 params: PayoutCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Payout>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Payout>>;
 
             /**
-             * Retrieves the details of an existing payout. Supply the unique payout ID from either a payout creation request or the payout list, and ExpressPlatby will return the corresponding payout information.
+             * Retrieves the details of an existing payout. Supply the unique payout ID from either a payout creation request or the payout list, and ExpressPayments will return the corresponding payout information.
              */
             retrieve(
                 id: string,
                 params?: PayoutRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Payout>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Payout>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Payout>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Payout>>;
 
             /**
              * Updates the specified payout by setting the values of the parameters passed. Any parameters not provided will be left unchanged. This request accepts only the metadata as arguments.
@@ -147,31 +147,31 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PayoutUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Payout>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Payout>>;
 
             /**
-             * Returns a list of existing payouts sent to third-party bank accounts or that ExpressPlatby has sent you. The payouts are returned in sorted order, with the most recently created payouts appearing first.
+             * Returns a list of existing payouts sent to third-party bank accounts or that ExpressPayments has sent you. The payouts are returned in sorted order, with the most recently created payouts appearing first.
              */
             list(
                 params?: PayoutListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Payout>;
+            ): ApiListPromise<ExpressPayments.Payout>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Payout>;
+            ): ApiListPromise<ExpressPayments.Payout>;
 
             /**
-             * A previously created payout can be canceled if it has not yet been paid out. Funds will be refunded to your available balance. You may not cancel automatic ExpressPlatby payouts.
+             * A previously created payout can be canceled if it has not yet been paid out. Funds will be refunded to your available balance. You may not cancel automatic ExpressPayments payouts.
              */
             cancel(
                 id: string,
                 params?: PayoutCancelParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Payout>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Payout>>;
             cancel(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Payout>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Payout>>;
 
             /**
              * Reverses a payout by debiting the destination bank account. Only payouts for connected accounts to US bank accounts may be reversed at this time. If the payout is in the pending status, /v1/payouts/:id/cancel should be used instead.
@@ -182,11 +182,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PayoutReverseParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Payout>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Payout>>;
             reverse(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Payout>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Payout>>;
         }
     }
 }

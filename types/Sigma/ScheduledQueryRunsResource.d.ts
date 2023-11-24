@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Sigma {
             interface ScheduledQueryRunRetrieveParams {
                 /**
@@ -26,16 +26,16 @@ declare module 'expressplatby' {
                     params?: ScheduledQueryRunRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Sigma.ScheduledQueryRun
+                  ExpressPayments.Response<
+                        ExpressPayments.Sigma.ScheduledQueryRun
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Sigma.ScheduledQueryRun
+                    ExpressPayments.Response<
+                        ExpressPayments.Sigma.ScheduledQueryRun
                     >
                 >;
 
@@ -45,10 +45,10 @@ declare module 'expressplatby' {
                 list(
                     params?: ScheduledQueryRunListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Sigma.ScheduledQueryRun>;
+                ): ApiListPromise<ExpressPayments.Sigma.ScheduledQueryRun>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Sigma.ScheduledQueryRun>;
+                ): ApiListPromise<ExpressPayments.Sigma.ScheduledQueryRun>;
             }
         }
     }

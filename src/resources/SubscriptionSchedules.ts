@@ -1,37 +1,38 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const SubscriptionSchedules = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscription_schedules',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/subscription_schedules/{schedule}',
-  }),
+export const SubscriptionSchedules = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscription_schedules',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscription_schedules/{schedule}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/subscription_schedules/{schedule}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/subscription_schedules',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscription_schedules/{schedule}',
+    }),
 
-  cancel: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscription_schedules/{schedule}/cancel',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/subscription_schedules',
+        methodType: 'list',
+    }),
 
-  release: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscription_schedules/{schedule}/release',
-  }),
+    cancel: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscription_schedules/{schedule}/cancel',
+    }),
+
+    release: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscription_schedules/{schedule}/release',
+    }),
 });

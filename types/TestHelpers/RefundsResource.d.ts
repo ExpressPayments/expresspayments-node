@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace TestHelpers {
             interface RefundExpireParams {
                 /**
@@ -18,11 +18,11 @@ declare module 'expressplatby' {
                     id: string,
                     params?: RefundExpireParams,
                     options?: RequestOptions
-                ): Promise<ExpressPlatby.Response<ExpressPlatby.Refund>>;
+                ): Promise<ExpressPayments.Response<ExpressPayments.Refund>>;
                 expire(
                     id: string,
                     options?: RequestOptions
-                ): Promise<ExpressPlatby.Response<ExpressPlatby.Refund>>;
+                ): Promise<ExpressPayments.Response<ExpressPayments.Refund>>;
             }
         }
     }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Identity {
             interface VerificationReportRetrieveParams {
                 /**
@@ -11,7 +11,7 @@ declare module 'expressplatby' {
             }
 
             interface VerificationReportListParams extends PaginationParams {
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -42,16 +42,16 @@ declare module 'expressplatby' {
                     params?: VerificationReportRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationReport
+                    ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationReport
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationReport
+                    ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationReport
                     >
                 >;
 
@@ -61,10 +61,10 @@ declare module 'expressplatby' {
                 list(
                     params?: VerificationReportListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Identity.VerificationReport>;
+                ): ApiListPromise<ExpressPayments.Identity.VerificationReport>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Identity.VerificationReport>;
+                ): ApiListPromise<ExpressPayments.Identity.VerificationReport>;
             }
         }
     }

@@ -1,7 +1,7 @@
 #!/usr/bin/env -S npm run-script run
 
 /*
-  ATTENTION: this file exists to support GitHub/expressplatby/expressplatby-node example test infrastructure
+  ATTENTION: this file exists to support GitHub/expresspayments/expresspayments-node example test infrastructure
   You don't need to copy this file to your NextJS project.
 */
 

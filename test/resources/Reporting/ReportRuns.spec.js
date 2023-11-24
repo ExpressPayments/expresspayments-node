@@ -1,59 +1,59 @@
 'use strict';
 
-const expressPlatby = require('../../testUtils.js').getSpyableExpressPlatby();
+const expressPayments = require('../../testUtils.js').getSpyableExpressPayments();
 
 const expect = require('chai').expect;
 
 describe('Reporting', () => {
-  describe('ReportRuns Resource', () => {
-    describe('retrieve', () => {
-      it('Sends the correct request', () => {
-        expressPlatby.reporting.reportRuns.retrieve('frr_123');
+    describe('ReportRuns Resource', () => {
+        describe('retrieve', () => {
+            it('Sends the correct request', () => {
+                expressPayments.reporting.reportRuns.retrieve('frr_123');
 
-        expect(expressPlatby.LAST_REQUEST).to.deep.equal({
-          method: 'GET',
-          url: '/v1/reporting/report_runs/frr_123',
-          headers: {},
-          data: {},
-          settings: {},
+                expect(expressPayments.LAST_REQUEST).to.deep.equal({
+                    method: 'GET',
+                    url: '/v1/reporting/report_runs/frr_123',
+                    headers: {},
+                    data: {},
+                    settings: {},
+                });
+            });
         });
-      });
-    });
 
-    describe('create', () => {
-      it('Sends the correct request', () => {
-        expressPlatby.reporting.reportRuns.create({
-          parameters: {
-            connected_account: 'acct_123',
-          },
-          report_type: 'activity.summary.1',
+        describe('create', () => {
+            it('Sends the correct request', () => {
+                expressPayments.reporting.reportRuns.create({
+                    parameters: {
+                        connected_account: 'acct_123',
+                    },
+                    report_type: 'activity.summary.1',
+                });
+                expect(expressPayments.LAST_REQUEST).to.deep.equal({
+                    method: 'POST',
+                    url: '/v1/reporting/report_runs',
+                    headers: {},
+                    data: {
+                        parameters: {
+                            connected_account: 'acct_123',
+                        },
+                        report_type: 'activity.summary.1',
+                    },
+                    settings: {},
+                });
+            });
         });
-        expect(expressPlatby.LAST_REQUEST).to.deep.equal({
-          method: 'POST',
-          url: '/v1/reporting/report_runs',
-          headers: {},
-          data: {
-            parameters: {
-              connected_account: 'acct_123',
-            },
-            report_type: 'activity.summary.1',
-          },
-          settings: {},
-        });
-      });
-    });
 
-    describe('list', () => {
-      it('Sends the correct request', () => {
-        expressPlatby.reporting.reportRuns.list();
-        expect(expressPlatby.LAST_REQUEST).to.deep.equal({
-          method: 'GET',
-          url: '/v1/reporting/report_runs',
-          headers: {},
-          data: {},
-          settings: {},
+        describe('list', () => {
+            it('Sends the correct request', () => {
+                expressPayments.reporting.reportRuns.list();
+                expect(expressPayments.LAST_REQUEST).to.deep.equal({
+                    method: 'GET',
+                    url: '/v1/reporting/report_runs',
+                    headers: {},
+                    data: {},
+                    settings: {},
+                });
+            });
         });
-      });
     });
-  });
 });

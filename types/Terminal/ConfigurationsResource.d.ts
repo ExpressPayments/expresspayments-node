@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Terminal {
             interface ConfigurationCreateParams {
                 /**
@@ -17,7 +17,7 @@ declare module 'expressplatby' {
                 /**
                  * Tipping configurations for readers supporting on-reader tips
                  */
-                tipping?: ExpressPlatby.Emptyable<
+                tipping?: ExpressPayments.Emptyable<
                     ConfigurationCreateParams.Tipping
                 >;
 
@@ -32,7 +32,7 @@ declare module 'expressplatby' {
                     /**
                      * A File ID representing an image you would like displayed on the reader.
                      */
-                    splashscreen?: ExpressPlatby.Emptyable<string>;
+                    splashscreen?: ExpressPayments.Emptyable<string>;
                 }
 
                 interface Tipping {
@@ -351,7 +351,7 @@ declare module 'expressplatby' {
                     /**
                      * A File ID representing an image you would like displayed on the reader.
                      */
-                    splashscreen?: ExpressPlatby.Emptyable<string>;
+                    splashscreen?: ExpressPayments.Emptyable<string>;
                 }
             }
 
@@ -366,7 +366,7 @@ declare module 'expressplatby' {
                 /**
                  * An object containing device type specific settings for BBPOS WisePOS E readers
                  */
-                bbpos_wisepos_e?: ExpressPlatby.Emptyable<
+                bbpos_wisepos_e?: ExpressPayments.Emptyable<
                     ConfigurationUpdateParams.BbposWiseposE
                 >;
 
@@ -378,14 +378,14 @@ declare module 'expressplatby' {
                 /**
                  * Tipping configurations for readers supporting on-reader tips
                  */
-                tipping?: ExpressPlatby.Emptyable<
+                tipping?: ExpressPayments.Emptyable<
                     ConfigurationUpdateParams.Tipping
                 >;
 
                 /**
                  * An object containing device type specific settings for Verifone P400 readers
                  */
-                verifone_p400?: ExpressPlatby.Emptyable<
+                verifone_p400?: ExpressPayments.Emptyable<
                     ConfigurationUpdateParams.VerifoneP400
                 >;
             }
@@ -395,7 +395,7 @@ declare module 'expressplatby' {
                     /**
                      * A File ID representing an image you would like displayed on the reader.
                      */
-                    splashscreen?: ExpressPlatby.Emptyable<string>;
+                    splashscreen?: ExpressPayments.Emptyable<string>;
                 }
 
                 interface Tipping {
@@ -714,7 +714,7 @@ declare module 'expressplatby' {
                     /**
                      * A File ID representing an image you would like displayed on the reader.
                      */
-                    splashscreen?: ExpressPlatby.Emptyable<string>;
+                    splashscreen?: ExpressPayments.Emptyable<string>;
                 }
             }
 
@@ -740,12 +740,12 @@ declare module 'expressplatby' {
                     params?: ConfigurationCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Configuration>
+                  ExpressPayments.Response<ExpressPayments.Terminal.Configuration>
                 >;
                 create(
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Configuration>
+                    ExpressPayments.Response<ExpressPayments.Terminal.Configuration>
                 >;
 
                 /**
@@ -756,18 +756,18 @@ declare module 'expressplatby' {
                     params?: ConfigurationRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        | ExpressPlatby.Terminal.Configuration
-                        | ExpressPlatby.Terminal.DeletedConfiguration
+                    ExpressPayments.Response<
+                        | ExpressPayments.Terminal.Configuration
+                        | ExpressPayments.Terminal.DeletedConfiguration
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        | ExpressPlatby.Terminal.Configuration
-                        | ExpressPlatby.Terminal.DeletedConfiguration
+                    ExpressPayments.Response<
+                        | ExpressPayments.Terminal.Configuration
+                        | ExpressPayments.Terminal.DeletedConfiguration
                     >
                 >;
 
@@ -779,9 +779,9 @@ declare module 'expressplatby' {
                     params?: ConfigurationUpdateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        | ExpressPlatby.Terminal.Configuration
-                        | ExpressPlatby.Terminal.DeletedConfiguration
+                    ExpressPayments.Response<
+                        | ExpressPayments.Terminal.Configuration
+                        | ExpressPayments.Terminal.DeletedConfiguration
                     >
                 >;
 
@@ -791,10 +791,10 @@ declare module 'expressplatby' {
                 list(
                     params?: ConfigurationListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Terminal.Configuration>;
+                ): ApiListPromise<ExpressPayments.Terminal.Configuration>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Terminal.Configuration>;
+                ): ApiListPromise<ExpressPayments.Terminal.Configuration>;
 
                 /**
                  * Deletes a Configuration object.
@@ -804,16 +804,16 @@ declare module 'expressplatby' {
                     params?: ConfigurationDeleteParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Terminal.DeletedConfiguration
+                    ExpressPayments.Response<
+                        ExpressPayments.Terminal.DeletedConfiguration
                     >
                 >;
                 del(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Terminal.DeletedConfiguration
+                    ExpressPayments.Response<
+                        ExpressPayments.Terminal.DeletedConfiguration
                     >
                 >;
             }

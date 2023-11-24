@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             interface ReceivedCreditRetrieveParams {
                 /**
@@ -60,16 +60,16 @@ declare module 'expressplatby' {
                     params?: ReceivedCreditRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.ReceivedCredit
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.ReceivedCredit
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.ReceivedCredit
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.ReceivedCredit
                     >
                 >;
 
@@ -79,7 +79,7 @@ declare module 'expressplatby' {
                 list(
                     params: ReceivedCreditListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Treasury.ReceivedCredit>;
+                ): ApiListPromise<ExpressPayments.Treasury.ReceivedCredit>;
             }
         }
     }

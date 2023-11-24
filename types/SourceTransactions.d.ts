@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Some payment methods have no required amount that a customer must send.
          * Customers can be instructed to send any amount, and it can be made up of
@@ -34,7 +34,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -117,7 +117,7 @@ declare module 'expressplatby' {
 
             interface GbpCreditTransfer {
                 /**
-                 * Bank account fingerprint associated with the ExpressPlatby owned bank account receiving the transfer.
+                 * Bank account fingerprint associated with the ExpressPayments owned bank account receiving the transfer.
                  */
                 fingerprint?: string;
 

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface TaxRateCreateParams {
             /**
              * The display name of the tax rate, which will be shown to users.
@@ -44,9 +44,9 @@ declare module 'expressplatby' {
             jurisdiction?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * [ISO 3166-2 subdivision code](https://en.wikipedia.org/wiki/ISO_3166-2:US), without country prefix. For example, "NY" for New York, United States.
@@ -114,9 +114,9 @@ declare module 'expressplatby' {
             jurisdiction?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * [ISO 3166-2 subdivision code](https://en.wikipedia.org/wiki/ISO_3166-2:US), without country prefix. For example, "NY" for New York, United States.
@@ -154,7 +154,7 @@ declare module 'expressplatby' {
             /**
              * Optional range for filtering created date.
              */
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -174,7 +174,7 @@ declare module 'expressplatby' {
             create(
                 params: TaxRateCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TaxRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TaxRate>>;
 
             /**
              * Retrieves a tax rate with the given ID
@@ -183,11 +183,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TaxRateRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TaxRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TaxRate>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TaxRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TaxRate>>;
 
             /**
              * Updates an existing tax rate.
@@ -196,7 +196,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TaxRateUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TaxRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TaxRate>>;
 
             /**
              * Returns a list of your tax rates. Tax rates are returned sorted by creation date, with the most recently created tax rates appearing first.
@@ -204,10 +204,10 @@ declare module 'expressplatby' {
             list(
                 params?: TaxRateListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.TaxRate>;
+            ): ApiListPromise<ExpressPayments.TaxRate>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.TaxRate>;
+            ): ApiListPromise<ExpressPayments.TaxRate>;
         }
     }
 }

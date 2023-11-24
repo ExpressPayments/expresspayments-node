@@ -3,8 +3,8 @@
 
 import {expect} from 'chai';
 import {makeAutoPaginationMethods} from '../src/autoPagination.js';
-import {ExpressPlatbyResource} from '../src/ExpressPlatbyResource.js';
-import {getMockExpressPlatby} from './testUtils.js';
+import {ExpressPaymentsResource} from '../src/ExpressPaymentsResource';
+import {getMockExpressPayments} from './testUtils.js';
 
 describe('auto pagination', () => {
     const testCase = (mockPaginationFn) => ({
@@ -39,7 +39,7 @@ describe('auto pagination', () => {
                 apiMode: 'v1',
             };
 
-            const mockExpressPlatby = getMockExpressPlatby(
+            const mockExpressPayments = getMockExpressPayments(
                 {},
                 (_1, _2, path, _4, _5, _6, callback) => {
                     paramsLog.push(path.slice(path.indexOf('?')));
@@ -53,7 +53,7 @@ describe('auto pagination', () => {
                     i += 1;
                 }
             );
-            const resource = new ExpressPlatbyResource(mockExpressPlatby);
+            const resource = new ExpressPaymentsResource(mockExpressPayments);
 
             const paginator = makeAutoPaginationMethods(
                 resource,
@@ -712,7 +712,7 @@ describe('auto pagination', () => {
                 return {...props, ...nextPageProperties};
             };
 
-            const mockExpressPlatby = getMockExpressPlatby(
+            const mockExpressPayments = getMockExpressPayments(
                 {},
                 (_1, _2, path, _4, _5, _6, callback) => {
                     paramsLog.push(path.slice(path.indexOf('?')));
@@ -729,7 +729,7 @@ describe('auto pagination', () => {
                     i += 1;
                 }
             );
-            const resource = new ExpressPlatbyResource(mockExpressPlatby);
+            const resource = new ExpressPaymentsResource(mockExpressPayments);
 
             const paginator = makeAutoPaginationMethods(
                 resource,

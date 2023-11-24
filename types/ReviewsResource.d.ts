@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface ReviewRetrieveParams {
             /**
              * Specifies which fields in the response should be expanded.
@@ -10,7 +10,7 @@ declare module 'expressplatby' {
         }
 
         interface ReviewListParams extends PaginationParams {
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -33,11 +33,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: ReviewRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Review>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Review>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Review>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Review>>;
 
             /**
              * Returns a list of Review objects that have open set to true. The objects are sorted in descending order by creation date, with the most recently created object appearing first.
@@ -45,10 +45,10 @@ declare module 'expressplatby' {
             list(
                 params?: ReviewListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Review>;
+            ): ApiListPromise<ExpressPayments.Review>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Review>;
+            ): ApiListPromise<ExpressPayments.Review>;
 
             /**
              * Approves a Review object, closing it and removing it from the list of reviews.
@@ -57,11 +57,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: ReviewApproveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Review>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Review>>;
             approve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Review>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Review>>;
         }
     }
 }

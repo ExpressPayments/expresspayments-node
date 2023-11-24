@@ -1,19 +1,19 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * Invoice Items represent the component lines of an [invoice](https://expressplatby.cz/docs/api/invoices). An invoice item is added to an
+         * Invoice Items represent the component lines of an [invoice](https://docs.epayments.network/api/invoices). An invoice item is added to an
          * invoice by creating or updating it with an `invoice` field, at which point it will be included as
-         * [an invoice line item](https://expressplatby.cz/docs/api/invoices/line_item) within
-         * [invoice.lines](https://expressplatby.cz/docs/api/invoices/object#invoice_object-lines).
+         * [an invoice line item](https://docs.epayments.network/api/invoices/line_item) within
+         * [invoice.lines](https://docs.epayments.network/api/invoices/object#invoice_object-lines).
          *
          * Invoice Items can be created before you are ready to actually send the invoice. This can be particularly useful when combined
-         * with a [subscription](https://expressplatby.cz/docs/api/subscriptions). Sometimes you want to add a charge or credit to a customer, but actually charge
+         * with a [subscription](https://docs.epayments.network/api/subscriptions). Sometimes you want to add a charge or credit to a customer, but actually charge
          * or credit the customer's card only at the end of a regular billing cycle. This is useful for combining several charges
-         * (to minimize per-transaction fees), or for having ExpressPlatby tabulate your usage-based billing totals.
+         * (to minimize per-transaction fees), or for having ExpressPayments tabulate your usage-based billing totals.
          *
-         * Related guides: [Integrate with the Invoicing API](https://expressplatby.cz/docs/invoicing/integration), [Subscription Invoices](https://expressplatby.cz/docs/billing/invoices/subscription#adding-upcoming-invoice-items).
+         * Related guides: [Integrate with the Invoicing API](https://docs.epayments.network/invoicing/integration), [Subscription Invoices](https://docs.epayments.network/billing/invoices/subscription#adding-upcoming-invoice-items).
          */
         interface InvoiceItem {
             /**
@@ -32,7 +32,7 @@ declare module 'expressplatby' {
             amount: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -41,8 +41,8 @@ declare module 'expressplatby' {
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer;
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer;
 
             /**
              * Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -64,12 +64,12 @@ declare module 'expressplatby' {
             /**
              * The discounts which apply to the invoice item. Item discounts are applied before invoice discounts. Use `expand[]=discounts` to expand each discount.
              */
-            discounts: Array<string | ExpressPlatby.Discount> | null;
+            discounts: Array<string | ExpressPayments.Discount> | null;
 
             /**
              * The ID of the invoice this invoice item belongs to.
              */
-            invoice: string | ExpressPlatby.Invoice | null;
+            invoice: string | ExpressPayments.Invoice | null;
 
             /**
              * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -77,21 +77,21 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             period: InvoiceItem.Period;
 
             /**
              * If the invoice item is a proration, the plan of the subscription that the proration was computed for.
              */
-            plan: ExpressPlatby.Plan | null;
+            plan: ExpressPayments.Plan | null;
 
             /**
              * The price of the invoice item.
              */
-            price: ExpressPlatby.Price | null;
+            price: ExpressPayments.Price | null;
 
             /**
              * Whether the invoice item was created automatically as a proration adjustment when the customer switched plans.
@@ -106,7 +106,7 @@ declare module 'expressplatby' {
             /**
              * The subscription that this invoice item has been created for, if any.
              */
-            subscription: string | ExpressPlatby.Subscription | null;
+            subscription: string | ExpressPayments.Subscription | null;
 
             /**
              * The subscription item that this invoice item has been created for, if any.
@@ -116,12 +116,12 @@ declare module 'expressplatby' {
             /**
              * The tax rates which apply to the invoice item. When set, the `default_tax_rates` on the invoice do not apply to this invoice item.
              */
-            tax_rates: Array<ExpressPlatby.TaxRate> | null;
+            tax_rates: Array<ExpressPayments.TaxRate> | null;
 
             /**
              * ID of the test clock this invoice item belongs to.
              */
-            test_clock: string | ExpressPlatby.TestHelpers.TestClock | null;
+            test_clock: string | ExpressPayments.TestHelpers.TestClock | null;
 
             /**
              * Unit amount (in the `currency` specified) of the invoice item.

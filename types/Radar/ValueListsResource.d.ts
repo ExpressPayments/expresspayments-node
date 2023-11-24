@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Radar {
             interface ValueListCreateParams {
                 /**
@@ -25,9 +25,9 @@ declare module 'expressplatby' {
                 item_type?: ValueListCreateParams.ItemType;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
             }
 
             namespace ValueListCreateParams {
@@ -61,9 +61,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * The human-readable name of the value list.
@@ -82,7 +82,7 @@ declare module 'expressplatby' {
                  */
                 contains?: string;
 
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -100,7 +100,7 @@ declare module 'expressplatby' {
                     params: ValueListCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Radar.ValueList>
+                  ExpressPayments.Response<ExpressPayments.Radar.ValueList>
                 >;
 
                 /**
@@ -111,13 +111,13 @@ declare module 'expressplatby' {
                     params?: ValueListRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Radar.ValueList>
+                  ExpressPayments.Response<ExpressPayments.Radar.ValueList>
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Radar.ValueList>
+                  ExpressPayments.Response<ExpressPayments.Radar.ValueList>
                 >;
 
                 /**
@@ -128,7 +128,7 @@ declare module 'expressplatby' {
                     params?: ValueListUpdateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Radar.ValueList>
+                  ExpressPayments.Response<ExpressPayments.Radar.ValueList>
                 >;
 
                 /**
@@ -137,10 +137,10 @@ declare module 'expressplatby' {
                 list(
                     params?: ValueListListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Radar.ValueList>;
+                ): ApiListPromise<ExpressPayments.Radar.ValueList>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Radar.ValueList>;
+                ): ApiListPromise<ExpressPayments.Radar.ValueList>;
 
                 /**
                  * Deletes a ValueList object, also deleting any items contained within the value list. To be deleted, a value list must not be referenced in any rules.
@@ -150,13 +150,13 @@ declare module 'expressplatby' {
                     params?: ValueListDeleteParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Radar.DeletedValueList>
+                    ExpressPayments.Response<ExpressPayments.Radar.DeletedValueList>
                 >;
                 del(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Radar.DeletedValueList>
+                    ExpressPayments.Response<ExpressPayments.Radar.DeletedValueList>
                 >;
             }
         }

@@ -1,37 +1,40 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const FinancialAccounts = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/treasury/financial_accounts',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/treasury/financial_accounts/{financial_account}',
-  }),
+export const FinancialAccounts = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/treasury/financial_accounts',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/treasury/financial_accounts/{financial_account}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/treasury/financial_accounts/{financial_account}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/treasury/financial_accounts',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/treasury/financial_accounts/{financial_account}',
+    }),
 
-  retrieveFeatures: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/treasury/financial_accounts/{financial_account}/features',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/treasury/financial_accounts',
+        methodType: 'list',
+    }),
 
-  updateFeatures: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/treasury/financial_accounts/{financial_account}/features',
-  }),
+    retrieveFeatures: expressPaymentsMethod({
+        method: 'GET',
+        fullPath:
+            '/v1/treasury/financial_accounts/{financial_account}/features',
+    }),
+
+    updateFeatures: expressPaymentsMethod({
+        method: 'POST',
+        fullPath:
+            '/v1/treasury/financial_accounts/{financial_account}/features',
+    }),
 });

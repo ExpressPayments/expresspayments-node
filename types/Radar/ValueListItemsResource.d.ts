@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Radar {
             interface ValueListItemCreateParams {
                 /**
@@ -33,7 +33,7 @@ declare module 'expressplatby' {
                  */
                 value_list: string;
 
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -56,7 +56,9 @@ declare module 'expressplatby' {
                     params: ValueListItemCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Radar.ValueListItem>
+                    ExpressPayments.Response<
+                        ExpressPayments.Radar.ValueListItem
+                    >
                 >;
 
                 /**
@@ -67,13 +69,17 @@ declare module 'expressplatby' {
                     params?: ValueListItemRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Radar.ValueListItem>
+                    ExpressPayments.Response<
+                        ExpressPayments.Radar.ValueListItem
+                    >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Radar.ValueListItem>
+                    ExpressPayments.Response<
+                        ExpressPayments.Radar.ValueListItem
+                    >
                 >;
 
                 /**
@@ -82,7 +88,7 @@ declare module 'expressplatby' {
                 list(
                     params: ValueListItemListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Radar.ValueListItem>;
+                ): ApiListPromise<ExpressPayments.Radar.ValueListItem>;
 
                 /**
                  * Deletes a ValueListItem object, removing it from its parent value list.
@@ -92,16 +98,16 @@ declare module 'expressplatby' {
                     params?: ValueListItemDeleteParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Radar.DeletedValueListItem
+                    ExpressPayments.Response<
+                        ExpressPayments.Radar.DeletedValueListItem
                     >
                 >;
                 del(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Radar.DeletedValueListItem
+                    ExpressPayments.Response<
+                        ExpressPayments.Radar.DeletedValueListItem
                     >
                 >;
             }

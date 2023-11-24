@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * A discount represents the actual application of a [coupon](https://expressplatby.cz/docs/api#coupons) or [promotion code](https://expressplatby.cz/docs/api#promotion_codes).
+         * A discount represents the actual application of a [coupon](https://docs.epayments.network/api#coupons) or [promotion code](https://docs.epayments.network/api#promotion_codes).
          * It contains information about when the discount began, when it will end, and what it is applied to.
          *
-         * Related guide: [Applying discounts to subscriptions](https://expressplatby.cz/docs/billing/subscriptions/discounts)
+         * Related guide: [Applying discounts to subscriptions](https://docs.epayments.network/billing/subscriptions/discounts)
          */
         interface Discount {
             /**
@@ -26,18 +26,18 @@ declare module 'expressplatby' {
 
             /**
              * A coupon contains information about a percent-off or amount-off discount you
-             * might want to apply to a customer. Coupons may be applied to [subscriptions](https://expressplatby.cz/docs/api#subscriptions), [invoices](https://expressplatby.cz/docs/api#invoices),
-             * [checkout sessions](https://expressplatby.cz/docs/api/checkout/sessions), [quotes](https://expressplatby.cz/docs/api#quotes), and more. Coupons do not work with conventional one-off [charges](https://expressplatby.cz/docs/api#create_charge) or [payment intents](https://expressplatby.cz/docs/api/payment_intents).
+             * might want to apply to a customer. Coupons may be applied to [subscriptions](https://docs.epayments.network/api#subscriptions), [invoices](https://docs.epayments.network/api#invoices),
+             * [checkout sessions](https://docs.epayments.network/api/checkout/sessions), [quotes](https://docs.epayments.network/api#quotes), and more. Coupons do not work with conventional one-off [charges](https://docs.epayments.network/api#create_charge) or [payment intents](https://docs.epayments.network/api/payment_intents).
              */
-            coupon: ExpressPlatby.Coupon;
+            coupon: ExpressPayments.Coupon;
 
             /**
              * The ID of the customer associated with this discount.
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer
                 | null;
 
             deleted?: void;
@@ -60,7 +60,7 @@ declare module 'expressplatby' {
             /**
              * The promotion code applied to create this discount.
              */
-            promotion_code: string | ExpressPlatby.PromotionCode | null;
+            promotion_code: string | ExpressPayments.PromotionCode | null;
 
             /**
              * Date that the coupon was applied.
@@ -94,18 +94,18 @@ declare module 'expressplatby' {
 
             /**
              * A coupon contains information about a percent-off or amount-off discount you
-             * might want to apply to a customer. Coupons may be applied to [subscriptions](https://expressplatby.cz/docs/api#subscriptions), [invoices](https://expressplatby.cz/docs/api#invoices),
-             * [checkout sessions](https://expressplatby.cz/docs/api/checkout/sessions), [quotes](https://expressplatby.cz/docs/api#quotes), and more. Coupons do not work with conventional one-off [charges](https://expressplatby.cz/docs/api#create_charge) or [payment intents](https://expressplatby.cz/docs/api/payment_intents).
+             * might want to apply to a customer. Coupons may be applied to [subscriptions](https://docs.epayments.network/api#subscriptions), [invoices](https://docs.epayments.network/api#invoices),
+             * [checkout sessions](https://docs.epayments.network/api/checkout/sessions), [quotes](https://docs.epayments.network/api#quotes), and more. Coupons do not work with conventional one-off [charges](https://docs.epayments.network/api#create_charge) or [payment intents](https://docs.epayments.network/api/payment_intents).
              */
-            coupon: ExpressPlatby.Coupon;
+            coupon: ExpressPayments.Coupon;
 
             /**
              * The ID of the customer associated with this discount.
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer
                 | null;
 
             /**
@@ -126,7 +126,7 @@ declare module 'expressplatby' {
             /**
              * The promotion code applied to create this discount.
              */
-            promotion_code: string | ExpressPlatby.PromotionCode | null;
+            promotion_code: string | ExpressPayments.PromotionCode | null;
 
             /**
              * Date that the coupon was applied.

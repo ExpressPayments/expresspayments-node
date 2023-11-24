@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Radar {
             /**
              * Value list items allow you to add specific values to a given Radar value list, which can then be used in rules.
              *
-             * Related guide: [Managing list items](https://expressplatby.cz/docs/radar/lists#managing-list-items)
+             * Related guide: [Managing list items](https://docs.epayments.network/radar/lists#managing-list-items)
              */
             interface ValueListItem {
                 /**

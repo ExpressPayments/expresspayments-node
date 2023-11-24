@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * Login Links are single-use login link for an Express account to access their ExpressPlatby dashboard.
+         * Login Links are single-use login link for an Express account to access their ExpressPayments dashboard.
          */
         interface LoginLink {
             /**

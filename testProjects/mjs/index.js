@@ -1,78 +1,78 @@
-import DefaultExpressPlatby, {ExpressPlatby} from 'expressplatby';
+import DefaultExpressPayments, {ExpressPayments} from 'expresspayments';
 import assert from 'assert';
 
-assert(ExpressPlatby.PACKAGE_VERSION);
-assert(ExpressPlatby.USER_AGENT);
+assert(ExpressPayments.PACKAGE_VERSION);
+assert(ExpressPayments.USER_AGENT);
 
-assert(ExpressPlatby.HttpClient);
-assert(ExpressPlatby.HttpClient.CONNECTION_CLOSED_ERROR_CODES);
-assert(ExpressPlatby.HttpClient.TIMEOUT_ERROR_CODE);
-assert(ExpressPlatby.HttpClient.makeTimeoutError);
+assert(ExpressPayments.HttpClient);
+assert(ExpressPayments.HttpClient.CONNECTION_CLOSED_ERROR_CODES);
+assert(ExpressPayments.HttpClient.TIMEOUT_ERROR_CODE);
+assert(ExpressPayments.HttpClient.makeTimeoutError);
 
-assert(ExpressPlatby.HttpClientResponse);
-assert(ExpressPlatby.createFetchHttpClient);
-assert(ExpressPlatby.createNodeHttpClient);
+assert(ExpressPayments.HttpClientResponse);
+assert(ExpressPayments.createFetchHttpClient);
+assert(ExpressPayments.createNodeHttpClient);
 
-assert(ExpressPlatby.CryptoProvider);
-assert(ExpressPlatby.createNodeCryptoProvider);
-assert(ExpressPlatby.createSubtleCryptoProvider);
+assert(ExpressPayments.CryptoProvider);
+assert(ExpressPayments.createNodeCryptoProvider);
+assert(ExpressPayments.createSubtleCryptoProvider);
 
-assert(ExpressPlatby.errors);
-assert(ExpressPlatby.errors.generate);
-assert(ExpressPlatby.errors.ExpressPlatbyError);
-assert(ExpressPlatby.errors.ExpressPlatbyCardError);
-assert(ExpressPlatby.errors.ExpressPlatbyInvalidRequestError);
-assert(ExpressPlatby.errors.ExpressPlatbyAPIError);
-assert(ExpressPlatby.errors.ExpressPlatbyAuthenticationError);
-assert(ExpressPlatby.errors.ExpressPlatbyPermissionError);
-assert(ExpressPlatby.errors.ExpressPlatbyRateLimitError);
-assert(ExpressPlatby.errors.ExpressPlatbyConnectionError);
-assert(ExpressPlatby.errors.ExpressPlatbySignatureVerificationError);
-assert(ExpressPlatby.errors.ExpressPlatbyIdempotencyError);
-assert(ExpressPlatby.errors.ExpressPlatbyInvalidGrantError);
-assert(ExpressPlatby.errors.ExpressPlatbyUnknownError);
+assert(ExpressPayments.errors);
+assert(ExpressPayments.errors.generate);
+assert(ExpressPayments.errors.ExpressPaymentsError);
+assert(ExpressPayments.errors.ExpressPaymentsCardError);
+assert(ExpressPayments.errors.ExpressPaymentsInvalidRequestError);
+assert(ExpressPayments.errors.ExpressPaymentsAPIError);
+assert(ExpressPayments.errors.ExpressPaymentsAuthenticationError);
+assert(ExpressPayments.errors.ExpressPaymentsPermissionError);
+assert(ExpressPayments.errors.ExpressPaymentsRateLimitError);
+assert(ExpressPayments.errors.ExpressPaymentsConnectionError);
+assert(ExpressPayments.errors.ExpressPaymentsSignatureVerificationError);
+assert(ExpressPayments.errors.ExpressPaymentsIdempotencyError);
+assert(ExpressPayments.errors.ExpressPaymentsInvalidGrantError);
+assert(ExpressPayments.errors.ExpressPaymentsUnknownError);
 
-assert(ExpressPlatby.ExpressPlatbyResource);
-assert(ExpressPlatby.ExpressPlatbyResource.method);
-assert(ExpressPlatby.ExpressPlatbyResource.extend);
-assert(ExpressPlatby.ExpressPlatbyResource.MAX_BUFFERED_REQUEST_METRICS);
+assert(ExpressPayments.ExpressPaymentsResource);
+assert(ExpressPayments.ExpressPaymentsResource.method);
+assert(ExpressPayments.ExpressPaymentsResource.extend);
+assert(ExpressPayments.ExpressPaymentsResource.MAX_BUFFERED_REQUEST_METRICS);
 
-assert(ExpressPlatby.webhooks);
-assert(ExpressPlatby.resources);
+assert(ExpressPayments.webhooks);
+assert(ExpressPayments.resources);
 
-const expressPlatby = new ExpressPlatby(process.argv[2], {
-    host: process.env.EXPRESSPLATBY_MOCK_HOST || 'localhost',
-    port: process.env.EXPRESSPLATBY_MOCK_PORT || 12111,
+const expressPayments = new ExpressPayments(process.argv[2], {
+    host: process.env.EP_MOCK_HOST || 'localhost',
+    port: process.env.EP_MOCK_PORT || 12111,
     protocol: 'http',
 });
-const defaultExpressPlatby = new DefaultExpressPlatby(process.argv[2], {
-    host: process.env.EXPRESSPLATBY_MOCK_HOST || 'localhost',
-    port: process.env.EXPRESSPLATBY_MOCK_PORT || 12111,
+const defaultExpressPayments = new DefaultExpressPayments(process.argv[2], {
+    host: process.env.EP_MOCK_HOST || 'localhost',
+    port: process.env.EP_MOCK_PORT || 12111,
     protocol: 'http',
 });
 
-assert(expressPlatby._platformFunctions);
-assert(expressPlatby._api);
-assert(expressPlatby._enableTelemetry);
-assert(expressPlatby._prevRequestMetrics);
-assert(expressPlatby._requestSender);
-assert(expressPlatby.VERSION);
-assert(expressPlatby.errors);
-assert(expressPlatby.webhookEndpoints);
-assert(expressPlatby.webhooks);
-assert(expressPlatby._emitter);
-assert(expressPlatby.on);
-assert(expressPlatby.off);
-assert(expressPlatby.once);
+assert(expressPayments._platformFunctions);
+assert(expressPayments._api);
+assert(expressPayments._enableTelemetry);
+assert(expressPayments._prevRequestMetrics);
+assert(expressPayments._requestSender);
+assert(expressPayments.VERSION);
+assert(expressPayments.errors);
+assert(expressPayments.webhookEndpoints);
+assert(expressPayments.webhooks);
+assert(expressPayments._emitter);
+assert(expressPayments.on);
+assert(expressPayments.off);
+assert(expressPayments.once);
 
 try {
-    throw new expressPlatby.errors.ExpressPlatbyError({
+    throw new expressPayments.errors.ExpressPaymentsError({
         charge: 'foo',
         unknown_prop: 'bar',
     });
 } catch (e) {
-    if (e instanceof expressPlatby.errors.ExpressPlatbyError) {
-        console.log('Caught ExpressPlatbyError');
+    if (e instanceof expressPayments.errors.ExpressPaymentsError) {
+        console.log('Caught ExpressPaymentsError');
     } else {
         throw e;
     }
@@ -80,12 +80,12 @@ try {
 
 async function exampleFunction(args) {
     try {
-        await expressPlatby.paymentIntents.create(args);
+        await expressPayments.paymentIntents.create(args);
     } catch (e) {
         if (
-            e instanceof expressPlatby.errors.ExpressPlatbyInvalidRequestError
+            e instanceof expressPayments.errors.ExpressPaymentsInvalidRequestError
         ) {
-            console.log('Caught ExpressPlatbyInvalidRequestError');
+            console.log('Caught ExpressPaymentsInvalidRequestError');
         } else {
             throw e;
         }

@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * PaymentMethod objects represent your customer's payment instruments.
-         * You can use them with [PaymentIntents](https://expressplatby.cz/docs/payments/payment-intents) to collect payments or save them to
+         * You can use them with [PaymentIntents](https://docs.epayments.network/payments/payment-intents) to collect payments or save them to
          * Customer objects to store instrument details for future payments.
          *
-         * Related guides: [Payment Methods](https://expressplatby.cz/docs/payments/payment-methods) and [More Payment Scenarios](https://expressplatby.cz/docs/payments/more-payment-scenarios).
+         * Related guides: [Payment Methods](https://docs.epayments.network/payments/payment-methods) and [More Payment Scenarios](https://docs.epayments.network/payments/more-payment-scenarios).
          */
         interface PaymentMethod {
             /**
@@ -54,7 +54,7 @@ declare module 'expressplatby' {
             /**
              * The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
              */
-            customer: string | ExpressPlatby.Customer | null;
+            customer: string | ExpressPayments.Customer | null;
 
             customer_balance?: PaymentMethod.CustomerBalance;
 
@@ -82,9 +82,9 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             oxxo?: PaymentMethod.Oxxo;
 
@@ -99,7 +99,7 @@ declare module 'expressplatby' {
             promptpay?: PaymentMethod.Promptpay;
 
             /**
-             * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+             * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
              */
             radar_options?: PaymentMethod.RadarOptions;
 
@@ -193,7 +193,7 @@ declare module 'expressplatby' {
                 /**
                  * Billing address.
                  */
-                address: ExpressPlatby.Address | null;
+                address: ExpressPayments.Address | null;
 
                 /**
                  * Email address.
@@ -370,7 +370,7 @@ declare module 'expressplatby' {
                         /**
                          * Owner's verified billing address. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
                          */
-                        billing_address: ExpressPlatby.Address | null;
+                        billing_address: ExpressPayments.Address | null;
 
                         /**
                          * Owner's verified email. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
@@ -385,7 +385,7 @@ declare module 'expressplatby' {
                         /**
                          * Owner's verified shipping address. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
                          */
-                        shipping_address: ExpressPlatby.Address | null;
+                        shipping_address: ExpressPayments.Address | null;
                     }
 
                     interface SamsungPay {}
@@ -403,7 +403,7 @@ declare module 'expressplatby' {
                         /**
                          * Owner's verified billing address. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
                          */
-                        billing_address: ExpressPlatby.Address | null;
+                        billing_address: ExpressPayments.Address | null;
 
                         /**
                          * Owner's verified email. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
@@ -418,7 +418,7 @@ declare module 'expressplatby' {
                         /**
                          * Owner's verified shipping address. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
                          */
-                        shipping_address: ExpressPlatby.Address | null;
+                        shipping_address: ExpressPayments.Address | null;
                     }
                 }
             }
@@ -857,7 +857,7 @@ declare module 'expressplatby' {
 
             interface RadarOptions {
                 /**
-                 * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                 * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                  */
                 session?: string;
             }
@@ -899,12 +899,12 @@ declare module 'expressplatby' {
                     /**
                      * The ID of the Charge that generated this PaymentMethod, if any.
                      */
-                    charge: string | ExpressPlatby.Charge | null;
+                    charge: string | ExpressPayments.Charge | null;
 
                     /**
                      * The ID of the SetupAttempt that generated this PaymentMethod, if any.
                      */
-                    setup_attempt: string | ExpressPlatby.SetupAttempt | null;
+                    setup_attempt: string | ExpressPayments.SetupAttempt | null;
                 }
             }
 

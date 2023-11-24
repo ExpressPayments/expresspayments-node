@@ -1,19 +1,19 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * This is an object representing your ExpressPlatby balance. You can retrieve it to see
-         * the balance currently on your ExpressPlatby account.
+         * This is an object representing your ExpressPayments balance. You can retrieve it to see
+         * the balance currently on your ExpressPayments account.
          *
          * You can also retrieve the balance history, which contains a list of
-         * [transactions](https://expressplatby.cz/docs/reporting/balance-transaction-types) that contributed to the balance
+         * [transactions](https://docs.epayments.network/reporting/balance-transaction-types) that contributed to the balance
          * (charges, payouts, and so forth).
          *
          * The available and pending amounts for each currency are broken down further by
          * payment source types.
          *
-         * Related guide: [Understanding Connect account balances](https://expressplatby.cz/docs/connect/account-balances)
+         * Related guide: [Understanding Connect account balances](https://docs.epayments.network/connect/account-balances)
          */
         interface Balance {
             /**
@@ -22,7 +22,7 @@ declare module 'expressplatby' {
             object: 'balance';
 
             /**
-             * Funds that are available to be transferred or paid out, whether automatically by ExpressPlatby or explicitly via the [Transfers API](https://expressplatby.cz/docs/api#transfers) or [Payouts API](https://expressplatby.cz/docs/api#payouts). The available balance for each currency and payment type can be found in the `source_types` property.
+             * Funds that are available to be transferred or paid out, whether automatically by ExpressPayments or explicitly via the [Transfers API](https://docs.epayments.network/api#transfers) or [Payouts API](https://docs.epayments.network/api#payouts). The available balance for each currency and payment type can be found in the `source_types` property.
              */
             available: Array<Balance.Available>;
 
@@ -57,7 +57,7 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -90,7 +90,7 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -123,7 +123,7 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -164,7 +164,7 @@ declare module 'expressplatby' {
                     amount: number;
 
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
@@ -198,7 +198,7 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 

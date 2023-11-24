@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Issuing {
             interface DisputeCreateParams {
                 /**
-                 * The dispute amount in the card's currency and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal). If not set, defaults to the full transaction amount.
+                 * The dispute amount in the card's currency and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal). If not set, defaults to the full transaction amount.
                  */
                 amount?: number;
 
@@ -20,9 +20,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * The ID of the issuing transaction to create a dispute for. For transaction on Treasury FinancialAccounts, use `treasury.received_debit`.
@@ -40,36 +40,36 @@ declare module 'expressplatby' {
                     /**
                      * Evidence provided when `reason` is 'canceled'.
                      */
-                    canceled?: ExpressPlatby.Emptyable<Evidence.Canceled>;
+                    canceled?: ExpressPayments.Emptyable<Evidence.Canceled>;
 
                     /**
                      * Evidence provided when `reason` is 'duplicate'.
                      */
-                    duplicate?: ExpressPlatby.Emptyable<Evidence.Duplicate>;
+                    duplicate?: ExpressPayments.Emptyable<Evidence.Duplicate>;
 
                     /**
                      * Evidence provided when `reason` is 'fraudulent'.
                      */
-                    fraudulent?: ExpressPlatby.Emptyable<Evidence.Fraudulent>;
+                    fraudulent?: ExpressPayments.Emptyable<Evidence.Fraudulent>;
 
                     /**
                      * Evidence provided when `reason` is 'merchandise_not_as_described'.
                      */
-                    merchandise_not_as_described?: ExpressPlatby.Emptyable<
+                    merchandise_not_as_described?: ExpressPayments.Emptyable<
                         Evidence.MerchandiseNotAsDescribed
                     >;
 
                     /**
                      * Evidence provided when `reason` is 'not_received'.
                      */
-                    not_received?: ExpressPlatby.Emptyable<
+                    not_received?: ExpressPayments.Emptyable<
                         Evidence.NotReceived
                     >;
 
                     /**
                      * Evidence provided when `reason` is 'other'.
                      */
-                    other?: ExpressPlatby.Emptyable<Evidence.Other>;
+                    other?: ExpressPayments.Emptyable<Evidence.Other>;
 
                     /**
                      * The reason for filing the dispute. The evidence should be submitted in the field of the same name.
@@ -79,7 +79,7 @@ declare module 'expressplatby' {
                     /**
                      * Evidence provided when `reason` is 'service_not_as_described'.
                      */
-                    service_not_as_described?: ExpressPlatby.Emptyable<
+                    service_not_as_described?: ExpressPayments.Emptyable<
                         Evidence.ServiceNotAsDescribed
                     >;
                 }
@@ -87,21 +87,21 @@ declare module 'expressplatby' {
                 namespace Evidence {
                     interface Canceled {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
                         /**
                          * Date when order was canceled.
                          */
-                        canceled_at?: ExpressPlatby.Emptyable<number>;
+                        canceled_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Whether the cardholder was provided with a cancellation policy.
                          */
-                        cancellation_policy_provided?: ExpressPlatby.Emptyable<
+                        cancellation_policy_provided?: ExpressPayments.Emptyable<
                             boolean
                         >;
 
@@ -113,7 +113,7 @@ declare module 'expressplatby' {
                         /**
                          * Date when the cardholder expected to receive the product.
                          */
-                        expected_at?: ExpressPlatby.Emptyable<number>;
+                        expected_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Explanation of why the cardholder is disputing this transaction.
@@ -128,21 +128,21 @@ declare module 'expressplatby' {
                         /**
                          * Whether the product was a merchandise or service.
                          */
-                        product_type?: ExpressPlatby.Emptyable<
+                        product_type?: ExpressPayments.Emptyable<
                             Canceled.ProductType
                         >;
 
                         /**
                          * Result of cardholder's attempt to return the product.
                          */
-                        return_status?: ExpressPlatby.Emptyable<
+                        return_status?: ExpressPayments.Emptyable<
                             Canceled.ReturnStatus
                         >;
 
                         /**
                          * Date when the product was returned or attempted to be returned.
                          */
-                        returned_at?: ExpressPlatby.Emptyable<number>;
+                        returned_at?: ExpressPayments.Emptyable<number>;
                     }
 
                     namespace Canceled {
@@ -153,26 +153,26 @@ declare module 'expressplatby' {
 
                     interface Duplicate {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Copy of the card statement showing that the product had already been paid for.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Copy of the card statement showing that the product had already been paid for.
                          */
-                        card_statement?: ExpressPlatby.Emptyable<string>;
+                        card_statement?: ExpressPayments.Emptyable<string>;
 
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Copy of the receipt showing that the product had been paid for in cash.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Copy of the receipt showing that the product had been paid for in cash.
                          */
-                        cash_receipt?: ExpressPlatby.Emptyable<string>;
+                        cash_receipt?: ExpressPayments.Emptyable<string>;
 
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Image of the front and back of the check that was used to pay for the product.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Image of the front and back of the check that was used to pay for the product.
                          */
-                        check_image?: ExpressPlatby.Emptyable<string>;
+                        check_image?: ExpressPayments.Emptyable<string>;
 
                         /**
                          * Explanation of why the cardholder is disputing this transaction.
@@ -187,9 +187,9 @@ declare module 'expressplatby' {
 
                     interface Fraudulent {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
@@ -201,9 +201,9 @@ declare module 'expressplatby' {
 
                     interface MerchandiseNotAsDescribed {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
@@ -215,7 +215,7 @@ declare module 'expressplatby' {
                         /**
                          * Date when the product was received.
                          */
-                        received_at?: ExpressPlatby.Emptyable<number>;
+                        received_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Description of the cardholder's attempt to return the product.
@@ -225,14 +225,14 @@ declare module 'expressplatby' {
                         /**
                          * Result of cardholder's attempt to return the product.
                          */
-                        return_status?: ExpressPlatby.Emptyable<
+                        return_status?: ExpressPayments.Emptyable<
                             MerchandiseNotAsDescribed.ReturnStatus
                         >;
 
                         /**
                          * Date when the product was returned or attempted to be returned.
                          */
-                        returned_at?: ExpressPlatby.Emptyable<number>;
+                        returned_at?: ExpressPayments.Emptyable<number>;
                     }
 
                     namespace MerchandiseNotAsDescribed {
@@ -241,16 +241,16 @@ declare module 'expressplatby' {
 
                     interface NotReceived {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
                         /**
                          * Date when the cardholder expected to receive the product.
                          */
-                        expected_at?: ExpressPlatby.Emptyable<number>;
+                        expected_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Explanation of why the cardholder is disputing this transaction.
@@ -265,7 +265,7 @@ declare module 'expressplatby' {
                         /**
                          * Whether the product was a merchandise or service.
                          */
-                        product_type?: ExpressPlatby.Emptyable<
+                        product_type?: ExpressPayments.Emptyable<
                             NotReceived.ProductType
                         >;
                     }
@@ -276,9 +276,9 @@ declare module 'expressplatby' {
 
                     interface Other {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
@@ -295,7 +295,7 @@ declare module 'expressplatby' {
                         /**
                          * Whether the product was a merchandise or service.
                          */
-                        product_type?: ExpressPlatby.Emptyable<
+                        product_type?: ExpressPayments.Emptyable<
                             Other.ProductType
                         >;
                     }
@@ -315,16 +315,16 @@ declare module 'expressplatby' {
 
                     interface ServiceNotAsDescribed {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
                         /**
                          * Date when order was canceled.
                          */
-                        canceled_at?: ExpressPlatby.Emptyable<number>;
+                        canceled_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Reason for canceling the order.
@@ -339,7 +339,7 @@ declare module 'expressplatby' {
                         /**
                          * Date when the product was received.
                          */
-                        received_at?: ExpressPlatby.Emptyable<number>;
+                        received_at?: ExpressPayments.Emptyable<number>;
                     }
                 }
 
@@ -360,7 +360,7 @@ declare module 'expressplatby' {
 
             interface DisputeUpdateParams {
                 /**
-                 * The dispute amount in the card's currency and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                 * The dispute amount in the card's currency and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                  */
                 amount?: number;
 
@@ -375,9 +375,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
             }
 
             namespace DisputeUpdateParams {
@@ -385,36 +385,36 @@ declare module 'expressplatby' {
                     /**
                      * Evidence provided when `reason` is 'canceled'.
                      */
-                    canceled?: ExpressPlatby.Emptyable<Evidence.Canceled>;
+                    canceled?: ExpressPayments.Emptyable<Evidence.Canceled>;
 
                     /**
                      * Evidence provided when `reason` is 'duplicate'.
                      */
-                    duplicate?: ExpressPlatby.Emptyable<Evidence.Duplicate>;
+                    duplicate?: ExpressPayments.Emptyable<Evidence.Duplicate>;
 
                     /**
                      * Evidence provided when `reason` is 'fraudulent'.
                      */
-                    fraudulent?: ExpressPlatby.Emptyable<Evidence.Fraudulent>;
+                    fraudulent?: ExpressPayments.Emptyable<Evidence.Fraudulent>;
 
                     /**
                      * Evidence provided when `reason` is 'merchandise_not_as_described'.
                      */
-                    merchandise_not_as_described?: ExpressPlatby.Emptyable<
+                    merchandise_not_as_described?: ExpressPayments.Emptyable<
                         Evidence.MerchandiseNotAsDescribed
                     >;
 
                     /**
                      * Evidence provided when `reason` is 'not_received'.
                      */
-                    not_received?: ExpressPlatby.Emptyable<
+                    not_received?: ExpressPayments.Emptyable<
                         Evidence.NotReceived
                     >;
 
                     /**
                      * Evidence provided when `reason` is 'other'.
                      */
-                    other?: ExpressPlatby.Emptyable<Evidence.Other>;
+                    other?: ExpressPayments.Emptyable<Evidence.Other>;
 
                     /**
                      * The reason for filing the dispute. The evidence should be submitted in the field of the same name.
@@ -424,7 +424,7 @@ declare module 'expressplatby' {
                     /**
                      * Evidence provided when `reason` is 'service_not_as_described'.
                      */
-                    service_not_as_described?: ExpressPlatby.Emptyable<
+                    service_not_as_described?: ExpressPayments.Emptyable<
                         Evidence.ServiceNotAsDescribed
                     >;
                 }
@@ -432,21 +432,21 @@ declare module 'expressplatby' {
                 namespace Evidence {
                     interface Canceled {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
                         /**
                          * Date when order was canceled.
                          */
-                        canceled_at?: ExpressPlatby.Emptyable<number>;
+                        canceled_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Whether the cardholder was provided with a cancellation policy.
                          */
-                        cancellation_policy_provided?: ExpressPlatby.Emptyable<
+                        cancellation_policy_provided?: ExpressPayments.Emptyable<
                             boolean
                         >;
 
@@ -458,7 +458,7 @@ declare module 'expressplatby' {
                         /**
                          * Date when the cardholder expected to receive the product.
                          */
-                        expected_at?: ExpressPlatby.Emptyable<number>;
+                        expected_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Explanation of why the cardholder is disputing this transaction.
@@ -473,21 +473,21 @@ declare module 'expressplatby' {
                         /**
                          * Whether the product was a merchandise or service.
                          */
-                        product_type?: ExpressPlatby.Emptyable<
+                        product_type?: ExpressPayments.Emptyable<
                             Canceled.ProductType
                         >;
 
                         /**
                          * Result of cardholder's attempt to return the product.
                          */
-                        return_status?: ExpressPlatby.Emptyable<
+                        return_status?: ExpressPayments.Emptyable<
                             Canceled.ReturnStatus
                         >;
 
                         /**
                          * Date when the product was returned or attempted to be returned.
                          */
-                        returned_at?: ExpressPlatby.Emptyable<number>;
+                        returned_at?: ExpressPayments.Emptyable<number>;
                     }
 
                     namespace Canceled {
@@ -498,26 +498,26 @@ declare module 'expressplatby' {
 
                     interface Duplicate {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Copy of the card statement showing that the product had already been paid for.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Copy of the card statement showing that the product had already been paid for.
                          */
-                        card_statement?: ExpressPlatby.Emptyable<string>;
+                        card_statement?: ExpressPayments.Emptyable<string>;
 
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Copy of the receipt showing that the product had been paid for in cash.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Copy of the receipt showing that the product had been paid for in cash.
                          */
-                        cash_receipt?: ExpressPlatby.Emptyable<string>;
+                        cash_receipt?: ExpressPayments.Emptyable<string>;
 
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Image of the front and back of the check that was used to pay for the product.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Image of the front and back of the check that was used to pay for the product.
                          */
-                        check_image?: ExpressPlatby.Emptyable<string>;
+                        check_image?: ExpressPayments.Emptyable<string>;
 
                         /**
                          * Explanation of why the cardholder is disputing this transaction.
@@ -532,9 +532,9 @@ declare module 'expressplatby' {
 
                     interface Fraudulent {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
@@ -546,9 +546,9 @@ declare module 'expressplatby' {
 
                     interface MerchandiseNotAsDescribed {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
@@ -560,7 +560,7 @@ declare module 'expressplatby' {
                         /**
                          * Date when the product was received.
                          */
-                        received_at?: ExpressPlatby.Emptyable<number>;
+                        received_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Description of the cardholder's attempt to return the product.
@@ -570,14 +570,14 @@ declare module 'expressplatby' {
                         /**
                          * Result of cardholder's attempt to return the product.
                          */
-                        return_status?: ExpressPlatby.Emptyable<
+                        return_status?: ExpressPayments.Emptyable<
                             MerchandiseNotAsDescribed.ReturnStatus
                         >;
 
                         /**
                          * Date when the product was returned or attempted to be returned.
                          */
-                        returned_at?: ExpressPlatby.Emptyable<number>;
+                        returned_at?: ExpressPayments.Emptyable<number>;
                     }
 
                     namespace MerchandiseNotAsDescribed {
@@ -586,16 +586,16 @@ declare module 'expressplatby' {
 
                     interface NotReceived {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
                         /**
                          * Date when the cardholder expected to receive the product.
                          */
-                        expected_at?: ExpressPlatby.Emptyable<number>;
+                        expected_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Explanation of why the cardholder is disputing this transaction.
@@ -610,7 +610,7 @@ declare module 'expressplatby' {
                         /**
                          * Whether the product was a merchandise or service.
                          */
-                        product_type?: ExpressPlatby.Emptyable<
+                        product_type?: ExpressPayments.Emptyable<
                             NotReceived.ProductType
                         >;
                     }
@@ -621,9 +621,9 @@ declare module 'expressplatby' {
 
                     interface Other {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
@@ -640,7 +640,7 @@ declare module 'expressplatby' {
                         /**
                          * Whether the product was a merchandise or service.
                          */
-                        product_type?: ExpressPlatby.Emptyable<
+                        product_type?: ExpressPayments.Emptyable<
                             Other.ProductType
                         >;
                     }
@@ -660,16 +660,16 @@ declare module 'expressplatby' {
 
                     interface ServiceNotAsDescribed {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
-                        additional_documentation?: ExpressPlatby.Emptyable<
+                        additional_documentation?: ExpressPayments.Emptyable<
                             string
                         >;
 
                         /**
                          * Date when order was canceled.
                          */
-                        canceled_at?: ExpressPlatby.Emptyable<number>;
+                        canceled_at?: ExpressPayments.Emptyable<number>;
 
                         /**
                          * Reason for canceling the order.
@@ -684,7 +684,7 @@ declare module 'expressplatby' {
                         /**
                          * Date when the product was received.
                          */
-                        received_at?: ExpressPlatby.Emptyable<number>;
+                        received_at?: ExpressPayments.Emptyable<number>;
                     }
                 }
             }
@@ -693,7 +693,7 @@ declare module 'expressplatby' {
                 /**
                  * Select Issuing disputes that were created during the given date interval.
                  */
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -727,25 +727,25 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
             }
 
             class DisputesResource {
                 /**
-                 * Creates an Issuing Dispute object. Individual pieces of evidence within the evidence object are optional at this point. ExpressPlatby only validates that required evidence is present during submission. Refer to [Dispute reasons and evidence](https://expressplatby.cz/docs/issuing/purchases/disputes#dispute-reasons-and-evidence) for more details about evidence requirements.
+                 * Creates an Issuing Dispute object. Individual pieces of evidence within the evidence object are optional at this point. ExpressPayments only validates that required evidence is present during submission. Refer to [Dispute reasons and evidence](https://docs.epayments.network/issuing/purchases/disputes#dispute-reasons-and-evidence) for more details about evidence requirements.
                  */
                 create(
                     params?: DisputeCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Dispute>
+                    ExpressPayments.Response<ExpressPayments.Issuing.Dispute>
                 >;
                 create(
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Dispute>
+                    ExpressPayments.Response<ExpressPayments.Issuing.Dispute>
                 >;
 
                 /**
@@ -756,13 +756,13 @@ declare module 'expressplatby' {
                     params?: DisputeRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Dispute>
+                    ExpressPayments.Response<ExpressPayments.Issuing.Dispute>
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Dispute>
+                    ExpressPayments.Response<ExpressPayments.Issuing.Dispute>
                 >;
 
                 /**
@@ -773,7 +773,7 @@ declare module 'expressplatby' {
                     params?: DisputeUpdateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Dispute>
+                    ExpressPayments.Response<ExpressPayments.Issuing.Dispute>
                 >;
 
                 /**
@@ -782,26 +782,26 @@ declare module 'expressplatby' {
                 list(
                     params?: DisputeListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Issuing.Dispute>;
+                ): ApiListPromise<ExpressPayments.Issuing.Dispute>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Issuing.Dispute>;
+                ): ApiListPromise<ExpressPayments.Issuing.Dispute>;
 
                 /**
-                 * Submits an Issuing Dispute to the card network. ExpressPlatby validates that all evidence fields required for the dispute's reason are present. For more details, see [Dispute reasons and evidence](https://expressplatby.cz/docs/issuing/purchases/disputes#dispute-reasons-and-evidence).
+                 * Submits an Issuing Dispute to the card network. ExpressPayments validates that all evidence fields required for the dispute's reason are present. For more details, see [Dispute reasons and evidence](https://docs.epayments.network/issuing/purchases/disputes#dispute-reasons-and-evidence).
                  */
                 submit(
                     id: string,
                     params?: DisputeSubmitParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Dispute>
+                    ExpressPayments.Response<ExpressPayments.Issuing.Dispute>
                 >;
                 submit(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Dispute>
+                    ExpressPayments.Response<ExpressPayments.Issuing.Dispute>
                 >;
             }
         }

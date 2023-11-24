@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * To share the contents of a `File` object with non-ExpressPlatby users, you can
+         * To share the contents of a `File` object with non-ExpressPayments users, you can
          * create a `FileLink`. `FileLink`s contain a URL that can be used to
          * retrieve the contents of the file without authentication.
          */
@@ -36,7 +36,7 @@ declare module 'expressplatby' {
             /**
              * The file object this link points to.
              */
-            file: string | ExpressPlatby.File;
+            file: string | ExpressPayments.File;
 
             /**
              * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -44,9 +44,9 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
              * The publicly accessible URL to download the file.

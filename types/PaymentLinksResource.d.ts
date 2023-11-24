@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface PaymentLinkCreateParams {
             /**
              * The line items representing what is being sold. Each line item represents an item being sold. Up to 20 line items are supported.
@@ -19,12 +19,12 @@ declare module 'expressplatby' {
             allow_promotion_codes?: boolean;
 
             /**
-             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPlatby account. Can only be applied when there are no line items with recurring prices.
+             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPayments account. Can only be applied when there are no line items with recurring prices.
              */
             application_fee_amount?: number;
 
             /**
-             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPlatby account. There must be at least 1 line item with a recurring price to use this field.
+             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPayments account. There must be at least 1 line item with a recurring price to use this field.
              */
             application_fee_percent?: number;
 
@@ -44,7 +44,7 @@ declare module 'expressplatby' {
             consent_collection?: PaymentLinkCreateParams.ConsentCollection;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies) and supported by each line item's price.
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies) and supported by each line item's price.
              */
             currency?: string;
 
@@ -59,7 +59,7 @@ declare module 'expressplatby' {
             custom_text?: PaymentLinkCreateParams.CustomText;
 
             /**
-             * Configures whether [checkout sessions](https://expressplatby.cz/docs/api/checkout/sessions) created by this payment link create a [Customer](https://expressplatby.cz/docs/api/customers).
+             * Configures whether [checkout sessions](https://docs.epayments.network/api/checkout/sessions) created by this payment link create a [Customer](https://docs.epayments.network/api/customers).
              */
             customer_creation?: PaymentLinkCreateParams.CustomerCreation;
 
@@ -74,9 +74,9 @@ declare module 'expressplatby' {
             invoice_creation?: PaymentLinkCreateParams.InvoiceCreation;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`. Metadata associated with this Payment Link will automatically be copied to [checkout sessions](https://expressplatby.cz/docs/api/checkout/sessions) created by this payment link.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`. Metadata associated with this Payment Link will automatically be copied to [checkout sessions](https://docs.epayments.network/api/checkout/sessions) created by this payment link.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * The account on behalf of which to charge.
@@ -93,12 +93,12 @@ declare module 'expressplatby' {
              *
              * Can only be set in `subscription` mode.
              *
-             * If you'd like information on how to collect a payment method outside of Checkout, read the guide on [configuring subscriptions with a free trial](https://expressplatby.cz/docs/payments/checkout/free-trials).
+             * If you'd like information on how to collect a payment method outside of Checkout, read the guide on [configuring subscriptions with a free trial](https://docs.epayments.network/payments/checkout/free-trials).
              */
             payment_method_collection?: PaymentLinkCreateParams.PaymentMethodCollection;
 
             /**
-             * The list of payment method types that customers can use. If no value is passed, ExpressPlatby will dynamically show relevant payment methods from your [payment method settings](https://dashboard.expressplatby.cz/settings/payment_methods) (20+ payment methods [supported](https://expressplatby.cz/docs/payments/payment-methods/integration-options#payment-method-product-support)).
+             * The list of payment method types that customers can use. If no value is passed, ExpressPayments will dynamically show relevant payment methods from your [payment method settings](https://dashboard.epayments.network/settings/payment_methods) (20+ payment methods [supported](https://docs.epayments.network/payments/payment-methods/integration-options#payment-method-product-support)).
              */
             payment_method_types?: Array<
                 PaymentLinkCreateParams.PaymentMethodType
@@ -117,12 +117,12 @@ declare module 'expressplatby' {
             shipping_address_collection?: PaymentLinkCreateParams.ShippingAddressCollection;
 
             /**
-             * The shipping rate options to apply to [checkout sessions](https://expressplatby.cz/docs/api/checkout/sessions) created by this payment link.
+             * The shipping rate options to apply to [checkout sessions](https://docs.epayments.network/api/checkout/sessions) created by this payment link.
              */
             shipping_options?: Array<PaymentLinkCreateParams.ShippingOption>;
 
             /**
-             * Describes the type of transaction being performed in order to customize relevant text on the page, such as the submit button. Changing this value will also affect the hostname in the [url](https://expressplatby.cz/docs/api/payment_links/payment_links/object#url) property (example: `donate.expressplatby.cz`).
+             * Describes the type of transaction being performed in order to customize relevant text on the page, such as the submit button. Changing this value will also affect the hostname in the [url](https://docs.epayments.network/api/payment_links/payment_links/object#url) property (example: `donate.epayments.network`).
              */
             submit_type?: PaymentLinkCreateParams.SubmitType;
 
@@ -170,7 +170,7 @@ declare module 'expressplatby' {
 
                 interface Redirect {
                     /**
-                     * The URL the customer will be redirected to after the purchase is complete. You can embed `{CHECKOUT_SESSION_ID}` into the URL to have the `id` of the completed [checkout session](https://expressplatby.cz/docs/api/checkout/sessions/object#checkout_session_object-id) included.
+                     * The URL the customer will be redirected to after the purchase is complete. You can embed `{CHECKOUT_SESSION_ID}` into the URL to have the `id` of the completed [checkout session](https://docs.epayments.network/api/checkout/sessions/object#checkout_session_object-id) included.
                      */
                     url: string;
                 }
@@ -197,7 +197,7 @@ declare module 'expressplatby' {
 
                 /**
                  * If set to `required`, it requires customers to check a terms of service checkbox before being able to pay.
-                 * There must be a valid terms of service URL set in your [Dashboard settings](https://dashboard.expressplatby.cz/settings/public).
+                 * There must be a valid terms of service URL set in your [Dashboard settings](https://dashboard.epayments.network/settings/public).
                  */
                 terms_of_service?: ConsentCollection.TermsOfService;
             }
@@ -312,14 +312,14 @@ declare module 'expressplatby' {
                 /**
                  * Custom text that should be displayed alongside shipping address collection.
                  */
-                shipping_address?: ExpressPlatby.Emptyable<
+                shipping_address?: ExpressPayments.Emptyable<
                     CustomText.ShippingAddress
                 >;
 
                 /**
                  * Custom text that should be displayed alongside the payment confirmation button.
                  */
-                submit?: ExpressPlatby.Emptyable<CustomText.Submit>;
+                submit?: ExpressPayments.Emptyable<CustomText.Submit>;
             }
 
             namespace CustomText {
@@ -355,12 +355,12 @@ declare module 'expressplatby' {
                     /**
                      * The account tax IDs associated with the invoice.
                      */
-                    account_tax_ids?: ExpressPlatby.Emptyable<Array<string>>;
+                    account_tax_ids?: ExpressPayments.Emptyable<Array<string>>;
 
                     /**
                      * Default custom fields to be displayed on invoices for this customer.
                      */
-                    custom_fields?: ExpressPlatby.Emptyable<
+                    custom_fields?: ExpressPayments.Emptyable<
                         Array<InvoiceData.CustomField>
                     >;
 
@@ -375,16 +375,16 @@ declare module 'expressplatby' {
                     footer?: string;
 
                     /**
-                     * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                     * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                      */
-                    metadata?: ExpressPlatby.Emptyable<
-                        ExpressPlatby.MetadataParam
+                    metadata?: ExpressPayments.Emptyable<
+                        ExpressPayments.MetadataParam
                     >;
 
                     /**
                      * Default options for invoice PDF rendering for this customer.
                      */
-                    rendering_options?: ExpressPlatby.Emptyable<
+                    rendering_options?: ExpressPayments.Emptyable<
                         InvoiceData.RenderingOptions
                     >;
                 }
@@ -406,7 +406,7 @@ declare module 'expressplatby' {
                         /**
                          * How line-item prices and amounts will be displayed with respect to tax on invoice PDFs. One of `exclude_tax` or `include_inclusive_tax`. `include_inclusive_tax` will include inclusive tax (and exclude exclusive tax) in invoice PDF amounts. `exclude_tax` will exclude all tax (inclusive and exclusive alike) from invoice PDF amounts.
                          */
-                        amount_tax_display?: ExpressPlatby.Emptyable<
+                        amount_tax_display?: ExpressPayments.Emptyable<
                             RenderingOptions.AmountTaxDisplay
                         >;
                     }
@@ -426,7 +426,7 @@ declare module 'expressplatby' {
                 adjustable_quantity?: LineItem.AdjustableQuantity;
 
                 /**
-                 * The ID of the [Price](https://expressplatby.cz/docs/api/prices) or [Plan](https://expressplatby.cz/docs/api/plans) object.
+                 * The ID of the [Price](https://docs.epayments.network/api/prices) or [Plan](https://docs.epayments.network/api/plans) object.
                  */
                 price: string;
 
@@ -462,7 +462,7 @@ declare module 'expressplatby' {
                 capture_method?: PaymentIntentData.CaptureMethod;
 
                 /**
-                 * Indicates that you intend to [make future payments](https://expressplatby.cz/docs/payments/payment-intents#future-usage) with the payment method collected by this Checkout Session.
+                 * Indicates that you intend to [make future payments](https://docs.epayments.network/payments/payment-intents#future-usage) with the payment method collected by this Checkout Session.
                  *
                  * When setting this to `on_session`, Checkout will show a notice to the customer that their payment details will be saved.
                  *
@@ -853,7 +853,7 @@ declare module 'expressplatby' {
             /**
              * Collect additional information from your customer using custom fields. Up to 2 fields are supported.
              */
-            custom_fields?: ExpressPlatby.Emptyable<
+            custom_fields?: ExpressPayments.Emptyable<
                 Array<PaymentLinkUpdateParams.CustomField>
             >;
 
@@ -863,7 +863,7 @@ declare module 'expressplatby' {
             custom_text?: PaymentLinkUpdateParams.CustomText;
 
             /**
-             * Configures whether [checkout sessions](https://expressplatby.cz/docs/api/checkout/sessions) created by this payment link create a [Customer](https://expressplatby.cz/docs/api/customers).
+             * Configures whether [checkout sessions](https://docs.epayments.network/api/checkout/sessions) created by this payment link create a [Customer](https://docs.epayments.network/api/customers).
              */
             customer_creation?: PaymentLinkUpdateParams.CustomerCreation;
 
@@ -883,30 +883,30 @@ declare module 'expressplatby' {
             line_items?: Array<PaymentLinkUpdateParams.LineItem>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`. Metadata associated with this Payment Link will automatically be copied to [checkout sessions](https://expressplatby.cz/docs/api/checkout/sessions) created by this payment link.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`. Metadata associated with this Payment Link will automatically be copied to [checkout sessions](https://docs.epayments.network/api/checkout/sessions) created by this payment link.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * Specify whether Checkout should collect a payment method. When set to `if_required`, Checkout will not collect a payment method when the total due for the session is 0.This may occur if the Checkout Session includes a free trial or a discount.
              *
              * Can only be set in `subscription` mode.
              *
-             * If you'd like information on how to collect a payment method outside of Checkout, read the guide on [configuring subscriptions with a free trial](https://expressplatby.cz/docs/payments/checkout/free-trials).
+             * If you'd like information on how to collect a payment method outside of Checkout, read the guide on [configuring subscriptions with a free trial](https://docs.epayments.network/payments/checkout/free-trials).
              */
             payment_method_collection?: PaymentLinkUpdateParams.PaymentMethodCollection;
 
             /**
-             * The list of payment method types that customers can use. Pass an empty string to enable automatic payment methods that use your [payment method settings](https://dashboard.expressplatby.cz/settings/payment_methods).
+             * The list of payment method types that customers can use. Pass an empty string to enable automatic payment methods that use your [payment method settings](https://dashboard.epayments.network/settings/payment_methods).
              */
-            payment_method_types?: ExpressPlatby.Emptyable<
+            payment_method_types?: ExpressPayments.Emptyable<
                 Array<PaymentLinkUpdateParams.PaymentMethodType>
             >;
 
             /**
              * Configuration for collecting the customer's shipping address.
              */
-            shipping_address_collection?: ExpressPlatby.Emptyable<
+            shipping_address_collection?: ExpressPayments.Emptyable<
                 PaymentLinkUpdateParams.ShippingAddressCollection
             >;
         }
@@ -939,7 +939,7 @@ declare module 'expressplatby' {
 
                 interface Redirect {
                     /**
-                     * The URL the customer will be redirected to after the purchase is complete. You can embed `{CHECKOUT_SESSION_ID}` into the URL to have the `id` of the completed [checkout session](https://expressplatby.cz/docs/api/checkout/sessions/object#checkout_session_object-id) included.
+                     * The URL the customer will be redirected to after the purchase is complete. You can embed `{CHECKOUT_SESSION_ID}` into the URL to have the `id` of the completed [checkout session](https://docs.epayments.network/api/checkout/sessions/object#checkout_session_object-id) included.
                      */
                     url: string;
                 }
@@ -1060,14 +1060,14 @@ declare module 'expressplatby' {
                 /**
                  * Custom text that should be displayed alongside shipping address collection.
                  */
-                shipping_address?: ExpressPlatby.Emptyable<
+                shipping_address?: ExpressPayments.Emptyable<
                     CustomText.ShippingAddress
                 >;
 
                 /**
                  * Custom text that should be displayed alongside the payment confirmation button.
                  */
-                submit?: ExpressPlatby.Emptyable<CustomText.Submit>;
+                submit?: ExpressPayments.Emptyable<CustomText.Submit>;
             }
 
             namespace CustomText {
@@ -1103,12 +1103,12 @@ declare module 'expressplatby' {
                     /**
                      * The account tax IDs associated with the invoice.
                      */
-                    account_tax_ids?: ExpressPlatby.Emptyable<Array<string>>;
+                    account_tax_ids?: ExpressPayments.Emptyable<Array<string>>;
 
                     /**
                      * Default custom fields to be displayed on invoices for this customer.
                      */
-                    custom_fields?: ExpressPlatby.Emptyable<
+                    custom_fields?: ExpressPayments.Emptyable<
                         Array<InvoiceData.CustomField>
                     >;
 
@@ -1123,16 +1123,16 @@ declare module 'expressplatby' {
                     footer?: string;
 
                     /**
-                     * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                     * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                      */
-                    metadata?: ExpressPlatby.Emptyable<
-                        ExpressPlatby.MetadataParam
+                    metadata?: ExpressPayments.Emptyable<
+                        ExpressPayments.MetadataParam
                     >;
 
                     /**
                      * Default options for invoice PDF rendering for this customer.
                      */
-                    rendering_options?: ExpressPlatby.Emptyable<
+                    rendering_options?: ExpressPayments.Emptyable<
                         InvoiceData.RenderingOptions
                     >;
                 }
@@ -1154,7 +1154,7 @@ declare module 'expressplatby' {
                         /**
                          * How line-item prices and amounts will be displayed with respect to tax on invoice PDFs. One of `exclude_tax` or `include_inclusive_tax`. `include_inclusive_tax` will include inclusive tax (and exclude exclusive tax) in invoice PDF amounts. `exclude_tax` will exclude all tax (inclusive and exclusive alike) from invoice PDF amounts.
                          */
-                        amount_tax_display?: ExpressPlatby.Emptyable<
+                        amount_tax_display?: ExpressPayments.Emptyable<
                             RenderingOptions.AmountTaxDisplay
                         >;
                     }
@@ -1513,7 +1513,7 @@ declare module 'expressplatby' {
             create(
                 params: PaymentLinkCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentLink>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentLink>>;
 
             /**
              * Retrieve a payment link.
@@ -1522,11 +1522,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PaymentLinkRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentLink>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentLink>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentLink>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentLink>>;
 
             /**
              * Updates a payment link.
@@ -1535,7 +1535,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PaymentLinkUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentLink>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentLink>>;
 
             /**
              * Returns a list of your payment links.
@@ -1543,10 +1543,10 @@ declare module 'expressplatby' {
             list(
                 params?: PaymentLinkListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PaymentLink>;
+            ): ApiListPromise<ExpressPayments.PaymentLink>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PaymentLink>;
+            ): ApiListPromise<ExpressPayments.PaymentLink>;
 
             /**
              * When retrieving a payment link, there is an includable line_items property containing the first handful of those items. There is also a URL where you can retrieve the full (paginated) list of line items.
@@ -1555,11 +1555,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PaymentLinkListLineItemsParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.LineItem>;
+            ): ApiListPromise<ExpressPayments.LineItem>;
             listLineItems(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.LineItem>;
+            ): ApiListPromise<ExpressPayments.LineItem>;
         }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Customers with certain payments enabled have a cash balance, representing funds that were paid
          * by the customer to a merchant, but have not yet been allocated to a payment. Cash Balance Transactions
@@ -27,17 +27,17 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
             /**
              * The customer whose available cash balance changed as a result of this transaction.
              */
-            customer: string | ExpressPlatby.Customer;
+            customer: string | ExpressPayments.Customer;
 
             /**
-             * The total available cash balance for the specified currency after this transaction was applied. Represented in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+             * The total available cash balance for the specified currency after this transaction was applied. Represented in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
              */
             ending_balance: number;
 
@@ -49,14 +49,14 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * The amount by which the cash balance changed, represented in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal). A positive value represents funds being added to the cash balance, a negative value represents funds being removed from the cash balance.
+             * The amount by which the cash balance changed, represented in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal). A positive value represents funds being added to the cash balance, a negative value represents funds being removed from the cash balance.
              */
             net_amount: number;
 
             refunded_from_payment?: CustomerCashBalanceTransaction.RefundedFromPayment;
 
             /**
-             * The type of the cash balance transaction. One of `applied_to_payment`, `unapplied_from_payment`, `refunded_from_payment`, `funded`, `return_initiated`, or `return_canceled`. New types may be added in future. See [Customer Balance](https://expressplatby.cz/docs/payments/customer-balance#types) to learn more about these types.
+             * The type of the cash balance transaction. One of `applied_to_payment`, `unapplied_from_payment`, `refunded_from_payment`, `funded`, `return_initiated`, or `return_canceled`. New types may be added in future. See [Customer Balance](https://docs.epayments.network/payments/customer-balance#types) to learn more about these types.
              */
             type: CustomerCashBalanceTransaction.Type;
 
@@ -66,9 +66,9 @@ declare module 'expressplatby' {
         namespace CustomerCashBalanceTransaction {
             interface AppliedToPayment {
                 /**
-                 * The [Payment Intent](https://expressplatby.cz/docs/api/payment_intents/object) that funds were applied to.
+                 * The [Payment Intent](https://docs.epayments.network/api/payment_intents/object) that funds were applied to.
                  */
-                payment_intent: string | ExpressPlatby.PaymentIntent;
+                payment_intent: string | ExpressPayments.PaymentIntent;
             }
 
             interface Funded {
@@ -175,9 +175,9 @@ declare module 'expressplatby' {
 
             interface RefundedFromPayment {
                 /**
-                 * The [Refund](https://expressplatby.cz/docs/api/refunds/object) that moved these funds into the customer's cash balance.
+                 * The [Refund](https://docs.epayments.network/api/refunds/object) that moved these funds into the customer's cash balance.
                  */
-                refund: string | ExpressPlatby.Refund;
+                refund: string | ExpressPayments.Refund;
             }
 
             type Type =
@@ -191,9 +191,9 @@ declare module 'expressplatby' {
 
             interface UnappliedFromPayment {
                 /**
-                 * The [Payment Intent](https://expressplatby.cz/docs/api/payment_intents/object) that funds were unapplied from.
+                 * The [Payment Intent](https://docs.epayments.network/api/payment_intents/object) that funds were unapplied from.
                  */
-                payment_intent: string | ExpressPlatby.PaymentIntent;
+                payment_intent: string | ExpressPayments.PaymentIntent;
             }
         }
     }

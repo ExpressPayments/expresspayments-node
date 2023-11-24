@@ -1,10 +1,10 @@
 // @ts-nocheck
 
 import {expect} from 'chai';
-import {ExpressPlatbySignatureVerificationError} from '../src/Error.js';
-import {FakeCryptoProvider, getSpyableExpressPlatby} from './testUtils.js';
+import {ExpressPaymentsSignatureVerificationError} from '../src/Error.js';
+import {FakeCryptoProvider, getSpyableExpressPayments} from './testUtils.js';
 
-const expressPlatby = getSpyableExpressPlatby();
+const expressPayments = getSpyableExpressPayments();
 
 const EVENT_PAYLOAD = {
     id: 'evt_test_webhook',
@@ -17,12 +17,12 @@ describe('Webhooks', () => {
     describe('.generateTestHeaderString', () => {
         it('should throw when no opts are passed', () => {
             expect(() => {
-                expressPlatby.webhooks.generateTestHeaderString();
+                expressPayments.webhooks.generateTestHeaderString();
             }).to.throw();
         });
 
         it('should correctly construct a webhook header', () => {
-            const header = expressPlatby.webhooks.generateTestHeaderString({
+            const header = expressPayments.webhooks.generateTestHeaderString({
                 payload: EVENT_PAYLOAD_STRING,
                 secret: SECRET,
             });
@@ -33,11 +33,11 @@ describe('Webhooks', () => {
     });
 
     const makeConstructEventTests = (
-        constructEventFn: typeof expressPlatby.webhooks.construct
+        constructEventFn: typeof expressPayments.webhooks.construct
     ) => {
         return (): void => {
             it('should return an Event instance from a valid JSON payload and valid signature header', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
                 });
@@ -52,7 +52,7 @@ describe('Webhooks', () => {
             });
 
             it('should return an Event instance from a payload and header with type Buffer', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
                 });
@@ -67,7 +67,7 @@ describe('Webhooks', () => {
             });
 
             it('should return an Event instance from a payload and header with type Uint8Array', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
                 });
@@ -83,7 +83,7 @@ describe('Webhooks', () => {
             });
 
             it('should raise a JSON error from invalid JSON payload', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: '} I am not valid JSON; 123][',
                     secret: SECRET,
                 });
@@ -129,7 +129,7 @@ describe('Webhooks', () => {
             });
 
             it('should error if you pass a signature which is an array, even though our types say you can', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
                 });
@@ -137,12 +137,12 @@ describe('Webhooks', () => {
                 await expect(
                     constructEventFn(EVENT_PAYLOAD_STRING, [header], SECRET)
                 ).to.be.rejectedWith(
-                    'Unexpected: An array was passed as a header, which should not be possible for the expressplatby-signature header.'
+                    'Unexpected: An array was passed as a header, which should not be possible for the ep-signature header.'
                 );
             });
 
             it('should invoke a custom CryptoProvider', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
                     signature: 'fake signature',
@@ -164,7 +164,7 @@ describe('Webhooks', () => {
     describe(
         '.constructEvent',
         makeConstructEventTests(async (...args: any) => {
-            const result = await expressPlatby.webhooks.constructEvent(...args);
+            const result = await expressPayments.webhooks.constructEvent(...args);
             return result;
         })
     );
@@ -172,12 +172,12 @@ describe('Webhooks', () => {
     describe(
         '.constructEventAsync',
         makeConstructEventTests((...args: any) =>
-            expressPlatby.webhooks.constructEventAsync(...args)
+            expressPayments.webhooks.constructEventAsync(...args)
         )
     );
 
     const makeVerifySignatureHeaderTests = (
-        verifyHeaderFn: typeof expressPlatby.webhooks.verify
+        verifyHeaderFn: typeof expressPayments.webhooks.verify
     ) => {
         return (): void => {
             it('should raise a SignatureVerificationError when the header does not have the expected format', async () => {
@@ -188,38 +188,38 @@ describe('Webhooks', () => {
                 await expect(
                     verifyHeaderFn(EVENT_PAYLOAD_STRING, header, SECRET)
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     expectedMessage
                 );
             });
 
             it('should raise a SignatureVerificationError when the header is null or empty', async () => {
-                const expectedMessage = /No expressplatby-signature header value was provided./;
+                const expectedMessage = /No ep-signature header value was provided./;
 
                 await expect(
                     verifyHeaderFn(EVENT_PAYLOAD_STRING, null, SECRET)
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     expectedMessage
                 );
 
                 await expect(
                     verifyHeaderFn(EVENT_PAYLOAD_STRING, undefined, SECRET)
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     expectedMessage
                 );
 
                 await expect(
                     verifyHeaderFn(EVENT_PAYLOAD_STRING, '', SECRET)
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     expectedMessage
                 );
             });
 
             it('should raise a SignatureVerificationError when there are no signatures with the expected scheme', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
                     scheme: 'v0',
@@ -228,13 +228,13 @@ describe('Webhooks', () => {
                 await expect(
                     verifyHeaderFn(EVENT_PAYLOAD_STRING, header, SECRET)
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     /No signatures found with expected scheme/
                 );
             });
 
             it('should raise a SignatureVerificationError when there are no valid signatures for the payload', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
                     signature: 'bad_signature',
@@ -243,14 +243,14 @@ describe('Webhooks', () => {
                 await expect(
                     verifyHeaderFn(EVENT_PAYLOAD_STRING, header, SECRET)
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     /No signatures found matching the expected signature for payload/
                 );
             });
 
             it('should raise a SignatureVerificationError when the timestamp is not within the tolerance of the provided timestamp', async () => {
                 const receivedAt = 20000000;
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     timestamp: receivedAt / 1000 - 15,
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
@@ -266,13 +266,13 @@ describe('Webhooks', () => {
                         receivedAt
                     )
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     /Timestamp outside the tolerance zone/
                 );
             });
 
             it('should raise a SignatureVerificationError when the timestamp is not within the tolerance of Date.now()', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     timestamp: Date.now() / 1000 - 15,
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
@@ -281,7 +281,7 @@ describe('Webhooks', () => {
                 await expect(
                     verifyHeaderFn(EVENT_PAYLOAD_STRING, header, SECRET, 10)
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     /Timestamp outside the tolerance zone/
                 );
             });
@@ -290,7 +290,7 @@ describe('Webhooks', () => {
                 'should return true when the header contains a valid signature and ' +
                     'the timestamp is within the tolerance of Date.now()',
                 async () => {
-                    const header = expressPlatby.webhooks.generateTestHeaderString(
+                    const header = expressPayments.webhooks.generateTestHeaderString(
                         {
                             timestamp: Date.now() / 1000,
                             payload: EVENT_PAYLOAD_STRING,
@@ -314,7 +314,7 @@ describe('Webhooks', () => {
                     'the timestamp is within the tolerance of the provided timestamp',
                 async () => {
                     const receivedAt = 20000000;
-                    const header = expressPlatby.webhooks.generateTestHeaderString(
+                    const header = expressPayments.webhooks.generateTestHeaderString(
                         {
                             timestamp: receivedAt / 1000 - 9,
                             payload: EVENT_PAYLOAD_STRING,
@@ -336,7 +336,7 @@ describe('Webhooks', () => {
             );
 
             it('should return true when the header contains at least one valid signature', async () => {
-                let header = expressPlatby.webhooks.generateTestHeaderString({
+                let header = expressPayments.webhooks.generateTestHeaderString({
                     timestamp: Date.now() / 1000,
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
@@ -358,7 +358,7 @@ describe('Webhooks', () => {
                 'should return true when the header contains a valid signature ' +
                     'and the timestamp is off but no tolerance is provided',
                 async () => {
-                    const header = expressPlatby.webhooks.generateTestHeaderString(
+                    const header = expressPayments.webhooks.generateTestHeaderString(
                         {
                             timestamp: 12345,
                             payload: EVENT_PAYLOAD_STRING,
@@ -377,7 +377,7 @@ describe('Webhooks', () => {
             );
 
             it('should accept Buffer instances for the payload and header', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     timestamp: Date.now() / 1000,
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
@@ -394,7 +394,7 @@ describe('Webhooks', () => {
             });
 
             it('should raise a SignatureVerificationError when payload is of an unknown type', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
                 });
@@ -402,19 +402,19 @@ describe('Webhooks', () => {
                 await expect(
                     verifyHeaderFn({}, header, SECRET)
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     /Webhook payload must be provided as a string or a Buffer/
                 );
                 await expect(
                     verifyHeaderFn(new Date(), header, SECRET)
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     /Webhook payload must be provided as a string or a Buffer/
                 );
             });
 
             it('should raise a SignatureVerificationError when the signing secret contians whitespace', async () => {
-                const header = expressPlatby.webhooks.generateTestHeaderString({
+                const header = expressPayments.webhooks.generateTestHeaderString({
                     payload: EVENT_PAYLOAD_STRING,
                     secret: SECRET,
                 });
@@ -422,7 +422,7 @@ describe('Webhooks', () => {
                 await expect(
                     verifyHeaderFn(EVENT_PAYLOAD_STRING, header, SECRET + ' ')
                 ).to.be.rejectedWith(
-                    ExpressPlatbySignatureVerificationError,
+                    ExpressPaymentsSignatureVerificationError,
                     /The provided signing secret contains whitespace/
                 );
             });
@@ -431,7 +431,7 @@ describe('Webhooks', () => {
                 const cryptoProvider = new FakeCryptoProvider();
 
                 it('should use the provider to compute a signature (mismatch)', async () => {
-                    const header = expressPlatby.webhooks.generateTestHeaderString(
+                    const header = expressPayments.webhooks.generateTestHeaderString(
                         {
                             payload: EVENT_PAYLOAD_STRING,
                             secret: SECRET,
@@ -453,7 +453,7 @@ describe('Webhooks', () => {
                     );
                 });
                 it('should use the provider to compute a signature (success)', async () => {
-                    const header = expressPlatby.webhooks.generateTestHeaderString(
+                    const header = expressPayments.webhooks.generateTestHeaderString(
                         {
                             payload: EVENT_PAYLOAD_STRING,
                             secret: SECRET,
@@ -479,7 +479,7 @@ describe('Webhooks', () => {
     describe(
         '.verifySignatureHeader',
         makeVerifySignatureHeaderTests(async (...args: any) => {
-            const result = await expressPlatby.webhooks.signature.verifyHeader(
+            const result = await expressPayments.webhooks.signature.verifyHeader(
                 ...args
             );
             return result;
@@ -489,7 +489,7 @@ describe('Webhooks', () => {
     describe(
         '.verifySignatureHeaderAsync',
         makeVerifySignatureHeaderTests((...args: any) =>
-            expressPlatby.webhooks.signature.verifyHeaderAsync(...args)
+            expressPayments.webhooks.signature.verifyHeaderAsync(...args)
         )
     );
 });

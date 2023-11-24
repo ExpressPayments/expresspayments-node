@@ -1,63 +1,64 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const PaymentIntents = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/payment_intents',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/payment_intents/{intent}',
-  }),
+export const PaymentIntents = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/payment_intents',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/payment_intents/{intent}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/payment_intents/{intent}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/payment_intents',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/payment_intents/{intent}',
+    }),
 
-  applyCustomerBalance: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/payment_intents/{intent}/apply_customer_balance',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/payment_intents',
+        methodType: 'list',
+    }),
 
-  cancel: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/payment_intents/{intent}/cancel',
-  }),
+    applyCustomerBalance: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/payment_intents/{intent}/apply_customer_balance',
+    }),
 
-  capture: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/payment_intents/{intent}/capture',
-  }),
+    cancel: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/payment_intents/{intent}/cancel',
+    }),
 
-  confirm: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/payment_intents/{intent}/confirm',
-  }),
+    capture: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/payment_intents/{intent}/capture',
+    }),
 
-  incrementAuthorization: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/payment_intents/{intent}/increment_authorization',
-  }),
+    confirm: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/payment_intents/{intent}/confirm',
+    }),
 
-  search: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/payment_intents/search',
-    methodType: 'search',
-  }),
+    incrementAuthorization: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/payment_intents/{intent}/increment_authorization',
+    }),
 
-  verifyMicrodeposits: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/payment_intents/{intent}/verify_microdeposits',
-  }),
+    search: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/payment_intents/search',
+        methodType: 'search',
+    }),
+
+    verifyMicrodeposits: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/payment_intents/{intent}/verify_microdeposits',
+    }),
 });

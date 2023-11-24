@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface DisputeRetrieveParams {
             /**
              * Specifies which fields in the response should be expanded.
@@ -21,9 +21,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Whether to immediately submit evidence to the bank. If `false`, evidence is staged on the dispute. Staged evidence is visible in the API and Dashboard, and can be submitted to the bank by making another request with this attribute set to `true` (the default).
@@ -44,7 +44,7 @@ declare module 'expressplatby' {
                 billing_address?: string;
 
                 /**
-                 * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Your subscription cancellation policy, as shown to the customer.
+                 * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Your subscription cancellation policy, as shown to the customer.
                  */
                 cancellation_policy?: string;
 
@@ -59,7 +59,7 @@ declare module 'expressplatby' {
                 cancellation_rebuttal?: string;
 
                 /**
-                 * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Any communication with the customer that you feel is relevant to your case. Examples include emails proving that the customer received the product or service, or demonstrating their use of or satisfaction with the product or service.
+                 * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Any communication with the customer that you feel is relevant to your case. Examples include emails proving that the customer received the product or service, or demonstrating their use of or satisfaction with the product or service.
                  */
                 customer_communication?: string;
 
@@ -79,12 +79,12 @@ declare module 'expressplatby' {
                 customer_purchase_ip?: string;
 
                 /**
-                 * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) A relevant document or contract showing the customer's signature.
+                 * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) A relevant document or contract showing the customer's signature.
                  */
                 customer_signature?: string;
 
                 /**
-                 * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Documentation for the prior charge that can uniquely identify the charge, such as a receipt, shipping label, work order, etc. This document should be paired with a similar document from the disputed payment that proves the two payments are separate.
+                 * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Documentation for the prior charge that can uniquely identify the charge, such as a receipt, shipping label, work order, etc. This document should be paired with a similar document from the disputed payment that proves the two payments are separate.
                  */
                 duplicate_charge_documentation?: string;
 
@@ -94,7 +94,7 @@ declare module 'expressplatby' {
                 duplicate_charge_explanation?: string;
 
                 /**
-                 * The ExpressPlatby ID for the prior charge which appears to be a duplicate of the disputed charge.
+                 * The ExpressPayments ID for the prior charge which appears to be a duplicate of the disputed charge.
                  */
                 duplicate_charge_id?: string;
 
@@ -104,12 +104,12 @@ declare module 'expressplatby' {
                 product_description?: string;
 
                 /**
-                 * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Any receipt or message sent to the customer notifying them of the charge.
+                 * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Any receipt or message sent to the customer notifying them of the charge.
                  */
                 receipt?: string;
 
                 /**
-                 * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Your refund policy, as shown to the customer.
+                 * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Your refund policy, as shown to the customer.
                  */
                 refund_policy?: string;
 
@@ -129,7 +129,7 @@ declare module 'expressplatby' {
                 service_date?: string;
 
                 /**
-                 * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Documentation showing proof that a service was provided to the customer. This could include a copy of a signed contract, work order, or other form of written agreement.
+                 * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Documentation showing proof that a service was provided to the customer. This could include a copy of a signed contract, work order, or other form of written agreement.
                  */
                 service_documentation?: string;
 
@@ -149,7 +149,7 @@ declare module 'expressplatby' {
                 shipping_date?: string;
 
                 /**
-                 * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Documentation showing proof that a product was shipped to the customer at the same address the customer provided to you. This could include a copy of the shipment receipt, shipping label, etc. It should show the customer's full shipping address, if possible.
+                 * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Documentation showing proof that a product was shipped to the customer at the same address the customer provided to you. This could include a copy of the shipment receipt, shipping label, etc. It should show the customer's full shipping address, if possible.
                  */
                 shipping_documentation?: string;
 
@@ -159,7 +159,7 @@ declare module 'expressplatby' {
                 shipping_tracking_number?: string;
 
                 /**
-                 * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Any additional evidence or statements.
+                 * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Any additional evidence or statements.
                  */
                 uncategorized_file?: string;
 
@@ -176,7 +176,7 @@ declare module 'expressplatby' {
              */
             charge?: string;
 
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -204,22 +204,22 @@ declare module 'expressplatby' {
                 id: string,
                 params?: DisputeRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Dispute>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Dispute>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Dispute>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Dispute>>;
 
             /**
-             * When you get a dispute, contacting your customer is always the best first step. If that doesn't work, you can submit evidence to help us resolve the dispute in your favor. You can do this in your [dashboard](https://dashboard.expressplatby.cz/disputes), but if you prefer, you can use the API to submit evidence programmatically.
+             * When you get a dispute, contacting your customer is always the best first step. If that doesn't work, you can submit evidence to help us resolve the dispute in your favor. You can do this in your [dashboard](https://dashboard.epayments.network/disputes), but if you prefer, you can use the API to submit evidence programmatically.
              *
-             * Depending on your dispute type, different evidence fields will give you a better chance of winning your dispute. To figure out which evidence fields to provide, see our [guide to dispute types](https://expressplatby.cz/docs/disputes/categories).
+             * Depending on your dispute type, different evidence fields will give you a better chance of winning your dispute. To figure out which evidence fields to provide, see our [guide to dispute types](https://docs.epayments.network/disputes/categories).
              */
             update(
                 id: string,
                 params?: DisputeUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Dispute>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Dispute>>;
 
             /**
              * Returns a list of your disputes.
@@ -227,10 +227,10 @@ declare module 'expressplatby' {
             list(
                 params?: DisputeListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Dispute>;
+            ): ApiListPromise<ExpressPayments.Dispute>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Dispute>;
+            ): ApiListPromise<ExpressPayments.Dispute>;
 
             /**
              * Closing the dispute for a charge indicates that you do not have any evidence to submit and are essentially dismissing the dispute, acknowledging it as lost.
@@ -241,11 +241,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: DisputeCloseParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Dispute>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Dispute>>;
             close(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Dispute>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Dispute>>;
         }
     }
 }

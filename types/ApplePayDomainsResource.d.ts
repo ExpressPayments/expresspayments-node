@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface ApplePayDomainCreateParams {
             domain_name: string;
 
@@ -36,7 +36,7 @@ declare module 'expressplatby' {
             create(
                 params: ApplePayDomainCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ApplePayDomain>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ApplePayDomain>>;
 
             /**
              * Retrieve an apple pay domain.
@@ -45,11 +45,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: ApplePayDomainRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ApplePayDomain>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ApplePayDomain>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ApplePayDomain>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ApplePayDomain>>;
 
             /**
              * List apple pay domains.
@@ -57,10 +57,10 @@ declare module 'expressplatby' {
             list(
                 params?: ApplePayDomainListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.ApplePayDomain>;
+            ): ApiListPromise<ExpressPayments.ApplePayDomain>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.ApplePayDomain>;
+            ): ApiListPromise<ExpressPayments.ApplePayDomain>;
 
             /**
              * Delete an apple pay domain.
@@ -70,13 +70,13 @@ declare module 'expressplatby' {
                 params?: ApplePayDomainDeleteParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.DeletedApplePayDomain>
+                ExpressPayments.Response<ExpressPayments.DeletedApplePayDomain>
             >;
             del(
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.DeletedApplePayDomain>
+                ExpressPayments.Response<ExpressPayments.DeletedApplePayDomain>
             >;
         }
     }

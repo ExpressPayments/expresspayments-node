@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * The `Charge` object represents a single attempt to move money into your ExpressPlatby account.
+         * The `Charge` object represents a single attempt to move money into your ExpressPayments account.
          * PaymentIntent confirmation is the most common way to create Charges, but transferring
-         * money to a different ExpressPlatby account through Connect also creates Charges.
+         * money to a different ExpressPayments account through Connect also creates Charges.
          * Some legacy payment flows create Charges directly, which is not recommended for new integrations.
          */
         interface Charge {
@@ -22,7 +22,7 @@ declare module 'expressplatby' {
             alternate_statement_descriptors?: Charge.AlternateStatementDescriptors;
 
             /**
-             * Amount intended to be collected by this payment. A positive integer representing how much to charge in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://expressplatby.cz/docs/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
+             * Amount intended to be collected by this payment. A positive integer representing how much to charge in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://docs.epayments.network/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
              */
             amount: number;
 
@@ -39,15 +39,15 @@ declare module 'expressplatby' {
             /**
              * ID of the Connect application that created the charge.
              */
-            application: string | ExpressPlatby.Application | null;
+            application: string | ExpressPayments.Application | null;
 
             /**
-             * The application fee (if any) for the charge. [See the Connect documentation](https://expressplatby.cz/docs/connect/direct-charges#collecting-fees) for details.
+             * The application fee (if any) for the charge. [See the Connect documentation](https://docs.epayments.network/connect/direct-charges#collecting-fees) for details.
              */
-            application_fee: string | ExpressPlatby.ApplicationFee | null;
+            application_fee: string | ExpressPayments.ApplicationFee | null;
 
             /**
-             * The amount of the application fee (if any) requested for the charge. [See the Connect documentation](https://expressplatby.cz/docs/connect/direct-charges#collecting-fees) for details.
+             * The amount of the application fee (if any) requested for the charge. [See the Connect documentation](https://docs.epayments.network/connect/direct-charges#collecting-fees) for details.
              */
             application_fee_amount: number | null;
 
@@ -61,7 +61,7 @@ declare module 'expressplatby' {
              */
             balance_transaction:
                 | string
-                | ExpressPlatby.BalanceTransaction
+                | ExpressPayments.BalanceTransaction
                 | null;
 
             billing_details: Charge.BillingDetails;
@@ -82,7 +82,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -91,8 +91,8 @@ declare module 'expressplatby' {
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer
                 | null;
 
             /**
@@ -101,14 +101,14 @@ declare module 'expressplatby' {
             description: string | null;
 
             /**
-             * ID of an existing, connected ExpressPlatby account to transfer funds to if `transfer_data` was specified in the charge request.
+             * ID of an existing, connected ExpressPayments account to transfer funds to if `transfer_data` was specified in the charge request.
              */
-            destination: string | ExpressPlatby.Account | null;
+            destination: string | ExpressPayments.Account | null;
 
             /**
              * Details about the dispute if the charge has been disputed.
              */
-            dispute: string | ExpressPlatby.Dispute | null;
+            dispute: string | ExpressPayments.Dispute | null;
 
             /**
              * Whether the charge has been disputed.
@@ -120,11 +120,11 @@ declare module 'expressplatby' {
              */
             failure_balance_transaction:
                 | string
-                | ExpressPlatby.BalanceTransaction
+                | ExpressPayments.BalanceTransaction
                 | null;
 
             /**
-             * Error code explaining reason for charge failure if available (see [the errors section](https://expressplatby.cz/docs/error-codes) for a list of codes).
+             * Error code explaining reason for charge failure if available (see [the errors section](https://docs.epayments.network/error-codes) for a list of codes).
              */
             failure_code: string | null;
 
@@ -141,7 +141,7 @@ declare module 'expressplatby' {
             /**
              * ID of the invoice this charge is for if one exists.
              */
-            invoice: string | ExpressPlatby.Invoice | null;
+            invoice: string | ExpressPayments.Invoice | null;
 
             level3?: Charge.Level3;
 
@@ -151,17 +151,17 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
-             * The account (if any) the charge was made on behalf of without triggering an automatic transfer. See the [Connect documentation](https://expressplatby.cz/docs/connect/charges-transfers) for details.
+             * The account (if any) the charge was made on behalf of without triggering an automatic transfer. See the [Connect documentation](https://docs.epayments.network/connect/charges-transfers) for details.
              */
-            on_behalf_of: string | ExpressPlatby.Account | null;
+            on_behalf_of: string | ExpressPayments.Account | null;
 
             /**
-             * Details about whether the payment was accepted, and why. See [understanding declines](https://expressplatby.cz/docs/declines) for details.
+             * Details about whether the payment was accepted, and why. See [understanding declines](https://docs.epayments.network/declines) for details.
              */
             outcome: Charge.Outcome | null;
 
@@ -173,7 +173,7 @@ declare module 'expressplatby' {
             /**
              * ID of the PaymentIntent associated with this charge, if one exists.
              */
-            payment_intent: string | ExpressPlatby.PaymentIntent | null;
+            payment_intent: string | ExpressPayments.PaymentIntent | null;
 
             /**
              * ID of the payment method used in this charge.
@@ -186,7 +186,7 @@ declare module 'expressplatby' {
             payment_method_details: Charge.PaymentMethodDetails | null;
 
             /**
-             * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+             * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
              */
             radar_options?: Charge.RadarOptions;
 
@@ -213,12 +213,12 @@ declare module 'expressplatby' {
             /**
              * A list of refunds that have been applied to the charge.
              */
-            refunds: ApiList<ExpressPlatby.Refund> | null;
+            refunds: ApiList<ExpressPayments.Refund> | null;
 
             /**
              * ID of the review associated with this charge if one exists.
              */
-            review: string | ExpressPlatby.Review | null;
+            review: string | ExpressPayments.Review | null;
 
             /**
              * Shipping information for the charge.
@@ -228,12 +228,12 @@ declare module 'expressplatby' {
             /**
              * This is a legacy field that will be removed in the future. It contains the Source, Card, or BankAccount object used for the charge. For details about the payment method used for this charge, refer to `payment_method` or `payment_method_details` instead.
              */
-            source: ExpressPlatby.CustomerSource | null;
+            source: ExpressPayments.CustomerSource | null;
 
             /**
-             * The transfer ID which created this charge. Only present if the charge came from another ExpressPlatby account. [See the Connect documentation](https://expressplatby.cz/docs/connect/destination-charges) for details.
+             * The transfer ID which created this charge. Only present if the charge came from another ExpressPayments account. [See the Connect documentation](https://docs.epayments.network/connect/destination-charges) for details.
              */
-            source_transfer: string | ExpressPlatby.Transfer | null;
+            source_transfer: string | ExpressPayments.Transfer | null;
 
             /**
              * For card charges, use `statement_descriptor_suffix` instead. Otherwise, you can use this value as the complete description of a charge on your customers' statements. Must contain at least one letter, maximum 22 characters.
@@ -253,15 +253,15 @@ declare module 'expressplatby' {
             /**
              * ID of the transfer to the `destination` account (only applicable if the charge was created using the `destination` parameter).
              */
-            transfer?: string | ExpressPlatby.Transfer;
+            transfer?: string | ExpressPayments.Transfer;
 
             /**
-             * An optional dictionary including the account to automatically transfer to as part of a destination charge. [See the Connect documentation](https://expressplatby.cz/docs/connect/destination-charges) for details.
+             * An optional dictionary including the account to automatically transfer to as part of a destination charge. [See the Connect documentation](https://docs.epayments.network/connect/destination-charges) for details.
              */
             transfer_data: Charge.TransferData | null;
 
             /**
-             * A string that identifies this transaction as part of a group. See the [Connect documentation](https://expressplatby.cz/docs/connect/charges-transfers#transfer-options) for details.
+             * A string that identifies this transaction as part of a group. See the [Connect documentation](https://docs.epayments.network/connect/charges-transfers#transfer-options) for details.
              */
             transfer_group: string | null;
         }
@@ -283,7 +283,7 @@ declare module 'expressplatby' {
                 /**
                  * Billing address.
                  */
-                address: ExpressPlatby.Address | null;
+                address: ExpressPayments.Address | null;
 
                 /**
                  * Email address.
@@ -303,9 +303,9 @@ declare module 'expressplatby' {
 
             interface FraudDetails {
                 /**
-                 * Assessments from ExpressPlatby. If set, the value is `fraudulent`.
+                 * Assessments from ExpressPayments. If set, the value is `fraudulent`.
                  */
-                expressplatby_report?: string;
+                expresspayments_report?: string;
 
                 /**
                  * Assessments reported by you. If set, possible values of are `safe` and `fraudulent`.
@@ -345,22 +345,22 @@ declare module 'expressplatby' {
 
             interface Outcome {
                 /**
-                 * Possible values are `approved_by_network`, `declined_by_network`, `not_sent_to_network`, and `reversed_after_approval`. The value `reversed_after_approval` indicates the payment was [blocked by ExpressPlatby](https://expressplatby.cz/docs/declines#blocked-payments) after bank authorization, and may temporarily appear as "pending" on a cardholder's statement.
+                 * Possible values are `approved_by_network`, `declined_by_network`, `not_sent_to_network`, and `reversed_after_approval`. The value `reversed_after_approval` indicates the payment was [blocked by ExpressPayments](https://docs.epayments.network/declines#blocked-payments) after bank authorization, and may temporarily appear as "pending" on a cardholder's statement.
                  */
                 network_status: string | null;
 
                 /**
-                 * An enumerated value providing a more detailed explanation of the outcome's `type`. Charges blocked by Radar's default block rule have the value `highest_risk_level`. Charges placed in review by Radar's default review rule have the value `elevated_risk_level`. Charges authorized, blocked, or placed in review by custom rules have the value `rule`. See [understanding declines](https://expressplatby.cz/docs/declines) for more details.
+                 * An enumerated value providing a more detailed explanation of the outcome's `type`. Charges blocked by Radar's default block rule have the value `highest_risk_level`. Charges placed in review by Radar's default review rule have the value `elevated_risk_level`. Charges authorized, blocked, or placed in review by custom rules have the value `rule`. See [understanding declines](https://docs.epayments.network/declines) for more details.
                  */
                 reason: string | null;
 
                 /**
-                 * ExpressPlatby Radar's evaluation of the riskiness of the payment. Possible values for evaluated payments are `normal`, `elevated`, `highest`. For non-card payments, and card-based payments predating the public assignment of risk levels, this field will have the value `not_assessed`. In the event of an error in the evaluation, this field will have the value `unknown`. This field is only available with Radar.
+                 * ExpressPayments Radar's evaluation of the riskiness of the payment. Possible values for evaluated payments are `normal`, `elevated`, `highest`. For non-card payments, and card-based payments predating the public assignment of risk levels, this field will have the value `not_assessed`. In the event of an error in the evaluation, this field will have the value `unknown`. This field is only available with Radar.
                  */
                 risk_level?: string;
 
                 /**
-                 * ExpressPlatby Radar's evaluation of the riskiness of the payment. Possible values for evaluated payments are between 0 and 100. For non-card payments, card-based payments predating the public assignment of risk scores, or in the event of an error during evaluation, this field will not be present. This field is only available with Radar for Fraud Teams.
+                 * ExpressPayments Radar's evaluation of the riskiness of the payment. Possible values for evaluated payments are between 0 and 100. For non-card payments, card-based payments predating the public assignment of risk scores, or in the event of an error during evaluation, this field will not be present. This field is only available with Radar for Fraud Teams.
                  */
                 risk_score?: number;
 
@@ -375,7 +375,7 @@ declare module 'expressplatby' {
                 seller_message: string | null;
 
                 /**
-                 * Possible values are `authorized`, `manual_review`, `issuer_declined`, `blocked`, and `invalid`. See [understanding declines](https://expressplatby.cz/docs/declines) and [Radar reviews](https://expressplatby.cz/docs/radar/reviews) for details.
+                 * Possible values are `authorized`, `manual_review`, `issuer_declined`, `blocked`, and `invalid`. See [understanding declines](https://docs.epayments.network/declines) and [Radar reviews](https://docs.epayments.network/radar/reviews) for details.
                  */
                 type: string;
             }
@@ -468,10 +468,10 @@ declare module 'expressplatby' {
 
                 sofort?: PaymentMethodDetails.Sofort;
 
-                expressplatby_account?: PaymentMethodDetails.ExpressPlatbyAccount;
+                ep_account?: PaymentMethodDetails.ExpressPaymentsAccount;
 
                 /**
-                 * The type of transaction-specific details of the payment method used in the payment, one of `ach_credit_transfer`, `ach_debit`, `acss_debit`, `alipay`, `au_becs_debit`, `bancontact`, `card`, `card_present`, `eps`, `giropay`, `ideal`, `klarna`, `multibanco`, `p24`, `sepa_debit`, `sofort`, `expressplatby_account`, or `wechat`.
+                 * The type of transaction-specific details of the payment method used in the payment, one of `ach_credit_transfer`, `ach_debit`, `acss_debit`, `alipay`, `au_becs_debit`, `bancontact`, `card`, `card_present`, `eps`, `giropay`, `ideal`, `klarna`, `multibanco`, `p24`, `sepa_debit`, `sofort`, `ep_account`, or `wechat`.
                  * An additional hash is included on `payment_method_details` with a name matching this value.
                  * It contains information specific to the payment method.
                  */
@@ -668,7 +668,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit:
                         | string
-                        | ExpressPlatby.PaymentMethod
+                        | ExpressPayments.PaymentMethod
                         | null;
 
                     /**
@@ -676,7 +676,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit_mandate:
                         | string
-                        | ExpressPlatby.Mandate
+                        | ExpressPayments.Mandate
                         | null;
 
                     /**
@@ -761,7 +761,7 @@ declare module 'expressplatby' {
                     /**
                      * Installment details for this payment (Mexico only).
                      *
-                     * For more information, see the [installments integration guide](https://expressplatby.cz/docs/payments/installments).
+                     * For more information, see the [installments integration guide](https://docs.epayments.network/payments/installments).
                      */
                     installments: Card.Installments | null;
 
@@ -853,7 +853,7 @@ declare module 'expressplatby' {
 
                     interface NetworkToken {
                         /**
-                         * Indicates if ExpressPlatby used a network token, either user provided or ExpressPlatby managed when processing the transaction.
+                         * Indicates if ExpressPayments used a network token, either user provided or ExpressPayments managed when processing the transaction.
                          */
                         used: boolean;
                     }
@@ -944,7 +944,7 @@ declare module 'expressplatby' {
                             /**
                              * Owner's verified billing address. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
                              */
-                            billing_address: ExpressPlatby.Address | null;
+                            billing_address: ExpressPayments.Address | null;
 
                             /**
                              * Owner's verified email. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
@@ -959,7 +959,7 @@ declare module 'expressplatby' {
                             /**
                              * Owner's verified shipping address. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
                              */
-                            shipping_address: ExpressPlatby.Address | null;
+                            shipping_address: ExpressPayments.Address | null;
                         }
 
                         interface SamsungPay {}
@@ -977,7 +977,7 @@ declare module 'expressplatby' {
                             /**
                              * Owner's verified billing address. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
                              */
-                            billing_address: ExpressPlatby.Address | null;
+                            billing_address: ExpressPayments.Address | null;
 
                             /**
                              * Owner's verified email. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
@@ -992,7 +992,7 @@ declare module 'expressplatby' {
                             /**
                              * Owner's verified shipping address. Values are verified or provided by the wallet directly (if supported) at the time of authorization or settlement. They cannot be set or mutated.
                              */
-                            shipping_address: ExpressPlatby.Address | null;
+                            shipping_address: ExpressPayments.Address | null;
                         }
                     }
                 }
@@ -1066,7 +1066,7 @@ declare module 'expressplatby' {
                     iin?: string | null;
 
                     /**
-                     * Whether this [PaymentIntent](https://expressplatby.cz/docs/api/payment_intents) is eligible for incremental authorizations. Request support using [request_incremental_authorization_support](https://expressplatby.cz/docs/api/payment_intents/create#create_payment_intent-payment_method_options-card_present-request_incremental_authorization_support).
+                     * Whether this [PaymentIntent](https://docs.epayments.network/api/payment_intents) is eligible for incremental authorizations. Request support using [request_incremental_authorization_support](https://docs.epayments.network/api/payment_intents/create#create_payment_intent-payment_method_options-card_present-request_incremental_authorization_support).
                      */
                     incremental_authorization_supported: boolean;
 
@@ -1317,7 +1317,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit:
                         | string
-                        | ExpressPlatby.PaymentMethod
+                        | ExpressPayments.PaymentMethod
                         | null;
 
                     /**
@@ -1325,7 +1325,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit_mandate:
                         | string
-                        | ExpressPlatby.Mandate
+                        | ExpressPayments.Mandate
                         | null;
 
                     /**
@@ -1789,7 +1789,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit:
                         | string
-                        | ExpressPlatby.PaymentMethod
+                        | ExpressPayments.PaymentMethod
                         | null;
 
                     /**
@@ -1797,7 +1797,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit_mandate:
                         | string
-                        | ExpressPlatby.Mandate
+                        | ExpressPayments.Mandate
                         | null;
 
                     /**
@@ -1829,7 +1829,7 @@ declare module 'expressplatby' {
                         | 'pl';
                 }
 
-                interface ExpressPlatbyAccount {}
+                interface ExpressPaymentsAccount {}
 
                 interface UsBankAccount {
                     /**
@@ -1888,13 +1888,13 @@ declare module 'expressplatby' {
 
             interface RadarOptions {
                 /**
-                 * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                 * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                  */
                 session?: string;
             }
 
             interface Shipping {
-                address?: ExpressPlatby.Address;
+                address?: ExpressPayments.Address;
 
                 /**
                  * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
@@ -1926,9 +1926,9 @@ declare module 'expressplatby' {
                 amount: number | null;
 
                 /**
-                 * ID of an existing, connected ExpressPlatby account to transfer funds to if `transfer_data` was specified in the charge request.
+                 * ID of an existing, connected ExpressPayments account to transfer funds to if `transfer_data` was specified in the charge request.
                  */
-                destination: string | ExpressPlatby.Account;
+                destination: string | ExpressPayments.Account;
             }
         }
     }

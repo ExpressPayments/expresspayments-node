@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * ExpressPlatby needs to collect certain pieces of information about each account
+         * ExpressPayments needs to collect certain pieces of information about each account
          * created. These requirements can differ depending on the account's country. The
          * Country Specs API makes these rules available to your integration.
          *
          * You can also view the information from this API call as [an online
-         * guide](https://expressplatby.cz/docs/connect/required-verification-information).
+         * guide](https://docs.epayments.network/connect/required-verification-information).
          */
         interface CountrySpec {
             /**
@@ -39,7 +39,7 @@ declare module 'expressplatby' {
             supported_payment_currencies: Array<string>;
 
             /**
-             * Payment methods available in the specified country. You may need to enable some payment methods (e.g., [ACH](https://expressplatby.cz/docs/ach)) on your account before they appear in this list. The `expressplatby` payment method refers to [charging through your platform](https://expressplatby.cz/docs/connect/destination-charges).
+             * Payment methods available in the specified country. You may need to enable some payment methods (e.g., [ACH](https://docs.epayments.network/ach)) on your account before they appear in this list. The `expresspayments` payment method refers to [charging through your platform](https://docs.epayments.network/connect/destination-charges).
              */
             supported_payment_methods: Array<string>;
 

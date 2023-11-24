@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * The ConnectCollectionTransfer object.
          */
@@ -22,14 +22,14 @@ declare module 'expressplatby' {
             amount: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
             /**
              * ID of the account that funds are being collected for.
              */
-            destination: string | ExpressPlatby.Account;
+            destination: string | ExpressPayments.Account;
 
             /**
              * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.

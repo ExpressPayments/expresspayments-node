@@ -47,7 +47,7 @@ export class FetchHttpClient extends HttpClient implements HttpClientInterface {
 
         // For methods which expect payloads, we should always pass a body value
         // even when it is empty. Without this, some JS runtimes (e.g. Deno) will
-        // inject a second Content-Length header. See https://github.com/expressplatby/expressplatby-node/issues/1519
+        // inject a second Content-Length header. See https://github.com/expresspayments/expresspayments-node/issues/1519
         // for more details.
         const methodHasPayload =
             method == 'POST' || method == 'PUT' || method == 'PATCH';

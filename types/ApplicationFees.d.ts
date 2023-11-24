@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * The ApplicationFee object.
          */
@@ -17,9 +17,9 @@ declare module 'expressplatby' {
             object: 'application_fee';
 
             /**
-             * ID of the ExpressPlatby account this fee was taken from.
+             * ID of the ExpressPayments account this fee was taken from.
              */
-            account: string | ExpressPlatby.Account;
+            account: string | ExpressPayments.Account;
 
             /**
              * Amount earned, in %s.
@@ -34,20 +34,20 @@ declare module 'expressplatby' {
             /**
              * ID of the Connect application that earned the fee.
              */
-            application: string | ExpressPlatby.Application;
+            application: string | ExpressPayments.Application;
 
             /**
              * Balance transaction that describes the impact of this collected application fee on your account balance (not including refunds).
              */
             balance_transaction:
                 | string
-                | ExpressPlatby.BalanceTransaction
+                | ExpressPayments.BalanceTransaction
                 | null;
 
             /**
              * ID of the charge that the application fee was taken from.
              */
-            charge: string | ExpressPlatby.Charge;
+            charge: string | ExpressPayments.Charge;
 
             /**
              * Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -55,7 +55,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -67,7 +67,7 @@ declare module 'expressplatby' {
             /**
              * ID of the corresponding charge on the platform account, if this fee was the result of a charge using the `destination` parameter.
              */
-            originating_transaction: string | ExpressPlatby.Charge | null;
+            originating_transaction: string | ExpressPayments.Charge | null;
 
             /**
              * Whether the fee has been fully refunded. If the fee is only partially refunded, this attribute will still be false.
@@ -77,7 +77,7 @@ declare module 'expressplatby' {
             /**
              * A list of refunds that have been applied to the fee.
              */
-            refunds: ApiList<ExpressPlatby.FeeRefund>;
+            refunds: ApiList<ExpressPayments.FeeRefund>;
         }
     }
 }

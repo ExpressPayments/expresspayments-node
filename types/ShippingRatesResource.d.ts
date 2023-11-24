@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface ShippingRateCreateParams {
             /**
              * The name of the shipping rate, meant to be displayable to the customer. This will appear on CheckoutSessions.
@@ -24,9 +24,9 @@ declare module 'expressplatby' {
             fixed_amount?: ShippingRateCreateParams.FixedAmount;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`.
@@ -34,7 +34,7 @@ declare module 'expressplatby' {
             tax_behavior?: ShippingRateCreateParams.TaxBehavior;
 
             /**
-             * A [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID. The Shipping tax code is `txcd_92010001`.
+             * A [tax code](https://docs.epayments.network/tax/tax-categories) ID. The Shipping tax code is `txcd_92010001`.
              */
             tax_code?: string;
 
@@ -108,12 +108,12 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
                 /**
-                 * Shipping rates defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Shipping rates defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency_options?: {
                     [key: string]: FixedAmount.CurrencyOptions;
@@ -168,9 +168,9 @@ declare module 'expressplatby' {
             fixed_amount?: ShippingRateUpdateParams.FixedAmount;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`.
@@ -181,7 +181,7 @@ declare module 'expressplatby' {
         namespace ShippingRateUpdateParams {
             interface FixedAmount {
                 /**
-                 * Shipping rates defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Shipping rates defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency_options?: {
                     [key: string]: FixedAmount.CurrencyOptions;
@@ -221,7 +221,7 @@ declare module 'expressplatby' {
             /**
              * A filter on the list, based on the object `created` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.
              */
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Only return shipping rates for the given currency.
@@ -241,7 +241,7 @@ declare module 'expressplatby' {
             create(
                 params: ShippingRateCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ShippingRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ShippingRate>>;
 
             /**
              * Returns the shipping rate object with the given ID.
@@ -250,11 +250,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: ShippingRateRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ShippingRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ShippingRate>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ShippingRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ShippingRate>>;
 
             /**
              * Updates an existing shipping rate object.
@@ -263,7 +263,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: ShippingRateUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ShippingRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ShippingRate>>;
 
             /**
              * Returns a list of your shipping rates.
@@ -271,10 +271,10 @@ declare module 'expressplatby' {
             list(
                 params?: ShippingRateListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.ShippingRate>;
+            ): ApiListPromise<ExpressPayments.ShippingRate>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.ShippingRate>;
+            ): ApiListPromise<ExpressPayments.ShippingRate>;
         }
     }
 }

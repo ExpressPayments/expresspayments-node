@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * `Application Fee Refund` objects allow you to refund an application fee that
          * has previously been created but not yet refunded. Funds will be refunded to
-         * the ExpressPlatby account from which the fee was originally collected.
+         * the ExpressPayments account from which the fee was originally collected.
          *
-         * Related guide: [Refunding application fees](https://expressplatby.cz/docs/connect/destination-charges#refunding-app-fee)
+         * Related guide: [Refunding application fees](https://docs.epayments.network/connect/destination-charges#refunding-app-fee)
          */
         interface FeeRefund {
             /**
@@ -30,7 +30,7 @@ declare module 'expressplatby' {
              */
             balance_transaction:
                 | string
-                | ExpressPlatby.BalanceTransaction
+                | ExpressPayments.BalanceTransaction
                 | null;
 
             /**
@@ -39,19 +39,19 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
             /**
              * ID of the application fee that was refunded.
              */
-            fee: string | ExpressPlatby.ApplicationFee;
+            fee: string | ExpressPayments.ApplicationFee;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
         }
     }
 }

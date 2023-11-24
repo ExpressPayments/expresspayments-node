@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface EphemeralKeyCreateParams {
             /**
              * The ID of the Customer you'd like to modify using the resulting ephemeral key.
@@ -38,10 +38,10 @@ declare module 'expressplatby' {
             create(
                 params?: EphemeralKeyCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.EphemeralKey>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.EphemeralKey>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.EphemeralKey>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.EphemeralKey>>;
 
             /**
              * Invalidates a short-lived API key for a given resource.
@@ -50,11 +50,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: EphemeralKeyDeleteParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.EphemeralKey>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.EphemeralKey>>;
             del(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.EphemeralKey>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.EphemeralKey>>;
         }
     }
 }

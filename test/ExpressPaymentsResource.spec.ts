@@ -1,26 +1,26 @@
 // @ts-nocheck
 import {expect} from 'chai';
 import * as nock from 'nock';
-import {ExpressPlatbyResource} from '../src/ExpressPlatbyResource.js';
+import {ExpressPaymentsResource} from '../src/ExpressPaymentsResource';
 import {
-    getSpyableExpressPlatby,
-    getTestServerExpressPlatby,
+    getSpyableExpressPayments,
+    getTestServerExpressPayments,
 } from './testUtils.js';
 
-const expressPlatby = getSpyableExpressPlatby();
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+const expressPayments = getSpyableExpressPayments();
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-describe('ExpressPlatbyResource', () => {
+describe('ExpressPaymentsResource', () => {
     describe('createResourcePathWithSymbols', () => {
         let testResource;
         before(() => {
-            testResource = new (ExpressPlatbyResource.extend({
+            testResource = new (ExpressPaymentsResource.extend({
                 path: 'widgets',
-                create: expressPlatbyMethod({
+                create: expressPaymentsMethod({
                     method: 'POST',
                     path: '',
                 }),
-            }))(expressPlatby);
+            }))(expressPayments);
         });
         it('Generates a path when there is a symbol', () => {
             testResource.create({});
@@ -44,17 +44,17 @@ describe('ExpressPlatbyResource', () => {
 
     describe('_joinUrlParts', () => {
         it('includes trailing empty values', () => {
-            const path = expressPlatby.invoices._joinUrlParts(['a', '']);
+            const path = expressPayments.invoices._joinUrlParts(['a', '']);
             expect(path).to.equal('a/');
         });
 
         it('joins parts', () => {
-            const path = expressPlatby.invoices._joinUrlParts(['a', 'b', 'c']);
+            const path = expressPayments.invoices._joinUrlParts(['a', 'b', 'c']);
             expect(path).to.equal('a/b/c');
         });
 
         it('handles redundant slashes', () => {
-            const path = expressPlatby.invoices._joinUrlParts([
+            const path = expressPayments.invoices._joinUrlParts([
                 '/v1/',
                 '/customers/',
                 '/{id}',
@@ -73,16 +73,16 @@ describe('ExpressPlatbyResource', () => {
                 res.end();
             };
 
-            getTestServerExpressPlatby(
+            getTestServerExpressPayments(
                 {},
                 handleRequest,
-                (err, expressPlatby, closeServer) => {
-                    const resource = new (ExpressPlatbyResource.extend({
-                        test: expressPlatbyMethod({
+                (err, expressPayments, closeServer) => {
+                    const resource = new (ExpressPaymentsResource.extend({
+                        test: expressPaymentsMethod({
                             method: 'GET',
                             fullPath: '/v1/parent/{param1}/child/{param2}',
                         }),
-                    }))(expressPlatby);
+                    }))(expressPayments);
 
                     return resource.test('hello', 'world', (err, res) => {
                         closeServer();
@@ -96,47 +96,47 @@ describe('ExpressPlatbyResource', () => {
     });
 
     describe('custom host on method', () => {
-        const makeResource = (expressPlatby) => {
-            return new (ExpressPlatbyResource.extend({
+        const makeResource = (expressPayments) => {
+            return new (ExpressPaymentsResource.extend({
                 path: 'resourceWithHost',
 
-                testMethod: expressPlatbyMethod({
+                testMethod: expressPaymentsMethod({
                     method: 'GET',
-                    host: 'some.host.expressplatby.cz',
+                    host: 'some.host.epayments.network',
                 }),
-            }))(expressPlatby);
+            }))(expressPayments);
         };
 
         it('is not impacted by the global host', (done) => {
-            const expressPlatby = require('../src/expressplatby.cjs.node.js')(
+            const expressPayments = require('../src/expresspayments.cjs.node.js')(
                 'sk_test',
                 {
-                    host: 'bad.host.expressplatby.cz',
+                    host: 'bad.host.epayments.network',
                 }
             );
 
-            const scope = nock('https://some.host.expressplatby.cz')
+            const scope = nock('https://some.host.epayments.network')
                 .get('/v1/resourceWithHost')
                 .reply(200, '{}');
 
-            makeResource(expressPlatby).testMethod({}, (err, response) => {
+            makeResource(expressPayments).testMethod({}, (err, response) => {
                 done(err);
                 scope.done();
             });
         });
 
         it('still lets users override the host on a per-request basis', (done) => {
-            const expressPlatby = require('../src/expressplatby.cjs.node.js')(
+            const expressPayments = require('../src/expresspayments.cjs.node.js')(
                 'sk_test'
             );
 
-            const scope = nock('https://some.other.host.expressplatby.cz')
+            const scope = nock('https://some.other.host.epayments.network')
                 .get('/v1/resourceWithHost')
                 .reply(200, '{}');
 
-            makeResource(expressPlatby).testMethod(
+            makeResource(expressPayments).testMethod(
                 {},
-                {host: 'some.other.host.expressplatby.cz'},
+                {host: 'some.other.host.epayments.network'},
                 (err, response) => {
                     done(err);
                     scope.done();
@@ -155,16 +155,16 @@ describe('ExpressPlatbyResource', () => {
                 res.end();
             };
 
-            getTestServerExpressPlatby(
+            getTestServerExpressPayments(
                 {},
                 handleRequest,
-                (err, expressPlatby, closeServer) => {
-                    const resource = new (ExpressPlatbyResource.extend({
-                        test: expressPlatbyMethod({
+                (err, expressPayments, closeServer) => {
+                    const resource = new (ExpressPaymentsResource.extend({
+                        test: expressPaymentsMethod({
                             method: 'GET',
                             fullPath: '/v1/parent/{param1}/child/{param2}',
                         }),
-                    }))(expressPlatby);
+                    }))(expressPayments);
 
                     return resource.test('hello', 'world', (err, res) => {
                         closeServer();
@@ -182,16 +182,16 @@ describe('ExpressPlatbyResource', () => {
          * Defines a fake resource with a `pdf` method
          * with binary streaming enabled.
          */
-        const makeResourceWithPDFMethod = (expressPlatby) => {
-            return new (ExpressPlatbyResource.extend({
+        const makeResourceWithPDFMethod = (expressPayments) => {
+            return new (ExpressPaymentsResource.extend({
                 path: 'resourceWithPDF',
 
-                pdf: expressPlatbyMethod({
+                pdf: expressPaymentsMethod({
                     method: 'GET',
-                    host: 'files.expressplatby.cz',
+                    host: 'files.epayments.network',
                     streaming: true,
                 }),
-            }))(expressPlatby);
+            }))(expressPayments);
         };
 
         it('success', (callback) => {
@@ -202,11 +202,11 @@ describe('ExpressPlatbyResource', () => {
                 setTimeout(() => res.end(), 40);
             };
 
-            getTestServerExpressPlatby(
+            getTestServerExpressPayments(
                 {},
                 handleRequest,
-                (err, expressPlatby, closeServer) => {
-                    const foos = makeResourceWithPDFMethod(expressPlatby);
+                (err, expressPayments, closeServer) => {
+                    const foos = makeResourceWithPDFMethod(expressPayments);
                     if (err) {
                         return callback(err);
                     }
@@ -247,15 +247,15 @@ describe('ExpressPlatbyResource', () => {
                 setTimeout(() => res.end(), 20);
             };
 
-            getTestServerExpressPlatby(
+            getTestServerExpressPayments(
                 {},
                 handleRequest,
-                (err, expressPlatby, closeServer) => {
+                (err, expressPayments, closeServer) => {
                     if (err) {
                         return callback(err);
                     }
 
-                    const foos = makeResourceWithPDFMethod(expressPlatby);
+                    const foos = makeResourceWithPDFMethod(expressPayments);
 
                     return foos.pdf(
                         {id: 'foo_123'},
@@ -277,16 +277,16 @@ describe('ExpressPlatbyResource', () => {
         it('does not mutate user-supplied deprecated opts', () => {
             const args = [
                 {
-                    expressplatby_account: 'bad',
+                    expresspayments_account: 'bad',
                 },
             ];
-            const mockSelf = new (ExpressPlatbyResource.extend({}))(
-                expressPlatby
+            const mockSelf = new (ExpressPaymentsResource.extend({}))(
+                expressPayments
             );
             mockSelf._makeRequest(args, {}, {});
             expect(args).to.deep.equal([
                 {
-                    expressplatby_account: 'bad',
+                    expresspayments_account: 'bad',
                 },
             ]);
         });

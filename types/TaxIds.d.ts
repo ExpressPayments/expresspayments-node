@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * You can add one or multiple tax IDs to a [customer](https://expressplatby.cz/docs/api/customers).
+         * You can add one or multiple tax IDs to a [customer](https://docs.epayments.network/api/customers).
          * A customer's tax IDs are displayed on invoices and credit notes issued for the customer.
          *
-         * Related guide: [Customer tax identification numbers](https://expressplatby.cz/docs/billing/taxes/tax-ids)
+         * Related guide: [Customer tax identification numbers](https://docs.epayments.network/billing/taxes/tax-ids)
          */
         interface TaxId {
             /**
@@ -32,7 +32,7 @@ declare module 'expressplatby' {
             /**
              * ID of the customer.
              */
-            customer: string | ExpressPlatby.Customer | null;
+            customer: string | ExpressPayments.Customer | null;
 
             deleted?: void;
 

@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace FinancialConnections {
             /**
-             * A Financial Connections Session is the secure way to programmatically launch the client-side ExpressPlatby.js modal that lets your users link their accounts.
+             * A Financial Connections Session is the secure way to programmatically launch the client-side ExpressPayments.js modal that lets your users link their accounts.
              */
             interface Session {
                 /**
@@ -25,7 +25,7 @@ declare module 'expressplatby' {
                 /**
                  * The accounts that were collected as part of this Session.
                  */
-                accounts: ApiList<ExpressPlatby.FinancialConnections.Account>;
+                accounts: ApiList<ExpressPayments.FinancialConnections.Account>;
 
                 /**
                  * A value that will be passed to the client to launch the authentication flow.
@@ -53,14 +53,14 @@ declare module 'expressplatby' {
             namespace Session {
                 interface AccountHolder {
                     /**
-                     * The ID of the ExpressPlatby account this account belongs to. Should only be present if `account_holder.type` is `account`.
+                     * The ID of the ExpressPayments account this account belongs to. Should only be present if `account_holder.type` is `account`.
                      */
-                    account?: string | ExpressPlatby.Account;
+                    account?: string | ExpressPayments.Account;
 
                     /**
-                     * ID of the ExpressPlatby customer this account belongs to. Present if and only if `account_holder.type` is `customer`.
+                     * ID of the ExpressPayments customer this account belongs to. Present if and only if `account_holder.type` is `customer`.
                      */
-                    customer?: string | ExpressPlatby.Customer;
+                    customer?: string | ExpressPayments.Customer;
 
                     /**
                      * Type of account holder that this account belongs to.

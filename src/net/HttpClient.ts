@@ -25,7 +25,7 @@ export interface HttpClientResponseInterface {
 }
 
 /**
- * Encapsulates the logic for issuing a request to the ExpressPlatby API.
+ * Encapsulates the logic for issuing a request to the ExpressPayments API.
  *
  * A custom HTTP client should implement:
  * 1. A response class which extends HttpClientResponse and wraps around their
@@ -65,7 +65,7 @@ export class HttpClient implements HttpClientInterface {
     }
 }
 
-// Public API accessible via ExpressPlatby.HttpClient
+// Public API accessible via ExpressPayments.HttpClient
 HttpClient.CONNECTION_CLOSED_ERROR_CODES = ['ECONNRESET', 'EPIPE'];
 HttpClient.TIMEOUT_ERROR_CODE = 'ETIMEDOUT';
 

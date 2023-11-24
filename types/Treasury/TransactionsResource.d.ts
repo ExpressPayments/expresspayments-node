@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             interface TransactionRetrieveParams {
                 /**
@@ -16,7 +16,7 @@ declare module 'expressplatby' {
                  */
                 financial_account: string;
 
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -48,7 +48,7 @@ declare module 'expressplatby' {
                     /**
                      * Returns Transactions with `posted_at` within the specified range.
                      */
-                    posted_at?: ExpressPlatby.RangeQueryParam | number;
+                    posted_at?: ExpressPayments.RangeQueryParam | number;
                 }
             }
 
@@ -61,13 +61,13 @@ declare module 'expressplatby' {
                     params?: TransactionRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Treasury.Transaction>
+                    ExpressPayments.Response<ExpressPayments.Treasury.Transaction>
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Treasury.Transaction>
+                    ExpressPayments.Response<ExpressPayments.Treasury.Transaction>
                 >;
 
                 /**
@@ -76,7 +76,7 @@ declare module 'expressplatby' {
                 list(
                     params: TransactionListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Treasury.Transaction>;
+                ): ApiListPromise<ExpressPayments.Treasury.Transaction>;
             }
         }
     }

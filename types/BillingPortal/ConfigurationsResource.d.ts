@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace BillingPortal {
             interface ConfigurationCreateParams {
                 /**
@@ -15,9 +15,9 @@ declare module 'expressplatby' {
                 features: ConfigurationCreateParams.Features;
 
                 /**
-                 * The default URL to redirect customers to when they click on the portal's link to return to your website. This can be [overriden](https://expressplatby.cz/docs/api/customer_portal/sessions/create#create_portal_session-return_url) when creating the session.
+                 * The default URL to redirect customers to when they click on the portal's link to return to your website. This can be [overriden](https://docs.epayments.network/api/customer_portal/sessions/create#create_portal_session-return_url) when creating the session.
                  */
-                default_return_url?: ExpressPlatby.Emptyable<string>;
+                default_return_url?: ExpressPayments.Emptyable<string>;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -25,14 +25,14 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * The hosted login page for this configuration. Learn more about the portal login page in our [integration docs](https://expressplatby.cz/docs/billing/subscriptions/integrating-customer-portal#share).
+                 * The hosted login page for this configuration. Learn more about the portal login page in our [integration docs](https://docs.epayments.network/billing/subscriptions/integrating-customer-portal#share).
                  */
                 login_page?: ConfigurationCreateParams.LoginPage;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
             }
 
             namespace ConfigurationCreateParams {
@@ -90,7 +90,7 @@ declare module 'expressplatby' {
                         /**
                          * The types of customer updates that are supported. When empty, customers are not updateable.
                          */
-                        allowed_updates?: ExpressPlatby.Emptyable<
+                        allowed_updates?: ExpressPayments.Emptyable<
                             Array<CustomerUpdate.AllowedUpdate>
                         >;
 
@@ -156,7 +156,7 @@ declare module 'expressplatby' {
                             /**
                              * Which cancellation reasons will be given as options to the customer.
                              */
-                            options: ExpressPlatby.Emptyable<
+                            options: ExpressPayments.Emptyable<
                                 Array<CancellationReason.Option>
                             >;
                         }
@@ -192,7 +192,7 @@ declare module 'expressplatby' {
                         /**
                          * The types of subscription updates that are supported. When empty, subscriptions are not updateable.
                          */
-                        default_allowed_updates: ExpressPlatby.Emptyable<
+                        default_allowed_updates: ExpressPayments.Emptyable<
                             Array<SubscriptionUpdate.DefaultAllowedUpdate>
                         >;
 
@@ -204,7 +204,7 @@ declare module 'expressplatby' {
                         /**
                          * The list of products that support subscription updates.
                          */
-                        products: ExpressPlatby.Emptyable<
+                        products: ExpressPayments.Emptyable<
                             Array<SubscriptionUpdate.Product>
                         >;
 
@@ -241,7 +241,7 @@ declare module 'expressplatby' {
 
                 interface LoginPage {
                     /**
-                     * Set to `true` to generate a shareable URL [`login_page.url`](https://expressplatby.cz/docs/api/customer_portal/configuration#portal_configuration_object-login_page-url) that will take your customers to a hosted login page for the customer portal.
+                     * Set to `true` to generate a shareable URL [`login_page.url`](https://docs.epayments.network/api/customer_portal/configuration#portal_configuration_object-login_page-url) that will take your customers to a hosted login page for the customer portal.
                      */
                     enabled: boolean;
                 }
@@ -266,9 +266,9 @@ declare module 'expressplatby' {
                 business_profile?: ConfigurationUpdateParams.BusinessProfile;
 
                 /**
-                 * The default URL to redirect customers to when they click on the portal's link to return to your website. This can be [overriden](https://expressplatby.cz/docs/api/customer_portal/sessions/create#create_portal_session-return_url) when creating the session.
+                 * The default URL to redirect customers to when they click on the portal's link to return to your website. This can be [overriden](https://docs.epayments.network/api/customer_portal/sessions/create#create_portal_session-return_url) when creating the session.
                  */
-                default_return_url?: ExpressPlatby.Emptyable<string>;
+                default_return_url?: ExpressPayments.Emptyable<string>;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -281,14 +281,14 @@ declare module 'expressplatby' {
                 features?: ConfigurationUpdateParams.Features;
 
                 /**
-                 * The hosted login page for this configuration. Learn more about the portal login page in our [integration docs](https://expressplatby.cz/docs/billing/subscriptions/integrating-customer-portal#share).
+                 * The hosted login page for this configuration. Learn more about the portal login page in our [integration docs](https://docs.epayments.network/billing/subscriptions/integrating-customer-portal#share).
                  */
                 login_page?: ConfigurationUpdateParams.LoginPage;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
             }
 
             namespace ConfigurationUpdateParams {
@@ -301,12 +301,12 @@ declare module 'expressplatby' {
                     /**
                      * A link to the business's publicly available privacy policy.
                      */
-                    privacy_policy_url?: ExpressPlatby.Emptyable<string>;
+                    privacy_policy_url?: ExpressPayments.Emptyable<string>;
 
                     /**
                      * A link to the business's publicly available terms of service.
                      */
-                    terms_of_service_url?: ExpressPlatby.Emptyable<string>;
+                    terms_of_service_url?: ExpressPayments.Emptyable<string>;
                 }
 
                 interface Features {
@@ -346,7 +346,7 @@ declare module 'expressplatby' {
                         /**
                          * The types of customer updates that are supported. When empty, customers are not updateable.
                          */
-                        allowed_updates?: ExpressPlatby.Emptyable<
+                        allowed_updates?: ExpressPayments.Emptyable<
                             Array<CustomerUpdate.AllowedUpdate>
                         >;
 
@@ -412,7 +412,7 @@ declare module 'expressplatby' {
                             /**
                              * Which cancellation reasons will be given as options to the customer.
                              */
-                            options?: ExpressPlatby.Emptyable<
+                            options?: ExpressPayments.Emptyable<
                                 Array<CancellationReason.Option>
                             >;
                         }
@@ -448,7 +448,7 @@ declare module 'expressplatby' {
                         /**
                          * The types of subscription updates that are supported. When empty, subscriptions are not updateable.
                          */
-                        default_allowed_updates?: ExpressPlatby.Emptyable<
+                        default_allowed_updates?: ExpressPayments.Emptyable<
                             Array<SubscriptionUpdate.DefaultAllowedUpdate>
                         >;
 
@@ -460,7 +460,7 @@ declare module 'expressplatby' {
                         /**
                          * The list of products that support subscription updates.
                          */
-                        products?: ExpressPlatby.Emptyable<
+                        products?: ExpressPayments.Emptyable<
                             Array<SubscriptionUpdate.Product>
                         >;
 
@@ -497,7 +497,7 @@ declare module 'expressplatby' {
 
                 interface LoginPage {
                     /**
-                     * Set to `true` to generate a shareable URL [`login_page.url`](https://expressplatby.cz/docs/api/customer_portal/configuration#portal_configuration_object-login_page-url) that will take your customers to a hosted login page for the customer portal.
+                     * Set to `true` to generate a shareable URL [`login_page.url`](https://docs.epayments.network/api/customer_portal/configuration#portal_configuration_object-login_page-url) that will take your customers to a hosted login page for the customer portal.
                      *
                      * Set to `false` to deactivate the `login_page.url`.
                      */
@@ -530,8 +530,8 @@ declare module 'expressplatby' {
                     params: ConfigurationCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.BillingPortal.Configuration
+                    ExpressPayments.Response<
+                        ExpressPayments.BillingPortal.Configuration
                     >
                 >;
 
@@ -543,16 +543,16 @@ declare module 'expressplatby' {
                     params?: ConfigurationRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.BillingPortal.Configuration
+                    ExpressPayments.Response<
+                        ExpressPayments.BillingPortal.Configuration
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.BillingPortal.Configuration
+                    ExpressPayments.Response<
+                        ExpressPayments.BillingPortal.Configuration
                     >
                 >;
 
@@ -564,8 +564,8 @@ declare module 'expressplatby' {
                     params?: ConfigurationUpdateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.BillingPortal.Configuration
+                    ExpressPayments.Response<
+                        ExpressPayments.BillingPortal.Configuration
                     >
                 >;
 
@@ -575,10 +575,10 @@ declare module 'expressplatby' {
                 list(
                     params?: ConfigurationListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.BillingPortal.Configuration>;
+                ): ApiListPromise<ExpressPayments.BillingPortal.Configuration>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.BillingPortal.Configuration>;
+                ): ApiListPromise<ExpressPayments.BillingPortal.Configuration>;
             }
         }
     }

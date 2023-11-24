@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+import ExpressPayments from "expresspayments";
+
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface WebhookEndpointCreateParams {
             /**
              * The list of events to enable for this endpoint. You may specify `['*']` to enable all events, except those that require explicit selection.
@@ -14,7 +16,7 @@ declare module 'expressplatby' {
             url: string;
 
             /**
-             * Events sent to this endpoint will be generated with this ExpressPlatby Version instead of your account's default ExpressPlatby Version.
+             * Events sent to this endpoint will be generated with this ExpressPayments Version instead of your account's default ExpressPayments Version.
              */
             api_version?: WebhookEndpointCreateParams.ApiVersion;
 
@@ -34,13 +36,13 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
         }
 
         namespace WebhookEndpointCreateParams {
-            type ApiVersion = '2022-12-31' | '2023-06-01';
+            type ApiVersion = '2023-11-01';
 
             type EnabledEvent =
                 | '*'
@@ -297,9 +299,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * The URL of the webhook endpoint.
@@ -545,12 +547,12 @@ declare module 'expressplatby' {
 
         class WebhookEndpointsResource {
             /**
-             * A webhook endpoint must have an url and a list of enabled_events. You may optionally specify the Boolean connect parameter. If set to true, then a Connect webhook endpoint that notifies the specified url about events from all connected accounts is created; otherwise an account webhook endpoint that notifies the specified url only about events from your account is created. You can also create webhook endpoints in the [webhooks settings](https://dashboard.expressplatby.cz/account/webhooks) section of the Dashboard.
+             * A webhook endpoint must have an url and a list of enabled_events. You may optionally specify the Boolean connect parameter. If set to true, then a Connect webhook endpoint that notifies the specified url about events from all connected accounts is created; otherwise an account webhook endpoint that notifies the specified url only about events from your account is created. You can also create webhook endpoints in the [webhooks settings](https://dashboard.epayments.network/account/webhooks) section of the Dashboard.
              */
             create(
                 params: WebhookEndpointCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.WebhookEndpoint>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.WebhookEndpoint>>;
 
             /**
              * Retrieves the webhook endpoint with the given ID.
@@ -559,11 +561,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: WebhookEndpointRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.WebhookEndpoint>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.WebhookEndpoint>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.WebhookEndpoint>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.WebhookEndpoint>>;
 
             /**
              * Updates the webhook endpoint. You may edit the url, the list of enabled_events, and the status of your endpoint.
@@ -572,7 +574,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: WebhookEndpointUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.WebhookEndpoint>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.WebhookEndpoint>>;
 
             /**
              * Returns a list of your webhook endpoints.
@@ -580,26 +582,26 @@ declare module 'expressplatby' {
             list(
                 params?: WebhookEndpointListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.WebhookEndpoint>;
+            ): ApiListPromise<ExpressPayments.WebhookEndpoint>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.WebhookEndpoint>;
+            ): ApiListPromise<ExpressPayments.WebhookEndpoint>;
 
             /**
-             * You can also delete webhook endpoints via the [webhook endpoint management](https://dashboard.expressplatby.cz/account/webhooks) page of the ExpressPlatby dashboard.
+             * You can also delete webhook endpoints via the [webhook endpoint management](https://dashboard.epayments.network/account/webhooks) page of the ExpressPayments dashboard.
              */
             del(
                 id: string,
                 params?: WebhookEndpointDeleteParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.DeletedWebhookEndpoint>
+                ExpressPayments.Response<ExpressPayments.DeletedWebhookEndpoint>
             >;
             del(
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.DeletedWebhookEndpoint>
+                ExpressPayments.Response<ExpressPayments.DeletedWebhookEndpoint>
             >;
         }
     }

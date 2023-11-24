@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Account Links are the means by which a Connect platform grants a connected account permission to access
-         * ExpressPlatby-hosted applications, such as Connect Onboarding.
+         * ExpressPayments-hosted applications, such as Connect Onboarding.
          *
-         * Related guide: [Connect Onboarding](https://expressplatby.cz/docs/connect/connect-onboarding)
+         * Related guide: [Connect Onboarding](https://docs.epayments.network/connect/connect-onboarding)
          */
         interface AccountLink {
             /**

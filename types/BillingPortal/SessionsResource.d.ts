@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace BillingPortal {
             interface SessionCreateParams {
                 /**
@@ -10,7 +10,7 @@ declare module 'expressplatby' {
                 customer: string;
 
                 /**
-                 * The ID of an existing [configuration](https://expressplatby.cz/docs/api/customer_portal/configuration) to use for this session, describing its functionality and features. If not specified, the session uses the default configuration.
+                 * The ID of an existing [configuration](https://docs.epayments.network/api/customer_portal/configuration) to use for this session, describing its functionality and features. If not specified, the session uses the default configuration.
                  */
                 configuration?: string;
 
@@ -20,7 +20,7 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Information about a specific flow for the customer to go through. See the [docs](https://expressplatby.cz/docs/customer-management/portal-deep-links) to learn more about using customer portal deep links and flows.
+                 * Information about a specific flow for the customer to go through. See the [docs](https://docs.epayments.network/customer-management/portal-deep-links) to learn more about using customer portal deep links and flows.
                  */
                 flow_data?: SessionCreateParams.FlowData;
 
@@ -30,7 +30,7 @@ declare module 'expressplatby' {
                 locale?: SessionCreateParams.Locale;
 
                 /**
-                 * The `on_behalf_of` account to use for this session. When specified, only subscriptions and invoices with this `on_behalf_of` account appear in the portal. For more information, see the [docs](https://expressplatby.cz/docs/connect/charges-transfers#on-behalf-of). Use the [Accounts API](https://expressplatby.cz/docs/api/accounts/object#account_object-settings-branding) to modify the `on_behalf_of` account's branding settings, which the portal displays.
+                 * The `on_behalf_of` account to use for this session. When specified, only subscriptions and invoices with this `on_behalf_of` account appear in the portal. For more information, see the [docs](https://docs.epayments.network/connect/charges-transfers#on-behalf-of). Use the [Accounts API](https://docs.epayments.network/api/accounts/object#account_object-settings-branding) to modify the `on_behalf_of` account's branding settings, which the portal displays.
                  */
                 on_behalf_of?: string;
 
@@ -128,7 +128,7 @@ declare module 'expressplatby' {
                         discounts?: Array<SubscriptionUpdateConfirm.Discount>;
 
                         /**
-                         * The [subscription item](https://expressplatby.cz/docs/api/subscription_items) to be updated through this flow. Currently, only up to one may be specified and subscriptions with multiple items are not updatable.
+                         * The [subscription item](https://docs.epayments.network/api/subscription_items) to be updated through this flow. Currently, only up to one may be specified and subscriptions with multiple items are not updatable.
                          */
                         items: Array<SubscriptionUpdateConfirm.Item>;
 
@@ -153,17 +153,17 @@ declare module 'expressplatby' {
 
                         interface Item {
                             /**
-                             * The ID of the [subscription item](https://expressplatby.cz/docs/api/subscriptions/object#subscription_object-items-data-id) to be updated.
+                             * The ID of the [subscription item](https://docs.epayments.network/api/subscriptions/object#subscription_object-items-data-id) to be updated.
                              */
                             id: string;
 
                             /**
-                             * The price the customer should subscribe to through this flow. The price must also be included in the configuration's [`features.subscription_update.products`](https://expressplatby.cz/docs/api/customer_portal/configuration#portal_configuration_object-features-subscription_update-products).
+                             * The price the customer should subscribe to through this flow. The price must also be included in the configuration's [`features.subscription_update.products`](https://docs.epayments.network/api/customer_portal/configuration#portal_configuration_object-features-subscription_update-products).
                              */
                             price?: string;
 
                             /**
-                             * [Quantity](https://expressplatby.cz/docs/subscriptions/quantities) for this item that the customer should subscribe to through this flow.
+                             * [Quantity](https://docs.epayments.network/subscriptions/quantities) for this item that the customer should subscribe to through this flow.
                              */
                             quantity?: number;
                         }
@@ -234,7 +234,7 @@ declare module 'expressplatby' {
                     params: SessionCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.BillingPortal.Session>
+                  ExpressPayments.Response<ExpressPayments.BillingPortal.Session>
                 >;
             }
         }

@@ -1,13 +1,13 @@
 'use strict';
 
-const expressPlatby = require('../testUtils.js').getSpyableExpressPlatby();
+const expressPayments = require('../testUtils.js').getSpyableExpressPayments();
 const expect = require('chai').expect;
 
 describe('Plans Resource', () => {
     describe('retrieve', () => {
         it('Sends the correct request', () => {
-            expressPlatby.prices.retrieve('price_123');
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.prices.retrieve('price_123');
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: '/v1/prices/price_123',
                 headers: {},
@@ -19,7 +19,7 @@ describe('Plans Resource', () => {
 
     describe('create', () => {
         it('Sends the correct request', () => {
-            expressPlatby.prices.create({
+            expressPayments.prices.create({
                 unit_amount: 200,
                 currency: 'usd',
                 recurring: {
@@ -29,7 +29,7 @@ describe('Plans Resource', () => {
                     name: 'Product name',
                 },
             });
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
                 url: '/v1/prices',
                 headers: {},
@@ -50,10 +50,10 @@ describe('Plans Resource', () => {
 
     describe('update', () => {
         it('Sends the correct request', () => {
-            expressPlatby.prices.update('price_123', {
+            expressPayments.prices.update('price_123', {
                 active: false,
             });
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
                 url: '/v1/prices/price_123',
                 headers: {},
@@ -65,8 +65,8 @@ describe('Plans Resource', () => {
 
     describe('list', () => {
         it('Sends the correct request', () => {
-            expressPlatby.prices.list();
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.prices.list();
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: '/v1/prices',
                 headers: {},

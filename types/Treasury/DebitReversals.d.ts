@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             /**
-             * You can reverse some [ReceivedDebits](https://expressplatby.cz/docs/api#received_debits) depending on their network and source flow. Reversing a ReceivedDebit leads to the creation of a new object known as a DebitReversal.
+             * You can reverse some [ReceivedDebits](https://docs.epayments.network/api#received_debits) depending on their network and source flow. Reversing a ReceivedDebit leads to the creation of a new object known as a DebitReversal.
              */
             interface DebitReversal {
                 /**
@@ -28,7 +28,7 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -38,7 +38,7 @@ declare module 'expressplatby' {
                 financial_account: string | null;
 
                 /**
-                 * A [hosted transaction receipt](https://expressplatby.cz/docs/treasury/moving-money/regulatory-receipts) URL that is provided when money movement is considered regulated under ExpressPlatby's money transmission licenses.
+                 * A [hosted transaction receipt](https://docs.epayments.network/treasury/moving-money/regulatory-receipts) URL that is provided when money movement is considered regulated under ExpressPayments' money transmission licenses.
                  */
                 hosted_regulatory_receipt_url: string | null;
 
@@ -53,9 +53,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * The rails used to reverse the funds.
@@ -77,7 +77,7 @@ declare module 'expressplatby' {
                 /**
                  * The Transaction associated with this object.
                  */
-                transaction: string | ExpressPlatby.Treasury.Transaction | null;
+                transaction: string | ExpressPayments.Treasury.Transaction | null;
             }
 
             namespace DebitReversal {

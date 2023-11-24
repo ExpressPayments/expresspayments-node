@@ -3,7 +3,7 @@
 const http = require('http');
 const expect = require('chai').expect;
 
-const {createNodeHttpClient} = require('../../src/expressplatby.cjs.node.js');
+const {createNodeHttpClient} = require('../../src/expresspayments.cjs.node.js');
 
 const {createHttpClientTestSuite, ArrayReadable} = require('./helpers.js');
 

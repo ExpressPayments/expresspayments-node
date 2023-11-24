@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface PromotionCodeCreateParams {
             /**
              * The coupon for this promotion code.
@@ -39,9 +39,9 @@ declare module 'expressplatby' {
             max_redemptions?: number;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * Settings that restrict the redemption of the promotion code.
@@ -52,7 +52,7 @@ declare module 'expressplatby' {
         namespace PromotionCodeCreateParams {
             interface Restrictions {
                 /**
-                 * Promotion codes defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Promotion codes defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency_options?: {
                     [key: string]: Restrictions.CurrencyOptions;
@@ -69,7 +69,7 @@ declare module 'expressplatby' {
                 minimum_amount?: number;
 
                 /**
-                 * Three-letter [ISO code](https://expressplatby.cz/docs/currencies) for minimum_amount
+                 * Three-letter [ISO code](https://docs.epayments.network/currencies) for minimum_amount
                  */
                 minimum_amount_currency?: string;
             }
@@ -103,9 +103,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Settings that restrict the redemption of the promotion code.
@@ -116,7 +116,7 @@ declare module 'expressplatby' {
         namespace PromotionCodeUpdateParams {
             interface Restrictions {
                 /**
-                 * Promotion codes defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Promotion codes defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency_options?: {
                     [key: string]: Restrictions.CurrencyOptions;
@@ -152,7 +152,7 @@ declare module 'expressplatby' {
             /**
              * A filter on the list, based on the object `created` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.
              */
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Only return promotion codes that are restricted to this customer.
@@ -172,20 +172,20 @@ declare module 'expressplatby' {
             create(
                 params: PromotionCodeCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PromotionCode>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PromotionCode>>;
 
             /**
-             * Retrieves the promotion code with the given ID. In order to retrieve a promotion code by the customer-facing code use [list](https://expressplatby.cz/docs/api/promotion_codes/list) with the desired code.
+             * Retrieves the promotion code with the given ID. In order to retrieve a promotion code by the customer-facing code use [list](https://docs.epayments.network/api/promotion_codes/list) with the desired code.
              */
             retrieve(
                 id: string,
                 params?: PromotionCodeRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PromotionCode>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PromotionCode>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PromotionCode>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PromotionCode>>;
 
             /**
              * Updates the specified promotion code by setting the values of the parameters passed. Most fields are, by design, not editable.
@@ -194,7 +194,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PromotionCodeUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PromotionCode>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PromotionCode>>;
 
             /**
              * Returns a list of your promotion codes.
@@ -202,10 +202,10 @@ declare module 'expressplatby' {
             list(
                 params?: PromotionCodeListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PromotionCode>;
+            ): ApiListPromise<ExpressPayments.PromotionCode>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PromotionCode>;
+            ): ApiListPromise<ExpressPayments.PromotionCode>;
         }
     }
 }

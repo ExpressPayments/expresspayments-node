@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace TestHelpers {
             namespace Treasury {
                 interface ReceivedCreditCreateParams {
@@ -11,7 +11,7 @@ declare module 'expressplatby' {
                     amount: number;
 
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
@@ -86,8 +86,8 @@ declare module 'expressplatby' {
                         params: ReceivedCreditCreateParams,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<
-                            ExpressPlatby.Treasury.ReceivedCredit
+                        ExpressPayments.Response<
+                            ExpressPayments.Treasury.ReceivedCredit
                         >
                     >;
                 }

@@ -1,27 +1,28 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const Disputes = ExpressPlatbyResource.extend({
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/disputes/{dispute}',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/disputes/{dispute}',
-  }),
+export const Disputes = ExpressPaymentsResource.extend({
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/disputes/{dispute}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/disputes',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/disputes/{dispute}',
+    }),
 
-  close: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/disputes/{dispute}/close',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/disputes',
+        methodType: 'list',
+    }),
+
+    close: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/disputes/{dispute}/close',
+    }),
 });

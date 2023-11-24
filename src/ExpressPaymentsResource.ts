@@ -5,35 +5,35 @@ import {
     protoExtend,
     stringifyRequestData,
 } from './utils.js';
-import {expressPlatbyMethod} from './ExpressPlatbyMethod.js';
+import {expressPaymentsMethod} from './ExpressPaymentsMethod';
 import {
     MethodSpec,
     RequestArgs,
     RequestData,
     RequestOpts,
-    ExpressPlatbyObject,
-    ExpressPlatbyResourceObject,
+    ExpressPaymentsObject,
+    ExpressPaymentsResourceObject,
     UrlInterpolator,
 } from './Types.js';
 import {HttpClientResponseInterface} from './net/HttpClient.js';
 
-// Provide extension mechanism for ExpressPlatby Resource Sub-Classes
-ExpressPlatbyResource.extend = protoExtend;
+// Provide extension mechanism for ExpressPayments Resource Sub-Classes
+ExpressPaymentsResource.extend = protoExtend;
 
 // Expose method-creator
-ExpressPlatbyResource.method = expressPlatbyMethod;
+ExpressPaymentsResource.method = expressPaymentsMethod;
 
-ExpressPlatbyResource.MAX_BUFFERED_REQUEST_METRICS = 100;
+ExpressPaymentsResource.MAX_BUFFERED_REQUEST_METRICS = 100;
 
 /**
- * Encapsulates request logic for an ExpressPlatby Resource
+ * Encapsulates request logic for an ExpressPayments Resource
  */
-function ExpressPlatbyResource(
-    this: ExpressPlatbyResourceObject,
-    expressPlatby: ExpressPlatbyObject,
+function ExpressPaymentsResource(
+    this: ExpressPaymentsResourceObject,
+    expressPayments: ExpressPaymentsObject,
     deprecatedUrlData?: never
 ): void {
-    this._expressPlatby = expressPlatby;
+    this._expressPayments = expressPayments;
     if (deprecatedUrlData) {
         throw new Error(
             'Support for curried url params is not supported. Instead, pass two ids.'
@@ -42,7 +42,7 @@ function ExpressPlatbyResource(
 
     this.basePath = makeURLInterpolator(
         // @ts-ignore changing type of basePath
-        this.basePath || expressPlatby.getApiField('basePath')
+        this.basePath || expressPayments.getApiField('basePath')
     );
     // @ts-ignore changing type of path
     this.resourcePath = this.path;
@@ -52,8 +52,8 @@ function ExpressPlatbyResource(
     this.initialize(...arguments);
 }
 
-ExpressPlatbyResource.prototype = {
-    _expressPlatby: null as ExpressPlatbyObject | null,
+ExpressPaymentsResource.prototype = {
+    _expressPayments: null as ExpressPaymentsObject | null,
     // @ts-ignore the type of path changes in ctor
     path: '' as UrlInterpolator,
     resourcePath: '',
@@ -64,7 +64,7 @@ ExpressPlatbyResource.prototype = {
     initialize(): void {},
 
     // Function to override the default data processor. This allows full control
-    // over how an ExpressPlatbyResource's request data will get converted into an HTTP
+    // over how an ExpressPaymentsResource's request data will get converted into an HTTP
     // body. This is useful for non-standard HTTP requests. The function should
     // take method name, data, and headers as arguments.
     requestDataProcessor: null,
@@ -146,7 +146,7 @@ ExpressPlatbyResource.prototype = {
             const arg = args.shift();
             if (typeof arg !== 'string') {
                 throw new Error(
-                    `ExpressPlatby: Argument "${param}" must be a string, but got: ${arg} (on API request to \`${requestMethod} ${path}\`)`
+                    `ExpressPayments: Argument "${param}" must be a string, but got: ${arg} (on API request to \`${requestMethod} ${path}\`)`
                 );
             }
 
@@ -163,7 +163,7 @@ ExpressPlatbyResource.prototype = {
         // Validate that there are no more args.
         if (args.filter((x) => x != null).length) {
             throw new Error(
-                `ExpressPlatby: Unknown arguments (${args}). Did you mean to pass an options object? See https://github.com/expressplatby/expressplatby-node/wiki/Passing-Options. (on API request to ${requestMethod} \`${path}\`)`
+                `ExpressPayments: Unknown arguments (${args}). Did you mean to pass an options object? See https://github.com/expresspayments/expresspayments-node/wiki/Passing-Options. (on API request to ${requestMethod} \`${path}\`)`
             );
         }
 
@@ -234,7 +234,7 @@ ExpressPlatbyResource.prototype = {
 
             const {headers, settings} = opts;
 
-            this._expressPlatby._requestSender._request(
+            this._expressPayments._requestSender._request(
                 opts.requestMethod,
                 opts.host,
                 path,
@@ -246,6 +246,6 @@ ExpressPlatbyResource.prototype = {
             );
         });
     },
-} as ExpressPlatbyResourceObject;
+} as ExpressPaymentsResourceObject;
 
-export {ExpressPlatbyResource};
+export {ExpressPaymentsResource};

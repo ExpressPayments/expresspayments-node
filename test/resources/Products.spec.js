@@ -1,13 +1,13 @@
 'use strict';
 
-const expressPlatby = require('../testUtils.js').getSpyableExpressPlatby();
+const expressPayments = require('../testUtils.js').getSpyableExpressPayments();
 const expect = require('chai').expect;
 
 describe('Product Resource', () => {
     describe('retrieve', () => {
         it('Sends the correct request', () => {
-            expressPlatby.products.retrieve('productIdFoo123');
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.products.retrieve('productIdFoo123');
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: '/v1/products/productIdFoo123',
                 data: {},
@@ -19,12 +19,12 @@ describe('Product Resource', () => {
 
     describe('create', () => {
         it('Sends the correct request', () => {
-            expressPlatby.products.create({
+            expressPayments.products.create({
                 name: 'Llamas',
                 active: true,
                 type: 'good',
             });
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
                 url: '/v1/products',
                 data: {
@@ -40,10 +40,10 @@ describe('Product Resource', () => {
 
     describe('list', () => {
         it('Sends the correct request', () => {
-            expressPlatby.products.list({
+            expressPayments.products.list({
                 limit: 3,
             });
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: '/v1/products?limit=3',
                 data: {},
@@ -53,10 +53,10 @@ describe('Product Resource', () => {
         });
 
         it('Supports filtering by shippable', () => {
-            expressPlatby.products.list({
+            expressPayments.products.list({
                 shippable: true,
             });
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: '/v1/products?shippable=true',
                 data: {},
@@ -68,10 +68,10 @@ describe('Product Resource', () => {
 
     describe('update', () => {
         it('Sends the correct request', () => {
-            expressPlatby.products.update('productIdFoo3242', {
+            expressPayments.products.update('productIdFoo3242', {
                 caption: 'test',
             });
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
                 url: '/v1/products/productIdFoo3242',
                 headers: {},
@@ -83,8 +83,8 @@ describe('Product Resource', () => {
 
     describe('del', () => {
         it('Sends the correct request', () => {
-            expressPlatby.products.del('productIdFoo3242');
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.products.del('productIdFoo3242');
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'DELETE',
                 url: '/v1/products/productIdFoo3242',
                 headers: {},

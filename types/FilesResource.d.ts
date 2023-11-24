@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface FileCreateParams {
             /**
              * A file to upload. The file should follow the specifications of RFC 2388 (which defines file transfers for the `multipart/form-data` protocol).
@@ -9,7 +9,7 @@ declare module 'expressplatby' {
             file: FileData;
 
             /**
-             * The [purpose](https://expressplatby.cz/docs/file-upload#uploading-a-file) of the uploaded file.
+             * The [purpose](https://docs.epayments.network/file-upload#uploading-a-file) of the uploaded file.
              */
             purpose: FileCreateParams.Purpose;
 
@@ -19,7 +19,7 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Optional parameters to automatically create a [file link](https://expressplatby.cz/docs/api#file_links) for the newly created file.
+             * Optional parameters to automatically create a [file link](https://docs.epayments.network/api#file_links) for the newly created file.
              */
             file_link_data?: FileCreateParams.FileLinkData;
         }
@@ -37,9 +37,11 @@ declare module 'expressplatby' {
                 expires_at?: number;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<
+                    ExpressPayments.MetadataParam
+                >;
             }
 
             type Purpose =
@@ -63,7 +65,7 @@ declare module 'expressplatby' {
         }
 
         interface FileListParams extends PaginationParams {
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -97,27 +99,27 @@ declare module 'expressplatby' {
 
         class FilesResource {
             /**
-             * To upload a file to ExpressPlatby, you'll need to send a request of type multipart/form-data. The request should contain the file you would like to upload, as well as the parameters for creating a file.
+             * To upload a file to ExpressPayments, you'll need to send a request of type multipart/form-data. The request should contain the file you would like to upload, as well as the parameters for creating a file.
              *
-             * All of ExpressPlatby's officially supported Client libraries should have support for sending multipart/form-data.
+             * All of ExpressPayments' officially supported Client libraries should have support for sending multipart/form-data.
              */
             create(
                 params: FileCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.File>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.File>>;
 
             /**
-             * Retrieves the details of an existing file object. Supply the unique file ID from a file, and ExpressPlatby will return the corresponding file object. To access file contents, see the [File Upload Guide](https://expressplatby.cz/docs/file-upload#download-file-contents).
+             * Retrieves the details of an existing file object. Supply the unique file ID from a file, and ExpressPayments will return the corresponding file object. To access file contents, see the [File Upload Guide](https://docs.epayments.network/file-upload#download-file-contents).
              */
             retrieve(
                 id: string,
                 params?: FileRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.File>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.File>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.File>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.File>>;
 
             /**
              * Returns a list of the files that your account has access to. The files are returned sorted by creation date, with the most recently created files appearing first.
@@ -125,8 +127,8 @@ declare module 'expressplatby' {
             list(
                 params?: FileListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.File>;
-            list(options?: RequestOptions): ApiListPromise<ExpressPlatby.File>;
+            ): ApiListPromise<ExpressPayments.File>;
+            list(options?: RequestOptions): ApiListPromise<ExpressPayments.File>;
         }
     }
 }

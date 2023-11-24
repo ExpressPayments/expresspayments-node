@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * A subscription schedule allows you to create and manage the lifecycle of a subscription by predefining expected changes.
          *
-         * Related guide: [Subscription schedules](https://expressplatby.cz/docs/billing/subscriptions/subscription-schedules)
+         * Related guide: [Subscription schedules](https://docs.epayments.network/billing/subscriptions/subscription-schedules)
          */
         interface SubscriptionSchedule {
             /**
@@ -23,8 +23,8 @@ declare module 'expressplatby' {
              */
             application:
                 | string
-                | ExpressPlatby.Application
-                | ExpressPlatby.DeletedApplication
+                | ExpressPayments.Application
+                | ExpressPayments.DeletedApplication
                 | null;
 
             /**
@@ -52,8 +52,8 @@ declare module 'expressplatby' {
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer;
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer;
 
             default_settings: SubscriptionSchedule.DefaultSettings;
 
@@ -68,9 +68,9 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             /**
              * Configuration for the subscription schedule's phases.
@@ -88,19 +88,19 @@ declare module 'expressplatby' {
             released_subscription: string | null;
 
             /**
-             * The present status of the subscription schedule. Possible values are `not_started`, `active`, `completed`, `released`, and `canceled`. You can read more about the different states in our [behavior guide](https://expressplatby.cz/docs/billing/subscriptions/subscription-schedules).
+             * The present status of the subscription schedule. Possible values are `not_started`, `active`, `completed`, `released`, and `canceled`. You can read more about the different states in our [behavior guide](https://docs.epayments.network/billing/subscriptions/subscription-schedules).
              */
             status: SubscriptionSchedule.Status;
 
             /**
              * ID of the subscription managed by the subscription schedule.
              */
-            subscription: string | ExpressPlatby.Subscription | null;
+            subscription: string | ExpressPayments.Subscription | null;
 
             /**
              * ID of the test clock this subscription schedule belongs to.
              */
-            test_clock: string | ExpressPlatby.TestHelpers.TestClock | null;
+            test_clock: string | ExpressPayments.TestHelpers.TestClock | null;
         }
 
         namespace SubscriptionSchedule {
@@ -118,14 +118,14 @@ declare module 'expressplatby' {
 
             interface DefaultSettings {
                 /**
-                 * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPlatby account during this phase of the schedule.
+                 * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPayments account during this phase of the schedule.
                  */
                 application_fee_percent: number | null;
 
                 automatic_tax?: DefaultSettings.AutomaticTax;
 
                 /**
-                 * Possible values are `phase_start` or `automatic`. If `phase_start` then billing cycle anchor of the subscription is set to the start of the phase when entering the phase. If `automatic` then the billing cycle anchor is automatically modified as needed when entering the phase. For more information, see the billing cycle [documentation](https://expressplatby.cz/docs/billing/subscriptions/billing-cycle).
+                 * Possible values are `phase_start` or `automatic`. If `phase_start` then billing cycle anchor of the subscription is set to the start of the phase when entering the phase. If `automatic` then the billing cycle anchor is automatically modified as needed when entering the phase. For more information, see the billing cycle [documentation](https://docs.epayments.network/billing/subscriptions/billing-cycle).
                  */
                 billing_cycle_anchor: DefaultSettings.BillingCycleAnchor;
 
@@ -135,7 +135,7 @@ declare module 'expressplatby' {
                 billing_thresholds: DefaultSettings.BillingThresholds | null;
 
                 /**
-                 * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPlatby will attempt to pay the underlying subscription at the end of each billing cycle using the default source attached to the customer. When sending an invoice, ExpressPlatby will email your customer an invoice with payment instructions and mark the subscription as `active`.
+                 * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPayments will attempt to pay the underlying subscription at the end of each billing cycle using the default source attached to the customer. When sending an invoice, ExpressPayments will email your customer an invoice with payment instructions and mark the subscription as `active`.
                  */
                 collection_method: DefaultSettings.CollectionMethod | null;
 
@@ -144,7 +144,7 @@ declare module 'expressplatby' {
                  */
                 default_payment_method:
                     | string
-                    | ExpressPlatby.PaymentMethod
+                    | ExpressPayments.PaymentMethod
                     | null;
 
                 /**
@@ -160,7 +160,7 @@ declare module 'expressplatby' {
                 /**
                  * The account (if any) the charge was made on behalf of for charges associated with the schedule's subscription. See the Connect documentation for details.
                  */
-                on_behalf_of: string | ExpressPlatby.Account | null;
+                on_behalf_of: string | ExpressPayments.Account | null;
 
                 /**
                  * The account (if any) the associated subscription's payments will be attributed to for tax reporting, and where funds from each payment will be transferred to for each of the subscription's invoices.
@@ -171,7 +171,7 @@ declare module 'expressplatby' {
             namespace DefaultSettings {
                 interface AutomaticTax {
                     /**
-                     * Whether ExpressPlatby automatically computes tax on invoices created during this phase.
+                     * Whether ExpressPayments automatically computes tax on invoices created during this phase.
                      */
                     enabled: boolean;
                 }
@@ -208,7 +208,7 @@ declare module 'expressplatby' {
                     /**
                      * The account where funds from the payment will be transferred to upon payment success.
                      */
-                    destination: string | ExpressPlatby.Account;
+                    destination: string | ExpressPayments.Account;
                 }
             }
 
@@ -221,14 +221,14 @@ declare module 'expressplatby' {
                 add_invoice_items: Array<Phase.AddInvoiceItem>;
 
                 /**
-                 * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPlatby account during this phase of the schedule.
+                 * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPayments account during this phase of the schedule.
                  */
                 application_fee_percent: number | null;
 
                 automatic_tax?: Phase.AutomaticTax;
 
                 /**
-                 * Possible values are `phase_start` or `automatic`. If `phase_start` then billing cycle anchor of the subscription is set to the start of the phase when entering the phase. If `automatic` then the billing cycle anchor is automatically modified as needed when entering the phase. For more information, see the billing cycle [documentation](https://expressplatby.cz/docs/billing/subscriptions/billing-cycle).
+                 * Possible values are `phase_start` or `automatic`. If `phase_start` then billing cycle anchor of the subscription is set to the start of the phase when entering the phase. If `automatic` then the billing cycle anchor is automatically modified as needed when entering the phase. For more information, see the billing cycle [documentation](https://docs.epayments.network/billing/subscriptions/billing-cycle).
                  */
                 billing_cycle_anchor: Phase.BillingCycleAnchor | null;
 
@@ -238,7 +238,7 @@ declare module 'expressplatby' {
                 billing_thresholds: Phase.BillingThresholds | null;
 
                 /**
-                 * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPlatby will attempt to pay the underlying subscription at the end of each billing cycle using the default source attached to the customer. When sending an invoice, ExpressPlatby will email your customer an invoice with payment instructions and mark the subscription as `active`.
+                 * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPayments will attempt to pay the underlying subscription at the end of each billing cycle using the default source attached to the customer. When sending an invoice, ExpressPayments will email your customer an invoice with payment instructions and mark the subscription as `active`.
                  */
                 collection_method: Phase.CollectionMethod | null;
 
@@ -247,12 +247,12 @@ declare module 'expressplatby' {
                  */
                 coupon:
                     | string
-                    | ExpressPlatby.Coupon
-                    | ExpressPlatby.DeletedCoupon
+                    | ExpressPayments.Coupon
+                    | ExpressPayments.DeletedCoupon
                     | null;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -261,13 +261,13 @@ declare module 'expressplatby' {
                  */
                 default_payment_method:
                     | string
-                    | ExpressPlatby.PaymentMethod
+                    | ExpressPayments.PaymentMethod
                     | null;
 
                 /**
                  * The default tax rates to apply to the subscription during this phase of the subscription schedule.
                  */
-                default_tax_rates?: Array<ExpressPlatby.TaxRate> | null;
+                default_tax_rates?: Array<ExpressPayments.TaxRate> | null;
 
                 /**
                  * Subscription description, meant to be displayable to the customer. Use this field to optionally store an explanation of the subscription.
@@ -290,14 +290,14 @@ declare module 'expressplatby' {
                 items: Array<Phase.Item>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to a phase. Metadata on a schedule's phase will update the underlying subscription's `metadata` when the phase is entered. Updating the underlying subscription's `metadata` directly will not affect the current phase's `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to a phase. Metadata on a schedule's phase will update the underlying subscription's `metadata` when the phase is entered. Updating the underlying subscription's `metadata` directly will not affect the current phase's `metadata`.
                  */
-                metadata: ExpressPlatby.Metadata | null;
+                metadata: ExpressPayments.Metadata | null;
 
                 /**
                  * The account (if any) the charge was made on behalf of for charges associated with the schedule's subscription. See the Connect documentation for details.
                  */
-                on_behalf_of: string | ExpressPlatby.Account | null;
+                on_behalf_of: string | ExpressPayments.Account | null;
 
                 /**
                  * If the subscription schedule will prorate when transitioning to this phase. Possible values are `create_prorations` and `none`.
@@ -327,8 +327,8 @@ declare module 'expressplatby' {
                      */
                     price:
                         | string
-                        | ExpressPlatby.Price
-                        | ExpressPlatby.DeletedPrice;
+                        | ExpressPayments.Price
+                        | ExpressPayments.DeletedPrice;
 
                     /**
                      * The quantity of the invoice item.
@@ -338,12 +338,12 @@ declare module 'expressplatby' {
                     /**
                      * The tax rates which apply to the item. When set, the `default_tax_rates` do not apply to this item.
                      */
-                    tax_rates?: Array<ExpressPlatby.TaxRate> | null;
+                    tax_rates?: Array<ExpressPayments.TaxRate> | null;
                 }
 
                 interface AutomaticTax {
                     /**
-                     * Whether ExpressPlatby automatically computes tax on invoices created during this phase.
+                     * Whether ExpressPayments automatically computes tax on invoices created during this phase.
                      */
                     enabled: boolean;
                 }
@@ -378,25 +378,25 @@ declare module 'expressplatby' {
                     billing_thresholds: Item.BillingThresholds | null;
 
                     /**
-                     * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an item. Metadata on this item will update the underlying subscription item's `metadata` when the phase is entered.
+                     * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an item. Metadata on this item will update the underlying subscription item's `metadata` when the phase is entered.
                      */
-                    metadata: ExpressPlatby.Metadata | null;
+                    metadata: ExpressPayments.Metadata | null;
 
                     /**
                      * ID of the plan to which the customer should be subscribed.
                      */
                     plan:
                         | string
-                        | ExpressPlatby.Plan
-                        | ExpressPlatby.DeletedPlan;
+                        | ExpressPayments.Plan
+                        | ExpressPayments.DeletedPlan;
 
                     /**
                      * ID of the price to which the customer should be subscribed.
                      */
                     price:
                         | string
-                        | ExpressPlatby.Price
-                        | ExpressPlatby.DeletedPrice;
+                        | ExpressPayments.Price
+                        | ExpressPayments.DeletedPrice;
 
                     /**
                      * Quantity of the plan to which the customer should be subscribed.
@@ -406,7 +406,7 @@ declare module 'expressplatby' {
                     /**
                      * The tax rates which apply to this `phase_item`. When set, the `default_tax_rates` on the phase do not apply to this `phase_item`.
                      */
-                    tax_rates?: Array<ExpressPlatby.TaxRate> | null;
+                    tax_rates?: Array<ExpressPayments.TaxRate> | null;
                 }
 
                 namespace Item {
@@ -432,7 +432,7 @@ declare module 'expressplatby' {
                     /**
                      * The account where funds from the payment will be transferred to upon payment success.
                      */
-                    destination: string | ExpressPlatby.Account;
+                    destination: string | ExpressPayments.Account;
                 }
             }
 

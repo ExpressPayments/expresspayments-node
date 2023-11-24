@@ -17,7 +17,7 @@
         "./src/**/*"
     ],
     "exclude": [
-        "./src/expressplatby.esm.node.ts",
-        "./src/expressplatby.esm.worker.ts"
+        "./src/expresspayments.esm.node.ts",
+        "./src/expresspayments.esm.worker.ts"
     ]
 }

@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * This object represents a customer of your business. It lets you create recurring charges and track payments that belong to the same customer.
          *
-         * Related guide: [Save a card during payment](https://expressplatby.cz/docs/payments/save-during-payment)
+         * Related guide: [Save a card during payment](https://docs.epayments.network/payments/save-during-payment)
          */
         interface Customer {
             /**
@@ -21,7 +21,7 @@ declare module 'expressplatby' {
             /**
              * The customer's address.
              */
-            address?: ExpressPlatby.Address | null;
+            address?: ExpressPayments.Address | null;
 
             /**
              * Current balance, if any, being stored on the customer. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that will be added to their next invoice. The balance does not refer to any unpaid invoices; it solely takes into account amounts that have yet to be successfully applied to any invoice. This balance is only taken into account as invoices are finalized.
@@ -29,9 +29,9 @@ declare module 'expressplatby' {
             balance: number;
 
             /**
-             * The current funds being held by ExpressPlatby on behalf of the customer. These funds can be applied towards payment intents with source "cash_balance". The settings[reconciliation_mode] field describes whether these funds are applied to such payment intents manually or automatically.
+             * The current funds being held by ExpressPayments on behalf of the customer. These funds can be applied towards payment intents with source "cash_balance". The settings[reconciliation_mode] field describes whether these funds are applied to such payment intents manually or automatically.
              */
-            cash_balance?: ExpressPlatby.CashBalance | null;
+            cash_balance?: ExpressPayments.CashBalance | null;
 
             /**
              * Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -39,23 +39,23 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO code for the currency](https://expressplatby.cz/docs/currencies) the customer can be charged in for recurring billing purposes.
+             * Three-letter [ISO code for the currency](https://docs.epayments.network/currencies) the customer can be charged in for recurring billing purposes.
              */
             currency?: string | null;
 
             /**
              * ID of the default payment source for the customer.
              *
-             * If you are using payment methods created via the PaymentMethods API, see the [invoice_settings.default_payment_method](https://expressplatby.cz/docs/api/customers/object#customer_object-invoice_settings-default_payment_method) field instead.
+             * If you are using payment methods created via the PaymentMethods API, see the [invoice_settings.default_payment_method](https://docs.epayments.network/api/customers/object#customer_object-invoice_settings-default_payment_method) field instead.
              */
-            default_source: string | ExpressPlatby.CustomerSource | null;
+            default_source: string | ExpressPayments.CustomerSource | null;
 
             deleted?: void;
 
             /**
              * When the customer's latest invoice is billed by charging automatically, `delinquent` is `true` if the invoice's latest charge failed. When the customer's latest invoice is billed by sending an invoice, `delinquent` is `true` if the invoice isn't paid by its due date.
              *
-             * If an invoice is marked uncollectible by [dunning](https://expressplatby.cz/docs/billing/automatic-collection), `delinquent` doesn't get reset to `false`.
+             * If an invoice is marked uncollectible by [dunning](https://docs.epayments.network/billing/automatic-collection), `delinquent` doesn't get reset to `false`.
              */
             delinquent?: boolean | null;
 
@@ -67,7 +67,7 @@ declare module 'expressplatby' {
             /**
              * Describes the current discount active on the customer, if there is one.
              */
-            discount?: ExpressPlatby.Discount | null;
+            discount?: ExpressPayments.Discount | null;
 
             /**
              * The customer's email address.
@@ -94,9 +94,9 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
              * The customer's full name or business name.
@@ -126,12 +126,12 @@ declare module 'expressplatby' {
             /**
              * The customer's payment sources, if any.
              */
-            sources?: ApiList<ExpressPlatby.CustomerSource>;
+            sources?: ApiList<ExpressPayments.CustomerSource>;
 
             /**
              * The customer's current subscriptions, if any.
              */
-            subscriptions?: ApiList<ExpressPlatby.Subscription>;
+            subscriptions?: ApiList<ExpressPayments.Subscription>;
 
             tax?: Customer.Tax;
 
@@ -143,12 +143,12 @@ declare module 'expressplatby' {
             /**
              * The customer's tax IDs.
              */
-            tax_ids?: ApiList<ExpressPlatby.TaxId>;
+            tax_ids?: ApiList<ExpressPayments.TaxId>;
 
             /**
              * ID of the test clock this customer belongs to.
              */
-            test_clock?: string | ExpressPlatby.TestHelpers.TestClock | null;
+            test_clock?: string | ExpressPayments.TestHelpers.TestClock | null;
         }
 
         namespace Customer {
@@ -163,7 +163,7 @@ declare module 'expressplatby' {
                  */
                 default_payment_method:
                     | string
-                    | ExpressPlatby.PaymentMethod
+                    | ExpressPayments.PaymentMethod
                     | null;
 
                 /**
@@ -199,7 +199,7 @@ declare module 'expressplatby' {
             }
 
             interface Shipping {
-                address?: ExpressPlatby.Address;
+                address?: ExpressPayments.Address;
 
                 /**
                  * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
@@ -234,7 +234,7 @@ declare module 'expressplatby' {
                 ip_address: string | null;
 
                 /**
-                 * The customer's location as identified by ExpressPlatby Tax.
+                 * The customer's location as identified by ExpressPayments Tax.
                  */
                 location: Tax.Location | null;
             }
@@ -248,7 +248,7 @@ declare module 'expressplatby' {
 
                 interface Location {
                     /**
-                     * The customer's country as identified by ExpressPlatby Tax.
+                     * The customer's country as identified by ExpressPayments Tax.
                      */
                     country: string;
 
@@ -258,7 +258,7 @@ declare module 'expressplatby' {
                     source: Location.Source;
 
                     /**
-                     * The customer's state, county, province, or region as identified by ExpressPlatby Tax.
+                     * The customer's state, county, province, or region as identified by ExpressPayments Tax.
                      */
                     state: string | null;
                 }

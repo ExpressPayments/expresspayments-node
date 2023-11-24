@@ -1,18 +1,16 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatby} from 'expressplatby';
-
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * This is an object representing an ExpressPlatby account. You can retrieve it to see
+         * This is an object representing an ExpressPayments account. You can retrieve it to see
          * properties on the account like its current requirements or if the account is
          * enabled to make live charges or receive payouts.
          *
          * For Custom accounts, the properties below are always returned. For other accounts, some properties are returned until that
-         * account has started to go through Connect Onboarding. Once you create an [Account Link](https://expressplatby.cz/docs/api/account_links)
+         * account has started to go through Connect Onboarding. Once you create an [Account Link](https://docs.epayments.network/api/account_links)
          * for a Standard or Express account, some parameters are no longer returned. These are marked as **Custom Only** or **Custom and Express**
-         * below. Learn about the differences [between accounts](https://expressplatby.cz/docs/connect/accounts).
+         * below. Learn about the differences [between accounts](https://docs.epayments.network/connect/accounts).
          */
         interface Account {
             /**
@@ -57,7 +55,7 @@ declare module 'expressplatby' {
             created?: number;
 
             /**
-             * Three-letter ISO currency code representing the default currency for the account. This must be a currency that [ExpressPlatby supports in the account's country](https://expressplatby.cz/docs/payouts).
+             * Three-letter ISO currency code representing the default currency for the account. This must be a currency that [ExpressPayments supports in the account's country](https://docs.epayments.network/payouts).
              */
             default_currency?: string;
 
@@ -69,7 +67,7 @@ declare module 'expressplatby' {
             details_submitted: boolean;
 
             /**
-             * An email address associated with the account. It's not used for authentication and ExpressPlatby doesn't market to this field without explicit approval from the platform.
+             * An email address associated with the account. It's not used for authentication and ExpressPayments doesn't market to this field without explicit approval from the platform.
              */
             email: string | null;
 
@@ -77,42 +75,42 @@ declare module 'expressplatby' {
              * External accounts (bank accounts and debit cards) currently attached to this account
              */
             external_accounts?: ApiList<
-                ExpressPlatby.BankAccount | ExpressPlatby.Card
+                ExpressPayments.BankAccount | ExpressPayments.Card
             >;
 
             future_requirements?: Account.FutureRequirements;
 
             /**
-             * This is an object representing a person associated with an ExpressPlatby account.
+             * This is an object representing a person associated with an ExpressPayments account.
              *
              * A platform cannot access a Standard or Express account's persons after the account starts onboarding, such as after generating an account link for the account.
-             * See the [Standard onboarding](https://expressplatby.cz/docs/connect/standard-accounts) or [Express onboarding documentation](https://expressplatby.cz/docs/connect/express-accounts) for information about platform pre-filling and account onboarding steps.
+             * See the [Standard onboarding](https://docs.epayments.network/connect/standard-accounts) or [Express onboarding documentation](https://docs.epayments.network/connect/express-accounts) for information about platform pre-filling and account onboarding steps.
              *
-             * Related guide: [Handling identity verification with the API](https://expressplatby.cz/docs/connect/identity-verification-api#person-information)
+             * Related guide: [Handling identity verification with the API](https://docs.epayments.network/connect/identity-verification-api#person-information)
              */
-            individual?: ExpressPlatby.Person;
+            individual?: ExpressPayments.Person;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata?: ExpressPlatby.Metadata;
+            metadata?: ExpressPayments.Metadata;
 
             /**
-             * Whether ExpressPlatby can send payouts to this account.
+             * Whether ExpressPayments can send payouts to this account.
              */
             payouts_enabled: boolean;
 
             requirements?: Account.Requirements;
 
             /**
-             * Options for customizing how the account functions within ExpressPlatby.
+             * Options for customizing how the account functions within ExpressPayments.
              */
             settings?: Account.Settings | null;
 
             tos_acceptance?: Account.TosAcceptance;
 
             /**
-             * The ExpressPlatby account type. Can be `standard`, `express`, or `custom`.
+             * The ExpressPayments account type. Can be `standard`, `express`, or `custom`.
              */
             type: Account.Type;
         }
@@ -120,7 +118,7 @@ declare module 'expressplatby' {
         namespace Account {
             interface BusinessProfile {
                 /**
-                 * [The merchant category code for the account](https://expressplatby.cz/docs/connect/setting-mcc). MCCs are used to classify businesses based on the goods or services they provide.
+                 * [The merchant category code for the account](https://docs.epayments.network/connect/setting-mcc). MCCs are used to classify businesses based on the goods or services they provide.
                  */
                 mcc: string | null;
 
@@ -130,14 +128,14 @@ declare module 'expressplatby' {
                 name: string | null;
 
                 /**
-                 * Internal-only description of the product sold or service provided by the business. It's used by ExpressPlatby for risk and underwriting purposes.
+                 * Internal-only description of the product sold or service provided by the business. It's used by ExpressPayments for risk and underwriting purposes.
                  */
                 product_description?: string | null;
 
                 /**
                  * A publicly available mailing address for sending support issues to.
                  */
-                support_address: ExpressPlatby.Address | null;
+                support_address: ExpressPayments.Address | null;
 
                 /**
                  * A publicly available email address for sending support issues to.
@@ -435,7 +433,7 @@ declare module 'expressplatby' {
             }
 
             interface Company {
-                address?: ExpressPlatby.Address;
+                address?: ExpressPayments.Address;
 
                 /**
                  * The Kana variation of the company's primary address (Japan only).
@@ -448,12 +446,12 @@ declare module 'expressplatby' {
                 address_kanji?: Company.AddressKanji | null;
 
                 /**
-                 * Whether the company's directors have been provided. This Boolean will be `true` if you've manually indicated that all directors are provided via [the `directors_provided` parameter](https://expressplatby.cz/docs/api/accounts/update#update_account-company-directors_provided).
+                 * Whether the company's directors have been provided. This Boolean will be `true` if you've manually indicated that all directors are provided via [the `directors_provided` parameter](https://docs.epayments.network/api/accounts/update#update_account-company-directors_provided).
                  */
                 directors_provided?: boolean;
 
                 /**
-                 * Whether the company's executives have been provided. This Boolean will be `true` if you've manually indicated that all executives are provided via [the `executives_provided` parameter](https://expressplatby.cz/docs/api/accounts/update#update_account-company-executives_provided), or if ExpressPlatby determined that sufficient executives were provided.
+                 * Whether the company's executives have been provided. This Boolean will be `true` if you've manually indicated that all executives are provided via [the `executives_provided` parameter](https://docs.epayments.network/api/accounts/update#update_account-company-executives_provided), or if ExpressPayments determined that sufficient executives were provided.
                  */
                 executives_provided?: boolean;
 
@@ -483,12 +481,12 @@ declare module 'expressplatby' {
                 name_kanji?: string | null;
 
                 /**
-                 * Whether the company's owners have been provided. This Boolean will be `true` if you've manually indicated that all owners are provided via [the `owners_provided` parameter](https://expressplatby.cz/docs/api/accounts/update#update_account-company-owners_provided), or if ExpressPlatby determined that sufficient owners were provided. ExpressPlatby determines ownership requirements using both the number of owners provided and their total percent ownership (calculated by adding the `percent_ownership` of each owner together).
+                 * Whether the company's owners have been provided. This Boolean will be `true` if you've manually indicated that all owners are provided via [the `owners_provided` parameter](https://docs.epayments.network/api/accounts/update#update_account-company-owners_provided), or if ExpressPayments determined that sufficient owners were provided. ExpressPayments determines ownership requirements using both the number of owners provided and their total percent ownership (calculated by adding the `percent_ownership` of each owner together).
                  */
                 owners_provided?: boolean;
 
                 /**
-                 * This hash is used to attest that the beneficial owner information provided to ExpressPlatby is both current and correct.
+                 * This hash is used to attest that the beneficial owner information provided to ExpressPayments is both current and correct.
                  */
                 ownership_declaration?: Company.OwnershipDeclaration | null;
 
@@ -498,7 +496,7 @@ declare module 'expressplatby' {
                 phone?: string | null;
 
                 /**
-                 * The category identifying the legal structure of the company or legal entity. See [Business structure](https://explressplatby.cz/docs/connect/identity-verification#business-structure) for more details.
+                 * The category identifying the legal structure of the company or legal entity. See [Business structure](https://docs.epayments.network/connect/identity-verification#business-structure) for more details.
                  */
                 structure?: Company.Structure;
 
@@ -644,9 +642,9 @@ declare module 'expressplatby' {
                 namespace Verification {
                     interface Document {
                         /**
-                         * The back of a document returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `additional_verification`.
+                         * The back of a document returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `additional_verification`.
                          */
-                        back: string | ExpressPlatby.File | null;
+                        back: string | ExpressPayments.File | null;
 
                         /**
                          * A user-displayable string describing the verification state of this document.
@@ -659,16 +657,16 @@ declare module 'expressplatby' {
                         details_code: string | null;
 
                         /**
-                         * The front of a document returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `additional_verification`.
+                         * The front of a document returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `additional_verification`.
                          */
-                        front: string | ExpressPlatby.File | null;
+                        front: string | ExpressPayments.File | null;
                     }
                 }
             }
 
             interface Controller {
                 /**
-                 * `true` if the Connect application retrieving the resource controls the account and can therefore exercise [platform controls](https://expressplatby.cz/docs/connect/platform-controls-for-standard-accounts). Otherwise, this field is null.
+                 * `true` if the Connect application retrieving the resource controls the account and can therefore exercise [platform controls](https://docs.epayments.network/connect/platform-controls-for-standard-accounts). Otherwise, this field is null.
                  */
                 is_controller?: boolean;
 
@@ -964,14 +962,14 @@ declare module 'expressplatby' {
 
                 interface Branding {
                     /**
-                     * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) An icon for the account. Must be square and at least 128px x 128px.
+                     * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) An icon for the account. Must be square and at least 128px x 128px.
                      */
-                    icon: string | ExpressPlatby.File | null;
+                    icon: string | ExpressPayments.File | null;
 
                     /**
-                     * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) A logo for the account that will be used in Checkout instead of the icon and without the account's name next to it if provided. Must be at least 128px x 128px.
+                     * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) A logo for the account that will be used in Checkout instead of the icon and without the account's name next to it if provided. Must be at least 128px x 128px.
                      */
-                    logo: string | ExpressPlatby.File | null;
+                    logo: string | ExpressPayments.File | null;
 
                     /**
                      * A CSS hex color value representing the primary branding color for this account
@@ -1029,12 +1027,12 @@ declare module 'expressplatby' {
                 namespace CardPayments {
                     interface DeclineOn {
                         /**
-                         * Whether ExpressPlatby automatically declines charges with an incorrect ZIP or postal code. This setting only applies when a ZIP or postal code is provided and they fail bank verification.
+                         * Whether ExpressPayments automatically declines charges with an incorrect ZIP or postal code. This setting only applies when a ZIP or postal code is provided and they fail bank verification.
                          */
                         avs_failure: boolean;
 
                         /**
-                         * Whether ExpressPlatby automatically declines charges with an incorrect CVC. This setting only applies when a CVC is provided and it fails bank verification.
+                         * Whether ExpressPayments automatically declines charges with an incorrect CVC. This setting only applies when a CVC is provided and it fails bank verification.
                          */
                         cvc_failure: boolean;
                     }
@@ -1042,12 +1040,12 @@ declare module 'expressplatby' {
 
                 interface Dashboard {
                     /**
-                     * The display name for this account. This is used on the ExpressPlatby Dashboard to differentiate between accounts.
+                     * The display name for this account. This is used on the ExpressPayments Dashboard to differentiate between accounts.
                      */
                     display_name: string | null;
 
                     /**
-                     * The timezone used in the ExpressPlatby Dashboard for this account. A list of possible time zone values is maintained at the [IANA Time Zone Database](http://www.iana.org/time-zones).
+                     * The timezone used in the ExpressPayments Dashboard for this account. A list of possible time zone values is maintained at the [IANA Time Zone Database](http://www.iana.org/time-zones).
                      */
                     timezone: string | null;
                 }
@@ -1081,7 +1079,7 @@ declare module 'expressplatby' {
 
                 interface Payouts {
                     /**
-                     * A Boolean indicating if ExpressPlatby should try to reclaim negative balances from an attached bank account. See our [Understanding Connect Account Balances](https://expressplatby.cz/docs/connect/account-balances) documentation for details. Default value is `false` for Custom accounts, otherwise `true`.
+                     * A Boolean indicating if ExpressPayments should try to reclaim negative balances from an attached bank account. See our [Understanding Connect Account Balances](https://docs.epayments.network/connect/account-balances) documentation for details. Default value is `false` for Custom accounts, otherwise `true`.
                      */
                     debit_negative_balances: boolean;
 

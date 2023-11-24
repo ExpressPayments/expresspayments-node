@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * The EphemeralKey object.
          */
@@ -32,7 +32,7 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * The key's secret. You can use this value to make authorized requests to the ExpressPlatby API.
+             * The key's secret. You can use this value to make authorized requests to the ExpressPayments API.
              */
             secret?: string;
         }

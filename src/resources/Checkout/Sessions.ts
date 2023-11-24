@@ -1,33 +1,34 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const Sessions = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/checkout/sessions',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/checkout/sessions/{session}',
-  }),
+export const Sessions = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/checkout/sessions',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/checkout/sessions',
-    methodType: 'list',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/checkout/sessions/{session}',
+    }),
 
-  expire: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/checkout/sessions/{session}/expire',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/checkout/sessions',
+        methodType: 'list',
+    }),
 
-  listLineItems: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/checkout/sessions/{session}/line_items',
-    methodType: 'list',
-  }),
+    expire: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/checkout/sessions/{session}/expire',
+    }),
+
+    listLineItems: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/checkout/sessions/{session}/line_items',
+        methodType: 'list',
+    }),
 });

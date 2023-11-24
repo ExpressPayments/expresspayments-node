@@ -3,9 +3,9 @@
 import {serveListener} from 'https://deno.land/std@0.116.0/http/server.ts';
 import 'https://deno.land/x/dotenv/load.ts';
 
-import ExpressPlatby from 'npm:expressplatby@^1.0.3';
+import ExpressPayments from 'npm:expresspayments@^2.0.0';
 
-const expressPlatby = ExpressPlatby(Deno.env.get('EXPRESSPLATBY_API_KEY'));
+const expressPayments = ExpressPayments(Deno.env.get('EXPRESSPAYMENTS_API_KEY'));
 
 // Must specify hostname explicitly, see https://github.com/denoland/deno/issues/5144
 const server = Deno.listen({hostname: '127.0.0.1', port: 0});
@@ -14,17 +14,17 @@ console.log(`Webhook endpoint available at http://127.0.0.1:${port}/`);
 
 // This handler will be called for every incoming request.
 async function handler(request) {
-    const signature = request.headers.get('ExpressPlatby-Signature');
+    const signature = request.headers.get('ExpressPayments-Signature');
 
     // First step is to verify the event. The .text() method must be used as the
     // verification relies on the raw request body rather than the parsed JSON.
     const body = await request.text();
     let event;
     try {
-        event = await expressPlatby.webhooks.constructEventAsync(
+        event = await expressPayments.webhooks.constructEventAsync(
             body,
             signature,
-            Deno.env.get('EXPRESSPLATBY_WEBHOOK_SECRET'),
+            Deno.env.get('EXPRESSPAYMENTS_WEBHOOK_SECRET'),
             undefined
         );
     } catch (err) {
@@ -35,10 +35,10 @@ async function handler(request) {
     // Successfully constructed event
     console.log('✅ Success:', event.id);
 
-    // Cast event data to ExpressPlatby object
+    // Cast event data to ExpressPayments object
     if (event.type === 'payment_intent.succeeded') {
-        const ExpressPlatbyObject = event.data.object;
-        console.log(`💰 PaymentIntent status: ${ExpressPlatbyObject.status}`);
+        const ExpressPaymentsObject = event.data.object;
+        console.log(`💰 PaymentIntent status: ${ExpressPaymentsObject.status}`);
     } else if (event.type === 'charge.succeeded') {
         const charge = event.data.object;
         console.log(`💵 Charge id: ${charge.id}`);

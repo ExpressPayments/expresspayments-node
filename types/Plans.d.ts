@@ -1,16 +1,16 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * You can now model subscriptions more flexibly using the [Prices API](https://expressplatby.cz/docs/api#prices). It replaces the Plans API and is backwards compatible to simplify your migration.
+         * You can now model subscriptions more flexibly using the [Prices API](https://docs.epayments.network/api#prices). It replaces the Plans API and is backwards compatible to simplify your migration.
          *
          * Plans define the base price, currency, and billing cycle for recurring purchases of products.
-         * [Products](https://expressplatby.cz/docs/api#products) help you track inventory or provisioning, and plans help you track pricing. Different physical goods or levels of service should be represented by products, and pricing options should be represented by plans. This approach lets you change prices without having to change your provisioning scheme.
+         * [Products](https://docs.epayments.network/api#products) help you track inventory or provisioning, and plans help you track pricing. Different physical goods or levels of service should be represented by products, and pricing options should be represented by plans. This approach lets you change prices without having to change your provisioning scheme.
          *
          * For example, you might have a single "gold" product that has plans for $10/month, $100/year, €9/month, and €90/year.
          *
-         * Related guides: [Set up a subscription](https://expressplatby.cz/docs/billing/subscriptions/set-up-subscription) and more about [products and prices](https://expressplatby.cz/docs/products-prices/overview).
+         * Related guides: [Set up a subscription](https://docs.epayments.network/billing/subscriptions/set-up-subscription) and more about [products and prices](https://docs.epayments.network/products-prices/overview).
          */
         interface Plan {
             /**
@@ -54,7 +54,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -76,9 +76,9 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             /**
              * A brief description of the plan, hidden from customers.
@@ -90,8 +90,8 @@ declare module 'expressplatby' {
              */
             product:
                 | string
-                | ExpressPlatby.Product
-                | ExpressPlatby.DeletedProduct
+                | ExpressPayments.Product
+                | ExpressPayments.DeletedProduct
                 | null;
 
             /**
@@ -110,7 +110,7 @@ declare module 'expressplatby' {
             transform_usage: Plan.TransformUsage | null;
 
             /**
-             * Default number of trial days when subscribing a customer to this plan using [`trial_from_plan=true`](https://expressplatby.cz/docs/api#create_subscription-trial_from_plan).
+             * Default number of trial days when subscribing a customer to this plan using [`trial_from_plan=true`](https://docs.epayments.network/api#create_subscription-trial_from_plan).
              */
             trial_period_days: number | null;
 

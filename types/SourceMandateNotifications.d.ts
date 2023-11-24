@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Source mandate notifications should be created when a notification related to
          * a source mandate must be sent to the payer. They will trigger a webhook or
@@ -46,17 +46,17 @@ declare module 'expressplatby' {
 
             /**
              * `Source` objects allow you to accept a variety of payment methods. They
-             * represent a customer's payment instrument, and can be used with the ExpressPlatby API
+             * represent a customer's payment instrument, and can be used with the ExpressPayments API
              * just like a `Card` object: once chargeable, they can be charged, or can be
              * attached to customers.
              *
-             * ExpressPlatby doesn't recommend using the deprecated [Sources API](https://expressplatby.cz/docs/api/sources).
-             * We recommend that you adopt the [PaymentMethods API](https://expressplatby.cz/docs/api/payment_methods).
+             * ExpressPayments doesn't recommend using the deprecated [Sources API](https://docs.epayments.network/api/sources).
+             * We recommend that you adopt the [PaymentMethods API](https://docs.epayments.network/api/payment_methods).
              * This newer API provides access to our latest features and payment method types.
              *
-             * Related guides: [Sources API](https://expressplatby.cz/docs/sources) and [Sources & Customers](https://expressplatby.cz/docs/sources/customers).
+             * Related guides: [Sources API](https://docs.epayments.network/sources) and [Sources & Customers](https://docs.epayments.network/sources/customers).
              */
-            source: ExpressPlatby.Source;
+            source: ExpressPayments.Source;
 
             /**
              * The status of the mandate notification. Valid statuses are `pending` or `submitted`.

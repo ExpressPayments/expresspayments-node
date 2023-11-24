@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Reviews can be used to supplement automated fraud detection with human expertise.
          *
-         * Learn more about [Radar](https://expressplatby.cz/radar) and reviewing payments
-         * [here](https://expressplatby.cz/docs/radar/reviews).
+         * Learn more about [Radar](https://epayments.network/radar) and reviewing payments
+         * [here](https://docs.epayments.network/radar/reviews).
          */
         interface Review {
             /**
@@ -27,7 +27,7 @@ declare module 'expressplatby' {
             /**
              * The charge associated with this review.
              */
-            charge: string | ExpressPlatby.Charge | null;
+            charge: string | ExpressPayments.Charge | null;
 
             /**
              * The reason the review was closed, or null if it has not yet been closed. One of `approved`, `refunded`, `refunded_as_fraud`, `disputed`, or `redacted`.
@@ -67,7 +67,7 @@ declare module 'expressplatby' {
             /**
              * The PaymentIntent ID associated with this review, if one exists.
              */
-            payment_intent?: string | ExpressPlatby.PaymentIntent;
+            payment_intent?: string | ExpressPayments.PaymentIntent;
 
             /**
              * The reason the review is currently open or closed. One of `rule`, `manual`, `approved`, `refunded`, `refunded_as_fraud`, `disputed`, or `redacted`.

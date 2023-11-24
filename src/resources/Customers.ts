@@ -1,153 +1,153 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-export const Customers = ExpressPlatbyResource.extend({
-    create: expressPlatbyMethod({
+export const Customers = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers',
     }),
 
-    retrieve: expressPlatbyMethod({
+    retrieve: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}',
     }),
 
-    update: expressPlatbyMethod({
+    update: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers/{customer}',
     }),
 
-    list: expressPlatbyMethod({
+    list: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers',
         methodType: 'list',
     }),
 
-    del: expressPlatbyMethod({
+    del: expressPaymentsMethod({
         method: 'DELETE',
         fullPath: '/v1/customers/{customer}',
     }),
 
-    createFundingInstructions: expressPlatbyMethod({
+    createFundingInstructions: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers/{customer}/funding_instructions',
     }),
 
-    createBalanceTransaction: expressPlatbyMethod({
+    createBalanceTransaction: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers/{customer}/balance_transactions',
     }),
 
-    createSource: expressPlatbyMethod({
+    createSource: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers/{customer}/sources',
     }),
 
-    createTaxId: expressPlatbyMethod({
+    createTaxId: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers/{customer}/tax_ids',
     }),
 
-    deleteDiscount: expressPlatbyMethod({
+    deleteDiscount: expressPaymentsMethod({
         method: 'DELETE',
         fullPath: '/v1/customers/{customer}/discount',
     }),
 
-    deleteSource: expressPlatbyMethod({
+    deleteSource: expressPaymentsMethod({
         method: 'DELETE',
         fullPath: '/v1/customers/{customer}/sources/{id}',
     }),
 
-    deleteTaxId: expressPlatbyMethod({
+    deleteTaxId: expressPaymentsMethod({
         method: 'DELETE',
         fullPath: '/v1/customers/{customer}/tax_ids/{id}',
     }),
 
-    listPaymentMethods: expressPlatbyMethod({
+    listPaymentMethods: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/payment_methods',
         methodType: 'list',
     }),
 
-    listBalanceTransactions: expressPlatbyMethod({
+    listBalanceTransactions: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/balance_transactions',
         methodType: 'list',
     }),
 
-    listCashBalanceTransactions: expressPlatbyMethod({
+    listCashBalanceTransactions: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/cash_balance_transactions',
         methodType: 'list',
     }),
 
-    listSources: expressPlatbyMethod({
+    listSources: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/sources',
         methodType: 'list',
     }),
 
-    listTaxIds: expressPlatbyMethod({
+    listTaxIds: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/tax_ids',
         methodType: 'list',
     }),
 
-    retrievePaymentMethod: expressPlatbyMethod({
+    retrievePaymentMethod: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/payment_methods/{payment_method}',
     }),
 
-    retrieveBalanceTransaction: expressPlatbyMethod({
+    retrieveBalanceTransaction: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/balance_transactions/{transaction}',
     }),
 
-    retrieveCashBalance: expressPlatbyMethod({
+    retrieveCashBalance: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/cash_balance',
     }),
 
-    retrieveCashBalanceTransaction: expressPlatbyMethod({
+    retrieveCashBalanceTransaction: expressPaymentsMethod({
         method: 'GET',
         fullPath:
             '/v1/customers/{customer}/cash_balance_transactions/{transaction}',
     }),
 
-    retrieveSource: expressPlatbyMethod({
+    retrieveSource: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/sources/{id}',
     }),
 
-    retrieveTaxId: expressPlatbyMethod({
+    retrieveTaxId: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/{customer}/tax_ids/{id}',
     }),
 
-    search: expressPlatbyMethod({
+    search: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/customers/search',
         methodType: 'search',
     }),
 
-    updateBalanceTransaction: expressPlatbyMethod({
+    updateBalanceTransaction: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers/{customer}/balance_transactions/{transaction}',
     }),
 
-    updateCashBalance: expressPlatbyMethod({
+    updateCashBalance: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers/{customer}/cash_balance',
     }),
 
-    updateSource: expressPlatbyMethod({
+    updateSource: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers/{customer}/sources/{id}',
     }),
 
-    verifySource: expressPlatbyMethod({
+    verifySource: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/customers/{customer}/sources/{id}/verify',
     }),

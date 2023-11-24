@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Identity {
             interface VerificationSessionCreateParams {
                 /**
-                 * The type of [verification check](https://expressplatby.cz/docs/identity/verification-checks) to be performed.
+                 * The type of [verification check](https://docs.epayments.network/identity/verification-checks) to be performed.
                  */
                 type: VerificationSessionCreateParams.Type;
 
@@ -15,9 +15,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * A set of options for the session's verification checks.
@@ -33,9 +33,9 @@ declare module 'expressplatby' {
             namespace VerificationSessionCreateParams {
                 interface Options {
                     /**
-                     * Options that apply to the [document check](https://expressplatby.cz/docs/identity/verification-checks?type=document).
+                     * Options that apply to the [document check](https://docs.epayments.network/identity/verification-checks?type=document).
                      */
-                    document?: ExpressPlatby.Emptyable<Options.Document>;
+                    document?: ExpressPayments.Emptyable<Options.Document>;
                 }
 
                 namespace Options {
@@ -46,7 +46,7 @@ declare module 'expressplatby' {
                         allowed_types?: Array<Document.AllowedType>;
 
                         /**
-                         * Collect an ID number and perform an [ID number check](https://expressplatby.cz/docs/identity/verification-checks?type=id-number) with the document's extracted name and date of birth.
+                         * Collect an ID number and perform an [ID number check](https://docs.epayments.network/identity/verification-checks?type=id-number) with the document's extracted name and date of birth.
                          */
                         require_id_number?: boolean;
 
@@ -56,7 +56,7 @@ declare module 'expressplatby' {
                         require_live_capture?: boolean;
 
                         /**
-                         * Capture a face image and perform a [selfie check](https://expressplatby.cz/docs/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://expressplatby.cz/docs/identity/selfie).
+                         * Capture a face image and perform a [selfie check](https://docs.epayments.network/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://docs.epayments.network/identity/selfie).
                          */
                         require_matching_selfie?: boolean;
                     }
@@ -86,9 +86,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * A set of options for the session's verification checks.
@@ -96,7 +96,7 @@ declare module 'expressplatby' {
                 options?: VerificationSessionUpdateParams.Options;
 
                 /**
-                 * The type of [verification check](https://expressplatby.cz/docs/identity/verification-checks) to be performed.
+                 * The type of [verification check](https://docs.epayments.network/identity/verification-checks) to be performed.
                  */
                 type?: VerificationSessionUpdateParams.Type;
             }
@@ -104,9 +104,9 @@ declare module 'expressplatby' {
             namespace VerificationSessionUpdateParams {
                 interface Options {
                     /**
-                     * Options that apply to the [document check](https://expressplatby.cz/docs/identity/verification-checks?type=document).
+                     * Options that apply to the [document check](https://docs.epayments.network/identity/verification-checks?type=document).
                      */
-                    document?: ExpressPlatby.Emptyable<Options.Document>;
+                    document?: ExpressPayments.Emptyable<Options.Document>;
                 }
 
                 namespace Options {
@@ -117,7 +117,7 @@ declare module 'expressplatby' {
                         allowed_types?: Array<Document.AllowedType>;
 
                         /**
-                         * Collect an ID number and perform an [ID number check](https://expressplatby.cz/docs/identity/verification-checks?type=id-number) with the document's extracted name and date of birth.
+                         * Collect an ID number and perform an [ID number check](https://docs.epayments.network/identity/verification-checks?type=id-number) with the document's extracted name and date of birth.
                          */
                         require_id_number?: boolean;
 
@@ -127,7 +127,7 @@ declare module 'expressplatby' {
                         require_live_capture?: boolean;
 
                         /**
-                         * Capture a face image and perform a [selfie check](https://expressplatby.cz/docs/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://expressplatby.cz/docs/identity/selfie).
+                         * Capture a face image and perform a [selfie check](https://docs.epayments.network/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://docs.epayments.network/identity/selfie).
                          */
                         require_matching_selfie?: boolean;
                     }
@@ -144,7 +144,7 @@ declare module 'expressplatby' {
             }
 
             interface VerificationSessionListParams extends PaginationParams {
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -152,7 +152,7 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Only return VerificationSessions with this status. [Learn more about the lifecycle of sessions](https://expressplatby.cz/docs/identity/how-sessions-work).
+                 * Only return VerificationSessions with this status. [Learn more about the lifecycle of sessions](https://docs.epayments.network/identity/how-sessions-work).
                  */
                 status?: VerificationSessionListParams.Status;
             }
@@ -187,14 +187,14 @@ declare module 'expressplatby' {
                  *
                  * If your API key is in test mode, verification checks won't actually process, though everything else will occur as if in live mode.
                  *
-                 * Related guide: [Verify your users' identity documents](https://expressplatby.cz/docs/identity/verify-identity-documents)
+                 * Related guide: [Verify your users' identity documents](https://docs.epayments.network/identity/verify-identity-documents)
                  */
                 create(
                     params: VerificationSessionCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationSession
+                    ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationSession
                     >
                 >;
 
@@ -209,16 +209,16 @@ declare module 'expressplatby' {
                     params?: VerificationSessionRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationSession
+                  ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationSession
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationSession
+                    ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationSession
                     >
                 >;
 
@@ -233,8 +233,8 @@ declare module 'expressplatby' {
                     params?: VerificationSessionUpdateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationSession
+                    ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationSession
                     >
                 >;
 
@@ -244,41 +244,41 @@ declare module 'expressplatby' {
                 list(
                     params?: VerificationSessionListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Identity.VerificationSession>;
+                ): ApiListPromise<ExpressPayments.Identity.VerificationSession>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Identity.VerificationSession>;
+                ): ApiListPromise<ExpressPayments.Identity.VerificationSession>;
 
                 /**
-                 * A VerificationSession object can be canceled when it is in requires_input [status](https://expressplatby.cz/docs/identity/how-sessions-work).
+                 * A VerificationSession object can be canceled when it is in requires_input [status](https://docs.epayments.network/identity/how-sessions-work).
                  *
-                 * Once canceled, future submission attempts are disabled. This cannot be undone. [Learn more](https://expressplatby.cz/docs/identity/verification-sessions#cancel).
+                 * Once canceled, future submission attempts are disabled. This cannot be undone. [Learn more](https://docs.epayments.network/identity/verification-sessions#cancel).
                  */
                 cancel(
                     id: string,
                     params?: VerificationSessionCancelParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationSession
+                    ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationSession
                     >
                 >;
                 cancel(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationSession
+                    ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationSession
                     >
                 >;
 
                 /**
-                 * Redact a VerificationSession to remove all collected information from ExpressPlatby. This will redact
+                 * Redact a VerificationSession to remove all collected information from ExpressPayments. This will redact
                  * the VerificationSession and all objects related to it, including VerificationReports, Events,
                  * request logs, etc.
                  *
                  * A VerificationSession object can be redacted when it is in requires_input or verified
-                 * [status](https://expressplatby.cz/docs/identity/how-sessions-work). Redacting a VerificationSession in requires_action
+                 * [status](https://docs.epayments.network/identity/how-sessions-work). Redacting a VerificationSession in requires_action
                  * state will automatically cancel it.
                  *
                  * The redaction process may take up to four days. When the redaction process is in progress, the
@@ -286,28 +286,28 @@ declare module 'expressplatby' {
                  * finished, it will change to redacted and an identity.verification_session.redacted event
                  * will be emitted.
                  *
-                 * Redaction is irreversible. Redacted objects are still accessible in the ExpressPlatby API, but all the
+                 * Redaction is irreversible. Redacted objects are still accessible in the ExpressPayments API, but all the
                  * fields that contain personal data will be replaced by the string [redacted] or a similar
                  * placeholder. The metadata field will also be erased. Redacted objects cannot be updated or
                  * used for any purpose.
                  *
-                 * [Learn more](https://expressplatby.cz/docs/identity/verification-sessions#redact).
+                 * [Learn more](https://docs.epayments.network/identity/verification-sessions#redact).
                  */
                 redact(
                     id: string,
                     params?: VerificationSessionRedactParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationSession
+                    ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationSession
                     >
                 >;
                 redact(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Identity.VerificationSession
+                    ExpressPayments.Response<
+                        ExpressPayments.Identity.VerificationSession
                     >
                 >;
             }

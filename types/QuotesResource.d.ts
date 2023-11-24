@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface QuoteCreateParams {
             /**
-             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPlatby account. There cannot be any line items with recurring prices when using this field.
+             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPayments account. There cannot be any line items with recurring prices when using this field.
              */
-            application_fee_amount?: ExpressPlatby.Emptyable<number>;
+            application_fee_amount?: ExpressPayments.Emptyable<number>;
 
             /**
-             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPlatby account. There must be at least 1 line item with a recurring price to use this field.
+             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPayments account. There must be at least 1 line item with a recurring price to use this field.
              */
-            application_fee_percent?: ExpressPlatby.Emptyable<number>;
+            application_fee_percent?: ExpressPayments.Emptyable<number>;
 
             /**
              * Settings for automatic tax lookup for this quote and resulting invoices and subscriptions.
@@ -19,7 +19,7 @@ declare module 'expressplatby' {
             automatic_tax?: QuoteCreateParams.AutomaticTax;
 
             /**
-             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPlatby will attempt to pay invoices at the end of the subscription cycle or at invoice finalization using the default payment method attached to the subscription or customer. When sending an invoice, ExpressPlatby will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
+             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPayments will attempt to pay invoices at the end of the subscription cycle or at invoice finalization using the default payment method attached to the subscription or customer. When sending an invoice, ExpressPayments will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
              */
             collection_method?: QuoteCreateParams.CollectionMethod;
 
@@ -31,17 +31,17 @@ declare module 'expressplatby' {
             /**
              * The tax rates that will apply to any line item that does not have `tax_rates` set.
              */
-            default_tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+            default_tax_rates?: ExpressPayments.Emptyable<Array<string>>;
 
             /**
-             * A description that will be displayed on the quote PDF. If no value is passed, the default description configured in your [quote template settings](https://dashboard.expressplatby.cz/settings/billing/quote) will be used.
+             * A description that will be displayed on the quote PDF. If no value is passed, the default description configured in your [quote template settings](https://dashboard.epayments.network/settings/billing/quote) will be used.
              */
             description?: string;
 
             /**
              * The discounts applied to the quote. You can only set up to one discount.
              */
-            discounts?: ExpressPlatby.Emptyable<
+            discounts?: ExpressPayments.Emptyable<
                 Array<QuoteCreateParams.Discount>
             >;
 
@@ -51,12 +51,12 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * A future timestamp on which the quote will be canceled if in `open` or `draft` status. Measured in seconds since the Unix epoch. If no value is passed, the default expiration date configured in your [quote template settings](https://dashboard.expressplatby.cz/settings/billing/quote) will be used.
+             * A future timestamp on which the quote will be canceled if in `open` or `draft` status. Measured in seconds since the Unix epoch. If no value is passed, the default expiration date configured in your [quote template settings](https://dashboard.epayments.network/settings/billing/quote) will be used.
              */
             expires_at?: number;
 
             /**
-             * A footer that will be displayed on the quote PDF. If no value is passed, the default footer configured in your [quote template settings](https://dashboard.expressplatby.cz/settings/billing/quote) will be used.
+             * A footer that will be displayed on the quote PDF. If no value is passed, the default footer configured in your [quote template settings](https://dashboard.epayments.network/settings/billing/quote) will be used.
              */
             footer?: string;
 
@@ -66,7 +66,7 @@ declare module 'expressplatby' {
             from_quote?: QuoteCreateParams.FromQuote;
 
             /**
-             * A header that will be displayed on the quote PDF. If no value is passed, the default header configured in your [quote template settings](https://dashboard.expressplatby.cz/settings/billing/quote) will be used.
+             * A header that will be displayed on the quote PDF. If no value is passed, the default header configured in your [quote template settings](https://dashboard.epayments.network/settings/billing/quote) will be used.
              */
             header?: string;
 
@@ -81,14 +81,14 @@ declare module 'expressplatby' {
             line_items?: Array<QuoteCreateParams.LineItem>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * The account on behalf of which to charge.
              */
-            on_behalf_of?: ExpressPlatby.Emptyable<string>;
+            on_behalf_of?: ExpressPayments.Emptyable<string>;
 
             /**
              * When creating a subscription or subscription schedule, the specified configuration data will be used. There must be at least one line item with a recurring price for a subscription or subscription schedule to be created. A subscription schedule is created if `subscription_data[effective_date]` is present and in the future, otherwise a subscription is created.
@@ -103,7 +103,7 @@ declare module 'expressplatby' {
             /**
              * The data with which to automatically create a Transfer for each of the invoices.
              */
-            transfer_data?: ExpressPlatby.Emptyable<
+            transfer_data?: ExpressPayments.Emptyable<
                 QuoteCreateParams.TransferData
             >;
         }
@@ -111,7 +111,7 @@ declare module 'expressplatby' {
         namespace QuoteCreateParams {
             interface AutomaticTax {
                 /**
-                 * Controls whether ExpressPlatby will automatically compute tax on the resulting invoices or subscriptions as well as the quote itself.
+                 * Controls whether ExpressPayments will automatically compute tax on the resulting invoices or subscriptions as well as the quote itself.
                  */
                 enabled: boolean;
             }
@@ -156,7 +156,7 @@ declare module 'expressplatby' {
                 price?: string;
 
                 /**
-                 * Data used to generate a new [Price](https://expressplatby.cz/docs/api/prices) object inline. One of `price` or `price_data` is required.
+                 * Data used to generate a new [Price](https://docs.epayments.network/api/prices) object inline. One of `price` or `price_data` is required.
                  */
                 price_data?: LineItem.PriceData;
 
@@ -168,13 +168,13 @@ declare module 'expressplatby' {
                 /**
                  * The tax rates which apply to the line item. When set, the `default_tax_rates` on the quote do not apply to this line item.
                  */
-                tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+                tax_rates?: ExpressPayments.Emptyable<Array<string>>;
             }
 
             namespace LineItem {
                 interface PriceData {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
@@ -189,7 +189,7 @@ declare module 'expressplatby' {
                     recurring?: PriceData.Recurring;
 
                     /**
-                     * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                     * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                      */
                     tax_behavior?: PriceData.TaxBehavior;
 
@@ -237,14 +237,14 @@ declare module 'expressplatby' {
                 /**
                  * When creating a new subscription, the date of which the subscription schedule will start after the quote is accepted. When updating a subscription, the date of which the subscription will be updated using a subscription schedule. The special value `current_period_end` can be provided to update a subscription at the end of its current period. The `effective_date` is ignored if it is in the past when the quote is accepted.
                  */
-                effective_date?: ExpressPlatby.Emptyable<
+                effective_date?: ExpressPayments.Emptyable<
                     'current_period_end' | number
                 >;
 
                 /**
                  * Integer representing the number of trial period days before the customer is charged for the first time.
                  */
-                trial_period_days?: ExpressPlatby.Emptyable<number>;
+                trial_period_days?: ExpressPayments.Emptyable<number>;
             }
 
             interface TransferData {
@@ -259,7 +259,7 @@ declare module 'expressplatby' {
                 amount_percent?: number;
 
                 /**
-                 * ID of an existing, connected ExpressPlatby account.
+                 * ID of an existing, connected ExpressPayments account.
                  */
                 destination: string;
             }
@@ -274,14 +274,14 @@ declare module 'expressplatby' {
 
         interface QuoteUpdateParams {
             /**
-             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPlatby account. There cannot be any line items with recurring prices when using this field.
+             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPayments account. There cannot be any line items with recurring prices when using this field.
              */
-            application_fee_amount?: ExpressPlatby.Emptyable<number>;
+            application_fee_amount?: ExpressPayments.Emptyable<number>;
 
             /**
-             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPlatby account. There must be at least 1 line item with a recurring price to use this field.
+             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPayments account. There must be at least 1 line item with a recurring price to use this field.
              */
-            application_fee_percent?: ExpressPlatby.Emptyable<number>;
+            application_fee_percent?: ExpressPayments.Emptyable<number>;
 
             /**
              * Settings for automatic tax lookup for this quote and resulting invoices and subscriptions.
@@ -289,7 +289,7 @@ declare module 'expressplatby' {
             automatic_tax?: QuoteUpdateParams.AutomaticTax;
 
             /**
-             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPlatby will attempt to pay invoices at the end of the subscription cycle or at invoice finalization using the default payment method attached to the subscription or customer. When sending an invoice, ExpressPlatby will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
+             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPayments will attempt to pay invoices at the end of the subscription cycle or at invoice finalization using the default payment method attached to the subscription or customer. When sending an invoice, ExpressPayments email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
              */
             collection_method?: QuoteUpdateParams.CollectionMethod;
 
@@ -301,7 +301,7 @@ declare module 'expressplatby' {
             /**
              * The tax rates that will apply to any line item that does not have `tax_rates` set.
              */
-            default_tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+            default_tax_rates?: ExpressPayments.Emptyable<Array<string>>;
 
             /**
              * A description that will be displayed on the quote PDF.
@@ -311,7 +311,7 @@ declare module 'expressplatby' {
             /**
              * The discounts applied to the quote. You can only set up to one discount.
              */
-            discounts?: ExpressPlatby.Emptyable<
+            discounts?: ExpressPayments.Emptyable<
                 Array<QuoteUpdateParams.Discount>
             >;
 
@@ -346,14 +346,14 @@ declare module 'expressplatby' {
             line_items?: Array<QuoteUpdateParams.LineItem>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * The account on behalf of which to charge.
              */
-            on_behalf_of?: ExpressPlatby.Emptyable<string>;
+            on_behalf_of?: ExpressPayments.Emptyable<string>;
 
             /**
              * When creating a subscription or subscription schedule, the specified configuration data will be used. There must be at least one line item with a recurring price for a subscription or subscription schedule to be created. A subscription schedule is created if `subscription_data[effective_date]` is present and in the future, otherwise a subscription is created.
@@ -363,7 +363,7 @@ declare module 'expressplatby' {
             /**
              * The data with which to automatically create a Transfer for each of the invoices.
              */
-            transfer_data?: ExpressPlatby.Emptyable<
+            transfer_data?: ExpressPayments.Emptyable<
                 QuoteUpdateParams.TransferData
             >;
         }
@@ -371,7 +371,7 @@ declare module 'expressplatby' {
         namespace QuoteUpdateParams {
             interface AutomaticTax {
                 /**
-                 * Controls whether ExpressPlatby will automatically compute tax on the resulting invoices or subscriptions as well as the quote itself.
+                 * Controls whether ExpressPayments will automatically compute tax on the resulting invoices or subscriptions as well as the quote itself.
                  */
                 enabled: boolean;
             }
@@ -409,7 +409,7 @@ declare module 'expressplatby' {
                 price?: string;
 
                 /**
-                 * Data used to generate a new [Price](https://expressplatby.cz/docs/api/prices) object inline. One of `price` or `price_data` is required.
+                 * Data used to generate a new [Price](https://docs.epayments.network/api/prices) object inline. One of `price` or `price_data` is required.
                  */
                 price_data?: LineItem.PriceData;
 
@@ -421,13 +421,13 @@ declare module 'expressplatby' {
                 /**
                  * The tax rates which apply to the line item. When set, the `default_tax_rates` on the quote do not apply to this line item.
                  */
-                tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+                tax_rates?: ExpressPayments.Emptyable<Array<string>>;
             }
 
             namespace LineItem {
                 interface PriceData {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
@@ -442,7 +442,7 @@ declare module 'expressplatby' {
                     recurring?: PriceData.Recurring;
 
                     /**
-                     * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                     * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                      */
                     tax_behavior?: PriceData.TaxBehavior;
 
@@ -490,14 +490,14 @@ declare module 'expressplatby' {
                 /**
                  * When creating a new subscription, the date of which the subscription schedule will start after the quote is accepted. When updating a subscription, the date of which the subscription will be updated using a subscription schedule. The special value `current_period_end` can be provided to update a subscription at the end of its current period. The `effective_date` is ignored if it is in the past when the quote is accepted.
                  */
-                effective_date?: ExpressPlatby.Emptyable<
+                effective_date?: ExpressPayments.Emptyable<
                     'current_period_end' | number
                 >;
 
                 /**
                  * Integer representing the number of trial period days before the customer is charged for the first time.
                  */
-                trial_period_days?: ExpressPlatby.Emptyable<number>;
+                trial_period_days?: ExpressPayments.Emptyable<number>;
             }
 
             interface TransferData {
@@ -512,7 +512,7 @@ declare module 'expressplatby' {
                 amount_percent?: number;
 
                 /**
-                 * ID of an existing, connected ExpressPlatby account.
+                 * ID of an existing, connected ExpressPayments account.
                  */
                 destination: string;
             }
@@ -594,15 +594,15 @@ declare module 'expressplatby' {
 
         class QuotesResource {
             /**
-             * A quote models prices and services for a customer. Default options for header, description, footer, and expires_at can be set in the dashboard via the [quote template](https://dashboard.expressplatby.cz/settings/billing/quote).
+             * A quote models prices and services for a customer. Default options for header, description, footer, and expires_at can be set in the dashboard via the [quote template](https://dashboard.epayments.network/settings/billing/quote).
              */
             create(
                 params?: QuoteCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
 
             /**
              * Retrieves the quote with the given ID.
@@ -611,11 +611,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: QuoteRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
 
             /**
              * A quote models prices and services for a customer.
@@ -624,7 +624,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: QuoteUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
 
             /**
              * Returns a list of your quotes.
@@ -632,8 +632,8 @@ declare module 'expressplatby' {
             list(
                 params?: QuoteListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Quote>;
-            list(options?: RequestOptions): ApiListPromise<ExpressPlatby.Quote>;
+            ): ApiListPromise<ExpressPayments.Quote>;
+            list(options?: RequestOptions): ApiListPromise<ExpressPayments.Quote>;
 
             /**
              * Accepts the specified quote.
@@ -642,11 +642,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: QuoteAcceptParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
             accept(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
 
             /**
              * Cancels the quote.
@@ -655,11 +655,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: QuoteCancelParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
             cancel(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
 
             /**
              * Finalizes the quote.
@@ -668,24 +668,24 @@ declare module 'expressplatby' {
                 id: string,
                 params?: QuoteFinalizeQuoteParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
             finalizeQuote(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Quote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Quote>>;
 
             /**
-             * When retrieving a quote, there is an includable [computed.upfront.line_items](https://expressplatby.cz/docs/api/quotes/object#quote_object-computed-upfront-line_items) property containing the first handful of those items. There is also a URL where you can retrieve the full (paginated) list of upfront line items.
+             * When retrieving a quote, there is an includable [computed.upfront.line_items](https://docs.epayments.network/api/quotes/object#quote_object-computed-upfront-line_items) property containing the first handful of those items. There is also a URL where you can retrieve the full (paginated) list of upfront line items.
              */
             listComputedUpfrontLineItems(
                 id: string,
                 params?: QuoteListComputedUpfrontLineItemsParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.LineItem>;
+            ): ApiListPromise<ExpressPayments.LineItem>;
             listComputedUpfrontLineItems(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.LineItem>;
+            ): ApiListPromise<ExpressPayments.LineItem>;
 
             /**
              * When retrieving a quote, there is an includable line_items property containing the first handful of those items. There is also a URL where you can retrieve the full (paginated) list of line items.
@@ -694,11 +694,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: QuoteListLineItemsParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.LineItem>;
+            ): ApiListPromise<ExpressPayments.LineItem>;
             listLineItems(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.LineItem>;
+            ): ApiListPromise<ExpressPayments.LineItem>;
 
             /**
              * Download the PDF for a finalized quote
@@ -707,11 +707,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: QuotePdfParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatbyStreamResponse>;
+            ): Promise<ExpressPaymentsStreamResponse>;
             pdf(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatbyStreamResponse>;
+            ): Promise<ExpressPaymentsStreamResponse>;
         }
     }
 }

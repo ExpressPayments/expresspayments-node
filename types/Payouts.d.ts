@@ -1,16 +1,16 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * A `Payout` object is created when you receive funds from ExpressPlatby, or when you
+         * A `Payout` object is created when you receive funds from ExpressPayments, or when you
          * initiate a payout to either a bank account or debit card of a [connected
-         * ExpressPlatby account](https://expressplatby.cz/docs/connect/bank-debit-card-payouts). You can retrieve individual payouts,
+         * ExpressPayments account](https://docs.epayments.network/connect/bank-debit-card-payouts). You can retrieve individual payouts,
          * as well as list all payouts. Payouts are made on [varying
-         * schedules](https://expressplatby.cz/docs/connect/manage-payout-schedule), depending on your country and
+         * schedules](https://docs.epayments.network/connect/manage-payout-schedule), depending on your country and
          * industry.
          *
-         * Related guide: [Receiving payouts](https://expressplatby.cz/docs/payouts)
+         * Related guide: [Receiving payouts](https://docs.epayments.network/payouts)
          */
         interface Payout {
             /**
@@ -34,7 +34,7 @@ declare module 'expressplatby' {
             arrival_date: number;
 
             /**
-             * Returns `true` if the payout was created by an [automated payout schedule](https://expressplatby.cz/docs/payouts#payout-schedule), and `false` if it was [requested manually](https://expressplatby.cz/docs/payouts#manual-payouts).
+             * Returns `true` if the payout was created by an [automated payout schedule](https://docs.epayments.network/payouts#payout-schedule), and `false` if it was [requested manually](https://docs.epayments.network/payouts#manual-payouts).
              */
             automatic: boolean;
 
@@ -43,7 +43,7 @@ declare module 'expressplatby' {
              */
             balance_transaction:
                 | string
-                | ExpressPlatby.BalanceTransaction
+                | ExpressPayments.BalanceTransaction
                 | null;
 
             /**
@@ -52,7 +52,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -66,10 +66,10 @@ declare module 'expressplatby' {
              */
             destination:
                 | string
-                | ExpressPlatby.BankAccount
-                | ExpressPlatby.DeletedBankAccount
-                | ExpressPlatby.Card
-                | ExpressPlatby.DeletedCard
+                | ExpressPayments.BankAccount
+                | ExpressPayments.DeletedBankAccount
+                | ExpressPayments.Card
+                | ExpressPayments.DeletedCard
                 | null;
 
             /**
@@ -77,11 +77,11 @@ declare module 'expressplatby' {
              */
             failure_balance_transaction:
                 | string
-                | ExpressPlatby.BalanceTransaction
+                | ExpressPayments.BalanceTransaction
                 | null;
 
             /**
-             * Error code explaining reason for payout failure if available. See [Types of payout failures](https://expressplatby.cz/docs/api#payout_failures) for a list of failure codes.
+             * Error code explaining reason for payout failure if available. See [Types of payout failures](https://docs.epayments.network/api#payout_failures) for a list of failure codes.
              */
             failure_code: string | null;
 
@@ -96,29 +96,29 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             /**
-             * The method used to send this payout, which can be `standard` or `instant`. `instant` is only supported for payouts to debit cards. (See [Instant payouts for marketplaces](https://expressplatby.cz/blog/instant-payouts-for-marketplaces) for more information.)
+             * The method used to send this payout, which can be `standard` or `instant`. `instant` is only supported for payouts to debit cards. (See [Instant payouts for marketplaces](https://epayments.network/blog/instant-payouts-for-marketplaces) for more information.)
              */
             method: string;
 
             /**
              * If the payout reverses another, this is the ID of the original payout.
              */
-            original_payout: string | ExpressPlatby.Payout | null;
+            original_payout: string | ExpressPayments.Payout | null;
 
             /**
-             * If `completed`, the [Balance Transactions API](https://expressplatby.cz/docs/api/balance_transactions/list#balance_transaction_list-payout) may be used to list all Balance Transactions that were paid out in this payout.
+             * If `completed`, the [Balance Transactions API](https://docs.epayments.network/api/balance_transactions/list#balance_transaction_list-payout) may be used to list all Balance Transactions that were paid out in this payout.
              */
             reconciliation_status: Payout.ReconciliationStatus;
 
             /**
              * If the payout was reversed, this is the ID of the payout that reverses this payout.
              */
-            reversed_by: string | ExpressPlatby.Payout | null;
+            reversed_by: string | ExpressPayments.Payout | null;
 
             /**
              * The source balance this payout came from. One of `card`, `fpx`, or `bank_account`.

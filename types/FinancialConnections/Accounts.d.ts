@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace FinancialConnections {
             /**
-             * A Financial Connections Account represents an account that exists outside ExpressPlatby, to which you have been granted some degree of access.
+             * A Financial Connections Account represents an account that exists outside ExpressPayments, to which you have been granted some degree of access.
              */
             interface Account {
                 /**
@@ -67,7 +67,7 @@ declare module 'expressplatby' {
                  */
                 ownership:
                     | string
-                    | ExpressPlatby.FinancialConnections.AccountOwnership
+                    | ExpressPayments.FinancialConnections.AccountOwnership
                     | null;
 
                 /**
@@ -104,7 +104,7 @@ declare module 'expressplatby' {
                 subcategory: Account.Subcategory;
 
                 /**
-                 * The [PaymentMethod type](https://expressplatby.cz/docs/api/payment_methods/object#payment_method_object-type)(s) that can be created from this account.
+                 * The [PaymentMethod type](https://docs.epayments.network/api/payment_methods/object#payment_method_object-type)(s) that can be created from this account.
                  */
                 supported_payment_method_types: Array<
                     Account.SupportedPaymentMethodType
@@ -114,14 +114,14 @@ declare module 'expressplatby' {
             namespace Account {
                 interface AccountHolder {
                     /**
-                     * The ID of the ExpressPlatby account this account belongs to. Should only be present if `account_holder.type` is `account`.
+                     * The ID of the ExpressPayments account this account belongs to. Should only be present if `account_holder.type` is `account`.
                      */
-                    account?: string | ExpressPlatby.Account;
+                    account?: string | ExpressPayments.Account;
 
                     /**
-                     * ID of the ExpressPlatby customer this account belongs to. Present if and only if `account_holder.type` is `customer`.
+                     * ID of the ExpressPayments customer this account belongs to. Present if and only if `account_holder.type` is `customer`.
                      */
-                    customer?: string | ExpressPlatby.Customer;
+                    customer?: string | ExpressPayments.Customer;
 
                     /**
                      * Type of account holder that this account belongs to.

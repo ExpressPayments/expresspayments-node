@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface ExchangeRateRetrieveParams {
             /**
              * Specifies which fields in the response should be expanded.
@@ -24,22 +24,22 @@ declare module 'expressplatby' {
                 id: string,
                 params?: ExchangeRateRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ExchangeRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ExchangeRate>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ExchangeRate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ExchangeRate>>;
 
             /**
-             * Returns a list of objects that contain the rates at which foreign currencies are converted to one another. Only shows the currencies for which ExpressPlatby supports.
+             * Returns a list of objects that contain the rates at which foreign currencies are converted to one another. Only shows the currencies for which ExpressPayments supports.
              */
             list(
                 params?: ExchangeRateListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.ExchangeRate>;
+            ): ApiListPromise<ExpressPayments.ExchangeRate>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.ExchangeRate>;
+            ): ApiListPromise<ExpressPayments.ExchangeRate>;
         }
     }
 }

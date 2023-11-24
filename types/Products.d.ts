@@ -1,16 +1,16 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Products describe the specific goods or services you offer to your customers.
          * For example, you might offer a Standard and Premium version of your goods or service; each version would be a separate Product.
-         * They can be used in conjunction with [Prices](https://expressplatby.cz/docs/api#prices) to configure pricing in Payment Links, Checkout, and Subscriptions.
+         * They can be used in conjunction with [Prices](https://docs.epayments.network/api#prices) to configure pricing in Payment Links, Checkout, and Subscriptions.
          *
-         * Related guides: [Set up a subscription](https://expressplatby.cz/docs/billing/subscriptions/set-up-subscription),
-         * [share a Payment Link](https://expressplatby.cz/docs/payment-links),
-         * [accept payments with Checkout](https://expressplatby.cz/docs/payments/accept-a-payment#create-product-prices-upfront),
-         * and more about [Products and Prices](https://expressplatby.cz/docs/products-prices/overview)
+         * Related guides: [Set up a subscription](https://docs.epayments.network/billing/subscriptions/set-up-subscription),
+         * [share a Payment Link](https://docs.epayments.network/payment-links),
+         * [accept payments with Checkout](https://docs.epayments.network/payments/accept-a-payment#create-product-prices-upfront),
+         * and more about [Products and Prices](https://docs.epayments.network/products-prices/overview)
          */
         interface Product {
             /**
@@ -49,9 +49,9 @@ declare module 'expressplatby' {
             deactivate_on?: Array<string>;
 
             /**
-             * The ID of the [Price](https://expressplatby.cz/docs/api/prices) object that is the default price for this product.
+             * The ID of the [Price](https://docs.epayments.network/api/prices) object that is the default price for this product.
              */
-            default_price?: string | ExpressPlatby.Price | null;
+            default_price?: string | ExpressPayments.Price | null;
 
             deleted?: void;
 
@@ -71,9 +71,9 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
              * The product's name, meant to be displayable to the customer.
@@ -96,9 +96,9 @@ declare module 'expressplatby' {
             statement_descriptor?: string | null;
 
             /**
-             * A [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID.
+             * A [tax code](https://docs.epayments.network/tax/tax-categories) ID.
              */
-            tax_code: string | ExpressPlatby.TaxCode | null;
+            tax_code: string | ExpressPayments.TaxCode | null;
 
             /**
              * The type of the product. The product is either of type `good`, which is eligible for use with Orders and SKUs, or `service`, which is eligible for use with Subscriptions and Plans.

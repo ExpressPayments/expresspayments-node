@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * You can store multiple cards on a customer in order to charge the customer
          * later. You can also store multiple debit cards on a recipient in order to
          * transfer to those cards later.
          *
-         * Related guide: [Card payments with Sources](https://expressplatby.cz/docs/sources/cards)
+         * Related guide: [Card payments with Sources](https://docs.epayments.network/sources/cards)
          */
         interface Card {
             /**
@@ -23,7 +23,7 @@ declare module 'expressplatby' {
             /**
              * The account this card belongs to. This attribute will not be in the card object if the card belongs to a customer or recipient instead.
              */
-            account?: string | ExpressPlatby.Account | null;
+            account?: string | ExpressPayments.Account | null;
 
             /**
              * City/District/Suburb/Town/Village.
@@ -81,7 +81,7 @@ declare module 'expressplatby' {
             country: string | null;
 
             /**
-             * Three-letter [ISO code for currency](https://expressplatby.cz/docs/payouts). Only applicable on accounts (not customers or recipients). The card can be used as a transfer destination for funds in this currency.
+             * Three-letter [ISO code for currency](https://docs.epayments.network/payouts). Only applicable on accounts (not customers or recipients). The card can be used as a transfer destination for funds in this currency.
              */
             currency?: string | null;
 
@@ -90,12 +90,12 @@ declare module 'expressplatby' {
              */
             customer?:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer
                 | null;
 
             /**
-             * If a CVC was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. A result of unchecked indicates that CVC was provided but hasn't been checked yet. Checks are typically performed when attaching a card to a Customer object, or when creating a charge. For more details, see [Check if a card is valid without a charge](https://support.expressplatby.cz/questions/check-if-a-card-is-valid-without-a-charge).
+             * If a CVC was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. A result of unchecked indicates that CVC was provided but hasn't been checked yet. Checks are typically performed when attaching a card to a Customer object, or when creating a charge. For more details, see [Check if a card is valid without a charge](https://support.epayments.network/questions/check-if-a-card-is-valid-without-a-charge).
              */
             cvc_check: string | null;
 
@@ -154,9 +154,9 @@ declare module 'expressplatby' {
             last4: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             /**
              * Cardholder name.
@@ -193,7 +193,7 @@ declare module 'expressplatby' {
             object: 'card';
 
             /**
-             * Three-letter [ISO code for the currency](https://expressplatby.cz/docs/payouts) paid out to the bank account.
+             * Three-letter [ISO code for the currency](https://docs.epayments.network/payouts) paid out to the bank account.
              */
             currency?: string | null;
 

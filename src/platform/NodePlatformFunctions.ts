@@ -6,12 +6,12 @@ import {HttpClient} from '../net/HttpClient.js';
 import {NodeCryptoProvider} from '../crypto/NodeCryptoProvider.js';
 import {NodeHttpClient} from '../net/NodeHttpClient.js';
 import {PlatformFunctions} from './PlatformFunctions.js';
-import {ExpressPlatbyError} from '../Error.js';
+import {ExpressPaymentsError} from '../Error.js';
 import {concat} from '../utils.js';
 import {exec} from 'child_process';
 import {BufferedFile, MultipartRequestData, RequestData} from '../Types.js';
 
-class StreamProcessingError extends ExpressPlatbyError {}
+class StreamProcessingError extends ExpressPaymentsError {}
 
 /**
  * Specializes WebPlatformFunctions using APIs available in Node.js.

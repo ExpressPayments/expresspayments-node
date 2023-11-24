@@ -4,29 +4,29 @@ import * as Error from '../src/Error.js';
 import {expect} from 'chai';
 
 describe('Error', () => {
-    describe('ExpressPlatbyError', () => {
+    describe('ExpressPaymentsError', () => {
         it('Generates specific instance depending on error-type', () => {
             expect(
-                Error.ExpressPlatbyError.generate({type: 'card_error'})
-            ).to.be.instanceOf(Error.ExpressPlatbyCardError);
+                Error.ExpressPaymentsError.generate({type: 'card_error'})
+            ).to.be.instanceOf(Error.ExpressPaymentsCardError);
             expect(
-                Error.ExpressPlatbyError.generate({
+                Error.ExpressPaymentsError.generate({
                     type: 'invalid_request_error',
                 })
-            ).to.be.instanceOf(Error.ExpressPlatbyInvalidRequestError);
+            ).to.be.instanceOf(Error.ExpressPaymentsInvalidRequestError);
             expect(
-                Error.ExpressPlatbyError.generate({type: 'api_error'})
-            ).to.be.instanceOf(Error.ExpressPlatbyAPIError);
+                Error.ExpressPaymentsError.generate({type: 'api_error'})
+            ).to.be.instanceOf(Error.ExpressPaymentsAPIError);
             expect(
-                Error.ExpressPlatbyError.generate({type: 'idempotency_error'})
-            ).to.be.instanceOf(Error.ExpressPlatbyIdempotencyError);
+                Error.ExpressPaymentsError.generate({type: 'idempotency_error'})
+            ).to.be.instanceOf(Error.ExpressPaymentsIdempotencyError);
             expect(
-                Error.ExpressPlatbyError.generate({type: 'weird_error' as any})
-            ).to.be.instanceOf(Error.ExpressPlatbyUnknownError);
+                Error.ExpressPaymentsError.generate({type: 'weird_error' as any})
+            ).to.be.instanceOf(Error.ExpressPaymentsUnknownError);
         });
 
         it('copies whitelisted properties', () => {
-            const e = new Error.ExpressPlatbyError({
+            const e = new Error.ExpressPaymentsError({
                 charge: 'foo',
                 unknown_prop: 'bar',
             } as any);
@@ -37,7 +37,7 @@ describe('Error', () => {
 
         it('Pulls in headers', () => {
             const headers = {'Request-Id': '123'};
-            const e = Error.ExpressPlatbyError.generate({
+            const e = Error.ExpressPaymentsError.generate({
                 type: 'card_error',
                 headers,
             });
@@ -45,7 +45,7 @@ describe('Error', () => {
         });
 
         it('Pulls in request IDs', () => {
-            const e = Error.ExpressPlatbyError.generate({
+            const e = Error.ExpressPaymentsError.generate({
                 type: 'card_error',
                 requestId: 'foo',
             });
@@ -53,7 +53,7 @@ describe('Error', () => {
         });
 
         it('Pulls in HTTP status code', () => {
-            const e = Error.ExpressPlatbyError.generate({
+            const e = Error.ExpressPaymentsError.generate({
                 type: 'card_error',
                 statusCode: 400,
             });
@@ -61,7 +61,7 @@ describe('Error', () => {
         });
 
         it('has subclasses which provide `.type` as their name', () => {
-            class Foo extends Error.ExpressPlatbyError {}
+            class Foo extends Error.ExpressPaymentsError {}
 
             const err = new Foo({message: 'hi'});
             expect(err).to.have.property('type', 'Foo');

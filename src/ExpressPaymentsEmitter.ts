@@ -2,10 +2,10 @@ import {RequestEvent, ResponseEvent} from './Types.js';
 
 /**
  * @private
- * (For internal use in expressplatby-node.)
+ * (For internal use in expresspayments-node.)
  * Wrapper around the Event Web API.
  */
-class _ExpressPlatbyEvent extends Event {
+class _ExpressPaymentsEvent extends Event {
     data?: RequestEvent | ResponseEvent;
 
     constructor(eventName: string, data: any) {
@@ -15,10 +15,10 @@ class _ExpressPlatbyEvent extends Event {
 }
 
 type Listener = (...args: any[]) => any;
-type ListenerWrapper = (event: _ExpressPlatbyEvent) => void;
+type ListenerWrapper = (event: _ExpressPaymentsEvent) => void;
 
 /** Minimal EventEmitter wrapper around EventTarget. */
-export class ExpressPlatbyEmitter {
+export class ExpressPaymentsEmitter {
     eventTarget: EventTarget;
     listenerMapping: Map<Listener, ListenerWrapper>;
 
@@ -29,7 +29,7 @@ export class ExpressPlatbyEmitter {
 
     on(eventName: string, listener: Listener): void {
         const listenerWrapper: ListenerWrapper = (
-            event: _ExpressPlatbyEvent
+            event: _ExpressPaymentsEvent
         ): void => {
             listener(event.data);
         };
@@ -48,7 +48,7 @@ export class ExpressPlatbyEmitter {
 
     once(eventName: string, listener: Listener): void {
         const listenerWrapper: ListenerWrapper = (
-            event: _ExpressPlatbyEvent
+            event: _ExpressPaymentsEvent
         ): void => {
             listener(event.data);
         };
@@ -60,7 +60,7 @@ export class ExpressPlatbyEmitter {
 
     emit(eventName: string, data: RequestEvent | ResponseEvent): boolean {
         return this.eventTarget.dispatchEvent(
-            new _ExpressPlatbyEvent(eventName, data)
+            new _ExpressPaymentsEvent(eventName, data)
         );
     }
 }

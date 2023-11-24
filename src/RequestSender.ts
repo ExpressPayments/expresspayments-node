@@ -1,10 +1,10 @@
 import {
-    ExpressPlatbyAPIError,
-    ExpressPlatbyAuthenticationError,
-    ExpressPlatbyConnectionError,
-    ExpressPlatbyError,
-    ExpressPlatbyPermissionError,
-    ExpressPlatbyRateLimitError,
+    ExpressPaymentsAPIError,
+    ExpressPaymentsAuthenticationError,
+    ExpressPaymentsConnectionError,
+    ExpressPaymentsError,
+    ExpressPaymentsPermissionError,
+    ExpressPaymentsRateLimitError,
 } from './Error.js';
 import {
     emitWarning,
@@ -14,7 +14,7 @@ import {
 } from './utils.js';
 import {HttpClient, HttpClientResponseInterface} from './net/HttpClient.js';
 import {
-    ExpressPlatbyObject,
+    ExpressPaymentsObject,
     RequestCallback,
     RequestCallbackReturn,
     RequestData,
@@ -31,14 +31,14 @@ export type HttpClientResponseError = {code: string};
 const MAX_RETRY_AFTER_WAIT = 60;
 
 export class RequestSender {
-    protected _expressPlatby: ExpressPlatbyObject;
+    protected _expressPayments: ExpressPaymentsObject;
     private readonly _maxBufferedRequestMetric: number;
 
     constructor(
-        expressPlatby: ExpressPlatbyObject,
+        expressPayments: ExpressPaymentsObject,
         maxBufferedRequestMetric: number
     ) {
-        this._expressPlatby = expressPlatby;
+        this._expressPayments = expressPayments;
         this._maxBufferedRequestMetric = maxBufferedRequestMetric;
     }
 
@@ -46,11 +46,11 @@ export class RequestSender {
         // For convenience, make some headers easily accessible on
         // lastResponse.
 
-        // NOTE: ExpressPlatby responds with lowercase header names/keys.
+        // NOTE: ExpressPayments responds with lowercase header names/keys.
         obj.requestId = headers['request-id'];
-        obj.expressPlatbyAccount =
-            obj.expressPlatbyAccount || headers['expressplatby-account'];
-        obj.apiVersion = obj.apiVersion || headers['expressplatby-version'];
+        obj.expressPaymentsAccount =
+            obj.expressPaymentsAccount || headers['ep-account'];
+        obj.apiVersion = obj.apiVersion || headers['ep-Version'];
         obj.idempotencyKey = obj.idempotencyKey || headers['idempotency-key'];
     }
 
@@ -64,8 +64,8 @@ export class RequestSender {
             requestEndTime - requestEvent.request_start_time;
 
         return removeNullish({
-            api_version: headers['expressplatby-version'] as string,
-            account: headers['expressplatby-account'] as string,
+            api_version: headers['ep-version'] as string,
+            account: headers['ep-account'] as string,
             idempotency_key: headers['idempotency-key'] as string,
             method: requestEvent.method,
             path: requestEvent.path,
@@ -83,7 +83,7 @@ export class RequestSender {
 
     /**
      * Used by methods with spec.streaming === true. For these methods, we do not
-     * buffer successful responses into memory or do parse them into expressplatby
+     * buffer successful responses into memory or do parse them into expresspayments
      * objects, we delegate that all of that to the user and pass back the raw
      * http.Response object to the callback.
      *
@@ -104,7 +104,7 @@ export class RequestSender {
                     res.getStatusCode(),
                     headers
                 );
-                this._expressPlatby._emitter.emit('response', responseEvent);
+                this._expressPayments._emitter.emit('response', responseEvent);
                 this._recordRequestMetrics(
                     this._getRequestId(headers),
                     responseEvent.elapsed
@@ -123,7 +123,7 @@ export class RequestSender {
     }
 
     /**
-     * Default handler for ExpressPlatby responses. Buffers the response into memory,
+     * Default handler for ExpressPayments responses. Buffers the response into memory,
      * parses the JSON and returns it (i.e. passes it to the callback) if there
      * is no "error" field. Otherwise, constructs/passes an appropriate Error.
      */
@@ -141,7 +141,7 @@ export class RequestSender {
                 statusCode,
                 headers
             );
-            this._expressPlatby._emitter.emit('response', responseEvent);
+            this._expressPayments._emitter.emit('response', responseEvent);
 
             res.toJSON()
                 .then(
@@ -163,19 +163,19 @@ export class RequestSender {
                             jsonResponse.error.requestId = requestId;
 
                             if (statusCode === 401) {
-                                err = new ExpressPlatbyAuthenticationError(
+                                err = new ExpressPaymentsAuthenticationError(
                                     jsonResponse.error
                                 );
                             } else if (statusCode === 403) {
-                                err = new ExpressPlatbyPermissionError(
+                                err = new ExpressPaymentsPermissionError(
                                     jsonResponse.error
                                 );
                             } else if (statusCode === 429) {
-                                err = new ExpressPlatbyRateLimitError(
+                                err = new ExpressPaymentsRateLimitError(
                                     jsonResponse.error
                                 );
                             } else {
-                                err = ExpressPlatbyError.generate(
+                                err = ExpressPaymentsError.generate(
                                     jsonResponse.error
                                 );
                             }
@@ -186,9 +186,9 @@ export class RequestSender {
                         return jsonResponse;
                     },
                     (e: Error) => {
-                        throw new ExpressPlatbyAPIError({
+                        throw new ExpressPaymentsAPIError({
                             message:
-                                'Invalid JSON received from the ExpressPlatby API',
+                                'Invalid JSON received from the ExpressPayments API',
                             exception: e,
                             requestId: headers['request-id'] as string,
                         });
@@ -218,14 +218,14 @@ export class RequestSender {
     }
 
     static _generateConnectionErrorMessage(requestRetries: number): string {
-        return `An error occurred with our connection to ExpressPlatby.${
+        return `An error occurred with our connection to ExpressPayments.${
             requestRetries > 0
                 ? ` Request was retried ${requestRetries} times.`
                 : ''
         }`;
     }
 
-    // For more on when and how to retry API requests, see https://expressplatby.cz/docs/error-handling#safely-retrying-requests-with-idempotency
+    // For more on when and how to retry API requests, see https://docs.epayments.network/error-handling#safely-retrying-requests-with-idempotency
     static _shouldRetry(
         res: null | HttpClientResponseInterface,
         numRetries: number,
@@ -252,10 +252,10 @@ export class RequestSender {
 
         // The API may ask us not to retry (e.g., if doing so would be a no-op)
         // or advise us to retry (e.g., in cases of lock timeouts); we defer to that.
-        if (res.getHeaders()['expressplatby-should-retry'] === 'false') {
+        if (res.getHeaders()['ep-should-retry'] === 'false') {
             return false;
         }
-        if (res.getHeaders()['expressplatby-should-retry'] === 'true') {
+        if (res.getHeaders()['ep-should-retry'] === 'true') {
             return true;
         }
 
@@ -266,7 +266,7 @@ export class RequestSender {
 
         // Retry on 500, 503, and other internal errors.
         //
-        // Note that we expect the expressplatby-should-retry header to be false
+        // Note that we expect the ep-should-retry header to be false
         // in most cases when a 500 is returned, since our idempotency framework
         // would typically replay it anyway.
         if (res.getStatusCode() >= 500) {
@@ -280,8 +280,8 @@ export class RequestSender {
         numRetries: number,
         retryAfter: number | null = null
     ): number {
-        const initialNetworkRetryDelay = this._expressPlatby.getInitialNetworkRetryDelay();
-        const maxNetworkRetryDelay = this._expressPlatby.getMaxNetworkRetryDelay();
+        const initialNetworkRetryDelay = this._expressPayments.getInitialNetworkRetryDelay();
+        const maxNetworkRetryDelay = this._expressPayments.getMaxNetworkRetryDelay();
 
         // Apply exponential backoff with initialNetworkRetryDelay on the
         // number of numRetries so far as inputs. Do not allow the number to exceed
@@ -314,7 +314,7 @@ export class RequestSender {
         return settings.maxNetworkRetries &&
             Number.isInteger(settings.maxNetworkRetries)
             ? settings.maxNetworkRetries
-            : this._expressPlatby.getMaxNetworkRetries();
+            : this._expressPayments.getMaxNetworkRetries();
     }
 
     _defaultIdempotencyKey(
@@ -325,7 +325,7 @@ export class RequestSender {
         const maxRetries = this._getMaxNetworkRetries(settings);
 
         if (method === 'POST' && maxRetries > 0) {
-            return `expressplatby-node-retry-${this._expressPlatby._platformFunctions.uuid4()}`;
+            return `expresspayments-node-retry-${this._expressPayments._platformFunctions.uuid4()}`;
         }
         return null;
     }
@@ -340,18 +340,18 @@ export class RequestSender {
         userSuppliedSettings: RequestSettings
     ): RequestHeaders {
         const defaultHeaders = {
-            // Use specified auth token or use default from this ExpressPlatby instance:
+            // Use specified auth token or use default from this ExpressPayments instance:
             Authorization: auth
                 ? `Bearer ${auth}`
-                : this._expressPlatby.getApiField('auth'),
+                : this._expressPayments.getApiField('auth'),
             Accept: 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded',
             'User-Agent': this._getUserAgentString(),
-            'X-ExpressPlatby-Client-User-Agent': clientUserAgent,
-            'X-ExpressPlatby-Client-Telemetry': this._getTelemetryHeader(),
-            'ExpressPlatby-Version': apiVersion,
-            'ExpressPlatby-Account': this._expressPlatby.getApiField(
-                'expressPlatbyAccount'
+            'X-EP-Client-User-Agent': clientUserAgent,
+            'X-EP-Client-Telemetry': this._getTelemetryHeader(),
+            'EP-Version': apiVersion,
+            'EP-Account': this._expressPayments.getApiField(
+                'expressPaymentsAccount'
             ),
             'Idempotency-Key': this._defaultIdempotencyKey(
                 method,
@@ -395,22 +395,22 @@ export class RequestSender {
     }
 
     _getUserAgentString(): string {
-        const packageVersion = this._expressPlatby.getConstant(
+        const packageVersion = this._expressPayments.getConstant(
             'PACKAGE_VERSION'
         );
-        const appInfo = this._expressPlatby._appInfo
-            ? this._expressPlatby.getAppInfoAsString()
+        const appInfo = this._expressPayments._appInfo
+            ? this._expressPayments.getAppInfoAsString()
             : '';
 
-        return `ExpressPlatby/v1 NodeBindings/${packageVersion} ${appInfo}`.trim();
+        return `ExpressPayments/v1 NodeBindings/${packageVersion} ${appInfo}`.trim();
     }
 
     _getTelemetryHeader(): string | undefined {
         if (
-            this._expressPlatby.getTelemetryEnabled() &&
-            this._expressPlatby._prevRequestMetrics.length > 0
+            this._expressPayments.getTelemetryEnabled() &&
+            this._expressPayments._prevRequestMetrics.length > 0
         ) {
-            const metrics = this._expressPlatby._prevRequestMetrics.shift();
+            const metrics = this._expressPayments._prevRequestMetrics.shift();
             return JSON.stringify({
                 last_request_metrics: metrics,
             });
@@ -418,16 +418,16 @@ export class RequestSender {
     }
 
     _recordRequestMetrics(requestId: string, requestDurationMs: number): void {
-        if (this._expressPlatby.getTelemetryEnabled() && requestId) {
+        if (this._expressPayments.getTelemetryEnabled() && requestId) {
             if (
-                this._expressPlatby._prevRequestMetrics.length >
+                this._expressPayments._prevRequestMetrics.length >
                 this._maxBufferedRequestMetric
             ) {
                 emitWarning(
                     'Request metrics buffer is full, dropping telemetry message.'
                 );
             } else {
-                this._expressPlatby._prevRequestMetrics.push({
+                this._expressPayments._prevRequestMetrics.push({
                     request_id: requestId,
                     request_duration_ms: requestDurationMs,
                 });
@@ -475,18 +475,18 @@ export class RequestSender {
                 Number.isInteger(options.settings.timeout) &&
                 options.settings.timeout >= 0
                     ? options.settings.timeout
-                    : this._expressPlatby.getApiField('timeout');
+                    : this._expressPayments.getApiField('timeout');
 
-            const req = this._expressPlatby
+            const req = this._expressPayments
                 .getApiField('httpClient')
                 .makeRequest(
-                    host || this._expressPlatby.getApiField('host'),
-                    this._expressPlatby.getApiField('port'),
+                    host || this._expressPayments.getApiField('host'),
+                    this._expressPayments.getApiField('port'),
                     path,
                     method,
                     headers,
                     requestData,
-                    this._expressPlatby.getApiField('protocol'),
+                    this._expressPayments.getApiField('protocol'),
                     timeout
                 );
 
@@ -495,7 +495,7 @@ export class RequestSender {
             // @ts-ignore
             const requestEvent: RequestEvent = removeNullish({
                 api_version: apiVersion,
-                account: headers['ExpressPlatby-Account'],
+                account: headers['EP-Account'],
                 idempotency_key: headers['Idempotency-Key'],
                 method,
                 path,
@@ -508,7 +508,7 @@ export class RequestSender {
                 options.settings || {}
             );
 
-            this._expressPlatby._emitter.emit('request', requestEvent);
+            this._expressPayments._emitter.emit('request', requestEvent);
 
             req.then((res: HttpClientResponseInterface) => {
                 if (
@@ -555,7 +555,7 @@ export class RequestSender {
                         error.code === HttpClient.TIMEOUT_ERROR_CODE;
 
                     return callback(
-                        new ExpressPlatbyConnectionError({
+                        new ExpressPaymentsConnectionError({
                             message: isTimeoutError
                                 ? `Request aborted due to timeout being reached (${timeout}ms)`
                                 : RequestSender._generateConnectionErrorMessage(
@@ -579,9 +579,9 @@ export class RequestSender {
 
             requestData = data;
 
-            this._expressPlatby.getClientUserAgent(
+            this._expressPayments.getClientUserAgent(
                 (clientUserAgent: string) => {
-                    const apiVersion = this._expressPlatby.getApiField(
+                    const apiVersion = this._expressPayments.getApiField(
                         'version'
                     );
                     const headers = this._makeHeaders(

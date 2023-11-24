@@ -1,29 +1,30 @@
 // File generated from our OpenAPI spec
 
 import {multipartRequestDataProcessor} from '../multipart.js';
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const Files = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/files',
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-    host: 'files.expressplatby.cz',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/files/{file}',
-  }),
+export const Files = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/files',
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+        host: 'files.epayments.network',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/files',
-    methodType: 'list',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/files/{file}',
+    }),
 
-  requestDataProcessor: multipartRequestDataProcessor,
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/files',
+        methodType: 'list',
+    }),
+
+    requestDataProcessor: multipartRequestDataProcessor,
 });

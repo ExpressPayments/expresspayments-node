@@ -1,44 +1,45 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const SubscriptionItems = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscription_items',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/subscription_items/{item}',
-  }),
+export const SubscriptionItems = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscription_items',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscription_items/{item}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/subscription_items/{item}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/subscription_items',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscription_items/{item}',
+    }),
 
-  del: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/subscription_items/{item}',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/subscription_items',
+        methodType: 'list',
+    }),
 
-  createUsageRecord: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscription_items/{subscription_item}/usage_records',
-  }),
+    del: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/subscription_items/{item}',
+    }),
 
-  listUsageRecordSummaries: expressPlatbyMethod({
-    method: 'GET',
-    fullPath:
-      '/v1/subscription_items/{subscription_item}/usage_record_summaries',
-    methodType: 'list',
-  }),
+    createUsageRecord: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscription_items/{subscription_item}/usage_records',
+    }),
+
+    listUsageRecordSummaries: expressPaymentsMethod({
+        method: 'GET',
+        fullPath:
+            '/v1/subscription_items/{subscription_item}/usage_record_summaries',
+        methodType: 'list',
+    }),
 });

@@ -1,5 +1,5 @@
-name = "my-expressplatby-worker"
+name = "my-expresspayments-worker"
 main = "src/index.js"
 compatibility_flags = []
-compatibility_date = "2023-06-01"
+compatibility_date = "2023-11-01"
 workers_dev = true

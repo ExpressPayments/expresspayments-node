@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Tax {
             /**
              * A Tax Calculation allows you to calculate the tax to collect from your customer.
              *
-             * Related guide: [Calculate tax in your custom payment flow](https://expressplatby.cz/docs/tax/custom)
+             * Related guide: [Calculate tax in your custom payment flow](https://docs.epayments.network/tax/custom)
              */
             interface Calculation {
                 /**
@@ -25,12 +25,12 @@ declare module 'expressplatby' {
                 amount_total: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
                 /**
-                 * The ID of an existing [Customer](https://expressplatby.cz/docs/api/customers/object) used for the resource.
+                 * The ID of an existing [Customer](https://docs.epayments.network/api/customers/object) used for the resource.
                  */
                 customer: string | null;
 
@@ -45,7 +45,7 @@ declare module 'expressplatby' {
                  * The list of items the customer is purchasing.
                  */
                 line_items: ApiList<
-                    ExpressPlatby.Tax.CalculationLineItem
+                  ExpressPayments.Tax.CalculationLineItem
                 > | null;
 
                 /**
@@ -84,7 +84,7 @@ declare module 'expressplatby' {
                     /**
                      * The customer's postal address (for example, home or business location).
                      */
-                    address: ExpressPlatby.Address | null;
+                    address: ExpressPayments.Address | null;
 
                     /**
                      * The type of customer address provided.
@@ -196,7 +196,7 @@ declare module 'expressplatby' {
                     amount_tax: number;
 
                     /**
-                     * The ID of an existing [ShippingRate](https://expressplatby.cz/docs/api/shipping_rates/object)
+                     * The ID of an existing [ShippingRate](https://docs.epayments.network/api/shipping_rates/object)
                      */
                     shipping_rate?: string;
 
@@ -211,7 +211,7 @@ declare module 'expressplatby' {
                     tax_breakdown?: Array<ShippingCost.TaxBreakdown>;
 
                     /**
-                     * The [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID used for shipping.
+                     * The [tax code](https://docs.epayments.network/tax/tax-categories) ID used for shipping.
                      */
                     tax_code: string;
                 }

@@ -1,5 +1,5 @@
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Interface encapsulating the various crypto computations used by the library,
          * allowing pluggable underlying crypto implementations.

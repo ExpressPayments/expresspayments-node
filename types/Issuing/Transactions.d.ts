@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Issuing {
             /**
-             * Any use of an [issued card](https://expressplatby.cz/docs/issuing) that results in funds entering or leaving
-             * your ExpressPlatby account, such as a completed purchase or refund, is represented by an Issuing
+             * Any use of an [issued card](https://docs.epayments.network/issuing) that results in funds entering or leaving
+             * your ExpressPayments account, such as a completed purchase or refund, is represented by an Issuing
              * `Transaction` object.
              *
-             * Related guide: [Issued card transactions](https://expressplatby.cz/docs/issuing/purchases/transactions)
+             * Related guide: [Issued card transactions](https://docs.epayments.network/issuing/purchases/transactions)
              */
             interface Transaction {
                 /**
@@ -22,12 +22,12 @@ declare module 'expressplatby' {
                 object: 'issuing.transaction';
 
                 /**
-                 * The transaction amount, which will be reflected in your balance. This amount is in your currency and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                 * The transaction amount, which will be reflected in your balance. This amount is in your currency and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                  */
                 amount: number;
 
                 /**
-                 * Detailed breakdown of amount components. These amounts are denominated in `currency` and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                 * Detailed breakdown of amount components. These amounts are denominated in `currency` and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                  */
                 amount_details: Transaction.AmountDetails | null;
 
@@ -36,26 +36,26 @@ declare module 'expressplatby' {
                  */
                 authorization:
                     | string
-                    | ExpressPlatby.Issuing.Authorization
+                    | ExpressPayments.Issuing.Authorization
                     | null;
 
                 /**
-                 * ID of the [balance transaction](https://expressplatby.cz/docs/api/balance_transactions) associated with this transaction.
+                 * ID of the [balance transaction](https://docs.epayments.network/api/balance_transactions) associated with this transaction.
                  */
                 balance_transaction:
                     | string
-                    | ExpressPlatby.BalanceTransaction
+                    | ExpressPayments.BalanceTransaction
                     | null;
 
                 /**
                  * The card used to make this transaction.
                  */
-                card: string | ExpressPlatby.Issuing.Card;
+                card: string | ExpressPayments.Issuing.Card;
 
                 /**
                  * The cardholder to whom this transaction belongs.
                  */
-                cardholder: string | ExpressPlatby.Issuing.Cardholder | null;
+                cardholder: string | ExpressPayments.Issuing.Cardholder | null;
 
                 /**
                  * Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -63,14 +63,14 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
                 /**
                  * If you've disputed the transaction, the ID of the dispute.
                  */
-                dispute: string | ExpressPlatby.Issuing.Dispute | null;
+                dispute: string | ExpressPayments.Issuing.Dispute | null;
 
                 /**
                  * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -78,7 +78,7 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * The amount that the merchant will receive, denominated in `merchant_currency` and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal). It will be different from `amount` if the merchant is taking payment in a different currency.
+                 * The amount that the merchant will receive, denominated in `merchant_currency` and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal). It will be different from `amount` if the merchant is taking payment in a different currency.
                  */
                 merchant_amount: number;
 
@@ -90,9 +90,9 @@ declare module 'expressplatby' {
                 merchant_data: Transaction.MerchantData;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * Additional purchase information that is optionally provided by the merchant.
@@ -100,7 +100,7 @@ declare module 'expressplatby' {
                 purchase_details: Transaction.PurchaseDetails | null;
 
                 /**
-                 * [Treasury](https://expressplatby.cz/docs/api/treasury) details related to this transaction if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
+                 * [Treasury](https://docs.epayments.network/api/treasury) details related to this transaction if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
                  */
                 treasury?: Transaction.Treasury | null;
 
@@ -125,7 +125,7 @@ declare module 'expressplatby' {
 
                 interface MerchantData {
                     /**
-                     * A categorization of the seller's type of business. See our [merchant categories guide](https://expressplatby.cz/docs/issuing/merchant-categories) for a list of possible values.
+                     * A categorization of the seller's type of business. See our [merchant categories guide](https://docs.epayments.network/issuing/merchant-categories) for a list of possible values.
                      */
                     category: string;
 
@@ -318,12 +318,12 @@ declare module 'expressplatby' {
 
                 interface Treasury {
                     /**
-                     * The Treasury [ReceivedCredit](https://expressplatby.cz/docs/api/treasury/received_credits) representing this Issuing transaction if it is a refund
+                     * The Treasury [ReceivedCredit](https://docs.epayments.network/api/treasury/received_credits) representing this Issuing transaction if it is a refund
                      */
                     received_credit: string | null;
 
                     /**
-                     * The Treasury [ReceivedDebit](https://expressplatby.cz/docs/api/treasury/received_debits) representing this Issuing transaction if it is a capture
+                     * The Treasury [ReceivedDebit](https://docs.epayments.network/api/treasury/received_debits) representing this Issuing transaction if it is a capture
                      */
                     received_debit: string | null;
                 }

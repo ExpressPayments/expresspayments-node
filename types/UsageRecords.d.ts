@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * Usage records allow you to report customer usage and metrics to ExpressPlatby for
+         * Usage records allow you to report customer usage and metrics to ExpressPayments for
          * metered billing of subscription prices.
          *
-         * Related guide: [Metered billing](https://expressplatby.cz/docs/billing/subscriptions/metered-billing)
+         * Related guide: [Metered billing](https://docs.epayments.network/billing/subscriptions/metered-billing)
          */
         interface UsageRecord {
             /**

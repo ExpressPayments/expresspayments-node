@@ -1,11 +1,12 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../../ExpressPaymentsResource.js';
 
-export const ReceivedCredits = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/test_helpers/treasury/received_credits',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
+
+export const ReceivedCredits = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/test_helpers/treasury/received_credits',
+    }),
 });

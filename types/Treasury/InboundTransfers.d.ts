@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             /**
-             * Use [InboundTransfers](https://expressplatby.cz/docs/treasury/moving-money/financial-accounts/into/inbound-transfers) to add funds to your [FinancialAccount](https://expressplatby.cz/docs/api#financial_accounts) via a PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
+             * Use [InboundTransfers](https://docs.epayments.network/treasury/moving-money/financial-accounts/into/inbound-transfers) to add funds to your [FinancialAccount](https://docs.epayments.network/api#financial_accounts) via a PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
              */
             interface InboundTransfer {
                 /**
@@ -33,7 +33,7 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -53,7 +53,7 @@ declare module 'expressplatby' {
                 financial_account: string;
 
                 /**
-                 * A [hosted transaction receipt](https://expressplatby.cz/docs/treasury/moving-money/regulatory-receipts) URL that is provided when money movement is considered regulated under ExpressPlatby's money transmission licenses.
+                 * A [hosted transaction receipt](https://docs.epayments.network/treasury/moving-money/regulatory-receipts) URL that is provided when money movement is considered regulated under ExpressPayments' money transmission licenses.
                  */
                 hosted_regulatory_receipt_url: string | null;
 
@@ -65,9 +65,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * The origin payment method to be debited for an InboundTransfer.
@@ -99,7 +99,7 @@ declare module 'expressplatby' {
                 /**
                  * The Transaction associated with this object.
                  */
-                transaction: string | ExpressPlatby.Treasury.Transaction | null;
+                transaction: string | ExpressPayments.Treasury.Transaction | null;
             }
 
             namespace InboundTransfer {
@@ -147,7 +147,7 @@ declare module 'expressplatby' {
 
                 namespace OriginPaymentMethodDetails {
                     interface BillingDetails {
-                        address: ExpressPlatby.Address;
+                        address: ExpressPayments.Address;
 
                         /**
                          * Email address.

@@ -3,12 +3,12 @@
 'use strict';
 
 const testUtils = require('../testUtils.js');
-const expressPlatby = testUtils.getExpressPlatbyMockClient();
+const expressPayments = testUtils.getExpressPaymentsMockClient();
 const expect = require('chai').expect;
 
 describe('Accounts', function() {
     it('listExternalAccounts method', async function() {
-        const externalAccount = await expressPlatby.accounts.listExternalAccounts(
+        const externalAccount = await expressPayments.accounts.listExternalAccounts(
             'acct_xxxxxxxxxxxxx',
             {
                 limit: 3,
@@ -18,14 +18,14 @@ describe('Accounts', function() {
     });
 
     it('list method', async function() {
-        const accounts = await expressPlatby.accounts.list({
+        const accounts = await expressPayments.accounts.list({
             limit: 3,
         });
         expect(accounts).not.to.be.null;
     });
 
     it('create method', async function() {
-        const account = await expressPlatby.accounts.create({
+        const account = await expressPayments.accounts.create({
             type: 'custom',
             country: 'US',
             email: 'martin.najemi@example.com',
@@ -42,19 +42,21 @@ describe('Accounts', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.accounts.del('acct_xxxxxxxxxxxxx');
+        const deleted = await expressPayments.accounts.del(
+            'acct_xxxxxxxxxxxxx'
+        );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const account = await expressPlatby.accounts.retrieve(
+        const account = await expressPayments.accounts.retrieve(
             'acct_xxxxxxxxxxxxx'
         );
         expect(account).not.to.be.null;
     });
 
     it('update method', async function() {
-        const account = await expressPlatby.accounts.update(
+        const account = await expressPayments.accounts.update(
             'acct_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -66,7 +68,7 @@ describe('Accounts', function() {
     });
 
     it('reject method', async function() {
-        const account = await expressPlatby.accounts.reject(
+        const account = await expressPayments.accounts.reject(
             'acct_xxxxxxxxxxxxx',
             {
                 reason: 'fraud',
@@ -76,14 +78,14 @@ describe('Accounts', function() {
     });
 
     it('listCapabilities method', async function() {
-        const capabilities = await expressPlatby.accounts.listCapabilities(
+        const capabilities = await expressPayments.accounts.listCapabilities(
             'acct_xxxxxxxxxxxxx'
         );
         expect(capabilities).not.to.be.null;
     });
 
     it('retrieveCapability method', async function() {
-        const capability = await expressPlatby.accounts.retrieveCapability(
+        const capability = await expressPayments.accounts.retrieveCapability(
             'acct_xxxxxxxxxxxxx',
             'card_payments'
         );
@@ -91,7 +93,7 @@ describe('Accounts', function() {
     });
 
     it('updateCapability method', async function() {
-        const capability = await expressPlatby.accounts.updateCapability(
+        const capability = await expressPayments.accounts.updateCapability(
             'acct_xxxxxxxxxxxxx',
             'card_payments',
             {
@@ -102,7 +104,7 @@ describe('Accounts', function() {
     });
 
     it('createExternalAccount method', async function() {
-        const externalAccount = await expressPlatby.accounts.createExternalAccount(
+        const externalAccount = await expressPayments.accounts.createExternalAccount(
             'acct_xxxxxxxxxxxxx',
             {
                 external_account: 'btok_xxxxxxxxxxxxx',
@@ -112,7 +114,7 @@ describe('Accounts', function() {
     });
 
     it('createExternalAccount method', async function() {
-        const externalAccount = await expressPlatby.accounts.createExternalAccount(
+        const externalAccount = await expressPayments.accounts.createExternalAccount(
             'acct_xxxxxxxxxxxxx',
             {
                 external_account: 'tok_xxxx_debit',
@@ -122,7 +124,7 @@ describe('Accounts', function() {
     });
 
     it('deleteExternalAccount method', async function() {
-        const deletedExternalAccount = await expressPlatby.accounts.deleteExternalAccount(
+        const deletedExternalAccount = await expressPayments.accounts.deleteExternalAccount(
             'acct_xxxxxxxxxxxxx',
             'ba_xxxxxxxxxxxxx'
         );
@@ -130,7 +132,7 @@ describe('Accounts', function() {
     });
 
     it('deleteExternalAccount method', async function() {
-        const deletedExternalAccount = await expressPlatby.accounts.deleteExternalAccount(
+        const deletedExternalAccount = await expressPayments.accounts.deleteExternalAccount(
             'acct_xxxxxxxxxxxxx',
             'card_xxxxxxxxxxxxx'
         );
@@ -138,7 +140,7 @@ describe('Accounts', function() {
     });
 
     it('retrieveExternalAccount method', async function() {
-        const externalAccount = await expressPlatby.accounts.retrieveExternalAccount(
+        const externalAccount = await expressPayments.accounts.retrieveExternalAccount(
             'acct_xxxxxxxxxxxxx',
             'ba_xxxxxxxxxxxxx'
         );
@@ -146,7 +148,7 @@ describe('Accounts', function() {
     });
 
     it('retrieveExternalAccount method', async function() {
-        const externalAccount = await expressPlatby.accounts.retrieveExternalAccount(
+        const externalAccount = await expressPayments.accounts.retrieveExternalAccount(
             'acct_xxxxxxxxxxxxx',
             'card_xxxxxxxxxxxxx'
         );
@@ -154,7 +156,7 @@ describe('Accounts', function() {
     });
 
     it('updateExternalAccount method', async function() {
-        const externalAccount = await expressPlatby.accounts.updateExternalAccount(
+        const externalAccount = await expressPayments.accounts.updateExternalAccount(
             'acct_xxxxxxxxxxxxx',
             'ba_xxxxxxxxxxxxx',
             {
@@ -167,7 +169,7 @@ describe('Accounts', function() {
     });
 
     it('updateExternalAccount method', async function() {
-        const externalAccount = await expressPlatby.accounts.updateExternalAccount(
+        const externalAccount = await expressPayments.accounts.updateExternalAccount(
             'acct_xxxxxxxxxxxxx',
             'card_xxxxxxxxxxxxx',
             {
@@ -180,14 +182,14 @@ describe('Accounts', function() {
     });
 
     it('createLoginLink method', async function() {
-        const loginLink = await expressPlatby.accounts.createLoginLink(
+        const loginLink = await expressPayments.accounts.createLoginLink(
             'acct_xxxxxxxxxxxxx'
         );
         expect(loginLink).not.to.be.null;
     });
 
     it('listPersons method', async function() {
-        const persons = await expressPlatby.accounts.listPersons(
+        const persons = await expressPayments.accounts.listPersons(
             'acct_xxxxxxxxxxxxx',
             {
                 limit: 3,
@@ -197,7 +199,7 @@ describe('Accounts', function() {
     });
 
     it('createPerson method', async function() {
-        const person = await expressPlatby.accounts.createPerson(
+        const person = await expressPayments.accounts.createPerson(
             'acct_xxxxxxxxxxxxx',
             {
                 first_name: 'Jane',
@@ -208,7 +210,7 @@ describe('Accounts', function() {
     });
 
     it('deletePerson method', async function() {
-        const deleted = await expressPlatby.accounts.deletePerson(
+        const deleted = await expressPayments.accounts.deletePerson(
             'acct_xxxxxxxxxxxxx',
             'person_xxxxxxxxxxxxx'
         );
@@ -216,7 +218,7 @@ describe('Accounts', function() {
     });
 
     it('retrievePerson method', async function() {
-        const person = await expressPlatby.accounts.retrievePerson(
+        const person = await expressPayments.accounts.retrievePerson(
             'acct_xxxxxxxxxxxxx',
             'person_xxxxxxxxxxxxx'
         );
@@ -224,7 +226,7 @@ describe('Accounts', function() {
     });
 
     it('updatePerson method', async function() {
-        const person = await expressPlatby.accounts.updatePerson(
+        const person = await expressPayments.accounts.updatePerson(
             'acct_xxxxxxxxxxxxx',
             'person_xxxxxxxxxxxxx',
             {
@@ -237,7 +239,7 @@ describe('Accounts', function() {
     });
 
     it('retrieve method', async function() {
-        const expressPlatby = testUtils.createMockClient([
+        const expressPayments = testUtils.createMockClient([
             {
                 method: 'GET',
                 path: '/v1/accounts/acc_123',
@@ -245,14 +247,14 @@ describe('Accounts', function() {
                     '{"business_profile":{"mcc":"mcc","name":"name","product_description":"product_description","support_address":{"city":"city","country":"country","line1":"line1","line2":"line2","postal_code":"postal_code","state":"state"},"support_email":"support_email","support_phone":"support_phone","support_url":"support_url","url":"url"},"business_type":"government_entity","capabilities":{"acss_debit_payments":"inactive","affirm_payments":"pending","afterpay_clearpay_payments":"inactive","au_becs_debit_payments":"active","bacs_debit_payments":"active","bancontact_payments":"inactive","bank_transfer_payments":"pending","blik_payments":"inactive","boleto_payments":"inactive","card_issuing":"active","card_payments":"active","cartes_bancaires_payments":"active","cashapp_payments":"active","eps_payments":"inactive","fpx_payments":"active","giropay_payments":"active","grabpay_payments":"pending","ideal_payments":"inactive","india_international_payments":"inactive","jcb_payments":"inactive","klarna_payments":"active","konbini_payments":"active","legacy_payments":"active","link_payments":"inactive","oxxo_payments":"pending","p24_payments":"inactive","paynow_payments":"active","promptpay_payments":"active","sepa_debit_payments":"inactive","sofort_payments":"active","tax_reporting_us_1099_k":"inactive","tax_reporting_us_1099_misc":"pending","transfers":"inactive","treasury":"pending","us_bank_account_ach_payments":"pending","zip_payments":"pending"},"charges_enabled":true,"company":{"address":{"city":"city","country":"country","line1":"line1","line2":"line2","postal_code":"postal_code","state":"state"},"address_kana":{"city":"city","country":"country","line1":"line1","line2":"line2","postal_code":"postal_code","state":"state","town":"town"},"address_kanji":{"city":"city","country":"country","line1":"line1","line2":"line2","postal_code":"postal_code","state":"state","town":"town"},"directors_provided":true,"executives_provided":true,"export_license_id":"export_license_id","export_purpose_code":"export_purpose_code","name":"name","name_kana":"name_kana","name_kanji":"name_kanji","owners_provided":true,"ownership_declaration":{"date":"3076014","ip":"ip","user_agent":"user_agent"},"phone":"phone","structure":"sole_establishment","tax_id_provided":true,"tax_id_registrar":"tax_id_registrar","vat_id_provided":true,"verification":{"document":{"back":{"created":"1028554472","expires_at":"833811170","filename":"filename","id":"obj_123","links":null,"object":"file","purpose":"finance_report_run","size":3530753,"title":"title","type":"type","url":"url"},"details":"details","details_code":"details_code","front":{"created":"1028554472","expires_at":"833811170","filename":"filename","id":"obj_123","links":null,"object":"file","purpose":"finance_report_run","size":3530753,"title":"title","type":"type","url":"url"}}}},"controller":{"is_controller":true,"type":"account"},"country":"country","created":"1028554472","default_currency":"default_currency","details_submitted":true,"email":"email","external_accounts":null,"future_requirements":{"alternatives":[{"alternative_fields_due":["alternative_fields_due"],"original_fields_due":["original_fields_due"]}],"current_deadline":"270965154","currently_due":["currently_due"],"disabled_reason":"disabled_reason","errors":[{"code":"verification_document_failed_copy","reason":"reason","requirement":"requirement"}],"eventually_due":["eventually_due"],"past_due":["past_due"],"pending_verification":["pending_verification"]},"id":"obj_123","individual":{"account":"account","address":{"city":"city","country":"country","line1":"line1","line2":"line2","postal_code":"postal_code","state":"state"},"address_kana":{"city":"city","country":"country","line1":"line1","line2":"line2","postal_code":"postal_code","state":"state","town":"town"},"address_kanji":{"city":"city","country":"country","line1":"line1","line2":"line2","postal_code":"postal_code","state":"state","town":"town"},"created":"1028554472","dob":{"day":99228,"month":104080000,"year":3704893},"email":"email","first_name":"first_name","first_name_kana":"first_name_kana","first_name_kanji":"first_name_kanji","full_name_aliases":["full_name_aliases"],"future_requirements":{"alternatives":[{"alternative_fields_due":["alternative_fields_due"],"original_fields_due":["original_fields_due"]}],"currently_due":["currently_due"],"errors":[{"code":"verification_document_failed_copy","reason":"reason","requirement":"requirement"}],"eventually_due":["eventually_due"],"past_due":["past_due"],"pending_verification":["pending_verification"]},"gender":"gender","id":"obj_123","id_number_provided":true,"id_number_secondary_provided":true,"last_name":"last_name","last_name_kana":"last_name_kana","last_name_kanji":"last_name_kanji","maiden_name":"maiden_name","metadata":{"undefined":"metadata"},"nationality":"nationality","object":"person","phone":"phone","political_exposure":"none","registered_address":{"city":"city","country":"country","line1":"line1","line2":"line2","postal_code":"postal_code","state":"state"},"relationship":{"director":true,"executive":true,"owner":true,"percent_ownership":760989685,"representative":true,"title":"title"},"requirements":{"alternatives":[{"alternative_fields_due":["alternative_fields_due"],"original_fields_due":["original_fields_due"]}],"currently_due":["currently_due"],"errors":[{"code":"verification_document_failed_copy","reason":"reason","requirement":"requirement"}],"eventually_due":["eventually_due"],"past_due":["past_due"],"pending_verification":["pending_verification"]},"ssn_last_4_provided":true,"verification":{"additional_document":{"back":{"created":"1028554472","expires_at":"833811170","filename":"filename","id":"obj_123","links":null,"object":"file","purpose":"finance_report_run","size":3530753,"title":"title","type":"type","url":"url"},"details":"details","details_code":"details_code","front":{"created":"1028554472","expires_at":"833811170","filename":"filename","id":"obj_123","links":null,"object":"file","purpose":"finance_report_run","size":3530753,"title":"title","type":"type","url":"url"}},"details":"details","details_code":"details_code","document":{"back":{"created":"1028554472","expires_at":"833811170","filename":"filename","id":"obj_123","links":null,"object":"file","purpose":"finance_report_run","size":3530753,"title":"title","type":"type","url":"url"},"details":"details","details_code":"details_code","front":{"created":"1028554472","expires_at":"833811170","filename":"filename","id":"obj_123","links":null,"object":"file","purpose":"finance_report_run","size":3530753,"title":"title","type":"type","url":"url"}},"status":"status"}},"metadata":{"undefined":"metadata"},"object":"account","payouts_enabled":true,"requirements":{"alternatives":[{"alternative_fields_due":["alternative_fields_due"],"original_fields_due":["original_fields_due"]}],"current_deadline":"270965154","currently_due":["currently_due"],"disabled_reason":"disabled_reason","errors":[{"code":"verification_document_failed_copy","reason":"reason","requirement":"requirement"}],"eventually_due":["eventually_due"],"past_due":["past_due"],"pending_verification":["pending_verification"]},"settings":{"bacs_debit_payments":{"display_name":"display_name"},"branding":{"icon":{"created":"1028554472","expires_at":"833811170","filename":"filename","id":"obj_123","links":null,"object":"file","purpose":"finance_report_run","size":3530753,"title":"title","type":"type","url":"url"},"logo":{"created":"1028554472","expires_at":"833811170","filename":"filename","id":"obj_123","links":null,"object":"file","purpose":"finance_report_run","size":3530753,"title":"title","type":"type","url":"url"},"primary_color":"primary_color","secondary_color":"secondary_color"},"card_issuing":{"tos_acceptance":{"date":3076014,"ip":"ip","user_agent":"user_agent"}},"card_payments":{"decline_on":{"avs_failure":true,"cvc_failure":true},"statement_descriptor_prefix":"statement_descriptor_prefix","statement_descriptor_prefix_kana":"statement_descriptor_prefix_kana","statement_descriptor_prefix_kanji":"statement_descriptor_prefix_kanji"},"dashboard":{"display_name":"display_name","timezone":"timezone"},"payments":{"statement_descriptor":"statement_descriptor","statement_descriptor_kana":"statement_descriptor_kana","statement_descriptor_kanji":"statement_descriptor_kanji","statement_descriptor_prefix_kana":"statement_descriptor_prefix_kana","statement_descriptor_prefix_kanji":"statement_descriptor_prefix_kanji"},"payouts":{"debit_negative_balances":true,"schedule":{"delay_days":1647351405,"interval":"interval","monthly_anchor":1920305369,"weekly_anchor":"weekly_anchor"},"statement_descriptor":"statement_descriptor"},"sepa_debit_payments":{"creditor_id":"creditor_id"},"treasury":{"tos_acceptance":{"date":3076014,"ip":"ip","user_agent":"user_agent"}}},"tos_acceptance":{"date":"3076014","ip":"ip","service_agreement":"service_agreement","user_agent":"user_agent"},"type":"custom"}',
             },
         ]);
-        const account = await expressPlatby.accounts.retrieve('acc_123');
+        const account = await expressPayments.accounts.retrieve('acc_123');
         expect(account).not.to.be.null;
     });
 });
 
 describe('Apps.Secrets', function() {
     it('list method', async function() {
-        const secrets = await expressPlatby.apps.secrets.list({
+        const secrets = await expressPayments.apps.secrets.list({
             scope: {
                 type: 'account',
             },
@@ -262,7 +264,7 @@ describe('Apps.Secrets', function() {
     });
 
     it('create method', async function() {
-        const secret = await expressPlatby.apps.secrets.create({
+        const secret = await expressPayments.apps.secrets.create({
             name: 'sec_123',
             payload: 'very secret string',
             scope: {
@@ -273,7 +275,7 @@ describe('Apps.Secrets', function() {
     });
 
     it('deleteWhere method', async function() {
-        const secret = await expressPlatby.apps.secrets.deleteWhere({
+        const secret = await expressPayments.apps.secrets.deleteWhere({
             name: 'my-api-key',
             scope: {
                 type: 'account',
@@ -283,7 +285,7 @@ describe('Apps.Secrets', function() {
     });
 
     it('find method', async function() {
-        const secret = await expressPlatby.apps.secrets.find({
+        const secret = await expressPayments.apps.secrets.find({
             name: 'sec_123',
             scope: {
                 type: 'account',
@@ -293,7 +295,7 @@ describe('Apps.Secrets', function() {
     });
 
     it('list method', async function() {
-        const secrets = await expressPlatby.apps.secrets.list({
+        const secrets = await expressPayments.apps.secrets.list({
             scope: {
                 type: 'account',
             },
@@ -303,7 +305,7 @@ describe('Apps.Secrets', function() {
     });
 
     it('create method', async function() {
-        const secret = await expressPlatby.apps.secrets.create({
+        const secret = await expressPayments.apps.secrets.create({
             name: 'my-api-key',
             payload: 'secret_key_xxxxxx',
             scope: {
@@ -316,7 +318,7 @@ describe('Apps.Secrets', function() {
 
 describe('Checkout.Sessions', function() {
     it('create method', async function() {
-        const session = await expressPlatby.checkout.sessions.create({
+        const session = await expressPayments.checkout.sessions.create({
             success_url: 'https://example.com/success',
             cancel_url: 'https://example.com/cancel',
             mode: 'payment',
@@ -345,28 +347,28 @@ describe('Checkout.Sessions', function() {
     });
 
     it('expire method', async function() {
-        const session = await expressPlatby.checkout.sessions.expire(
+        const session = await expressPayments.checkout.sessions.expire(
             'sess_xyz'
         );
         expect(session).not.to.be.null;
     });
 
     it('listLineItems method', async function() {
-        const lineItems = await expressPlatby.checkout.sessions.listLineItems(
+        const lineItems = await expressPayments.checkout.sessions.listLineItems(
             'sess_xyz'
         );
         expect(lineItems).not.to.be.null;
     });
 
     it('list method', async function() {
-        const sessions = await expressPlatby.checkout.sessions.list({
+        const sessions = await expressPayments.checkout.sessions.list({
             limit: 3,
         });
         expect(sessions).not.to.be.null;
     });
 
     it('create method', async function() {
-        const session = await expressPlatby.checkout.sessions.create({
+        const session = await expressPayments.checkout.sessions.create({
             success_url: 'https://example.com/success',
             line_items: [
                 {
@@ -380,14 +382,14 @@ describe('Checkout.Sessions', function() {
     });
 
     it('retrieve method', async function() {
-        const session = await expressPlatby.checkout.sessions.retrieve(
+        const session = await expressPayments.checkout.sessions.retrieve(
             'cs_test_xxxxxxxxxxxxx'
         );
         expect(session).not.to.be.null;
     });
 
     it('expire method', async function() {
-        const session = await expressPlatby.checkout.sessions.expire(
+        const session = await expressPayments.checkout.sessions.expire(
             'cs_test_xxxxxxxxxxxxx'
         );
         expect(session).not.to.be.null;
@@ -396,14 +398,14 @@ describe('Checkout.Sessions', function() {
 
 describe('Customers', function() {
     it('retrieveCashBalance method', async function() {
-        const cashBalance = await expressPlatby.customers.retrieveCashBalance(
+        const cashBalance = await expressPayments.customers.retrieveCashBalance(
             'cus_123'
         );
         expect(cashBalance).not.to.be.null;
     });
 
     it('updateCashBalance method', async function() {
-        const cashBalance = await expressPlatby.customers.updateCashBalance(
+        const cashBalance = await expressPayments.customers.updateCashBalance(
             'cus_123',
             {
                 settings: {
@@ -415,7 +417,7 @@ describe('Customers', function() {
     });
 
     it('createFundingInstructions method', async function() {
-        const fundingInstructions = await expressPlatby.customers.createFundingInstructions(
+        const fundingInstructions = await expressPayments.customers.createFundingInstructions(
             'cus_123',
             {
                 bank_transfer: {
@@ -430,7 +432,7 @@ describe('Customers', function() {
     });
 
     it('listPaymentMethods method', async function() {
-        const paymentMethods = await expressPlatby.customers.listPaymentMethods(
+        const paymentMethods = await expressPayments.customers.listPaymentMethods(
             'cus_xyz',
             {
                 type: 'card',
@@ -440,7 +442,7 @@ describe('Customers', function() {
     });
 
     it('updateSource method', async function() {
-        const card = await expressPlatby.customers.updateSource(
+        const card = await expressPayments.customers.updateSource(
             'cus_123',
             'card_123',
             {
@@ -451,41 +453,43 @@ describe('Customers', function() {
     });
 
     it('list method', async function() {
-        const customers = await expressPlatby.customers.list({
+        const customers = await expressPayments.customers.list({
             limit: 3,
         });
         expect(customers).not.to.be.null;
     });
 
     it('list method', async function() {
-        const customers = await expressPlatby.customers.list({
+        const customers = await expressPayments.customers.list({
             limit: 3,
         });
         expect(customers).not.to.be.null;
     });
 
     it('create method', async function() {
-        const customer = await expressPlatby.customers.create({
+        const customer = await expressPayments.customers.create({
             description:
-                'My First Test Customer (created for API docs at https://www.expressplatby.cz/docs/api)',
+                'My First Test Customer (created for API docs at https://www.docs.epayments.network/api)',
         });
         expect(customer).not.to.be.null;
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.customers.del('cus_xxxxxxxxxxxxx');
+        const deleted = await expressPayments.customers.del(
+            'cus_xxxxxxxxxxxxx'
+        );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const customer = await expressPlatby.customers.retrieve(
+        const customer = await expressPayments.customers.retrieve(
             'cus_xxxxxxxxxxxxx'
         );
         expect(customer).not.to.be.null;
     });
 
     it('update method', async function() {
-        const customer = await expressPlatby.customers.update(
+        const customer = await expressPayments.customers.update(
             'cus_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -497,7 +501,7 @@ describe('Customers', function() {
     });
 
     it('listBalanceTransactions method', async function() {
-        const customerBalanceTransactions = await expressPlatby.customers.listBalanceTransactions(
+        const customerBalanceTransactions = await expressPayments.customers.listBalanceTransactions(
             'cus_xxxxxxxxxxxxx',
             {
                 limit: 3,
@@ -507,7 +511,7 @@ describe('Customers', function() {
     });
 
     it('createBalanceTransaction method', async function() {
-        const customerBalanceTransaction = await expressPlatby.customers.createBalanceTransaction(
+        const customerBalanceTransaction = await expressPayments.customers.createBalanceTransaction(
             'cus_xxxxxxxxxxxxx',
             {
                 amount: -500,
@@ -518,7 +522,7 @@ describe('Customers', function() {
     });
 
     it('retrieveBalanceTransaction method', async function() {
-        const customerBalanceTransaction = await expressPlatby.customers.retrieveBalanceTransaction(
+        const customerBalanceTransaction = await expressPayments.customers.retrieveBalanceTransaction(
             'cus_xxxxxxxxxxxxx',
             'cbtxn_xxxxxxxxxxxxx'
         );
@@ -526,7 +530,7 @@ describe('Customers', function() {
     });
 
     it('updateBalanceTransaction method', async function() {
-        const customerBalanceTransaction = await expressPlatby.customers.updateBalanceTransaction(
+        const customerBalanceTransaction = await expressPayments.customers.updateBalanceTransaction(
             'cus_xxxxxxxxxxxxx',
             'cbtxn_xxxxxxxxxxxxx',
             {
@@ -539,7 +543,7 @@ describe('Customers', function() {
     });
 
     it('listPaymentMethods method', async function() {
-        const paymentMethods = await expressPlatby.customers.listPaymentMethods(
+        const paymentMethods = await expressPayments.customers.listPaymentMethods(
             'cus_xxxxxxxxxxxxx',
             {
                 type: 'card',
@@ -549,7 +553,7 @@ describe('Customers', function() {
     });
 
     it('listSources method', async function() {
-        const paymentSource = await expressPlatby.customers.listSources(
+        const paymentSource = await expressPayments.customers.listSources(
             'cus_xxxxxxxxxxxxx',
             {
                 object: 'bank_account',
@@ -560,7 +564,7 @@ describe('Customers', function() {
     });
 
     it('listSources method', async function() {
-        const paymentSource = await expressPlatby.customers.listSources(
+        const paymentSource = await expressPayments.customers.listSources(
             'cus_xxxxxxxxxxxxx',
             {
                 object: 'card',
@@ -571,7 +575,7 @@ describe('Customers', function() {
     });
 
     it('createSource method', async function() {
-        const paymentSource = await expressPlatby.customers.createSource(
+        const paymentSource = await expressPayments.customers.createSource(
             'cus_xxxxxxxxxxxxx',
             {
                 source: 'btok_xxxxxxxxxxxxx',
@@ -581,7 +585,7 @@ describe('Customers', function() {
     });
 
     it('createSource method', async function() {
-        const paymentSource = await expressPlatby.customers.createSource(
+        const paymentSource = await expressPayments.customers.createSource(
             'cus_xxxxxxxxxxxxx',
             {
                 source: 'tok_xxxx',
@@ -591,7 +595,7 @@ describe('Customers', function() {
     });
 
     it('deleteSource method', async function() {
-        const paymentSource = await expressPlatby.customers.deleteSource(
+        const paymentSource = await expressPayments.customers.deleteSource(
             'cus_xxxxxxxxxxxxx',
             'ba_xxxxxxxxxxxxx'
         );
@@ -599,7 +603,7 @@ describe('Customers', function() {
     });
 
     it('deleteSource method', async function() {
-        const paymentSource = await expressPlatby.customers.deleteSource(
+        const paymentSource = await expressPayments.customers.deleteSource(
             'cus_xxxxxxxxxxxxx',
             'card_xxxxxxxxxxxxx'
         );
@@ -607,7 +611,7 @@ describe('Customers', function() {
     });
 
     it('retrieveSource method', async function() {
-        const paymentSource = await expressPlatby.customers.retrieveSource(
+        const paymentSource = await expressPayments.customers.retrieveSource(
             'cus_xxxxxxxxxxxxx',
             'ba_xxxxxxxxxxxxx'
         );
@@ -615,7 +619,7 @@ describe('Customers', function() {
     });
 
     it('retrieveSource method', async function() {
-        const paymentSource = await expressPlatby.customers.retrieveSource(
+        const paymentSource = await expressPayments.customers.retrieveSource(
             'cus_xxxxxxxxxxxxx',
             'card_xxxxxxxxxxxxx'
         );
@@ -623,7 +627,7 @@ describe('Customers', function() {
     });
 
     it('updateSource method', async function() {
-        const card = await expressPlatby.customers.updateSource(
+        const card = await expressPayments.customers.updateSource(
             'cus_xxxxxxxxxxxxx',
             'ba_xxxxxxxxxxxxx',
             {
@@ -636,7 +640,7 @@ describe('Customers', function() {
     });
 
     it('updateSource method', async function() {
-        const card = await expressPlatby.customers.updateSource(
+        const card = await expressPayments.customers.updateSource(
             'cus_xxxxxxxxxxxxx',
             'card_xxxxxxxxxxxxx',
             {
@@ -647,7 +651,7 @@ describe('Customers', function() {
     });
 
     it('verifySource method', async function() {
-        const bankAccount = await expressPlatby.customers.verifySource(
+        const bankAccount = await expressPayments.customers.verifySource(
             'cus_xxxxxxxxxxxxx',
             'ba_xxxxxxxxxxxxx',
             {
@@ -658,7 +662,7 @@ describe('Customers', function() {
     });
 
     it('listTaxIds method', async function() {
-        const taxIds = await expressPlatby.customers.listTaxIds(
+        const taxIds = await expressPayments.customers.listTaxIds(
             'cus_xxxxxxxxxxxxx',
             {
                 limit: 3,
@@ -668,7 +672,7 @@ describe('Customers', function() {
     });
 
     it('createTaxId method', async function() {
-        const taxId = await expressPlatby.customers.createTaxId(
+        const taxId = await expressPayments.customers.createTaxId(
             'cus_xxxxxxxxxxxxx',
             {
                 type: 'eu_vat',
@@ -679,7 +683,7 @@ describe('Customers', function() {
     });
 
     it('deleteTaxId method', async function() {
-        const deleted = await expressPlatby.customers.deleteTaxId(
+        const deleted = await expressPayments.customers.deleteTaxId(
             'cus_xxxxxxxxxxxxx',
             'txi_xxxxxxxxxxxxx'
         );
@@ -687,7 +691,7 @@ describe('Customers', function() {
     });
 
     it('retrieveTaxId method', async function() {
-        const taxId = await expressPlatby.customers.retrieveTaxId(
+        const taxId = await expressPayments.customers.retrieveTaxId(
             'cus_xxxxxxxxxxxxx',
             'txi_xxxxxxxxxxxxx'
         );
@@ -695,14 +699,14 @@ describe('Customers', function() {
     });
 
     it('search method', async function() {
-        const customers = await expressPlatby.customers.search({
+        const customers = await expressPayments.customers.search({
             query: "name:'fakename' AND metadata['foo']:'bar'",
         });
         expect(customers).not.to.be.null;
     });
 
     it('search method', async function() {
-        const customers = await expressPlatby.customers.search({
+        const customers = await expressPayments.customers.search({
             query: "name:'fakename' AND metadata['foo']:'bar'",
         });
         expect(customers).not.to.be.null;
@@ -711,26 +715,26 @@ describe('Customers', function() {
 
 describe('FinancialConnections.Accounts', function() {
     it('list method', async function() {
-        const accounts = await expressPlatby.financialConnections.accounts.list();
+        const accounts = await expressPayments.financialConnections.accounts.list();
         expect(accounts).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const account = await expressPlatby.financialConnections.accounts.retrieve(
+        const account = await expressPayments.financialConnections.accounts.retrieve(
             'fca_xyz'
         );
         expect(account).not.to.be.null;
     });
 
     it('disconnect method', async function() {
-        const account = await expressPlatby.financialConnections.accounts.disconnect(
+        const account = await expressPayments.financialConnections.accounts.disconnect(
             'fca_xyz'
         );
         expect(account).not.to.be.null;
     });
 
     it('listOwners method', async function() {
-        const accountOwners = await expressPlatby.financialConnections.accounts.listOwners(
+        const accountOwners = await expressPayments.financialConnections.accounts.listOwners(
             'fca_xyz',
             {
                 ownership: 'fcaowns_xyz',
@@ -740,7 +744,7 @@ describe('FinancialConnections.Accounts', function() {
     });
 
     it('refresh method', async function() {
-        const account = await expressPlatby.financialConnections.accounts.refresh(
+        const account = await expressPayments.financialConnections.accounts.refresh(
             'fca_xyz',
             {
                 features: ['balance'],
@@ -750,7 +754,7 @@ describe('FinancialConnections.Accounts', function() {
     });
 
     it('list method', async function() {
-        const accounts = await expressPlatby.financialConnections.accounts.list(
+        const accounts = await expressPayments.financialConnections.accounts.list(
             {
                 account_holder: {
                     customer: 'cus_xxxxxxxxxxxxx',
@@ -761,21 +765,21 @@ describe('FinancialConnections.Accounts', function() {
     });
 
     it('retrieve method', async function() {
-        const account = await expressPlatby.financialConnections.accounts.retrieve(
+        const account = await expressPayments.financialConnections.accounts.retrieve(
             'fca_xxxxxxxxxxxxx'
         );
         expect(account).not.to.be.null;
     });
 
     it('disconnect method', async function() {
-        const account = await expressPlatby.financialConnections.accounts.disconnect(
+        const account = await expressPayments.financialConnections.accounts.disconnect(
             'fca_xxxxxxxxxxxxx'
         );
         expect(account).not.to.be.null;
     });
 
     it('listOwners method', async function() {
-        const accountOwners = await expressPlatby.financialConnections.accounts.listOwners(
+        const accountOwners = await expressPayments.financialConnections.accounts.listOwners(
             'fca_xxxxxxxxxxxxx',
             {
                 limit: 3,
@@ -788,7 +792,7 @@ describe('FinancialConnections.Accounts', function() {
 
 describe('FinancialConnections.Sessions', function() {
     it('create method', async function() {
-        const session = await expressPlatby.financialConnections.sessions.create(
+        const session = await expressPayments.financialConnections.sessions.create(
             {
                 account_holder: {
                     type: 'customer',
@@ -801,14 +805,14 @@ describe('FinancialConnections.Sessions', function() {
     });
 
     it('retrieve method', async function() {
-        const session = await expressPlatby.financialConnections.sessions.retrieve(
+        const session = await expressPayments.financialConnections.sessions.retrieve(
             'fcsess_xyz'
         );
         expect(session).not.to.be.null;
     });
 
     it('create method', async function() {
-        const session = await expressPlatby.financialConnections.sessions.create(
+        const session = await expressPayments.financialConnections.sessions.create(
             {
                 account_holder: {
                     type: 'customer',
@@ -824,7 +828,7 @@ describe('FinancialConnections.Sessions', function() {
     });
 
     it('retrieve method', async function() {
-        const session = await expressPlatby.financialConnections.sessions.retrieve(
+        const session = await expressPayments.financialConnections.sessions.retrieve(
             'fcsess_xxxxxxxxxxxxx'
         );
         expect(session).not.to.be.null;
@@ -833,40 +837,42 @@ describe('FinancialConnections.Sessions', function() {
 
 describe('Invoices', function() {
     it('retrieveUpcoming method', async function() {
-        const upcomingInvoice = await expressPlatby.invoices.retrieveUpcoming({
-            customer: 'cus_9utnxg47pWjV1e',
-        });
+        const upcomingInvoice = await expressPayments.invoices.retrieveUpcoming(
+            {
+                customer: 'cus_9utnxg47pWjV1e',
+            }
+        );
         expect(upcomingInvoice).not.to.be.null;
     });
 
     it('list method', async function() {
-        const invoices = await expressPlatby.invoices.list({
+        const invoices = await expressPayments.invoices.list({
             limit: 3,
         });
         expect(invoices).not.to.be.null;
     });
 
     it('create method', async function() {
-        const invoice = await expressPlatby.invoices.create({
+        const invoice = await expressPayments.invoices.create({
             customer: 'cus_xxxxxxxxxxxxx',
         });
         expect(invoice).not.to.be.null;
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.invoices.del('in_xxxxxxxxxxxxx');
+        const deleted = await expressPayments.invoices.del('in_xxxxxxxxxxxxx');
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const invoice = await expressPlatby.invoices.retrieve(
+        const invoice = await expressPayments.invoices.retrieve(
             'in_xxxxxxxxxxxxx'
         );
         expect(invoice).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const invoice = await expressPlatby.invoices.retrieve(
+        const invoice = await expressPayments.invoices.retrieve(
             'in_xxxxxxxxxxxxx',
             {
                 expand: ['customer'],
@@ -876,7 +882,7 @@ describe('Invoices', function() {
     });
 
     it('update method', async function() {
-        const invoice = await expressPlatby.invoices.update(
+        const invoice = await expressPayments.invoices.update(
             'in_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -888,40 +894,40 @@ describe('Invoices', function() {
     });
 
     it('finalizeInvoice method', async function() {
-        const invoice = await expressPlatby.invoices.finalizeInvoice(
+        const invoice = await expressPayments.invoices.finalizeInvoice(
             'in_xxxxxxxxxxxxx'
         );
         expect(invoice).not.to.be.null;
     });
 
     it('markUncollectible method', async function() {
-        const invoice = await expressPlatby.invoices.markUncollectible(
+        const invoice = await expressPayments.invoices.markUncollectible(
             'in_xxxxxxxxxxxxx'
         );
         expect(invoice).not.to.be.null;
     });
 
     it('pay method', async function() {
-        const invoice = await expressPlatby.invoices.pay('in_xxxxxxxxxxxxx');
+        const invoice = await expressPayments.invoices.pay('in_xxxxxxxxxxxxx');
         expect(invoice).not.to.be.null;
     });
 
     it('sendInvoice method', async function() {
-        const invoice = await expressPlatby.invoices.sendInvoice(
+        const invoice = await expressPayments.invoices.sendInvoice(
             'in_xxxxxxxxxxxxx'
         );
         expect(invoice).not.to.be.null;
     });
 
     it('voidInvoice method', async function() {
-        const invoice = await expressPlatby.invoices.voidInvoice(
+        const invoice = await expressPayments.invoices.voidInvoice(
             'in_xxxxxxxxxxxxx'
         );
         expect(invoice).not.to.be.null;
     });
 
     it('search method', async function() {
-        const invoices = await expressPlatby.invoices.search({
+        const invoices = await expressPayments.invoices.search({
             query: "total>999 AND metadata['order_id']:'6735'",
         });
         expect(invoices).not.to.be.null;
@@ -930,7 +936,7 @@ describe('Invoices', function() {
 
 describe('PaymentIntents', function() {
     it('create method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.create({
+        const paymentIntent = await expressPayments.paymentIntents.create({
             amount: 1099,
             currency: 'eur',
             automatic_payment_methods: {
@@ -941,21 +947,21 @@ describe('PaymentIntents', function() {
     });
 
     it('verifyMicrodeposits method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.verifyMicrodeposits(
+        const paymentIntent = await expressPayments.paymentIntents.verifyMicrodeposits(
             'pi_xxxxxxxxxxxxx'
         );
         expect(paymentIntent).not.to.be.null;
     });
 
     it('list method', async function() {
-        const paymentIntents = await expressPlatby.paymentIntents.list({
+        const paymentIntents = await expressPayments.paymentIntents.list({
             limit: 3,
         });
         expect(paymentIntents).not.to.be.null;
     });
 
     it('create method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.create({
+        const paymentIntent = await expressPayments.paymentIntents.create({
             amount: 2000,
             currency: 'usd',
             automatic_payment_methods: {
@@ -966,14 +972,14 @@ describe('PaymentIntents', function() {
     });
 
     it('retrieve method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.retrieve(
+        const paymentIntent = await expressPayments.paymentIntents.retrieve(
             'pi_xxxxxxxxxxxxx'
         );
         expect(paymentIntent).not.to.be.null;
     });
 
     it('update method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.update(
+        const paymentIntent = await expressPayments.paymentIntents.update(
             'pi_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -985,28 +991,28 @@ describe('PaymentIntents', function() {
     });
 
     it('applyCustomerBalance method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.applyCustomerBalance(
+        const paymentIntent = await expressPayments.paymentIntents.applyCustomerBalance(
             'pi_xxxxxxxxxxxxx'
         );
         expect(paymentIntent).not.to.be.null;
     });
 
     it('cancel method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.cancel(
+        const paymentIntent = await expressPayments.paymentIntents.cancel(
             'pi_xxxxxxxxxxxxx'
         );
         expect(paymentIntent).not.to.be.null;
     });
 
     it('capture method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.capture(
+        const paymentIntent = await expressPayments.paymentIntents.capture(
             'pi_xxxxxxxxxxxxx'
         );
         expect(paymentIntent).not.to.be.null;
     });
 
     it('confirm method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.confirm(
+        const paymentIntent = await expressPayments.paymentIntents.confirm(
             'pi_xxxxxxxxxxxxx',
             {
                 payment_method: 'pm_card_visa',
@@ -1016,7 +1022,7 @@ describe('PaymentIntents', function() {
     });
 
     it('incrementAuthorization method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.incrementAuthorization(
+        const paymentIntent = await expressPayments.paymentIntents.incrementAuthorization(
             'pi_xxxxxxxxxxxxx',
             {
                 amount: 2099,
@@ -1026,7 +1032,7 @@ describe('PaymentIntents', function() {
     });
 
     it('verifyMicrodeposits method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.verifyMicrodeposits(
+        const paymentIntent = await expressPayments.paymentIntents.verifyMicrodeposits(
             'pi_xxxxxxxxxxxxx',
             {
                 amounts: [32, 45],
@@ -1036,14 +1042,14 @@ describe('PaymentIntents', function() {
     });
 
     it('search method', async function() {
-        const paymentIntents = await expressPlatby.paymentIntents.search({
+        const paymentIntents = await expressPayments.paymentIntents.search({
             query: "status:'succeeded' AND metadata['order_id']:'6735'",
         });
         expect(paymentIntents).not.to.be.null;
     });
 
     it('create method', async function() {
-        const paymentIntent = await expressPlatby.paymentIntents.create({
+        const paymentIntent = await expressPayments.paymentIntents.create({
             amount: 200,
             currency: 'usd',
             payment_method_data: {
@@ -1059,7 +1065,7 @@ describe('PaymentIntents', function() {
 
 describe('PaymentLinks', function() {
     it('create method', async function() {
-        const paymentLink = await expressPlatby.paymentLinks.create({
+        const paymentLink = await expressPayments.paymentLinks.create({
             line_items: [
                 {
                     price: 'price_xxxxxxxxxxxxx',
@@ -1071,26 +1077,28 @@ describe('PaymentLinks', function() {
     });
 
     it('retrieve method', async function() {
-        const paymentLink = await expressPlatby.paymentLinks.retrieve('pl_xyz');
+        const paymentLink = await expressPayments.paymentLinks.retrieve(
+            'pl_xyz'
+        );
         expect(paymentLink).not.to.be.null;
     });
 
     it('listLineItems method', async function() {
-        const lineItems = await expressPlatby.paymentLinks.listLineItems(
+        const lineItems = await expressPayments.paymentLinks.listLineItems(
             'pl_xyz'
         );
         expect(lineItems).not.to.be.null;
     });
 
     it('list method', async function() {
-        const paymentLinks = await expressPlatby.paymentLinks.list({
+        const paymentLinks = await expressPayments.paymentLinks.list({
             limit: 3,
         });
         expect(paymentLinks).not.to.be.null;
     });
 
     it('create method', async function() {
-        const paymentLink = await expressPlatby.paymentLinks.create({
+        const paymentLink = await expressPayments.paymentLinks.create({
             line_items: [
                 {
                     price: 'price_xxxxxxxxxxxxx',
@@ -1102,14 +1110,14 @@ describe('PaymentLinks', function() {
     });
 
     it('retrieve method', async function() {
-        const paymentLink = await expressPlatby.paymentLinks.retrieve(
+        const paymentLink = await expressPayments.paymentLinks.retrieve(
             'plink_xxxxxxxxxxxxx'
         );
         expect(paymentLink).not.to.be.null;
     });
 
     it('update method', async function() {
-        const paymentLink = await expressPlatby.paymentLinks.update(
+        const paymentLink = await expressPayments.paymentLinks.update(
             'plink_xxxxxxxxxxxxx',
             {
                 active: false,
@@ -1121,7 +1129,7 @@ describe('PaymentLinks', function() {
 
 describe('Prices', function() {
     it('create method', async function() {
-        const price = await expressPlatby.prices.create({
+        const price = await expressPayments.prices.create({
             unit_amount: 2000,
             currency: 'usd',
             currency_options: {
@@ -1141,14 +1149,14 @@ describe('Prices', function() {
     });
 
     it('list method', async function() {
-        const prices = await expressPlatby.prices.list({
+        const prices = await expressPayments.prices.list({
             limit: 3,
         });
         expect(prices).not.to.be.null;
     });
 
     it('create method', async function() {
-        const price = await expressPlatby.prices.create({
+        const price = await expressPayments.prices.create({
             unit_amount: 2000,
             currency: 'usd',
             recurring: {
@@ -1160,23 +1168,26 @@ describe('Prices', function() {
     });
 
     it('retrieve method', async function() {
-        const price = await expressPlatby.prices.retrieve(
+        const price = await expressPayments.prices.retrieve(
             'price_xxxxxxxxxxxxx'
         );
         expect(price).not.to.be.null;
     });
 
     it('update method', async function() {
-        const price = await expressPlatby.prices.update('price_xxxxxxxxxxxxx', {
-            metadata: {
-                order_id: '6735',
-            },
-        });
+        const price = await expressPayments.prices.update(
+            'price_xxxxxxxxxxxxx',
+            {
+                metadata: {
+                    order_id: '6735',
+                },
+            }
+        );
         expect(price).not.to.be.null;
     });
 
     it('search method', async function() {
-        const prices = await expressPlatby.prices.search({
+        const prices = await expressPayments.prices.search({
             query: "active:'true' AND metadata['order_id']:'6735'",
         });
         expect(prices).not.to.be.null;
@@ -1185,7 +1196,7 @@ describe('Prices', function() {
 
 describe('SetupAttempts', function() {
     it('list method', async function() {
-        const setupAttempts = await expressPlatby.setupAttempts.list({
+        const setupAttempts = await expressPayments.setupAttempts.list({
             limit: 3,
             setup_intent: 'si_xyz',
         });
@@ -1195,35 +1206,35 @@ describe('SetupAttempts', function() {
 
 describe('SetupIntents', function() {
     it('verifyMicrodeposits method', async function() {
-        const setupIntent = await expressPlatby.setupIntents.verifyMicrodeposits(
+        const setupIntent = await expressPayments.setupIntents.verifyMicrodeposits(
             'seti_xxxxxxxxxxxxx'
         );
         expect(setupIntent).not.to.be.null;
     });
 
     it('list method', async function() {
-        const setupIntents = await expressPlatby.setupIntents.list({
+        const setupIntents = await expressPayments.setupIntents.list({
             limit: 3,
         });
         expect(setupIntents).not.to.be.null;
     });
 
     it('create method', async function() {
-        const setupIntent = await expressPlatby.setupIntents.create({
+        const setupIntent = await expressPayments.setupIntents.create({
             payment_method_types: ['card'],
         });
         expect(setupIntent).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const setupIntent = await expressPlatby.setupIntents.retrieve(
+        const setupIntent = await expressPayments.setupIntents.retrieve(
             'seti_xxxxxxxxxxxxx'
         );
         expect(setupIntent).not.to.be.null;
     });
 
     it('update method', async function() {
-        const setupIntent = await expressPlatby.setupIntents.update(
+        const setupIntent = await expressPayments.setupIntents.update(
             'seti_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -1235,14 +1246,14 @@ describe('SetupIntents', function() {
     });
 
     it('cancel method', async function() {
-        const setupIntent = await expressPlatby.setupIntents.cancel(
+        const setupIntent = await expressPayments.setupIntents.cancel(
             'seti_xxxxxxxxxxxxx'
         );
         expect(setupIntent).not.to.be.null;
     });
 
     it('confirm method', async function() {
-        const setupIntent = await expressPlatby.setupIntents.confirm(
+        const setupIntent = await expressPayments.setupIntents.confirm(
             'seti_xxxxxxxxxxxxx',
             {
                 payment_method: 'pm_card_visa',
@@ -1252,7 +1263,7 @@ describe('SetupIntents', function() {
     });
 
     it('verifyMicrodeposits method', async function() {
-        const setupIntent = await expressPlatby.setupIntents.verifyMicrodeposits(
+        const setupIntent = await expressPayments.setupIntents.verifyMicrodeposits(
             'seti_xxxxxxxxxxxxx',
             {
                 amounts: [32, 45],
@@ -1264,12 +1275,12 @@ describe('SetupIntents', function() {
 
 describe('ShippingRates', function() {
     it('list method', async function() {
-        const shippingRates = await expressPlatby.shippingRates.list();
+        const shippingRates = await expressPayments.shippingRates.list();
         expect(shippingRates).not.to.be.null;
     });
 
     it('create method', async function() {
-        const shippingRate = await expressPlatby.shippingRates.create({
+        const shippingRate = await expressPayments.shippingRates.create({
             display_name: 'Sample Shipper',
             fixed_amount: {
                 currency: 'usd',
@@ -1281,14 +1292,14 @@ describe('ShippingRates', function() {
     });
 
     it('list method', async function() {
-        const shippingRates = await expressPlatby.shippingRates.list({
+        const shippingRates = await expressPayments.shippingRates.list({
             limit: 3,
         });
         expect(shippingRates).not.to.be.null;
     });
 
     it('create method', async function() {
-        const shippingRate = await expressPlatby.shippingRates.create({
+        const shippingRate = await expressPayments.shippingRates.create({
             display_name: 'Ground shipping',
             type: 'fixed_amount',
             fixed_amount: {
@@ -1300,14 +1311,14 @@ describe('ShippingRates', function() {
     });
 
     it('retrieve method', async function() {
-        const shippingRate = await expressPlatby.shippingRates.retrieve(
+        const shippingRate = await expressPayments.shippingRates.retrieve(
             'shr_xxxxxxxxxxxxx'
         );
         expect(shippingRate).not.to.be.null;
     });
 
     it('update method', async function() {
-        const shippingRate = await expressPlatby.shippingRates.update(
+        const shippingRate = await expressPayments.shippingRates.update(
             'shr_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -1321,31 +1332,31 @@ describe('ShippingRates', function() {
 
 describe('Terminal.Configurations', function() {
     it('list method', async function() {
-        const configurations = await expressPlatby.terminal.configurations.list();
+        const configurations = await expressPayments.terminal.configurations.list();
         expect(configurations).not.to.be.null;
     });
 
     it('create method', async function() {
-        const configuration = await expressPlatby.terminal.configurations.create();
+        const configuration = await expressPayments.terminal.configurations.create();
         expect(configuration).not.to.be.null;
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.terminal.configurations.del(
+        const deleted = await expressPayments.terminal.configurations.del(
             'uc_123'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const configuration = await expressPlatby.terminal.configurations.retrieve(
+        const configuration = await expressPayments.terminal.configurations.retrieve(
             'uc_123'
         );
         expect(configuration).not.to.be.null;
     });
 
     it('update method', async function() {
-        const configuration = await expressPlatby.terminal.configurations.update(
+        const configuration = await expressPayments.terminal.configurations.update(
             'uc_123',
             {
                 tipping: {
@@ -1359,7 +1370,7 @@ describe('Terminal.Configurations', function() {
     });
 
     it('list method', async function() {
-        const configurations = await expressPlatby.terminal.configurations.list(
+        const configurations = await expressPayments.terminal.configurations.list(
             {
                 limit: 3,
             }
@@ -1368,7 +1379,7 @@ describe('Terminal.Configurations', function() {
     });
 
     it('create method', async function() {
-        const configuration = await expressPlatby.terminal.configurations.create(
+        const configuration = await expressPayments.terminal.configurations.create(
             {
                 bbpos_wisepos_e: {
                     splashscreen: 'file_xxxxxxxxxxxxx',
@@ -1379,21 +1390,21 @@ describe('Terminal.Configurations', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.terminal.configurations.del(
+        const deleted = await expressPayments.terminal.configurations.del(
             'tmc_xxxxxxxxxxxxx'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const configuration = await expressPlatby.terminal.configurations.retrieve(
+        const configuration = await expressPayments.terminal.configurations.retrieve(
             'tmc_xxxxxxxxxxxxx'
         );
         expect(configuration).not.to.be.null;
     });
 
     it('update method', async function() {
-        const configuration = await expressPlatby.terminal.configurations.update(
+        const configuration = await expressPayments.terminal.configurations.update(
             'tmc_xxxxxxxxxxxxx',
             {
                 bbpos_wisepos_e: {
@@ -1407,7 +1418,7 @@ describe('Terminal.Configurations', function() {
 
 describe('TestHelpers.Customers', function() {
     it('fundCashBalance method', async function() {
-        const customerCashBalanceTransaction = await expressPlatby.testHelpers.customers.fundCashBalance(
+        const customerCashBalanceTransaction = await expressPayments.testHelpers.customers.fundCashBalance(
             'cus_123',
             {
                 amount: 30,
@@ -1420,28 +1431,28 @@ describe('TestHelpers.Customers', function() {
 
 describe('TestHelpers.Issuing.Cards', function() {
     it('deliverCard method', async function() {
-        const card = await expressPlatby.testHelpers.issuing.cards.deliverCard(
+        const card = await expressPayments.testHelpers.issuing.cards.deliverCard(
             'card_123'
         );
         expect(card).not.to.be.null;
     });
 
     it('failCard method', async function() {
-        const card = await expressPlatby.testHelpers.issuing.cards.failCard(
+        const card = await expressPayments.testHelpers.issuing.cards.failCard(
             'card_123'
         );
         expect(card).not.to.be.null;
     });
 
     it('returnCard method', async function() {
-        const card = await expressPlatby.testHelpers.issuing.cards.returnCard(
+        const card = await expressPayments.testHelpers.issuing.cards.returnCard(
             'card_123'
         );
         expect(card).not.to.be.null;
     });
 
     it('shipCard method', async function() {
-        const card = await expressPlatby.testHelpers.issuing.cards.shipCard(
+        const card = await expressPayments.testHelpers.issuing.cards.shipCard(
             'card_123'
         );
         expect(card).not.to.be.null;
@@ -1450,19 +1461,21 @@ describe('TestHelpers.Issuing.Cards', function() {
 
 describe('TestHelpers.Refunds', function() {
     it('expire method', async function() {
-        const refund = await expressPlatby.testHelpers.refunds.expire('re_123');
+        const refund = await expressPayments.testHelpers.refunds.expire(
+            're_123'
+        );
         expect(refund).not.to.be.null;
     });
 });
 
 describe('TestHelpers.TestClocks', function() {
     it('list method', async function() {
-        const testClocks = await expressPlatby.testHelpers.testClocks.list();
+        const testClocks = await expressPayments.testHelpers.testClocks.list();
         expect(testClocks).not.to.be.null;
     });
 
     it('create method', async function() {
-        const testClock = await expressPlatby.testHelpers.testClocks.create({
+        const testClock = await expressPayments.testHelpers.testClocks.create({
             frozen_time: 123,
             name: 'cogsworth',
         });
@@ -1470,21 +1483,21 @@ describe('TestHelpers.TestClocks', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.testHelpers.testClocks.del(
+        const deleted = await expressPayments.testHelpers.testClocks.del(
             'clock_xyz'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const testClock = await expressPlatby.testHelpers.testClocks.retrieve(
+        const testClock = await expressPayments.testHelpers.testClocks.retrieve(
             'clock_xyz'
         );
         expect(testClock).not.to.be.null;
     });
 
     it('advance method', async function() {
-        const testClock = await expressPlatby.testHelpers.testClocks.advance(
+        const testClock = await expressPayments.testHelpers.testClocks.advance(
             'clock_xyz',
             {
                 frozen_time: 142,
@@ -1494,35 +1507,35 @@ describe('TestHelpers.TestClocks', function() {
     });
 
     it('list method', async function() {
-        const testClocks = await expressPlatby.testHelpers.testClocks.list({
+        const testClocks = await expressPayments.testHelpers.testClocks.list({
             limit: 3,
         });
         expect(testClocks).not.to.be.null;
     });
 
     it('create method', async function() {
-        const testClock = await expressPlatby.testHelpers.testClocks.create({
+        const testClock = await expressPayments.testHelpers.testClocks.create({
             frozen_time: 1577836800,
         });
         expect(testClock).not.to.be.null;
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.testHelpers.testClocks.del(
+        const deleted = await expressPayments.testHelpers.testClocks.del(
             'clock_xxxxxxxxxxxxx'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const testClock = await expressPlatby.testHelpers.testClocks.retrieve(
+        const testClock = await expressPayments.testHelpers.testClocks.retrieve(
             'clock_xxxxxxxxxxxxx'
         );
         expect(testClock).not.to.be.null;
     });
 
     it('advance method', async function() {
-        const testClock = await expressPlatby.testHelpers.testClocks.advance(
+        const testClock = await expressPayments.testHelpers.testClocks.advance(
             'clock_xxxxxxxxxxxxx',
             {
                 frozen_time: 1675552261,
@@ -1534,7 +1547,7 @@ describe('TestHelpers.TestClocks', function() {
 
 describe('TestHelpers.Treasury.InboundTransfers', function() {
     it('fail method', async function() {
-        const inboundTransfer = await expressPlatby.testHelpers.treasury.inboundTransfers.fail(
+        const inboundTransfer = await expressPayments.testHelpers.treasury.inboundTransfers.fail(
             'ibt_123',
             {
                 failure_details: {
@@ -1546,14 +1559,14 @@ describe('TestHelpers.Treasury.InboundTransfers', function() {
     });
 
     it('returnInboundTransfer method', async function() {
-        const inboundTransfer = await expressPlatby.testHelpers.treasury.inboundTransfers.returnInboundTransfer(
+        const inboundTransfer = await expressPayments.testHelpers.treasury.inboundTransfers.returnInboundTransfer(
             'ibt_123'
         );
         expect(inboundTransfer).not.to.be.null;
     });
 
     it('succeed method', async function() {
-        const inboundTransfer = await expressPlatby.testHelpers.treasury.inboundTransfers.succeed(
+        const inboundTransfer = await expressPayments.testHelpers.treasury.inboundTransfers.succeed(
             'ibt_123'
         );
         expect(inboundTransfer).not.to.be.null;
@@ -1562,21 +1575,21 @@ describe('TestHelpers.Treasury.InboundTransfers', function() {
 
 describe('TestHelpers.Treasury.OutboundTransfers', function() {
     it('fail method', async function() {
-        const outboundTransfer = await expressPlatby.testHelpers.treasury.outboundTransfers.fail(
+        const outboundTransfer = await expressPayments.testHelpers.treasury.outboundTransfers.fail(
             'obt_123'
         );
         expect(outboundTransfer).not.to.be.null;
     });
 
     it('post method', async function() {
-        const outboundTransfer = await expressPlatby.testHelpers.treasury.outboundTransfers.post(
+        const outboundTransfer = await expressPayments.testHelpers.treasury.outboundTransfers.post(
             'obt_123'
         );
         expect(outboundTransfer).not.to.be.null;
     });
 
     it('returnOutboundTransfer method', async function() {
-        const outboundTransfer = await expressPlatby.testHelpers.treasury.outboundTransfers.returnOutboundTransfer(
+        const outboundTransfer = await expressPayments.testHelpers.treasury.outboundTransfers.returnOutboundTransfer(
             'obt_123',
             {
                 returned_details: {
@@ -1590,7 +1603,7 @@ describe('TestHelpers.Treasury.OutboundTransfers', function() {
 
 describe('TestHelpers.Treasury.ReceivedCredits', function() {
     it('create method', async function() {
-        const receivedCredit = await expressPlatby.testHelpers.treasury.receivedCredits.create(
+        const receivedCredit = await expressPayments.testHelpers.treasury.receivedCredits.create(
             {
                 financial_account: 'fa_123',
                 network: 'ach',
@@ -1604,7 +1617,7 @@ describe('TestHelpers.Treasury.ReceivedCredits', function() {
 
 describe('TestHelpers.Treasury.ReceivedDebits', function() {
     it('create method', async function() {
-        const receivedDebit = await expressPlatby.testHelpers.treasury.receivedDebits.create(
+        const receivedDebit = await expressPayments.testHelpers.treasury.receivedDebits.create(
             {
                 financial_account: 'fa_123',
                 network: 'ach',
@@ -1618,7 +1631,7 @@ describe('TestHelpers.Treasury.ReceivedDebits', function() {
 
 describe('Tokens', function() {
     it('create method', async function() {
-        const token = await expressPlatby.tokens.create({
+        const token = await expressPayments.tokens.create({
             card: {
                 number: '4242424242424242',
                 exp_month: '5',
@@ -1630,7 +1643,7 @@ describe('Tokens', function() {
     });
 
     it('create method', async function() {
-        const token = await expressPlatby.tokens.create({
+        const token = await expressPayments.tokens.create({
             bank_account: {
                 country: 'US',
                 currency: 'usd',
@@ -1644,7 +1657,7 @@ describe('Tokens', function() {
     });
 
     it('create method', async function() {
-        const token = await expressPlatby.tokens.create({
+        const token = await expressPayments.tokens.create({
             pii: {
                 id_number: '000000000',
             },
@@ -1653,7 +1666,7 @@ describe('Tokens', function() {
     });
 
     it('create method', async function() {
-        const token = await expressPlatby.tokens.create({
+        const token = await expressPayments.tokens.create({
             account: {
                 individual: {
                     first_name: 'Jane',
@@ -1666,7 +1679,7 @@ describe('Tokens', function() {
     });
 
     it('create method', async function() {
-        const token = await expressPlatby.tokens.create({
+        const token = await expressPayments.tokens.create({
             person: {
                 first_name: 'Jane',
                 last_name: 'Doe',
@@ -1679,7 +1692,7 @@ describe('Tokens', function() {
     });
 
     it('create method', async function() {
-        const token = await expressPlatby.tokens.create({
+        const token = await expressPayments.tokens.create({
             cvc_update: {
                 cvc: '123',
             },
@@ -1688,14 +1701,14 @@ describe('Tokens', function() {
     });
 
     it('retrieve method', async function() {
-        const token = await expressPlatby.tokens.retrieve('tok_xxxx');
+        const token = await expressPayments.tokens.retrieve('tok_xxxx');
         expect(token).not.to.be.null;
     });
 });
 
 describe('AccountLinks', function() {
     it('create method', async function() {
-        const accountLink = await expressPlatby.accountLinks.create({
+        const accountLink = await expressPayments.accountLinks.create({
             account: 'acct_xxxxxxxxxxxxx',
             refresh_url: 'https://example.com/reauth',
             return_url: 'https://example.com/return',
@@ -1707,21 +1720,21 @@ describe('AccountLinks', function() {
 
 describe('ApplicationFees', function() {
     it('list method', async function() {
-        const applicationFees = await expressPlatby.applicationFees.list({
+        const applicationFees = await expressPayments.applicationFees.list({
             limit: 3,
         });
         expect(applicationFees).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const applicationFee = await expressPlatby.applicationFees.retrieve(
+        const applicationFee = await expressPayments.applicationFees.retrieve(
             'fee_xxxxxxxxxxxxx'
         );
         expect(applicationFee).not.to.be.null;
     });
 
     it('listRefunds method', async function() {
-        const feeRefunds = await expressPlatby.applicationFees.listRefunds(
+        const feeRefunds = await expressPayments.applicationFees.listRefunds(
             'fee_xxxxxxxxxxxxx',
             {
                 limit: 3,
@@ -1731,14 +1744,14 @@ describe('ApplicationFees', function() {
     });
 
     it('createRefund method', async function() {
-        const feeRefund = await expressPlatby.applicationFees.createRefund(
+        const feeRefund = await expressPayments.applicationFees.createRefund(
             'fee_xxxxxxxxxxxxx'
         );
         expect(feeRefund).not.to.be.null;
     });
 
     it('retrieveRefund method', async function() {
-        const feeRefund = await expressPlatby.applicationFees.retrieveRefund(
+        const feeRefund = await expressPayments.applicationFees.retrieveRefund(
             'fee_xxxxxxxxxxxxx',
             'fr_xxxxxxxxxxxxx'
         );
@@ -1746,7 +1759,7 @@ describe('ApplicationFees', function() {
     });
 
     it('updateRefund method', async function() {
-        const feeRefund = await expressPlatby.applicationFees.updateRefund(
+        const feeRefund = await expressPayments.applicationFees.updateRefund(
             'fee_xxxxxxxxxxxxx',
             'fr_xxxxxxxxxxxxx',
             {
@@ -1761,7 +1774,7 @@ describe('ApplicationFees', function() {
 
 describe('BalanceTransactions', function() {
     it('list method', async function() {
-        const balanceTransactions = await expressPlatby.balanceTransactions.list(
+        const balanceTransactions = await expressPayments.balanceTransactions.list(
             {
                 limit: 3,
             }
@@ -1770,7 +1783,7 @@ describe('BalanceTransactions', function() {
     });
 
     it('retrieve method', async function() {
-        const balanceTransaction = await expressPlatby.balanceTransactions.retrieve(
+        const balanceTransaction = await expressPayments.balanceTransactions.retrieve(
             'txn_xxxxxxxxxxxxx'
         );
         expect(balanceTransaction).not.to.be.null;
@@ -1779,7 +1792,7 @@ describe('BalanceTransactions', function() {
 
 describe('BillingPortal.Configurations', function() {
     it('list method', async function() {
-        const configurations = await expressPlatby.billingPortal.configurations.list(
+        const configurations = await expressPayments.billingPortal.configurations.list(
             {
                 limit: 3,
             }
@@ -1788,7 +1801,7 @@ describe('BillingPortal.Configurations', function() {
     });
 
     it('create method', async function() {
-        const configuration = await expressPlatby.billingPortal.configurations.create(
+        const configuration = await expressPayments.billingPortal.configurations.create(
             {
                 features: {
                     customer_update: {
@@ -1809,14 +1822,14 @@ describe('BillingPortal.Configurations', function() {
     });
 
     it('retrieve method', async function() {
-        const configuration = await expressPlatby.billingPortal.configurations.retrieve(
+        const configuration = await expressPayments.billingPortal.configurations.retrieve(
             'bpc_xxxxxxxxxxxxx'
         );
         expect(configuration).not.to.be.null;
     });
 
     it('update method', async function() {
-        const configuration = await expressPlatby.billingPortal.configurations.update(
+        const configuration = await expressPayments.billingPortal.configurations.update(
             'bpc_xxxxxxxxxxxxx',
             {
                 business_profile: {
@@ -1831,7 +1844,7 @@ describe('BillingPortal.Configurations', function() {
 
 describe('BillingPortal.Sessions', function() {
     it('create method', async function() {
-        const session = await expressPlatby.billingPortal.sessions.create({
+        const session = await expressPayments.billingPortal.sessions.create({
             customer: 'cus_xxxxxxxxxxxxx',
             return_url: 'https://example.com/account',
         });
@@ -1841,44 +1854,51 @@ describe('BillingPortal.Sessions', function() {
 
 describe('Charges', function() {
     it('list method', async function() {
-        const charges = await expressPlatby.charges.list({
+        const charges = await expressPayments.charges.list({
             limit: 3,
         });
         expect(charges).not.to.be.null;
     });
 
     it('create method', async function() {
-        const charge = await expressPlatby.charges.create({
+        const charge = await expressPayments.charges.create({
             amount: 2000,
             currency: 'usd',
             source: 'tok_xxxx',
             description:
-                'My First Test Charge (created for API docs at https://www.expressplatby.cz/docs/api)',
+                'My First Test Charge (created for API docs at https://www.docs.epayments.network/api)',
         });
         expect(charge).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const charge = await expressPlatby.charges.retrieve('ch_xxxxxxxxxxxxx');
+        const charge = await expressPayments.charges.retrieve(
+            'ch_xxxxxxxxxxxxx'
+        );
         expect(charge).not.to.be.null;
     });
 
     it('update method', async function() {
-        const charge = await expressPlatby.charges.update('ch_xxxxxxxxxxxxx', {
-            metadata: {
-                order_id: '6735',
-            },
-        });
+        const charge = await expressPayments.charges.update(
+            'ch_xxxxxxxxxxxxx',
+            {
+                metadata: {
+                    order_id: '6735',
+                },
+            }
+        );
         expect(charge).not.to.be.null;
     });
 
     it('capture method', async function() {
-        const charge = await expressPlatby.charges.capture('ch_xxxxxxxxxxxxx');
+        const charge = await expressPayments.charges.capture(
+            'ch_xxxxxxxxxxxxx'
+        );
         expect(charge).not.to.be.null;
     });
 
     it('search method', async function() {
-        const charges = await expressPlatby.charges.search({
+        const charges = await expressPayments.charges.search({
             query: "amount>999 AND metadata['order_id']:'6735'",
         });
         expect(charges).not.to.be.null;
@@ -1887,28 +1907,28 @@ describe('Charges', function() {
 
 describe('CountrySpecs', function() {
     it('list method', async function() {
-        const countrySpecs = await expressPlatby.countrySpecs.list({
+        const countrySpecs = await expressPayments.countrySpecs.list({
             limit: 3,
         });
         expect(countrySpecs).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const countrySpec = await expressPlatby.countrySpecs.retrieve('US');
+        const countrySpec = await expressPayments.countrySpecs.retrieve('US');
         expect(countrySpec).not.to.be.null;
     });
 });
 
 describe('Coupons', function() {
     it('list method', async function() {
-        const coupons = await expressPlatby.coupons.list({
+        const coupons = await expressPayments.coupons.list({
             limit: 3,
         });
         expect(coupons).not.to.be.null;
     });
 
     it('create method', async function() {
-        const coupon = await expressPlatby.coupons.create({
+        const coupon = await expressPayments.coupons.create({
             percent_off: 25.5,
             duration: 'repeating',
             duration_in_months: 3,
@@ -1917,17 +1937,17 @@ describe('Coupons', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.coupons.del('Z4OV52SU');
+        const deleted = await expressPayments.coupons.del('Z4OV52SU');
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const coupon = await expressPlatby.coupons.retrieve('Z4OV52SU');
+        const coupon = await expressPayments.coupons.retrieve('Z4OV52SU');
         expect(coupon).not.to.be.null;
     });
 
     it('update method', async function() {
-        const coupon = await expressPlatby.coupons.update('Z4OV52SU', {
+        const coupon = await expressPayments.coupons.update('Z4OV52SU', {
             metadata: {
                 order_id: '6735',
             },
@@ -1938,14 +1958,14 @@ describe('Coupons', function() {
 
 describe('CreditNotes', function() {
     it('list method', async function() {
-        const creditNotes = await expressPlatby.creditNotes.list({
+        const creditNotes = await expressPayments.creditNotes.list({
             limit: 3,
         });
         expect(creditNotes).not.to.be.null;
     });
 
     it('create method', async function() {
-        const creditNote = await expressPlatby.creditNotes.create({
+        const creditNote = await expressPayments.creditNotes.create({
             invoice: 'in_xxxxxxxxxxxxx',
             lines: [
                 {
@@ -1959,14 +1979,14 @@ describe('CreditNotes', function() {
     });
 
     it('voidCreditNote method', async function() {
-        const creditNote = await expressPlatby.creditNotes.voidCreditNote(
+        const creditNote = await expressPayments.creditNotes.voidCreditNote(
             'cn_xxxxxxxxxxxxx'
         );
         expect(creditNote).not.to.be.null;
     });
 
     it('listLineItems method', async function() {
-        const creditNoteLineItems = await expressPlatby.creditNotes.listLineItems(
+        const creditNoteLineItems = await expressPayments.creditNotes.listLineItems(
             'cn_xxxxxxxxxxxxx',
             {
                 limit: 3,
@@ -1976,7 +1996,7 @@ describe('CreditNotes', function() {
     });
 
     it('preview method', async function() {
-        const creditNote = await expressPlatby.creditNotes.preview({
+        const creditNote = await expressPayments.creditNotes.preview({
             invoice: 'in_xxxxxxxxxxxxx',
             lines: [
                 {
@@ -1990,31 +2010,33 @@ describe('CreditNotes', function() {
     });
 
     it('listPreviewLineItems method', async function() {
-        const creditNoteLineItems = await expressPlatby.creditNotes.listPreviewLineItems({
-            limit: 3,
-            invoice: 'in_xxxxxxxxxxxxx',
-        });
+        const creditNoteLineItems = await expressPayments.creditNotes.listPreviewLineItems(
+            {
+                limit: 3,
+                invoice: 'in_xxxxxxxxxxxxx',
+            }
+        );
         expect(creditNoteLineItems).not.to.be.null;
     });
 });
 
 describe('Disputes', function() {
     it('list method', async function() {
-        const disputes = await expressPlatby.disputes.list({
+        const disputes = await expressPayments.disputes.list({
             limit: 3,
         });
         expect(disputes).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const dispute = await expressPlatby.disputes.retrieve(
+        const dispute = await expressPayments.disputes.retrieve(
             'dp_xxxxxxxxxxxxx'
         );
         expect(dispute).not.to.be.null;
     });
 
     it('update method', async function() {
-        const dispute = await expressPlatby.disputes.update(
+        const dispute = await expressPayments.disputes.update(
             'dp_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2026,49 +2048,53 @@ describe('Disputes', function() {
     });
 
     it('close method', async function() {
-        const dispute = await expressPlatby.disputes.close('dp_xxxxxxxxxxxxx');
+        const dispute = await expressPayments.disputes.close(
+            'dp_xxxxxxxxxxxxx'
+        );
         expect(dispute).not.to.be.null;
     });
 });
 
 describe('Events', function() {
     it('list method', async function() {
-        const events = await expressPlatby.events.list({
+        const events = await expressPayments.events.list({
             limit: 3,
         });
         expect(events).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const event = await expressPlatby.events.retrieve('evt_xxxxxxxxxxxxx');
+        const event = await expressPayments.events.retrieve(
+            'evt_xxxxxxxxxxxxx'
+        );
         expect(event).not.to.be.null;
     });
 });
 
 describe('FileLinks', function() {
     it('list method', async function() {
-        const fileLinks = await expressPlatby.fileLinks.list({
+        const fileLinks = await expressPayments.fileLinks.list({
             limit: 3,
         });
         expect(fileLinks).not.to.be.null;
     });
 
     it('create method', async function() {
-        const fileLink = await expressPlatby.fileLinks.create({
+        const fileLink = await expressPayments.fileLinks.create({
             file: 'file_xxxxxxxxxxxxx',
         });
         expect(fileLink).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const fileLink = await expressPlatby.fileLinks.retrieve(
+        const fileLink = await expressPayments.fileLinks.retrieve(
             'link_xxxxxxxxxxxxx'
         );
         expect(fileLink).not.to.be.null;
     });
 
     it('update method', async function() {
-        const fileLink = await expressPlatby.fileLinks.update(
+        const fileLink = await expressPayments.fileLinks.update(
             'link_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2082,7 +2108,7 @@ describe('FileLinks', function() {
 
 describe('Identity.VerificationReports', function() {
     it('list method', async function() {
-        const verificationReports = await expressPlatby.identity.verificationReports.list(
+        const verificationReports = await expressPayments.identity.verificationReports.list(
             {
                 limit: 3,
             }
@@ -2091,7 +2117,7 @@ describe('Identity.VerificationReports', function() {
     });
 
     it('retrieve method', async function() {
-        const verificationReport = await expressPlatby.identity.verificationReports.retrieve(
+        const verificationReport = await expressPayments.identity.verificationReports.retrieve(
             'vr_xxxxxxxxxxxxx'
         );
         expect(verificationReport).not.to.be.null;
@@ -2100,7 +2126,7 @@ describe('Identity.VerificationReports', function() {
 
 describe('Identity.VerificationSessions', function() {
     it('list method', async function() {
-        const verificationSessions = await expressPlatby.identity.verificationSessions.list(
+        const verificationSessions = await expressPayments.identity.verificationSessions.list(
             {
                 limit: 3,
             }
@@ -2109,7 +2135,7 @@ describe('Identity.VerificationSessions', function() {
     });
 
     it('create method', async function() {
-        const verificationSession = await expressPlatby.identity.verificationSessions.create(
+        const verificationSession = await expressPayments.identity.verificationSessions.create(
             {
                 type: 'document',
             }
@@ -2118,14 +2144,14 @@ describe('Identity.VerificationSessions', function() {
     });
 
     it('retrieve method', async function() {
-        const verificationSession = await expressPlatby.identity.verificationSessions.retrieve(
+        const verificationSession = await expressPayments.identity.verificationSessions.retrieve(
             'vs_xxxxxxxxxxxxx'
         );
         expect(verificationSession).not.to.be.null;
     });
 
     it('update method', async function() {
-        const verificationSession = await expressPlatby.identity.verificationSessions.update(
+        const verificationSession = await expressPayments.identity.verificationSessions.update(
             'vs_xxxxxxxxxxxxx',
             {
                 type: 'id_number',
@@ -2135,14 +2161,14 @@ describe('Identity.VerificationSessions', function() {
     });
 
     it('cancel method', async function() {
-        const verificationSession = await expressPlatby.identity.verificationSessions.cancel(
+        const verificationSession = await expressPayments.identity.verificationSessions.cancel(
             'vs_xxxxxxxxxxxxx'
         );
         expect(verificationSession).not.to.be.null;
     });
 
     it('redact method', async function() {
-        const verificationSession = await expressPlatby.identity.verificationSessions.redact(
+        const verificationSession = await expressPayments.identity.verificationSessions.redact(
             'vs_xxxxxxxxxxxxx'
         );
         expect(verificationSession).not.to.be.null;
@@ -2151,14 +2177,14 @@ describe('Identity.VerificationSessions', function() {
 
 describe('InvoiceItems', function() {
     it('list method', async function() {
-        const invoiceItems = await expressPlatby.invoiceItems.list({
+        const invoiceItems = await expressPayments.invoiceItems.list({
             limit: 3,
         });
         expect(invoiceItems).not.to.be.null;
     });
 
     it('create method', async function() {
-        const invoiceItem = await expressPlatby.invoiceItems.create({
+        const invoiceItem = await expressPayments.invoiceItems.create({
             customer: 'cus_xxxxxxxxxxxxx',
             price: 'price_xxxxxxxxxxxxx',
         });
@@ -2166,21 +2192,21 @@ describe('InvoiceItems', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.invoiceItems.del(
+        const deleted = await expressPayments.invoiceItems.del(
             'ii_xxxxxxxxxxxxx'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const invoiceItem = await expressPlatby.invoiceItems.retrieve(
+        const invoiceItem = await expressPayments.invoiceItems.retrieve(
             'ii_xxxxxxxxxxxxx'
         );
         expect(invoiceItem).not.to.be.null;
     });
 
     it('update method', async function() {
-        const invoiceItem = await expressPlatby.invoiceItems.update(
+        const invoiceItem = await expressPayments.invoiceItems.update(
             'ii_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2194,21 +2220,23 @@ describe('InvoiceItems', function() {
 
 describe('Issuing.Authorizations', function() {
     it('list method', async function() {
-        const authorizations = await expressPlatby.issuing.authorizations.list({
-            limit: 3,
-        });
+        const authorizations = await expressPayments.issuing.authorizations.list(
+            {
+                limit: 3,
+            }
+        );
         expect(authorizations).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const authorization = await expressPlatby.issuing.authorizations.retrieve(
+        const authorization = await expressPayments.issuing.authorizations.retrieve(
             'iauth_xxxxxxxxxxxxx'
         );
         expect(authorization).not.to.be.null;
     });
 
     it('update method', async function() {
-        const authorization = await expressPlatby.issuing.authorizations.update(
+        const authorization = await expressPayments.issuing.authorizations.update(
             'iauth_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2220,14 +2248,14 @@ describe('Issuing.Authorizations', function() {
     });
 
     it('approve method', async function() {
-        const authorization = await expressPlatby.issuing.authorizations.approve(
+        const authorization = await expressPayments.issuing.authorizations.approve(
             'iauth_xxxxxxxxxxxxx'
         );
         expect(authorization).not.to.be.null;
     });
 
     it('decline method', async function() {
-        const authorization = await expressPlatby.issuing.authorizations.decline(
+        const authorization = await expressPayments.issuing.authorizations.decline(
             'iauth_xxxxxxxxxxxxx'
         );
         expect(authorization).not.to.be.null;
@@ -2236,14 +2264,14 @@ describe('Issuing.Authorizations', function() {
 
 describe('Issuing.Cardholders', function() {
     it('list method', async function() {
-        const cardholders = await expressPlatby.issuing.cardholders.list({
+        const cardholders = await expressPayments.issuing.cardholders.list({
             limit: 3,
         });
         expect(cardholders).not.to.be.null;
     });
 
     it('create method', async function() {
-        const cardholder = await expressPlatby.issuing.cardholders.create({
+        const cardholder = await expressPayments.issuing.cardholders.create({
             type: 'individual',
             name: 'Martin Najemi',
             email: 'martin.najemi@example.com',
@@ -2262,14 +2290,14 @@ describe('Issuing.Cardholders', function() {
     });
 
     it('retrieve method', async function() {
-        const cardholder = await expressPlatby.issuing.cardholders.retrieve(
+        const cardholder = await expressPayments.issuing.cardholders.retrieve(
             'ich_xxxxxxxxxxxxx'
         );
         expect(cardholder).not.to.be.null;
     });
 
     it('update method', async function() {
-        const cardholder = await expressPlatby.issuing.cardholders.update(
+        const cardholder = await expressPayments.issuing.cardholders.update(
             'ich_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2283,14 +2311,14 @@ describe('Issuing.Cardholders', function() {
 
 describe('Issuing.Cards', function() {
     it('list method', async function() {
-        const cards = await expressPlatby.issuing.cards.list({
+        const cards = await expressPayments.issuing.cards.list({
             limit: 3,
         });
         expect(cards).not.to.be.null;
     });
 
     it('create method', async function() {
-        const card = await expressPlatby.issuing.cards.create({
+        const card = await expressPayments.issuing.cards.create({
             cardholder: 'ich_xxxxxxxxxxxxx',
             currency: 'usd',
             type: 'virtual',
@@ -2299,14 +2327,14 @@ describe('Issuing.Cards', function() {
     });
 
     it('retrieve method', async function() {
-        const card = await expressPlatby.issuing.cards.retrieve(
+        const card = await expressPayments.issuing.cards.retrieve(
             'ic_xxxxxxxxxxxxx'
         );
         expect(card).not.to.be.null;
     });
 
     it('update method', async function() {
-        const card = await expressPlatby.issuing.cards.update(
+        const card = await expressPayments.issuing.cards.update(
             'ic_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2320,14 +2348,14 @@ describe('Issuing.Cards', function() {
 
 describe('Issuing.Disputes', function() {
     it('list method', async function() {
-        const disputes = await expressPlatby.issuing.disputes.list({
+        const disputes = await expressPayments.issuing.disputes.list({
             limit: 3,
         });
         expect(disputes).not.to.be.null;
     });
 
     it('create method', async function() {
-        const dispute = await expressPlatby.issuing.disputes.create({
+        const dispute = await expressPayments.issuing.disputes.create({
             transaction: 'ipi_xxxxxxxxxxxxx',
             evidence: {
                 reason: 'fraudulent',
@@ -2340,14 +2368,14 @@ describe('Issuing.Disputes', function() {
     });
 
     it('retrieve method', async function() {
-        const dispute = await expressPlatby.issuing.disputes.retrieve(
+        const dispute = await expressPayments.issuing.disputes.retrieve(
             'idp_xxxxxxxxxxxxx'
         );
         expect(dispute).not.to.be.null;
     });
 
     it('submit method', async function() {
-        const dispute = await expressPlatby.issuing.disputes.submit(
+        const dispute = await expressPayments.issuing.disputes.submit(
             'idp_xxxxxxxxxxxxx'
         );
         expect(dispute).not.to.be.null;
@@ -2356,21 +2384,21 @@ describe('Issuing.Disputes', function() {
 
 describe('Issuing.Transactions', function() {
     it('list method', async function() {
-        const transactions = await expressPlatby.issuing.transactions.list({
+        const transactions = await expressPayments.issuing.transactions.list({
             limit: 3,
         });
         expect(transactions).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const transaction = await expressPlatby.issuing.transactions.retrieve(
+        const transaction = await expressPayments.issuing.transactions.retrieve(
             'ipi_xxxxxxxxxxxxx'
         );
         expect(transaction).not.to.be.null;
     });
 
     it('update method', async function() {
-        const transaction = await expressPlatby.issuing.transactions.update(
+        const transaction = await expressPayments.issuing.transactions.update(
             'ipi_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2384,7 +2412,7 @@ describe('Issuing.Transactions', function() {
 
 describe('Mandates', function() {
     it('retrieve method', async function() {
-        const mandate = await expressPlatby.mandates.retrieve(
+        const mandate = await expressPayments.mandates.retrieve(
             'mandate_xxxxxxxxxxxxx'
         );
         expect(mandate).not.to.be.null;
@@ -2393,7 +2421,7 @@ describe('Mandates', function() {
 
 describe('PaymentMethods', function() {
     it('list method', async function() {
-        const paymentMethods = await expressPlatby.paymentMethods.list({
+        const paymentMethods = await expressPayments.paymentMethods.list({
             customer: 'cus_xxxxxxxxxxxxx',
             type: 'card',
         });
@@ -2401,7 +2429,7 @@ describe('PaymentMethods', function() {
     });
 
     it('create method', async function() {
-        const paymentMethod = await expressPlatby.paymentMethods.create({
+        const paymentMethod = await expressPayments.paymentMethods.create({
             type: 'card',
             card: {
                 number: '4242424242424242',
@@ -2414,14 +2442,14 @@ describe('PaymentMethods', function() {
     });
 
     it('retrieve method', async function() {
-        const paymentMethod = await expressPlatby.paymentMethods.retrieve(
+        const paymentMethod = await expressPayments.paymentMethods.retrieve(
             'pm_xxxxxxxxxxxxx'
         );
         expect(paymentMethod).not.to.be.null;
     });
 
     it('update method', async function() {
-        const paymentMethod = await expressPlatby.paymentMethods.update(
+        const paymentMethod = await expressPayments.paymentMethods.update(
             'pm_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2433,7 +2461,7 @@ describe('PaymentMethods', function() {
     });
 
     it('attach method', async function() {
-        const paymentMethod = await expressPlatby.paymentMethods.attach(
+        const paymentMethod = await expressPayments.paymentMethods.attach(
             'pm_xxxxxxxxxxxxx',
             {
                 customer: 'cus_xxxxxxxxxxxxx',
@@ -2443,7 +2471,7 @@ describe('PaymentMethods', function() {
     });
 
     it('detach method', async function() {
-        const paymentMethod = await expressPlatby.paymentMethods.detach(
+        const paymentMethod = await expressPayments.paymentMethods.detach(
             'pm_xxxxxxxxxxxxx'
         );
         expect(paymentMethod).not.to.be.null;
@@ -2452,14 +2480,14 @@ describe('PaymentMethods', function() {
 
 describe('Payouts', function() {
     it('list method', async function() {
-        const payouts = await expressPlatby.payouts.list({
+        const payouts = await expressPayments.payouts.list({
             limit: 3,
         });
         expect(payouts).not.to.be.null;
     });
 
     it('create method', async function() {
-        const payout = await expressPlatby.payouts.create({
+        const payout = await expressPayments.payouts.create({
             amount: 1100,
             currency: 'usd',
         });
@@ -2467,40 +2495,47 @@ describe('Payouts', function() {
     });
 
     it('retrieve method', async function() {
-        const payout = await expressPlatby.payouts.retrieve('po_xxxxxxxxxxxxx');
+        const payout = await expressPayments.payouts.retrieve(
+            'po_xxxxxxxxxxxxx'
+        );
         expect(payout).not.to.be.null;
     });
 
     it('update method', async function() {
-        const payout = await expressPlatby.payouts.update('po_xxxxxxxxxxxxx', {
-            metadata: {
-                order_id: '6735',
-            },
-        });
+        const payout = await expressPayments.payouts.update(
+            'po_xxxxxxxxxxxxx',
+            {
+                metadata: {
+                    order_id: '6735',
+                },
+            }
+        );
         expect(payout).not.to.be.null;
     });
 
     it('cancel method', async function() {
-        const payout = await expressPlatby.payouts.cancel('po_xxxxxxxxxxxxx');
+        const payout = await expressPayments.payouts.cancel('po_xxxxxxxxxxxxx');
         expect(payout).not.to.be.null;
     });
 
     it('reverse method', async function() {
-        const payout = await expressPlatby.payouts.reverse('po_xxxxxxxxxxxxx');
+        const payout = await expressPayments.payouts.reverse(
+            'po_xxxxxxxxxxxxx'
+        );
         expect(payout).not.to.be.null;
     });
 });
 
 describe('Plans', function() {
     it('list method', async function() {
-        const plans = await expressPlatby.plans.list({
+        const plans = await expressPayments.plans.list({
             limit: 3,
         });
         expect(plans).not.to.be.null;
     });
 
     it('create method', async function() {
-        const plan = await expressPlatby.plans.create({
+        const plan = await expressPayments.plans.create({
             amount: 2000,
             currency: 'usd',
             interval: 'month',
@@ -2510,7 +2545,7 @@ describe('Plans', function() {
     });
 
     it('create method', async function() {
-        const plan = await expressPlatby.plans.create({
+        const plan = await expressPayments.plans.create({
             amount: 2000,
             currency: 'usd',
             interval: 'month',
@@ -2522,17 +2557,19 @@ describe('Plans', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.plans.del('price_xxxxxxxxxxxxx');
+        const deleted = await expressPayments.plans.del('price_xxxxxxxxxxxxx');
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const plan = await expressPlatby.plans.retrieve('price_xxxxxxxxxxxxx');
+        const plan = await expressPayments.plans.retrieve(
+            'price_xxxxxxxxxxxxx'
+        );
         expect(plan).not.to.be.null;
     });
 
     it('update method', async function() {
-        const plan = await expressPlatby.plans.update('price_xxxxxxxxxxxxx', {
+        const plan = await expressPayments.plans.update('price_xxxxxxxxxxxxx', {
             metadata: {
                 order_id: '6735',
             },
@@ -2543,33 +2580,35 @@ describe('Plans', function() {
 
 describe('Products', function() {
     it('list method', async function() {
-        const products = await expressPlatby.products.list({
+        const products = await expressPayments.products.list({
             limit: 3,
         });
         expect(products).not.to.be.null;
     });
 
     it('create method', async function() {
-        const product = await expressPlatby.products.create({
+        const product = await expressPayments.products.create({
             name: 'Gold Special',
         });
         expect(product).not.to.be.null;
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.products.del('prod_xxxxxxxxxxxxx');
+        const deleted = await expressPayments.products.del(
+            'prod_xxxxxxxxxxxxx'
+        );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const product = await expressPlatby.products.retrieve(
+        const product = await expressPayments.products.retrieve(
             'prod_xxxxxxxxxxxxx'
         );
         expect(product).not.to.be.null;
     });
 
     it('update method', async function() {
-        const product = await expressPlatby.products.update(
+        const product = await expressPayments.products.update(
             'prod_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2581,7 +2620,7 @@ describe('Products', function() {
     });
 
     it('search method', async function() {
-        const products = await expressPlatby.products.search({
+        const products = await expressPayments.products.search({
             query: "active:'true' AND metadata['order_id']:'6735'",
         });
         expect(products).not.to.be.null;
@@ -2590,28 +2629,28 @@ describe('Products', function() {
 
 describe('PromotionCodes', function() {
     it('list method', async function() {
-        const promotionCodes = await expressPlatby.promotionCodes.list({
+        const promotionCodes = await expressPayments.promotionCodes.list({
             limit: 3,
         });
         expect(promotionCodes).not.to.be.null;
     });
 
     it('create method', async function() {
-        const promotionCode = await expressPlatby.promotionCodes.create({
+        const promotionCode = await expressPayments.promotionCodes.create({
             coupon: 'Z4OV52SU',
         });
         expect(promotionCode).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const promotionCode = await expressPlatby.promotionCodes.retrieve(
+        const promotionCode = await expressPayments.promotionCodes.retrieve(
             'promo_xxxxxxxxxxxxx'
         );
         expect(promotionCode).not.to.be.null;
     });
 
     it('update method', async function() {
-        const promotionCode = await expressPlatby.promotionCodes.update(
+        const promotionCode = await expressPayments.promotionCodes.update(
             'promo_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2625,14 +2664,14 @@ describe('PromotionCodes', function() {
 
 describe('Quotes', function() {
     it('list method', async function() {
-        const quotes = await expressPlatby.quotes.list({
+        const quotes = await expressPayments.quotes.list({
             limit: 3,
         });
         expect(quotes).not.to.be.null;
     });
 
     it('create method', async function() {
-        const quote = await expressPlatby.quotes.create({
+        const quote = await expressPayments.quotes.create({
             customer: 'cus_xxxxxxxxxxxxx',
             line_items: [
                 {
@@ -2645,12 +2684,12 @@ describe('Quotes', function() {
     });
 
     it('retrieve method', async function() {
-        const quote = await expressPlatby.quotes.retrieve('qt_xxxxxxxxxxxxx');
+        const quote = await expressPayments.quotes.retrieve('qt_xxxxxxxxxxxxx');
         expect(quote).not.to.be.null;
     });
 
     it('update method', async function() {
-        const quote = await expressPlatby.quotes.update('qt_xxxxxxxxxxxxx', {
+        const quote = await expressPayments.quotes.update('qt_xxxxxxxxxxxxx', {
             metadata: {
                 order_id: '6735',
             },
@@ -2659,24 +2698,24 @@ describe('Quotes', function() {
     });
 
     it('accept method', async function() {
-        const quote = await expressPlatby.quotes.accept('qt_xxxxxxxxxxxxx');
+        const quote = await expressPayments.quotes.accept('qt_xxxxxxxxxxxxx');
         expect(quote).not.to.be.null;
     });
 
     it('cancel method', async function() {
-        const quote = await expressPlatby.quotes.cancel('qt_xxxxxxxxxxxxx');
+        const quote = await expressPayments.quotes.cancel('qt_xxxxxxxxxxxxx');
         expect(quote).not.to.be.null;
     });
 
     it('finalizeQuote method', async function() {
-        const quote = await expressPlatby.quotes.finalizeQuote(
+        const quote = await expressPayments.quotes.finalizeQuote(
             'qt_xxxxxxxxxxxxx'
         );
         expect(quote).not.to.be.null;
     });
 
     it('listLineItems method', async function() {
-        const lineItems = await expressPlatby.quotes.listLineItems(
+        const lineItems = await expressPayments.quotes.listLineItems(
             'qt_xxxxxxxxxxxxx'
         );
         expect(lineItems).not.to.be.null;
@@ -2685,7 +2724,7 @@ describe('Quotes', function() {
 
 describe('Radar.EarlyFraudWarnings', function() {
     it('list method', async function() {
-        const earlyFraudWarnings = await expressPlatby.radar.earlyFraudWarnings.list(
+        const earlyFraudWarnings = await expressPayments.radar.earlyFraudWarnings.list(
             {
                 limit: 3,
             }
@@ -2694,7 +2733,7 @@ describe('Radar.EarlyFraudWarnings', function() {
     });
 
     it('retrieve method', async function() {
-        const earlyFraudWarning = await expressPlatby.radar.earlyFraudWarnings.retrieve(
+        const earlyFraudWarning = await expressPayments.radar.earlyFraudWarnings.retrieve(
             'issfr_xxxxxxxxxxxxx'
         );
         expect(earlyFraudWarning).not.to.be.null;
@@ -2703,7 +2742,7 @@ describe('Radar.EarlyFraudWarnings', function() {
 
 describe('Radar.ValueListItems', function() {
     it('list method', async function() {
-        const valueListItems = await expressPlatby.radar.valueListItems.list({
+        const valueListItems = await expressPayments.radar.valueListItems.list({
             limit: 3,
             value_list: 'rsl_xxxxxxxxxxxxx',
         });
@@ -2711,22 +2750,24 @@ describe('Radar.ValueListItems', function() {
     });
 
     it('create method', async function() {
-        const valueListItem = await expressPlatby.radar.valueListItems.create({
-            value_list: 'rsl_xxxxxxxxxxxxx',
-            value: '1.2.3.4',
-        });
+        const valueListItem = await expressPayments.radar.valueListItems.create(
+            {
+                value_list: 'rsl_xxxxxxxxxxxxx',
+                value: '1.2.3.4',
+            }
+        );
         expect(valueListItem).not.to.be.null;
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.radar.valueListItems.del(
+        const deleted = await expressPayments.radar.valueListItems.del(
             'rsli_xxxxxxxxxxxxx'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const valueListItem = await expressPlatby.radar.valueListItems.retrieve(
+        const valueListItem = await expressPayments.radar.valueListItems.retrieve(
             'rsli_xxxxxxxxxxxxx'
         );
         expect(valueListItem).not.to.be.null;
@@ -2735,14 +2776,14 @@ describe('Radar.ValueListItems', function() {
 
 describe('Radar.ValueLists', function() {
     it('list method', async function() {
-        const valueLists = await expressPlatby.radar.valueLists.list({
+        const valueLists = await expressPayments.radar.valueLists.list({
             limit: 3,
         });
         expect(valueLists).not.to.be.null;
     });
 
     it('create method', async function() {
-        const valueList = await expressPlatby.radar.valueLists.create({
+        const valueList = await expressPayments.radar.valueLists.create({
             alias: 'custom_ip_xxxxxxxxxxxxx',
             name: 'Custom IP Blocklist',
             item_type: 'ip_address',
@@ -2751,21 +2792,21 @@ describe('Radar.ValueLists', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.radar.valueLists.del(
+        const deleted = await expressPayments.radar.valueLists.del(
             'rsl_xxxxxxxxxxxxx'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const valueList = await expressPlatby.radar.valueLists.retrieve(
+        const valueList = await expressPayments.radar.valueLists.retrieve(
             'rsl_xxxxxxxxxxxxx'
         );
         expect(valueList).not.to.be.null;
     });
 
     it('update method', async function() {
-        const valueList = await expressPlatby.radar.valueLists.update(
+        const valueList = await expressPayments.radar.valueLists.update(
             'rsl_xxxxxxxxxxxxx',
             {
                 name: 'Updated IP Block List',
@@ -2777,49 +2818,54 @@ describe('Radar.ValueLists', function() {
 
 describe('Refunds', function() {
     it('list method', async function() {
-        const refunds = await expressPlatby.refunds.list({
+        const refunds = await expressPayments.refunds.list({
             limit: 3,
         });
         expect(refunds).not.to.be.null;
     });
 
     it('create method', async function() {
-        const refund = await expressPlatby.refunds.create({
+        const refund = await expressPayments.refunds.create({
             charge: 'ch_xxxxxxxxxxxxx',
         });
         expect(refund).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const refund = await expressPlatby.refunds.retrieve('re_xxxxxxxxxxxxx');
+        const refund = await expressPayments.refunds.retrieve(
+            're_xxxxxxxxxxxxx'
+        );
         expect(refund).not.to.be.null;
     });
 
     it('update method', async function() {
-        const refund = await expressPlatby.refunds.update('re_xxxxxxxxxxxxx', {
-            metadata: {
-                order_id: '6735',
-            },
-        });
+        const refund = await expressPayments.refunds.update(
+            're_xxxxxxxxxxxxx',
+            {
+                metadata: {
+                    order_id: '6735',
+                },
+            }
+        );
         expect(refund).not.to.be.null;
     });
 
     it('cancel method', async function() {
-        const refund = await expressPlatby.refunds.cancel('re_xxxxxxxxxxxxx');
+        const refund = await expressPayments.refunds.cancel('re_xxxxxxxxxxxxx');
         expect(refund).not.to.be.null;
     });
 });
 
 describe('Reporting.ReportRuns', function() {
     it('list method', async function() {
-        const reportRuns = await expressPlatby.reporting.reportRuns.list({
+        const reportRuns = await expressPayments.reporting.reportRuns.list({
             limit: 3,
         });
         expect(reportRuns).not.to.be.null;
     });
 
     it('create method', async function() {
-        const reportRun = await expressPlatby.reporting.reportRuns.create({
+        const reportRun = await expressPayments.reporting.reportRuns.create({
             report_type: 'balance.summary.1',
             parameters: {
                 interval_start: 1522540800,
@@ -2830,7 +2876,7 @@ describe('Reporting.ReportRuns', function() {
     });
 
     it('retrieve method', async function() {
-        const reportRun = await expressPlatby.reporting.reportRuns.retrieve(
+        const reportRun = await expressPayments.reporting.reportRuns.retrieve(
             'frr_xxxxxxxxxxxxx'
         );
         expect(reportRun).not.to.be.null;
@@ -2839,12 +2885,12 @@ describe('Reporting.ReportRuns', function() {
 
 describe('Reporting.ReportTypes', function() {
     it('list method', async function() {
-        const reportTypes = await expressPlatby.reporting.reportTypes.list();
+        const reportTypes = await expressPayments.reporting.reportTypes.list();
         expect(reportTypes).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const reportType = await expressPlatby.reporting.reportTypes.retrieve(
+        const reportType = await expressPayments.reporting.reportTypes.retrieve(
             'balance.summary.1'
         );
         expect(reportType).not.to.be.null;
@@ -2853,28 +2899,30 @@ describe('Reporting.ReportTypes', function() {
 
 describe('Reviews', function() {
     it('list method', async function() {
-        const reviews = await expressPlatby.reviews.list({
+        const reviews = await expressPayments.reviews.list({
             limit: 3,
         });
         expect(reviews).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const review = await expressPlatby.reviews.retrieve(
+        const review = await expressPayments.reviews.retrieve(
             'prv_xxxxxxxxxxxxx'
         );
         expect(review).not.to.be.null;
     });
 
     it('approve method', async function() {
-        const review = await expressPlatby.reviews.approve('prv_xxxxxxxxxxxxx');
+        const review = await expressPayments.reviews.approve(
+            'prv_xxxxxxxxxxxxx'
+        );
         expect(review).not.to.be.null;
     });
 });
 
 describe('Sigma.ScheduledQueryRuns', function() {
     it('list method', async function() {
-        const scheduledQueryRuns = await expressPlatby.sigma.scheduledQueryRuns.list(
+        const scheduledQueryRuns = await expressPayments.sigma.scheduledQueryRuns.list(
             {
                 limit: 3,
             }
@@ -2883,7 +2931,7 @@ describe('Sigma.ScheduledQueryRuns', function() {
     });
 
     it('retrieve method', async function() {
-        const scheduledQueryRun = await expressPlatby.sigma.scheduledQueryRuns.retrieve(
+        const scheduledQueryRun = await expressPayments.sigma.scheduledQueryRuns.retrieve(
             'sqr_xxxxxxxxxxxxx'
         );
         expect(scheduledQueryRun).not.to.be.null;
@@ -2892,62 +2940,67 @@ describe('Sigma.ScheduledQueryRuns', function() {
 
 describe('Sources', function() {
     it('retrieve method', async function() {
-        const source = await expressPlatby.sources.retrieve(
+        const source = await expressPayments.sources.retrieve(
             'src_xxxxxxxxxxxxx'
         );
         expect(source).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const source = await expressPlatby.sources.retrieve(
+        const source = await expressPayments.sources.retrieve(
             'src_xxxxxxxxxxxxx'
         );
         expect(source).not.to.be.null;
     });
 
     it('update method', async function() {
-        const source = await expressPlatby.sources.update('src_xxxxxxxxxxxxx', {
-            metadata: {
-                order_id: '6735',
-            },
-        });
+        const source = await expressPayments.sources.update(
+            'src_xxxxxxxxxxxxx',
+            {
+                metadata: {
+                    order_id: '6735',
+                },
+            }
+        );
         expect(source).not.to.be.null;
     });
 });
 
 describe('SubscriptionItems', function() {
     it('list method', async function() {
-        const subscriptionItems = await expressPlatby.subscriptionItems.list({
+        const subscriptionItems = await expressPayments.subscriptionItems.list({
             subscription: 'sub_xxxxxxxxxxxxx',
         });
         expect(subscriptionItems).not.to.be.null;
     });
 
     it('create method', async function() {
-        const subscriptionItem = await expressPlatby.subscriptionItems.create({
-            subscription: 'sub_xxxxxxxxxxxxx',
-            price: 'price_xxxxxxxxxxxxx',
-            quantity: 2,
-        });
+        const subscriptionItem = await expressPayments.subscriptionItems.create(
+            {
+                subscription: 'sub_xxxxxxxxxxxxx',
+                price: 'price_xxxxxxxxxxxxx',
+                quantity: 2,
+            }
+        );
         expect(subscriptionItem).not.to.be.null;
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.subscriptionItems.del(
+        const deleted = await expressPayments.subscriptionItems.del(
             'si_xxxxxxxxxxxxx'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const subscriptionItem = await expressPlatby.subscriptionItems.retrieve(
+        const subscriptionItem = await expressPayments.subscriptionItems.retrieve(
             'si_xxxxxxxxxxxxx'
         );
         expect(subscriptionItem).not.to.be.null;
     });
 
     it('update method', async function() {
-        const subscriptionItem = await expressPlatby.subscriptionItems.update(
+        const subscriptionItem = await expressPayments.subscriptionItems.update(
             'si_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -2959,7 +3012,7 @@ describe('SubscriptionItems', function() {
     });
 
     it('listUsageRecordSummaries method', async function() {
-        const usageRecordSummaries = await expressPlatby.subscriptionItems.listUsageRecordSummaries(
+        const usageRecordSummaries = await expressPayments.subscriptionItems.listUsageRecordSummaries(
             'si_xxxxxxxxxxxxx',
             {
                 limit: 3,
@@ -2969,7 +3022,7 @@ describe('SubscriptionItems', function() {
     });
 
     it('createUsageRecord method', async function() {
-        const usageRecord = await expressPlatby.subscriptionItems.createUsageRecord(
+        const usageRecord = await expressPayments.subscriptionItems.createUsageRecord(
             'si_xxxxxxxxxxxxx',
             {
                 quantity: 100,
@@ -2982,7 +3035,7 @@ describe('SubscriptionItems', function() {
 
 describe('SubscriptionSchedules', function() {
     it('list method', async function() {
-        const subscriptionSchedules = await expressPlatby.subscriptionSchedules.list(
+        const subscriptionSchedules = await expressPayments.subscriptionSchedules.list(
             {
                 limit: 3,
             }
@@ -2991,7 +3044,7 @@ describe('SubscriptionSchedules', function() {
     });
 
     it('create method', async function() {
-        const subscriptionSchedule = await expressPlatby.subscriptionSchedules.create(
+        const subscriptionSchedule = await expressPayments.subscriptionSchedules.create(
             {
                 customer: 'cus_xxxxxxxxxxxxx',
                 start_date: 1676070661,
@@ -3013,14 +3066,14 @@ describe('SubscriptionSchedules', function() {
     });
 
     it('retrieve method', async function() {
-        const subscriptionSchedule = await expressPlatby.subscriptionSchedules.retrieve(
+        const subscriptionSchedule = await expressPayments.subscriptionSchedules.retrieve(
             'sub_sched_xxxxxxxxxxxxx'
         );
         expect(subscriptionSchedule).not.to.be.null;
     });
 
     it('update method', async function() {
-        const subscriptionSchedule = await expressPlatby.subscriptionSchedules.update(
+        const subscriptionSchedule = await expressPayments.subscriptionSchedules.update(
             'sub_sched_xxxxxxxxxxxxx',
             {
                 end_behavior: 'release',
@@ -3030,14 +3083,14 @@ describe('SubscriptionSchedules', function() {
     });
 
     it('cancel method', async function() {
-        const subscriptionSchedule = await expressPlatby.subscriptionSchedules.cancel(
+        const subscriptionSchedule = await expressPayments.subscriptionSchedules.cancel(
             'sub_sched_xxxxxxxxxxxxx'
         );
         expect(subscriptionSchedule).not.to.be.null;
     });
 
     it('release method', async function() {
-        const subscriptionSchedule = await expressPlatby.subscriptionSchedules.release(
+        const subscriptionSchedule = await expressPayments.subscriptionSchedules.release(
             'sub_sched_xxxxxxxxxxxxx'
         );
         expect(subscriptionSchedule).not.to.be.null;
@@ -3046,14 +3099,14 @@ describe('SubscriptionSchedules', function() {
 
 describe('Subscriptions', function() {
     it('list method', async function() {
-        const subscriptions = await expressPlatby.subscriptions.list({
+        const subscriptions = await expressPayments.subscriptions.list({
             limit: 3,
         });
         expect(subscriptions).not.to.be.null;
     });
 
     it('create method', async function() {
-        const subscription = await expressPlatby.subscriptions.create({
+        const subscription = await expressPayments.subscriptions.create({
             customer: 'cus_xxxxxxxxxxxxx',
             items: [
                 {
@@ -3065,21 +3118,21 @@ describe('Subscriptions', function() {
     });
 
     it('cancel method', async function() {
-        const subscription = await expressPlatby.subscriptions.cancel(
+        const subscription = await expressPayments.subscriptions.cancel(
             'sub_xxxxxxxxxxxxx'
         );
         expect(subscription).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const subscription = await expressPlatby.subscriptions.retrieve(
+        const subscription = await expressPayments.subscriptions.retrieve(
             'sub_xxxxxxxxxxxxx'
         );
         expect(subscription).not.to.be.null;
     });
 
     it('update method', async function() {
-        const subscription = await expressPlatby.subscriptions.update(
+        const subscription = await expressPayments.subscriptions.update(
             'sub_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -3091,7 +3144,7 @@ describe('Subscriptions', function() {
     });
 
     it('search method', async function() {
-        const subscriptions = await expressPlatby.subscriptions.search({
+        const subscriptions = await expressPayments.subscriptions.search({
             query: "status:'active' AND metadata['order_id']:'6735'",
         });
         expect(subscriptions).not.to.be.null;
@@ -3100,14 +3153,14 @@ describe('Subscriptions', function() {
 
 describe('TaxCodes', function() {
     it('list method', async function() {
-        const taxCodes = await expressPlatby.taxCodes.list({
+        const taxCodes = await expressPayments.taxCodes.list({
             limit: 3,
         });
         expect(taxCodes).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const taxCode = await expressPlatby.taxCodes.retrieve(
+        const taxCode = await expressPayments.taxCodes.retrieve(
             'txcd_xxxxxxxxxxxxx'
         );
         expect(taxCode).not.to.be.null;
@@ -3116,14 +3169,14 @@ describe('TaxCodes', function() {
 
 describe('TaxRates', function() {
     it('list method', async function() {
-        const taxRates = await expressPlatby.taxRates.list({
+        const taxRates = await expressPayments.taxRates.list({
             limit: 3,
         });
         expect(taxRates).not.to.be.null;
     });
 
     it('create method', async function() {
-        const taxRate = await expressPlatby.taxRates.create({
+        const taxRate = await expressPayments.taxRates.create({
             display_name: 'VAT',
             description: 'VAT Germany',
             jurisdiction: 'DE',
@@ -3134,14 +3187,14 @@ describe('TaxRates', function() {
     });
 
     it('retrieve method', async function() {
-        const taxRate = await expressPlatby.taxRates.retrieve(
+        const taxRate = await expressPayments.taxRates.retrieve(
             'txr_xxxxxxxxxxxxx'
         );
         expect(taxRate).not.to.be.null;
     });
 
     it('update method', async function() {
-        const taxRate = await expressPlatby.taxRates.update(
+        const taxRate = await expressPayments.taxRates.update(
             'txr_xxxxxxxxxxxxx',
             {
                 active: false,
@@ -3153,21 +3206,21 @@ describe('TaxRates', function() {
 
 describe('Terminal.ConnectionTokens', function() {
     it('create method', async function() {
-        const connectionToken = await expressPlatby.terminal.connectionTokens.create();
+        const connectionToken = await expressPayments.terminal.connectionTokens.create();
         expect(connectionToken).not.to.be.null;
     });
 });
 
 describe('Terminal.Locations', function() {
     it('list method', async function() {
-        const locations = await expressPlatby.terminal.locations.list({
+        const locations = await expressPayments.terminal.locations.list({
             limit: 3,
         });
         expect(locations).not.to.be.null;
     });
 
     it('create method', async function() {
-        const location = await expressPlatby.terminal.locations.create({
+        const location = await expressPayments.terminal.locations.create({
             display_name: 'My First Store',
             address: {
                 line1: '1234 Main Street',
@@ -3181,21 +3234,21 @@ describe('Terminal.Locations', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.terminal.locations.del(
+        const deleted = await expressPayments.terminal.locations.del(
             'tml_xxxxxxxxxxxxx'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const location = await expressPlatby.terminal.locations.retrieve(
+        const location = await expressPayments.terminal.locations.retrieve(
             'tml_xxxxxxxxxxxxx'
         );
         expect(location).not.to.be.null;
     });
 
     it('update method', async function() {
-        const location = await expressPlatby.terminal.locations.update(
+        const location = await expressPayments.terminal.locations.update(
             'tml_xxxxxxxxxxxxx',
             {
                 display_name: 'My First Store',
@@ -3207,14 +3260,14 @@ describe('Terminal.Locations', function() {
 
 describe('Terminal.Readers', function() {
     it('list method', async function() {
-        const readers = await expressPlatby.terminal.readers.list({
+        const readers = await expressPayments.terminal.readers.list({
             limit: 3,
         });
         expect(readers).not.to.be.null;
     });
 
     it('create method', async function() {
-        const reader = await expressPlatby.terminal.readers.create({
+        const reader = await expressPayments.terminal.readers.create({
             registration_code: 'puppies-plug-could',
             label: 'Blue Rabbit',
             location: 'tml_1234',
@@ -3223,21 +3276,21 @@ describe('Terminal.Readers', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.terminal.readers.del(
+        const deleted = await expressPayments.terminal.readers.del(
             'tmr_xxxxxxxxxxxxx'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const reader = await expressPlatby.terminal.readers.retrieve(
+        const reader = await expressPayments.terminal.readers.retrieve(
             'tmr_xxxxxxxxxxxxx'
         );
         expect(reader).not.to.be.null;
     });
 
     it('update method', async function() {
-        const reader = await expressPlatby.terminal.readers.update(
+        const reader = await expressPayments.terminal.readers.update(
             'tmr_xxxxxxxxxxxxx',
             {
                 label: 'Blue Rabbit',
@@ -3247,14 +3300,14 @@ describe('Terminal.Readers', function() {
     });
 
     it('cancelAction method', async function() {
-        const reader = await expressPlatby.terminal.readers.cancelAction(
+        const reader = await expressPayments.terminal.readers.cancelAction(
             'tmr_xxxxxxxxxxxxx'
         );
         expect(reader).not.to.be.null;
     });
 
     it('processPaymentIntent method', async function() {
-        const reader = await expressPlatby.terminal.readers.processPaymentIntent(
+        const reader = await expressPayments.terminal.readers.processPaymentIntent(
             'tmr_xxxxxxxxxxxxx',
             {
                 payment_intent: 'pi_xxxxxxxxxxxxx',
@@ -3264,7 +3317,7 @@ describe('Terminal.Readers', function() {
     });
 
     it('processSetupIntent method', async function() {
-        const reader = await expressPlatby.terminal.readers.processSetupIntent(
+        const reader = await expressPayments.terminal.readers.processSetupIntent(
             'tmr_xxxxxxxxxxxxx',
             {
                 setup_intent: 'seti_xxxxxxxxxxxxx',
@@ -3277,14 +3330,14 @@ describe('Terminal.Readers', function() {
 
 describe('Topups', function() {
     it('list method', async function() {
-        const topups = await expressPlatby.topups.list({
+        const topups = await expressPayments.topups.list({
             limit: 3,
         });
         expect(topups).not.to.be.null;
     });
 
     it('create method', async function() {
-        const topup = await expressPlatby.topups.create({
+        const topup = await expressPayments.topups.create({
             amount: 2000,
             currency: 'usd',
             description: 'Top-up for Jenny Rosen',
@@ -3294,12 +3347,12 @@ describe('Topups', function() {
     });
 
     it('retrieve method', async function() {
-        const topup = await expressPlatby.topups.retrieve('tu_xxxxxxxxxxxxx');
+        const topup = await expressPayments.topups.retrieve('tu_xxxxxxxxxxxxx');
         expect(topup).not.to.be.null;
     });
 
     it('update method', async function() {
-        const topup = await expressPlatby.topups.update('tu_xxxxxxxxxxxxx', {
+        const topup = await expressPayments.topups.update('tu_xxxxxxxxxxxxx', {
             metadata: {
                 order_id: '6735',
             },
@@ -3308,21 +3361,21 @@ describe('Topups', function() {
     });
 
     it('cancel method', async function() {
-        const topup = await expressPlatby.topups.cancel('tu_xxxxxxxxxxxxx');
+        const topup = await expressPayments.topups.cancel('tu_xxxxxxxxxxxxx');
         expect(topup).not.to.be.null;
     });
 });
 
 describe('Transfers', function() {
     it('list method', async function() {
-        const transfers = await expressPlatby.transfers.list({
+        const transfers = await expressPayments.transfers.list({
             limit: 3,
         });
         expect(transfers).not.to.be.null;
     });
 
     it('create method', async function() {
-        const transfer = await expressPlatby.transfers.create({
+        const transfer = await expressPayments.transfers.create({
             amount: 400,
             currency: 'usd',
             destination: 'acct_xxxxxxxxxxxxx',
@@ -3332,14 +3385,14 @@ describe('Transfers', function() {
     });
 
     it('retrieve method', async function() {
-        const transfer = await expressPlatby.transfers.retrieve(
+        const transfer = await expressPayments.transfers.retrieve(
             'tr_xxxxxxxxxxxxx'
         );
         expect(transfer).not.to.be.null;
     });
 
     it('update method', async function() {
-        const transfer = await expressPlatby.transfers.update(
+        const transfer = await expressPayments.transfers.update(
             'tr_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -3351,7 +3404,7 @@ describe('Transfers', function() {
     });
 
     it('listReversals method', async function() {
-        const transferReversals = await expressPlatby.transfers.listReversals(
+        const transferReversals = await expressPayments.transfers.listReversals(
             'tr_xxxxxxxxxxxxx',
             {
                 limit: 3,
@@ -3361,7 +3414,7 @@ describe('Transfers', function() {
     });
 
     it('createReversal method', async function() {
-        const transferReversal = await expressPlatby.transfers.createReversal(
+        const transferReversal = await expressPayments.transfers.createReversal(
             'tr_xxxxxxxxxxxxx',
             {
                 amount: 100,
@@ -3371,7 +3424,7 @@ describe('Transfers', function() {
     });
 
     it('retrieveReversal method', async function() {
-        const transferReversal = await expressPlatby.transfers.retrieveReversal(
+        const transferReversal = await expressPayments.transfers.retrieveReversal(
             'tr_xxxxxxxxxxxxx',
             'trr_xxxxxxxxxxxxx'
         );
@@ -3379,7 +3432,7 @@ describe('Transfers', function() {
     });
 
     it('updateReversal method', async function() {
-        const transferReversal = await expressPlatby.transfers.updateReversal(
+        const transferReversal = await expressPayments.transfers.updateReversal(
             'tr_xxxxxxxxxxxxx',
             'trr_xxxxxxxxxxxxx',
             {
@@ -3394,7 +3447,7 @@ describe('Transfers', function() {
 
 describe('Treasury.CreditReversals', function() {
     it('list method', async function() {
-        const creditReversals = await expressPlatby.treasury.creditReversals.list(
+        const creditReversals = await expressPayments.treasury.creditReversals.list(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 limit: 3,
@@ -3404,7 +3457,7 @@ describe('Treasury.CreditReversals', function() {
     });
 
     it('create method', async function() {
-        const creditReversal = await expressPlatby.treasury.creditReversals.create(
+        const creditReversal = await expressPayments.treasury.creditReversals.create(
             {
                 received_credit: 'rc_xxxxxxxxxxxxx',
             }
@@ -3413,7 +3466,7 @@ describe('Treasury.CreditReversals', function() {
     });
 
     it('retrieve method', async function() {
-        const creditReversal = await expressPlatby.treasury.creditReversals.retrieve(
+        const creditReversal = await expressPayments.treasury.creditReversals.retrieve(
             'credrev_xxxxxxxxxxxxx'
         );
         expect(creditReversal).not.to.be.null;
@@ -3422,7 +3475,7 @@ describe('Treasury.CreditReversals', function() {
 
 describe('Treasury.DebitReversals', function() {
     it('list method', async function() {
-        const debitReversals = await expressPlatby.treasury.debitReversals.list(
+        const debitReversals = await expressPayments.treasury.debitReversals.list(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 limit: 3,
@@ -3432,7 +3485,7 @@ describe('Treasury.DebitReversals', function() {
     });
 
     it('create method', async function() {
-        const debitReversal = await expressPlatby.treasury.debitReversals.create(
+        const debitReversal = await expressPayments.treasury.debitReversals.create(
             {
                 received_debit: 'rd_xxxxxxxxxxxxx',
             }
@@ -3441,7 +3494,7 @@ describe('Treasury.DebitReversals', function() {
     });
 
     it('retrieve method', async function() {
-        const debitReversal = await expressPlatby.treasury.debitReversals.retrieve(
+        const debitReversal = await expressPayments.treasury.debitReversals.retrieve(
             'debrev_xxxxxxxxxxxxx'
         );
         expect(debitReversal).not.to.be.null;
@@ -3450,7 +3503,7 @@ describe('Treasury.DebitReversals', function() {
 
 describe('Treasury.FinancialAccounts', function() {
     it('list method', async function() {
-        const financialAccounts = await expressPlatby.treasury.financialAccounts.list(
+        const financialAccounts = await expressPayments.treasury.financialAccounts.list(
             {
                 limit: 3,
             }
@@ -3459,7 +3512,7 @@ describe('Treasury.FinancialAccounts', function() {
     });
 
     it('create method', async function() {
-        const financialAccount = await expressPlatby.treasury.financialAccounts.create(
+        const financialAccount = await expressPayments.treasury.financialAccounts.create(
             {
                 supported_currencies: ['usd'],
                 features: {},
@@ -3469,14 +3522,14 @@ describe('Treasury.FinancialAccounts', function() {
     });
 
     it('retrieve method', async function() {
-        const financialAccount = await expressPlatby.treasury.financialAccounts.retrieve(
+        const financialAccount = await expressPayments.treasury.financialAccounts.retrieve(
             'fa_xxxxxxxxxxxxx'
         );
         expect(financialAccount).not.to.be.null;
     });
 
     it('update method', async function() {
-        const financialAccount = await expressPlatby.treasury.financialAccounts.update(
+        const financialAccount = await expressPayments.treasury.financialAccounts.update(
             'fa_xxxxxxxxxxxxx',
             {
                 metadata: {
@@ -3488,7 +3541,7 @@ describe('Treasury.FinancialAccounts', function() {
     });
 
     it('retrieveFeatures method', async function() {
-        const financialAccountFeatures = await expressPlatby.treasury.financialAccounts.retrieveFeatures(
+        const financialAccountFeatures = await expressPayments.treasury.financialAccounts.retrieveFeatures(
             'fa_xxxxxxxxxxxxx'
         );
         expect(financialAccountFeatures).not.to.be.null;
@@ -3497,7 +3550,7 @@ describe('Treasury.FinancialAccounts', function() {
 
 describe('Treasury.InboundTransfers', function() {
     it('list method', async function() {
-        const inboundTransfers = await expressPlatby.treasury.inboundTransfers.list(
+        const inboundTransfers = await expressPayments.treasury.inboundTransfers.list(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 limit: 3,
@@ -3507,7 +3560,7 @@ describe('Treasury.InboundTransfers', function() {
     });
 
     it('create method', async function() {
-        const inboundTransfer = await expressPlatby.treasury.inboundTransfers.create(
+        const inboundTransfer = await expressPayments.treasury.inboundTransfers.create(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 amount: 10000,
@@ -3520,14 +3573,14 @@ describe('Treasury.InboundTransfers', function() {
     });
 
     it('retrieve method', async function() {
-        const inboundTransfer = await expressPlatby.treasury.inboundTransfers.retrieve(
+        const inboundTransfer = await expressPayments.treasury.inboundTransfers.retrieve(
             'ibt_xxxxxxxxxxxxx'
         );
         expect(inboundTransfer).not.to.be.null;
     });
 
     it('cancel method', async function() {
-        const inboundTransfer = await expressPlatby.treasury.inboundTransfers.cancel(
+        const inboundTransfer = await expressPayments.treasury.inboundTransfers.cancel(
             'ibt_xxxxxxxxxxxxx'
         );
         expect(inboundTransfer).not.to.be.null;
@@ -3536,7 +3589,7 @@ describe('Treasury.InboundTransfers', function() {
 
 describe('Treasury.OutboundPayments', function() {
     it('list method', async function() {
-        const outboundPayments = await expressPlatby.treasury.outboundPayments.list(
+        const outboundPayments = await expressPayments.treasury.outboundPayments.list(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 limit: 3,
@@ -3546,7 +3599,7 @@ describe('Treasury.OutboundPayments', function() {
     });
 
     it('create method', async function() {
-        const outboundPayment = await expressPlatby.treasury.outboundPayments.create(
+        const outboundPayment = await expressPayments.treasury.outboundPayments.create(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 amount: 10000,
@@ -3560,14 +3613,14 @@ describe('Treasury.OutboundPayments', function() {
     });
 
     it('retrieve method', async function() {
-        const outboundPayment = await expressPlatby.treasury.outboundPayments.retrieve(
+        const outboundPayment = await expressPayments.treasury.outboundPayments.retrieve(
             'bot_xxxxxxxxxxxxx'
         );
         expect(outboundPayment).not.to.be.null;
     });
 
     it('cancel method', async function() {
-        const outboundPayment = await expressPlatby.treasury.outboundPayments.cancel(
+        const outboundPayment = await expressPayments.treasury.outboundPayments.cancel(
             'bot_xxxxxxxxxxxxx'
         );
         expect(outboundPayment).not.to.be.null;
@@ -3576,7 +3629,7 @@ describe('Treasury.OutboundPayments', function() {
 
 describe('Treasury.OutboundTransfers', function() {
     it('list method', async function() {
-        const outboundTransfers = await expressPlatby.treasury.outboundTransfers.list(
+        const outboundTransfers = await expressPayments.treasury.outboundTransfers.list(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 limit: 3,
@@ -3586,7 +3639,7 @@ describe('Treasury.OutboundTransfers', function() {
     });
 
     it('create method', async function() {
-        const outboundTransfer = await expressPlatby.treasury.outboundTransfers.create(
+        const outboundTransfer = await expressPayments.treasury.outboundTransfers.create(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 destination_payment_method: 'pm_xxxxxxxxxxxxx',
@@ -3599,14 +3652,14 @@ describe('Treasury.OutboundTransfers', function() {
     });
 
     it('retrieve method', async function() {
-        const outboundTransfer = await expressPlatby.treasury.outboundTransfers.retrieve(
+        const outboundTransfer = await expressPayments.treasury.outboundTransfers.retrieve(
             'obt_xxxxxxxxxxxxx'
         );
         expect(outboundTransfer).not.to.be.null;
     });
 
     it('cancel method', async function() {
-        const outboundTransfer = await expressPlatby.treasury.outboundTransfers.cancel(
+        const outboundTransfer = await expressPayments.treasury.outboundTransfers.cancel(
             'obt_xxxxxxxxxxxxx'
         );
         expect(outboundTransfer).not.to.be.null;
@@ -3615,7 +3668,7 @@ describe('Treasury.OutboundTransfers', function() {
 
 describe('Treasury.ReceivedCredits', function() {
     it('list method', async function() {
-        const receivedCredits = await expressPlatby.treasury.receivedCredits.list(
+        const receivedCredits = await expressPayments.treasury.receivedCredits.list(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 limit: 3,
@@ -3625,7 +3678,7 @@ describe('Treasury.ReceivedCredits', function() {
     });
 
     it('retrieve method', async function() {
-        const receivedCredit = await expressPlatby.treasury.receivedCredits.retrieve(
+        const receivedCredit = await expressPayments.treasury.receivedCredits.retrieve(
             'rc_xxxxxxxxxxxxx'
         );
         expect(receivedCredit).not.to.be.null;
@@ -3634,7 +3687,7 @@ describe('Treasury.ReceivedCredits', function() {
 
 describe('Treasury.ReceivedDebits', function() {
     it('list method', async function() {
-        const receivedDebits = await expressPlatby.treasury.receivedDebits.list(
+        const receivedDebits = await expressPayments.treasury.receivedDebits.list(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 limit: 3,
@@ -3644,7 +3697,7 @@ describe('Treasury.ReceivedDebits', function() {
     });
 
     it('retrieve method', async function() {
-        const receivedDebit = await expressPlatby.treasury.receivedDebits.retrieve(
+        const receivedDebit = await expressPayments.treasury.receivedDebits.retrieve(
             'rd_xxxxxxxxxxxxx'
         );
         expect(receivedDebit).not.to.be.null;
@@ -3653,7 +3706,7 @@ describe('Treasury.ReceivedDebits', function() {
 
 describe('Treasury.TransactionEntries', function() {
     it('list method', async function() {
-        const transactionEntries = await expressPlatby.treasury.transactionEntries.list(
+        const transactionEntries = await expressPayments.treasury.transactionEntries.list(
             {
                 financial_account: 'fa_xxxxxxxxxxxxx',
                 limit: 3,
@@ -3663,7 +3716,7 @@ describe('Treasury.TransactionEntries', function() {
     });
 
     it('retrieve method', async function() {
-        const transactionEntry = await expressPlatby.treasury.transactionEntries.retrieve(
+        const transactionEntry = await expressPayments.treasury.transactionEntries.retrieve(
             'trxne_xxxxxxxxxxxxx'
         );
         expect(transactionEntry).not.to.be.null;
@@ -3672,7 +3725,7 @@ describe('Treasury.TransactionEntries', function() {
 
 describe('Treasury.Transactions', function() {
     it('list method', async function() {
-        const transactions = await expressPlatby.treasury.transactions.list({
+        const transactions = await expressPayments.treasury.transactions.list({
             financial_account: 'fa_xxxxxxxxxxxxx',
             limit: 3,
         });
@@ -3680,7 +3733,7 @@ describe('Treasury.Transactions', function() {
     });
 
     it('retrieve method', async function() {
-        const transaction = await expressPlatby.treasury.transactions.retrieve(
+        const transaction = await expressPayments.treasury.transactions.retrieve(
             'trxn_xxxxxxxxxxxxx'
         );
         expect(transaction).not.to.be.null;
@@ -3689,14 +3742,14 @@ describe('Treasury.Transactions', function() {
 
 describe('WebhookEndpoints', function() {
     it('list method', async function() {
-        const webhookEndpoints = await expressPlatby.webhookEndpoints.list({
+        const webhookEndpoints = await expressPayments.webhookEndpoints.list({
             limit: 3,
         });
         expect(webhookEndpoints).not.to.be.null;
     });
 
     it('create method', async function() {
-        const webhookEndpoint = await expressPlatby.webhookEndpoints.create({
+        const webhookEndpoint = await expressPayments.webhookEndpoints.create({
             url: 'https://example.com/my/webhook/endpoint',
             enabled_events: ['charge.failed', 'charge.succeeded'],
         });
@@ -3704,21 +3757,21 @@ describe('WebhookEndpoints', function() {
     });
 
     it('del method', async function() {
-        const deleted = await expressPlatby.webhookEndpoints.del(
+        const deleted = await expressPayments.webhookEndpoints.del(
             'we_xxxxxxxxxxxxx'
         );
         expect(deleted).not.to.be.null;
     });
 
     it('retrieve method', async function() {
-        const webhookEndpoint = await expressPlatby.webhookEndpoints.retrieve(
+        const webhookEndpoint = await expressPayments.webhookEndpoints.retrieve(
             'we_xxxxxxxxxxxxx'
         );
         expect(webhookEndpoint).not.to.be.null;
     });
 
     it('update method', async function() {
-        const webhookEndpoint = await expressPlatby.webhookEndpoints.update(
+        const webhookEndpoint = await expressPayments.webhookEndpoints.update(
             'we_xxxxxxxxxxxxx',
             {
                 url: 'https://example.com/new_endpoint',
@@ -3730,7 +3783,7 @@ describe('WebhookEndpoints', function() {
 
 describe('Tax.Transactions', function() {
     it('createFromCalculation method', async function() {
-        const transaction = await expressPlatby.tax.transactions.createFromCalculation(
+        const transaction = await expressPayments.tax.transactions.createFromCalculation(
             {
                 calculation: 'xxx',
                 reference: 'yyy',
@@ -3742,14 +3795,14 @@ describe('Tax.Transactions', function() {
 
 describe('Tax.Calculations', function() {
     it('listLineItems method', async function() {
-        const calculationLineItems = await expressPlatby.tax.calculations.listLineItems(
+        const calculationLineItems = await expressPayments.tax.calculations.listLineItems(
             'xxx'
         );
         expect(calculationLineItems).not.to.be.null;
     });
 
     it('create method', async function() {
-        const calculation = await expressPlatby.tax.calculations.create({
+        const calculation = await expressPayments.tax.calculations.create({
             currency: 'usd',
             line_items: [
                 {

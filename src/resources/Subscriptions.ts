@@ -1,53 +1,54 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const Subscriptions = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscriptions',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/subscriptions/{subscription_exposed_id}',
-  }),
+export const Subscriptions = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscriptions',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscriptions/{subscription_exposed_id}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/subscriptions/{subscription_exposed_id}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/subscriptions',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscriptions/{subscription_exposed_id}',
+    }),
 
-  cancel: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/subscriptions/{subscription_exposed_id}',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/subscriptions',
+        methodType: 'list',
+    }),
 
-  del: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/subscriptions/{subscription_exposed_id}',
-  }),
+    cancel: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/subscriptions/{subscription_exposed_id}',
+    }),
 
-  deleteDiscount: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/subscriptions/{subscription_exposed_id}/discount',
-  }),
+    del: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/subscriptions/{subscription_exposed_id}',
+    }),
 
-  resume: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/subscriptions/{subscription}/resume',
-  }),
+    deleteDiscount: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/subscriptions/{subscription_exposed_id}/discount',
+    }),
 
-  search: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/subscriptions/search',
-    methodType: 'search',
-  }),
+    resume: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/subscriptions/{subscription}/resume',
+    }),
+
+    search: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/subscriptions/search',
+        methodType: 'search',
+    }),
 });

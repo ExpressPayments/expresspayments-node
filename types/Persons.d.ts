@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * This is an object representing a person associated with an ExpressPlatby account.
+         * This is an object representing a person associated with an ExpressPayments account.
          *
          * A platform cannot access a Standard or Express account's persons after the account starts onboarding, such as after generating an account link for the account.
-         * See the [Standard onboarding](https://expressplatby.cz/docs/connect/standard-accounts) or [Express onboarding documentation](https://expressplatby.cz/docs/connect/express-accounts) for information about platform pre-filling and account onboarding steps.
+         * See the [Standard onboarding](https://docs.epayments.network/connect/standard-accounts) or [Express onboarding documentation](https://docs.epayments.network/connect/express-accounts) for information about platform pre-filling and account onboarding steps.
          *
-         * Related guide: [Handling identity verification with the API](https://expressplatby.cz/docs/connect/identity-verification-api#person-information)
+         * Related guide: [Handling identity verification with the API](https://docs.epayments.network/connect/identity-verification-api#person-information)
          */
         interface Person {
             /**
@@ -26,7 +26,7 @@ declare module 'expressplatby' {
              */
             account: string;
 
-            address?: ExpressPlatby.Address;
+            address?: ExpressPayments.Address;
 
             /**
              * The Kana variation of the person's address (Japan only).
@@ -113,9 +113,9 @@ declare module 'expressplatby' {
             maiden_name?: string | null;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata?: ExpressPlatby.Metadata;
+            metadata?: ExpressPayments.Metadata;
 
             /**
              * The country where the person is a national.
@@ -132,7 +132,7 @@ declare module 'expressplatby' {
              */
             political_exposure?: Person.PoliticalExposure;
 
-            registered_address?: ExpressPlatby.Address;
+            registered_address?: ExpressPayments.Address;
 
             relationship?: Person.Relationship;
 
@@ -534,9 +534,9 @@ declare module 'expressplatby' {
             namespace Verification {
                 interface AdditionalDocument {
                     /**
-                     * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`.
+                     * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`.
                      */
-                    back: string | ExpressPlatby.File | null;
+                    back: string | ExpressPayments.File | null;
 
                     /**
                      * A user-displayable string describing the verification state of this document. For example, if a document is uploaded and the picture is too fuzzy, this may say "Identity document is too unclear to read".
@@ -549,16 +549,16 @@ declare module 'expressplatby' {
                     details_code: string | null;
 
                     /**
-                     * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`.
+                     * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`.
                      */
-                    front: string | ExpressPlatby.File | null;
+                    front: string | ExpressPayments.File | null;
                 }
 
                 interface Document {
                     /**
-                     * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`.
+                     * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`.
                      */
-                    back: string | ExpressPlatby.File | null;
+                    back: string | ExpressPayments.File | null;
 
                     /**
                      * A user-displayable string describing the verification state of this document. For example, if a document is uploaded and the picture is too fuzzy, this may say "Identity document is too unclear to read".
@@ -571,9 +571,9 @@ declare module 'expressplatby' {
                     details_code: string | null;
 
                     /**
-                     * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`.
+                     * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`.
                      */
-                    front: string | ExpressPlatby.File | null;
+                    front: string | ExpressPayments.File | null;
                 }
             }
         }
