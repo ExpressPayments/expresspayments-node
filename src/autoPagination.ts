@@ -1,4 +1,4 @@
-import {ExpressPlatbyResourceObject, MethodSpec, RequestArgs} from './Types.js';
+import {ExpressPaymentsResourceObject, MethodSpec, RequestArgs} from './Types.js';
 import {callbackifyPromiseWithTimeout, getDataFromArgs} from './utils.js';
 
 type PromiseCache = {
@@ -34,26 +34,26 @@ type PageResult<T> = {
     next_page: string | null;
 };
 
-class ExpressPlatbyIterator<T> implements AsyncIterator<T> {
+class ExpressPaymentsInitiator<T> implements AsyncIterator<T> {
     private index: number;
     private pagePromise: Promise<PageResult<T>>;
     private promiseCache: PromiseCache;
     protected requestArgs: RequestArgs;
     protected spec: MethodSpec;
-    protected expressPlatbyResource: ExpressPlatbyResourceObject;
+    protected expressPaymentsResource: ExpressPaymentsResourceObject;
 
     constructor(
         firstPagePromise: Promise<PageResult<T>>,
         requestArgs: RequestArgs,
         spec: MethodSpec,
-        expressPlatbyResource: ExpressPlatbyResourceObject
+        expressPaymentsResource: ExpressPaymentsResourceObject
     ) {
         this.index = 0;
         this.pagePromise = firstPagePromise;
         this.promiseCache = {currentPromise: null};
         this.requestArgs = requestArgs;
         this.spec = spec;
-        this.expressPlatbyResource = expressPlatbyResource;
+        this.expressPaymentsResource = expressPaymentsResource;
     }
 
     async iterate(pageResult: PageResult<T>): Promise<IteratorResult<T>> {
@@ -65,7 +65,7 @@ class ExpressPlatbyIterator<T> implements AsyncIterator<T> {
             )
         ) {
             throw Error(
-                'Unexpected: ExpressPlatby API response does not have a well-formed `data` array.'
+                'Unexpected: ExpressPayments API response does not have a well-formed `data` array.'
             );
         }
 
@@ -119,11 +119,11 @@ class ExpressPlatbyIterator<T> implements AsyncIterator<T> {
     }
 }
 
-class ListIterator<T extends {id: string}> extends ExpressPlatbyIterator<T> {
+class ListIterator<T extends {id: string}> extends ExpressPaymentsInitiator<T> {
     getNextPage(pageResult: PageResult<T>): Promise<PageResult<T>> {
         const reverseIteration = isReverseIteration(this.requestArgs);
         const lastId = getLastId(pageResult, reverseIteration);
-        return this.expressPlatbyResource._makeRequest(
+        return this.expressPaymentsResource._makeRequest(
             this.requestArgs,
             this.spec,
             {
@@ -133,14 +133,14 @@ class ListIterator<T extends {id: string}> extends ExpressPlatbyIterator<T> {
     }
 }
 
-class SearchIterator<T> extends ExpressPlatbyIterator<T> {
+class SearchIterator<T> extends ExpressPaymentsInitiator<T> {
     getNextPage(pageResult: PageResult<T>): Promise<PageResult<T>> {
         if (!pageResult.next_page) {
             throw Error(
-                'Unexpected: ExpressPlatby API response does not have a well-formed `next_page` field, but `has_more` was true.'
+                'Unexpected: ExpressPayments API response does not have a well-formed `next_page` field, but `has_more` was true.'
             );
         }
-        return this.expressPlatbyResource._makeRequest(
+        return this.expressPaymentsResource._makeRequest(
             this.requestArgs,
             this.spec,
             {
@@ -154,7 +154,7 @@ export const makeAutoPaginationMethods = <
     TMethodSpec extends MethodSpec,
     TItem extends {id: string}
 >(
-    expressPlatbyResource: ExpressPlatbyResourceObject,
+    expressPaymentsResource: ExpressPaymentsResourceObject,
     requestArgs: RequestArgs,
     spec: TMethodSpec,
     firstPagePromise: Promise<PageResult<TItem>>
@@ -165,7 +165,7 @@ export const makeAutoPaginationMethods = <
                 firstPagePromise,
                 requestArgs,
                 spec,
-                expressPlatbyResource
+                expressPaymentsResource
             )
         );
     }
@@ -175,7 +175,7 @@ export const makeAutoPaginationMethods = <
                 firstPagePromise,
                 requestArgs,
                 spec,
-                expressPlatbyResource
+                expressPaymentsResource
             )
         );
     }

@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Terminal {
             /**
-             * A Connection Token is used by the ExpressPlatby Terminal SDK to connect to a reader.
+             * A Connection Token is used by the ExpressPayments Terminal SDK to connect to a reader.
              *
-             * Related guide: [Fleet management](https://expressplatby.cz/docs/terminal/fleet/locations)
+             * Related guide: [Fleet management](https://docs.epayments.network/terminal/fleet/locations)
              */
             interface ConnectionToken {
                 /**
@@ -15,12 +15,12 @@ declare module 'expressplatby' {
                 object: 'terminal.connection_token';
 
                 /**
-                 * The id of the location that this connection token is scoped to. Note that location scoping only applies to internet-connected readers. For more details, see [the docs on scoping connection tokens](https://expressplatby.cz/docs/terminal/fleet/locations#connection-tokens).
+                 * The id of the location that this connection token is scoped to. Note that location scoping only applies to internet-connected readers. For more details, see [the docs on scoping connection tokens](https://docs.epayments.network/terminal/fleet/locations#connection-tokens).
                  */
                 location?: string;
 
                 /**
-                 * Your application should pass this token to the ExpressPlatby Terminal SDK.
+                 * Your application should pass this token to the ExpressPayments Terminal SDK.
                  */
                 secret: string;
             }

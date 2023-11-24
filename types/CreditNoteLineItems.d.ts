@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * The CreditNoteLineItem object.
          */
@@ -64,7 +64,7 @@ declare module 'expressplatby' {
             /**
              * The tax rates which apply to the line item.
              */
-            tax_rates: Array<ExpressPlatby.TaxRate>;
+            tax_rates: Array<ExpressPayments.TaxRate>;
 
             /**
              * The type of the credit note line item, one of `invoice_line_item` or `custom_line_item`. When the type is `invoice_line_item` there is an additional `invoice_line_item` property on the resource the value of which is the id of the credited line item on the invoice.
@@ -99,8 +99,8 @@ declare module 'expressplatby' {
                  */
                 discount:
                     | string
-                    | ExpressPlatby.Discount
-                    | ExpressPlatby.DeletedDiscount;
+                    | ExpressPayments.Discount
+                    | ExpressPayments.DeletedDiscount;
             }
 
             interface TaxAmount {
@@ -117,7 +117,7 @@ declare module 'expressplatby' {
                 /**
                  * The tax rate that was applied to get this tax amount.
                  */
-                tax_rate: string | ExpressPlatby.TaxRate;
+                tax_rate: string | ExpressPayments.TaxRate;
 
                 /**
                  * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.

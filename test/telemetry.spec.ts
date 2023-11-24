@@ -42,7 +42,7 @@ describe('Client Telemetry', () => {
                 numRequests += 1;
 
                 const telemetry =
-                    req.headers['x-expressplatby-client-telemetry'];
+                    req.headers['x-ep-client-telemetry'];
 
                 switch (numRequests) {
                     case 1:
@@ -60,7 +60,7 @@ describe('Client Telemetry', () => {
                 res.end('{}');
             },
             (host, port) => {
-                const expressPlatby = require('../src/expressplatby.cjs.node.js')(
+                const expressPayments = require('../src/expresspayments.cjs.node.js')(
                     FAKE_API_KEY,
                     {
                         telemetry: false,
@@ -70,9 +70,9 @@ describe('Client Telemetry', () => {
                     }
                 );
 
-                expressPlatby.balance
+                expressPayments.balance
                     .retrieve()
-                    .then((res) => expressPlatby.balance.retrieve())
+                    .then((res) => expressPayments.balance.retrieve())
                     .then((res) => {
                         expect(numRequests).to.equal(2);
                         done();
@@ -90,7 +90,7 @@ describe('Client Telemetry', () => {
                 numRequests += 1;
 
                 const telemetry =
-                    req.headers['x-expressplatby-client-telemetry'];
+                    req.headers['x-ep-client-telemetry'];
 
                 switch (numRequests) {
                     case 1:
@@ -114,7 +114,7 @@ describe('Client Telemetry', () => {
                 res.end('{}');
             },
             (host, port) => {
-                const expressPlatby = require('../src/expressplatby.cjs.node.js')(
+                const expressPayments = require('../src/expresspayments.cjs.node.js')(
                     'sk_test_FEiILxKZwnmmocJDUjUNO6pa',
                     {
                         telemetry: true,
@@ -124,9 +124,9 @@ describe('Client Telemetry', () => {
                     }
                 );
 
-                expressPlatby.balance
+                expressPayments.balance
                     .retrieve()
-                    .then((res) => expressPlatby.balance.retrieve())
+                    .then((res) => expressPayments.balance.retrieve())
                     .then((res) => {
                         expect(numRequests).to.equal(2);
                         done();
@@ -144,7 +144,7 @@ describe('Client Telemetry', () => {
                 numRequests += 1;
 
                 const telemetry =
-                    req.headers['x-expressplatby-client-telemetry'];
+                    req.headers['x-ep-client-telemetry'];
 
                 switch (numRequests) {
                     case 1:
@@ -170,7 +170,7 @@ describe('Client Telemetry', () => {
                 res.end('{}');
             },
             (host, port) => {
-                const expressPlatby = require('../src/expressplatby.cjs.node.js')(
+                const expressPayments = require('../src/expresspayments.cjs.node.js')(
                     'sk_test_FEiILxKZwnmmocJDUjUNO6pa',
                     {
                         telemetry: true,
@@ -181,13 +181,13 @@ describe('Client Telemetry', () => {
                 );
 
                 Promise.all([
-                    expressPlatby.balance.retrieve(),
-                    expressPlatby.balance.retrieve(),
+                    expressPayments.balance.retrieve(),
+                    expressPayments.balance.retrieve(),
                 ])
                     .then(() =>
                         Promise.all([
-                            expressPlatby.balance.retrieve(),
-                            expressPlatby.balance.retrieve(),
+                            expressPayments.balance.retrieve(),
+                            expressPayments.balance.retrieve(),
                         ])
                     )
                     .then(() => {

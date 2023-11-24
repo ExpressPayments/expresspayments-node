@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace TestHelpers {
             namespace Terminal {
                 interface ReaderPresentPaymentMethodParams {
@@ -60,13 +60,13 @@ declare module 'expressplatby' {
                         params?: ReaderPresentPaymentMethodParams,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                        ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                     >;
                     presentPaymentMethod(
                         id: string,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                        ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                     >;
                 }
             }

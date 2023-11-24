@@ -1,26 +1,26 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-export const ValueListItems = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
+export const ValueListItems = ExpressPaymentsResource.extend({
+  create: expressPaymentsMethod({
     method: 'POST',
     fullPath: '/v1/radar/value_list_items',
   }),
 
-  retrieve: expressPlatbyMethod({
+  retrieve: expressPaymentsMethod({
     method: 'GET',
     fullPath: '/v1/radar/value_list_items/{item}',
   }),
 
-  list: expressPlatbyMethod({
+  list: expressPaymentsMethod({
     method: 'GET',
     fullPath: '/v1/radar/value_list_items',
     methodType: 'list',
   }),
 
-  del: expressPlatbyMethod({
+  del: expressPaymentsMethod({
     method: 'DELETE',
     fullPath: '/v1/radar/value_list_items/{item}',
   }),

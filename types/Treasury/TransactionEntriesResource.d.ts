@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             interface TransactionEntryRetrieveParams {
                 /**
@@ -16,9 +16,9 @@ declare module 'expressplatby' {
                  */
                 financial_account: string;
 
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
-                effective_at?: ExpressPlatby.RangeQueryParam | number;
+                effective_at?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -49,16 +49,16 @@ declare module 'expressplatby' {
                     params?: TransactionEntryRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.TransactionEntry
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.TransactionEntry
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.TransactionEntry
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.TransactionEntry
                     >
                 >;
 
@@ -68,7 +68,7 @@ declare module 'expressplatby' {
                 list(
                     params: TransactionEntryListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Treasury.TransactionEntry>;
+                ): ApiListPromise<ExpressPayments.Treasury.TransactionEntry>;
             }
         }
     }

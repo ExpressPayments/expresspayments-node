@@ -1,27 +1,29 @@
 {
-    "name": "expressplatby",
-    "version": "1.0.3",
-    "description": "ExpressPlatby API wrapper",
+    "name": "@expresspayments/expresspayments",
+    "version": "2.0.0",
+    "description": "ExpressPayments API wrapper",
     "keywords": [
+        "epayments",
+        "expresspayments",
         "expressplatby",
         "payment processing",
         "credit cards",
         "api"
     ],
-    "homepage": "https://github.com/expressplatby/expressplatby-node",
-    "author": "ExpressPlatby <support@expressplatby.cz> (https://expressplatby.cz/)",
+    "homepage": "https://github.com/expresspayments/expresspayments-node",
+    "author": "ExpressPayments <support@epayments.network> (https://epayments.network/)",
     "contributors": [
-        "Martin Najemi <martin@expressplatby.cz>"
+        "Martin Najemi <martin@epayments.network>"
     ],
     "repository": {
         "type": "git",
-        "url": "git://github.com/expressplatby/expressplatby-node.git"
+        "url": "git://github.com/expresspayments/expresspayments-node.git"
     },
-    "bugs": "https://github.com/expressplatby/expressplatby-node/issues",
+    "bugs": "https://github.com/expresspayments/expresspayments-node/issues",
     "engines": {
         "node": ">=12.*"
     },
-    "main": "cjs/expressplatby.cjs.node.js",
+    "main": "cjs/expresspayments.cjs.node.js",
     "types": "types/index.d.ts",
     "devDependencies": {
         "@types/chai": "^4.3.4",
@@ -74,20 +76,20 @@
     "exports": {
         "types": "./types/index.d.ts",
         "browser": {
-            "import": "./esm/expressplatby.esm.worker.js",
-            "require": "./cjs/expressplatby.cjs.worker.js"
+            "import": "./esm/expresspayments.esm.worker.js",
+            "require": "./cjs/expresspayments.cjs.worker.js"
         },
         "deno": {
-            "import": "./esm/expressplatby.esm.worker.js",
-            "require": "./cjs/expressplatby.cjs.worker.js"
+            "import": "./esm/expresspayments.esm.worker.js",
+            "require": "./cjs/expresspayments.cjs.worker.js"
         },
         "worker": {
-            "import": "./esm/expressplatby.esm.worker.js",
-            "require": "./cjs/expressplatby.cjs.worker.js"
+            "import": "./esm/expresspayments.esm.worker.js",
+            "require": "./cjs/expresspayments.cjs.worker.js"
         },
         "default": {
-            "import": "./esm/expressplatby.esm.node.js",
-            "require": "./cjs/expressplatby.cjs.node.js"
+            "import": "./esm/expresspayments.esm.node.js",
+            "require": "./cjs/expresspayments.cjs.node.js"
         }
     }
 }

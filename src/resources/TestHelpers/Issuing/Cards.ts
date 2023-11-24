@@ -1,26 +1,27 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../../ExpressPaymentsResource.js';
 
-export const Cards = ExpressPlatbyResource.extend({
-  deliverCard: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/test_helpers/issuing/cards/{card}/shipping/deliver',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  failCard: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/test_helpers/issuing/cards/{card}/shipping/fail',
-  }),
+export const Cards = ExpressPaymentsResource.extend({
+    deliverCard: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/test_helpers/issuing/cards/{card}/shipping/deliver',
+    }),
 
-  returnCard: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/test_helpers/issuing/cards/{card}/shipping/return',
-  }),
+    failCard: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/test_helpers/issuing/cards/{card}/shipping/fail',
+    }),
 
-  shipCard: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/test_helpers/issuing/cards/{card}/shipping/ship',
-  }),
+    returnCard: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/test_helpers/issuing/cards/{card}/shipping/return',
+    }),
+
+    shipCard: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/test_helpers/issuing/cards/{card}/shipping/ship',
+    }),
 });

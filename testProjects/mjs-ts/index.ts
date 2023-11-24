@@ -1,41 +1,44 @@
-import DefaultExpressPlatby, {ExpressPlatby} from 'expressplatby';
+import DefaultExpressPayments, {ExpressPayments} from 'expresspayments';
 
-const expressPlatby = new ExpressPlatby(process.argv[2], {
-    apiVersion: '2023-06-01',
-    host: process.env.EXPRESSPLATBY_MOCK_HOST || 'localhost',
-    port: process.env.EXPRESSPLATBY_MOCK_PORT || 12111,
+const expressPayments = new ExpressPayments(process.argv[2], {
+    apiVersion: '2023-11-01',
+    host: process.env.EP_MOCK_HOST || 'localhost',
+    port: process.env.EP_MOCK_PORT || 12111,
     protocol: 'http',
 });
-const defaultExpressPlatby = new DefaultExpressPlatby(process.argv[2], {
-    apiVersion: '2023-06-01',
-    host: process.env.EXPRESSPLATBY_MOCK_HOST || 'localhost',
-    port: process.env.EXPRESSPLATBY_MOCK_PORT || 12111,
+const defaultExpressPayments = new DefaultExpressPayments(process.argv[2], {
+    apiVersion: '2023-11-01',
+    host: process.env.EP_MOCK_HOST || 'localhost',
+    port: process.env.EP_MOCK_PORT || 12111,
     protocol: 'http',
 });
 
 try {
-    throw new expressPlatby.errors.ExpressPlatbyError({
+    throw new expressPayments.errors.ExpressPaymentsError({
         charge: 'foo',
         unknown_prop: 'bar',
     } as any);
 } catch (e) {
-    if (e instanceof expressPlatby.errors.ExpressPlatbyError) {
-        console.log('Caught ExpressPlatbyError');
+    if (e instanceof expressPayments.errors.ExpressPaymentsError) {
+        console.log('Caught ExpressPaymentsError');
     } else {
         throw e;
     }
 }
 
-async function exampleFunction(args: ExpressPlatby.PaymentIntentCreateParams) {
+async function exampleFunction(
+    args: ExpressPayments.PaymentIntentCreateParams
+) {
     try {
-        const pi: ExpressPlatby.PaymentIntent = await expressPlatby.paymentIntents.create(
+        const pi: ExpressPayments.PaymentIntent = await expressPayments.paymentIntents.create(
             args
         );
     } catch (e) {
         if (
-            e instanceof expressPlatby.errors.ExpressPlatbyInvalidRequestError
+            e instanceof
+            expressPayments.errors.ExpressPaymentsInvalidRequestError
         ) {
-            console.log('Caught ExpressPlatbyInvalidRequestError');
+            console.log('Caught ExpressPaymentsInvalidRequestError');
         } else {
             throw e;
         }

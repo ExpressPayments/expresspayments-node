@@ -1,27 +1,25 @@
-import ExpressPlatby from 'expressplatby';
+// @ts-ignore
+import ExpressPayments from 'expresspayments';
 import {NextApiRequest, NextApiResponse} from 'next';
 
 const handler = async (
     req: NextApiRequest,
     res: NextApiResponse
 ): Promise<void> => {
-    const expressPlatby = new ExpressPlatby(
-        process.env.EXPRESSPLATBY_SECRET_KEY,
-        {
-            apiVersion: '2023-06-01',
-        }
-    );
+    const expressPayments = new ExpressPayments(process.env.EP_SECRET_KEY, {
+        apiVersion: '2023-11-01',
+    });
 
-    const webhookSecret: string = process.env.EXPRESSPLATBY_WEBHOOK_SECRET;
+    const webhookSecret: string = process.env.EP_WEBHOOK_SECRET;
 
     if (req.method === 'POST') {
-        const sig = req.headers['expressplatby-signature'];
+        const sig = req.headers['ep-signature'];
 
-        let event: ExpressPlatby.Event;
+        let event: ExpressPayments.Event;
 
         try {
             const body = await buffer(req);
-            event = expressPlatby.webhooks.constructEvent(
+            event = expressPayments.webhooks.constructEvent(
                 body,
                 sig,
                 webhookSecret
@@ -36,15 +34,15 @@ const handler = async (
         // Successfully constructed event
         console.log('✅ Success:', event.id);
 
-        // Cast event data to ExpressPlatby object
+        // Cast event data to ExpressPayments object
         if (event.type === 'payment_intent.succeeded') {
-            const expressPlatbyObject: ExpressPlatby.PaymentIntent = event.data
-                .object as ExpressPlatby.PaymentIntent;
+            const expressPaymentsObject: ExpressPayments.PaymentIntent = event
+                .data.object as ExpressPayments.PaymentIntent;
             console.log(
-                `💰 PaymentIntent status: ${expressPlatbyObject.status}`
+                `💰 PaymentIntent status: ${expressPaymentsObject.status}`
             );
         } else if (event.type === 'charge.succeeded') {
-            const charge = event.data.object as ExpressPlatby.Charge;
+            const charge = event.data.object as ExpressPayments.Charge;
             console.log(`💵 Charge id: ${charge.id}`);
         } else {
             console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);

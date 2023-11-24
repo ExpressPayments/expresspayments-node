@@ -1,38 +1,39 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const Charges = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/charges',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/charges/{charge}',
-  }),
+export const Charges = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/charges',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/charges/{charge}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/charges/{charge}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/charges',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/charges/{charge}',
+    }),
 
-  capture: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/charges/{charge}/capture',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/charges',
+        methodType: 'list',
+    }),
 
-  search: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/charges/search',
-    methodType: 'search',
-  }),
+    capture: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/charges/{charge}/capture',
+    }),
+
+    search: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/charges/search',
+        methodType: 'search',
+    }),
 });

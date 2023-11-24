@@ -169,8 +169,8 @@ describe('utils', () => {
                 },
                 (message) => {
                     expect(message).to.equal(
-                        'ExpressPlatby: Options found in arguments (apiKey, idempotencyKey).' +
-                            ' Did you mean to pass an options object? See https://github.com/expressplatby/expressplatby-node/wiki/Passing-Options.'
+                        'ExpressPayments: Options found in arguments (apiKey, idempotencyKey).' +
+                            ' Did you mean to pass an options object? See https://github.com/expresspayments/expresspayments-node/wiki/Passing-Options.'
                     );
 
                     done();
@@ -255,7 +255,7 @@ describe('utils', () => {
             expect(utils.getOptionsFromArgs(args)).to.deep.equal({
                 auth: null,
                 host: null,
-                headers: {'ExpressPlatby-Version': '2003-03-30'},
+                headers: {'EP-Version': '2003-03-30'},
                 settings: {},
             });
             expect(args.length).to.equal(1);
@@ -275,7 +275,7 @@ describe('utils', () => {
                 host: null,
                 headers: {
                     'Idempotency-Key': 'foo',
-                    'ExpressPlatby-Version': '2022-12-31',
+                    'EP-Version': '2022-12-31',
                 },
                 settings: {},
             });
@@ -295,7 +295,7 @@ describe('utils', () => {
                 host: null,
                 headers: {
                     'Idempotency-Key': 'foo',
-                    'ExpressPlatby-Version': 'hunter2',
+                    'EP-Version': 'hunter2',
                 },
                 settings: {},
             });
@@ -339,7 +339,7 @@ describe('utils', () => {
                 },
                 (message) => {
                     expect(message).to.equal(
-                        'ExpressPlatby: Invalid options found (fishsticks, custard); ignoring.'
+                        'ExpressPayments: Invalid options found (fishsticks, custard); ignoring.'
                     );
 
                     done();

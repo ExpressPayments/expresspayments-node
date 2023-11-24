@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface SetupAttemptListParams extends PaginationParams {
             /**
              * Only return SetupAttempts created by the SetupIntent specified by
@@ -14,7 +14,7 @@ declare module 'expressplatby' {
              * can be a string with an integer Unix timestamp, or it can be a
              * dictionary with a number of different query options.
              */
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -29,7 +29,7 @@ declare module 'expressplatby' {
             list(
                 params: SetupAttemptListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.SetupAttempt>;
+            ): ApiListPromise<ExpressPayments.SetupAttempt>;
         }
     }
 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Terminal {
             interface ReaderCreateParams {
                 /**
@@ -25,9 +25,9 @@ declare module 'expressplatby' {
                 location?: string;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
             }
 
             interface ReaderRetrieveParams {
@@ -49,9 +49,9 @@ declare module 'expressplatby' {
                 label?: string;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
             }
 
             interface ReaderListParams extends PaginationParams {
@@ -82,7 +82,7 @@ declare module 'expressplatby' {
                     | 'bbpos_wisepad3'
                     | 'bbpos_wisepos_e'
                     | 'simulated_wisepos_e'
-                    | 'expressplatby_m2'
+                    | 'expresspayments_m2'
                     | 'verifone_P400';
 
                 type Status = 'offline' | 'online';
@@ -171,9 +171,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * ID of the PaymentIntent to refund.
@@ -211,7 +211,7 @@ declare module 'expressplatby' {
             namespace ReaderSetReaderDisplayParams {
                 interface Cart {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
@@ -259,7 +259,7 @@ declare module 'expressplatby' {
                     params: ReaderCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                  ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                 >;
 
                 /**
@@ -270,18 +270,18 @@ declare module 'expressplatby' {
                     params?: ReaderRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        | ExpressPlatby.Terminal.Reader
-                        | ExpressPlatby.Terminal.DeletedReader
+                    ExpressPayments.Response<
+                        | ExpressPayments.Terminal.Reader
+                        | ExpressPayments.Terminal.DeletedReader
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        | ExpressPlatby.Terminal.Reader
-                        | ExpressPlatby.Terminal.DeletedReader
+                    ExpressPayments.Response<
+                        | ExpressPayments.Terminal.Reader
+                        | ExpressPayments.Terminal.DeletedReader
                     >
                 >;
 
@@ -293,9 +293,9 @@ declare module 'expressplatby' {
                     params?: ReaderUpdateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        | ExpressPlatby.Terminal.Reader
-                        | ExpressPlatby.Terminal.DeletedReader
+                    ExpressPayments.Response<
+                        | ExpressPayments.Terminal.Reader
+                        | ExpressPayments.Terminal.DeletedReader
                     >
                 >;
 
@@ -305,10 +305,10 @@ declare module 'expressplatby' {
                 list(
                     params?: ReaderListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Terminal.Reader>;
+                ): ApiListPromise<ExpressPayments.Terminal.Reader>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Terminal.Reader>;
+                ): ApiListPromise<ExpressPayments.Terminal.Reader>;
 
                 /**
                  * Deletes a Reader object.
@@ -318,13 +318,13 @@ declare module 'expressplatby' {
                     params?: ReaderDeleteParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.DeletedReader>
+                    ExpressPayments.Response<ExpressPayments.Terminal.DeletedReader>
                 >;
                 del(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.DeletedReader>
+                    ExpressPayments.Response<ExpressPayments.Terminal.DeletedReader>
                 >;
 
                 /**
@@ -335,13 +335,13 @@ declare module 'expressplatby' {
                     params?: ReaderCancelActionParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                    ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                 >;
                 cancelAction(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                    ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                 >;
 
                 /**
@@ -352,7 +352,7 @@ declare module 'expressplatby' {
                     params: ReaderProcessPaymentIntentParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                    ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                 >;
 
                 /**
@@ -363,7 +363,7 @@ declare module 'expressplatby' {
                     params: ReaderProcessSetupIntentParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                    ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                 >;
 
                 /**
@@ -374,13 +374,13 @@ declare module 'expressplatby' {
                     params?: ReaderRefundPaymentParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                    ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                 >;
                 refundPayment(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                    ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                 >;
 
                 /**
@@ -391,7 +391,7 @@ declare module 'expressplatby' {
                     params: ReaderSetReaderDisplayParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Reader>
+                    ExpressPayments.Response<ExpressPayments.Terminal.Reader>
                 >;
             }
         }

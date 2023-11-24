@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface EventRetrieveParams {
             /**
              * Specifies which fields in the response should be expanded.
@@ -10,7 +10,7 @@ declare module 'expressplatby' {
         }
 
         interface EventListParams extends PaginationParams {
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Filter events by whether all webhooks were successfully delivered. If false, events which are still pending or have failed all delivery attempts to a webhook endpoint will be returned.
@@ -41,20 +41,22 @@ declare module 'expressplatby' {
                 id: string,
                 params?: EventRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Event>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Event>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Event>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Event>>;
 
             /**
-             * List events, going back up to 30 days. Each event data is rendered according to ExpressPlatby API version at its creation time, specified in [event object](https://expressplatby.cz/docs/api/events/object) api_version attribute (not according to your current ExpressPlatby API version or ExpressPlatby-Version header).
+             * List events, going back up to 30 days. Each event data is rendered according to ExpressPayments API version at its creation time, specified in [event object](https://docs.epayments.network/api/events/object) api_version attribute (not according to your current ExpressPayments API version or EP-Version header).
              */
             list(
                 params?: EventListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Event>;
-            list(options?: RequestOptions): ApiListPromise<ExpressPlatby.Event>;
+            ): ApiListPromise<ExpressPayments.Event>;
+            list(
+                options?: RequestOptions
+            ): ApiListPromise<ExpressPayments.Event>;
         }
     }
 }

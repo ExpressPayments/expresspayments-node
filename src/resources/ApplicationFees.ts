@@ -1,38 +1,38 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-export const ApplicationFees = ExpressPlatbyResource.extend({
-    retrieve: expressPlatbyMethod({
+export const ApplicationFees = ExpressPaymentsResource.extend({
+    retrieve: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/application_fees/{id}',
     }),
 
-    list: expressPlatbyMethod({
+    list: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/application_fees',
         methodType: 'list',
     }),
 
-    createRefund: expressPlatbyMethod({
+    createRefund: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/application_fees/{id}/refunds',
     }),
 
-    listRefunds: expressPlatbyMethod({
+    listRefunds: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/application_fees/{id}/refunds',
         methodType: 'list',
     }),
 
-    retrieveRefund: expressPlatbyMethod({
+    retrieveRefund: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/application_fees/{fee}/refunds/{id}',
     }),
 
-    updateRefund: expressPlatbyMethod({
+    updateRefund: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/application_fees/{fee}/refunds/{id}',
     }),

@@ -1,20 +1,20 @@
 /// <reference types="node" />
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         export class Webhooks {
             /**
              * Constructs and verifies the signature of an Event from the provided details.
              *
-             * @throws ExpressPlatby.errors.ExpressPlatbySignatureVerificationError
+             * @throws ExpressPayments.errors.ExpressPaymentsSignatureVerificationError
              */
             constructEvent(
                 /**
-                 * Raw text body payload received from ExpressPlatby.
+                 * Raw text body payload received from ExpressPayments.
                  */
                 payload: string | Buffer,
                 /**
-                 * Value of the `expressplatby-signature` header from ExpressPlatby.
+                 * Value of the `ep-signature` header from ExpressPayments.
                  * Typically, a string.
                  *
                  * Note that this is typed to accept an array of strings
@@ -26,7 +26,7 @@ declare module 'expressplatby' {
                 header: string | Buffer | Array<string>,
                 /**
                  * Your Webhook Signing Secret for this endpoint (e.g., 'whsec_...').
-                 * You can get this [in your dashboard](https://dashboard.expressplatby.cz/webhooks).
+                 * You can get this [in your dashboard](https://dashboard.epayments.network/webhooks).
                  */
                 secret: string,
                 /**
@@ -41,21 +41,21 @@ declare module 'expressplatby' {
                  * Optional: timestamp to use when checking signature validity. Defaults to Date.now().
                  */
                 receivedAt?: number
-            ): ExpressPlatby.Event;
+            ): ExpressPayments.Event;
 
             /**
              * Asynchronously constructs and verifies the signature of an Event from
              * the provided details.
              *
-             * @throws ExpressPlatby.errors.ExpressPlatbySignatureVerificationError
+             * @throws ExpressPayments.errors.ExpressPaymentsSignatureVerificationError
              */
             constructEventAsync(
                 /**
-                 * Raw text body payload received from ExpressPlatby.
+                 * Raw text body payload received from ExpressPayments.
                  */
                 payload: string | Buffer,
                 /**
-                 * Value of the `expressplatby-signature` header from ExpressPlatby.
+                 * Value of the `ep-signature` header from ExpressPayments.
                  * Typically, a string.
                  *
                  * Note that this is typed to accept an array of strings
@@ -67,7 +67,7 @@ declare module 'expressplatby' {
                 header: string | Buffer | Array<string>,
                 /**
                  * Your Webhook Signing Secret for this endpoint (e.g., 'whsec_...').
-                 * You can get this [in your dashboard](https://dashboard.expressplatby.cz/webhooks).
+                 * You can get this [in your dashboard](https://dashboard.epayments.network/webhooks).
                  */
                 secret: string,
                 /**
@@ -82,7 +82,7 @@ declare module 'expressplatby' {
                  * Optional: timestamp to use when checking signature validity. Defaults to Date.now().
                  */
                 receivedAt?: number
-            ): Promise<ExpressPlatby.Event>;
+            ): Promise<ExpressPayments.Event>;
 
             /**
              * Generates a header to be used for webhook mocking
@@ -99,7 +99,7 @@ declare module 'expressplatby' {
                 timestamp?: number;
 
                 /**
-                 * ExpressPlatby webhook secret, e.g., 'whsec_...'.
+                 * ExpressPayments webhook secret, e.g., 'whsec_...'.
                  */
                 secret: string;
 

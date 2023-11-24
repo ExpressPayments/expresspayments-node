@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace FinancialConnections {
             interface AccountRetrieveParams {
                 /**
@@ -30,12 +30,12 @@ declare module 'expressplatby' {
             namespace AccountListParams {
                 interface AccountHolder {
                     /**
-                     * The ID of the ExpressPlatby account whose accounts will be retrieved.
+                     * The ID of the ExpressPayments account whose accounts will be retrieved.
                      */
                     account?: string;
 
                     /**
-                     * The ID of the ExpressPlatby customer whose accounts will be retrieved.
+                     * The ID of the ExpressPayments customer whose accounts will be retrieved.
                      */
                     customer?: string;
                 }
@@ -85,16 +85,16 @@ declare module 'expressplatby' {
                     params?: AccountRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.FinancialConnections.Account
+                    ExpressPayments.Response<
+                        ExpressPayments.FinancialConnections.Account
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.FinancialConnections.Account
+                    ExpressPayments.Response<
+                        ExpressPayments.FinancialConnections.Account
                     >
                 >;
 
@@ -104,10 +104,10 @@ declare module 'expressplatby' {
                 list(
                     params?: AccountListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.FinancialConnections.Account>;
+                ): ApiListPromise<ExpressPayments.FinancialConnections.Account>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.FinancialConnections.Account>;
+                ): ApiListPromise<ExpressPayments.FinancialConnections.Account>;
 
                 /**
                  * Disables your access to a Financial Connections Account. You will no longer be able to access data associated with the account (e.g. balances, transactions).
@@ -117,16 +117,16 @@ declare module 'expressplatby' {
                     params?: AccountDisconnectParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.FinancialConnections.Account
+                    ExpressPayments.Response<
+                        ExpressPayments.FinancialConnections.Account
                     >
                 >;
                 disconnect(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.FinancialConnections.Account
+                    ExpressPayments.Response<
+                        ExpressPayments.FinancialConnections.Account
                     >
                 >;
 
@@ -138,7 +138,7 @@ declare module 'expressplatby' {
                     params: AccountListOwnersParams,
                     options?: RequestOptions
                 ): ApiListPromise<
-                    ExpressPlatby.FinancialConnections.AccountOwner
+                    ExpressPayments.FinancialConnections.AccountOwner
                 >;
 
                 /**
@@ -149,8 +149,8 @@ declare module 'expressplatby' {
                     params: AccountRefreshParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.FinancialConnections.Account
+                    ExpressPayments.Response<
+                        ExpressPayments.FinancialConnections.Account
                     >
                 >;
             }

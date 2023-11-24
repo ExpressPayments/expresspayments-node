@@ -1,32 +1,33 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const Topups = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/topups',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/topups/{topup}',
-  }),
+export const Topups = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/topups',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/topups/{topup}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/topups/{topup}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/topups',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/topups/{topup}',
+    }),
 
-  cancel: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/topups/{topup}/cancel',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/topups',
+        methodType: 'list',
+    }),
+
+    cancel: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/topups/{topup}/cancel',
+    }),
 });

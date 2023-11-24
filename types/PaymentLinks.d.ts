@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * A payment link is a shareable URL that will take your customers to a hosted payment page. A payment link can be shared and used multiple times.
          *
-         * When a customer opens a payment link it will open a new [checkout session](https://expressplatby.cz/docs/api/checkout/sessions) to render the payment page. You can use [checkout session events](https://expressplatby.cz/docs/api/events/types#event_types-checkout.session.completed) to track payments through payment links.
+         * When a customer opens a payment link it will open a new [checkout session](https://docs.epayments.network/api/checkout/sessions) to render the payment page. You can use [checkout session events](https://docs.epayments.network/api/events/types#event_types-checkout.session.completed) to track payments through payment links.
          *
-         * Related guide: [Payment Links API](https://expressplatby.cz/docs/payment-links)
+         * Related guide: [Payment Links API](https://docs.epayments.network/payment-links)
          */
         interface PaymentLink {
             /**
@@ -33,12 +33,12 @@ declare module 'expressplatby' {
             allow_promotion_codes: boolean;
 
             /**
-             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPlatby account.
+             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPayments account.
              */
             application_fee_amount: number | null;
 
             /**
-             * This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPlatby account.
+             * This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPayments account.
              */
             application_fee_percent: number | null;
 
@@ -55,7 +55,7 @@ declare module 'expressplatby' {
             consent_collection: PaymentLink.ConsentCollection | null;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -79,7 +79,7 @@ declare module 'expressplatby' {
             /**
              * The line items representing what is being sold.
              */
-            line_items?: ApiList<ExpressPlatby.LineItem>;
+            line_items?: ApiList<ExpressPayments.LineItem>;
 
             /**
              * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -87,14 +87,14 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
-             * The account on behalf of which to charge. See the [Connect documentation](https://support.expressplatby.cz/questions/sending-invoices-on-behalf-of-connected-accounts) for details.
+             * The account on behalf of which to charge. See the [Connect documentation](https://support.epayments.network/questions/sending-invoices-on-behalf-of-connected-accounts) for details.
              */
-            on_behalf_of: string | ExpressPlatby.Account | null;
+            on_behalf_of: string | ExpressPayments.Account | null;
 
             /**
              * Indicates the parameters to be passed to PaymentIntent creation during checkout.
@@ -107,7 +107,7 @@ declare module 'expressplatby' {
             payment_method_collection: PaymentLink.PaymentMethodCollection;
 
             /**
-             * The list of payment method types that customers can use. When `null`, ExpressPlatby will dynamically show relevant payment methods you've enabled in your [payment method settings](https://dashboard.expressplatby.cz/settings/payment_methods).
+             * The list of payment method types that customers can use. When `null`, ExpressPayments will dynamically show relevant payment methods you've enabled in your [payment method settings](https://dashboard.epayments.network/settings/payment_methods).
              */
             payment_method_types: Array<PaymentLink.PaymentMethodType> | null;
 
@@ -313,8 +313,8 @@ declare module 'expressplatby' {
                      */
                     account_tax_ids: Array<
                         | string
-                        | ExpressPlatby.TaxId
-                        | ExpressPlatby.DeletedTaxId
+                        | ExpressPayments.TaxId
+                        | ExpressPayments.DeletedTaxId
                     > | null;
 
                     /**
@@ -333,9 +333,9 @@ declare module 'expressplatby' {
                     footer: string | null;
 
                     /**
-                     * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                     * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                      */
-                    metadata: ExpressPlatby.Metadata | null;
+                    metadata: ExpressPayments.Metadata | null;
 
                     /**
                      * Options for invoice PDF rendering.
@@ -681,7 +681,7 @@ declare module 'expressplatby' {
                 /**
                  * The ID of the Shipping Rate to use for this shipping option.
                  */
-                shipping_rate: string | ExpressPlatby.ShippingRate;
+                shipping_rate: string | ExpressPayments.ShippingRate;
             }
 
             type SubmitType = 'auto' | 'book' | 'donate' | 'pay';
@@ -714,7 +714,7 @@ declare module 'expressplatby' {
                 /**
                  * The connected account receiving the transfer.
                  */
-                destination: string | ExpressPlatby.Account;
+                destination: string | ExpressPayments.Account;
             }
         }
     }

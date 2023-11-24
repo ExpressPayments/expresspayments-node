@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Issuing {
             /**
-             * An Issuing `Cardholder` object represents an individual or business entity who is [issued](https://expressplatby.cz/docs/issuing) cards.
+             * An Issuing `Cardholder` object represents an individual or business entity who is [issued](https://docs.epayments.network/issuing) cards.
              *
-             * Related guide: [How to create a cardholder](https://expressplatby.cz/docs/issuing/cards#create-cardholder)
+             * Related guide: [How to create a cardholder](https://docs.epayments.network/issuing/cards#create-cardholder)
              */
             interface Cardholder {
                 /**
@@ -47,9 +47,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * The cardholder's name. This will be printed on cards issued to them.
@@ -57,20 +57,20 @@ declare module 'expressplatby' {
                 name: string;
 
                 /**
-                 * The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the [3D Secure documentation](https://expressplatby.cz/docs/issuing/3d-secure#when-is-3d-secure-applied) for more details.
+                 * The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the [3D Secure documentation](https://docs.epayments.network/issuing/3d-secure#when-is-3d-secure-applied) for more details.
                  */
                 phone_number: string | null;
 
                 /**
                  * The cardholder's preferred locales (languages), ordered by preference. Locales can be `de`, `en`, `es`, `fr`, or `it`.
-                 *  This changes the language of the [3D Secure flow](https://expressplatby.cz/docs/issuing/3d-secure) and one-time password messages sent to the cardholder.
+                 *  This changes the language of the [3D Secure flow](https://docs.epayments.network/issuing/3d-secure) and one-time password messages sent to the cardholder.
                  */
                 preferred_locales: Array<Cardholder.PreferredLocale> | null;
 
                 requirements: Cardholder.Requirements;
 
                 /**
-                 * Rules that control spending across this cardholder's cards. Refer to our [documentation](https://expressplatby.cz/docs/issuing/controls/spending-controls) for more details.
+                 * Rules that control spending across this cardholder's cards. Refer to our [documentation](https://docs.epayments.network/issuing/controls/spending-controls) for more details.
                  */
                 spending_controls: Cardholder.SpendingControls | null;
 
@@ -80,14 +80,14 @@ declare module 'expressplatby' {
                 status: Cardholder.Status;
 
                 /**
-                 * One of `individual` or `company`. See [Choose a cardholder type](https://expressplatby.cz/docs/issuing/other/choose-cardholder) for more details.
+                 * One of `individual` or `company`. See [Choose a cardholder type](https://docs.epayments.network/issuing/other/choose-cardholder) for more details.
                  */
                 type: Cardholder.Type;
             }
 
             namespace Cardholder {
                 interface Billing {
-                    address: ExpressPlatby.Address;
+                    address: ExpressPayments.Address;
                 }
 
                 interface Company {
@@ -127,7 +127,7 @@ declare module 'expressplatby' {
                 namespace Individual {
                     interface CardIssuing {
                         /**
-                         * Information about cardholder acceptance of [Authorized User Terms](https://expressplatby.cz/docs/issuing/cards).
+                         * Information about cardholder acceptance of [Authorized User Terms](https://docs.epayments.network/issuing/cards).
                          */
                         user_terms_acceptance: CardIssuing.UserTermsAcceptance | null;
                     }
@@ -178,14 +178,14 @@ declare module 'expressplatby' {
                     namespace Verification {
                         interface Document {
                             /**
-                             * The back of a document returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`.
+                             * The back of a document returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`.
                              */
-                            back: string | ExpressPlatby.File | null;
+                            back: string | ExpressPayments.File | null;
 
                             /**
-                             * The front of a document returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`.
+                             * The front of a document returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`.
                              */
-                            front: string | ExpressPlatby.File | null;
+                            front: string | ExpressPayments.File | null;
                         }
                     }
                 }
@@ -225,14 +225,14 @@ declare module 'expressplatby' {
 
                 interface SpendingControls {
                     /**
-                     * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`.
+                     * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) of authorizations to allow. All other categories will be blocked. Cannot be set with `blocked_categories`.
                      */
                     allowed_categories: Array<
                         SpendingControls.AllowedCategory
                     > | null;
 
                     /**
-                     * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`.
+                     * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) of authorizations to decline. All other categories will be allowed. Cannot be set with `allowed_categories`.
                      */
                     blocked_categories: Array<
                         SpendingControls.BlockedCategory
@@ -848,12 +848,12 @@ declare module 'expressplatby' {
 
                     interface SpendingLimit {
                         /**
-                         * Maximum amount allowed to spend per interval. This amount is in the card's currency and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal).
+                         * Maximum amount allowed to spend per interval. This amount is in the card's currency and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal).
                          */
                         amount: number;
 
                         /**
-                         * Array of strings containing [categories](https://expressplatby.cz/docs/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories.
+                         * Array of strings containing [categories](https://docs.epayments.network/api#issuing_authorization_object-merchant_data-category) this limit applies to. Omitting this field will apply the limit to all categories.
                          */
                         categories: Array<SpendingLimit.Category> | null;
 

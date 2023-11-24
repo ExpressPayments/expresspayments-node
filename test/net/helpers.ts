@@ -42,13 +42,13 @@ export class ArrayReadable extends Readable {
 export const createHttpClientTestSuite = (createHttpClientFn, extraTestsFn) => {
   describe('HttpClientTestSuite', () => {
     const setupNock = () => {
-      return nock('http://expressplatby.cz').get('/test');
+      return nock('http://epayments.network').get('/test');
     };
 
     const sendRequest = (options) => {
       options = options || {};
       return createHttpClientFn().makeRequest(
-        'expressplatby.cz',
+        'epayments.network',
         options.port || 80,
         '/test',
         options.method || 'GET',
@@ -89,7 +89,7 @@ export const createHttpClientTestSuite = (createHttpClientFn, extraTestsFn) => {
       });
 
       it('sends request headers', async () => {
-        nock('http://expressplatby.cz', {
+        nock('http://epayments.network', {
           reqheaders: {
             sample: 'value',
           },
@@ -103,7 +103,7 @@ export const createHttpClientTestSuite = (createHttpClientFn, extraTestsFn) => {
       it('sends request data (POST)', (done) => {
         const expectedData = utils.stringifyRequestData({id: 'test'});
 
-        nock('http://expressplatby.cz')
+        nock('http://epayments.network')
           .post('/test')
           .reply(200, (uri, requestBody) => {
             expect(requestBody).to.equal(expectedData);
@@ -114,7 +114,7 @@ export const createHttpClientTestSuite = (createHttpClientFn, extraTestsFn) => {
       });
 
       it('custom port', async () => {
-        nock('http://expressplatby.cz:1234')
+        nock('http://epayments.network:1234')
           .get('/test')
           .reply(200);
         await sendRequest({port: 1234});

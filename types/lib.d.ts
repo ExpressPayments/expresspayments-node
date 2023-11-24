@@ -3,20 +3,20 @@
 
 import {Agent} from 'http';
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
-        type ExpressPlatbyResourceClass = typeof ExpressPlatbyResource;
+declare module 'expresspayments' {
+    namespace ExpressPayments {
+        type ExpressPaymentsResourceClass = typeof ExpressPaymentsResource;
 
-        interface ExpressPlatbyResourceExtension<T extends object>
-            extends ExpressPlatbyResourceClass {
-            new (expressPlatby: ExpressPlatby): ExpressPlatbyResource & T;
+        interface ExpressPaymentsResourceExtension<T extends object>
+            extends ExpressPaymentsResourceClass {
+            new (expressPayments: ExpressPayments): ExpressPaymentsResource & T;
         }
 
-        export class ExpressPlatbyResource {
+        export class ExpressPaymentsResource {
             static extend<
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 T extends {[prop: string]: any}
-            >(spec: T): ExpressPlatbyResourceExtension<T>;
+            >(spec: T): ExpressPaymentsResourceExtension<T>;
 
             static method<ResponseObject = object>(spec: {
                 method: string;
@@ -29,11 +29,11 @@ declare module 'expressplatby' {
             static MAX_BUFFERED_REQUEST_METRICS: number;
         }
 
-        export type LatestApiVersion = '2023-06-01';
+        export type LatestApiVersion = '2023-11-01';
         export type HttpAgent = Agent;
         export type HttpProtocol = 'http' | 'https';
 
-        export interface ExpressPlatbyConfig {
+        export interface ExpressPaymentsConfig {
             /**
              * This library's types only reflect the latest API version.
              *
@@ -44,7 +44,7 @@ declare module 'expressplatby' {
              * you may pass `null` or another version instead of the latest version,
              * and add a `@ts-ignore` comment here and anywhere the types differ between API versions.
              *
-             * @docs https://expressplatby.cz/docs/api/versioning
+             * @docs https://docs.epayments.network/api/versioning
              */
             apiVersion: LatestApiVersion;
 
@@ -56,8 +56,8 @@ declare module 'expressplatby' {
 
             /**
              * Enables automatic network retries with exponential backoff, up to the specified number of retries (default 0).
-             * Idempotency keys](https://expressplatby.cz/docs/api/idempotent_requests) are added where appropriate to prevent duplication.
-             * @docs https://github.com/expressplatby/expressplatby-node#network-retries
+             * Idempotency keys](https://docs.epayments.network/api/idempotent_requests) are added where appropriate to prevent duplication.
+             * @docs https://github.com/expresspayments/expresspayments-node#network-retries
              */
             maxNetworkRetries?: number;
 
@@ -96,7 +96,7 @@ declare module 'expressplatby' {
             protocol?: HttpProtocol;
 
             /**
-             * Pass `telemetry: false` to disable headers that provide ExpressPlatby
+             * Pass `telemetry: false` to disable headers that provide ExpressPayments
              * with data about usage of the API.
              * Currently, the only telemetry we send is latency metrics.
              */
@@ -104,41 +104,41 @@ declare module 'expressplatby' {
 
             /**
              * For plugin authors to identify their code.
-             * @docs https://expressplatby.cz/docs/building-plugins?lang=node#setappinfo
+             * @docs https://docs.epayments.network/building-plugins?lang=node#setappinfo
              */
             appInfo?: AppInfo;
 
             /**
              * An account id on whose behalf you wish to make every request.
              */
-            expressPlatbyAccount?: string;
+            expressPaymentsAccount?: string;
         }
 
         export interface RequestOptions {
             /**
              * Use a specific API Key for this request.
-             * For Connect, we recommend using `expressPlatbyAccount` instead.
+             * For Connect, we recommend using `expressPaymentsAccount` instead.
              */
             apiKey?: string;
 
             /**
-             * See the [idempotency key docs](https://expressplatby.cz/docs/api/idempotent_requests).
+             * See the [idempotency key docs](https://docs.epayments.network/api/idempotent_requests).
              */
             idempotencyKey?: string;
 
             /**
              * An account id on whose behalf you wish to make a request.
              */
-            expressPlatbyAccount?: string;
+            expressPaymentsAccount?: string;
 
             /**
-             * The [API Version](https://expressplatby.cz/docs/upgrades) to use for a given request (e.g., '2022-12-31').
+             * The [API Version](https://docs.epayments.network/upgrades) to use for a given request (e.g., '2022-12-31').
              */
             apiVersion?: string;
 
             /**
              * Specify the number of requests to retry in event of error.
-             * This overrides a default set on the ExpressPlatby object's config argument.
+             * This overrides a default set on the ExpressPayments object's config argument.
              */
             maxNetworkRetries?: number;
 
@@ -160,7 +160,7 @@ declare module 'expressplatby' {
                 statusCode: number;
                 apiVersion?: string;
                 idempotencyKey?: string;
-                expressPlatbyAccount?: string;
+                expressPaymentsAccount?: string;
             };
         };
 
@@ -169,8 +169,8 @@ declare module 'expressplatby' {
          * The array of objects is on the `.data` property,
          * and `.has_more` indicates whether there are additional objects beyond the end of this list.
          *
-         * Learn more in ExpressPlatby's [pagination docs](https://expressplatby.cz/docs/api/pagination?lang=node)
-         * or, when iterating over many items, try [auto-pagination](https://github.com/expressplatby/expressplatby-node#auto-pagination) instead.
+         * Learn more in ExpressPayments' [pagination docs](https://docs.epayments.network/api/pagination?lang=node)
+         * or, when iterating over many items, try [auto-pagination](https://github.com/expresspayments/expresspayments-node#auto-pagination) instead.
          */
         export interface ApiList<T> {
             object: 'list';
@@ -251,10 +251,10 @@ declare module 'expressplatby' {
             autoPagingToArray(opts: {limit: number}): Promise<Array<T>>;
         }
 
-        export type ExpressPlatbyStreamResponse = NodeJS.ReadableStream;
+        export type ExpressPaymentsStreamResponse = NodeJS.ReadableStream;
 
         /**
-         * The ExpressPlatby API uses url-encoding for requests, and expressplatby-node encodes a
+         * The ExpressPayments API uses url-encoding for requests, and expresspayments-node encodes a
          * `null` param as an empty string, because there is no concept of `null`
          * in url-encoding. Both `null` and `''` behave identically.
          */
@@ -284,7 +284,7 @@ declare module 'expressplatby' {
 
         /**
          * Identify your plugin.
-         * @docs https://expressplatby.cz/docs/building-plugins?lang=node#setappinfo
+         * @docs https://docs.epayments.network/building-plugins?lang=node#setappinfo
          */
         export interface AppInfo {
             name: string;

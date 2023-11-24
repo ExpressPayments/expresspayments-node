@@ -1,32 +1,33 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const Disputes = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/issuing/disputes',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/issuing/disputes/{dispute}',
-  }),
+export const Disputes = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/issuing/disputes',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/issuing/disputes/{dispute}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/issuing/disputes/{dispute}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/issuing/disputes',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/issuing/disputes/{dispute}',
+    }),
 
-  submit: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/issuing/disputes/{dispute}/submit',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/issuing/disputes',
+        methodType: 'list',
+    }),
+
+    submit: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/issuing/disputes/{dispute}/submit',
+    }),
 });

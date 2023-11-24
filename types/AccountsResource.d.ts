@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface AccountCreateParams {
             /**
-             * An [account token](https://expressplatby.cz/docs/api#create_account_token), used to securely provide details to the account.
+             * An [account token](https://docs.epayments.network/api#create_account_token), used to securely provide details to the account.
              */
             account_token?: string;
 
@@ -19,7 +19,7 @@ declare module 'expressplatby' {
             business_type?: AccountCreateParams.BusinessType;
 
             /**
-             * Each key of the dictionary represents a capability, and each capability maps to its settings (e.g. whether it has been requested or not). Each capability will be inactive until you have provided its specific requirements and ExpressPlatby has verified them. An account may have some of its requested capabilities be active and some be inactive.
+             * Each key of the dictionary represents a capability, and each capability maps to its settings (e.g. whether it has been requested or not). Each capability will be inactive until you have provided its specific requirements and ExpressPayments has verified them. An account may have some of its requested capabilities be active and some be inactive.
              */
             capabilities?: AccountCreateParams.Capabilities;
 
@@ -29,12 +29,12 @@ declare module 'expressplatby' {
             company?: AccountCreateParams.Company;
 
             /**
-             * The country in which the account holder resides, or in which the business is legally established. This should be an ISO 3166-1 alpha-2 country code. For example, if you are in the United States and the business for which you're creating an account is legally represented in Canada, you would use `CA` as the country for the account being created. Available countries include [ExpressPlatby's global markets](https://expressplatby.cz/global) as well as countries where [cross-border payouts](https://expressplatby.cz/docs/connect/cross-border-payouts) are supported.
+             * The country in which the account holder resides, or in which the business is legally established. This should be an ISO 3166-1 alpha-2 country code. For example, if you are in the United States and the business for which you're creating an account is legally represented in Canada, you would use `CA` as the country for the account being created. Available countries include [ExpressPayments' global markets](https://epayments.network/global) as well as countries where [cross-border payouts](https://docs.epayments.network/connect/cross-border-payouts) are supported.
              */
             country?: string;
 
             /**
-             * Three-letter ISO currency code representing the default currency for the account. This must be a currency that [ExpressPlatby supports in the account's country](https://expressplatby.cz/docs/payouts).
+             * Three-letter ISO currency code representing the default currency for the account. This must be a currency that [ExpressPayments supports in the account's country](https://docs.epayments.network/payouts).
              */
             default_currency?: string;
 
@@ -44,7 +44,7 @@ declare module 'expressplatby' {
             documents?: AccountCreateParams.Documents;
 
             /**
-             * The email address of the account holder. This is only to make the account easier to identify to you. ExpressPlatby only emails Custom accounts with your consent.
+             * The email address of the account holder. This is only to make the account easier to identify to you. ExpressPayments only emails Custom accounts with your consent.
              */
             email?: string;
 
@@ -54,9 +54,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * A card or bank account to attach to the account for receiving [payouts](https://expressplatby.cz/docs/connect/bank-debit-card-payouts) (you won't be able to use it for top-ups). You can provide either a token, like the ones returned by [ExpressPlatby.js](https://expressplatby.cz/docs/js), or a dictionary, as documented in the `external_account` parameter for [bank account](https://expressplatby.cz/docs/api#account_create_bank_account) creation.
+             * A card or bank account to attach to the account for receiving [payouts](https://docs.epayments.network/connect/bank-debit-card-payouts) (you won't be able to use it for top-ups). You can provide either a token, like the ones returned by [ExpressPayments.js](https://docs.epayments.network/js), or a dictionary, as documented in the `external_account` parameter for [bank account](https://docs.epayments.network/api#account_create_bank_account) creation.
              *
-             * By default, providing an external account sets it as the new default external account for its currency, and deletes the old default if one exists. To add additional external accounts without replacing the existing default for the currency, use the [bank account](https://expressplatby.cz/docs/api#account_create_bank_account) or [card creation](https://expressplatby.cz/docs/api#account_create_card) APIs.
+             * By default, providing an external account sets it as the new default external account for its currency, and deletes the old default if one exists. To add additional external accounts without replacing the existing default for the currency, use the [bank account](https://docs.epayments.network/api#account_create_bank_account) or [card creation](https://docs.epayments.network/api#account_create_card) APIs.
              */
             external_account?: string | AccountCreateParams.ExternalAccount;
 
@@ -66,22 +66,22 @@ declare module 'expressplatby' {
             individual?: AccountCreateParams.Individual;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
-             * Options for customizing how the account functions within ExpressPlatby.
+             * Options for customizing how the account functions within ExpressPayments
              */
             settings?: AccountCreateParams.Settings;
 
             /**
-             * Details on the account's acceptance of the [ExpressPlatby Services Agreement](https://expressplatby.cz/docs/connect/updating-accounts#tos-acceptance).
+             * Details on the account's acceptance of the [ExpressPayments Services Agreement](https://docs.epayments.network/connect/updating-accounts#tos-acceptance).
              */
             tos_acceptance?: AccountCreateParams.TosAcceptance;
 
             /**
-             * The type of ExpressPlatby account to create. May be one of `custom`, `express` or `standard`.
+             * The type of ExpressPayments account to create. May be one of `custom`, `express` or `standard`.
              */
             type?: AccountCreateParams.Type;
         }
@@ -89,7 +89,7 @@ declare module 'expressplatby' {
         namespace AccountCreateParams {
             interface BusinessProfile {
                 /**
-                 * [The merchant category code for the account](https://expressplatby.cz/docs/connect/setting-mcc). MCCs are used to classify businesses based on the goods or services they provide.
+                 * [The merchant category code for the account](https://docs.epayments.network/connect/setting-mcc). MCCs are used to classify businesses based on the goods or services they provide.
                  */
                 mcc?: string;
 
@@ -99,14 +99,14 @@ declare module 'expressplatby' {
                 name?: string;
 
                 /**
-                 * Internal-only description of the product sold by, or service provided by, the business. Used by ExpressPlatby for risk and underwriting purposes.
+                 * Internal-only description of the product sold by, or service provided by, the business. Used by ExpressPayments for risk and underwriting purposes.
                  */
                 product_description?: string;
 
                 /**
                  * A publicly available mailing address for sending support issues to.
                  */
-                support_address?: ExpressPlatby.AddressParam;
+                support_address?: ExpressPayments.AddressParam;
 
                 /**
                  * A publicly available email address for sending support issues to.
@@ -121,7 +121,7 @@ declare module 'expressplatby' {
                 /**
                  * A publicly available website for handling support issues.
                  */
-                support_url?: ExpressPlatby.Emptyable<string>;
+                support_url?: ExpressPayments.Emptyable<string>;
 
                 /**
                  * The business's publicly available website.
@@ -575,25 +575,25 @@ declare module 'expressplatby' {
                 /**
                  * The company's primary address.
                  */
-                address?: ExpressPlatby.AddressParam;
+                address?: ExpressPayments.AddressParam;
 
                 /**
                  * The Kana variation of the company's primary address (Japan only).
                  */
-                address_kana?: ExpressPlatby.JapanAddressParam;
+                address_kana?: ExpressPayments.JapanAddressParam;
 
                 /**
                  * The Kanji variation of the company's primary address (Japan only).
                  */
-                address_kanji?: ExpressPlatby.JapanAddressParam;
+                address_kanji?: ExpressPayments.JapanAddressParam;
 
                 /**
-                 * Whether the company's directors have been provided. Set this Boolean to `true` after creating all the company's directors with [the Persons API](https://expressplatby.cz/docs/api/persons) for accounts with a `relationship.director` requirement. This value is not automatically set to `true` after creating directors, so it needs to be updated to indicate all directors have been provided.
+                 * Whether the company's directors have been provided. Set this Boolean to `true` after creating all the company's directors with [the Persons API](https://docs.epayments.network/api/persons) for accounts with a `relationship.director` requirement. This value is not automatically set to `true` after creating directors, so it needs to be updated to indicate all directors have been provided.
                  */
                 directors_provided?: boolean;
 
                 /**
-                 * Whether the company's executives have been provided. Set this Boolean to `true` after creating all the company's executives with [the Persons API](https://expressplatby.cz/docs/api/persons) for accounts with a `relationship.executive` requirement.
+                 * Whether the company's executives have been provided. Set this Boolean to `true` after creating all the company's executives with [the Persons API](https://docs.epayments.network/api/persons) for accounts with a `relationship.executive` requirement.
                  */
                 executives_provided?: boolean;
 
@@ -623,12 +623,12 @@ declare module 'expressplatby' {
                 name_kanji?: string;
 
                 /**
-                 * Whether the company's owners have been provided. Set this Boolean to `true` after creating all the company's owners with [the Persons API](https://expressplatby.cz/docs/api/persons) for accounts with a `relationship.owner` requirement.
+                 * Whether the company's owners have been provided. Set this Boolean to `true` after creating all the company's owners with [the Persons API](https://docs.epayments.network/api/persons) for accounts with a `relationship.owner` requirement.
                  */
                 owners_provided?: boolean;
 
                 /**
-                 * This hash is used to attest that the beneficial owner information provided to ExpressPlatby is both current and correct.
+                 * This hash is used to attest that the beneficial owner information provided to ExpressPayments is both current and correct.
                  */
                 ownership_declaration?: Company.OwnershipDeclaration;
 
@@ -643,9 +643,9 @@ declare module 'expressplatby' {
                 registration_number?: string;
 
                 /**
-                 * The category identifying the legal structure of the company or legal entity. See [Business structure](https://expressplatby.cz/docs/connect/identity-verification#business-structure) for more details.
+                 * The category identifying the legal structure of the company or legal entity. See [Business structure](https://docs.epayments.network/connect/identity-verification#business-structure) for more details.
                  */
-                structure?: ExpressPlatby.Emptyable<Company.Structure>;
+                structure?: ExpressPayments.Emptyable<Company.Structure>;
 
                 /**
                  * The business ID number of the company, as appropriate for the company's country. (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a Company Number in the UK.)
@@ -718,12 +718,12 @@ declare module 'expressplatby' {
                 namespace Verification {
                     interface Document {
                         /**
-                         * The back of a document returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `additional_verification`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The back of a document returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `additional_verification`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         back?: string;
 
                         /**
-                         * The front of a document returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `additional_verification`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The front of a document returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `additional_verification`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         front?: string;
                     }
@@ -732,7 +732,7 @@ declare module 'expressplatby' {
 
             interface Documents {
                 /**
-                 * One or more documents that support the [Bank account ownership verification](https://support.expressplatby.cz/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account's primary active bank account that displays the last 4 digits of the account number, either a statement or a voided check.
+                 * One or more documents that support the [Bank account ownership verification](https://support.epayments.network/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account's primary active bank account that displays the last 4 digits of the account number, either a statement or a voided check.
                  */
                 bank_account_ownership_verification?: Documents.BankAccountOwnershipVerification;
 
@@ -770,49 +770,49 @@ declare module 'expressplatby' {
             namespace Documents {
                 interface BankAccountOwnershipVerification {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyLicense {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyMemorandumOfAssociation {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyMinisterialDecree {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyRegistrationVerification {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyTaxIdVerification {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface ProofOfRegistration {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
@@ -830,7 +830,7 @@ declare module 'expressplatby' {
                 country: string;
 
                 /**
-                 * The currency the bank account is in. This must be a country/currency pairing that [ExpressPlatby supports](https://expressplatby.cz/docs/payouts).
+                 * The currency the bank account is in. This must be a country/currency pairing that [ExpressPayments supports](https://docs.epayments.network/payouts).
                  */
                 currency: string;
 
@@ -859,22 +859,22 @@ declare module 'expressplatby' {
                 /**
                  * The individual's primary address.
                  */
-                address?: ExpressPlatby.AddressParam;
+                address?: ExpressPayments.AddressParam;
 
                 /**
-                 * The Kana variation of the the individual's primary address (Japan only).
+                 * The Kana variation of the individual's primary address (Japan only).
                  */
-                address_kana?: ExpressPlatby.JapanAddressParam;
+                address_kana?: ExpressPayments.JapanAddressParam;
 
                 /**
-                 * The Kanji variation of the the individual's primary address (Japan only).
+                 * The Kanji variation of the individual's primary address (Japan only).
                  */
-                address_kanji?: ExpressPlatby.JapanAddressParam;
+                address_kanji?: ExpressPayments.JapanAddressParam;
 
                 /**
                  * The individual's date of birth.
                  */
-                dob?: ExpressPlatby.Emptyable<Individual.Dob>;
+                dob?: ExpressPayments.Emptyable<Individual.Dob>;
 
                 /**
                  * The individual's email address.
@@ -899,7 +899,7 @@ declare module 'expressplatby' {
                 /**
                  * A list of alternate names or aliases that the individual is known by.
                  */
-                full_name_aliases?: ExpressPlatby.Emptyable<Array<string>>;
+                full_name_aliases?: ExpressPayments.Emptyable<Array<string>>;
 
                 /**
                  * The individual's gender (International regulations require either "male" or "female").
@@ -907,12 +907,12 @@ declare module 'expressplatby' {
                 gender?: string;
 
                 /**
-                 * The government-issued ID number of the individual, as appropriate for the representative's country. (Examples are a Social Security Number in the U.S., or a Social Insurance Number in Canada). Instead of the number itself, you can also provide a [PII token created with ExpressPlatby.js](https://expressplatby.cz/docs/js/tokens_sources/create_token?type=pii).
+                 * The government-issued ID number of the individual, as appropriate for the representative's country. (Examples are a Social Security Number in the U.S., or a Social Insurance Number in Canada). Instead of the number itself, you can also provide a [PII token created with ExpressPayments.js](https://docs.epayments.network/js/tokens_sources/create_token?type=pii).
                  */
                 id_number?: string;
 
                 /**
-                 * The government-issued secondary ID number of the individual, as appropriate for the representative's country, will be used for enhanced verification checks. In Thailand, this would be the laser code found on the back of an ID card. Instead of the number itself, you can also provide a [PII token created with ExpressPlatby.js](https://expressplatby.cz/docs/js/tokens_sources/create_token?type=pii).
+                 * The government-issued secondary ID number of the individual, as appropriate for the representative's country, will be used for enhanced verification checks. In Thailand, this would be the laser code found on the back of an ID card. Instead of the number itself, you can also provide a [PII token created with ExpressPayments.js](https://docs.epayments.network/js/tokens_sources/create_token?type=pii).
                  */
                 id_number_secondary?: string;
 
@@ -937,9 +937,11 @@ declare module 'expressplatby' {
                 maiden_name?: string;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<
+                    ExpressPayments.MetadataParam
+                >;
 
                 /**
                  * The individual's phone number.
@@ -954,7 +956,7 @@ declare module 'expressplatby' {
                 /**
                  * The individual's registered address.
                  */
-                registered_address?: ExpressPlatby.AddressParam;
+                registered_address?: ExpressPayments.AddressParam;
 
                 /**
                  * The last four digits of the individual's Social Security Number (U.S. only).
@@ -1002,24 +1004,24 @@ declare module 'expressplatby' {
                 namespace Verification {
                     interface AdditionalDocument {
                         /**
-                         * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         back?: string;
 
                         /**
-                         * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         front?: string;
                     }
 
                     interface Document {
                         /**
-                         * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         back?: string;
 
                         /**
-                         * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         front?: string;
                     }
@@ -1061,12 +1063,12 @@ declare module 'expressplatby' {
             namespace Settings {
                 interface Branding {
                     /**
-                     * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) An icon for the account. Must be square and at least 128px x 128px.
+                     * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) An icon for the account. Must be square and at least 128px x 128px.
                      */
                     icon?: string;
 
                     /**
-                     * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) A logo for the account that will be used in Checkout instead of the icon and without the account's name next to it if provided. Must be at least 128px x 128px.
+                     * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) A logo for the account that will be used in Checkout instead of the icon and without the account's name next to it if provided. Must be at least 128px x 128px.
                      */
                     logo?: string;
 
@@ -1083,7 +1085,7 @@ declare module 'expressplatby' {
 
                 interface CardIssuing {
                     /**
-                     * Details on the account's acceptance of the [ExpressPlatby Issuing Terms and Disclosures](https://expressplatby.cz/docs/issuing/connect/tos_acceptance).
+                     * Details on the account's acceptance of the [ExpressPayments Issuing Terms and Disclosures](https://docs.epayments.network/issuing/connect/tos_acceptance).
                      */
                     tos_acceptance?: CardIssuing.TosAcceptance;
                 }
@@ -1121,14 +1123,14 @@ declare module 'expressplatby' {
                     /**
                      * The Kana variation of the default text that appears on credit card statements when a charge is made (Japan only). This field prefixes any dynamic `statement_descriptor_suffix_kana` specified on the charge. `statement_descriptor_prefix_kana` is useful for maximizing descriptor space for the dynamic portion.
                      */
-                    statement_descriptor_prefix_kana?: ExpressPlatby.Emptyable<
+                    statement_descriptor_prefix_kana?: ExpressPayments.Emptyable<
                         string
                     >;
 
                     /**
                      * The Kanji variation of the default text that appears on credit card statements when a charge is made (Japan only). This field prefixes any dynamic `statement_descriptor_suffix_kanji` specified on the charge. `statement_descriptor_prefix_kanji` is useful for maximizing descriptor space for the dynamic portion.
                      */
-                    statement_descriptor_prefix_kanji?: ExpressPlatby.Emptyable<
+                    statement_descriptor_prefix_kanji?: ExpressPayments.Emptyable<
                         string
                     >;
                 }
@@ -1136,12 +1138,12 @@ declare module 'expressplatby' {
                 namespace CardPayments {
                     interface DeclineOn {
                         /**
-                         * Whether ExpressPlatby automatically declines charges with an incorrect ZIP or postal code. This setting only applies when a ZIP or postal code is provided and they fail bank verification.
+                         * Whether ExpressPayments automatically declines charges with an incorrect ZIP or postal code. This setting only applies when a ZIP or postal code is provided and they fail bank verification.
                          */
                         avs_failure?: boolean;
 
                         /**
-                         * Whether ExpressPlatby automatically declines charges with an incorrect CVC. This setting only applies when a CVC is provided and it fails bank verification.
+                         * Whether ExpressPayments automatically declines charges with an incorrect CVC. This setting only applies when a CVC is provided and it fails bank verification.
                          */
                         cvc_failure?: boolean;
                     }
@@ -1166,12 +1168,12 @@ declare module 'expressplatby' {
 
                 interface Payouts {
                     /**
-                     * A Boolean indicating whether ExpressPlatby should try to reclaim negative balances from an attached bank account. For details, see [Understanding Connect Account Balances](https://expressplatby.cz/docs/connect/account-balances).
+                     * A Boolean indicating whether ExpressPayments should try to reclaim negative balances from an attached bank account. For details, see [Understanding Connect Account Balances](https://docs.epayments.network/connect/account-balances).
                      */
                     debit_negative_balances?: boolean;
 
                     /**
-                     * Details on when funds from charges are available, and when they are paid out to an external account. For details, see our [Setting Bank and Debit Card Payouts](https://expressplatby.cz/docs/connect/bank-transfers#payout-information) documentation.
+                     * Details on when funds from charges are available, and when they are paid out to an external account. For details, see our [Setting Bank and Debit Card Payouts](https://docs.epayments.network/connect/bank-transfers#payout-information) documentation.
                      */
                     schedule?: Payouts.Schedule;
 
@@ -1184,7 +1186,7 @@ declare module 'expressplatby' {
                 namespace Payouts {
                     interface Schedule {
                         /**
-                         * The number of days charge funds are held before being paid out. May also be set to `minimum`, representing the lowest available value for the account country. Default is `minimum`. The `delay_days` parameter does not apply when the `interval` is `manual`. [Learn more about controlling payout delay days](https://expressplatby.cz/docs/connect/manage-payout-schedule).
+                         * The number of days charge funds are held before being paid out. May also be set to `minimum`, representing the lowest available value for the account country. Default is `minimum`. The `delay_days` parameter does not apply when the `interval` is `manual`. [Learn more about controlling payout delay days](https://docs.epayments.network/connect/manage-payout-schedule).
                          */
                         delay_days?: 'minimum' | number;
 
@@ -1224,7 +1226,7 @@ declare module 'expressplatby' {
 
                 interface Treasury {
                     /**
-                     * Details on the account's acceptance of the ExpressPlatby Treasury Services Agreement.
+                     * Details on the account's acceptance of the ExpressPayments Treasury Services Agreement.
                      */
                     tos_acceptance?: Treasury.TosAcceptance;
                 }
@@ -1283,7 +1285,7 @@ declare module 'expressplatby' {
 
         interface AccountUpdateParams {
             /**
-             * An [account token](https://expressplatby.cz/docs/api#create_account_token), used to securely provide details to the account.
+             * An [account token](https://docs.epayments.network/api#create_account_token), used to securely provide details to the account.
              */
             account_token?: string;
 
@@ -1298,7 +1300,7 @@ declare module 'expressplatby' {
             business_type?: AccountUpdateParams.BusinessType;
 
             /**
-             * Each key of the dictionary represents a capability, and each capability maps to its settings (e.g. whether it has been requested or not). Each capability will be inactive until you have provided its specific requirements and ExpressPlatby has verified them. An account may have some of its requested capabilities be active and some be inactive.
+             * Each key of the dictionary represents a capability, and each capability maps to its settings (e.g. whether it has been requested or not). Each capability will be inactive until you have provided its specific requirements and ExpressPayments has verified them. An account may have some of its requested capabilities be active and some be inactive.
              */
             capabilities?: AccountUpdateParams.Capabilities;
 
@@ -1308,7 +1310,7 @@ declare module 'expressplatby' {
             company?: AccountUpdateParams.Company;
 
             /**
-             * Three-letter ISO currency code representing the default currency for the account. This must be a currency that [ExpressPlatby supports in the account's country](https://expressplatby.cz/docs/payouts).
+             * Three-letter ISO currency code representing the default currency for the account. This must be a currency that [ExpressPayments supports in the account's country](https://docs.epayments.network/payouts).
              */
             default_currency?: string;
 
@@ -1318,7 +1320,7 @@ declare module 'expressplatby' {
             documents?: AccountUpdateParams.Documents;
 
             /**
-             * The email address of the account holder. This is only to make the account easier to identify to you. ExpressPlatby only emails Custom accounts with your consent.
+             * The email address of the account holder. This is only to make the account easier to identify to you. ExpressPayments only emails Custom accounts with your consent.
              */
             email?: string;
 
@@ -1328,9 +1330,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * A card or bank account to attach to the account for receiving [payouts](https://expressplatby.cz/docs/connect/bank-debit-card-payouts) (you won't be able to use it for top-ups). You can provide either a token, like the ones returned by [ExpressPlatby.js](https://expressplatby.cz/docs/js), or a dictionary, as documented in the `external_account` parameter for [bank account](https://expressplatby.cz/docs/api#account_create_bank_account) creation.
+             * A card or bank account to attach to the account for receiving [payouts](https://docs.epayments.network/connect/bank-debit-card-payouts) (you won't be able to use it for top-ups). You can provide either a token, like the ones returned by [ExpressPayments.js](https://docs.epayments.network/js), or a dictionary, as documented in the `external_account` parameter for [bank account](https://docs.epayments.network/api#account_create_bank_account) creation.
              *
-             * By default, providing an external account sets it as the new default external account for its currency, and deletes the old default if one exists. To add additional external accounts without replacing the existing default for the currency, use the [bank account](https://expressplatby.cz/docs/api#account_create_bank_account) or [card creation](https://expressplatby.cz/docs/api#account_create_card) APIs.
+             * By default, providing an external account sets it as the new default external account for its currency, and deletes the old default if one exists. To add additional external accounts without replacing the existing default for the currency, use the [bank account](https://docs.epayments.network/api#account_create_bank_account) or [card creation](https://docs.epayments.network/api#account_create_card) APIs.
              */
             external_account?: string;
 
@@ -1340,17 +1342,17 @@ declare module 'expressplatby' {
             individual?: AccountUpdateParams.Individual;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
-             * Options for customizing how the account functions within ExpressPlatby.
+             * Options for customizing how the account functions within ExpressPayments.
              */
             settings?: AccountUpdateParams.Settings;
 
             /**
-             * Details on the account's acceptance of the [ExpressPlatby Services Agreement](https://expressplatby.cz/docs/connect/updating-accounts#tos-acceptance).
+             * Details on the account's acceptance of the [ExpressPayments Services Agreement](https://docs.epayments.network/connect/updating-accounts#tos-acceptance).
              */
             tos_acceptance?: AccountUpdateParams.TosAcceptance;
         }
@@ -1358,7 +1360,7 @@ declare module 'expressplatby' {
         namespace AccountUpdateParams {
             interface BusinessProfile {
                 /**
-                 * [The merchant category code for the account](https://expressplatby.cz/docs/connect/setting-mcc). MCCs are used to classify businesses based on the goods or services they provide.
+                 * [The merchant category code for the account](https://docs.epayments.network/connect/setting-mcc). MCCs are used to classify businesses based on the goods or services they provide.
                  */
                 mcc?: string;
 
@@ -1368,14 +1370,14 @@ declare module 'expressplatby' {
                 name?: string;
 
                 /**
-                 * Internal-only description of the product sold by, or service provided by, the business. Used by ExpressPlatby for risk and underwriting purposes.
+                 * Internal-only description of the product sold by, or service provided by, the business. Used by ExpressPayments for risk and underwriting purposes.
                  */
                 product_description?: string;
 
                 /**
                  * A publicly available mailing address for sending support issues to.
                  */
-                support_address?: ExpressPlatby.AddressParam;
+                support_address?: ExpressPayments.AddressParam;
 
                 /**
                  * A publicly available email address for sending support issues to.
@@ -1390,7 +1392,7 @@ declare module 'expressplatby' {
                 /**
                  * A publicly available website for handling support issues.
                  */
-                support_url?: ExpressPlatby.Emptyable<string>;
+                support_url?: ExpressPayments.Emptyable<string>;
 
                 /**
                  * The business's publicly available website.
@@ -1844,25 +1846,25 @@ declare module 'expressplatby' {
                 /**
                  * The company's primary address.
                  */
-                address?: ExpressPlatby.AddressParam;
+                address?: ExpressPayments.AddressParam;
 
                 /**
                  * The Kana variation of the company's primary address (Japan only).
                  */
-                address_kana?: ExpressPlatby.JapanAddressParam;
+                address_kana?: ExpressPayments.JapanAddressParam;
 
                 /**
                  * The Kanji variation of the company's primary address (Japan only).
                  */
-                address_kanji?: ExpressPlatby.JapanAddressParam;
+                address_kanji?: ExpressPayments.JapanAddressParam;
 
                 /**
-                 * Whether the company's directors have been provided. Set this Boolean to `true` after creating all the company's directors with [the Persons API](https://expressplatby.cz/docs/api/persons) for accounts with a `relationship.director` requirement. This value is not automatically set to `true` after creating directors, so it needs to be updated to indicate all directors have been provided.
+                 * Whether the company's directors have been provided. Set this Boolean to `true` after creating all the company's directors with [the Persons API](https://docs.epayments.network/api/persons) for accounts with a `relationship.director` requirement. This value is not automatically set to `true` after creating directors, so it needs to be updated to indicate all directors have been provided.
                  */
                 directors_provided?: boolean;
 
                 /**
-                 * Whether the company's executives have been provided. Set this Boolean to `true` after creating all the company's executives with [the Persons API](https://expressplatby.cz/docs/api/persons) for accounts with a `relationship.executive` requirement.
+                 * Whether the company's executives have been provided. Set this Boolean to `true` after creating all the company's executives with [the Persons API](https://docs.epayments.network/api/persons) for accounts with a `relationship.executive` requirement.
                  */
                 executives_provided?: boolean;
 
@@ -1892,12 +1894,12 @@ declare module 'expressplatby' {
                 name_kanji?: string;
 
                 /**
-                 * Whether the company's owners have been provided. Set this Boolean to `true` after creating all the company's owners with [the Persons API](https://expressplatby.cz/docs/api/persons) for accounts with a `relationship.owner` requirement.
+                 * Whether the company's owners have been provided. Set this Boolean to `true` after creating all the company's owners with [the Persons API](https://docs.epayments.network/api/persons) for accounts with a `relationship.owner` requirement.
                  */
                 owners_provided?: boolean;
 
                 /**
-                 * This hash is used to attest that the beneficial owner information provided to ExpressPlatby is both current and correct.
+                 * This hash is used to attest that the beneficial owner information provided to ExpressPayments is both current and correct.
                  */
                 ownership_declaration?: Company.OwnershipDeclaration;
 
@@ -1912,9 +1914,9 @@ declare module 'expressplatby' {
                 registration_number?: string;
 
                 /**
-                 * The category identifying the legal structure of the company or legal entity. See [Business structure](https://expressplatby.cz/docs/connect/identity-verification#business-structure) for more details.
+                 * The category identifying the legal structure of the company or legal entity. See [Business structure](https://docs.epayments.network/connect/identity-verification#business-structure) for more details.
                  */
-                structure?: ExpressPlatby.Emptyable<Company.Structure>;
+                structure?: ExpressPayments.Emptyable<Company.Structure>;
 
                 /**
                  * The business ID number of the company, as appropriate for the company's country. (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a Company Number in the UK.)
@@ -1987,12 +1989,12 @@ declare module 'expressplatby' {
                 namespace Verification {
                     interface Document {
                         /**
-                         * The back of a document returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `additional_verification`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The back of a document returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `additional_verification`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         back?: string;
 
                         /**
-                         * The front of a document returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `additional_verification`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The front of a document returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `additional_verification`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         front?: string;
                     }
@@ -2001,7 +2003,7 @@ declare module 'expressplatby' {
 
             interface Documents {
                 /**
-                 * One or more documents that support the [Bank account ownership verification](https://support.expressplatby.cz/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account's primary active bank account that displays the last 4 digits of the account number, either a statement or a voided check.
+                 * One or more documents that support the [Bank account ownership verification](https://support.epayments.network/questions/bank-account-ownership-verification) requirement. Must be a document associated with the account's primary active bank account that displays the last 4 digits of the account number, either a statement or a voided check.
                  */
                 bank_account_ownership_verification?: Documents.BankAccountOwnershipVerification;
 
@@ -2039,49 +2041,49 @@ declare module 'expressplatby' {
             namespace Documents {
                 interface BankAccountOwnershipVerification {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyLicense {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyMemorandumOfAssociation {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyMinisterialDecree {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyRegistrationVerification {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface CompanyTaxIdVerification {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface ProofOfRegistration {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
@@ -2091,22 +2093,22 @@ declare module 'expressplatby' {
                 /**
                  * The individual's primary address.
                  */
-                address?: ExpressPlatby.AddressParam;
+                address?: ExpressPayments.AddressParam;
 
                 /**
-                 * The Kana variation of the the individual's primary address (Japan only).
+                 * The Kana variation of the individual's primary address (Japan only).
                  */
-                address_kana?: ExpressPlatby.JapanAddressParam;
+                address_kana?: ExpressPayments.JapanAddressParam;
 
                 /**
-                 * The Kanji variation of the the individual's primary address (Japan only).
+                 * The Kanji variation of the individual's primary address (Japan only).
                  */
-                address_kanji?: ExpressPlatby.JapanAddressParam;
+                address_kanji?: ExpressPayments.JapanAddressParam;
 
                 /**
                  * The individual's date of birth.
                  */
-                dob?: ExpressPlatby.Emptyable<Individual.Dob>;
+                dob?: ExpressPayments.Emptyable<Individual.Dob>;
 
                 /**
                  * The individual's email address.
@@ -2119,7 +2121,7 @@ declare module 'expressplatby' {
                 first_name?: string;
 
                 /**
-                 * The Kana variation of the the individual's first name (Japan only).
+                 * The Kana variation of the individual's first name (Japan only).
                  */
                 first_name_kana?: string;
 
@@ -2131,7 +2133,7 @@ declare module 'expressplatby' {
                 /**
                  * A list of alternate names or aliases that the individual is known by.
                  */
-                full_name_aliases?: ExpressPlatby.Emptyable<Array<string>>;
+                full_name_aliases?: ExpressPayments.Emptyable<Array<string>>;
 
                 /**
                  * The individual's gender (International regulations require either "male" or "female").
@@ -2139,12 +2141,12 @@ declare module 'expressplatby' {
                 gender?: string;
 
                 /**
-                 * The government-issued ID number of the individual, as appropriate for the representative's country. (Examples are a Social Security Number in the U.S., or a Social Insurance Number in Canada). Instead of the number itself, you can also provide a [PII token created with ExpressPlatby.js](https://expressplatby.cz/docs/js/tokens_sources/create_token?type=pii).
+                 * The government-issued ID number of the individual, as appropriate for the representative's country. (Examples are a Social Security Number in the U.S., or a Social Insurance Number in Canada). Instead of the number itself, you can also provide a [PII token created with ExpressPayments.js](https://docs.epayments.network/js/tokens_sources/create_token?type=pii).
                  */
                 id_number?: string;
 
                 /**
-                 * The government-issued secondary ID number of the individual, as appropriate for the representative's country, will be used for enhanced verification checks. In Thailand, this would be the laser code found on the back of an ID card. Instead of the number itself, you can also provide a [PII token created with ExpressPlatby.js](https://expressplatby.cz/docs/js/tokens_sources/create_token?type=pii).
+                 * The government-issued secondary ID number of the individual, as appropriate for the representative's country, will be used for enhanced verification checks. In Thailand, this would be the laser code found on the back of an ID card. Instead of the number itself, you can also provide a [PII token created with ExpressPayments.js](https://docs.epayments.network/js/tokens_sources/create_token?type=pii).
                  */
                 id_number_secondary?: string;
 
@@ -2169,9 +2171,11 @@ declare module 'expressplatby' {
                 maiden_name?: string;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<
+                    ExpressPayments.MetadataParam
+                >;
 
                 /**
                  * The individual's phone number.
@@ -2186,7 +2190,7 @@ declare module 'expressplatby' {
                 /**
                  * The individual's registered address.
                  */
-                registered_address?: ExpressPlatby.AddressParam;
+                registered_address?: ExpressPayments.AddressParam;
 
                 /**
                  * The last four digits of the individual's Social Security Number (U.S. only).
@@ -2234,24 +2238,24 @@ declare module 'expressplatby' {
                 namespace Verification {
                     interface AdditionalDocument {
                         /**
-                         * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         back?: string;
 
                         /**
-                         * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         front?: string;
                     }
 
                     interface Document {
                         /**
-                         * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         back?: string;
 
                         /**
-                         * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                         * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                          */
                         front?: string;
                     }
@@ -2293,12 +2297,12 @@ declare module 'expressplatby' {
             namespace Settings {
                 interface Branding {
                     /**
-                     * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) An icon for the account. Must be square and at least 128px x 128px.
+                     * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) An icon for the account. Must be square and at least 128px x 128px.
                      */
                     icon?: string;
 
                     /**
-                     * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) A logo for the account that will be used in Checkout instead of the icon and without the account's name next to it if provided. Must be at least 128px x 128px.
+                     * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) A logo for the account that will be used in Checkout instead of the icon and without the account's name next to it if provided. Must be at least 128px x 128px.
                      */
                     logo?: string;
 
@@ -2315,7 +2319,7 @@ declare module 'expressplatby' {
 
                 interface CardIssuing {
                     /**
-                     * Details on the account's acceptance of the [ExpressPlatby Issuing Terms and Disclosures](https://expressplatby.cz/docs/issuing/connect/tos_acceptance).
+                     * Details on the account's acceptance of the [ExpressPayments Issuing Terms and Disclosures](https://docs.epayments.network/issuing/connect/tos_acceptance).
                      */
                     tos_acceptance?: CardIssuing.TosAcceptance;
                 }
@@ -2353,14 +2357,14 @@ declare module 'expressplatby' {
                     /**
                      * The Kana variation of the default text that appears on credit card statements when a charge is made (Japan only). This field prefixes any dynamic `statement_descriptor_suffix_kana` specified on the charge. `statement_descriptor_prefix_kana` is useful for maximizing descriptor space for the dynamic portion.
                      */
-                    statement_descriptor_prefix_kana?: ExpressPlatby.Emptyable<
+                    statement_descriptor_prefix_kana?: ExpressPayments.Emptyable<
                         string
                     >;
 
                     /**
                      * The Kanji variation of the default text that appears on credit card statements when a charge is made (Japan only). This field prefixes any dynamic `statement_descriptor_suffix_kanji` specified on the charge. `statement_descriptor_prefix_kanji` is useful for maximizing descriptor space for the dynamic portion.
                      */
-                    statement_descriptor_prefix_kanji?: ExpressPlatby.Emptyable<
+                    statement_descriptor_prefix_kanji?: ExpressPayments.Emptyable<
                         string
                     >;
                 }
@@ -2368,12 +2372,12 @@ declare module 'expressplatby' {
                 namespace CardPayments {
                     interface DeclineOn {
                         /**
-                         * Whether ExpressPlatby automatically declines charges with an incorrect ZIP or postal code. This setting only applies when a ZIP or postal code is provided and they fail bank verification.
+                         * Whether ExpressPayments automatically declines charges with an incorrect ZIP or postal code. This setting only applies when a ZIP or postal code is provided and they fail bank verification.
                          */
                         avs_failure?: boolean;
 
                         /**
-                         * Whether ExpressPlatby automatically declines charges with an incorrect CVC. This setting only applies when a CVC is provided and it fails bank verification.
+                         * Whether ExpressPayments automatically declines charges with an incorrect CVC. This setting only applies when a CVC is provided and it fails bank verification.
                          */
                         cvc_failure?: boolean;
                     }
@@ -2398,12 +2402,12 @@ declare module 'expressplatby' {
 
                 interface Payouts {
                     /**
-                     * A Boolean indicating whether ExpressPlatby should try to reclaim negative balances from an attached bank account. For details, see [Understanding Connect Account Balances](https://expressplatby.cz/docs/connect/account-balances).
+                     * A Boolean indicating whether ExpressPayments should try to reclaim negative balances from an attached bank account. For details, see [Understanding Connect Account Balances](https://docs.epayments.network/connect/account-balances).
                      */
                     debit_negative_balances?: boolean;
 
                     /**
-                     * Details on when funds from charges are available, and when they are paid out to an external account. For details, see our [Setting Bank and Debit Card Payouts](https://expressplatby.cz/docs/connect/bank-transfers#payout-information) documentation.
+                     * Details on when funds from charges are available, and when they are paid out to an external account. For details, see our [Setting Bank and Debit Card Payouts](https://docs.epayments.network/connect/bank-transfers#payout-information) documentation.
                      */
                     schedule?: Payouts.Schedule;
 
@@ -2416,7 +2420,7 @@ declare module 'expressplatby' {
                 namespace Payouts {
                     interface Schedule {
                         /**
-                         * The number of days charge funds are held before being paid out. May also be set to `minimum`, representing the lowest available value for the account country. Default is `minimum`. The `delay_days` parameter does not apply when the `interval` is `manual`. [Learn more about controlling payout delay days](https://expressplatby.cz/docs/connect/manage-payout-schedule).
+                         * The number of days charge funds are held before being paid out. May also be set to `minimum`, representing the lowest available value for the account country. Default is `minimum`. The `delay_days` parameter does not apply when the `interval` is `manual`. [Learn more about controlling payout delay days](https://docs.epayments.network/connect/manage-payout-schedule).
                          */
                         delay_days?: 'minimum' | number;
 
@@ -2456,7 +2460,7 @@ declare module 'expressplatby' {
 
                 interface Treasury {
                     /**
-                     * Details on the account's acceptance of the ExpressPlatby Treasury Services Agreement.
+                     * Details on the account's acceptance of the ExpressPayments Treasury Services Agreement.
                      */
                     tos_acceptance?: Treasury.TosAcceptance;
                 }
@@ -2505,7 +2509,7 @@ declare module 'expressplatby' {
         }
 
         interface AccountListParams extends PaginationParams {
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -2517,7 +2521,7 @@ declare module 'expressplatby' {
 
         interface ExternalAccountCreateParams {
             /**
-             * Please refer to full [documentation](https://expressplatby.cz/docs/api) instead.
+             * Please refer to full [documentation](https://docs.epayments.network/api) instead.
              */
             external_account: string;
 
@@ -2532,9 +2536,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
         }
 
         interface LoginLinkCreateParams {
@@ -2548,22 +2552,22 @@ declare module 'expressplatby' {
             /**
              * The person's address.
              */
-            address?: ExpressPlatby.AddressParam;
+            address?: ExpressPayments.AddressParam;
 
             /**
              * The Kana variation of the person's address (Japan only).
              */
-            address_kana?: ExpressPlatby.JapanAddressParam;
+            address_kana?: ExpressPayments.JapanAddressParam;
 
             /**
              * The Kanji variation of the person's address (Japan only).
              */
-            address_kanji?: ExpressPlatby.JapanAddressParam;
+            address_kanji?: ExpressPayments.JapanAddressParam;
 
             /**
              * The person's date of birth.
              */
-            dob?: ExpressPlatby.Emptyable<PersonCreateParams.Dob>;
+            dob?: ExpressPayments.Emptyable<PersonCreateParams.Dob>;
 
             /**
              * Documents that may be submitted to satisfy various informational requests.
@@ -2598,7 +2602,7 @@ declare module 'expressplatby' {
             /**
              * A list of alternate names or aliases that the person is known by.
              */
-            full_name_aliases?: ExpressPlatby.Emptyable<Array<string>>;
+            full_name_aliases?: ExpressPayments.Emptyable<Array<string>>;
 
             /**
              * The person's gender (International regulations require either "male" or "female").
@@ -2606,12 +2610,12 @@ declare module 'expressplatby' {
             gender?: string;
 
             /**
-             * The person's ID number, as appropriate for their country. For example, a social security number in the U.S., social insurance number in Canada, etc. Instead of the number itself, you can also provide a [PII token provided by ExpressPlatby.js](https://expressplatby.cz/docs/js/tokens_sources/create_token?type=pii).
+             * The person's ID number, as appropriate for their country. For example, a social security number in the U.S., social insurance number in Canada, etc. Instead of the number itself, you can also provide a [PII token provided by ExpressPayments.js](https://docs.epayments.network/js/tokens_sources/create_token?type=pii).
              */
             id_number?: string;
 
             /**
-             * The person's secondary ID number, as appropriate for their country, will be used for enhanced verification checks. In Thailand, this would be the laser code found on the back of an ID card. Instead of the number itself, you can also provide a [PII token provided by ExpressPlatby.js](https://expressplatby.cz/docs/js/tokens_sources/create_token?type=pii).
+             * The person's secondary ID number, as appropriate for their country, will be used for enhanced verification checks. In Thailand, this would be the laser code found on the back of an ID card. Instead of the number itself, you can also provide a [PII token provided by ExpressPayments.js](https://docs.epayments.network/js/tokens_sources/create_token?type=pii).
              */
             id_number_secondary?: string;
 
@@ -2636,9 +2640,9 @@ declare module 'expressplatby' {
             maiden_name?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * The country where the person is a national. Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)), or "XX" if unavailable.
@@ -2646,7 +2650,7 @@ declare module 'expressplatby' {
             nationality?: string;
 
             /**
-             * A [person token](https://expressplatby.cz/docs/connect/account-tokens), used to securely provide details to the person.
+             * A [person token](https://docs.epayments.network/connect/account-tokens), used to securely provide details to the person.
              */
             person_token?: string;
 
@@ -2663,7 +2667,7 @@ declare module 'expressplatby' {
             /**
              * The person's registered address.
              */
-            registered_address?: ExpressPlatby.AddressParam;
+            registered_address?: ExpressPayments.AddressParam;
 
             /**
              * The relationship that this person has with the account's legal entity.
@@ -2719,21 +2723,21 @@ declare module 'expressplatby' {
             namespace Documents {
                 interface CompanyAuthorization {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface Passport {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface Visa {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
@@ -2758,7 +2762,7 @@ declare module 'expressplatby' {
                 /**
                  * The percent owned by the person of the account's legal entity.
                  */
-                percent_ownership?: ExpressPlatby.Emptyable<number>;
+                percent_ownership?: ExpressPayments.Emptyable<number>;
 
                 /**
                  * Whether the person is authorized as the primary representative of the account. This is the person nominated by the business to provide information about themselves, and general information about the account. There can only be one representative at any given time. At the time the account is created, this person should be set to the person responsible for opening the account.
@@ -2786,24 +2790,24 @@ declare module 'expressplatby' {
             namespace Verification {
                 interface AdditionalDocument {
                     /**
-                     * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                     * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                      */
                     back?: string;
 
                     /**
-                     * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                     * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                      */
                     front?: string;
                 }
 
                 interface Document {
                     /**
-                     * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                     * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                      */
                     back?: string;
 
                     /**
-                     * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                     * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                      */
                     front?: string;
                 }
@@ -2924,7 +2928,7 @@ declare module 'expressplatby' {
             /**
              * The type of entity that holds the account. This can be either `individual` or `company`.
              */
-            account_holder_type?: ExpressPlatby.Emptyable<
+            account_holder_type?: ExpressPayments.Emptyable<
                 ExternalAccountUpdateParams.AccountHolderType
             >;
 
@@ -2974,12 +2978,12 @@ declare module 'expressplatby' {
             documents?: ExternalAccountUpdateParams.Documents;
 
             /**
-             * Two digit number representing the card's expiration month.
+             * Two-digit number representing the card's expiration month.
              */
             exp_month?: string;
 
             /**
-             * Four digit number representing the card's expiration year.
+             * Four-digit number representing the card's expiration year.
              */
             exp_year?: string;
 
@@ -2989,9 +2993,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Cardholder name.
@@ -3006,7 +3010,7 @@ declare module 'expressplatby' {
 
             interface Documents {
                 /**
-                 * One or more documents that support the [Bank account ownership verification](https://support.expressplatby.cz/questions/bank-account-ownership-verification) requirement. Must be a document associated with the bank account that displays the last 4 digits of the account number, either a statement or a voided check.
+                 * One or more documents that support the [Bank account ownership verification](https://support.epayments.network/questions/bank-account-ownership-verification) requirement. Must be a document associated with the bank account that displays the last 4 digits of the account number, either a statement or a voided check.
                  */
                 bank_account_ownership_verification?: Documents.BankAccountOwnershipVerification;
             }
@@ -3014,7 +3018,7 @@ declare module 'expressplatby' {
             namespace Documents {
                 interface BankAccountOwnershipVerification {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
@@ -3025,22 +3029,22 @@ declare module 'expressplatby' {
             /**
              * The person's address.
              */
-            address?: ExpressPlatby.AddressParam;
+            address?: ExpressPayments.AddressParam;
 
             /**
              * The Kana variation of the person's address (Japan only).
              */
-            address_kana?: ExpressPlatby.JapanAddressParam;
+            address_kana?: ExpressPayments.JapanAddressParam;
 
             /**
              * The Kanji variation of the person's address (Japan only).
              */
-            address_kanji?: ExpressPlatby.JapanAddressParam;
+            address_kanji?: ExpressPayments.JapanAddressParam;
 
             /**
              * The person's date of birth.
              */
-            dob?: ExpressPlatby.Emptyable<PersonUpdateParams.Dob>;
+            dob?: ExpressPayments.Emptyable<PersonUpdateParams.Dob>;
 
             /**
              * Documents that may be submitted to satisfy various informational requests.
@@ -3075,7 +3079,7 @@ declare module 'expressplatby' {
             /**
              * A list of alternate names or aliases that the person is known by.
              */
-            full_name_aliases?: ExpressPlatby.Emptyable<Array<string>>;
+            full_name_aliases?: ExpressPayments.Emptyable<Array<string>>;
 
             /**
              * The person's gender (International regulations require either "male" or "female").
@@ -3083,12 +3087,12 @@ declare module 'expressplatby' {
             gender?: string;
 
             /**
-             * The person's ID number, as appropriate for their country. For example, a social security number in the U.S., social insurance number in Canada, etc. Instead of the number itself, you can also provide a [PII token provided by ExpressPlatby.js](https://expressplatby.cz/docs/js/tokens_sources/create_token?type=pii).
+             * The person's ID number, as appropriate for their country. For example, a social security number in the U.S., social insurance number in Canada, etc. Instead of the number itself, you can also provide a [PII token provided by ExpressPayments.js](https://docs.epayments.network/js/tokens_sources/create_token?type=pii).
              */
             id_number?: string;
 
             /**
-             * The person's secondary ID number, as appropriate for their country, will be used for enhanced verification checks. In Thailand, this would be the laser code found on the back of an ID card. Instead of the number itself, you can also provide a [PII token provided by ExpressPlatby.js](https://expressplatby.cz/docs/js/tokens_sources/create_token?type=pii).
+             * The person's secondary ID number, as appropriate for their country, will be used for enhanced verification checks. In Thailand, this would be the laser code found on the back of an ID card. Instead of the number itself, you can also provide a [PII token provided by ExpressPayments.js](https://docs.epayments.network/js/tokens_sources/create_token?type=pii).
              */
             id_number_secondary?: string;
 
@@ -3113,9 +3117,9 @@ declare module 'expressplatby' {
             maiden_name?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * The country where the person is a national. Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)), or "XX" if unavailable.
@@ -3123,7 +3127,7 @@ declare module 'expressplatby' {
             nationality?: string;
 
             /**
-             * A [person token](https://expressplatby.cz/docs/connect/account-tokens), used to securely provide details to the person.
+             * A [person token](https://docs.epayments.network/connect/account-tokens), used to securely provide details to the person.
              */
             person_token?: string;
 
@@ -3140,7 +3144,7 @@ declare module 'expressplatby' {
             /**
              * The person's registered address.
              */
-            registered_address?: ExpressPlatby.AddressParam;
+            registered_address?: ExpressPayments.AddressParam;
 
             /**
              * The relationship that this person has with the account's legal entity.
@@ -3196,21 +3200,21 @@ declare module 'expressplatby' {
             namespace Documents {
                 interface CompanyAuthorization {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface Passport {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
 
                 interface Visa {
                     /**
-                     * One or more document ids returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `account_requirement`.
+                     * One or more document ids returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `account_requirement`.
                      */
                     files?: Array<string>;
                 }
@@ -3235,7 +3239,7 @@ declare module 'expressplatby' {
                 /**
                  * The percent owned by the person of the account's legal entity.
                  */
-                percent_ownership?: ExpressPlatby.Emptyable<number>;
+                percent_ownership?: ExpressPayments.Emptyable<number>;
 
                 /**
                  * Whether the person is authorized as the primary representative of the account. This is the person nominated by the business to provide information about themselves, and general information about the account. There can only be one representative at any given time. At the time the account is created, this person should be set to the person responsible for opening the account.
@@ -3263,24 +3267,24 @@ declare module 'expressplatby' {
             namespace Verification {
                 interface AdditionalDocument {
                     /**
-                     * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                     * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                      */
                     back?: string;
 
                     /**
-                     * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                     * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                      */
                     front?: string;
                 }
 
                 interface Document {
                     /**
-                     * The back of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                     * The back of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                      */
                     back?: string;
 
                     /**
-                     * The front of an ID returned by a [file upload](https://expressplatby.cz/docs/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
+                     * The front of an ID returned by a [file upload](https://docs.epayments.network/api#create_file) with a `purpose` value of `identity_document`. The uploaded file needs to be a color image (smaller than 8,000px by 8,000px), in JPG, PNG, or PDF format, and less than 10 MB in size.
                      */
                     front?: string;
                 }
@@ -3289,20 +3293,20 @@ declare module 'expressplatby' {
 
         class AccountsResource {
             /**
-             * With [Connect](https://expressplatby.cz/docs/connect), you can create ExpressPlatby accounts for your users.
-             * To do this, you'll first need to [register your platform](https://dashboard.expressplatby.cz/account/applications/settings).
+             * With [Connect](https://docs.epayments.network/connect), you can create ExpressPayments accounts for your users.
+             * To do this, you'll first need to [register your platform](https://dashboard.epayments.network/account/applications/settings).
              *
-             * If you've already collected information for your connected accounts, you [can pre-fill that information](https://expressplatby.cz/docs/connect/best-practices#onboarding) when
+             * If you've already collected information for your connected accounts, you [can pre-fill that information](https://docs.epayments.network/connect/best-practices#onboarding) when
              * creating the account. Connect Onboarding won't ask for the pre-filled information during account onboarding.
              * You can pre-fill any information on the account.
              */
             create(
                 params?: AccountCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Account>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Account>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Account>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Account>>;
 
             /**
              * Retrieves the details of an account.
@@ -3310,10 +3314,10 @@ declare module 'expressplatby' {
             retrieve(
                 params?: AccountRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Account>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Account>>;
             retrieve(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Account>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Account>>;
 
             /**
              * Retrieves the details of an account.
@@ -3322,57 +3326,61 @@ declare module 'expressplatby' {
                 id: string,
                 params?: AccountRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Account>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Account>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Account>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Account>>;
 
             /**
-             * Updates a [connected account](https://expressplatby.cz/docs/connect/accounts) by setting the values of the parameters passed. Any parameters not provided are
+             * Updates a [connected account](https://docs.epayments.network/connect/accounts) by setting the values of the parameters passed. Any parameters not provided are
              * left unchanged.
              *
              * For Custom accounts, you can update any information on the account. For other accounts, you can update all information until that
-             * account has started to go through Connect Onboarding. Once you create an [Account Link](https://expressplatby.cz/docs/api/account_links)
+             * account has started to go through Connect Onboarding. Once you create an [Account Link](https://docs.epayments.network/api/account_links)
              * for a Standard or Express account, some parameters can no longer be changed. These are marked as Custom Only or Custom and Express
              * below.
              *
-             * To update your own account, use the [Dashboard](https://dashboard.expressplatby.cz/account). Refer to our
-             * [Connect](https://expressplatby.cz/docs/connect/updating-accounts) documentation to learn more about updating accounts.
+             * To update your own account, use the [Dashboard](https://dashboard.epayments.network/account). Refer to our
+             * [Connect](https://docs.epayments.network/connect/updating-accounts) documentation to learn more about updating accounts.
              */
             update(
                 id: string,
                 params?: AccountUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Account>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Account>>;
 
             /**
-             * Returns a list of accounts connected to your platform via [Connect](https://expressplatby.cz/docs/connect). If you're not a platform, the list is empty.
+             * Returns a list of accounts connected to your platform via [Connect](https://docs.epayments.network/connect). If you're not a platform, the list is empty.
              */
             list(
                 params?: AccountListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Account>;
+            ): ApiListPromise<ExpressPayments.Account>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Account>;
+            ): ApiListPromise<ExpressPayments.Account>;
 
             /**
-             * With [Connect](https://expressplatby.cz/docs/connect), you can delete accounts you manage.
+             * With [Connect](https://docs.epayments.network/connect), you can delete accounts you manage.
              *
              * Accounts created using test-mode keys can be deleted at any time. Standard accounts created using live-mode keys cannot be deleted. Custom or Express accounts created using live-mode keys can only be deleted once all balances are zero.
              *
-             * If you want to delete your own account, use the [account information tab in your account settings](https://dashboard.expressplatby.cz/account) instead.
+             * If you want to delete your own account, use the [account information tab in your account settings](https://dashboard.epayments.network/account) instead.
              */
             del(
                 id: string,
                 params?: AccountDeleteParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedAccount>>;
+            ): Promise<
+                ExpressPayments.Response<ExpressPayments.DeletedAccount>
+            >;
             del(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedAccount>>;
+            ): Promise<
+                ExpressPayments.Response<ExpressPayments.DeletedAccount>
+            >;
 
             /**
              * Create an external account for a given account.
@@ -3382,25 +3390,25 @@ declare module 'expressplatby' {
                 params: ExternalAccountCreateParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.BankAccount | ExpressPlatby.Card
+                ExpressPayments.Response<
+                    ExpressPayments.BankAccount | ExpressPayments.Card
                 >
             >;
 
             /**
-             * Creates a single-use login link for an Express account to access their ExpressPlatby dashboard.
+             * Creates a single-use login link for an Express account to access their ExpressPayments dashboard.
              *
-             * You may only create login links for [Express accounts](https://expressplatby.cz/docs/connect/express-accounts) connected to your platform.
+             * You may only create login links for [Express accounts](https://docs.epayments.network/connect/express-accounts) connected to your platform.
              */
             createLoginLink(
                 id: string,
                 params?: LoginLinkCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.LoginLink>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.LoginLink>>;
             createLoginLink(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.LoginLink>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.LoginLink>>;
 
             /**
              * Creates a new person.
@@ -3409,11 +3417,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PersonCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Person>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Person>>;
             createPerson(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Person>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Person>>;
 
             /**
              * Delete a specified external account for a given account.
@@ -3424,8 +3432,9 @@ declare module 'expressplatby' {
                 params?: ExternalAccountDeleteParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.DeletedBankAccount | ExpressPlatby.DeletedCard
+                ExpressPayments.Response<
+                    | ExpressPayments.DeletedBankAccount
+                    | ExpressPayments.DeletedCard
                 >
             >;
             deleteExternalAccount(
@@ -3433,8 +3442,9 @@ declare module 'expressplatby' {
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.DeletedBankAccount | ExpressPlatby.DeletedCard
+                ExpressPayments.Response<
+                    | ExpressPayments.DeletedBankAccount
+                    | ExpressPayments.DeletedCard
                 >
             >;
 
@@ -3446,12 +3456,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PersonDeleteParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedPerson>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.DeletedPerson>>;
             deletePerson(
                 accountId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedPerson>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.DeletedPerson>>;
 
             /**
              * Returns a list of capabilities associated with the account. The capabilities are returned sorted by creation date, with the most recent capability appearing first.
@@ -3460,11 +3470,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CapabilityListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Capability>;
+            ): ApiListPromise<ExpressPayments.Capability>;
             listCapabilities(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Capability>;
+            ): ApiListPromise<ExpressPayments.Capability>;
 
             /**
              * List external accounts for an account.
@@ -3473,11 +3483,15 @@ declare module 'expressplatby' {
                 id: string,
                 params?: ExternalAccountListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.BankAccount | ExpressPlatby.Card>;
+            ): ApiListPromise<
+                ExpressPayments.BankAccount | ExpressPayments.Card
+            >;
             listExternalAccounts(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.BankAccount | ExpressPlatby.Card>;
+            ): ApiListPromise<
+                ExpressPayments.BankAccount | ExpressPayments.Card
+            >;
 
             /**
              * Returns a list of people associated with the account's legal entity. The people are returned sorted by creation date, with the most recent people appearing first.
@@ -3486,14 +3500,14 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PersonListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Person>;
+            ): ApiListPromise<ExpressPayments.Person>;
             listPersons(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Person>;
+            ): ApiListPromise<ExpressPayments.Person>;
 
             /**
-             * With [Connect](https://expressplatby.cz/docs/connect), you may flag accounts as suspicious.
+             * With [Connect](https://docs.epayments.network/connect), you may flag accounts as suspicious.
              *
              * Test-mode Custom and Express accounts can be rejected at any time. Accounts created using live-mode keys may only be rejected once all balances are zero.
              */
@@ -3501,7 +3515,7 @@ declare module 'expressplatby' {
                 id: string,
                 params: AccountRejectParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Account>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Account>>;
 
             /**
              * Retrieves information about the specified Account Capability.
@@ -3511,12 +3525,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CapabilityRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Capability>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Capability>>;
             retrieveCapability(
                 accountId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Capability>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Capability>>;
 
             /**
              * Retrieve a specified external account for a given account.
@@ -3527,8 +3541,8 @@ declare module 'expressplatby' {
                 params?: ExternalAccountRetrieveParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.BankAccount | ExpressPlatby.Card
+                ExpressPayments.Response<
+                    ExpressPayments.BankAccount | ExpressPayments.Card
                 >
             >;
             retrieveExternalAccount(
@@ -3536,8 +3550,8 @@ declare module 'expressplatby' {
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.BankAccount | ExpressPlatby.Card
+                ExpressPayments.Response<
+                    ExpressPayments.BankAccount | ExpressPayments.Card
                 >
             >;
 
@@ -3549,12 +3563,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PersonRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Person>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Person>>;
             retrievePerson(
                 accountId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Person>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Person>>;
 
             /**
              * Updates an existing Account Capability.
@@ -3564,15 +3578,15 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CapabilityUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Capability>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Capability>>;
             updateCapability(
                 accountId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Capability>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Capability>>;
 
             /**
-             * Updates the metadata, account holder name, account holder type of a bank account belonging to a [Custom account](https://expressplatby.cz/docs/connect/custom-accounts), and optionally sets it as the default for its currency. Other bank account details are not editable by design.
+             * Updates the metadata, account holder name, account holder type of a bank account belonging to a [Custom account](https://docs.epayments.network/connect/custom-accounts), and optionally sets it as the default for its currency. Other bank account details are not editable by design.
              *
              * You can re-enable a disabled bank account by performing an update call without providing any arguments or changes.
              */
@@ -3582,8 +3596,8 @@ declare module 'expressplatby' {
                 params?: ExternalAccountUpdateParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.BankAccount | ExpressPlatby.Card
+                ExpressPayments.Response<
+                    ExpressPayments.BankAccount | ExpressPayments.Card
                 >
             >;
             updateExternalAccount(
@@ -3591,8 +3605,8 @@ declare module 'expressplatby' {
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<
-                    ExpressPlatby.BankAccount | ExpressPlatby.Card
+                ExpressPayments.Response<
+                    ExpressPayments.BankAccount | ExpressPayments.Card
                 >
             >;
 
@@ -3604,12 +3618,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PersonUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Person>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Person>>;
             updatePerson(
                 accountId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Person>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Person>>;
         }
     }
 }

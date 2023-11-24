@@ -1,5 +1,5 @@
 import {
-    ExpressPlatbyResourceObject,
+    ExpressPaymentsResourceObject,
     MultipartRequestData,
     RequestData,
     RequestHeaders,
@@ -76,7 +76,7 @@ const multipartDataGenerator = (
 };
 
 export function multipartRequestDataProcessor(
-    this: ExpressPlatbyResourceObject,
+    this: ExpressPaymentsResourceObject,
     method: string,
     data: RequestData,
     headers: RequestHeaders,
@@ -88,7 +88,7 @@ export function multipartRequestDataProcessor(
         return callback(null, stringifyRequestData(data));
     }
 
-    this._expressPlatby._platformFunctions
+    this._expressPayments._platformFunctions
         .tryBufferData(data)
         .then((bufferedData: MultipartRequestData) => {
             const buffer = multipartDataGenerator(

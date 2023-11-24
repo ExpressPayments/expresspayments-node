@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface SubscriptionCreateParams {
             /**
              * The identifier of the customer to subscribe.
@@ -14,7 +14,7 @@ declare module 'expressplatby' {
             add_invoice_items?: Array<SubscriptionCreateParams.AddInvoiceItem>;
 
             /**
-             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPlatby account. The request must be made by a platform account on a connected account in order to set an application fee percentage. For more information, see the application fees [documentation](https://expressplatby.cz/docs/connect/subscriptions#collecting-fees-on-subscriptions).
+             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPayments account. The request must be made by a platform account on a connected account in order to set an application fee percentage. For more information, see the application fees [documentation](https://docs.epayments.network/connect/subscriptions#collecting-fees-on-subscriptions).
              */
             application_fee_percent?: number;
 
@@ -29,14 +29,14 @@ declare module 'expressplatby' {
             backdate_start_date?: number;
 
             /**
-             * A future timestamp to anchor the subscription's [billing cycle](https://expressplatby.cz/docs/subscriptions/billing-cycle). This is used to determine the date of the first full invoice, and, for plans with `month` or `year` intervals, the day of the month for subsequent invoices. The timestamp is in UTC format.
+             * A future timestamp to anchor the subscription's [billing cycle](https://docs.epayments.network/subscriptions/billing-cycle). This is used to determine the date of the first full invoice, and, for plans with `month` or `year` intervals, the day of the month for subsequent invoices. The timestamp is in UTC format.
              */
             billing_cycle_anchor?: number;
 
             /**
              * Define thresholds at which an invoice will be sent, and the subscription advanced to a new billing period. Pass an empty string to remove previously-defined thresholds.
              */
-            billing_thresholds?: ExpressPlatby.Emptyable<
+            billing_thresholds?: ExpressPayments.Emptyable<
                 SubscriptionCreateParams.BillingThresholds
             >;
 
@@ -51,7 +51,7 @@ declare module 'expressplatby' {
             cancel_at_period_end?: boolean;
 
             /**
-             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPlatby will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, ExpressPlatby will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
+             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPayments will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, ExpressPayments will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
              */
             collection_method?: SubscriptionCreateParams.CollectionMethod;
 
@@ -61,7 +61,7 @@ declare module 'expressplatby' {
             coupon?: string;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency?: string;
 
@@ -71,22 +71,22 @@ declare module 'expressplatby' {
             days_until_due?: number;
 
             /**
-             * ID of the default payment method for the subscription. It must belong to the customer associated with the subscription. This takes precedence over `default_source`. If neither are set, invoices will use the customer's [invoice_settings.default_payment_method](https://expressplatby.cz/docs/api/customers/object#customer_object-invoice_settings-default_payment_method) or [default_source](https://expressplatby.cz/docs/api/customers/object#customer_object-default_source).
+             * ID of the default payment method for the subscription. It must belong to the customer associated with the subscription. This takes precedence over `default_source`. If neither are set, invoices will use the customer's [invoice_settings.default_payment_method](https://docs.epayments.network/api/customers/object#customer_object-invoice_settings-default_payment_method) or [default_source](https://docs.epayments.network/api/customers/object#customer_object-default_source).
              */
             default_payment_method?: string;
 
             /**
-             * ID of the default payment source for the subscription. It must belong to the customer associated with the subscription and be in a chargeable state. If `default_payment_method` is also set, `default_payment_method` will take precedence. If neither are set, invoices will use the customer's [invoice_settings.default_payment_method](https://expressplatby.cz/docs/api/customers/object#customer_object-invoice_settings-default_payment_method) or [default_source](https://expressplatby.cz/docs/api/customers/object#customer_object-default_source).
+             * ID of the default payment source for the subscription. It must belong to the customer associated with the subscription and be in a chargeable state. If `default_payment_method` is also set, `default_payment_method` will take precedence. If neither are set, invoices will use the customer's [invoice_settings.default_payment_method](https://docs.epayments.network/api/customers/object#customer_object-invoice_settings-default_payment_method) or [default_source](https://docs.epayments.network/api/customers/object#customer_object-default_source).
              */
             default_source?: string;
 
             /**
              * The tax rates that will apply to any subscription item that does not have `tax_rates` set. Invoices created will have their `default_tax_rates` populated from the subscription.
              */
-            default_tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+            default_tax_rates?: ExpressPayments.Emptyable<Array<string>>;
 
             /**
-             * The subscription's description, meant to be displayable to the customer. Use this field to optionally store an explanation of the subscription for rendering in ExpressPlatby surfaces.
+             * The subscription's description, meant to be displayable to the customer. Use this field to optionally store an explanation of the subscription for rendering in ExpressPayments surfaces.
              */
             description?: string;
 
@@ -101,9 +101,9 @@ declare module 'expressplatby' {
             items?: Array<SubscriptionCreateParams.Item>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Indicates if a customer is on or off-session while an invoice payment is attempted.
@@ -113,16 +113,16 @@ declare module 'expressplatby' {
             /**
              * The account on behalf of which to charge, for each of the subscription's invoices.
              */
-            on_behalf_of?: ExpressPlatby.Emptyable<string>;
+            on_behalf_of?: ExpressPayments.Emptyable<string>;
 
             /**
              * Only applies to subscriptions with `collection_method=charge_automatically`.
              *
-             * Use `allow_incomplete` to create subscriptions with `status=incomplete` if the first invoice cannot be paid. Creating subscriptions with this status allows you to manage scenarios where additional user actions are needed to pay a subscription's invoice. For example, SCA regulation may require 3DS authentication to complete payment. See the [SCA Migration Guide](https://expressplatby.cz/docs/billing/migration/strong-customer-authentication) for Billing to learn more. This is the default behavior.
+             * Use `allow_incomplete` to create subscriptions with `status=incomplete` if the first invoice cannot be paid. Creating subscriptions with this status allows you to manage scenarios where additional user actions are needed to pay a subscription's invoice. For example, SCA regulation may require 3DS authentication to complete payment. See the [SCA Migration Guide](https://docs.epayments.network/billing/migration/strong-customer-authentication) for Billing to learn more. This is the default behavior.
              *
-             * Use `default_incomplete` to create Subscriptions with `status=incomplete` when the first invoice requires payment, otherwise start as active. Subscriptions transition to `status=active` when successfully confirming the payment intent on the first invoice. This allows simpler management of scenarios where additional user actions are needed to pay a subscription's invoice. Such as failed payments, [SCA regulation](https://expressplatby.cz/docs/billing/migration/strong-customer-authentication), or collecting a mandate for a bank debit payment method. If the payment intent is not confirmed within 23 hours subscriptions transition to `status=incomplete_expired`, which is a terminal state.
+             * Use `default_incomplete` to create Subscriptions with `status=incomplete` when the first invoice requires payment, otherwise start as active. Subscriptions transition to `status=active` when successfully confirming the payment intent on the first invoice. This allows simpler management of scenarios where additional user actions are needed to pay a subscription's invoice. Such as failed payments, [SCA regulation](https://docs.epayments.network/billing/migration/strong-customer-authentication), or collecting a mandate for a bank debit payment method. If the payment intent is not confirmed within 23 hours subscriptions transition to `status=incomplete_expired`, which is a terminal state.
              *
-             * Use `error_if_incomplete` if you want ExpressPlatby to return an HTTP 402 status code if a subscription's first invoice cannot be paid. For example, if a payment method requires 3DS authentication due to SCA regulation and further user action is needed, this parameter does not create a subscription and returns an error instead. This was the default behavior for API versions prior to 2022-12-31. See the [changelog](https://expressplatby.cz/docs/upgrades#2022-12-31) to learn more.
+             * Use `error_if_incomplete` if you want ExpressPayments to return an HTTP 402 status code if a subscription's first invoice cannot be paid. For example, if a payment method requires 3DS authentication due to SCA regulation and further user action is needed, this parameter does not create a subscription and returns an error instead. This was the default behavior for API versions prior to 2022-12-31. See the [changelog](https://docs.epayments.network/upgrades#2022-12-31) to learn more.
              *
              * `pending_if_incomplete` is only used with updates and cannot be passed when creating a subscription.
              *
@@ -136,9 +136,9 @@ declare module 'expressplatby' {
             payment_settings?: SubscriptionCreateParams.PaymentSettings;
 
             /**
-             * Specifies an interval for how often to bill for any pending invoice items. It is analogous to call [Create an invoice](https://expressplatby.cz/docs/api#create_invoice) for the given subscription at the specified interval.
+             * Specifies an interval for how often to bill for any pending invoice items. It is analogous to call [Create an invoice](https://docs.epayments.network/api#create_invoice) for the given subscription at the specified interval.
              */
-            pending_invoice_item_interval?: ExpressPlatby.Emptyable<
+            pending_invoice_item_interval?: ExpressPayments.Emptyable<
                 SubscriptionCreateParams.PendingInvoiceItemInterval
             >;
 
@@ -148,7 +148,7 @@ declare module 'expressplatby' {
             promotion_code?: string;
 
             /**
-             * Determines how to handle [prorations](https://expressplatby.cz/docs/subscriptions/billing-cycle#prorations) resulting from the `billing_cycle_anchor`. If no value is passed, the default is `create_prorations`.
+             * Determines how to handle [prorations](https://docs.epayments.network/subscriptions/billing-cycle#prorations) resulting from the `billing_cycle_anchor`. If no value is passed, the default is `create_prorations`.
              */
             proration_behavior?: SubscriptionCreateParams.ProrationBehavior;
 
@@ -158,17 +158,17 @@ declare module 'expressplatby' {
             transfer_data?: SubscriptionCreateParams.TransferData;
 
             /**
-             * Unix timestamp representing the end of the trial period the customer will get before being charged for the first time. If set, trial_end will override the default trial period of the plan the customer is being subscribed to. The special value `now` can be provided to end the customer's trial immediately. Can be at most two years from `billing_cycle_anchor`. See [Using trial periods on subscriptions](https://expressplatby.cz/docs/billing/subscriptions/trials) to learn more.
+             * Unix timestamp representing the end of the trial period the customer will get before being charged for the first time. If set, trial_end will override the default trial period of the plan the customer is being subscribed to. The special value `now` can be provided to end the customer's trial immediately. Can be at most two years from `billing_cycle_anchor`. See [Using trial periods on subscriptions](https://docs.epayments.network/billing/subscriptions/trials) to learn more.
              */
             trial_end?: 'now' | number;
 
             /**
-             * Indicates if a plan's `trial_period_days` should be applied to the subscription. Setting `trial_end` per subscription is preferred, and this defaults to `false`. Setting this flag to `true` together with `trial_end` is not allowed. See [Using trial periods on subscriptions](https://expressplatby.cz/docs/billing/subscriptions/trials) to learn more.
+             * Indicates if a plan's `trial_period_days` should be applied to the subscription. Setting `trial_end` per subscription is preferred, and this defaults to `false`. Setting this flag to `true` together with `trial_end` is not allowed. See [Using trial periods on subscriptions](https://docs.epayments.network/billing/subscriptions/trials) to learn more.
              */
             trial_from_plan?: boolean;
 
             /**
-             * Integer representing the number of trial period days before the customer is charged for the first time. This will always overwrite any trials that might apply via a subscribed plan. See [Using trial periods on subscriptions](https://expressplatby.cz/docs/billing/subscriptions/trials) to learn more.
+             * Integer representing the number of trial period days before the customer is charged for the first time. This will always overwrite any trials that might apply via a subscribed plan. See [Using trial periods on subscriptions](https://docs.epayments.network/billing/subscriptions/trials) to learn more.
              */
             trial_period_days?: number;
 
@@ -186,7 +186,7 @@ declare module 'expressplatby' {
                 price?: string;
 
                 /**
-                 * Data used to generate a new [Price](https://expressplatby.cz/docs/api/prices) object inline.
+                 * Data used to generate a new [Price](https://docs.epayments.network/api/prices) object inline.
                  */
                 price_data?: AddInvoiceItem.PriceData;
 
@@ -198,13 +198,13 @@ declare module 'expressplatby' {
                 /**
                  * The tax rates which apply to the item. When set, the `default_tax_rates` do not apply to this item.
                  */
-                tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+                tax_rates?: ExpressPayments.Emptyable<Array<string>>;
             }
 
             namespace AddInvoiceItem {
                 interface PriceData {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
@@ -214,7 +214,7 @@ declare module 'expressplatby' {
                     product: string;
 
                     /**
-                     * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                     * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                      */
                     tax_behavior?: PriceData.TaxBehavior;
 
@@ -262,14 +262,14 @@ declare module 'expressplatby' {
                 /**
                  * Define thresholds at which an invoice will be sent, and the subscription advanced to a new billing period. When updating, pass an empty string to remove previously-defined thresholds.
                  */
-                billing_thresholds?: ExpressPlatby.Emptyable<
+                billing_thresholds?: ExpressPayments.Emptyable<
                     Item.BillingThresholds
                 >;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * Plan ID for this item, as a string.
@@ -282,7 +282,7 @@ declare module 'expressplatby' {
                 price?: string;
 
                 /**
-                 * Data used to generate a new [Price](https://expressplatby.cz/docs/api/prices) object inline.
+                 * Data used to generate a new [Price](https://docs.epayments.network/api/prices) object inline.
                  */
                 price_data?: Item.PriceData;
 
@@ -292,22 +292,22 @@ declare module 'expressplatby' {
                 quantity?: number;
 
                 /**
-                 * A list of [Tax Rate](https://expressplatby.cz/docs/api/tax_rates) ids. These Tax Rates will override the [`default_tax_rates`](https://expressplatby.cz/docs/api/subscriptions/create#create_subscription-default_tax_rates) on the Subscription. When updating, pass an empty string to remove previously-defined tax rates.
+                 * A list of [Tax Rate](https://docs.epayments.network/api/tax_rates) ids. These Tax Rates will override the [`default_tax_rates`](https://docs.epayments.network/api/subscriptions/create#create_subscription-default_tax_rates) on the Subscription. When updating, pass an empty string to remove previously-defined tax rates.
                  */
-                tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+                tax_rates?: ExpressPayments.Emptyable<Array<string>>;
             }
 
             namespace Item {
                 interface BillingThresholds {
                     /**
-                     * Number of units that meets the billing threshold to advance the subscription to a new billing period (e.g., it takes 10 $5 units to meet a $50 [monetary threshold](https://expressplatby.cz/docs/api/subscriptions/update#update_subscription-billing_thresholds-amount_gte))
+                     * Number of units that meets the billing threshold to advance the subscription to a new billing period (e.g., it takes 10 $5 units to meet a $50 [monetary threshold](https://docs.epayments.network/api/subscriptions/update#update_subscription-billing_thresholds-amount_gte))
                      */
                     usage_gte: number;
                 }
 
                 interface PriceData {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
@@ -322,7 +322,7 @@ declare module 'expressplatby' {
                     recurring: PriceData.Recurring;
 
                     /**
-                     * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                     * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                      */
                     tax_behavior?: PriceData.TaxBehavior;
 
@@ -374,14 +374,14 @@ declare module 'expressplatby' {
                 payment_method_options?: PaymentSettings.PaymentMethodOptions;
 
                 /**
-                 * The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, ExpressPlatby attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.expressplatby.cz/settings/billing/invoice).
+                 * The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, ExpressPayments attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.epayments.network/settings/billing/invoice).
                  */
-                payment_method_types?: ExpressPlatby.Emptyable<
+                payment_method_types?: ExpressPayments.Emptyable<
                     Array<PaymentSettings.PaymentMethodType>
                 >;
 
                 /**
-                 * Either `off`, or `on_subscription`. With `on_subscription` ExpressPlatby updates `subscription.default_payment_method` when a subscription payment succeeds.
+                 * Either `off`, or `on_subscription`. With `on_subscription` ExpressPayments updates `subscription.default_payment_method` when a subscription payment succeeds.
                  */
                 save_default_payment_method?: PaymentSettings.SaveDefaultPaymentMethod;
             }
@@ -391,40 +391,40 @@ declare module 'expressplatby' {
                     /**
                      * This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent.
                      */
-                    acss_debit?: ExpressPlatby.Emptyable<
+                    acss_debit?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.AcssDebit
                     >;
 
                     /**
                      * This sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent.
                      */
-                    bancontact?: ExpressPlatby.Emptyable<
+                    bancontact?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.Bancontact
                     >;
 
                     /**
                      * This sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent.
                      */
-                    card?: ExpressPlatby.Emptyable<PaymentMethodOptions.Card>;
+                    card?: ExpressPayments.Emptyable<PaymentMethodOptions.Card>;
 
                     /**
                      * This sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent.
                      */
-                    customer_balance?: ExpressPlatby.Emptyable<
+                    customer_balance?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.CustomerBalance
                     >;
 
                     /**
                      * This sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent.
                      */
-                    konbini?: ExpressPlatby.Emptyable<
+                    konbini?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.Konbini
                     >;
 
                     /**
                      * This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent.
                      */
-                    us_bank_account?: ExpressPlatby.Emptyable<
+                    us_bank_account?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.UsBankAccount
                     >;
                 }
@@ -483,7 +483,7 @@ declare module 'expressplatby' {
                         network?: Card.Network;
 
                         /**
-                         * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://expressplatby.cz/docs/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Read our guide on [manually requesting 3D Secure](https://expressplatby.cz/docs/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
+                         * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://docs.epayments.network/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Read our guide on [manually requesting 3D Secure](https://docs.epayments.network/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
                          */
                         request_three_d_secure?: Card.RequestThreeDSecure;
                     }
@@ -657,7 +657,7 @@ declare module 'expressplatby' {
                 amount_percent?: number;
 
                 /**
-                 * ID of an existing, connected ExpressPlatby account.
+                 * ID of an existing, connected ExpressPayments account.
                  */
                 destination: string;
             }
@@ -700,7 +700,7 @@ declare module 'expressplatby' {
             add_invoice_items?: Array<SubscriptionUpdateParams.AddInvoiceItem>;
 
             /**
-             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPlatby account. The request must be made by a platform account on a connected account in order to set an application fee percentage. For more information, see the application fees [documentation](https://expressplatby.cz/docs/connect/subscriptions#collecting-fees-on-subscriptions).
+             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPayments account. The request must be made by a platform account on a connected account in order to set an application fee percentage. For more information, see the application fees [documentation](https://docs.epayments.network/connect/subscriptions#collecting-fees-on-subscriptions).
              */
             application_fee_percent?: number;
 
@@ -710,21 +710,21 @@ declare module 'expressplatby' {
             automatic_tax?: SubscriptionUpdateParams.AutomaticTax;
 
             /**
-             * Either `now` or `unchanged`. Setting the value to `now` resets the subscription's billing cycle anchor to the current time (in UTC). For more information, see the billing cycle [documentation](https://expressplatby.cz/docs/billing/subscriptions/billing-cycle).
+             * Either `now` or `unchanged`. Setting the value to `now` resets the subscription's billing cycle anchor to the current time (in UTC). For more information, see the billing cycle [documentation](https://docs.epayments.network/billing/subscriptions/billing-cycle).
              */
             billing_cycle_anchor?: SubscriptionUpdateParams.BillingCycleAnchor;
 
             /**
              * Define thresholds at which an invoice will be sent, and the subscription advanced to a new billing period. Pass an empty string to remove previously-defined thresholds.
              */
-            billing_thresholds?: ExpressPlatby.Emptyable<
+            billing_thresholds?: ExpressPayments.Emptyable<
                 SubscriptionUpdateParams.BillingThresholds
             >;
 
             /**
              * A timestamp at which the subscription should cancel. If set to a date before the current period ends, this will cause a proration if prorations have been enabled using `proration_behavior`. If set during a future period, this will always cause a proration for that period.
              */
-            cancel_at?: ExpressPlatby.Emptyable<number>;
+            cancel_at?: ExpressPayments.Emptyable<number>;
 
             /**
              * Boolean indicating whether this subscription should cancel at the end of the current period.
@@ -737,7 +737,7 @@ declare module 'expressplatby' {
             cancellation_details?: SubscriptionUpdateParams.CancellationDetails;
 
             /**
-             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPlatby will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, ExpressPlatby will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
+             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPayments will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, ExpressPayments will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
              */
             collection_method?: SubscriptionUpdateParams.CollectionMethod;
 
@@ -752,22 +752,22 @@ declare module 'expressplatby' {
             days_until_due?: number;
 
             /**
-             * ID of the default payment method for the subscription. It must belong to the customer associated with the subscription. This takes precedence over `default_source`. If neither are set, invoices will use the customer's [invoice_settings.default_payment_method](https://expressplatby.cz/docs/api/customers/object#customer_object-invoice_settings-default_payment_method) or [default_source](https://expressplatby.cz/docs/api/customers/object#customer_object-default_source).
+             * ID of the default payment method for the subscription. It must belong to the customer associated with the subscription. This takes precedence over `default_source`. If neither are set, invoices will use the customer's [invoice_settings.default_payment_method](https://docs.epayments.network/api/customers/object#customer_object-invoice_settings-default_payment_method) or [default_source](https://docs.epayments.network/api/customers/object#customer_object-default_source).
              */
             default_payment_method?: string;
 
             /**
-             * ID of the default payment source for the subscription. It must belong to the customer associated with the subscription and be in a chargeable state. If `default_payment_method` is also set, `default_payment_method` will take precedence. If neither are set, invoices will use the customer's [invoice_settings.default_payment_method](https://expressplatby.cz/docs/api/customers/object#customer_object-invoice_settings-default_payment_method) or [default_source](https://expressplatby.cz/docs/api/customers/object#customer_object-default_source).
+             * ID of the default payment source for the subscription. It must belong to the customer associated with the subscription and be in a chargeable state. If `default_payment_method` is also set, `default_payment_method` will take precedence. If neither are set, invoices will use the customer's [invoice_settings.default_payment_method](https://docs.epayments.network/api/customers/object#customer_object-invoice_settings-default_payment_method) or [default_source](https://docs.epayments.network/api/customers/object#customer_object-default_source).
              */
             default_source?: string;
 
             /**
              * The tax rates that will apply to any subscription item that does not have `tax_rates` set. Invoices created will have their `default_tax_rates` populated from the subscription. Pass an empty string to remove previously-defined tax rates.
              */
-            default_tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+            default_tax_rates?: ExpressPayments.Emptyable<Array<string>>;
 
             /**
-             * The subscription's description, meant to be displayable to the customer. Use this field to optionally store an explanation of the subscription for rendering in ExpressPlatby surfaces.
+             * The subscription's description, meant to be displayable to the customer. Use this field to optionally store an explanation of the subscription for rendering in ExpressPayments surfaces.
              */
             description?: string;
 
@@ -782,9 +782,9 @@ declare module 'expressplatby' {
             items?: Array<SubscriptionUpdateParams.Item>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Indicates if a customer is on or off-session while an invoice payment is attempted.
@@ -794,23 +794,23 @@ declare module 'expressplatby' {
             /**
              * The account on behalf of which to charge, for each of the subscription's invoices.
              */
-            on_behalf_of?: ExpressPlatby.Emptyable<string>;
+            on_behalf_of?: ExpressPayments.Emptyable<string>;
 
             /**
              * If specified, payment collection for this subscription will be paused.
              */
-            pause_collection?: ExpressPlatby.Emptyable<
+            pause_collection?: ExpressPayments.Emptyable<
                 SubscriptionUpdateParams.PauseCollection
             >;
 
             /**
-             * Use `allow_incomplete` to transition the subscription to `status=past_due` if a payment is required but cannot be paid. This allows you to manage scenarios where additional user actions are needed to pay a subscription's invoice. For example, SCA regulation may require 3DS authentication to complete payment. See the [SCA Migration Guide](https://expressplatby.cz/docs/billing/migration/strong-customer-authentication) for Billing to learn more. This is the default behavior.
+             * Use `allow_incomplete` to transition the subscription to `status=past_due` if a payment is required but cannot be paid. This allows you to manage scenarios where additional user actions are needed to pay a subscription's invoice. For example, SCA regulation may require 3DS authentication to complete payment. See the [SCA Migration Guide](https://docs.epayments.network/billing/migration/strong-customer-authentication) for Billing to learn more. This is the default behavior.
              *
-             * Use `default_incomplete` to transition the subscription to `status=past_due` when payment is required and await explicit confirmation of the invoice's payment intent. This allows simpler management of scenarios where additional user actions are needed to pay a subscription's invoice. Such as failed payments, [SCA regulation](https://expressplatby.cz/docs/billing/migration/strong-customer-authentication), or collecting a mandate for a bank debit payment method.
+             * Use `default_incomplete` to transition the subscription to `status=past_due` when payment is required and await explicit confirmation of the invoice's payment intent. This allows simpler management of scenarios where additional user actions are needed to pay a subscription's invoice. Such as failed payments, [SCA regulation](https://docs.epayments.network/billing/migration/strong-customer-authentication), or collecting a mandate for a bank debit payment method.
              *
-             * Use `pending_if_incomplete` to update the subscription using [pending updates](https://expressplatby.cz/docs/billing/subscriptions/pending-updates). When you use `pending_if_incomplete` you can only pass the parameters [supported by pending updates](https://expressplatby.cz/docs/billing/pending-updates-reference#supported-attributes).
+             * Use `pending_if_incomplete` to update the subscription using [pending updates](https://docs.epayments.network/billing/subscriptions/pending-updates). When you use `pending_if_incomplete` you can only pass the parameters [supported by pending updates](https://docs.epayments.network/billing/pending-updates-reference#supported-attributes).
              *
-             * Use `error_if_incomplete` if you want ExpressPlatby to return an HTTP 402 status code if a subscription's invoice cannot be paid. For example, if a payment method requires 3DS authentication due to SCA regulation and further user action is needed, this parameter does not update the subscription and returns an error instead. This was the default behavior for API versions prior to 2022-12-31. See the [changelog](https://expressplatby.cz/docs/upgrades#2019-03-14) to learn more.
+             * Use `error_if_incomplete` if you want ExpressPayments to return an HTTP 402 status code if a subscription's invoice cannot be paid. For example, if a payment method requires 3DS authentication due to SCA regulation and further user action is needed, this parameter does not update the subscription and returns an error instead. This was the default behavior for API versions prior to 2022-12-31. See the [changelog](https://docs.epayments.network/upgrades#2019-03-14) to learn more.
              */
             payment_behavior?: SubscriptionUpdateParams.PaymentBehavior;
 
@@ -820,9 +820,9 @@ declare module 'expressplatby' {
             payment_settings?: SubscriptionUpdateParams.PaymentSettings;
 
             /**
-             * Specifies an interval for how often to bill for any pending invoice items. It is analogous to call [Create an invoice](https://expressplatby.cz/docs/api#create_invoice) for the given subscription at the specified interval.
+             * Specifies an interval for how often to bill for any pending invoice items. It is analogous to call [Create an invoice](https://docs.epayments.network/api#create_invoice) for the given subscription at the specified interval.
              */
-            pending_invoice_item_interval?: ExpressPlatby.Emptyable<
+            pending_invoice_item_interval?: ExpressPayments.Emptyable<
                 SubscriptionUpdateParams.PendingInvoiceItemInterval
             >;
 
@@ -832,19 +832,19 @@ declare module 'expressplatby' {
             promotion_code?: string;
 
             /**
-             * Determines how to handle [prorations](https://expressplatby.cz/docs/subscriptions/billing-cycle#prorations) when the billing cycle changes (e.g., when switching plans, resetting `billing_cycle_anchor=now`, or starting a trial), or if an item's `quantity` changes. The default value is `create_prorations`.
+             * Determines how to handle [prorations](https://docs.epayments.network/subscriptions/billing-cycle#prorations) when the billing cycle changes (e.g., when switching plans, resetting `billing_cycle_anchor=now`, or starting a trial), or if an item's `quantity` changes. The default value is `create_prorations`.
              */
             proration_behavior?: SubscriptionUpdateParams.ProrationBehavior;
 
             /**
-             * If set, the proration will be calculated as though the subscription was updated at the given time. This can be used to apply exactly the same proration that was previewed with [upcoming invoice](https://expressplatby.cz/docs/api#upcoming_invoice) endpoint. It can also be used to implement custom proration logic, such as prorating by day instead of by second, by providing the time that you wish to use for proration calculations.
+             * If set, the proration will be calculated as though the subscription was updated at the given time. This can be used to apply exactly the same proration that was previewed with [upcoming invoice](https://docs.epayments.network/api#upcoming_invoice) endpoint. It can also be used to implement custom proration logic, such as prorating by day instead of by second, by providing the time that you wish to use for proration calculations.
              */
             proration_date?: number;
 
             /**
              * If specified, the funds from the subscription's invoices will be transferred to the destination and the ID of the resulting transfers will be found on the resulting charges. This will be unset if you POST an empty value.
              */
-            transfer_data?: ExpressPlatby.Emptyable<
+            transfer_data?: ExpressPayments.Emptyable<
                 SubscriptionUpdateParams.TransferData
             >;
 
@@ -854,7 +854,7 @@ declare module 'expressplatby' {
             trial_end?: 'now' | number;
 
             /**
-             * Indicates if a plan's `trial_period_days` should be applied to the subscription. Setting `trial_end` per subscription is preferred, and this defaults to `false`. Setting this flag to `true` together with `trial_end` is not allowed. See [Using trial periods on subscriptions](https://expressplatby.cz/docs/billing/subscriptions/trials) to learn more.
+             * Indicates if a plan's `trial_period_days` should be applied to the subscription. Setting `trial_end` per subscription is preferred, and this defaults to `false`. Setting this flag to `true` together with `trial_end` is not allowed. See [Using trial periods on subscriptions](https://docs.epayments.network/billing/subscriptions/trials) to learn more.
              */
             trial_from_plan?: boolean;
 
@@ -872,7 +872,7 @@ declare module 'expressplatby' {
                 price?: string;
 
                 /**
-                 * Data used to generate a new [Price](https://expressplatby.cz/docs/api/prices) object inline.
+                 * Data used to generate a new [Price](https://docs.epayments.network/api/prices) object inline.
                  */
                 price_data?: AddInvoiceItem.PriceData;
 
@@ -884,13 +884,13 @@ declare module 'expressplatby' {
                 /**
                  * The tax rates which apply to the item. When set, the `default_tax_rates` do not apply to this item.
                  */
-                tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+                tax_rates?: ExpressPayments.Emptyable<Array<string>>;
             }
 
             namespace AddInvoiceItem {
                 interface PriceData {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
@@ -900,7 +900,7 @@ declare module 'expressplatby' {
                     product: string;
 
                     /**
-                     * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                     * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                      */
                     tax_behavior?: PriceData.TaxBehavior;
 
@@ -953,7 +953,7 @@ declare module 'expressplatby' {
                 /**
                  * The customer submitted reason for why they cancelled, if the subscription was cancelled explicitly by the user.
                  */
-                feedback?: ExpressPlatby.Emptyable<
+                feedback?: ExpressPayments.Emptyable<
                     CancellationDetails.Feedback
                 >;
             }
@@ -976,7 +976,7 @@ declare module 'expressplatby' {
                 /**
                  * Define thresholds at which an invoice will be sent, and the subscription advanced to a new billing period. When updating, pass an empty string to remove previously-defined thresholds.
                  */
-                billing_thresholds?: ExpressPlatby.Emptyable<
+                billing_thresholds?: ExpressPayments.Emptyable<
                     Item.BillingThresholds
                 >;
 
@@ -996,9 +996,11 @@ declare module 'expressplatby' {
                 id?: string;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<
+                    ExpressPayments.MetadataParam
+                >;
 
                 /**
                  * Plan ID for this item, as a string.
@@ -1011,7 +1013,7 @@ declare module 'expressplatby' {
                 price?: string;
 
                 /**
-                 * Data used to generate a new [Price](https://expressplatby.cz/docs/api/prices) object inline.
+                 * Data used to generate a new [Price](https://docs.epayments.network/api/prices) object inline.
                  */
                 price_data?: Item.PriceData;
 
@@ -1021,22 +1023,22 @@ declare module 'expressplatby' {
                 quantity?: number;
 
                 /**
-                 * A list of [Tax Rate](https://expressplatby.cz/docs/api/tax_rates) ids. These Tax Rates will override the [`default_tax_rates`](https://expressplatby.cz/docs/api/subscriptions/create#create_subscription-default_tax_rates) on the Subscription. When updating, pass an empty string to remove previously-defined tax rates.
+                 * A list of [Tax Rate](https://docs.epayments.network/api/tax_rates) ids. These Tax Rates will override the [`default_tax_rates`](https://docs.epayments.network/api/subscriptions/create#create_subscription-default_tax_rates) on the Subscription. When updating, pass an empty string to remove previously-defined tax rates.
                  */
-                tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+                tax_rates?: ExpressPayments.Emptyable<Array<string>>;
             }
 
             namespace Item {
                 interface BillingThresholds {
                     /**
-                     * Number of units that meets the billing threshold to advance the subscription to a new billing period (e.g., it takes 10 $5 units to meet a $50 [monetary threshold](https://expressplatby.cz/docs/api/subscriptions/update#update_subscription-billing_thresholds-amount_gte))
+                     * Number of units that meets the billing threshold to advance the subscription to a new billing period (e.g., it takes 10 $5 units to meet a $50 [monetary threshold](https://docs.epayments.network/api/subscriptions/update#update_subscription-billing_thresholds-amount_gte))
                      */
                     usage_gte: number;
                 }
 
                 interface PriceData {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency: string;
 
@@ -1051,7 +1053,7 @@ declare module 'expressplatby' {
                     recurring: PriceData.Recurring;
 
                     /**
-                     * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                     * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                      */
                     tax_behavior?: PriceData.TaxBehavior;
 
@@ -1119,14 +1121,14 @@ declare module 'expressplatby' {
                 payment_method_options?: PaymentSettings.PaymentMethodOptions;
 
                 /**
-                 * The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, ExpressPlatby attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.expressplatby.cz/settings/billing/invoice).
+                 * The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, ExpressPayments attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.epayments.network/settings/billing/invoice).
                  */
-                payment_method_types?: ExpressPlatby.Emptyable<
+                payment_method_types?: ExpressPayments.Emptyable<
                     Array<PaymentSettings.PaymentMethodType>
                 >;
 
                 /**
-                 * Either `off`, or `on_subscription`. With `on_subscription` ExpressPlatby updates `subscription.default_payment_method` when a subscription payment succeeds.
+                 * Either `off`, or `on_subscription`. With `on_subscription` ExpressPayments updates `subscription.default_payment_method` when a subscription payment succeeds.
                  */
                 save_default_payment_method?: PaymentSettings.SaveDefaultPaymentMethod;
             }
@@ -1136,40 +1138,40 @@ declare module 'expressplatby' {
                     /**
                      * This sub-hash contains details about the Canadian pre-authorized debit payment method options to pass to the invoice's PaymentIntent.
                      */
-                    acss_debit?: ExpressPlatby.Emptyable<
+                    acss_debit?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.AcssDebit
                     >;
 
                     /**
                      * This sub-hash contains details about the Bancontact payment method options to pass to the invoice's PaymentIntent.
                      */
-                    bancontact?: ExpressPlatby.Emptyable<
+                    bancontact?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.Bancontact
                     >;
 
                     /**
                      * This sub-hash contains details about the Card payment method options to pass to the invoice's PaymentIntent.
                      */
-                    card?: ExpressPlatby.Emptyable<PaymentMethodOptions.Card>;
+                    card?: ExpressPayments.Emptyable<PaymentMethodOptions.Card>;
 
                     /**
                      * This sub-hash contains details about the Bank transfer payment method options to pass to the invoice's PaymentIntent.
                      */
-                    customer_balance?: ExpressPlatby.Emptyable<
+                    customer_balance?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.CustomerBalance
                     >;
 
                     /**
                      * This sub-hash contains details about the Konbini payment method options to pass to the invoice's PaymentIntent.
                      */
-                    konbini?: ExpressPlatby.Emptyable<
+                    konbini?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.Konbini
                     >;
 
                     /**
                      * This sub-hash contains details about the ACH direct debit payment method options to pass to the invoice's PaymentIntent.
                      */
-                    us_bank_account?: ExpressPlatby.Emptyable<
+                    us_bank_account?: ExpressPayments.Emptyable<
                         PaymentMethodOptions.UsBankAccount
                     >;
                 }
@@ -1228,7 +1230,7 @@ declare module 'expressplatby' {
                         network?: Card.Network;
 
                         /**
-                         * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://expressplatby.cz/docs/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Read our guide on [manually requesting 3D Secure](https://expressplatby.cz/docs/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
+                         * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://docs.epayments.network/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Read our guide on [manually requesting 3D Secure](https://docs.epayments.network/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
                          */
                         request_three_d_secure?: Card.RequestThreeDSecure;
                     }
@@ -1402,7 +1404,7 @@ declare module 'expressplatby' {
                 amount_percent?: number;
 
                 /**
-                 * ID of an existing, connected ExpressPlatby account.
+                 * ID of an existing, connected ExpressPayments account.
                  */
                 destination: string;
             }
@@ -1437,11 +1439,11 @@ declare module 'expressplatby' {
              */
             collection_method?: SubscriptionListParams.CollectionMethod;
 
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
-            current_period_end?: ExpressPlatby.RangeQueryParam | number;
+            current_period_end?: ExpressPayments.RangeQueryParam | number;
 
-            current_period_start?: ExpressPlatby.RangeQueryParam | number;
+            current_period_start?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * The ID of the customer whose subscriptions will be retrieved.
@@ -1464,7 +1466,7 @@ declare module 'expressplatby' {
             price?: string;
 
             /**
-             * The status of the subscriptions to retrieve. Passing in a value of `canceled` will return all canceled subscriptions, including those belonging to deleted customers. Pass `ended` to find subscriptions that are canceled and subscriptions that are expired due to [incomplete payment](https://expressplatby.cz/docs/billing/subscriptions/overview#subscription-statuses). Passing in a value of `all` will return subscriptions of all statuses. If no value is supplied, all subscriptions that have not been canceled are returned.
+             * The status of the subscriptions to retrieve. Passing in a value of `canceled` will return all canceled subscriptions, including those belonging to deleted customers. Pass `ended` to find subscriptions that are canceled and subscriptions that are expired due to [incomplete payment](https://docs.epayments.network/billing/subscriptions/overview#subscription-statuses). Passing in a value of `all` will return subscriptions of all statuses. If no value is supplied, all subscriptions that have not been canceled are returned.
              */
             status?: SubscriptionListParams.Status;
 
@@ -1522,7 +1524,7 @@ declare module 'expressplatby' {
                 /**
                  * The customer submitted reason for why they cancelled, if the subscription was cancelled explicitly by the user.
                  */
-                feedback?: ExpressPlatby.Emptyable<
+                feedback?: ExpressPayments.Emptyable<
                     CancellationDetails.Feedback
                 >;
             }
@@ -1572,7 +1574,7 @@ declare module 'expressplatby' {
                 /**
                  * The customer submitted reason for why they cancelled, if the subscription was cancelled explicitly by the user.
                  */
-                feedback?: ExpressPlatby.Emptyable<
+                feedback?: ExpressPayments.Emptyable<
                     CancellationDetails.Feedback
                 >;
             }
@@ -1594,7 +1596,7 @@ declare module 'expressplatby' {
 
         interface SubscriptionResumeParams {
             /**
-             * Either `now` or `unchanged`. Setting the value to `now` resets the subscription's billing cycle anchor to the current time (in UTC). Setting the value to `unchanged` advances the subscription's billing cycle anchor to the period that surrounds the current time. For more information, see the billing cycle [documentation](https://expressplatby.cz/docs/billing/subscriptions/billing-cycle).
+             * Either `now` or `unchanged`. Setting the value to `now` resets the subscription's billing cycle anchor to the current time (in UTC). Setting the value to `unchanged` advances the subscription's billing cycle anchor to the period that surrounds the current time. For more information, see the billing cycle [documentation](https://docs.epayments.network/billing/subscriptions/billing-cycle).
              */
             billing_cycle_anchor?: SubscriptionResumeParams.BillingCycleAnchor;
 
@@ -1604,12 +1606,12 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Determines how to handle [prorations](https://expressplatby.cz/docs/subscriptions/billing-cycle#prorations) when the billing cycle changes (e.g., when switching plans, resetting `billing_cycle_anchor=now`, or starting a trial), or if an item's `quantity` changes. The default value is `create_prorations`.
+             * Determines how to handle [prorations](https://docs.epayments.network/subscriptions/billing-cycle#prorations) when the billing cycle changes (e.g., when switching plans, resetting `billing_cycle_anchor=now`, or starting a trial), or if an item's `quantity` changes. The default value is `create_prorations`.
              */
             proration_behavior?: SubscriptionResumeParams.ProrationBehavior;
 
             /**
-             * If set, the proration will be calculated as though the subscription was resumed at the given time. This can be used to apply exactly the same proration that was previewed with [upcoming invoice](https://expressplatby.cz/docs/api#retrieve_customer_invoice) endpoint.
+             * If set, the proration will be calculated as though the subscription was resumed at the given time. This can be used to apply exactly the same proration that was previewed with [upcoming invoice](https://docs.epayments.network/api#retrieve_customer_invoice) endpoint.
              */
             proration_date?: number;
         }
@@ -1625,7 +1627,7 @@ declare module 'expressplatby' {
 
         interface SubscriptionSearchParams {
             /**
-             * The search query string. See [search query language](https://expressplatby.cz/docs/search#search-query-language) and the list of supported [query fields for subscriptions](https://expressplatby.cz/docs/search#query-fields-for-subscriptions).
+             * The search query string. See [search query language](https://docs.epayments.network/search#search-query-language) and the list of supported [query fields for subscriptions](https://docs.epayments.network/search#query-fields-for-subscriptions).
              */
             query: string;
 
@@ -1652,13 +1654,13 @@ declare module 'expressplatby' {
              * When you create a subscription with collection_method=charge_automatically, the first invoice is finalized as part of the request.
              * The payment_behavior parameter determines the exact behavior of the initial payment.
              *
-             * To start subscriptions where the first invoice always begins in a draft status, use [subscription schedules](https://expressplatby.cz/docs/billing/subscriptions/subscription-schedules#managing) instead.
+             * To start subscriptions where the first invoice always begins in a draft status, use [subscription schedules](https://docs.epayments.network/billing/subscriptions/subscription-schedules#managing) instead.
              * Schedules provide the flexibility to model more complex billing configurations that change over time.
              */
             create(
                 params: SubscriptionCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
 
             /**
              * Retrieves the subscription with the given ID.
@@ -1667,20 +1669,20 @@ declare module 'expressplatby' {
                 id: string,
                 params?: SubscriptionRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
 
             /**
-             * Updates an existing subscription on a customer to match the specified parameters. When changing plans or quantities, we will optionally prorate the price we charge next month to make up for any price changes. To preview how the proration will be calculated, use the [upcoming invoice](https://expressplatby.cz/docs/api#upcoming_invoice) endpoint.
+             * Updates an existing subscription on a customer to match the specified parameters. When changing plans or quantities, we will optionally prorate the price we charge next month to make up for any price changes. To preview how the proration will be calculated, use the [upcoming invoice](https://docs.epayments.network/api#upcoming_invoice) endpoint.
              */
             update(
                 id: string,
                 params?: SubscriptionUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
 
             /**
              * By default, returns a list of subscriptions that have not been canceled. In order to list canceled subscriptions, specify status=canceled.
@@ -1688,44 +1690,44 @@ declare module 'expressplatby' {
             list(
                 params?: SubscriptionListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Subscription>;
+            ): ApiListPromise<ExpressPayments.Subscription>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Subscription>;
+            ): ApiListPromise<ExpressPayments.Subscription>;
 
             /**
              * Cancels a customer's subscription immediately. The customer will not be charged again for the subscription.
              *
-             * Note, however, that any pending invoice items that you've created will still be charged for at the end of the period, unless manually [deleted](https://expressplatby.cz/docs/api#delete_invoiceitem). If you've set the subscription to cancel at the end of the period, any pending prorations will also be left in place and collected at the end of the period. But if the subscription is set to cancel immediately, pending prorations will be removed.
+             * Note, however, that any pending invoice items that you've created will still be charged for at the end of the period, unless manually [deleted](https://docs.epayments.network/api#delete_invoiceitem). If you've set the subscription to cancel at the end of the period, any pending prorations will also be left in place and collected at the end of the period. But if the subscription is set to cancel immediately, pending prorations will be removed.
              *
-             * By default, upon subscription cancellation, ExpressPlatby will stop automatic collection of all finalized invoices for the customer. This is intended to prevent unexpected payment attempts after the customer has canceled a subscription. However, you can resume automatic collection of the invoices manually after subscription cancellation to have us proceed. Or, you could check for unpaid invoices before allowing the customer to cancel the subscription at all.
+             * By default, upon subscription cancellation, ExpressPayments will stop automatic collection of all finalized invoices for the customer. This is intended to prevent unexpected payment attempts after the customer has canceled a subscription. However, you can resume automatic collection of the invoices manually after subscription cancellation to have us proceed. Or, you could check for unpaid invoices before allowing the customer to cancel the subscription at all.
              */
             cancel(
                 id: string,
                 params?: SubscriptionCancelParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
             cancel(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
 
             /**
              * Cancels a customer's subscription immediately. The customer will not be charged again for the subscription.
              *
-             * Note, however, that any pending invoice items that you've created will still be charged for at the end of the period, unless manually [deleted](https://expressplatby.cz/docs/api#delete_invoiceitem). If you've set the subscription to cancel at the end of the period, any pending prorations will also be left in place and collected at the end of the period. But if the subscription is set to cancel immediately, pending prorations will be removed.
+             * Note, however, that any pending invoice items that you've created will still be charged for at the end of the period, unless manually [deleted](https://docs.epayments.network/api#delete_invoiceitem). If you've set the subscription to cancel at the end of the period, any pending prorations will also be left in place and collected at the end of the period. But if the subscription is set to cancel immediately, pending prorations will be removed.
              *
-             * By default, upon subscription cancellation, ExpressPlatby will stop automatic collection of all finalized invoices for the customer. This is intended to prevent unexpected payment attempts after the customer has canceled a subscription. However, you can resume automatic collection of the invoices manually after subscription cancellation to have us proceed. Or, you could check for unpaid invoices before allowing the customer to cancel the subscription at all.
+             * By default, upon subscription cancellation, ExpressPayments will stop automatic collection of all finalized invoices for the customer. This is intended to prevent unexpected payment attempts after the customer has canceled a subscription. However, you can resume automatic collection of the invoices manually after subscription cancellation to have us proceed. Or, you could check for unpaid invoices before allowing the customer to cancel the subscription at all.
              */
             del(
                 id: string,
                 params?: SubscriptionDeleteParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
             del(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
 
             /**
              * Removes the currently applied discount on a subscription.
@@ -1734,11 +1736,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: SubscriptionDeleteDiscountParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedDiscount>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.DeletedDiscount>>;
             deleteDiscount(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedDiscount>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.DeletedDiscount>>;
 
             /**
              * Initiates resumption of a paused subscription, optionally resetting the billing cycle anchor and creating prorations. If a resumption invoice is generated, it must be paid or marked uncollectible before the subscription will be unpaused. If payment succeeds the subscription will become active, and if payment fails the subscription will be past_due. The resumption invoice will void automatically if not paid by the expiration date.
@@ -1747,14 +1749,14 @@ declare module 'expressplatby' {
                 id: string,
                 params?: SubscriptionResumeParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
             resume(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Subscription>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Subscription>>;
 
             /**
-             * Search for subscriptions you've previously created using ExpressPlatby's [Search Query Language](https://expressplatby.cz/docs/search#search-query-language).
+             * Search for subscriptions you've previously created using ExpressPayments' [Search Query Language](https://docs.epayments.network/search#search-query-language).
              * Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating
              * conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up
              * to an hour behind during outages. Search functionality is not available to merchants in India.
@@ -1762,7 +1764,7 @@ declare module 'expressplatby' {
             search(
                 params: SubscriptionSearchParams,
                 options?: RequestOptions
-            ): ApiSearchResultPromise<ExpressPlatby.Subscription>;
+            ): ApiSearchResultPromise<ExpressPayments.Subscription>;
         }
     }
 }

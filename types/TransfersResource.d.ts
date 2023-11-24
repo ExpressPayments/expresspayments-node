@@ -1,15 +1,15 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface TransferCreateParams {
             /**
-             * 3-letter [ISO code for currency](https://expressplatby.cz/docs/payouts).
+             * 3-letter [ISO code for currency](https://docs.epayments.network/payouts).
              */
             currency: string;
 
             /**
-             * The ID of a connected ExpressPlatby account. [See the Connect documentation](https://expressplatby.cz/docs/connect/charges-transfers) for details.
+             * The ID of a connected ExpressPayments account. [See the Connect documentation](https://docs.epayments.network/connect/charges-transfers) for details.
              */
             destination: string;
 
@@ -29,12 +29,12 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
-             * You can use this parameter to transfer funds from a charge before they are added to your available balance. A pending balance will transfer immediately but the funds will not become available until the original charge becomes available. [See the Connect documentation](https://expressplatby.cz/docs/connect/charges-transfers#transfer-availability) for details.
+             * You can use this parameter to transfer funds from a charge before they are added to your available balance. A pending balance will transfer immediately but the funds will not become available until the original charge becomes available. [See the Connect documentation](https://docs.epayments.network/connect/charges-transfers#transfer-availability) for details.
              */
             source_transaction?: string;
 
@@ -44,7 +44,7 @@ declare module 'expressplatby' {
             source_type?: TransferCreateParams.SourceType;
 
             /**
-             * A string that identifies this transaction as part of a group. See the [Connect documentation](https://expressplatby.cz/docs/connect/charges-transfers#transfer-options) for details.
+             * A string that identifies this transaction as part of a group. See the [Connect documentation](https://docs.epayments.network/connect/charges-transfers#transfer-options) for details.
              */
             transfer_group?: string;
         }
@@ -72,13 +72,13 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
         }
 
         interface TransferListParams extends PaginationParams {
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Only return transfers for the destination specified by this account ID.
@@ -98,7 +98,7 @@ declare module 'expressplatby' {
 
         interface TransferReversalCreateParams {
             /**
-             * A positive integer in cents (or local equivalent) representing how much of this transfer to reverse. Can only reverse up to the unreversed amount remaining of the transfer. Partial transfer reversals are only allowed for transfers to ExpressPlatby Accounts. Defaults to the entire transfer amount.
+             * A positive integer in cents (or local equivalent) representing how much of this transfer to reverse. Can only reverse up to the un-reversed amount remaining of the transfer. Partial transfer reversals are only allowed for transfers to ExpressPayments Accounts. Defaults to the entire transfer amount.
              */
             amount?: number;
 
@@ -113,9 +113,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Boolean indicating whether the application fee should be refunded when reversing this transfer. If a full transfer reversal is given, the full application fee will be refunded. Otherwise, the application fee will be refunded with an amount proportional to the amount of the transfer reversed.
@@ -144,32 +144,32 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
         }
 
         class TransfersResource {
             /**
-             * To send funds from your ExpressPlatby account to a connected account, you create a new transfer object. Your [ExpressPlatby balance](https://expressplatby.cz/docs/api#balance) must be able to cover the transfer amount, or you'll receive an “Insufficient Funds” error.
+             * To send funds from your ExpressPayments account to a connected account, you create a new transfer object. Your [ExpressPayments balance](https://docs.epayments.network/api#balance) must be able to cover the transfer amount, or you'll receive an “Insufficient Funds” error.
              */
             create(
                 params: TransferCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Transfer>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Transfer>>;
 
             /**
-             * Retrieves the details of an existing transfer. Supply the unique transfer ID from either a transfer creation request or the transfer list, and ExpressPlatby will return the corresponding transfer information.
+             * Retrieves the details of an existing transfer. Supply the unique transfer ID from either a transfer creation request or the transfer list, and ExpressPayments will return the corresponding transfer information.
              */
             retrieve(
                 id: string,
                 params?: TransferRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Transfer>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Transfer>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Transfer>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Transfer>>;
 
             /**
              * Updates the specified transfer by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
@@ -180,7 +180,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TransferUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Transfer>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Transfer>>;
 
             /**
              * Returns a list of existing transfers sent to connected accounts. The transfers are returned in sorted order, with the most recently created transfers appearing first.
@@ -188,10 +188,10 @@ declare module 'expressplatby' {
             list(
                 params?: TransferListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Transfer>;
+            ): ApiListPromise<ExpressPayments.Transfer>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Transfer>;
+            ): ApiListPromise<ExpressPayments.Transfer>;
 
             /**
              * When you create a new reversal, you must specify a transfer to create it on.
@@ -204,11 +204,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TransferReversalCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TransferReversal>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TransferReversal>>;
             createReversal(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TransferReversal>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TransferReversal>>;
 
             /**
              * You can see a list of the reversals belonging to a specific transfer. Note that the 10 most recent reversals are always available by default on the transfer object. If you need more than those 10, you can use this API method and the limit and starting_after parameters to page through additional reversals.
@@ -217,11 +217,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TransferReversalListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.TransferReversal>;
+            ): ApiListPromise<ExpressPayments.TransferReversal>;
             listReversals(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.TransferReversal>;
+            ): ApiListPromise<ExpressPayments.TransferReversal>;
 
             /**
              * By default, you can see the 10 most recent reversals stored directly on the transfer object, but you can also retrieve details about a specific reversal stored on the transfer.
@@ -231,12 +231,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TransferReversalRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TransferReversal>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TransferReversal>>;
             retrieveReversal(
                 transferId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TransferReversal>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TransferReversal>>;
 
             /**
              * Updates the specified reversal by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
@@ -248,12 +248,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: TransferReversalUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TransferReversal>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TransferReversal>>;
             updateReversal(
                 transferId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.TransferReversal>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.TransferReversal>>;
         }
     }
 }

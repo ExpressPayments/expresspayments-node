@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface PriceCreateParams {
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -19,7 +19,7 @@ declare module 'expressplatby' {
             billing_scheme?: PriceCreateParams.BillingScheme;
 
             /**
-             * Prices defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Prices defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
              */
             currency_options?: {
                 [key: string]: PriceCreateParams.CurrencyOptions;
@@ -41,9 +41,9 @@ declare module 'expressplatby' {
             lookup_key?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * A brief description of the price, hidden from customers.
@@ -66,7 +66,7 @@ declare module 'expressplatby' {
             recurring?: PriceCreateParams.Recurring;
 
             /**
-             * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+             * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
              */
             tax_behavior?: PriceCreateParams.TaxBehavior;
 
@@ -111,7 +111,7 @@ declare module 'expressplatby' {
                 custom_unit_amount?: CurrencyOptions.CustomUnitAmount;
 
                 /**
-                 * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                 * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                  */
                 tax_behavior?: CurrencyOptions.TaxBehavior;
 
@@ -218,9 +218,9 @@ declare module 'expressplatby' {
                 id?: string;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * The product's name, meant to be displayable to the customer.
@@ -235,7 +235,7 @@ declare module 'expressplatby' {
                 statement_descriptor?: string;
 
                 /**
-                 * A [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID.
+                 * A [tax code](https://docs.epayments.network/tax/tax-categories) ID.
                  */
                 tax_code?: string;
 
@@ -262,7 +262,7 @@ declare module 'expressplatby' {
                 interval_count?: number;
 
                 /**
-                 * Default number of trial days when subscribing a customer to this price using [`trial_from_plan=true`](https://expressplatby.cz/docs/api#create_subscription-trial_from_plan).
+                 * Default number of trial days when subscribing a customer to this price using [`trial_from_plan=true`](https://docs.epayments.network/api#create_subscription-trial_from_plan).
                  */
                 trial_period_days?: number;
 
@@ -346,9 +346,9 @@ declare module 'expressplatby' {
             active?: boolean;
 
             /**
-             * Prices defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Prices defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
              */
-            currency_options?: ExpressPlatby.Emptyable<{
+            currency_options?: ExpressPayments.Emptyable<{
                 [key: string]: PriceUpdateParams.CurrencyOptions;
             }>;
 
@@ -363,9 +363,9 @@ declare module 'expressplatby' {
             lookup_key?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * A brief description of the price, hidden from customers.
@@ -375,10 +375,10 @@ declare module 'expressplatby' {
             /**
              * The recurring components of a price such as `interval` and `usage_type`.
              */
-            recurring?: ExpressPlatby.Emptyable<PriceUpdateParams.Recurring>;
+            recurring?: ExpressPayments.Emptyable<PriceUpdateParams.Recurring>;
 
             /**
-             * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+             * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
              */
             tax_behavior?: PriceUpdateParams.TaxBehavior;
 
@@ -396,7 +396,7 @@ declare module 'expressplatby' {
                 custom_unit_amount?: CurrencyOptions.CustomUnitAmount;
 
                 /**
-                 * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                 * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                  */
                 tax_behavior?: CurrencyOptions.TaxBehavior;
 
@@ -471,7 +471,7 @@ declare module 'expressplatby' {
 
             interface Recurring {
                 /**
-                 * Default number of trial days when subscribing a customer to this plan using [`trial_from_plan=true`](https://expressplatby.cz/docs/api#create_subscription-trial_from_plan).
+                 * Default number of trial days when subscribing a customer to this plan using [`trial_from_plan=true`](https://docs.epayments.network/api#create_subscription-trial_from_plan).
                  */
                 trial_period_days?: number;
             }
@@ -488,7 +488,7 @@ declare module 'expressplatby' {
             /**
              * A filter on the list, based on the object `created` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.
              */
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Only return prices for the given currency.
@@ -545,7 +545,7 @@ declare module 'expressplatby' {
 
         interface PriceSearchParams {
             /**
-             * The search query string. See [search query language](https://expressplatby.cz/docs/search#search-query-language) and the list of supported [query fields for prices](https://expressplatby.cz/docs/search#query-fields-for-prices).
+             * The search query string. See [search query language](https://docs.epayments.network/search#search-query-language) and the list of supported [query fields for prices](https://docs.epayments.network/search#query-fields-for-prices).
              */
             query: string;
 
@@ -572,7 +572,7 @@ declare module 'expressplatby' {
             create(
                 params: PriceCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Price>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Price>>;
 
             /**
              * Retrieves the price with the given ID.
@@ -581,11 +581,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PriceRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Price>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Price>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Price>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Price>>;
 
             /**
              * Updates the specified price by setting the values of the parameters passed. Any parameters not provided are left unchanged.
@@ -594,7 +594,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PriceUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Price>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Price>>;
 
             /**
              * Returns a list of your prices.
@@ -602,11 +602,11 @@ declare module 'expressplatby' {
             list(
                 params?: PriceListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Price>;
-            list(options?: RequestOptions): ApiListPromise<ExpressPlatby.Price>;
+            ): ApiListPromise<ExpressPayments.Price>;
+            list(options?: RequestOptions): ApiListPromise<ExpressPayments.Price>;
 
             /**
-             * Search for prices you've previously created using ExpressPlatby's [Search Query Language](https://expressplatby.cz/docs/search#search-query-language).
+             * Search for prices you've previously created using ExpressPayments' [Search Query Language](https://docs.epayments.network/search#search-query-language).
              * Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating
              * conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up
              * to an hour behind during outages. Search functionality is not available to merchants in India.
@@ -614,7 +614,7 @@ declare module 'expressplatby' {
             search(
                 params: PriceSearchParams,
                 options?: RequestOptions
-            ): ApiSearchResultPromise<ExpressPlatby.Price>;
+            ): ApiSearchResultPromise<ExpressPayments.Price>;
         }
     }
 }

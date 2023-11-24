@@ -1,6 +1,6 @@
 'use strict';
 
-const expressPlatby = require('../testUtils.js').getSpyableExpressPlatby();
+const expressPayments = require('../testUtils.js').getSpyableExpressPayments();
 
 const expect = require('chai').expect;
 const URL = require('url');
@@ -10,19 +10,19 @@ describe('OAuth', () => {
     describe('authorize', () => {
         describe('when a default client_id is set', () => {
             beforeEach(() => {
-                expressPlatby.setClientId('default_client_id');
+                expressPayments.setClientId('default_client_id');
             });
 
             it('Uses the correct host', () => {
-                const url = expressPlatby.oauth.authorizeUrl();
+                const url = expressPayments.oauth.authorizeUrl();
 
                 const host = URL.parse(url).hostname;
 
-                expect(host).to.equal('connect.expressplatby.cz');
+                expect(host).to.equal('connect.epayments.network');
             });
 
             it('Uses the correct path', () => {
-                const url = expressPlatby.oauth.authorizeUrl({
+                const url = expressPayments.oauth.authorizeUrl({
                     state: 'some_state',
                 });
 
@@ -32,7 +32,7 @@ describe('OAuth', () => {
             });
 
             it('Uses the correct query', () => {
-                const url = expressPlatby.oauth.authorizeUrl({
+                const url = expressPayments.oauth.authorizeUrl({
                     state: 'some_state',
                 });
 
@@ -45,7 +45,7 @@ describe('OAuth', () => {
             });
 
             it('Uses a provided client_id instead of the default', () => {
-                const url = expressPlatby.oauth.authorizeUrl({
+                const url = expressPayments.oauth.authorizeUrl({
                     client_id: '123abc',
                 });
 
@@ -56,7 +56,7 @@ describe('OAuth', () => {
 
             describe('for Express account', () => {
                 it('Uses the correct path', () => {
-                    const url = expressPlatby.oauth.authorizeUrl(
+                    const url = expressPayments.oauth.authorizeUrl(
                         {},
                         {express: true}
                     );
@@ -71,14 +71,14 @@ describe('OAuth', () => {
 
     describe('token', () => {
         it('Sends the correct request', () => {
-            expressPlatby.oauth.token({
+            expressPayments.oauth.token({
                 code: '123abc',
                 grant_type: 'authorization_code',
             });
 
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
-                host: 'connect.expressplatby.cz',
+                host: 'connect.epayments.network',
                 url: '/oauth/token',
                 headers: {},
                 data: {
@@ -92,41 +92,41 @@ describe('OAuth', () => {
 
     describe('deauthorize', () => {
         beforeEach(() => {
-            expressPlatby.setClientId('default_client_id');
+            expressPayments.setClientId('default_client_id');
         });
 
         it('Sends the correct request without explicit client_id', () => {
-            expressPlatby.oauth.deauthorize({
-                expressplatby_user_id: 'some_user_id',
+            expressPayments.oauth.deauthorize({
+                ep_user_id: 'some_user_id',
             });
 
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
-                host: 'connect.expressplatby.cz',
+                host: 'connect.epayments.network',
                 url: '/oauth/deauthorize',
                 headers: {},
                 data: {
-                    client_id: expressPlatby.getClientId(),
-                    expressplatby_user_id: 'some_user_id',
+                    client_id: expressPayments.getClientId(),
+                    ep_user_id: 'some_user_id',
                 },
                 settings: {},
             });
         });
 
         it('Sends the correct request with explicit client_id', () => {
-            expressPlatby.oauth.deauthorize({
-                expressplatby_user_id: 'some_user_id',
+            expressPayments.oauth.deauthorize({
+                ep_user_id: 'some_user_id',
                 client_id: '123abc',
             });
 
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
-                host: 'connect.expressplatby.cz',
+                host: 'connect.epayments.network',
                 url: '/oauth/deauthorize',
                 headers: {},
                 data: {
                     client_id: '123abc',
-                    expressplatby_user_id: 'some_user_id',
+                    ep_user_id: 'some_user_id',
                 },
                 settings: {},
             });

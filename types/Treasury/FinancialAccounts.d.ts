@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             /**
-             * ExpressPlatby Treasury provides users with a container for money called a FinancialAccount that is separate from their Payments balance.
+             * ExpressPayments Treasury provides users with a container for money called a FinancialAccount that is separate from their Payments balance.
              * FinancialAccounts serve as the source and destination of Treasury's money movement APIs.
              */
             interface FinancialAccount {
@@ -40,9 +40,9 @@ declare module 'expressplatby' {
 
                 /**
                  * Encodes whether a FinancialAccount has access to a particular Feature, with a `status` enum and associated `status_details`.
-                 * ExpressPlatby or the platform can control Features via the requested field.
+                 * ExpressPayments or the platform can control Features via the requested field.
                  */
-                features?: ExpressPlatby.Treasury.FinancialAccountFeatures;
+                features?: ExpressPayments.Treasury.FinancialAccountFeatures;
 
                 /**
                  * The set of credentials that resolve to a FinancialAccount.
@@ -55,9 +55,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata | null;
+                metadata: ExpressPayments.Metadata | null;
 
                 /**
                  * The array of paths to pending Features in the Features hash.
@@ -93,7 +93,7 @@ declare module 'expressplatby' {
                     | 'deposit_insurance'
                     | 'financial_addresses.aba'
                     | 'inbound_transfers.ach'
-                    | 'intra_expressplatby_flows'
+                    | 'intra_expresspayments_flows'
                     | 'outbound_payments.ach'
                     | 'outbound_payments.us_domestic_wire'
                     | 'outbound_transfers.ach'
@@ -178,7 +178,7 @@ declare module 'expressplatby' {
                     | 'deposit_insurance'
                     | 'financial_addresses.aba'
                     | 'inbound_transfers.ach'
-                    | 'intra_expressplatby_flows'
+                    | 'intra_expresspayments_flows'
                     | 'outbound_payments.ach'
                     | 'outbound_payments.us_domestic_wire'
                     | 'outbound_transfers.ach'
@@ -208,7 +208,7 @@ declare module 'expressplatby' {
                     | 'deposit_insurance'
                     | 'financial_addresses.aba'
                     | 'inbound_transfers.ach'
-                    | 'intra_expressplatby_flows'
+                    | 'intra_expresspayments_flows'
                     | 'outbound_payments.ach'
                     | 'outbound_payments.us_domestic_wire'
                     | 'outbound_transfers.ach'

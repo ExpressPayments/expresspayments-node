@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Identity {
             /**
              * A VerificationSession guides you through the process of collecting and verifying the identities
              * of your users. It contains details about the type of verification, such as what [verification
-             * check](https://expressplatby.cz/docs/identity/verification-checks) to perform. Only create one VerificationSession for
+             * check](https://docs.epayments.network/identity/verification-checks) to perform. Only create one VerificationSession for
              * each verification in your system.
              *
              * A VerificationSession transitions through [multiple
-             * statuses](https://expressplatby.cz/docs/identity/how-sessions-work) throughout its lifetime as it progresses through
+             * statuses](https://docs.epayments.network/identity/how-sessions-work) throughout its lifetime as it progresses through
              * the verification flow. The VerificationSession contains the user's verified data after
              * verification checks are complete.
              *
-             * Related guide: [The Verification Sessions API](https://expressplatby.cz/docs/identity/verification-sessions)
+             * Related guide: [The Verification Sessions API](https://docs.epayments.network/identity/verification-sessions)
              */
             interface VerificationSession {
                 /**
@@ -28,7 +28,7 @@ declare module 'expressplatby' {
                 object: 'identity.verification_session';
 
                 /**
-                 * The short-lived client secret used by ExpressPlatby.js to [show a verification modal](https://expressplatby.cz/docs/js/identity/modal) inside your app. This client secret expires after 24 hours and can only be used once. Don't store it, log it, embed it in a URL, or expose it to anyone other than the user. Make sure that you have TLS enabled on any page that includes the client secret. Refer to our docs on [passing the client secret to the frontend](https://expressplatby.cz/docs/identity/verification-sessions#client-secret) to learn more.
+                 * The short-lived client secret used by ExpressPayments.js to [show a verification modal](https://docs.epayments.network/js/identity/modal) inside your app. This client secret expires after 24 hours and can only be used once. Don't store it, log it, embed it in a URL, or expose it to anyone other than the user. Make sure that you have TLS enabled on any page that includes the client secret. Refer to our docs on [passing the client secret to the frontend](https://docs.epayments.network/identity/verification-sessions#client-secret) to learn more.
                  */
                 client_secret: string | null;
 
@@ -43,11 +43,11 @@ declare module 'expressplatby' {
                 last_error: VerificationSession.LastError | null;
 
                 /**
-                 * ID of the most recent VerificationReport. [Learn more about accessing detailed verification results.](https://expressplatby.cz/docs/identity/verification-sessions#results)
+                 * ID of the most recent VerificationReport. [Learn more about accessing detailed verification results.](https://docs.epayments.network/identity/verification-sessions#results)
                  */
                 last_verification_report:
                     | string
-                    | ExpressPlatby.Identity.VerificationReport
+                    | ExpressPayments.Identity.VerificationReport
                     | null;
 
                 /**
@@ -56,9 +56,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * A set of options for the session's verification checks.
@@ -71,17 +71,17 @@ declare module 'expressplatby' {
                 redaction: VerificationSession.Redaction | null;
 
                 /**
-                 * Status of this VerificationSession. [Learn more about the lifecycle of sessions](https://expressplatby.cz/docs/identity/how-sessions-work).
+                 * Status of this VerificationSession. [Learn more about the lifecycle of sessions](https://docs.epayments.network/identity/how-sessions-work).
                  */
                 status: VerificationSession.Status;
 
                 /**
-                 * The type of [verification check](https://expressplatby.cz/docs/identity/verification-checks) to be performed.
+                 * The type of [verification check](https://docs.epayments.network/identity/verification-checks) to be performed.
                  */
                 type: VerificationSession.Type | null;
 
                 /**
-                 * The short-lived URL that you use to redirect a user to ExpressPlatby to submit their identity information. This URL expires after 48 hours and can only be used once. Don't store it, log it, send it in emails or expose it to anyone other than the user. Refer to our docs on [verifying identity documents](https://expressplatby.cz/docs/identity/verify-identity-documents?platform=web&type=redirect) to learn how to redirect users to ExpressPlatby.
+                 * The short-lived URL that you use to redirect a user to ExpressPayments to submit their identity information. This URL expires after 48 hours and can only be used once. Don't store it, log it, send it in emails or expose it to anyone other than the user. Refer to our docs on [verifying identity documents](https://docs.epayments.network/identity/verify-identity-documents?platform=web&type=redirect) to learn how to redirect users to ExpressPayments
                  */
                 url: string | null;
 
@@ -137,7 +137,7 @@ declare module 'expressplatby' {
                         allowed_types?: Array<Document.AllowedType>;
 
                         /**
-                         * Collect an ID number and perform an [ID number check](https://expressplatby.cz/docs/identity/verification-checks?type=id-number) with the document's extracted name and date of birth.
+                         * Collect an ID number and perform an [ID number check](https://docs.epayments.network/identity/verification-checks?type=id-number) with the document's extracted name and date of birth.
                          */
                         require_id_number?: boolean;
 
@@ -147,7 +147,7 @@ declare module 'expressplatby' {
                         require_live_capture?: boolean;
 
                         /**
-                         * Capture a face image and perform a [selfie check](https://expressplatby.cz/docs/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://expressplatby.cz/docs/identity/selfie).
+                         * Capture a face image and perform a [selfie check](https://docs.epayments.network/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://docs.epayments.network/identity/selfie).
                          */
                         require_matching_selfie?: boolean;
                     }
@@ -185,7 +185,7 @@ declare module 'expressplatby' {
                     /**
                      * The user's verified address.
                      */
-                    address: ExpressPlatby.Address | null;
+                    address: ExpressPayments.Address | null;
 
                     /**
                      * The user's verified date of birth.

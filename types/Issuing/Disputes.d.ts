@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Issuing {
             /**
-             * As a [card issuer](https://expressplatby.cz/docs/issuing), you can dispute transactions that the cardholder does not recognize, suspects to be fraudulent, or has other issues with.
+             * As a [card issuer](https://docs.epayments.network/issuing), you can dispute transactions that the cardholder does not recognize, suspects to be fraudulent, or has other issues with.
              *
-             * Related guide: [Issuing disputes](https://expressplatby.cz/docs/issuing/purchases/disputes)
+             * Related guide: [Issuing disputes](https://docs.epayments.network/issuing/purchases/disputes)
              */
             interface Dispute {
                 /**
@@ -20,7 +20,7 @@ declare module 'expressplatby' {
                 object: 'issuing.dispute';
 
                 /**
-                 * Disputed amount in the card's currency and in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal). Usually the amount of the `transaction`, but can differ (usually because of currency fluctuation).
+                 * Disputed amount in the card's currency and in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal). Usually the amount of the `transaction`, but can differ (usually because of currency fluctuation).
                  */
                 amount: number;
 
@@ -28,7 +28,7 @@ declare module 'expressplatby' {
                  * List of balance transactions associated with the dispute.
                  */
                 balance_transactions: Array<
-                    ExpressPlatby.BalanceTransaction
+                  ExpressPayments.BalanceTransaction
                 > | null;
 
                 /**
@@ -49,9 +49,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * Current status of the dispute.
@@ -61,10 +61,10 @@ declare module 'expressplatby' {
                 /**
                  * The transaction being disputed.
                  */
-                transaction: string | ExpressPlatby.Issuing.Transaction;
+                transaction: string | ExpressPayments.Issuing.Transaction;
 
                 /**
-                 * [Treasury](https://expressplatby.cz/docs/api/treasury) details related to this dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
+                 * [Treasury](https://docs.epayments.network/api/treasury) details related to this dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
                  */
                 treasury?: Dispute.Treasury | null;
             }
@@ -94,11 +94,11 @@ declare module 'expressplatby' {
                 namespace Evidence {
                     interface Canceled {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
                         additional_documentation:
                             | string
-                            | ExpressPlatby.File
+                            | ExpressPayments.File
                             | null;
 
                         /**
@@ -155,27 +155,27 @@ declare module 'expressplatby' {
 
                     interface Duplicate {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
                         additional_documentation:
                             | string
-                            | ExpressPlatby.File
+                            | ExpressPayments.File
                             | null;
 
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Copy of the card statement showing that the product had already been paid for.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Copy of the card statement showing that the product had already been paid for.
                          */
-                        card_statement: string | ExpressPlatby.File | null;
+                        card_statement: string | ExpressPayments.File | null;
 
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Copy of the receipt showing that the product had been paid for in cash.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Copy of the receipt showing that the product had been paid for in cash.
                          */
-                        cash_receipt: string | ExpressPlatby.File | null;
+                        cash_receipt: string | ExpressPayments.File | null;
 
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Image of the front and back of the check that was used to pay for the product.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Image of the front and back of the check that was used to pay for the product.
                          */
-                        check_image: string | ExpressPlatby.File | null;
+                        check_image: string | ExpressPayments.File | null;
 
                         /**
                          * Explanation of why the cardholder is disputing this transaction.
@@ -190,11 +190,11 @@ declare module 'expressplatby' {
 
                     interface Fraudulent {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
                         additional_documentation:
                             | string
-                            | ExpressPlatby.File
+                            | ExpressPayments.File
                             | null;
 
                         /**
@@ -205,11 +205,11 @@ declare module 'expressplatby' {
 
                     interface MerchandiseNotAsDescribed {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
                         additional_documentation:
                             | string
-                            | ExpressPlatby.File
+                            | ExpressPayments.File
                             | null;
 
                         /**
@@ -244,11 +244,11 @@ declare module 'expressplatby' {
 
                     interface NotReceived {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
                         additional_documentation:
                             | string
-                            | ExpressPlatby.File
+                            | ExpressPayments.File
                             | null;
 
                         /**
@@ -278,11 +278,11 @@ declare module 'expressplatby' {
 
                     interface Other {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
                         additional_documentation:
                             | string
-                            | ExpressPlatby.File
+                            | ExpressPayments.File
                             | null;
 
                         /**
@@ -316,11 +316,11 @@ declare module 'expressplatby' {
 
                     interface ServiceNotAsDescribed {
                         /**
-                         * (ID of a [file upload](https://expressplatby.cz/docs/guides/file-upload)) Additional documentation supporting the dispute.
+                         * (ID of a [file upload](https://docs.epayments.network/guides/file-upload)) Additional documentation supporting the dispute.
                          */
                         additional_documentation:
                             | string
-                            | ExpressPlatby.File
+                            | ExpressPayments.File
                             | null;
 
                         /**
@@ -354,12 +354,12 @@ declare module 'expressplatby' {
 
                 interface Treasury {
                     /**
-                     * The Treasury [DebitReversal](https://expressplatby.cz/docs/api/treasury/debit_reversals) representing this Issuing dispute
+                     * The Treasury [DebitReversal](https://docs.epayments.network/api/treasury/debit_reversals) representing this Issuing dispute
                      */
                     debit_reversal: string | null;
 
                     /**
-                     * The Treasury [ReceivedDebit](https://expressplatby.cz/docs/api/treasury/received_debits) that is being disputed.
+                     * The Treasury [ReceivedDebit](https://docs.epayments.network/api/treasury/received_debits) that is being disputed.
                      */
                     received_debit: string;
                 }

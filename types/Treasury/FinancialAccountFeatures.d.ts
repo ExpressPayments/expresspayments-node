@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             /**
              * Encodes whether a FinancialAccount has access to a particular Feature, with a `status` enum and associated `status_details`.
-             * ExpressPlatby or the platform can control Features via the requested field.
+             * ExpressPayments or the platform can control Features via the requested field.
              */
             interface FinancialAccountFeatures {
                 /**
@@ -36,7 +36,7 @@ declare module 'expressplatby' {
                 /**
                  * Toggle settings for enabling/disabling a feature
                  */
-                intra_expressplatby_flows?: FinancialAccountFeatures.IntraExpressPlatbyFlows;
+                intra_expresspayments_flows?: FinancialAccountFeatures.IntraExpressPaymentsFlows;
 
                 /**
                  * Settings related to Outbound Payments features on a Financial Account
@@ -100,7 +100,7 @@ declare module 'expressplatby' {
                             | 'restricted_other';
 
                         type Resolution =
-                            | 'contact_expressplatby'
+                            | 'contact_expresspayments'
                             | 'provide_information'
                             | 'remove_restriction';
 
@@ -158,7 +158,7 @@ declare module 'expressplatby' {
                             | 'restricted_other';
 
                         type Resolution =
-                            | 'contact_expressplatby'
+                            | 'contact_expresspayments'
                             | 'provide_information'
                             | 'remove_restriction';
 
@@ -224,7 +224,7 @@ declare module 'expressplatby' {
                                 | 'restricted_other';
 
                             type Resolution =
-                                | 'contact_expressplatby'
+                                | 'contact_expresspayments'
                                 | 'provide_information'
                                 | 'remove_restriction';
 
@@ -293,7 +293,7 @@ declare module 'expressplatby' {
                                 | 'restricted_other';
 
                             type Resolution =
-                                | 'contact_expressplatby'
+                                | 'contact_expresspayments'
                                 | 'provide_information'
                                 | 'remove_restriction';
 
@@ -304,7 +304,7 @@ declare module 'expressplatby' {
                     }
                 }
 
-                interface IntraExpressPlatbyFlows {
+                interface IntraExpressPaymentsFlows {
                     /**
                      * Whether the FinancialAccount should have the Feature.
                      */
@@ -313,15 +313,15 @@ declare module 'expressplatby' {
                     /**
                      * Whether the Feature is operational.
                      */
-                    status: IntraExpressPlatbyFlows.Status;
+                    status: IntraExpressPaymentsFlows.Status;
 
                     /**
                      * Additional details; includes at least one entry when the status is not `active`.
                      */
-                    status_details: Array<IntraExpressPlatbyFlows.StatusDetail>;
+                    status_details: Array<IntraExpressPaymentsFlows.StatusDetail>;
                 }
 
-                namespace IntraExpressPlatbyFlows {
+                namespace IntraExpressPaymentsFlows {
                     type Status = 'active' | 'pending' | 'restricted';
 
                     interface StatusDetail {
@@ -354,7 +354,7 @@ declare module 'expressplatby' {
                             | 'restricted_other';
 
                         type Resolution =
-                            | 'contact_expressplatby'
+                            | 'contact_expresspayments'
                             | 'provide_information'
                             | 'remove_restriction';
 
@@ -425,7 +425,7 @@ declare module 'expressplatby' {
                                 | 'restricted_other';
 
                             type Resolution =
-                                | 'contact_expressplatby'
+                                | 'contact_expresspayments'
                                 | 'provide_information'
                                 | 'remove_restriction';
 
@@ -485,7 +485,7 @@ declare module 'expressplatby' {
                                 | 'restricted_other';
 
                             type Resolution =
-                                | 'contact_expressplatby'
+                                | 'contact_expresspayments'
                                 | 'provide_information'
                                 | 'remove_restriction';
 
@@ -559,7 +559,7 @@ declare module 'expressplatby' {
                                 | 'restricted_other';
 
                             type Resolution =
-                                | 'contact_expressplatby'
+                                | 'contact_expresspayments'
                                 | 'provide_information'
                                 | 'remove_restriction';
 
@@ -619,7 +619,7 @@ declare module 'expressplatby' {
                                 | 'restricted_other';
 
                             type Resolution =
-                                | 'contact_expressplatby'
+                                | 'contact_expresspayments'
                                 | 'provide_information'
                                 | 'remove_restriction';
 

@@ -1,61 +1,62 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const Quotes = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/quotes',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/quotes/{quote}',
-  }),
+export const Quotes = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/quotes',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/quotes/{quote}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/quotes/{quote}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/quotes',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/quotes/{quote}',
+    }),
 
-  accept: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/quotes/{quote}/accept',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/quotes',
+        methodType: 'list',
+    }),
 
-  cancel: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/quotes/{quote}/cancel',
-  }),
+    accept: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/quotes/{quote}/accept',
+    }),
 
-  finalizeQuote: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/quotes/{quote}/finalize',
-  }),
+    cancel: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/quotes/{quote}/cancel',
+    }),
 
-  listComputedUpfrontLineItems: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/quotes/{quote}/computed_upfront_line_items',
-    methodType: 'list',
-  }),
+    finalizeQuote: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/quotes/{quote}/finalize',
+    }),
 
-  listLineItems: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/quotes/{quote}/line_items',
-    methodType: 'list',
-  }),
+    listComputedUpfrontLineItems: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/quotes/{quote}/computed_upfront_line_items',
+        methodType: 'list',
+    }),
 
-  pdf: expressPlatbyMethod({
-    host: 'files.expressplatby.cz',
-    method: 'GET',
-    fullPath: '/v1/quotes/{quote}/pdf',
-    streaming: true,
-  }),
+    listLineItems: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/quotes/{quote}/line_items',
+        methodType: 'list',
+    }),
+
+    pdf: expressPaymentsMethod({
+        host: 'files.epayments.network',
+        method: 'GET',
+        fullPath: '/v1/quotes/{quote}/pdf',
+        streaming: true,
+    }),
 });

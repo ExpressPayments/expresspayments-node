@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Tax {
             /**
              * A Tax Transaction records the tax collected from or refunded to your customer.
              *
-             * Related guide: [Calculate tax in your custom payment flow](https://expressplatby.cz/docs/tax/custom#tax-transaction)
+             * Related guide: [Calculate tax in your custom payment flow](https://docs.epayments.network/tax/custom#tax-transaction)
              */
             interface Transaction {
                 /**
@@ -25,12 +25,12 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
                 /**
-                 * The ID of an existing [Customer](https://expressplatby.cz/docs/api/customers/object) used for the resource.
+                 * The ID of an existing [Customer](https://docs.epayments.network/api/customers/object) used for the resource.
                  */
                 customer: string | null;
 
@@ -40,7 +40,7 @@ declare module 'expressplatby' {
                  * The tax collected or refunded, by line item.
                  */
                 line_items: ApiList<
-                    ExpressPlatby.Tax.TransactionLineItem
+                    ExpressPayments.Tax.TransactionLineItem
                 > | null;
 
                 /**
@@ -49,9 +49,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata | null;
+                metadata: ExpressPayments.Metadata | null;
 
                 /**
                  * A custom unique identifier, such as 'myOrder_123'.
@@ -84,7 +84,7 @@ declare module 'expressplatby' {
                     /**
                      * The customer's postal address (for example, home or business location).
                      */
-                    address: ExpressPlatby.Address | null;
+                    address: ExpressPayments.Address | null;
 
                     /**
                      * The type of customer address provided.
@@ -203,7 +203,7 @@ declare module 'expressplatby' {
                     amount_tax: number;
 
                     /**
-                     * The ID of an existing [ShippingRate](https://expressplatby.cz/docs/api/shipping_rates/object). (It is not populated for the transaction resource object and will be removed in the next API version.)
+                     * The ID of an existing [ShippingRate](https://docs.epayments.network/api/shipping_rates/object). (It is not populated for the transaction resource object and will be removed in the next API version.)
                      */
                     shipping_rate?: string;
 
@@ -218,7 +218,7 @@ declare module 'expressplatby' {
                     tax_breakdown?: Array<ShippingCost.TaxBreakdown>;
 
                     /**
-                     * The [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID used for shipping.
+                     * The [tax code](https://docs.epayments.network/tax/tax-categories) ID used for shipping.
                      */
                     tax_code: string;
                 }

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace TestHelpers {
             /**
              * A test clock enables deterministic control over objects in testmode. With a test clock, you can create

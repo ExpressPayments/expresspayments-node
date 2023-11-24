@@ -1,17 +1,18 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const EarlyFraudWarnings = ExpressPlatbyResource.extend({
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/radar/early_fraud_warnings/{early_fraud_warning}',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/radar/early_fraud_warnings',
-    methodType: 'list',
-  }),
+export const EarlyFraudWarnings = ExpressPaymentsResource.extend({
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/radar/early_fraud_warnings/{early_fraud_warning}',
+    }),
+
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/radar/early_fraud_warnings',
+        methodType: 'list',
+    }),
 });

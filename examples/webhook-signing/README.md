@@ -1,7 +1,7 @@
 # Checking webhook signatures
 
-Verify the events that ExpressPlatby sends to your webhook endpoints. Additional details in the
-ExpressPlatby [docs](https://expressplatby.cz/docs/webhooks/signatures).
+Verify the events that ExpressPayments sends to your webhook endpoints. Additional details in the
+ExpressPayments [docs](https://docs.epayments.network/webhooks/signatures).
 
 Available examples:
 
@@ -14,8 +14,8 @@ Available examples:
 You’ll need the following:
 
 - [Node.js](http://nodejs.org) >=14.0.0
-- ExpressPlatby account to accept payments ([sign up](https://dashboard.expressplatby.cz/register) for free).
-- [ExpressPlatby CLI](https://github.com/expressplatby/expressplatby-cli) or [ngrok](https://ngrok.com/) to tunnel
+- ExpressPayments account to accept payments ([sign up](https://dashboard.epayments.network/register) for free).
+- [ExpressPayments CLI](https://github.com/expresspayments/expresspayments-cli) or [ngrok](https://ngrok.com/) to tunnel
   requests to your local server.
 
 ### Install and run
@@ -26,20 +26,20 @@ Install dependencies:
 
     npm install
 
-Update `.env` with your own [ExpressPlatby API keys](https://dashboard.expressplatby.cz/account/apikeys).
+Update `.env` with your own [ExpressPayments API keys](https://dashboard.epayments.network/account/apikeys).
 
-Next, follow [these installation steps](https://github.com/expressplatby/expressplatby-cli#installation) to install the
-ExpressPlatby CLI which we'll use for webhook forwarding.
+Next, follow [these installation steps](https://github.com/expresspayments/expresspayments-cli#installation) to install the
+ExpressPayments CLI which we'll use for webhook forwarding.
 
-After the installation has finished, authenticate the CLI with your ExpressPlatby account:
+After the installation has finished, authenticate the CLI with your ExpressPayments account:
 
-    expressplatby login
+    expresspayments login
 
 To start the webhook forwarding run:
 
-    expressplatby listen --forward-to localhost:3000/webhook
+    expresspayments listen --forward-to localhost:3000/webhook
 
-The ExpressPlatby CLI will let you know that webhook forwarding is ready and output your webhook signing secret:
+The ExpressPayments CLI will let you know that webhook forwarding is ready and output your webhook signing secret:
 
     > Ready! Your webhook signing secret is whsec_xxx
 
@@ -51,7 +51,7 @@ In a separate terminal window, start the local sample server:
 
 In another separate terminal window, trigger an event, for example:
 
-    expressplatby trigger payment_intent.succeeded
+    expresspayments trigger payment_intent.succeeded
 
 You should now see some webhook event details being logged to your Node.js console.
 

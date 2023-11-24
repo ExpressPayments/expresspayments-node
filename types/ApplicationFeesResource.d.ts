@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface ApplicationFeeRetrieveParams {
             /**
              * Specifies which fields in the response should be expanded.
@@ -15,7 +15,7 @@ declare module 'expressplatby' {
              */
             charge?: string;
 
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -35,9 +35,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
         }
 
         interface FeeRefundListParams extends PaginationParams {
@@ -61,9 +61,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
         }
 
         class ApplicationFeesResource {
@@ -74,11 +74,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: ApplicationFeeRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ApplicationFee>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ApplicationFee>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.ApplicationFee>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.ApplicationFee>>;
 
             /**
              * Returns a list of application fees you've previously collected. The application fees are returned in sorted order, with the most recent fees appearing first.
@@ -86,14 +86,14 @@ declare module 'expressplatby' {
             list(
                 params?: ApplicationFeeListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.ApplicationFee>;
+            ): ApiListPromise<ExpressPayments.ApplicationFee>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.ApplicationFee>;
+            ): ApiListPromise<ExpressPayments.ApplicationFee>;
 
             /**
              * Refunds an application fee that has previously been collected but not yet refunded.
-             * Funds will be refunded to the ExpressPlatby account from which the fee was originally collected.
+             * Funds will be refunded to the ExpressPayments account from which the fee was originally collected.
              *
              * You can optionally refund only part of an application fee.
              * You can do so multiple times, until the entire fee has been refunded.
@@ -106,11 +106,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: FeeRefundCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.FeeRefund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.FeeRefund>>;
             createRefund(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.FeeRefund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.FeeRefund>>;
 
             /**
              * You can see a list of the refunds belonging to a specific application fee. Note that the 10 most recent refunds are always available by default on the application fee object. If you need more than those 10, you can use this API method and the limit and starting_after parameters to page through additional refunds.
@@ -119,11 +119,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: FeeRefundListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.FeeRefund>;
+            ): ApiListPromise<ExpressPayments.FeeRefund>;
             listRefunds(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.FeeRefund>;
+            ): ApiListPromise<ExpressPayments.FeeRefund>;
 
             /**
              * By default, you can see the 10 most recent refunds stored directly on the application fee object, but you can also retrieve details about a specific refund stored on the application fee.
@@ -133,12 +133,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: FeeRefundRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.FeeRefund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.FeeRefund>>;
             retrieveRefund(
                 feeId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.FeeRefund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.FeeRefund>>;
 
             /**
              * Updates the specified application fee refund by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
@@ -150,12 +150,12 @@ declare module 'expressplatby' {
                 id: string,
                 params?: FeeRefundUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.FeeRefund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.FeeRefund>>;
             updateRefund(
                 feeId: string,
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.FeeRefund>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.FeeRefund>>;
         }
     }
 }

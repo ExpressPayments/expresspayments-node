@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             interface OutboundTransferCreateParams {
                 /**
@@ -10,7 +10,7 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -40,9 +40,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * Statement descriptor to be shown on the receiving end of an OutboundTransfer. Maximum 10 characters for `ach` transfers or 140 characters for `wire` transfers. The default value is `transfer`.
@@ -55,7 +55,7 @@ declare module 'expressplatby' {
                     /**
                      * Optional fields for `us_bank_account`.
                      */
-                    us_bank_account?: ExpressPlatby.Emptyable<
+                    us_bank_account?: ExpressPayments.Emptyable<
                         DestinationPaymentMethodOptions.UsBankAccount
                     >;
                 }
@@ -122,8 +122,8 @@ declare module 'expressplatby' {
                     params: OutboundTransferCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundTransfer
                     >
                 >;
 
@@ -135,16 +135,16 @@ declare module 'expressplatby' {
                     params?: OutboundTransferRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundTransfer
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundTransfer
                     >
                 >;
 
@@ -154,7 +154,7 @@ declare module 'expressplatby' {
                 list(
                     params: OutboundTransferListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Treasury.OutboundTransfer>;
+                ): ApiListPromise<ExpressPayments.Treasury.OutboundTransfer>;
 
                 /**
                  * An OutboundTransfer can be canceled if the funds have not yet been paid out.
@@ -164,16 +164,16 @@ declare module 'expressplatby' {
                     params?: OutboundTransferCancelParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundTransfer
                     >
                 >;
                 cancel(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundTransfer
                     >
                 >;
             }

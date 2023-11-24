@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Prices define the unit cost, currency, and (optional) billing cycle for both recurring and one-time purchases of products.
-         * [Products](https://expressplatby.cz/docs/api#products) help you track inventory or provisioning, and prices help you track payment terms. Different physical goods or levels of service should be represented by products, and pricing options should be represented by prices. This approach lets you change prices without having to change your provisioning scheme.
+         * [Products](https://docs.epayments.network/api#products) help you track inventory or provisioning, and prices help you track payment terms. Different physical goods or levels of service should be represented by products, and pricing options should be represented by prices. This approach lets you change prices without having to change your provisioning scheme.
          *
          * For example, you might have a single "gold" product that has prices for $10/month, $100/year, and €9 once.
          *
-         * Related guides: [Set up a subscription](https://expressplatby.cz/docs/billing/subscriptions/set-up-subscription), [create an invoice](https://expressplatby.cz/docs/billing/invoices/create), and more about [products and prices](https://expressplatby.cz/docs/products-prices/overview).
+         * Related guides: [Set up a subscription](https://docs.epayments.network/billing/subscriptions/set-up-subscription), [create an invoice](https://docs.epayments.network/billing/invoices/create), and more about [products and prices](https://docs.epayments.network/products-prices/overview).
          */
         interface Price {
             /**
@@ -37,12 +37,12 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
             /**
-             * Prices defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Prices defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
              */
             currency_options?: {
                 [key: string]: Price.CurrencyOptions;
@@ -66,9 +66,9 @@ declare module 'expressplatby' {
             lookup_key: string | null;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
              * A brief description of the price, hidden from customers.
@@ -80,8 +80,8 @@ declare module 'expressplatby' {
              */
             product:
                 | string
-                | ExpressPlatby.Product
-                | ExpressPlatby.DeletedProduct;
+                | ExpressPayments.Product
+                | ExpressPayments.DeletedProduct;
 
             /**
              * The recurring components of a price such as `interval` and `usage_type`.
@@ -89,7 +89,7 @@ declare module 'expressplatby' {
             recurring: Price.Recurring | null;
 
             /**
-             * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+             * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
              */
             tax_behavior: Price.TaxBehavior | null;
 
@@ -134,7 +134,7 @@ declare module 'expressplatby' {
                 custom_unit_amount: CurrencyOptions.CustomUnitAmount | null;
 
                 /**
-                 * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                 * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                  */
                 tax_behavior: CurrencyOptions.TaxBehavior | null;
 
@@ -236,7 +236,7 @@ declare module 'expressplatby' {
                 interval_count: number;
 
                 /**
-                 * Default number of trial days when subscribing a customer to this price using [`trial_from_plan=true`](https://expressplatby.cz/docs/api#create_subscription-trial_from_plan).
+                 * Default number of trial days when subscribing a customer to this price using [`trial_from_plan=true`](https://docs.epayments.network/api#create_subscription-trial_from_plan).
                  */
                 trial_period_days: number | null;
 

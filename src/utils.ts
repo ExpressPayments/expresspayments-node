@@ -1,6 +1,6 @@
 import * as qs from 'qs';
 import {
-    ExpressPlatbyResourceObject,
+    ExpressPaymentsResourceObject,
     MultipartRequestData,
     RequestArgs,
     RequestData,
@@ -11,7 +11,7 @@ import {
 const OPTIONS_KEYS = [
     'apiKey',
     'idempotencyKey',
-    'expressPlatbyAccount',
+    'expressPaymentsAccount',
     'apiVersion',
     'maxNetworkRetries',
     'timeout',
@@ -125,7 +125,7 @@ export function getDataFromArgs(args: RequestArgs): RequestData {
         emitWarning(
             `Options found in arguments (${optionKeysInArgs.join(
                 ', '
-            )}). Did you mean to pass an options object? See https://github.com/expressplatby/expressplatby-node/wiki/Passing-Options.`
+            )}). Did you mean to pass an options object? See https://github.com/expresspayments/expresspayments-node/wiki/Passing-Options.`
         );
     }
 
@@ -165,12 +165,12 @@ export function getOptionsFromArgs(args: RequestArgs): Options {
             if (params.idempotencyKey) {
                 opts.headers['Idempotency-Key'] = params.idempotencyKey;
             }
-            if (params.expressPlatbyAccount) {
-                opts.headers['ExpressPlatby-Account'] =
-                    params.expressPlatbyAccount;
+            if (params.expressPaymentsAccount) {
+                opts.headers['EP -Account'] =
+                    params.expressPaymentsAccount;
             }
             if (params.apiVersion) {
-                opts.headers['ExpressPlatby-Version'] = params.apiVersion;
+                opts.headers['EP-Version'] = params.apiVersion;
             }
             if (Number.isInteger(params.maxNetworkRetries)) {
                 opts.settings.maxNetworkRetries = params.maxNetworkRetries as number;
@@ -188,17 +188,17 @@ export function getOptionsFromArgs(args: RequestArgs): Options {
 
 /**
  * Provide simple "Class" extension mechanism.
- * <!-- Public API accessible via ExpressPlatby.ExpressPlatbyResource.extend -->
+ * <!-- Public API accessible via ExpressPayments.ExpressPaymentsResource.extend -->
  */
 export function protoExtend(
     this: any,
     sub: any
-): {new (...args: any[]): ExpressPlatbyResourceObject} {
+): {new (...args: any[]): ExpressPaymentsResourceObject} {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const Super = this;
     const Constructor = Object.prototype.hasOwnProperty.call(sub, 'constructor')
         ? sub.constructor
-        : function(this: ExpressPlatbyResourceObject, ...args: any[]): void {
+        : function(this: ExpressPaymentsResourceObject, ...args: any[]): void {
               Super.apply(this, args);
           };
 
@@ -206,7 +206,7 @@ export function protoExtend(
     // divergent JS implementations like the one found in Qt. See here for more
     // context:
     //
-    // https://github.com/expressplatby/expressplatby-node/pull/334
+    // https://github.com/expresspayments/expresspayments-node/pull/334
     Object.assign(Constructor, Super);
     Constructor.prototype = Object.create(Super.prototype);
     Object.assign(Constructor.prototype, sub);
@@ -300,11 +300,11 @@ export function pascalToCamelCase(name: string): string {
 export function emitWarning(warning: string): void {
     if (typeof process.emitWarning !== 'function') {
         return console.warn(
-            `ExpressPlatby: ${warning}`
+            `ExpressPayments: ${warning}`
         ); /* eslint-disable-line no-console */
     }
 
-    return process.emitWarning(warning, 'ExpressPlatby');
+    return process.emitWarning(warning, 'ExpressPayments');
 }
 
 export function isObject(obj: unknown): boolean {

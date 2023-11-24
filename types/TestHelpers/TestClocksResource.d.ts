@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace TestHelpers {
             interface TestClockCreateParams {
                 /**
@@ -56,7 +56,7 @@ declare module 'expressplatby' {
                     params: TestClockCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.TestHelpers.TestClock>
+                    ExpressPayments.Response<ExpressPayments.TestHelpers.TestClock>
                 >;
 
                 /**
@@ -67,13 +67,13 @@ declare module 'expressplatby' {
                     params?: TestClockRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.TestHelpers.TestClock>
+                    ExpressPayments.Response<ExpressPayments.TestHelpers.TestClock>
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.TestHelpers.TestClock>
+                    ExpressPayments.Response<ExpressPayments.TestHelpers.TestClock>
                 >;
 
                 /**
@@ -82,10 +82,10 @@ declare module 'expressplatby' {
                 list(
                     params?: TestClockListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.TestHelpers.TestClock>;
+                ): ApiListPromise<ExpressPayments.TestHelpers.TestClock>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.TestHelpers.TestClock>;
+                ): ApiListPromise<ExpressPayments.TestHelpers.TestClock>;
 
                 /**
                  * Deletes a test clock.
@@ -95,16 +95,16 @@ declare module 'expressplatby' {
                     params?: TestClockDeleteParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.TestHelpers.DeletedTestClock
+                    ExpressPayments.Response<
+                        ExpressPayments.TestHelpers.DeletedTestClock
                     >
                 >;
                 del(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.TestHelpers.DeletedTestClock
+                    ExpressPayments.Response<
+                        ExpressPayments.TestHelpers.DeletedTestClock
                     >
                 >;
 
@@ -116,7 +116,7 @@ declare module 'expressplatby' {
                     params: TestClockAdvanceParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.TestHelpers.TestClock>
+                    ExpressPayments.Response<ExpressPayments.TestHelpers.TestClock>
                 >;
             }
         }

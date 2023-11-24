@@ -1,5 +1,5 @@
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         export type RawErrorType =
             | 'card_error'
             | 'invalid_request_error'
@@ -9,7 +9,7 @@ declare module 'expressplatby' {
             | 'authentication_error'
             | 'invalid_grant';
 
-        export type ExpressPlatbyRawError = {
+        export type ExpressPaymentsRawError = {
             message?: string;
 
             type: RawErrorType;
@@ -25,73 +25,77 @@ declare module 'expressplatby' {
             detail?: string;
 
             charge?: string;
-            payment_intent?: ExpressPlatby.PaymentIntent;
-            payment_method?: ExpressPlatby.PaymentMethod;
-            setup_intent?: ExpressPlatby.SetupIntent;
-            source?: ExpressPlatby.Source;
+            payment_intent?: ExpressPayments.PaymentIntent;
+            payment_method?: ExpressPayments.PaymentMethod;
+            setup_intent?: ExpressPayments.SetupIntent;
+            source?: ExpressPayments.Source;
         };
 
         namespace errors {
             function generate(
-                rawError: ExpressPlatbyRawError & {type: 'card_error'}
-            ): ExpressPlatbyCardError;
+                rawError: ExpressPaymentsRawError & {type: 'card_error'}
+            ): ExpressPaymentsCardError;
             function generate(
-                rawError: ExpressPlatbyRawError & {
+                rawError: ExpressPaymentsRawError & {
                     type: 'invalid_request_error';
                 }
-            ): ExpressPlatbyInvalidRequestError;
+            ): ExpressPaymentsInvalidRequestError;
             function generate(
-                rawError: ExpressPlatbyRawError & {type: 'api_error'}
-            ): ExpressPlatbyAPIError;
+                rawError: ExpressPaymentsRawError & {type: 'api_error'}
+            ): ExpressPaymentsAPIError;
             function generate(
-                rawError: ExpressPlatbyRawError & {type: 'authentication_error'}
-            ): ExpressPlatbyAuthenticationError;
+                rawError: ExpressPaymentsRawError & {
+                    type: 'authentication_error';
+                }
+            ): ExpressPaymentsAuthenticationError;
             function generate(
-                rawError: ExpressPlatbyRawError & {type: 'rate_limit_error'}
-            ): ExpressPlatbyRateLimitError;
+                rawError: ExpressPaymentsRawError & {type: 'rate_limit_error'}
+            ): ExpressPaymentsRateLimitError;
             function generate(
-                rawError: ExpressPlatbyRawError & {type: 'idempotency_error'}
-            ): ExpressPlatbyIdempotencyError;
+                rawError: ExpressPaymentsRawError & {type: 'idempotency_error'}
+            ): ExpressPaymentsIdempotencyError;
             function generate(
-                rawError: ExpressPlatbyRawError & {type: 'invalid_grant'}
-            ): ExpressPlatbyInvalidGrantError;
+                rawError: ExpressPaymentsRawError & {type: 'invalid_grant'}
+            ): ExpressPaymentsInvalidGrantError;
             function generate(
-                rawError: ExpressPlatbyRawError & {type: RawErrorType}
-            ): ExpressPlatbyError;
+                rawError: ExpressPaymentsRawError & {type: RawErrorType}
+            ): ExpressPaymentsError;
 
-            class ExpressPlatbyError extends Error {
-                constructor(rawError: ExpressPlatbyRawError);
+            class ExpressPaymentsError extends Error {
+                constructor(rawError: ExpressPaymentsRawError);
 
                 static generate(
-                    rawError: ExpressPlatbyRawError & {type: 'card_error'}
-                ): ExpressPlatbyCardError;
+                    rawError: ExpressPaymentsRawError & {type: 'card_error'}
+                ): ExpressPaymentsCardError;
                 static generate(
-                    rawError: ExpressPlatbyRawError & {
+                    rawError: ExpressPaymentsRawError & {
                         type: 'invalid_request_error';
                     }
-                ): ExpressPlatbyInvalidRequestError;
+                ): ExpressPaymentsInvalidRequestError;
                 static generate(
-                    rawError: ExpressPlatbyRawError & {type: 'api_error'}
-                ): ExpressPlatbyAPIError;
+                    rawError: ExpressPaymentsRawError & {type: 'api_error'}
+                ): ExpressPaymentsAPIError;
                 static generate(
-                    rawError: ExpressPlatbyRawError & {
+                    rawError: ExpressPaymentsRawError & {
                         type: 'authentication_error';
                     }
-                ): ExpressPlatbyAuthenticationError;
+                ): ExpressPaymentsAuthenticationError;
                 static generate(
-                    rawError: ExpressPlatbyRawError & {type: 'rate_limit_error'}
-                ): ExpressPlatbyRateLimitError;
+                    rawError: ExpressPaymentsRawError & {
+                        type: 'rate_limit_error';
+                    }
+                ): ExpressPaymentsRateLimitError;
                 static generate(
-                    rawError: ExpressPlatbyRawError & {
+                    rawError: ExpressPaymentsRawError & {
                         type: 'idempotency_error';
                     }
-                ): ExpressPlatbyIdempotencyError;
+                ): ExpressPaymentsIdempotencyError;
                 static generate(
-                    rawError: ExpressPlatbyRawError & {type: 'invalid_grant'}
-                ): ExpressPlatbyInvalidGrantError;
+                    rawError: ExpressPaymentsRawError & {type: 'invalid_grant'}
+                ): ExpressPaymentsInvalidGrantError;
                 static generate(
-                    rawError: ExpressPlatbyRawError & {type: RawErrorType}
-                ): ExpressPlatbyError;
+                    rawError: ExpressPaymentsRawError & {type: RawErrorType}
+                ): ExpressPaymentsError;
 
                 /**
                  * A human-readable message giving more details about the error. For card errors, these messages can
@@ -100,34 +104,34 @@ declare module 'expressplatby' {
                 readonly message: string;
 
                 readonly type:
-                    | 'ExpressPlatbyError'
-                    | 'ExpressPlatbyCardError'
-                    | 'ExpressPlatbyInvalidRequestError'
-                    | 'ExpressPlatbyAPIError'
-                    | 'ExpressPlatbyAuthenticationError'
-                    | 'ExpressPlatbyPermissionError'
-                    | 'ExpressPlatbyRateLimitError'
-                    | 'ExpressPlatbyConnectionError'
-                    | 'ExpressPlatbySignatureVerificationError'
-                    | 'ExpressPlatbyIdempotencyError'
-                    | 'ExpressPlatbyInvalidGrantError';
+                    | 'ExpressPaymentsError'
+                    | 'ExpressPaymentsCardError'
+                    | 'ExpressPaymentsInvalidRequestError'
+                    | 'ExpressPaymentsAPIError'
+                    | 'ExpressPaymentsAuthenticationError'
+                    | 'ExpressPaymentsPermissionError'
+                    | 'ExpressPaymentsRateLimitError'
+                    | 'ExpressPaymentsConnectionError'
+                    | 'ExpressPaymentsSignatureVerificationError'
+                    | 'ExpressPaymentsIdempotencyError'
+                    | 'ExpressPaymentsInvalidGrantError';
 
                 /**
-                 * See the "error types" section at https://expressplatby.cz/docs/api/errors
+                 * See the "error types" section at https://docs.epayments.network/api/errors
                  */
                 readonly rawType: RawErrorType;
 
                 /**
                  * For card errors, a short string describing the kind of card error that occurred.
                  *
-                 * @docs https://expressplatby.cz/docs/error-codes
+                 * @docs https://docs.epayments.network/error-codes
                  */
                 readonly code?: string;
 
                 /**
                  * A URL to more information about the error code reported.
                  *
-                 * @docs https://expressplatby.cz/docs/error-codes
+                 * @docs https://docs.epayments.network/error-codes
                  */
                 readonly doc_url?: string;
 
@@ -163,12 +167,12 @@ declare module 'expressplatby' {
              * Card errors are the most common type of error you should expect to handle.
              * They result when the user enters a card that can't be charged for some reason.
              */
-            class ExpressPlatbyCardError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbyCardError';
+            class ExpressPaymentsCardError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsCardError';
                 readonly rawType: 'card_error';
 
                 /**
-                 * @docs https://expressplatby.cz/docs/declines/codes
+                 * @docs https://docs.epayments.network/declines/codes
                  */
                 readonly decline_code: string;
             }
@@ -176,70 +180,70 @@ declare module 'expressplatby' {
             /**
              * Invalid request errors arise when your request has invalid parameters.
              */
-            class ExpressPlatbyInvalidRequestError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbyInvalidRequestError';
+            class ExpressPaymentsInvalidRequestError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsInvalidRequestError';
                 readonly rawType: 'invalid_request_error';
             }
 
             /**
-             * API errors cover any other type of problem (e.g., a temporary problem with ExpressPlatby's servers),
+             * API errors cover any other type of problem (e.g., a temporary problem with ExpressPayments' servers),
              * and are extremely uncommon.
              *
              * It could also be raised in the case that a new error has been introduced in the API,
              * but this version of the library doesn't know how to handle it.
              */
-            class ExpressPlatbyAPIError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbyAPIError';
+            class ExpressPaymentsAPIError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsAPIError';
                 readonly rawType: 'api_error';
             }
 
             /**
              * Failure to properly authenticate yourself in the request.
              */
-            class ExpressPlatbyAuthenticationError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbyAuthenticationError';
+            class ExpressPaymentsAuthenticationError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsAuthenticationError';
                 readonly rawType: 'authentication_error';
             }
 
             /**
              * Access was attempted on a resource that wasn't allowed.
              */
-            class ExpressPlatbyPermissionError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbyPermissionError';
+            class ExpressPaymentsPermissionError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsPermissionError';
             }
 
             /**
              * Too many requests hit the API too quickly.
-             * @docs https://expressplatby.cz/docs/rate-limits
+             * @docs https://docs.epayments.network/rate-limits
              */
-            class ExpressPlatbyRateLimitError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbyRateLimitError';
+            class ExpressPaymentsRateLimitError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsRateLimitError';
                 readonly rawType: 'rate_limit_error';
             }
 
             /**
-             * The library cannot connect to ExpressPlatby.
+             * The library cannot connect to ExpressPayments.
              * This can happen for a variety of reasons,
              * such as loss of network connectivity or a bad TLS certificate.
              */
-            class ExpressPlatbyConnectionError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbyConnectionError';
+            class ExpressPaymentsConnectionError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsConnectionError';
             }
 
             /**
              * The signature verification for a webhook failed.
-             * @docs https://expressplatby.cz/docs/webhooks/signatures
+             * @docs https://docs.epayments.network/webhooks/signatures
              */
-            class ExpressPlatbySignatureVerificationError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbySignatureVerificationError';
+            class ExpressPaymentsSignatureVerificationError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsSignatureVerificationError';
             }
 
             /**
              * Idempotency errors occur when an `Idempotency-Key` is re-used on a request that does not match the first request's API endpoint and parameters.
-             * @docs https://expressplatby.cz/docs/api/idempotent_requests?lang=node
+             * @docs https://docs.epayments.network/api/idempotent_requests?lang=node
              */
-            class ExpressPlatbyIdempotencyError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbyIdempotencyError';
+            class ExpressPaymentsIdempotencyError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsIdempotencyError';
                 readonly rawType: 'idempotency_error';
             }
 
@@ -249,8 +253,8 @@ declare module 'expressplatby' {
              * exist, or doesn't belong to you; or if an API key's mode (live or test)
              * doesn't match the mode of a code or refresh token.
              */
-            class ExpressPlatbyInvalidGrantError extends ExpressPlatbyError {
-                readonly type: 'ExpressPlatbyInvalidGrantError';
+            class ExpressPaymentsInvalidGrantError extends ExpressPaymentsError {
+                readonly type: 'ExpressPaymentsInvalidGrantError';
                 readonly rawType: 'invalid_grant';
             }
         }

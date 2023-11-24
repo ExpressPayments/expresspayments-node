@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace TestHelpers {
             namespace Treasury {
                 interface OutboundTransferFailParams {
@@ -68,16 +68,16 @@ declare module 'expressplatby' {
                         params?: OutboundTransferFailParams,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<
-                            ExpressPlatby.Treasury.OutboundTransfer
+                        ExpressPayments.Response<
+                            ExpressPayments.Treasury.OutboundTransfer
                         >
                     >;
                     fail(
                         id: string,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<
-                            ExpressPlatby.Treasury.OutboundTransfer
+                        ExpressPayments.Response<
+                            ExpressPayments.Treasury.OutboundTransfer
                         >
                     >;
 
@@ -89,16 +89,16 @@ declare module 'expressplatby' {
                         params?: OutboundTransferPostParams,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<
-                            ExpressPlatby.Treasury.OutboundTransfer
+                        ExpressPayments.Response<
+                            ExpressPayments.Treasury.OutboundTransfer
                         >
                     >;
                     post(
                         id: string,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<
-                            ExpressPlatby.Treasury.OutboundTransfer
+                        ExpressPayments.Response<
+                            ExpressPayments.Treasury.OutboundTransfer
                         >
                     >;
 
@@ -110,16 +110,16 @@ declare module 'expressplatby' {
                         params?: OutboundTransferReturnOutboundTransferParams,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<
-                            ExpressPlatby.Treasury.OutboundTransfer
+                        ExpressPayments.Response<
+                            ExpressPayments.Treasury.OutboundTransfer
                         >
                     >;
                     returnOutboundTransfer(
                         id: string,
                         options?: RequestOptions
                     ): Promise<
-                        ExpressPlatby.Response<
-                            ExpressPlatby.Treasury.OutboundTransfer
+                        ExpressPayments.Response<
+                            ExpressPayments.Treasury.OutboundTransfer
                         >
                     >;
                 }

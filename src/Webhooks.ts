@@ -1,9 +1,6 @@
-import {
-    ExpressPlatbyError,
-    ExpressPlatbySignatureVerificationError,
-} from './Error.js';
-import {CryptoProvider} from './crypto/CryptoProvider.js';
-import {PlatformFunctions} from './platform/PlatformFunctions.js';
+import { ExpressPaymentsError, ExpressPaymentsSignatureVerificationError } from "./Error.js";
+import { CryptoProvider } from "./crypto/CryptoProvider.js";
+import { PlatformFunctions } from "./platform/PlatformFunctions.js";
 
 type WebhookHeader = string | Uint8Array;
 type WebhookParsedHeader = {
@@ -128,7 +125,7 @@ export function createWebhooks(
          * @typedef {object} opts
          * @property {number} timestamp - Timestamp of the header. Defaults to Date.now()
          * @property {string} payload - JSON stringified payload object, containing the 'id' and 'object' parameters
-         * @property {string} secret - ExpressPlatby webhook secret 'whsec_...'
+         * @property {string} secret - ExpressPayments webhook secret 'whsec_...'
          * @property {string} scheme - Version of API to hit. Defaults to 'v1'.
          * @property {string} signature - Computed webhook signature
          * @property {CryptoProvider} cryptoProvider - Crypto provider to use for computing the signature if none was provided. Defaults to NodeCryptoProvider.
@@ -137,7 +134,7 @@ export function createWebhooks(
             opts: WebhookTestHeaderOptions
         ): string {
             if (!opts) {
-                throw new ExpressPlatbyError({
+                throw new ExpressPaymentsError({
                     message: 'Options are required',
                 });
             }
@@ -260,7 +257,7 @@ export function createWebhooks(
         expectedScheme: string
     ): WebhookParsedEvent {
         if (!encodedPayload) {
-            throw new ExpressPlatbySignatureVerificationError(
+            throw new ExpressPaymentsSignatureVerificationError(
                 encodedHeader,
                 encodedPayload,
                 {
@@ -285,17 +282,16 @@ export function createWebhooks(
         // (Express's Request class is an extension of http.IncomingMessage, and doesn't appear to be relevantly modified: https://github.com/expressjs/express/blob/master/lib/request.js#L31)
         if (Array.isArray(encodedHeader)) {
             throw new Error(
-                'Unexpected: An array was passed as a header, which should not be possible for the expressplatby-signature header.'
+                'Unexpected: An array was passed as a header, which should not be possible for the ep-signature header.'
             );
         }
 
         if (encodedHeader == null || encodedHeader == '') {
-            throw new ExpressPlatbySignatureVerificationError(
+            throw new ExpressPaymentsSignatureVerificationError(
                 encodedHeader,
                 encodedPayload,
                 {
-                    message:
-                        'No expressplatby-signature header value was provided.',
+                    message: 'No ep-signature header value was provided.',
                 }
             );
         }
@@ -308,7 +304,7 @@ export function createWebhooks(
         const details = parseHeader(decodedHeader, expectedScheme);
 
         if (!details || details.timestamp === -1) {
-            throw new ExpressPlatbySignatureVerificationError(
+            throw new ExpressPaymentsSignatureVerificationError(
                 decodedHeader,
                 decodedPayload,
                 {
@@ -319,7 +315,7 @@ export function createWebhooks(
         }
 
         if (!details.signatures.length) {
-            throw new ExpressPlatbySignatureVerificationError(
+            throw new ExpressPaymentsSignatureVerificationError(
                 decodedHeader,
                 decodedPayload,
                 {
@@ -355,7 +351,7 @@ export function createWebhooks(
 
         const docsLocation =
             '\nLearn more about webhook signing and explore webhook integration examples for various frameworks at ' +
-            'https://github.com/expressplatby/expressplatby-node#webhook-signing';
+            'https://github.com/expresspayments/expresspayments-node#webhook-signing';
 
         const whitespaceMessage = secretContainsWhitespace
             ? '\n\nNote: The provided signing secret contains whitespace. This often indicates an extra newline or space is in the value'
@@ -363,7 +359,7 @@ export function createWebhooks(
 
         if (!signatureFound) {
             if (suspectPayloadType) {
-                throw new ExpressPlatbySignatureVerificationError(
+                throw new ExpressPaymentsSignatureVerificationError(
                     header,
                     payload,
                     {
@@ -377,14 +373,18 @@ export function createWebhooks(
                     }
                 );
             }
-            throw new ExpressPlatbySignatureVerificationError(header, payload, {
-                message:
-                    'No signatures found matching the expected signature for payload.' +
-                    ' Are you passing the raw request body you received from ExpressPlatby? \n' +
-                    docsLocation +
-                    '\n' +
-                    whitespaceMessage,
-            });
+            throw new ExpressPaymentsSignatureVerificationError(
+                header,
+                payload,
+                {
+                    message:
+                        'No signatures found matching the expected signature for payload.' +
+                        ' Are you passing the raw request body you received from ExpressPayments? \n' +
+                        docsLocation +
+                        '\n' +
+                        whitespaceMessage,
+                }
+            );
         }
 
         const timestampAge =
@@ -395,9 +395,13 @@ export function createWebhooks(
 
         if (tolerance > 0 && timestampAge > tolerance) {
             // @ts-ignore
-            throw new ExpressPlatbySignatureVerificationError(header, payload, {
-                message: 'Timestamp outside the tolerance zone',
-            });
+            throw new ExpressPaymentsSignatureVerificationError(
+                header,
+                payload,
+                {
+                    message: 'Timestamp outside the tolerance zone',
+                }
+            );
         }
 
         return true;

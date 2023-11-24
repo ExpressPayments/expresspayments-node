@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Terminal {
             interface LocationCreateParams {
                 /**
@@ -25,9 +25,11 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<
+                    ExpressPayments.MetadataParam
+                >;
             }
 
             namespace LocationCreateParams {
@@ -75,7 +77,7 @@ declare module 'expressplatby' {
                 /**
                  * The full address of the location.
                  */
-                address?: ExpressPlatby.AddressParam;
+                address?: ExpressPayments.AddressParam;
 
                 /**
                  * The ID of a configuration that will be used to customize all readers in this location.
@@ -93,9 +95,11 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<
+                    ExpressPayments.MetadataParam
+                >;
             }
 
             interface LocationListParams extends PaginationParams {
@@ -110,13 +114,13 @@ declare module 'expressplatby' {
             class LocationsResource {
                 /**
                  * Creates a new Location object.
-                 * For further details, including which address fields are required in each country, see the [Manage locations](https://expressplatby.cz/docs/terminal/fleet/locations) guide.
+                 * For further details, including which address fields are required in each country, see the [Manage locations](https://docs.epayments.network/terminal/fleet/locations) guide.
                  */
                 create(
                     params: LocationCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Terminal.Location>
+                    ExpressPayments.Response<ExpressPayments.Terminal.Location>
                 >;
 
                 /**
@@ -127,18 +131,18 @@ declare module 'expressplatby' {
                     params?: LocationRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        | ExpressPlatby.Terminal.Location
-                        | ExpressPlatby.Terminal.DeletedLocation
+                    ExpressPayments.Response<
+                        | ExpressPayments.Terminal.Location
+                        | ExpressPayments.Terminal.DeletedLocation
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        | ExpressPlatby.Terminal.Location
-                        | ExpressPlatby.Terminal.DeletedLocation
+                    ExpressPayments.Response<
+                        | ExpressPayments.Terminal.Location
+                        | ExpressPayments.Terminal.DeletedLocation
                     >
                 >;
 
@@ -150,9 +154,9 @@ declare module 'expressplatby' {
                     params?: LocationUpdateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        | ExpressPlatby.Terminal.Location
-                        | ExpressPlatby.Terminal.DeletedLocation
+                    ExpressPayments.Response<
+                        | ExpressPayments.Terminal.Location
+                        | ExpressPayments.Terminal.DeletedLocation
                     >
                 >;
 
@@ -162,10 +166,10 @@ declare module 'expressplatby' {
                 list(
                     params?: LocationListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Terminal.Location>;
+                ): ApiListPromise<ExpressPayments.Terminal.Location>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Terminal.Location>;
+                ): ApiListPromise<ExpressPayments.Terminal.Location>;
 
                 /**
                  * Deletes a Location object.
@@ -175,16 +179,16 @@ declare module 'expressplatby' {
                     params?: LocationDeleteParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Terminal.DeletedLocation
+                    ExpressPayments.Response<
+                        ExpressPayments.Terminal.DeletedLocation
                     >
                 >;
                 del(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Terminal.DeletedLocation
+                    ExpressPayments.Response<
+                        ExpressPayments.Terminal.DeletedLocation
                     >
                 >;
             }

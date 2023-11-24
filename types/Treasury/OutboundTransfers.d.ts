@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             /**
-             * Use OutboundTransfers to transfer funds from a [FinancialAccount](https://expressplatby.cz/docs/api#financial_accounts) to a PaymentMethod belonging to the same entity. To send funds to a different party, use [OutboundPayments](https://expressplatby.cz/docs/api#outbound_payments) instead. You can send funds over ACH rails or through a domestic wire transfer to a user's own external bank account.
+             * Use OutboundTransfers to transfer funds from a [FinancialAccount](https://docs.epayments.network/api#financial_accounts) to a PaymentMethod belonging to the same entity. To send funds to a different party, use [OutboundPayments](https://docs.epayments.network/api#outbound_payments) instead. You can send funds over ACH rails or through a domestic wire transfer to a user's own external bank account.
              *
              * Simulate OutboundTransfer state changes with the `/v1/test_helpers/treasury/outbound_transfers` endpoints. These methods can only be called on test mode objects.
              */
@@ -35,7 +35,7 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -62,7 +62,7 @@ declare module 'expressplatby' {
                 financial_account: string;
 
                 /**
-                 * A [hosted transaction receipt](https://expressplatby.cz/docs/treasury/moving-money/regulatory-receipts) URL that is provided when money movement is considered regulated under ExpressPlatby's money transmission licenses.
+                 * A [hosted transaction receipt](https://docs.epayments.network/treasury/moving-money/regulatory-receipts) URL that is provided when money movement is considered regulated under ExpressPayments' money transmission licenses.
                  */
                 hosted_regulatory_receipt_url: string | null;
 
@@ -72,9 +72,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * Details about a returned OutboundTransfer. Only set when the status is `returned`.
@@ -96,7 +96,7 @@ declare module 'expressplatby' {
                 /**
                  * The Transaction associated with this object.
                  */
-                transaction: string | ExpressPlatby.Treasury.Transaction;
+                transaction: string | ExpressPayments.Treasury.Transaction;
             }
 
             namespace OutboundTransfer {
@@ -113,7 +113,7 @@ declare module 'expressplatby' {
 
                 namespace DestinationPaymentMethodDetails {
                     interface BillingDetails {
-                        address: ExpressPlatby.Address;
+                        address: ExpressPayments.Address;
 
                         /**
                          * Email address.
@@ -181,7 +181,7 @@ declare module 'expressplatby' {
                     /**
                      * The Transaction associated with this object.
                      */
-                    transaction: string | ExpressPlatby.Treasury.Transaction;
+                    transaction: string | ExpressPayments.Treasury.Transaction;
                 }
 
                 namespace ReturnedDetails {

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * The InvoiceLineItem object.
          */
@@ -27,7 +27,7 @@ declare module 'expressplatby' {
             amount_excluding_tax: number | null;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -49,12 +49,12 @@ declare module 'expressplatby' {
             /**
              * The discounts applied to the invoice line item. Line item discounts are applied before invoice discounts. Use `expand[]=discounts` to expand each discount.
              */
-            discounts: Array<string | ExpressPlatby.Discount> | null;
+            discounts: Array<string | ExpressPayments.Discount> | null;
 
             /**
-             * The ID of the [invoice item](https://expressplatby.cz/docs/api/invoiceitems) associated with this line item if any.
+             * The ID of the [invoice item](https://docs.epayments.network/api/invoiceitems) associated with this line item if any.
              */
-            invoice_item?: string | ExpressPlatby.InvoiceItem;
+            invoice_item?: string | ExpressPayments.InvoiceItem;
 
             /**
              * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -62,21 +62,21 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Note that for line items with `type=subscription` this will reflect the metadata of the subscription that caused the line item to be created.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Note that for line items with `type=subscription` this will reflect the metadata of the subscription that caused the line item to be created.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             period: InvoiceLineItem.Period;
 
             /**
              * The plan of the subscription, if the line item is a subscription or a proration.
              */
-            plan: ExpressPlatby.Plan | null;
+            plan: ExpressPayments.Plan | null;
 
             /**
              * The price of the line item.
              */
-            price: ExpressPlatby.Price | null;
+            price: ExpressPayments.Price | null;
 
             /**
              * Whether this is a proration.
@@ -96,12 +96,12 @@ declare module 'expressplatby' {
             /**
              * The subscription that the invoice item pertains to, if any.
              */
-            subscription: string | ExpressPlatby.Subscription | null;
+            subscription: string | ExpressPayments.Subscription | null;
 
             /**
              * The subscription item that generated this line item. Left empty if the line item is not an explicit result of a subscription.
              */
-            subscription_item?: string | ExpressPlatby.SubscriptionItem;
+            subscription_item?: string | ExpressPayments.SubscriptionItem;
 
             /**
              * The amount of tax calculated per tax rate for this line item
@@ -111,7 +111,7 @@ declare module 'expressplatby' {
             /**
              * The tax rates which apply to the line item.
              */
-            tax_rates?: Array<ExpressPlatby.TaxRate>;
+            tax_rates?: Array<ExpressPayments.TaxRate>;
 
             /**
              * A string identifying the type of the source of this line item, either an `invoiceitem` or a `subscription`.
@@ -136,8 +136,8 @@ declare module 'expressplatby' {
                  */
                 discount:
                     | string
-                    | ExpressPlatby.Discount
-                    | ExpressPlatby.DeletedDiscount;
+                    | ExpressPayments.Discount
+                    | ExpressPayments.DeletedDiscount;
             }
 
             interface Period {
@@ -187,7 +187,7 @@ declare module 'expressplatby' {
                 /**
                  * The tax rate that was applied to get this tax amount.
                  */
-                tax_rate: string | ExpressPlatby.TaxRate;
+                tax_rate: string | ExpressPayments.TaxRate;
 
                 /**
                  * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.

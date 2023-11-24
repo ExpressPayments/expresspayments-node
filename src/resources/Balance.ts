@@ -1,11 +1,12 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const Balance = ExpressPlatbyResource.extend({
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/balance',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
+
+export const Balance = ExpressPaymentsResource.extend({
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/balance',
+    }),
 });

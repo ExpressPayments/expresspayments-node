@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface CreditNoteCreateParams {
             /**
              * ID of the invoice.
@@ -34,12 +34,12 @@ declare module 'expressplatby' {
             memo?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
-             * The integer amount in cents (or local equivalent) representing the amount that is credited outside ExpressPlatby.
+             * The integer amount in cents (or local equivalent) representing the amount that is credited outside ExpressPayments.
              */
             out_of_band_amount?: number;
 
@@ -89,7 +89,7 @@ declare module 'expressplatby' {
                 /**
                  * The tax rates which apply to the credit note line item. Only valid when the `type` is `custom_line_item`.
                  */
-                tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+                tax_rates?: ExpressPayments.Emptyable<Array<string>>;
 
                 /**
                  * Type of the credit note line item, one of `invoice_line_item` or `custom_line_item`
@@ -144,9 +144,9 @@ declare module 'expressplatby' {
             memo?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
         }
 
         interface CreditNoteListParams extends PaginationParams {
@@ -206,12 +206,12 @@ declare module 'expressplatby' {
             memo?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
-             * The integer amount in cents (or local equivalent) representing the amount that is credited outside ExpressPlatby.
+             * The integer amount in cents (or local equivalent) representing the amount that is credited outside ExpressPayments.
              */
             out_of_band_amount?: number;
 
@@ -261,7 +261,7 @@ declare module 'expressplatby' {
                 /**
                  * The tax rates which apply to the credit note line item. Only valid when the `type` is `custom_line_item`.
                  */
-                tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+                tax_rates?: ExpressPayments.Emptyable<Array<string>>;
 
                 /**
                  * Type of the credit note line item, one of `invoice_line_item` or `custom_line_item`
@@ -329,12 +329,12 @@ declare module 'expressplatby' {
             memo?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
-             * The integer amount in cents (or local equivalent) representing the amount that is credited outside ExpressPlatby.
+             * The integer amount in cents (or local equivalent) representing the amount that is credited outside ExpressPayments.
              */
             out_of_band_amount?: number;
 
@@ -384,7 +384,7 @@ declare module 'expressplatby' {
                 /**
                  * The tax rates which apply to the credit note line item. Only valid when the `type` is `custom_line_item`.
                  */
-                tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+                tax_rates?: ExpressPayments.Emptyable<Array<string>>;
 
                 /**
                  * Type of the credit note line item, one of `invoice_line_item` or `custom_line_item`
@@ -436,10 +436,10 @@ declare module 'expressplatby' {
              *
              * Refund: create a new refund (using refund_amount) or link an existing refund (using refund).
              * Customer balance credit: credit the customer's balance (using credit_amount) which will be automatically applied to their next invoice when it's finalized.
-             * Outside ExpressPlatby credit: record the amount that is or will be credited outside ExpressPlatby (using out_of_band_amount).
+             * Outside ExpressPayments credit: record the amount that is or will be credited outside ExpressPayments (using out_of_band_amount).
              *
              *
-             * For post-payment credit notes the sum of the refund, credit and outside ExpressPlatby amounts must equal the credit note total.
+             * For post-payment credit notes the sum of the refund, credit and outside ExpressPayments amounts must equal the credit note total.
              *
              * You may issue multiple credit notes for an invoice. Each credit note will increment the invoice's pre_payment_credit_notes_amount
              * or post_payment_credit_notes_amount depending on its status at the time of credit note creation.
@@ -447,7 +447,7 @@ declare module 'expressplatby' {
             create(
                 params: CreditNoteCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CreditNote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CreditNote>>;
 
             /**
              * Retrieves the credit note object with the given identifier.
@@ -456,11 +456,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CreditNoteRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CreditNote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CreditNote>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CreditNote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CreditNote>>;
 
             /**
              * Updates an existing credit note.
@@ -469,7 +469,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CreditNoteUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CreditNote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CreditNote>>;
 
             /**
              * Returns a list of credit notes.
@@ -477,10 +477,10 @@ declare module 'expressplatby' {
             list(
                 params?: CreditNoteListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CreditNote>;
+            ): ApiListPromise<ExpressPayments.CreditNote>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CreditNote>;
+            ): ApiListPromise<ExpressPayments.CreditNote>;
 
             /**
              * When retrieving a credit note, you'll get a lines property containing the first handful of those items. There is also a URL where you can retrieve the full (paginated) list of line items.
@@ -489,11 +489,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CreditNoteLineItemListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CreditNoteLineItem>;
+            ): ApiListPromise<ExpressPayments.CreditNoteLineItem>;
             listLineItems(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CreditNoteLineItem>;
+            ): ApiListPromise<ExpressPayments.CreditNoteLineItem>;
 
             /**
              * When retrieving a credit note preview, you'll get a lines property containing the first handful of those items. This URL you can retrieve the full (paginated) list of line items.
@@ -501,7 +501,7 @@ declare module 'expressplatby' {
             listPreviewLineItems(
                 params: CreditNoteListPreviewLineItemsParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CreditNoteLineItem>;
+            ): ApiListPromise<ExpressPayments.CreditNoteLineItem>;
 
             /**
              * Get a preview of a credit note without creating it.
@@ -509,20 +509,20 @@ declare module 'expressplatby' {
             preview(
                 params: CreditNotePreviewParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CreditNote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CreditNote>>;
 
             /**
-             * Marks a credit note as void. Learn more about [voiding credit notes](https://expressplatby.cz/docs/billing/invoices/credit-notes#voiding).
+             * Marks a credit note as void. Learn more about [voiding credit notes](https://docs.epayments.network/billing/invoices/credit-notes#voiding).
              */
             voidCreditNote(
                 id: string,
                 params?: CreditNoteVoidCreditNoteParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CreditNote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CreditNote>>;
             voidCreditNote(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CreditNote>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CreditNote>>;
         }
     }
 }

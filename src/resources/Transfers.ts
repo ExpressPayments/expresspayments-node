@@ -1,48 +1,48 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource.js';
 
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-export const Transfers = ExpressPlatbyResource.extend({
-    create: expressPlatbyMethod({
+export const Transfers = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/transfers',
     }),
 
-    retrieve: expressPlatbyMethod({
+    retrieve: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/transfers/{transfer}',
     }),
 
-    update: expressPlatbyMethod({
+    update: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/transfers/{transfer}',
     }),
 
-    list: expressPlatbyMethod({
+    list: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/transfers',
         methodType: 'list',
     }),
 
-    createReversal: expressPlatbyMethod({
+    createReversal: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/transfers/{id}/reversals',
     }),
 
-    listReversals: expressPlatbyMethod({
+    listReversals: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/transfers/{id}/reversals',
         methodType: 'list',
     }),
 
-    retrieveReversal: expressPlatbyMethod({
+    retrieveReversal: expressPaymentsMethod({
         method: 'GET',
         fullPath: '/v1/transfers/{transfer}/reversals/{id}',
     }),
 
-    updateReversal: expressPlatbyMethod({
+    updateReversal: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/transfers/{transfer}/reversals/{id}',
     }),

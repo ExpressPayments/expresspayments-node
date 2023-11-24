@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Issuing {
             interface TransactionRetrieveParams {
                 /**
@@ -17,9 +17,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+                metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
             }
 
             interface TransactionListParams extends PaginationParams {
@@ -36,7 +36,7 @@ declare module 'expressplatby' {
                 /**
                  * Only return transactions that were created during the given date interval.
                  */
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -62,13 +62,13 @@ declare module 'expressplatby' {
                     params?: TransactionRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Transaction>
+                  ExpressPayments.Response<ExpressPayments.Issuing.Transaction>
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Transaction>
+                    ExpressPayments.Response<ExpressPayments.Issuing.Transaction>
                 >;
 
                 /**
@@ -79,7 +79,7 @@ declare module 'expressplatby' {
                     params?: TransactionUpdateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Issuing.Transaction>
+                    ExpressPayments.Response<ExpressPayments.Issuing.Transaction>
                 >;
 
                 /**
@@ -88,10 +88,10 @@ declare module 'expressplatby' {
                 list(
                     params?: TransactionListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Issuing.Transaction>;
+                ): ApiListPromise<ExpressPayments.Issuing.Transaction>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Issuing.Transaction>;
+                ): ApiListPromise<ExpressPayments.Issuing.Transaction>;
             }
         }
     }

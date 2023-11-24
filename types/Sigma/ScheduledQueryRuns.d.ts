@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Sigma {
             /**
-             * If you have [scheduled a Sigma query](https://expressplatby.cz/docs/sigma/scheduled-queries), you'll
+             * If you have [scheduled a Sigma query](https://docs.epayments.network/sigma/scheduled-queries), you'll
              * receive a `sigma.scheduled_query_run.created` webhook each time the query
              * runs. The webhook contains a `ScheduledQueryRun` object, which you can use to
              * retrieve the query results.
@@ -26,7 +26,7 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * When the query was run, Sigma contained a snapshot of your ExpressPlatby data at this time.
+                 * When the query was run, Sigma contained a snapshot of your ExpressPayments data at this time.
                  */
                 data_load_time: number;
 
@@ -35,7 +35,7 @@ declare module 'expressplatby' {
                 /**
                  * The file object representing the results of the query.
                  */
-                file: ExpressPlatby.File | null;
+                file: ExpressPayments.File | null;
 
                 /**
                  * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Radar {
             interface EarlyFraudWarningRetrieveParams {
                 /**
@@ -31,23 +31,23 @@ declare module 'expressplatby' {
                 /**
                  * Retrieves the details of an early fraud warning that has previously been created.
                  *
-                 * Please refer to the [early fraud warning](https://expressplatby.cz/docs/api#early_fraud_warning_object) object reference for more details.
+                 * Please refer to the [early fraud warning](https://docs.epayments.network/api#early_fraud_warning_object) object reference for more details.
                  */
                 retrieve(
                     id: string,
                     params?: EarlyFraudWarningRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Radar.EarlyFraudWarning
+                    ExpressPayments.Response<
+                        ExpressPayments.Radar.EarlyFraudWarning
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Radar.EarlyFraudWarning
+                    ExpressPayments.Response<
+                        ExpressPayments.Radar.EarlyFraudWarning
                     >
                 >;
 
@@ -57,10 +57,10 @@ declare module 'expressplatby' {
                 list(
                     params?: EarlyFraudWarningListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Radar.EarlyFraudWarning>;
+                ): ApiListPromise<ExpressPayments.Radar.EarlyFraudWarning>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Radar.EarlyFraudWarning>;
+                ): ApiListPromise<ExpressPayments.Radar.EarlyFraudWarning>;
             }
         }
     }

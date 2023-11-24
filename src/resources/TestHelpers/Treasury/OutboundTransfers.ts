@@ -1,24 +1,25 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../../ExpressPaymentsResource.js';
 
-export const OutboundTransfers = ExpressPlatbyResource.extend({
-  fail: expressPlatbyMethod({
-    method: 'POST',
-    fullPath:
-      '/v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/fail',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  post: expressPlatbyMethod({
-    method: 'POST',
-    fullPath:
-      '/v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/post',
-  }),
+export const OutboundTransfers = ExpressPaymentsResource.extend({
+    fail: expressPaymentsMethod({
+        method: 'POST',
+        fullPath:
+            '/v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/fail',
+    }),
 
-  returnOutboundTransfer: expressPlatbyMethod({
-    method: 'POST',
-    fullPath:
-      '/v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/return',
-  }),
+    post: expressPaymentsMethod({
+        method: 'POST',
+        fullPath:
+            '/v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/post',
+    }),
+
+    returnOutboundTransfer: expressPaymentsMethod({
+        method: 'POST',
+        fullPath:
+            '/v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/return',
+    }),
 });

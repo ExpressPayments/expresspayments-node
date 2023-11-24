@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Shipping rates describe the price of shipping presented to your customers and can be
-         * applied to [Checkout Sessions](https://expressplatby.cz/docs/payments/checkout/shipping)
-         * and [Orders](https://expressplatby.cz/docs/orders/shipping) to collect shipping costs.
+         * applied to [Checkout Sessions](https://docs.epayments.network/payments/checkout/shipping)
+         * and [Orders](https://docs.epayments.network/orders/shipping) to collect shipping costs.
          */
         interface ShippingRate {
             /**
@@ -46,9 +46,9 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
              * Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`.
@@ -56,9 +56,9 @@ declare module 'expressplatby' {
             tax_behavior: ShippingRate.TaxBehavior | null;
 
             /**
-             * A [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID. The Shipping tax code is `txcd_92010001`.
+             * A [tax code](https://docs.epayments.network/tax/tax-categories) ID. The Shipping tax code is `txcd_92010001`.
              */
-            tax_code: string | ExpressPlatby.TaxCode | null;
+            tax_code: string | ExpressPayments.TaxCode | null;
 
             /**
              * The type of calculation to use on the shipping rate. Can only be `fixed_amount` for now.
@@ -130,12 +130,12 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
                 /**
-                 * Shipping rates defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Shipping rates defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency_options?: {
                     [key: string]: FixedAmount.CurrencyOptions;

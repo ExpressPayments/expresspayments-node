@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Events are our way of letting you know when something interesting happens in
          * your account. When an interesting event occurs, we create a new `Event`
@@ -18,19 +18,19 @@ declare module 'expressplatby' {
          * `invoice.payment_failed` event will contain an invoice.
          *
          * As with other API resources, you can use endpoints to retrieve an
-         * [individual event](https://expressplatby.cz/docs/api#retrieve_event) or a [list of events](https://expressplatby.cz/docs/api#list_events)
+         * [individual event](https://docs.epayments.network/api#retrieve_event) or a [list of events](https://docs.epayments.network/api#list_events)
          * from the API. We also have a separate
          * [webhooks](http://en.wikipedia.org/wiki/Webhook) system for sending the
          * `Event` objects directly to an endpoint on your server. Webhooks are managed
          * in your
-         * [account settings](https://dashboard.expressplatby.cz/account/webhooks),
-         * and our [Using Webhooks](https://expressplatby.cz/docs/webhooks) guide will help you get set up.
+         * [account settings](https://dashboard.epayments.network/account/webhooks),
+         * and our [Using Webhooks](https://docs.epayments.network/webhooks) guide will help you get set up.
          *
-         * When using [Connect](https://expressplatby.cz/docs/connect), you can also receive notifications of
+         * When using [Connect](https://docs.epayments.network/connect), you can also receive notifications of
          * events that occur in connected accounts. For these events, there will be an
          * additional `account` attribute in the received `Event` object.
          *
-         * **NOTE:** Right now, access to events through the [Retrieve Event API](https://expressplatby.cz/docs/api#retrieve_event) is
+         * **NOTE:** Right now, access to events through the [Retrieve Event API](https://docs.epayments.network/api#retrieve_event) is
          * guaranteed only for 30 days.
          */
         interface Event {
@@ -50,7 +50,7 @@ declare module 'expressplatby' {
             account?: string;
 
             /**
-             * The ExpressPlatby API version used to render `data`. *Note: This property is populated only for events on or after October 31, 2014*.
+             * The ExpressPayments API version used to render `data`. *Note: This property is populated only for events on or after October 31, 2014*.
              */
             api_version: string | null;
 
@@ -85,12 +85,12 @@ declare module 'expressplatby' {
         namespace Event {
             interface Data {
                 /**
-                 * Object containing the API resource relevant to the event. For example, an `invoice.created` event will have a full [invoice object](https://expressplatby.cz/docs/api#invoice_object) as the value of the object key.
+                 * Object containing the API resource relevant to the event. For example, an `invoice.created` event will have a full [invoice object](https://docs.epayments.network/api#invoice_object) as the value of the object key.
                  */
                 object: Data.Object;
 
                 /**
-                 * Object containing the names of the updated attributes and their values prior to the event (only included in events of type `*.updated`). If an array attribute has any updated elements, this object contains the entire array. In ExpressPlatby API versions 2022-12-31 or earlier, an updated array attribute in this object includes only the updated array elements.
+                 * Object containing the names of the updated attributes and their values prior to the event (only included in events of type `*.updated`). If an array attribute has any updated elements, this object contains the entire array. In ExpressPayments API versions 2022-12-31 or earlier, an updated array attribute in this object includes only the updated array elements.
                  */
                 previous_attributes?: Data.PreviousAttributes;
             }
@@ -103,7 +103,7 @@ declare module 'expressplatby' {
 
             interface Request {
                 /**
-                 * ID of the API request that caused the event. If null, the event was automatic (e.g., ExpressPlatby's automatic subscription handling). Request logs are available in the [dashboard](https://dashboard.expressplatby.cz/logs), but currently not in the API.
+                 * ID of the API request that caused the event. If null, the event was automatic (e.g., ExpressPayments' automatic subscription handling). Request logs are available in the [dashboard](https://dashboard.epayments.network/logs), but currently not in the API.
                  */
                 id: string | null;
 

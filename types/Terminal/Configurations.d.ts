@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Terminal {
             /**
              * A Configurations object represents how features should be configured for terminal readers.
@@ -41,7 +41,7 @@ declare module 'expressplatby' {
                     /**
                      * A File ID representing an image you would like displayed on the reader.
                      */
-                    splashscreen?: string | ExpressPlatby.File;
+                    splashscreen?: string | ExpressPayments.File;
                 }
 
                 interface Tipping {
@@ -318,7 +318,7 @@ declare module 'expressplatby' {
                     /**
                      * A File ID representing an image you would like displayed on the reader.
                      */
-                    splashscreen?: string | ExpressPlatby.File;
+                    splashscreen?: string | ExpressPayments.File;
                 }
             }
 

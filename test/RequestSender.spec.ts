@@ -1,26 +1,26 @@
 // @ts-nocheck
-import {expect} from 'chai';
+import { expect } from "chai";
 import {
-    ExpressPlatbyAuthenticationError,
-    ExpressPlatbyConnectionError,
-    ExpressPlatbyError,
-    ExpressPlatbyIdempotencyError,
-    ExpressPlatbyPermissionError,
-    ExpressPlatbyRateLimitError,
-} from '../src/Error.js';
-import {HttpClientResponse} from '../src/net/HttpClient.js';
-import {RequestSender} from '../src/RequestSender.js';
+    ExpressPaymentsAuthenticationError,
+    ExpressPaymentsConnectionError,
+    ExpressPaymentsError,
+    ExpressPaymentsIdempotencyError,
+    ExpressPaymentsPermissionError,
+    ExpressPaymentsRateLimitError
+} from "../src/Error.js";
+import { HttpClientResponse } from "../src/net/HttpClient.js";
+import { RequestSender } from "../src/RequestSender.js";
 import {
     FAKE_API_KEY,
-    getSpyableExpressPlatby,
-    getTestServerExpressPlatby,
+    getSpyableExpressPayments,
+    getTestServerExpressPayments,
 } from './testUtils.js';
 import nock = require('nock');
 
-const expressPlatby = getSpyableExpressPlatby();
+const expressPayments = getSpyableExpressPayments();
 
 describe('RequestSender', () => {
-    const sender = new RequestSender(expressPlatby, 0);
+    const sender = new RequestSender(expressPayments, 0);
 
     describe('_makeHeaders', () => {
         it('sets the Authorization header with Bearer auth using the global API key', () => {
@@ -37,13 +37,13 @@ describe('RequestSender', () => {
                 'Bearer anotherFakeAuthToken'
             );
         });
-        it('sets the ExpressPlatby-Version header if an API version is provided', () => {
+        it('sets the EP-Version header if an API version is provided', () => {
             const headers = sender._makeHeaders(null, 0, '1970-01-01');
-            expect(headers['ExpressPlatby-Version']).to.equal('1970-01-01');
+            expect(headers['EP-Version']).to.equal('1970-01-01');
         });
-        it('does not the set the ExpressPlatby-Version header if no API version is provided', () => {
+        it('does not the set the EP-Version header if no API version is provided', () => {
             const headers = sender._makeHeaders(null, 0, null);
-            expect(headers).to.not.include.keys('ExpressPlatby-Version');
+            expect(headers).to.not.include.keys('EP-Version');
         });
     });
 
@@ -99,8 +99,8 @@ describe('RequestSender', () => {
     });
 
     describe('Parameter encoding', () => {
-        // Use a real instance of ExpressPlatby as we're mocking the http.request responses.
-        const realExpressPlatby = require('../src/expressplatby.cjs.node.js')(
+        // Use a real instance of ExpressPayments as we're mocking the http.request responses.
+        const realExpressPayments = require('../src/expresspayments.cjs.node.js')(
             'sk_test_xyz'
         );
 
@@ -118,7 +118,7 @@ describe('RequestSender', () => {
                     ],
                 };
                 const options = {
-                    host: expressPlatby.getConstant('DEFAULT_HOST'),
+                    host: expressPayments.getConstant('DEFAULT_HOST'),
                     path: '/v1/invoices/upcoming',
                     data,
                 };
@@ -136,7 +136,7 @@ describe('RequestSender', () => {
                     )
                     .reply(200, '{}');
 
-                realExpressPlatby.invoices.retrieveUpcoming(
+                realExpressPayments.invoices.retrieveUpcoming(
                     options.data,
                     (err, response) => {
                         done(err);
@@ -147,12 +147,12 @@ describe('RequestSender', () => {
 
             it('handles . as a query param', (done) => {
                 const scope = nock(
-                    `https://${expressPlatby.getConstant('DEFAULT_HOST')}`
+                    `https://${expressPayments.getConstant('DEFAULT_HOST')}`
                 )
                     .get('/v1/customers/.', '')
                     .reply(200, '{}');
 
-                realExpressPlatby.customers.retrieve('.', (err, response) => {
+                realExpressPayments.customers.retrieve('.', (err, response) => {
                     done(err);
                     scope.done();
                 });
@@ -160,27 +160,30 @@ describe('RequestSender', () => {
 
             it('handles .. as a query param', (done) => {
                 const scope = nock(
-                    `https://${expressPlatby.getConstant('DEFAULT_HOST')}`
+                    `https://${expressPayments.getConstant('DEFAULT_HOST')}`
                 )
                     .get('/v1/customers/..', '')
                     .reply(200, '{}');
 
-                realExpressPlatby.customers.retrieve('..', (err, response) => {
-                    done(err);
-                    scope.done();
-                });
+                realExpressPayments.customers.retrieve(
+                    '..',
+                    (err, response) => {
+                        done(err);
+                        scope.done();
+                    }
+                );
             });
 
             it('handles empty string as a query param', (done) => {
                 const scope = nock(
-                    `https://${expressPlatby.getConstant('DEFAULT_HOST')}`
+                    `https://${expressPayments.getConstant('DEFAULT_HOST')}`
                 )
                     // Note this should always have a trailing space to avoid calling the
                     // top level list endpoint (/v1/customers) and returning all customers.
                     .get('/v1/customers/', '')
                     .reply(200, '{}');
 
-                realExpressPlatby.customers.retrieve('', (err, response) => {
+                realExpressPayments.customers.retrieve('', (err, response) => {
                     done(err);
                     scope.done();
                 });
@@ -188,14 +191,14 @@ describe('RequestSender', () => {
 
             it('handles empty string as a query param for namespaced resources', (done) => {
                 const scope = nock(
-                    `https://${expressPlatby.getConstant('DEFAULT_HOST')}`
+                    `https://${expressPayments.getConstant('DEFAULT_HOST')}`
                 )
                     // Note this should always have a trailing space to avoid calling the
                     // top level list endpoint (/v1/customers) and returning all customers.
                     .get('/v1/checkout/sessions/', '')
                     .reply(200, '{}');
 
-                realExpressPlatby.checkout.sessions.retrieve(
+                realExpressPayments.checkout.sessions.retrieve(
                     '',
                     (err, response) => {
                         done(err);
@@ -206,14 +209,14 @@ describe('RequestSender', () => {
 
             it('handles empty string as a query param for nested resources', (done) => {
                 const scope = nock(
-                    `https://${expressPlatby.getConstant('DEFAULT_HOST')}`
+                    `https://${expressPayments.getConstant('DEFAULT_HOST')}`
                 )
                     // Note this should always have a trailing space to avoid calling the
                     // top level list endpoint (/v1/customers) and returning all customers.
                     .get('/v1/customers/cus_123/balance_transactions/', '')
                     .reply(200, '{}');
 
-                realExpressPlatby.customers.retrieveBalanceTransaction(
+                realExpressPayments.customers.retrieveBalanceTransaction(
                     'cus_123',
                     '',
                     (err, response) => {
@@ -225,13 +228,13 @@ describe('RequestSender', () => {
 
             it('does not include trailing slash for endpoints without query parameters', (done) => {
                 const scope = nock(
-                    `https://${expressPlatby.getConstant('DEFAULT_HOST')}`
+                    `https://${expressPayments.getConstant('DEFAULT_HOST')}`
                 )
                     // Note that no trailing slash is present.
                     .get('/v1/customers', '')
                     .reply(200, '{}');
 
-                realExpressPlatby.customers.list((err, response) => {
+                realExpressPayments.customers.list((err, response) => {
                     done(err);
                     scope.done();
                 });
@@ -239,12 +242,12 @@ describe('RequestSender', () => {
 
             it('works correctly with undefined optional arguments', (done) => {
                 const scope = nock(
-                    `https://${expressPlatby.getConstant('DEFAULT_HOST')}`
+                    `https://${expressPayments.getConstant('DEFAULT_HOST')}`
                 )
                     .get('/v1/accounts/acct_123')
                     .reply(200, '{}');
 
-                realExpressPlatby.accounts.retrieve(
+                realExpressPayments.accounts.retrieve(
                     'acct_123',
                     undefined,
                     (err, response) => {
@@ -256,12 +259,12 @@ describe('RequestSender', () => {
 
             it('works correctly with null optional arguments', (done) => {
                 const scope = nock(
-                    `https://${expressPlatby.getConstant('DEFAULT_HOST')}`
+                    `https://${expressPayments.getConstant('DEFAULT_HOST')}`
                 )
                     .get('/v1/accounts/acct_123')
                     .reply(200, '{}');
 
-                realExpressPlatby.accounts.retrieve(
+                realExpressPayments.accounts.retrieve(
                     'acct_123',
                     null,
                     (err, response) => {
@@ -275,7 +278,7 @@ describe('RequestSender', () => {
                 const data = {
                     foo: 'bar',
                 };
-                const host = expressPlatby.getConstant('DEFAULT_HOST');
+                const host = expressPayments.getConstant('DEFAULT_HOST');
 
                 const scope = nock(
                     `https://${host}`,
@@ -287,7 +290,7 @@ describe('RequestSender', () => {
                     .delete(/.*/)
                     .reply(200, '{}');
 
-                realExpressPlatby.invoiceItems.del(
+                realExpressPayments.invoiceItems.del(
                     'invoiceItemId1',
                     data,
                     (err, response) => {
@@ -299,7 +302,7 @@ describe('RequestSender', () => {
 
             it('encodes the body in POST requests', (done) => {
                 const options = {
-                    host: expressPlatby.getConstant('DEFAULT_HOST'),
+                    host: expressPayments.getConstant('DEFAULT_HOST'),
                     path: '/v1/subscriptions/sub_123',
                     data: {
                         customer: 'cus_123',
@@ -322,7 +325,7 @@ describe('RequestSender', () => {
                     .post(options.path, options.body)
                     .reply(200, '{}');
 
-                realExpressPlatby.subscriptions.update(
+                realExpressPayments.subscriptions.update(
                     'sub_123',
                     options.data,
                     (err, response) => {
@@ -334,7 +337,7 @@ describe('RequestSender', () => {
 
             it('always includes Content-Length in POST requests even when empty', (done) => {
                 const options = {
-                    host: expressPlatby.getConstant('DEFAULT_HOST'),
+                    host: expressPayments.getConstant('DEFAULT_HOST'),
                     path: '/v1/subscriptions/sub_123',
                     data: {},
                     body: '',
@@ -351,7 +354,7 @@ describe('RequestSender', () => {
                     .post(options.path, options.body)
                     .reply(200, '{}');
 
-                realExpressPlatby.subscriptions.update(
+                realExpressPayments.subscriptions.update(
                     'sub_123',
                     options.data,
                     (err, response) => {
@@ -366,7 +369,7 @@ describe('RequestSender', () => {
                     .get('/v1/accounts/acct_123')
                     .reply(200, '{}');
 
-                realExpressPlatby.accounts.retrieve(
+                realExpressPayments.accounts.retrieve(
                     'acct_123',
                     {},
                     {
@@ -382,16 +385,16 @@ describe('RequestSender', () => {
     });
 
     describe('Retry Network Requests', () => {
-        // Use a real instance of ExpressPlatby as we're mocking the http.request responses.
-        const realExpressPlatby = require('../src/expressplatby.cjs.node.js')(
+        // Use a real instance of ExpressPayments as we're mocking the http.request responses.
+        const realExpressPayments = require('../src/expresspayments.cjs.node.js')(
             'sk_test_xyz'
         );
 
         // Override the sleep timer to speed up tests
-        realExpressPlatby.charges._getSleepTimeInMS = () => 0;
+        realExpressPayments.charges._getSleepTimeInMS = () => 0;
 
         const options = {
-            host: expressPlatby.getConstant('DEFAULT_HOST'),
+            host: expressPayments.getConstant('DEFAULT_HOST'),
             path: '/v1/charges',
             data: {
                 amount: 1000,
@@ -403,8 +406,8 @@ describe('RequestSender', () => {
         };
 
         afterEach(() => {
-            realExpressPlatby._setApiNumberField('maxNetworkRetries', 0);
-            expressPlatby._setApiNumberField('maxNetworkRetries', 0);
+            realExpressPayments._setApiNumberField('maxNetworkRetries', 0);
+            expressPayments._setApiNumberField('maxNetworkRetries', 0);
         });
 
         after(() => {
@@ -418,23 +421,23 @@ describe('RequestSender', () => {
                     .post(options.path, options.params)
                     .replyWithError('bad stuff');
 
-                realExpressPlatby.charges.create(options.data, (err) => {
+                realExpressPayments.charges.create(options.data, (err) => {
                     expect(err.detail.message).to.deep.equal('bad stuff');
                     done();
                 });
             });
 
             it('throws an error on connection timeout', (done) => {
-                return getTestServerExpressPlatby(
+                return getTestServerExpressPayments(
                     {timeout: 10},
                     (req, res) => {
                         // Do nothing. This will trigger a timeout.
                     },
-                    (err, expressPlatby, closeServer) => {
+                    (err, expressPayments, closeServer) => {
                         if (err) {
                             return done(err);
                         }
-                        expressPlatby.charges.create(
+                        expressPayments.charges.create(
                             options.data,
                             (err, result) => {
                                 expect(err.detail.message).to.deep.equal(
@@ -452,22 +455,22 @@ describe('RequestSender', () => {
             });
 
             it('throws an error on invalid JSON', (done) => {
-                return getTestServerExpressPlatby(
+                return getTestServerExpressPayments(
                     {},
                     (req, res) => {
                         // Write back JSON to close out the server.
                         res.write('invalidjson{}');
                         res.end();
                     },
-                    (err, expressPlatby, closeServer) => {
+                    (err, expressPayments, closeServer) => {
                         if (err) {
                             return done(err);
                         }
-                        expressPlatby.charges.create(
+                        expressPayments.charges.create(
                             options.data,
                             (err, result) => {
                                 expect(err.message).to.deep.equal(
-                                    'Invalid JSON received from the ExpressPlatby API'
+                                    'Invalid JSON received from the ExpressPayments API'
                                 );
                                 closeServer();
                                 done();
@@ -477,7 +480,7 @@ describe('RequestSender', () => {
                 );
             });
             it('throws an valid headers but connection error', (done) => {
-                return getTestServerExpressPlatby(
+                return getTestServerExpressPayments(
                     {},
                     (req, res) => {
                         // Send out valid headers and a partial response. We then interrupt
@@ -486,15 +489,15 @@ describe('RequestSender', () => {
                         res.write('{"ab');
                         res.destroy(new Error('something happened'));
                     },
-                    (err, expressPlatby, closeServer) => {
+                    (err, expressPayments, closeServer) => {
                         if (err) {
                             return done(err);
                         }
-                        expressPlatby.charges.create(
+                        expressPayments.charges.create(
                             options.data,
                             (err, result) => {
                                 expect(err).to.be.an.instanceOf(
-                                    ExpressPlatbyConnectionError
+                                    ExpressPaymentsConnectionError
                                 );
                                 done();
                             }
@@ -503,7 +506,7 @@ describe('RequestSender', () => {
                 );
             });
 
-            it('throws an ExpressPlatbyAuthenticationError on 401', (done) => {
+            it('throws an ExpressPaymentsAuthenticationError on 401', (done) => {
                 nock(`https://${options.host}`)
                     .post(options.path, options.params)
                     .reply(401, {
@@ -512,16 +515,16 @@ describe('RequestSender', () => {
                         },
                     });
 
-                realExpressPlatby.charges.create(options.data, (err) => {
+                realExpressPayments.charges.create(options.data, (err) => {
                     expect(err).to.be.an.instanceOf(
-                        ExpressPlatbyAuthenticationError
+                        ExpressPaymentsAuthenticationError
                     );
                     expect(err.message).to.be.equal('message');
                     done();
                 });
             });
 
-            it('throws an ExpressPlatbyPermissionError on 403', (done) => {
+            it('throws an ExpressPaymentsPermissionError on 403', (done) => {
                 nock(`https://${options.host}`)
                     .post(options.path, options.params)
                     .reply(403, {
@@ -530,16 +533,16 @@ describe('RequestSender', () => {
                         },
                     });
 
-                realExpressPlatby.charges.create(options.data, (err) => {
+                realExpressPayments.charges.create(options.data, (err) => {
                     expect(err).to.be.an.instanceOf(
-                        ExpressPlatbyPermissionError
+                        ExpressPaymentsPermissionError
                     );
                     expect(err.message).to.be.equal('message');
                     done();
                 });
             });
 
-            it('throws an ExpressPlatbyRateLimitError on 429', (done) => {
+            it('throws an ExpressPaymentsRateLimitError on 429', (done) => {
                 nock(`https://${options.host}`)
                     .post(options.path, options.params)
                     .reply(429, {
@@ -548,23 +551,23 @@ describe('RequestSender', () => {
                         },
                     });
 
-                realExpressPlatby.charges.create(options.data, (err) => {
+                realExpressPayments.charges.create(options.data, (err) => {
                     expect(err).to.be.an.instanceOf(
-                        ExpressPlatbyRateLimitError
+                        ExpressPaymentsRateLimitError
                     );
                     expect(err.message).to.be.equal('message');
                     done();
                 });
             });
 
-            it('throws an ExpressPlatbyError based on the underlying error type', (done) => {
+            it('throws an ExpressPaymentsError based on the underlying error type', (done) => {
                 const error = {
                     type: 'idempotency_error',
                 };
 
-                expect(ExpressPlatbyError.generate(error)).to.be.an.instanceOf(
-                    ExpressPlatbyIdempotencyError
-                );
+                expect(
+                    ExpressPaymentsError.generate(error)
+                ).to.be.an.instanceOf(ExpressPaymentsIdempotencyError);
 
                 nock(`https://${options.host}`)
                     .post(options.path, options.params)
@@ -572,9 +575,9 @@ describe('RequestSender', () => {
                         error,
                     });
 
-                realExpressPlatby.charges.create(options.data, (err) => {
+                realExpressPayments.charges.create(options.data, (err) => {
                     expect(err).to.be.an.instanceOf(
-                        ExpressPlatbyIdempotencyError
+                        ExpressPaymentsIdempotencyError
                     );
                     done();
                 });
@@ -582,18 +585,18 @@ describe('RequestSender', () => {
 
             it('retries connection timeout errors', (done) => {
                 let nRequestsReceived = 0;
-                return getTestServerExpressPlatby(
+                return getTestServerExpressPayments(
                     {timeout: 10, maxNetworkRetries: 2},
                     (req, res) => {
                         nRequestsReceived += 1;
                         // Do nothing. This will trigger a timeout.
                         return {shouldStayOpen: nRequestsReceived < 3};
                     },
-                    (err, expressPlatby, closeServer) => {
+                    (err, expressPayments, closeServer) => {
                         if (err) {
                             return done(err);
                         }
-                        expressPlatby.charges.create(
+                        expressPayments.charges.create(
                             options.data,
                             (err, result) => {
                                 expect(err.detail.message).to.deep.equal(
@@ -622,7 +625,7 @@ describe('RequestSender', () => {
                         amount: 1000,
                     });
 
-                realExpressPlatby.charges.create(
+                realExpressPayments.charges.create(
                     options.data,
                     (err, charge) => {
                         expect(charge.id).to.equal('ch_123');
@@ -638,7 +641,7 @@ describe('RequestSender', () => {
                     .post(options.path, options.params)
                     .replyWithError({code: 'ECONNRESET'});
 
-                realExpressPlatby.charges.create(options.data, (err) => {
+                realExpressPayments.charges.create(options.data, (err) => {
                     expect(err.detail.code).to.deep.equal('ECONNRESET');
                     done();
                 });
@@ -651,9 +654,9 @@ describe('RequestSender', () => {
                     .post(options.path, options.params)
                     .replyWithError('worse stuff');
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.charges.create(options.data, (err) => {
+                realExpressPayments.charges.create(options.data, (err) => {
                     const errorMessage = RequestSender._generateConnectionErrorMessage(
                         1
                     );
@@ -674,9 +677,9 @@ describe('RequestSender', () => {
                         amount: 1000,
                     });
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 2);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 2);
 
-                realExpressPlatby.charges.create(
+                realExpressPayments.charges.create(
                     options.data,
                     (err, charge) => {
                         expect(charge.id).to.equal('ch_123');
@@ -700,9 +703,9 @@ describe('RequestSender', () => {
                         amount: 1000,
                     });
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.charges.create(
+                realExpressPayments.charges.create(
                     options.data,
                     (err, charge) => {
                         expect(charge.id).to.equal('ch_123');
@@ -720,10 +723,10 @@ describe('RequestSender', () => {
                         },
                     });
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.charges.create(options.data, (err) => {
-                    expect(err.type).to.equal('ExpressPlatbyCardError');
+                realExpressPayments.charges.create(options.data, (err) => {
+                    expect(err.type).to.equal('ExpressPaymentsCardError');
                     done();
                 });
             });
@@ -738,13 +741,13 @@ describe('RequestSender', () => {
                                 type: 'api_error',
                             },
                         },
-                        {'expressplatby-should-retry': 'false'}
+                        {'ep-should-retry': 'false'}
                     );
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.charges.create(options.data, (err) => {
-                    expect(err.type).to.equal('ExpressPlatbyAPIError');
+                realExpressPayments.charges.create(options.data, (err) => {
+                    expect(err.type).to.equal('ExpressPaymentsAPIError');
                     done();
                 });
             });
@@ -755,7 +758,7 @@ describe('RequestSender', () => {
                     .reply(
                         400,
                         {error: {type: 'your_fault'}},
-                        {'expressplatby-should-retry': 'true'}
+                        {'ep-should-retry': 'true'}
                     )
                     .post(options.path, options.params)
                     .reply(200, {
@@ -764,9 +767,9 @@ describe('RequestSender', () => {
                         amount: 1000,
                     });
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.charges.create(
+                realExpressPayments.charges.create(
                     options.data,
                     (err, charge) => {
                         expect(charge.id).to.equal('ch_123');
@@ -776,7 +779,7 @@ describe('RequestSender', () => {
             });
 
             it('should handle OAuth errors gracefully', (done) => {
-                nock('https://connect.expressplatby.cz')
+                nock('https://connect.epayments.network')
                     .post('/oauth/token')
                     .reply(400, {
                         error: 'invalid_grant',
@@ -784,10 +787,12 @@ describe('RequestSender', () => {
                             'This authorization code has already been used. All tokens issued with this code have been revoked.',
                     });
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.oauth.token(options.data, (err) => {
-                    expect(err.type).to.equal('ExpressPlatbyInvalidGrantError');
+                realExpressPayments.oauth.token(options.data, (err) => {
+                    expect(err.type).to.equal(
+                        'ExpressPaymentsInvalidGrantError'
+                    );
                     done();
                 });
             });
@@ -807,9 +812,9 @@ describe('RequestSender', () => {
                         amount: 1000,
                     });
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.charges.create(
+                realExpressPayments.charges.create(
                     options.data,
                     (err, charge) => {
                         expect(charge.id).to.equal('ch_123');
@@ -833,12 +838,15 @@ describe('RequestSender', () => {
                         amount: 1000,
                     });
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.charges.retrieve('ch_123', (err, charge) => {
-                    expect(charge.id).to.equal('ch_123');
-                    done(err);
-                });
+                realExpressPayments.charges.retrieve(
+                    'ch_123',
+                    (err, charge) => {
+                        expect(charge.id).to.equal('ch_123');
+                        done(err);
+                    }
+                );
             });
 
             it('should add an idempotency key for retries using the POST method', (done) => {
@@ -862,9 +870,9 @@ describe('RequestSender', () => {
                         ]);
                     });
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.charges.create(options.data, (err) => {
+                realExpressPayments.charges.create(options.data, (err) => {
                     expect(headers).to.have.property('idempotency-key');
                     done(err);
                 });
@@ -890,9 +898,9 @@ describe('RequestSender', () => {
                         ]);
                     });
 
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 1);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 1);
 
-                realExpressPlatby.charges.retrieve('ch_123', () => {
+                realExpressPayments.charges.retrieve('ch_123', () => {
                     expect(headers).to.not.have.property('idempotency-key');
                     done();
                 });
@@ -919,7 +927,7 @@ describe('RequestSender', () => {
                         ]);
                     });
 
-                realExpressPlatby.charges.create(
+                realExpressPayments.charges.create(
                     options.data,
                     {idempotencyKey: key, maxNetworkRetries: 1},
                     () => {
@@ -945,7 +953,7 @@ describe('RequestSender', () => {
                         ]);
                     });
 
-                realExpressPlatby.charges.create(
+                realExpressPayments.charges.create(
                     options.data,
                     {maxNetworkRetries: 1},
                     (err, charge) => {
@@ -956,7 +964,7 @@ describe('RequestSender', () => {
             });
 
             it('should pick the per-request network retry setting if a global setting is set', (done) => {
-                realExpressPlatby._setApiNumberField('maxNetworkRetries', 0);
+                realExpressPayments._setApiNumberField('maxNetworkRetries', 0);
 
                 nock(`https://${options.host}`)
                     .post(options.path, options.params)
@@ -973,7 +981,7 @@ describe('RequestSender', () => {
                         ]);
                     });
 
-                realExpressPlatby.charges.create(
+                realExpressPayments.charges.create(
                     options.data,
                     {maxNetworkRetries: 1},
                     (err, charge) => {
@@ -987,17 +995,17 @@ describe('RequestSender', () => {
                 const returnedCharge = {
                     id: 'ch_123',
                 };
-                return getTestServerExpressPlatby(
+                return getTestServerExpressPayments(
                     {},
                     (req, res) => {
                         res.write(JSON.stringify(returnedCharge));
                         res.end();
                     },
-                    (err, expressPlatby, closeServer) => {
+                    (err, expressPayments, closeServer) => {
                         if (err) {
                             return done(err);
                         }
-                        expressPlatby.charges.create(
+                        expressPayments.charges.create(
                             options.data,
                             (err, result) => {
                                 expect(result).to.deep.equal(returnedCharge);
@@ -1013,18 +1021,18 @@ describe('RequestSender', () => {
                 const returnedCharge = {
                     id: 'ch_123',
                 };
-                return getTestServerExpressPlatby(
+                return getTestServerExpressPayments(
                     {},
                     (req, res) => {
                         res.write(JSON.stringify(returnedCharge));
                         res.end();
                     },
-                    async (err, expressPlatby, closeServer) => {
+                    async (err, expressPayments, closeServer) => {
                         if (err) {
                             return done(err);
                         }
                         try {
-                            const result = await expressPlatby.charges.create(
+                            const result = await expressPayments.charges.create(
                                 options.data
                             );
                             expect(result).to.deep.equal(returnedCharge);
@@ -1040,8 +1048,8 @@ describe('RequestSender', () => {
 
         describe('_getSleepTimeInMS', () => {
             it('should not exceed the maximum or minimum values', () => {
-                const max = expressPlatby.getMaxNetworkRetryDelay();
-                const min = expressPlatby.getInitialNetworkRetryDelay();
+                const max = expressPayments.getMaxNetworkRetryDelay();
+                const min = expressPayments.getInitialNetworkRetryDelay();
 
                 for (let i = 0; i < 10; i++) {
                     const sleepSeconds = sender._getSleepTimeInMS(i) / 1000;
@@ -1052,9 +1060,9 @@ describe('RequestSender', () => {
             });
 
             it('should allow a maximum override', () => {
-                const maxSec = expressPlatby.getMaxNetworkRetryDelay();
+                const maxSec = expressPayments.getMaxNetworkRetryDelay();
                 const minMS =
-                    expressPlatby.getInitialNetworkRetryDelay() * 1000;
+                    expressPayments.getInitialNetworkRetryDelay() * 1000;
 
                 expect(sender._getSleepTimeInMS(3, 0)).to.be.gt(minMS);
                 expect(sender._getSleepTimeInMS(2, 3)).to.equal(3000);
@@ -1069,13 +1077,13 @@ describe('RequestSender', () => {
 
     describe('Request Timeout', () => {
         it('should allow the setting of a request timeout on a per-request basis', (done) => {
-            expressPlatby.charges.create({});
+            expressPayments.charges.create({});
 
-            expect(expressPlatby.LAST_REQUEST.settings).to.deep.equal({});
+            expect(expressPayments.LAST_REQUEST.settings).to.deep.equal({});
 
-            expressPlatby.charges.create({}, {timeout: 10});
+            expressPayments.charges.create({}, {timeout: 10});
 
-            expect(expressPlatby.LAST_REQUEST.settings).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST.settings).to.deep.equal({
                 timeout: 10,
             });
             done();

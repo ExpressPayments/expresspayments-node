@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Radar {
             /**
              * An early fraud warning indicates that the card issuer has notified us that a
              * charge may be fraudulent.
              *
-             * Related guide: [Early fraud warnings](https://expressplatby.cz/docs/disputes/measuring#early-fraud-warnings)
+             * Related guide: [Early fraud warnings](https://docs.epayments.network/disputes/measuring#early-fraud-warnings)
              */
             interface EarlyFraudWarning {
                 /**
@@ -28,7 +28,7 @@ declare module 'expressplatby' {
                 /**
                  * ID of the charge this early fraud warning is for, optionally expanded.
                  */
-                charge: string | ExpressPlatby.Charge;
+                charge: string | ExpressPayments.Charge;
 
                 /**
                  * Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -48,7 +48,7 @@ declare module 'expressplatby' {
                 /**
                  * ID of the Payment Intent this early fraud warning is for, optionally expanded.
                  */
-                payment_intent?: string | ExpressPlatby.PaymentIntent;
+                payment_intent?: string | ExpressPayments.PaymentIntent;
             }
         }
     }

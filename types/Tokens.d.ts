@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * Tokenization is the process ExpressPlatby uses to collect sensitive card or bank
+         * Tokenization is the process ExpressPayments uses to collect sensitive card or bank
          * account details, or personally identifiable information (PII), directly from
          * your customers in a secure manner. A token representing this information is
          * returned to your server to use. You should use our
-         * [recommended payments integrations](https://expressplatby.cz/docs/payments) to perform this process
+         * [recommended payments integrations](https://docs.epayments.network/payments) to perform this process
          * client-side. This ensures that no sensitive card data touches your server,
          * and allows your integration to operate in a PCI-compliant way.
          *
@@ -16,12 +16,12 @@ declare module 'expressplatby' {
          * your integration uses this method, you are responsible for any PCI compliance
          * that may be required, and you must keep your secret API key safe. Unlike with
          * client-side tokenization, your customer's information is not sent directly to
-         * ExpressPlatby, so we cannot determine how it is handled or stored.
+         * ExpressPayments, so we cannot determine how it is handled or stored.
          *
          * Tokens cannot be stored or used more than once. To store card or bank account
-         * information for later use, you can create [Customer](https://expressplatby.cz/docs/api#customers)
-         * objects or [Custom accounts](https://expressplatby.cz/docs/api#external_accounts). Note that
-         * [Radar](https://expressplatby.cz/docs/radar), our integrated solution for automatic fraud protection,
+         * information for later use, you can create [Customer](https://docs.epayments.network/api#customers)
+         * objects or [Custom accounts](https://docs.epayments.network/api#external_accounts). Note that
+         * [Radar](https://docs.epayments.network/radar), our integrated solution for automatic fraud protection,
          * performs best with integrations that use client-side tokenization.
          */
         interface Token {
@@ -38,22 +38,22 @@ declare module 'expressplatby' {
             /**
              * These bank accounts are payment methods on `Customer` objects.
              *
-             * On the other hand [External Accounts](https://expressplatby.cz/docs/api#external_accounts) are transfer
-             * destinations on `Account` objects for [Custom accounts](https://expressplatby.cz/docs/connect/custom-accounts).
+             * On the other hand [External Accounts](https://docs.epayments.network/api#external_accounts) are transfer
+             * destinations on `Account` objects for [Custom accounts](https://docs.epayments.network/connect/custom-accounts).
              * They can be bank accounts or debit cards as well, and are documented in the links above.
              *
-             * Related guide: [Bank debits and transfers](https://expressplatby.cz/docs/payments/bank-debits-transfers)
+             * Related guide: [Bank debits and transfers](https://docs.epayments.network/payments/bank-debits-transfers)
              */
-            bank_account?: ExpressPlatby.BankAccount;
+            bank_account?: ExpressPayments.BankAccount;
 
             /**
              * You can store multiple cards on a customer in order to charge the customer
              * later. You can also store multiple debit cards on a recipient in order to
              * transfer to those cards later.
              *
-             * Related guide: [Card payments with Sources](https://expressplatby.cz/docs/sources/cards)
+             * Related guide: [Card payments with Sources](https://docs.epayments.network/sources/cards)
              */
-            card?: ExpressPlatby.Card;
+            card?: ExpressPayments.Card;
 
             /**
              * IP address of the client that generated the token.

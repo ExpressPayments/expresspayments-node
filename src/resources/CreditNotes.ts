@@ -1,49 +1,50 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const CreditNotes = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/credit_notes',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/credit_notes/{id}',
-  }),
+export const CreditNotes = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/credit_notes',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/credit_notes/{id}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/credit_notes/{id}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/credit_notes',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/credit_notes/{id}',
+    }),
 
-  listLineItems: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/credit_notes/{credit_note}/lines',
-    methodType: 'list',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/credit_notes',
+        methodType: 'list',
+    }),
 
-  listPreviewLineItems: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/credit_notes/preview/lines',
-    methodType: 'list',
-  }),
+    listLineItems: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/credit_notes/{credit_note}/lines',
+        methodType: 'list',
+    }),
 
-  preview: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/credit_notes/preview',
-  }),
+    listPreviewLineItems: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/credit_notes/preview/lines',
+        methodType: 'list',
+    }),
 
-  voidCreditNote: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/credit_notes/{id}/void',
-  }),
+    preview: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/credit_notes/preview',
+    }),
+
+    voidCreditNote: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/credit_notes/{id}/void',
+    }),
 });

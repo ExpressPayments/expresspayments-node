@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface CouponCreateParams {
             /**
              * A positive integer representing the amount to subtract from an invoice total (required if `percent_off` is not passed).
@@ -14,12 +14,12 @@ declare module 'expressplatby' {
             applies_to?: CouponCreateParams.AppliesTo;
 
             /**
-             * Three-letter [ISO code for the currency](https://expressplatby.cz/docs/currencies) of the `amount_off` parameter (required if `amount_off` is passed).
+             * Three-letter [ISO code for the currency](https://docs.epayments.network/currencies) of the `amount_off` parameter (required if `amount_off` is passed).
              */
             currency?: string;
 
             /**
-             * Coupons defined in each available currency option (only supported if `amount_off` is passed). Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Coupons defined in each available currency option (only supported if `amount_off` is passed). Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
              */
             currency_options?: {
                 [key: string]: CouponCreateParams.CurrencyOptions;
@@ -51,9 +51,9 @@ declare module 'expressplatby' {
             max_redemptions?: number;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Name of the coupon displayed to customers on, for instance invoices, or receipts. By default the `id` is shown if `name` is not set.
@@ -98,7 +98,7 @@ declare module 'expressplatby' {
 
         interface CouponUpdateParams {
             /**
-             * Coupons defined in each available currency option (only supported if the coupon is amount-based). Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Coupons defined in each available currency option (only supported if the coupon is amount-based). Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
              */
             currency_options?: {
                 [key: string]: CouponUpdateParams.CurrencyOptions;
@@ -110,9 +110,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Name of the coupon displayed to customers on, for instance invoices, or receipts. By default the `id` is shown if `name` is not set.
@@ -133,7 +133,7 @@ declare module 'expressplatby' {
             /**
              * A filter on the list, based on the object `created` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.
              */
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Specifies which fields in the response should be expanded.
@@ -145,17 +145,17 @@ declare module 'expressplatby' {
 
         class CouponsResource {
             /**
-             * You can create coupons easily via the [coupon management](https://dashboard.expressplatby.cz/coupons) page of the ExpressPlatby dashboard. Coupon creation is also accessible via the API if you need to create coupons on the fly.
+             * You can create coupons easily via the [coupon management](https://dashboard.epayments.network/coupons) page of the ExpressPayments dashboard. Coupon creation is also accessible via the API if you need to create coupons on the fly.
              *
              * A coupon has either a percent_off or an amount_off and currency. If you set an amount_off, that amount will be subtracted from any invoice's subtotal. For example, an invoice with a subtotal of 100 will have a final total of 0 if a coupon with an amount_off of 200 is applied to it and an invoice with a subtotal of 300 will have a final total of 100 if a coupon with an amount_off of 200 is applied to it.
              */
             create(
                 params?: CouponCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Coupon>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Coupon>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Coupon>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Coupon>>;
 
             /**
              * Retrieves the coupon with the given ID.
@@ -164,11 +164,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CouponRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Coupon>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Coupon>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Coupon>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Coupon>>;
 
             /**
              * Updates the metadata of a coupon. Other coupon details (currency, duration, amount_off) are, by design, not editable.
@@ -177,7 +177,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CouponUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Coupon>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Coupon>>;
 
             /**
              * Returns a list of your coupons.
@@ -185,23 +185,23 @@ declare module 'expressplatby' {
             list(
                 params?: CouponListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Coupon>;
+            ): ApiListPromise<ExpressPayments.Coupon>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Coupon>;
+            ): ApiListPromise<ExpressPayments.Coupon>;
 
             /**
-             * You can delete coupons via the [coupon management](https://dashboard.expressplatby.cz/coupons) page of the ExpressPlatby dashboard. However, deleting a coupon does not affect any customers who have already applied the coupon; it means that new customers can't redeem the coupon. You can also delete coupons via the API.
+             * You can delete coupons via the [coupon management](https://dashboard.epayments.network/coupons) page of the ExpressPayments dashboard. However, deleting a coupon does not affect any customers who have already applied the coupon; it means that new customers can't redeem the coupon. You can also delete coupons via the API.
              */
             del(
                 id: string,
                 params?: CouponDeleteParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedCoupon>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.DeletedCoupon>>;
             del(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.DeletedCoupon>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.DeletedCoupon>>;
         }
     }
 }

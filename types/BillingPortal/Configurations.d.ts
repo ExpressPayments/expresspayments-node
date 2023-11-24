@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace BillingPortal {
             /**
              * A portal configuration describes the functionality and behavior of a portal session.
@@ -27,8 +27,8 @@ declare module 'expressplatby' {
                  */
                 application:
                     | string
-                    | ExpressPlatby.Application
-                    | ExpressPlatby.DeletedApplication
+                    | ExpressPayments.Application
+                    | ExpressPayments.DeletedApplication
                     | null;
 
                 business_profile: Configuration.BusinessProfile;
@@ -39,7 +39,7 @@ declare module 'expressplatby' {
                 created: number;
 
                 /**
-                 * The default URL to redirect customers to when they click on the portal's link to return to your website. This can be [overriden](https://expressplatby.cz/docs/api/customer_portal/sessions/create#create_portal_session-return_url) when creating the session.
+                 * The default URL to redirect customers to when they click on the portal's link to return to your website. This can be [overriden](https://docs.epayments.network/api/customer_portal/sessions/create#create_portal_session-return_url) when creating the session.
                  */
                 default_return_url: string | null;
 
@@ -58,9 +58,9 @@ declare module 'expressplatby' {
                 login_page: Configuration.LoginPage;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata | null;
+                metadata: ExpressPayments.Metadata | null;
 
                 /**
                  * Time at which the object was last updated. Measured in seconds since the Unix epoch.
@@ -254,7 +254,7 @@ declare module 'expressplatby' {
                     enabled: boolean;
 
                     /**
-                     * A shareable URL to the hosted portal login page. Your customers will be able to log in with their [email](https://expressplatby.cz/docs/api/customers/object#customer_object-email) and receive a link to their customer portal.
+                     * A shareable URL to the hosted portal login page. Your customers will be able to log in with their [email](https://docs.epayments.network/api/customers/object#customer_object-email) and receive a link to their customer portal.
                      */
                     url: string | null;
                 }

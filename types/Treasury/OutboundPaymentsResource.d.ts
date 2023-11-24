@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             interface OutboundPaymentCreateParams {
                 /**
@@ -10,7 +10,7 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -55,12 +55,12 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
-                 * The description that appears on the receiving end for this OutboundPayment (for example, bank statement for external bank transfer). Maximum 10 characters for `ach` payments, 140 characters for `wire` payments, or 500 characters for `expressplatby` network transfers. The default value is `payment`.
+                 * The description that appears on the receiving end for this OutboundPayment (for example, bank statement for external bank transfer). Maximum 10 characters for `ach` payments, 140 characters for `wire` payments, or 500 characters for `expresspayments` network transfers. The default value is `payment`.
                  */
                 statement_descriptor?: string;
             }
@@ -78,9 +78,9 @@ declare module 'expressplatby' {
                     financial_account?: string;
 
                     /**
-                     * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                     * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                      */
-                    metadata?: ExpressPlatby.MetadataParam;
+                    metadata?: ExpressPayments.MetadataParam;
 
                     /**
                      * The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
@@ -98,14 +98,14 @@ declare module 'expressplatby' {
                         /**
                          * Billing address.
                          */
-                        address?: ExpressPlatby.Emptyable<
-                            ExpressPlatby.AddressParam
+                        address?: ExpressPayments.Emptyable<
+                          ExpressPayments.AddressParam
                         >;
 
                         /**
                          * Email address.
                          */
-                        email?: ExpressPlatby.Emptyable<string>;
+                        email?: ExpressPayments.Emptyable<string>;
 
                         /**
                          * Full name.
@@ -158,7 +158,7 @@ declare module 'expressplatby' {
                     /**
                      * Optional fields for `us_bank_account`.
                      */
-                    us_bank_account?: ExpressPlatby.Emptyable<
+                    us_bank_account?: ExpressPayments.Emptyable<
                         DestinationPaymentMethodOptions.UsBankAccount
                     >;
                 }
@@ -242,8 +242,8 @@ declare module 'expressplatby' {
                     params: OutboundPaymentCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundPayment
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundPayment
                     >
                 >;
 
@@ -255,16 +255,16 @@ declare module 'expressplatby' {
                     params?: OutboundPaymentRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundPayment
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundPayment
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundPayment
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundPayment
                     >
                 >;
 
@@ -274,7 +274,7 @@ declare module 'expressplatby' {
                 list(
                     params: OutboundPaymentListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Treasury.OutboundPayment>;
+                ): ApiListPromise<ExpressPayments.Treasury.OutboundPayment>;
 
                 /**
                  * Cancel an OutboundPayment.
@@ -284,16 +284,16 @@ declare module 'expressplatby' {
                     params?: OutboundPaymentCancelParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundPayment
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundPayment
                     >
                 >;
                 cancel(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.OutboundPayment
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.OutboundPayment
                     >
                 >;
             }

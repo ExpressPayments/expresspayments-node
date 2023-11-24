@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             interface InboundTransferCreateParams {
                 /**
@@ -10,7 +10,7 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -35,9 +35,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * The complete description that appears on your customers' statements. Maximum 10 characters.
@@ -92,8 +92,8 @@ declare module 'expressplatby' {
                     params: InboundTransferCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.InboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.InboundTransfer
                     >
                 >;
 
@@ -105,16 +105,16 @@ declare module 'expressplatby' {
                     params?: InboundTransferRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.InboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.InboundTransfer
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.InboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.InboundTransfer
                     >
                 >;
 
@@ -124,7 +124,7 @@ declare module 'expressplatby' {
                 list(
                     params: InboundTransferListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Treasury.InboundTransfer>;
+                ): ApiListPromise<ExpressPayments.Treasury.InboundTransfer>;
 
                 /**
                  * Cancels an InboundTransfer.
@@ -134,16 +134,16 @@ declare module 'expressplatby' {
                     params?: InboundTransferCancelParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.InboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.InboundTransfer
                     >
                 >;
                 cancel(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.InboundTransfer
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.InboundTransfer
                     >
                 >;
             }

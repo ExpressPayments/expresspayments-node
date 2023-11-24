@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface CountrySpecRetrieveParams {
             /**
              * Specifies which fields in the response should be expanded.
@@ -24,11 +24,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: CountrySpecRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CountrySpec>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CountrySpec>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.CountrySpec>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.CountrySpec>>;
 
             /**
              * Lists all Country Spec objects available in the API.
@@ -36,10 +36,10 @@ declare module 'expressplatby' {
             list(
                 params?: CountrySpecListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CountrySpec>;
+            ): ApiListPromise<ExpressPayments.CountrySpec>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.CountrySpec>;
+            ): ApiListPromise<ExpressPayments.CountrySpec>;
         }
     }
 }

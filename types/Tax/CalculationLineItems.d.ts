@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Tax {
             /**
              * The CalculationLineItem object.
@@ -58,7 +58,7 @@ declare module 'expressplatby' {
                 tax_breakdown: Array<CalculationLineItem.TaxBreakdown> | null;
 
                 /**
-                 * The [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID used for this resource.
+                 * The [tax code](https://docs.epayments.network/tax/tax-categories) ID used for this resource.
                  */
                 tax_code: string;
             }

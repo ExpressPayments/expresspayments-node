@@ -3,7 +3,7 @@ import {CryptoProvider} from '../crypto/CryptoProvider.js';
 import {EventEmitter} from 'events';
 import {FetchHttpClient} from '../net/FetchHttpClient.js';
 import {HttpClient} from '../net/HttpClient.js';
-import {ExpressPlatbyEmitter} from '../ExpressPlatbyEmitter.js';
+import {ExpressPaymentsEmitter} from '../ExpressPaymentsEmitter';
 import {SubtleCryptoProvider} from '../crypto/SubtleCryptoProvider.js';
 import {BufferedFile, MultipartRequestData, RequestData} from '../Types.js';
 
@@ -57,7 +57,7 @@ export class PlatformFunctions {
     /**
      * Creates an event emitter.
      */
-    createEmitter(): ExpressPlatbyEmitter | EventEmitter {
+    createEmitter(): ExpressPaymentsEmitter | EventEmitter {
         throw new Error('createEmitter not implemented.');
     }
 
@@ -80,7 +80,7 @@ export class PlatformFunctions {
     }
 
     /**
-     * Creates an HTTP client for issuing ExpressPlatby API requests which uses the Web
+     * Creates an HTTP client for issuing ExpressPayments API requests which uses the Web
      * Fetch API.
      *
      * A fetch function can optionally be passed in as a parameter. If none is

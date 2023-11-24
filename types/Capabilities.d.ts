@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * This is an object representing a capability for an ExpressPlatby account.
+         * This is an object representing a capability for an ExpressPayments account.
          *
-         * Related guide: [Account capabilities](https://expressplatby.cz/docs/connect/account-capabilities)
+         * Related guide: [Account capabilities](https://docs.epayments.network/connect/account-capabilities)
          */
         interface Capability {
             /**
@@ -21,7 +21,7 @@ declare module 'expressplatby' {
             /**
              * The account for which the capability enables functionality.
              */
-            account: string | ExpressPlatby.Account;
+            account: string | ExpressPayments.Account;
 
             future_requirements?: Capability.FutureRequirements;
 
@@ -191,9 +191,9 @@ declare module 'expressplatby' {
                  *
                  * `rejected.unsupported_business` means that the account's business is not supported by the capability. For example, payment methods may restrict the businesses they support in their terms of service:
                  *
-                 * - [Afterpay Clearpay's terms of service](https://expressplatby.cz/afterpay-clearpay/legal#restricted-businesses)
+                 * - [Afterpay Clearpay's terms of service](https://epayments.network/afterpay-clearpay/legal#restricted-businesses)
                  *
-                 * If you believe that the rejection is in error, please contact support at https://support.expressplatby.cz/contact/ for assistance.
+                 * If you believe that the rejection is in error, please contact support at https://support.epayments.network/contact/ for assistance.
                  */
                 disabled_reason: string | null;
 

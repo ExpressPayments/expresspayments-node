@@ -208,174 +208,177 @@
 ///<reference path='./WebhookEndpoints.d.ts' />
 // Imports: The end of the section generated from our OpenAPI spec
 
-declare module 'expressplatby' {
+declare module 'expresspayments' {
     // Added to in other modules, referenced above.
-    export namespace ExpressPlatby {}
+    export namespace ExpressPayments {}
 
-    export class ExpressPlatby {
-        static ExpressPlatby: typeof ExpressPlatby;
+    export class ExpressPayments {
+        static ExpressPayments: typeof ExpressPayments;
 
-        constructor(apiKey: string, config: ExpressPlatby.ExpressPlatbyConfig);
+        constructor(
+            apiKey: string,
+            config: ExpressPayments.ExpressPaymentsConfig
+        );
 
-        ExpressPlatbyResource: ExpressPlatby.ExpressPlatbyResource;
+        ExpressPaymentsResource: ExpressPayments.ExpressPaymentsResource;
 
         // Fields: The beginning of the section generated from our OpenAPI spec
-        accountLinks: ExpressPlatby.AccountLinksResource;
-        accounts: ExpressPlatby.AccountsResource;
-        applePayDomains: ExpressPlatby.ApplePayDomainsResource;
-        applicationFees: ExpressPlatby.ApplicationFeesResource;
-        balance: ExpressPlatby.BalanceResource;
-        balanceTransactions: ExpressPlatby.BalanceTransactionsResource;
-        charges: ExpressPlatby.ChargesResource;
-        countrySpecs: ExpressPlatby.CountrySpecsResource;
-        coupons: ExpressPlatby.CouponsResource;
-        creditNotes: ExpressPlatby.CreditNotesResource;
-        customers: ExpressPlatby.CustomersResource;
-        disputes: ExpressPlatby.DisputesResource;
-        ephemeralKeys: ExpressPlatby.EphemeralKeysResource;
-        events: ExpressPlatby.EventsResource;
-        exchangeRates: ExpressPlatby.ExchangeRatesResource;
-        fileLinks: ExpressPlatby.FileLinksResource;
-        files: ExpressPlatby.FilesResource;
-        invoiceItems: ExpressPlatby.InvoiceItemsResource;
-        invoices: ExpressPlatby.InvoicesResource;
-        mandates: ExpressPlatby.MandatesResource;
-        paymentIntents: ExpressPlatby.PaymentIntentsResource;
-        paymentLinks: ExpressPlatby.PaymentLinksResource;
-        paymentMethods: ExpressPlatby.PaymentMethodsResource;
-        payouts: ExpressPlatby.PayoutsResource;
-        plans: ExpressPlatby.PlansResource;
-        prices: ExpressPlatby.PricesResource;
-        products: ExpressPlatby.ProductsResource;
-        promotionCodes: ExpressPlatby.PromotionCodesResource;
-        quotes: ExpressPlatby.QuotesResource;
-        refunds: ExpressPlatby.RefundsResource;
-        reviews: ExpressPlatby.ReviewsResource;
-        setupAttempts: ExpressPlatby.SetupAttemptsResource;
-        setupIntents: ExpressPlatby.SetupIntentsResource;
-        shippingRates: ExpressPlatby.ShippingRatesResource;
-        sources: ExpressPlatby.SourcesResource;
-        subscriptionItems: ExpressPlatby.SubscriptionItemsResource;
-        subscriptionSchedules: ExpressPlatby.SubscriptionSchedulesResource;
-        subscriptions: ExpressPlatby.SubscriptionsResource;
-        taxCodes: ExpressPlatby.TaxCodesResource;
-        taxRates: ExpressPlatby.TaxRatesResource;
-        tokens: ExpressPlatby.TokensResource;
-        topups: ExpressPlatby.TopupsResource;
-        transfers: ExpressPlatby.TransfersResource;
-        webhookEndpoints: ExpressPlatby.WebhookEndpointsResource;
+        accountLinks: ExpressPayments.AccountLinksResource;
+        accounts: ExpressPayments.AccountsResource;
+        applePayDomains: ExpressPayments.ApplePayDomainsResource;
+        applicationFees: ExpressPayments.ApplicationFeesResource;
+        balance: ExpressPayments.BalanceResource;
+        balanceTransactions: ExpressPayments.BalanceTransactionsResource;
+        charges: ExpressPayments.ChargesResource;
+        countrySpecs: ExpressPayments.CountrySpecsResource;
+        coupons: ExpressPayments.CouponsResource;
+        creditNotes: ExpressPayments.CreditNotesResource;
+        customers: ExpressPayments.CustomersResource;
+        disputes: ExpressPayments.DisputesResource;
+        ephemeralKeys: ExpressPayments.EphemeralKeysResource;
+        events: ExpressPayments.EventsResource;
+        exchangeRates: ExpressPayments.ExchangeRatesResource;
+        fileLinks: ExpressPayments.FileLinksResource;
+        files: ExpressPayments.FilesResource;
+        invoiceItems: ExpressPayments.InvoiceItemsResource;
+        invoices: ExpressPayments.InvoicesResource;
+        mandates: ExpressPayments.MandatesResource;
+        paymentIntents: ExpressPayments.PaymentIntentsResource;
+        paymentLinks: ExpressPayments.PaymentLinksResource;
+        paymentMethods: ExpressPayments.PaymentMethodsResource;
+        payouts: ExpressPayments.PayoutsResource;
+        plans: ExpressPayments.PlansResource;
+        prices: ExpressPayments.PricesResource;
+        products: ExpressPayments.ProductsResource;
+        promotionCodes: ExpressPayments.PromotionCodesResource;
+        quotes: ExpressPayments.QuotesResource;
+        refunds: ExpressPayments.RefundsResource;
+        reviews: ExpressPayments.ReviewsResource;
+        setupAttempts: ExpressPayments.SetupAttemptsResource;
+        setupIntents: ExpressPayments.SetupIntentsResource;
+        shippingRates: ExpressPayments.ShippingRatesResource;
+        sources: ExpressPayments.SourcesResource;
+        subscriptionItems: ExpressPayments.SubscriptionItemsResource;
+        subscriptionSchedules: ExpressPayments.SubscriptionSchedulesResource;
+        subscriptions: ExpressPayments.SubscriptionsResource;
+        taxCodes: ExpressPayments.TaxCodesResource;
+        taxRates: ExpressPayments.TaxRatesResource;
+        tokens: ExpressPayments.TokensResource;
+        topups: ExpressPayments.TopupsResource;
+        transfers: ExpressPayments.TransfersResource;
+        webhookEndpoints: ExpressPayments.WebhookEndpointsResource;
         apps: {
-            secrets: ExpressPlatby.Apps.SecretsResource;
+            secrets: ExpressPayments.Apps.SecretsResource;
         };
         billingPortal: {
-            configurations: ExpressPlatby.BillingPortal.ConfigurationsResource;
-            sessions: ExpressPlatby.BillingPortal.SessionsResource;
+            configurations: ExpressPayments.BillingPortal.ConfigurationsResource;
+            sessions: ExpressPayments.BillingPortal.SessionsResource;
         };
         checkout: {
-            sessions: ExpressPlatby.Checkout.SessionsResource;
+            sessions: ExpressPayments.Checkout.SessionsResource;
         };
         financialConnections: {
-            accounts: ExpressPlatby.FinancialConnections.AccountsResource;
-            sessions: ExpressPlatby.FinancialConnections.SessionsResource;
+            accounts: ExpressPayments.FinancialConnections.AccountsResource;
+            sessions: ExpressPayments.FinancialConnections.SessionsResource;
         };
         identity: {
-            verificationReports: ExpressPlatby.Identity.VerificationReportsResource;
-            verificationSessions: ExpressPlatby.Identity.VerificationSessionsResource;
+            verificationReports: ExpressPayments.Identity.VerificationReportsResource;
+            verificationSessions: ExpressPayments.Identity.VerificationSessionsResource;
         };
         issuing: {
-            authorizations: ExpressPlatby.Issuing.AuthorizationsResource;
-            cards: ExpressPlatby.Issuing.CardsResource;
-            cardholders: ExpressPlatby.Issuing.CardholdersResource;
-            disputes: ExpressPlatby.Issuing.DisputesResource;
-            transactions: ExpressPlatby.Issuing.TransactionsResource;
+            authorizations: ExpressPayments.Issuing.AuthorizationsResource;
+            cards: ExpressPayments.Issuing.CardsResource;
+            cardholders: ExpressPayments.Issuing.CardholdersResource;
+            disputes: ExpressPayments.Issuing.DisputesResource;
+            transactions: ExpressPayments.Issuing.TransactionsResource;
         };
         radar: {
-            earlyFraudWarnings: ExpressPlatby.Radar.EarlyFraudWarningsResource;
-            valueLists: ExpressPlatby.Radar.ValueListsResource;
-            valueListItems: ExpressPlatby.Radar.ValueListItemsResource;
+            earlyFraudWarnings: ExpressPayments.Radar.EarlyFraudWarningsResource;
+            valueLists: ExpressPayments.Radar.ValueListsResource;
+            valueListItems: ExpressPayments.Radar.ValueListItemsResource;
         };
         reporting: {
-            reportRuns: ExpressPlatby.Reporting.ReportRunsResource;
-            reportTypes: ExpressPlatby.Reporting.ReportTypesResource;
+            reportRuns: ExpressPayments.Reporting.ReportRunsResource;
+            reportTypes: ExpressPayments.Reporting.ReportTypesResource;
         };
         sigma: {
-            scheduledQueryRuns: ExpressPlatby.Sigma.ScheduledQueryRunsResource;
+            scheduledQueryRuns: ExpressPayments.Sigma.ScheduledQueryRunsResource;
         };
         tax: {
-            calculations: ExpressPlatby.Tax.CalculationsResource;
-            transactions: ExpressPlatby.Tax.TransactionsResource;
+            calculations: ExpressPayments.Tax.CalculationsResource;
+            transactions: ExpressPayments.Tax.TransactionsResource;
         };
         terminal: {
-            configurations: ExpressPlatby.Terminal.ConfigurationsResource;
-            connectionTokens: ExpressPlatby.Terminal.ConnectionTokensResource;
-            locations: ExpressPlatby.Terminal.LocationsResource;
-            readers: ExpressPlatby.Terminal.ReadersResource;
+            configurations: ExpressPayments.Terminal.ConfigurationsResource;
+            connectionTokens: ExpressPayments.Terminal.ConnectionTokensResource;
+            locations: ExpressPayments.Terminal.LocationsResource;
+            readers: ExpressPayments.Terminal.ReadersResource;
         };
         testHelpers: {
-            customers: ExpressPlatby.TestHelpers.CustomersResource;
-            refunds: ExpressPlatby.TestHelpers.RefundsResource;
-            testClocks: ExpressPlatby.TestHelpers.TestClocksResource;
+            customers: ExpressPayments.TestHelpers.CustomersResource;
+            refunds: ExpressPayments.TestHelpers.RefundsResource;
+            testClocks: ExpressPayments.TestHelpers.TestClocksResource;
             issuing: {
-                cards: ExpressPlatby.TestHelpers.Issuing.CardsResource;
+                cards: ExpressPayments.TestHelpers.Issuing.CardsResource;
             };
             terminal: {
-                readers: ExpressPlatby.TestHelpers.Terminal.ReadersResource;
+                readers: ExpressPayments.TestHelpers.Terminal.ReadersResource;
             };
             treasury: {
-                inboundTransfers: ExpressPlatby.TestHelpers.Treasury.InboundTransfersResource;
-                outboundPayments: ExpressPlatby.TestHelpers.Treasury.OutboundPaymentsResource;
-                outboundTransfers: ExpressPlatby.TestHelpers.Treasury.OutboundTransfersResource;
-                receivedCredits: ExpressPlatby.TestHelpers.Treasury.ReceivedCreditsResource;
-                receivedDebits: ExpressPlatby.TestHelpers.Treasury.ReceivedDebitsResource;
+                inboundTransfers: ExpressPayments.TestHelpers.Treasury.InboundTransfersResource;
+                outboundPayments: ExpressPayments.TestHelpers.Treasury.OutboundPaymentsResource;
+                outboundTransfers: ExpressPayments.TestHelpers.Treasury.OutboundTransfersResource;
+                receivedCredits: ExpressPayments.TestHelpers.Treasury.ReceivedCreditsResource;
+                receivedDebits: ExpressPayments.TestHelpers.Treasury.ReceivedDebitsResource;
             };
         };
         treasury: {
-            creditReversals: ExpressPlatby.Treasury.CreditReversalsResource;
-            debitReversals: ExpressPlatby.Treasury.DebitReversalsResource;
-            financialAccounts: ExpressPlatby.Treasury.FinancialAccountsResource;
-            inboundTransfers: ExpressPlatby.Treasury.InboundTransfersResource;
-            outboundPayments: ExpressPlatby.Treasury.OutboundPaymentsResource;
-            outboundTransfers: ExpressPlatby.Treasury.OutboundTransfersResource;
-            receivedCredits: ExpressPlatby.Treasury.ReceivedCreditsResource;
-            receivedDebits: ExpressPlatby.Treasury.ReceivedDebitsResource;
-            transactions: ExpressPlatby.Treasury.TransactionsResource;
-            transactionEntries: ExpressPlatby.Treasury.TransactionEntriesResource;
+            creditReversals: ExpressPayments.Treasury.CreditReversalsResource;
+            debitReversals: ExpressPayments.Treasury.DebitReversalsResource;
+            financialAccounts: ExpressPayments.Treasury.FinancialAccountsResource;
+            inboundTransfers: ExpressPayments.Treasury.InboundTransfersResource;
+            outboundPayments: ExpressPayments.Treasury.OutboundPaymentsResource;
+            outboundTransfers: ExpressPayments.Treasury.OutboundTransfersResource;
+            receivedCredits: ExpressPayments.Treasury.ReceivedCreditsResource;
+            receivedDebits: ExpressPayments.Treasury.ReceivedDebitsResource;
+            transactions: ExpressPayments.Treasury.TransactionsResource;
+            transactionEntries: ExpressPayments.Treasury.TransactionEntriesResource;
         };
         // Fields: The end of the section generated from our OpenAPI spec
-        webhooks: ExpressPlatby.Webhooks;
-        oauth: ExpressPlatby.OAuthResource;
+        webhooks: ExpressPayments.Webhooks;
+        oauth: ExpressPayments.OAuthResource;
         /**
          * API Errors
          */
-        errors: typeof ExpressPlatby.errors;
+        errors: typeof ExpressPayments.errors;
 
         on(
             event: 'request',
-            handler: (event: ExpressPlatby.RequestEvent) => void
+            handler: (event: ExpressPayments.RequestEvent) => void
         ): void;
         on(
             event: 'response',
-            handler: (event: ExpressPlatby.ResponseEvent) => void
+            handler: (event: ExpressPayments.ResponseEvent) => void
         ): void;
 
         once(
             event: 'request',
-            handler: (event: ExpressPlatby.RequestEvent) => void
+            handler: (event: ExpressPayments.RequestEvent) => void
         ): void;
         once(
             event: 'response',
-            handler: (event: ExpressPlatby.ResponseEvent) => void
+            handler: (event: ExpressPayments.ResponseEvent) => void
         ): void;
 
         off(
             event: 'request',
-            handler: (event: ExpressPlatby.RequestEvent) => void
+            handler: (event: ExpressPayments.RequestEvent) => void
         ): void;
         off(
             event: 'response',
-            handler: (event: ExpressPlatby.ResponseEvent) => void
+            handler: (event: ExpressPayments.ResponseEvent) => void
         ): void;
     }
 
-    export default ExpressPlatby;
+    export default ExpressPayments;
 }

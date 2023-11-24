@@ -1,5 +1,5 @@
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
          */
@@ -134,7 +134,7 @@ declare module 'expressplatby' {
         }
 
         /**
-         * The resulting source of [a Connect platform debiting a connected account](https://expressplatby.cz/docs/connect/account-debits#charging-a-connected-account).
+         * The resulting source of [a Connect platform debiting a connected account](https://docs.epayments.network/connect/account-debits#charging-a-connected-account).
          */
         type AccountDebitSource = {
             id: string;
@@ -166,7 +166,7 @@ declare module 'expressplatby' {
         }
 
         /**
-         * @docs https://expressplatby.cz/docs/api/pagination
+         * @docs https://docs.epayments.network/api/pagination
          */
         interface PaginationParams {
             /**

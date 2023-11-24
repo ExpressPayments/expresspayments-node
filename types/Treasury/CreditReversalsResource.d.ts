@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Treasury {
             interface CreditReversalCreateParams {
                 /**
@@ -15,9 +15,9 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
             }
 
             interface CreditReversalRetrieveParams {
@@ -61,8 +61,8 @@ declare module 'expressplatby' {
                     params: CreditReversalCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.CreditReversal
+                  ExpressPayments.Response<
+                        ExpressPayments.Treasury.CreditReversal
                     >
                 >;
 
@@ -74,16 +74,16 @@ declare module 'expressplatby' {
                     params?: CreditReversalRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.CreditReversal
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.CreditReversal
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.Treasury.CreditReversal
+                    ExpressPayments.Response<
+                        ExpressPayments.Treasury.CreditReversal
                     >
                 >;
 
@@ -93,7 +93,7 @@ declare module 'expressplatby' {
                 list(
                     params: CreditReversalListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Treasury.CreditReversal>;
+                ): ApiListPromise<ExpressPayments.Treasury.CreditReversal>;
             }
         }
     }

@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Terminal {
             /**
              * A Location represents a grouping of readers.
              *
-             * Related guide: [Fleet management](https://expressplatby.cz/docs/terminal/fleet/locations)
+             * Related guide: [Fleet management](https://docs.epayments.network/terminal/fleet/locations)
              */
             interface Location {
                 /**
@@ -19,7 +19,7 @@ declare module 'expressplatby' {
                  */
                 object: 'terminal.location';
 
-                address: ExpressPlatby.Address;
+                address: ExpressPayments.Address;
 
                 /**
                  * The ID of a configuration that will be used to customize all readers in this location.
@@ -39,9 +39,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
             }
 
             /**

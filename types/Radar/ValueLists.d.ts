@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Radar {
             /**
              * Value lists allow you to group values together which can then be referenced in rules.
              *
-             * Related guide: [Default ExpressPlatby lists](https://expressplatby.cz/docs/radar/lists#managing-list-items)
+             * Related guide: [Default ExpressPayments lists](https://docs.epayments.network/radar/lists#managing-list-items)
              */
             interface ValueList {
                 /**
@@ -44,7 +44,7 @@ declare module 'expressplatby' {
                 /**
                  * List of items contained within this value list.
                  */
-                list_items: ApiList<ExpressPlatby.Radar.ValueListItem>;
+                list_items: ApiList<ExpressPayments.Radar.ValueListItem>;
 
                 /**
                  * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -52,9 +52,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata;
+                metadata: ExpressPayments.Metadata;
 
                 /**
                  * The name of the value list.

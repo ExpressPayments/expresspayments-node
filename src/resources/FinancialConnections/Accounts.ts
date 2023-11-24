@@ -1,33 +1,34 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const Accounts = ExpressPlatbyResource.extend({
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/financial_connections/accounts/{account}',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/financial_connections/accounts',
-    methodType: 'list',
-  }),
+export const Accounts = ExpressPaymentsResource.extend({
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/financial_connections/accounts/{account}',
+    }),
 
-  disconnect: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/financial_connections/accounts/{account}/disconnect',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/financial_connections/accounts',
+        methodType: 'list',
+    }),
 
-  listOwners: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/financial_connections/accounts/{account}/owners',
-    methodType: 'list',
-  }),
+    disconnect: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/financial_connections/accounts/{account}/disconnect',
+    }),
 
-  refresh: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/financial_connections/accounts/{account}/refresh',
-  }),
+    listOwners: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/financial_connections/accounts/{account}/owners',
+        methodType: 'list',
+    }),
+
+    refresh: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/financial_connections/accounts/{account}/refresh',
+    }),
 });

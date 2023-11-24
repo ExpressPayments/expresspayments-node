@@ -1,6 +1,6 @@
 #!/usr/bin/env -S npm run-script run
 
-import ExpressPlatby from 'expressplatby';
+import ExpressPayments from 'expresspayments';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import env from 'dotenv';
@@ -9,18 +9,18 @@ import {AddressInfo} from 'net';
 const app = new Koa();
 
 env.config();
-const webhookSecret = process.env.EXPRESSPLATBY_WEBHOOK_SECRET;
+const webhookSecret = process.env.EP_WEBHOOK_SECRET;
 
-const expressPlatby = new ExpressPlatby(process.env.EXPRESSPLATBY_SECRET_KEY, {
-    apiVersion: '2023-06-01',
+const expressPayments = new ExpressPayments(process.env.EP_SECRET_KEY, {
+    apiVersion: '2023-11-01',
 });
 
 const handleWebhook = async (ctx: Koa.ParameterizedContext, next: Koa.Next) => {
-    const sig = ctx.request.headers['expressplatby-signature'];
+    const sig = ctx.request.headers['ep-signature'];
     let event;
 
     try {
-        event = expressPlatby.webhooks.constructEvent(
+        event = expressPayments.webhooks.constructEvent(
             ctx.request.rawBody,
             sig,
             webhookSecret
@@ -36,10 +36,10 @@ const handleWebhook = async (ctx: Koa.ParameterizedContext, next: Koa.Next) => {
     // Successfully constructed event
     console.log('✅ Success:', event.id);
 
-    // Cast event data to ExpressPlatby object
+    // Cast event data to ExpressPayments object
     if (event.type === 'payment_intent.succeeded') {
-        const expressPlatbyObject = event.data.object;
-        console.log(`💰 PaymentIntent status: ${expressPlatbyObject.status}`);
+        const expressPaymentsObject = event.data.object;
+        console.log(`💰 PaymentIntent status: ${expressPaymentsObject.status}`);
     } else if (event.type === 'charge.succeeded') {
         const charge = event.data.object;
         console.log(`💵 Charge id: ${charge.id}`);

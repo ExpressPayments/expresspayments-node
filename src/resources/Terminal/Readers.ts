@@ -1,57 +1,58 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const Readers = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/terminal/readers',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/terminal/readers/{reader}',
-  }),
+export const Readers = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/terminal/readers',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/terminal/readers/{reader}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/terminal/readers/{reader}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/terminal/readers',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/terminal/readers/{reader}',
+    }),
 
-  del: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/terminal/readers/{reader}',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/terminal/readers',
+        methodType: 'list',
+    }),
 
-  cancelAction: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/terminal/readers/{reader}/cancel_action',
-  }),
+    del: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/terminal/readers/{reader}',
+    }),
 
-  processPaymentIntent: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/terminal/readers/{reader}/process_payment_intent',
-  }),
+    cancelAction: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/terminal/readers/{reader}/cancel_action',
+    }),
 
-  processSetupIntent: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/terminal/readers/{reader}/process_setup_intent',
-  }),
+    processPaymentIntent: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/terminal/readers/{reader}/process_payment_intent',
+    }),
 
-  refundPayment: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/terminal/readers/{reader}/refund_payment',
-  }),
+    processSetupIntent: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/terminal/readers/{reader}/process_setup_intent',
+    }),
 
-  setReaderDisplay: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/terminal/readers/{reader}/set_reader_display',
-  }),
+    refundPayment: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/terminal/readers/{reader}/refund_payment',
+    }),
+
+    setReaderDisplay: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/terminal/readers/{reader}/set_reader_display',
+    }),
 });

@@ -6,71 +6,72 @@
  */
 
 ///<reference types=".." />
-import ExpressPlatby from 'expressplatby';
+import ExpressPayments from "expresspayments";
 // Test NodeHttpClient request processing.
 import {Agent} from 'http';
 
-let expressPlatby = new ExpressPlatby('sk_test_123', {
-    apiVersion: '2023-06-01',
+let expressPayments = new ExpressPayments('sk_test_123', {
+    apiVersion: '2023-11-01',
 });
 
 // @ts-ignore lazily ignore apiVersion requirement.
-expressPlatby = new ExpressPlatby('sk_test_123');
+expressPayments = new ExpressPayments('sk_test_123');
 
-expressPlatby = new ExpressPlatby('sk_test_123', {
+expressPayments = new ExpressPayments('sk_test_123', {
     // @ts-ignore ignore specific apiVersion.
     apiVersion: '2022-12-31',
 });
 
-expressPlatby = new ExpressPlatby('sk_test_123', {
+expressPayments = new ExpressPayments('sk_test_123', {
     // @ts-ignore ignore default apiVersion.
     apiVersion: null,
 });
 
 // Check config object.
-expressPlatby = new ExpressPlatby('sk_test_123', {
-    apiVersion: '2023-06-01',
+expressPayments = new ExpressPayments('sk_test_123', {
+    apiVersion: '2023-11-01',
     typescript: true,
     maxNetworkRetries: 1,
     timeout: 1000,
     host: 'api.example.com',
     port: 123,
     telemetry: true,
-    httpClient: ExpressPlatby.createNodeHttpClient(),
+    httpClient: ExpressPayments.createNodeHttpClient(),
     appInfo: {
         name: 'my-wordpress-plugin',
     },
 });
 
 (async (): Promise<void> => {
-    const params: ExpressPlatby.CustomerCreateParams = {
+    const params: ExpressPayments.CustomerCreateParams = {
         description: 'test',
     };
-    const opts: ExpressPlatby.RequestOptions = {
-        apiVersion: '2023-06-01',
+    const opts: ExpressPayments.RequestOptions = {
+        apiVersion: '2023-11-01',
     };
-    const customer: ExpressPlatby.Customer = await expressPlatby.customers.create(
+    const customer: ExpressPayments.Customer = await expressPayments.customers.create(
         params,
         opts
     );
 
-    const address: ExpressPlatby.Address | null | undefined = customer.address;
+    const address: ExpressPayments.Address | null | undefined =
+        customer.address;
 
     if (!address) return;
     const city: string | null = address.city;
 
     // Check no opts:
-    await expressPlatby.customers.create(params);
+    await expressPayments.customers.create(params);
 
     // Check multiple dispatch:
-    let product = await expressPlatby.products.retrieve('prod_123', opts);
-    product = await expressPlatby.products.retrieve(
+    let product = await expressPayments.products.retrieve('prod_123', opts);
+    product = await expressPayments.products.retrieve(
         'prod_123',
         {expand: []},
         opts
     );
 
-    const charge: ExpressPlatby.Charge = await expressPlatby.charges.retrieve(
+    const charge: ExpressPayments.Charge = await expressPayments.charges.retrieve(
         'ch_123',
         {
             expand: ['customer'],
@@ -81,8 +82,9 @@ expressPlatby = new ExpressPlatby('sk_test_123', {
     if (!charge.customer) throw Error('guard');
 
     // Check you can cast an expandable field to the object:
-    const cusEmail: string | null = (charge.customer as ExpressPlatby.Customer)
-        .email;
+    const cusEmail:
+        | string
+        | null = (charge.customer as ExpressPayments.Customer).email;
     // Check you can cast an expandable field to a string:
     const btId: string = charge.balance_transaction as string;
 
@@ -99,10 +101,10 @@ expressPlatby = new ExpressPlatby('sk_test_123', {
     const r = Math.random() - 0.5;
     // Okay, this is how I hope people can deal with deleted:
     const maybeCoupon:
-        | ExpressPlatby.Coupon
-        | ExpressPlatby.DeletedCoupon = await (r
-        ? expressPlatby.coupons.retrieve('25_off')
-        : expressPlatby.coupons.del('25_off'));
+        | ExpressPayments.Coupon
+        | ExpressPayments.DeletedCoupon = await (r
+        ? expressPayments.coupons.retrieve('25_off')
+        : expressPayments.coupons.del('25_off'));
     if (maybeCoupon.deleted) {
         const d: true = maybeCoupon.deleted;
     } else {
@@ -110,22 +112,22 @@ expressPlatby = new ExpressPlatby('sk_test_123', {
         const created: number = maybeCoupon.created;
     }
 
-    for await (const customer of expressPlatby.customers.list()) {
-        const {id} = customer as ExpressPlatby.Customer;
+    for await (const customer of expressPayments.customers.list()) {
+        const {id} = customer as ExpressPayments.Customer;
         if (id === 'hi') {
             break;
         }
     }
 
-    const cusList: ExpressPlatby.ApiList<ExpressPlatby.Customer> = await expressPlatby.customers.list();
+    const cusList: ExpressPayments.ApiList<ExpressPayments.Customer> = await expressPayments.customers.list();
 
-    const aThousandCustomers: Array<ExpressPlatby.Customer> = await expressPlatby.customers
+    const aThousandCustomers: Array<ExpressPayments.Customer> = await expressPayments.customers
         .list()
         .autoPagingToArray({limit: 1000});
 
-    const nothing: void = await expressPlatby.customers
+    const nothing: void = await expressPayments.customers
         .list()
-        .autoPagingEach((customer: ExpressPlatby.Customer) => {
+        .autoPagingEach((customer: ExpressPayments.Customer) => {
             if (customer.id === 'one') {
                 return false;
             }
@@ -139,25 +141,25 @@ expressPlatby = new ExpressPlatby('sk_test_123', {
         });
 
     // @ts-expect-error
-    (await expressPlatby.invoices.retrieveUpcoming()).id;
-    (await expressPlatby.invoices.retrieve('')).id;
+    (await expressPayments.invoices.retrieveUpcoming()).id;
+    (await expressPayments.invoices.retrieve('')).id;
 
     try {
-        await expressPlatby.paymentIntents.create({
+        await expressPayments.paymentIntents.create({
             amount: 100,
             currency: 'USD',
         });
     } catch (err) {
-        if (err instanceof expressPlatby.errors.ExpressPlatbyCardError) {
+        if (err instanceof expressPayments.errors.ExpressPaymentsCardError) {
             const declineCode: string = err.decline_code;
         }
-        if (err instanceof ExpressPlatby.errors.ExpressPlatbyCardError) {
+        if (err instanceof ExpressPayments.errors.ExpressPaymentsCardError) {
             const declineCode: string = err.decline_code;
         }
     }
 
     {
-        const custs = await expressPlatby.customers.list();
+        const custs = await expressPayments.customers.list();
         const lr = custs.lastResponse;
         const requestId: string = lr.requestId;
         const statusCode: number = lr.statusCode;
@@ -168,7 +170,7 @@ expressPlatby = new ExpressPlatby('sk_test_123', {
     }
 
     {
-        const cust = await expressPlatby.customers.retrieve('foo');
+        const cust = await expressPayments.customers.retrieve('foo');
         const lr = cust.lastResponse;
         const requestId: string = lr.requestId;
         const statusCode: number = lr.statusCode;
@@ -178,50 +180,53 @@ expressPlatby = new ExpressPlatby('sk_test_123', {
         const header: string | undefined = lr.headers['request-id'];
     }
     {
-        const acct = await expressPlatby.accounts.createExternalAccount('foo', {
-            ['external_account']: 'foo',
-        });
+        const acct = await expressPayments.accounts.createExternalAccount(
+            'foo',
+            {
+                ['external_account']: 'foo',
+            }
+        );
         if (acct.object === 'card') {
             const rid: string = acct.lastResponse.requestId;
         }
     }
 })();
 
-const Foo = ExpressPlatby.ExpressPlatbyResource.extend({
-    foo: ExpressPlatby.ExpressPlatbyResource.method({
+const Foo = ExpressPayments.ExpressPaymentsResource.extend({
+    foo: ExpressPayments.ExpressPaymentsResource.method({
         method: 'create',
         path: 'foo',
     }),
-    fooFullPath: ExpressPlatby.ExpressPlatbyResource.method({
+    fooFullPath: ExpressPayments.ExpressPaymentsResource.method({
         method: 'create',
         fullPath: '/v1/full/path',
     }),
-    search: ExpressPlatby.ExpressPlatbyResource.method({
+    search: ExpressPayments.ExpressPaymentsResource.method({
         method: 'create',
         fullPath: 'foo',
         methodType: 'search',
     }),
-    customer: ExpressPlatby.ExpressPlatbyResource.method<
-        ExpressPlatby.Customer
+    customer: ExpressPayments.ExpressPaymentsResource.method<
+        ExpressPayments.Customer
     >({method: 'POST'}),
 });
-const fooClient = new Foo(expressPlatby);
-const searchResponse: ExpressPlatby.Response<object> = fooClient.search();
-const customerResponse: ExpressPlatby.Response<ExpressPlatby.Customer> = fooClient.customer();
+const fooClient = new Foo(expressPayments);
+const searchResponse: ExpressPayments.Response<object> = fooClient.search();
+const customerResponse: ExpressPayments.Response<ExpressPayments.Customer> = fooClient.customer();
 
 const maxBufferedRequestMetrics: number =
-    ExpressPlatby.ExpressPlatbyResource.MAX_BUFFERED_REQUEST_METRICS;
+    ExpressPayments.ExpressPaymentsResource.MAX_BUFFERED_REQUEST_METRICS;
 
 async (): Promise<void> => {
-    const client = ExpressPlatby.createNodeHttpClient(new Agent());
+    const client = ExpressPayments.createNodeHttpClient(new Agent());
 
     const response = await client.makeRequest(
-        'api.expressplatby.cz',
+        'api.epayments.network',
         '443',
         '/test',
         'POST',
         {
-            'ExpressPlatby-Account': 'account',
+            'EP-Account': 'account',
             'Content-Length': 123,
         },
         'requestdata',
@@ -229,7 +234,7 @@ async (): Promise<void> => {
         80000
     );
 
-    const stream: ExpressPlatby.ExpressPlatbyStreamResponse = response.toStream(
+    const stream: ExpressPayments.ExpressPaymentsStreamResponse = response.toStream(
         () => {
             return;
         }
@@ -241,15 +246,15 @@ async (): Promise<void> => {
 
 // Test FetchHttpClient request processing.
 async (): Promise<void> => {
-    const client = ExpressPlatby.createFetchHttpClient();
+    const client = ExpressPayments.createFetchHttpClient();
 
     const response = await client.makeRequest(
-        'api.expressplatby.cz',
+        'api.epayments.network',
         '443',
         '/test',
         'POST',
         {
-            'ExpressPlatby-Account': 'account',
+            'EP-Account': 'account',
             'Content-Length': 123,
         },
         'requestdata',
@@ -268,9 +273,9 @@ async (): Promise<void> => {
 
 // Tests asynchronous webhook processing.
 async (): Promise<void> => {
-    const cryptoProvider = ExpressPlatby.createSubtleCryptoProvider();
+    const cryptoProvider = ExpressPayments.createSubtleCryptoProvider();
 
-    const event = await expressPlatby.webhooks.constructEventAsync(
+    const event = await expressPayments.webhooks.constructEventAsync(
         'body',
         'signature',
         'secret',
@@ -278,35 +283,37 @@ async (): Promise<void> => {
         cryptoProvider
     );
 
-    const event2 = await expressPlatby.events.retrieve(event.id);
+    const event2 = await expressPayments.events.retrieve(event.id);
 };
 
 // Can reference error types
-let rawError: ExpressPlatby.ExpressPlatbyRawError;
+let rawError: ExpressPayments.ExpressPaymentsRawError;
 
-let newError: ExpressPlatby.errors.ExpressPlatbyError;
+let newError: ExpressPayments.errors.ExpressPaymentsError;
 
-const instanceofCheck1 = {} instanceof ExpressPlatby.errors.ExpressPlatbyError;
+const instanceofCheck1 =
+    {} instanceof ExpressPayments.errors.ExpressPaymentsError;
 const instanceofCheck2 =
-    {} instanceof ExpressPlatby.errors.ExpressPlatbyAPIError;
-const instanceofCheck5 = {} instanceof expressPlatby.errors.ExpressPlatbyError;
+    {} instanceof ExpressPayments.errors.ExpressPaymentsAPIError;
+const instanceofCheck5 =
+    {} instanceof expressPayments.errors.ExpressPaymentsError;
 const instanceofCheck6 =
-    {} instanceof expressPlatby.errors.ExpressPlatbyAPIError;
+    {} instanceof expressPayments.errors.ExpressPaymentsAPIError;
 
-ExpressPlatby.errors.generate({
+ExpressPayments.errors.generate({
     type: 'card_error',
 });
-expressPlatby.errors.generate({
+expressPayments.errors.generate({
     type: 'card_error',
 });
-ExpressPlatby.errors.ExpressPlatbyError.generate({
+ExpressPayments.errors.ExpressPaymentsError.generate({
     type: 'card_error',
 });
 
-expressPlatby.accounts.retrieve('123', {
+expressPayments.accounts.retrieve('123', {
     host: 'my_host',
 });
-expressPlatby.files.create({
+expressPayments.files.create({
     purpose: 'dispute_evidence',
     file: {
         data: Buffer.from('File'),

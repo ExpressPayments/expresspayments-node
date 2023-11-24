@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * A line item.
          */
@@ -37,7 +37,7 @@ declare module 'expressplatby' {
             amount_total: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -54,7 +54,7 @@ declare module 'expressplatby' {
             /**
              * The price used to generate the line item.
              */
-            price: ExpressPlatby.Price | null;
+            price: ExpressPayments.Price | null;
 
             /**
              * The quantity of products being purchased.
@@ -75,12 +75,12 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * A discount represents the actual application of a [coupon](https://expressplatby.cz/docs/api#coupons) or [promotion code](https://expressplatby.cz/docs/api#promotion_codes).
+                 * A discount represents the actual application of a [coupon](https://docs.epayments.network/api#coupons) or [promotion code](https://docs.epayments.network/api#promotion_codes).
                  * It contains information about when the discount began, when it will end, and what it is applied to.
                  *
-                 * Related guide: [Applying discounts to subscriptions](https://expressplatby.cz/docs/billing/subscriptions/discounts)
+                 * Related guide: [Applying discounts to subscriptions](https://docs.epayments.network/billing/subscriptions/discounts)
                  */
-                discount: ExpressPlatby.Discount;
+                discount: ExpressPayments.Discount;
             }
 
             interface Tax {
@@ -90,11 +90,11 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Tax rates can be applied to [invoices](https://expressplatby.cz/docs/billing/invoices/tax-rates), [subscriptions](https://expressplatby.cz/docs/billing/subscriptions/taxes) and [Checkout Sessions](https://expressplatby.cz/docs/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
+                 * Tax rates can be applied to [invoices](https://docs.epayments.network/billing/invoices/tax-rates), [subscriptions](https://docs.epayments.network/billing/subscriptions/taxes) and [Checkout Sessions](https://docs.epayments.network/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
                  *
-                 * Related guide: [Tax rates](https://expressplatby.cz/docs/billing/taxes/tax-rates)
+                 * Related guide: [Tax rates](https://docs.epayments.network/billing/taxes/tax-rates)
                  */
-                rate: ExpressPlatby.TaxRate;
+                rate: ExpressPayments.TaxRate;
 
                 /**
                  * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.

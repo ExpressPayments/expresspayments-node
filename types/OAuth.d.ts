@@ -1,8 +1,8 @@
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface OAuthToken {
             /**
-             * The access token you can use to make requests on behalf of this ExpressPlatby account. Use it as you would any ExpressPlatby secret API key.
+             * The access token you can use to make requests on behalf of this ExpressPayments account. Use it as you would any ExpressPayments secret API key.
              * This key does not expire, but may be revoked by the user at any time (you'll get an account.application.deauthorized webhook event when this happens).
              */
             access_token?: string;
@@ -31,21 +31,21 @@ declare module 'expressplatby' {
             /**
              * The unique id of the account you have been granted access to, as a string.
              */
-            expressplatby_user_id?: string;
+            ep_user_id?: string;
 
             /**
              * A publishable key that can be used with this account. Matches the mode—live or test—of the token.
              */
-            expressplatby_publishable_key?: string;
+            ep_publishable_key?: string;
         }
 
         interface OAuthDeauthorization {
             /**
              * The unique id of the account you have revoked access to, as a string.
-             * This is the same as the expressplatby_user_id you passed in.
+             * This is the same as the ep_user_id you passed in.
              * If this is returned, the revocation was successful.
              */
-            expressplatby_user_id: string;
+            ep_user_id: string;
         }
 
         interface OAuthAuthorizeUrlParams {
@@ -79,10 +79,10 @@ declare module 'expressplatby' {
             state?: string;
 
             /**
-             * login or register, depending on what type of screen you want your users to see. Only override this to be login if you expect all your users to have ExpressPlatby accounts already (e.g., most read-only applications, like analytics dashboards or accounting software).
+             * login or register, depending on what type of screen you want your users to see. Only override this to be login if you expect all your users to have ExpressPayments accounts already (e.g., most read-only applications, like analytics dashboards or accounting software).
              * Defaults to login for scope read_only and register for scope read_write.
              */
-            expressplatby_landing?: string;
+            expresspayments_landing?: string;
 
             /**
              * Boolean to indicate that the user should always be asked to connect, even if they're already connected.
@@ -97,15 +97,15 @@ declare module 'expressplatby' {
             suggested_capabilities?: Array<string>;
 
             /**
-             * ExpressPlatby will use these to prefill details in the account form for new users.
+             * ExpressPayments will use these to prefill details in the account form for new users.
              * Some prefilled fields (e.g., URL or product category) may be automatically hidden from the user's view.
              * Any parameters with invalid values will be silently ignored.
              */
-            expressplatby_user?: OAuthAuthorizeUrlParams.ExpressPlatbyUser;
+            ep_user?: OAuthAuthorizeUrlParams.ExpressPaymentsUser;
         }
 
         namespace OAuthAuthorizeUrlParams {
-            interface ExpressPlatbyUser {
+            interface ExpressPaymentsUser {
                 /**
                  * Recommended
                  * The user's email address. Must be a valid email format.
@@ -122,13 +122,13 @@ declare module 'expressplatby' {
 
                 /**
                  * Two-letter country code (e.g., US or CA).
-                 * Must be a country that ExpressPlatby currently supports.
+                 * Must be a country that ExpressPayments currently supports.
                  */
                 country?: string;
 
                 /**
                  * The business phone number. Must be 10 digits only.
-                 * Must also prefill expressplatby_user[country] with the corresponding country.
+                 * Must also prefill ep_user[country] with the corresponding country.
                  */
                 phone_number?: string;
 
@@ -144,29 +144,29 @@ declare module 'expressplatby' {
                 business_type?: string;
 
                 /**
-                 * First name of the person who will be filling out an ExpressPlatby application.
+                 * First name of the person who will be filling out an ExpressPayments application.
                  */
                 first_name?: string;
 
                 /**
-                 * Last name of the person who will be filling out an ExpressPlatby application.
+                 * Last name of the person who will be filling out an ExpressPayments application.
                  */
                 last_name?: string;
 
                 /**
-                 * Day (0-31), month (1-12), and year (YYYY, greater than 1900) for the birthdate of the person who will be filling out an ExpressPlatby application.
+                 * Day (0-31), month (1-12), and year (YYYY, greater than 1900) for the birthdate of the person who will be filling out an ExpressPayments application.
                  * If you choose to pass these parameters, you must pass all three.
                  */
                 dob_day?: string;
 
                 /**
-                 * Day (0-31), month (1-12), and year (YYYY, greater than 1900) for the birthdate of the person who will be filling out an ExpressPlatby application.
+                 * Day (0-31), month (1-12), and year (YYYY, greater than 1900) for the birthdate of the person who will be filling out an ExpressPayments application.
                  * If you choose to pass these parameters, you must pass all three.
                  */
                 dob_month?: string;
 
                 /**
-                 * Day (0-31), month (1-12), and year (YYYY, greater than 1900) for the birthdate of the person who will be filling out an ExpressPlatby application.
+                 * Day (0-31), month (1-12), and year (YYYY, greater than 1900) for the birthdate of the person who will be filling out an ExpressPayments application.
                  * If you choose to pass these parameters, you must pass all three.
                  */
                 dob_year?: string;
@@ -180,21 +180,21 @@ declare module 'expressplatby' {
                 /**
                  * Standard only
                  * Address city of the business.
-                 * We highly recommend that you also prefill expressplatby_user[country] with the corresponding country.
+                 * We highly recommend that you also prefill ep_user[country] with the corresponding country.
                  */
                 city?: string;
 
                 /**
                  * Standard only
                  * Address state of the business. Must be the two-letter state or province code (e.g., NY for a U.S. business or AB for a Canadian one).
-                 * Must also prefill expressplatby_user[country] with the corresponding country.
+                 * Must also prefill ep_user[country] with the corresponding country.
                  */
                 state?: string;
 
                 /**
                  * Standard only
                  * Address Postcode of the business. Must be a string.
-                 * We highly recommend that you also prefill expressplatby_user[country] with the corresponding country.
+                 * We highly recommend that you also prefill ep_user[country] with the corresponding country.
                  */
                 zip?: string;
 
@@ -212,66 +212,66 @@ declare module 'expressplatby' {
                 /**
                  * Standard only
                  * Three-letter ISO code representing currency, in lowercase (e.g., usd or cad).
-                 * Must be a valid country and currency combination that ExpressPlatby supports.
-                 * Must prefill expressplatby_user[country] with the corresponding country.
+                 * Must be a valid country and currency combination that ExpressPayments supports.
+                 * Must prefill ep_user[country] with the corresponding country.
                  */
                 currency?: string;
 
                 /**
-                 * The Kana variation of the first name of the person who will be filling out an ExpressPlatby application.
-                 * Must prefill expressplatby_user[country] with JP, as this parameter is only relevant for Japan.
+                 * The Kana variation of the first name of the person who will be filling out an ExpressPayments application.
+                 * Must prefill ep_user[country] with JP, as this parameter is only relevant for Japan.
                  */
                 first_name_kana?: string;
 
                 /**
-                 * The Kanji variation of the first name of the person who will be filling out an ExpressPlatby application.
-                 * Must prefill expressplatby_user[country] with JP, as this parameter is only relevant for Japan.
+                 * The Kanji variation of the first name of the person who will be filling out an ExpressPayments application.
+                 * Must prefill ep_user[country] with JP, as this parameter is only relevant for Japan.
                  */
                 first_name_kanji?: string;
 
                 /**
-                 * The Kana variation of the last name of the person who will be filling out an ExpressPlatby application.
-                 * Must prefill expressplatby_user[country] with JP, as this parameter is only relevant for Japan.
+                 * The Kana variation of the last name of the person who will be filling out an ExpressPayments application.
+                 * Must prefill ep_user[country] with JP, as this parameter is only relevant for Japan.
                  */
                 last_name_kana?: string;
 
                 /**
-                 * The Kanji variation of the last name of the person who will be filling out an ExpressPlatby application.
-                 * Must prefill expressplatby_user[country] with JP, as this parameter is only relevant for Japan.
+                 * The Kanji variation of the last name of the person who will be filling out an ExpressPayments application.
+                 * Must prefill ep_user[country] with JP, as this parameter is only relevant for Japan.
                  */
                 last_name_kanji?: string;
 
                 /**
-                 * The gender of the person who will be filling out an ExpressPlatby application. (International regulations require either male or female.)
-                 * Must prefill expressplatby_user[country] with JP, as this parameter is only relevant for Japan.
+                 * The gender of the person who will be filling out an ExpressPayments application. (International regulations require either male or female.)
+                 * Must prefill ep_user[country] with JP, as this parameter is only relevant for Japan.
                  */
                 gender?: string;
 
                 /**
                  * Standard only
                  * The Kana variation of the address block.
-                 * This parameter is only relevant for Japan. You must prefill expressplatby_user[country] with JP and expressplatby_user[zip] with a valid Japanese postal code to use this parameter.
+                 * This parameter is only relevant for Japan. You must prefill ep_user[country] with JP and ep_user[zip] with a valid Japanese postal code to use this parameter.
                  */
                 block_kana?: string;
 
                 /**
                  * Standard only
                  * The Kanji variation of the address block.
-                 * This parameter is only relevant for Japan. You must prefill expressplatby_user[country] with JP and expressplatby_user[zip] with a valid Japanese postal code to use this parameter.
+                 * This parameter is only relevant for Japan. You must prefill ep_user[country] with JP and ep_user[zip] with a valid Japanese postal code to use this parameter.
                  */
                 block_kanji?: string;
 
                 /**
                  * Standard only
                  * The Kana variation of the address building.
-                 * This parameter is only relevant for Japan. You must prefill expressplatby_user[country] with JP and expressplatby_user[zip] with a valid Japanese postal code to use this parameter.
+                 * This parameter is only relevant for Japan. You must prefill ep_user[country] with JP and ep_user[zip] with a valid Japanese postal code to use this parameter.
                  */
                 building_kana?: string;
 
                 /**
                  * Standard only
                  * The Kanji variation of the address building.
-                 * This parameter is only relevant for Japan. You must prefill expressplatby_user[country] with JP and expressplatby_user[zip] with a valid Japanese postal code to use this parameter.
+                 * This parameter is only relevant for Japan. You must prefill ep_user[country] with JP and ep_user[zip] with a valid Japanese postal code to use this parameter.
                  */
                 building_kanji?: string;
             }
@@ -291,7 +291,7 @@ declare module 'expressplatby' {
             /**
              * The account you'd like to disconnect from.
              */
-            expressplatby_user_id: string;
+            ep_user_id: string;
         }
 
         interface OAuthTokenParams {
@@ -326,7 +326,7 @@ declare module 'expressplatby' {
         export class OAuthResource {
             /**
              * Get a URL to which you can send a user to complete the OAuth flow to authorize their account.
-             * @docs https://expressplatby.cz/docs/connect/oauth-reference#get-authorize
+             * @docs https://docs.epayments.network/connect/oauth-reference#get-authorize
              */
             authorizeUrl(
                 params?: OAuthAuthorizeUrlParams,
@@ -335,20 +335,20 @@ declare module 'expressplatby' {
 
             /**
              * Used for revoking access to an account.
-             * @docs https://expressplatby.cz/docs/connect/oauth-reference#post-deauthorize
+             * @docs https://docs.epayments.network/connect/oauth-reference#post-deauthorize
              */
             deauthorize(
                 params: OAuthDeauthorizeParams,
-                options?: ExpressPlatby.RequestOptions
+                options?: ExpressPayments.RequestOptions
             ): Promise<OAuthDeauthorization>;
 
             /**
              * Turning an authorization_code into an access_token, or get a new access token using a refresh_token.
-             * @docs https://expressplatby.cz/docs/connect/oauth-reference#post-token
+             * @docs https://docs.epayments.network/connect/oauth-reference#post-token
              */
             token(
                 params: OAuthTokenParams,
-                options?: ExpressPlatby.RequestOptions
+                options?: ExpressPayments.RequestOptions
             ): Promise<OAuthToken>;
         }
     }

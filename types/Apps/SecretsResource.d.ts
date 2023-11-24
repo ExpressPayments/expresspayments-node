@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Apps {
             interface SecretCreateParams {
                 /**
@@ -155,7 +155,7 @@ declare module 'expressplatby' {
                 create(
                     params: SecretCreateParams,
                     options?: RequestOptions
-                ): Promise<ExpressPlatby.Response<ExpressPlatby.Apps.Secret>>;
+                ): Promise<ExpressPayments.Response<ExpressPayments.Apps.Secret>>;
 
                 /**
                  * List all secrets stored on the given scope.
@@ -163,7 +163,7 @@ declare module 'expressplatby' {
                 list(
                     params: SecretListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Apps.Secret>;
+                ): ApiListPromise<ExpressPayments.Apps.Secret>;
 
                 /**
                  * Deletes a secret from the secret store by name and scope.
@@ -171,7 +171,7 @@ declare module 'expressplatby' {
                 deleteWhere(
                     params: SecretDeleteWhereParams,
                     options?: RequestOptions
-                ): Promise<ExpressPlatby.Response<ExpressPlatby.Apps.Secret>>;
+                ): Promise<ExpressPayments.Response<ExpressPayments.Apps.Secret>>;
 
                 /**
                  * Finds a secret in the secret store by name and scope.
@@ -179,7 +179,7 @@ declare module 'expressplatby' {
                 find(
                     params: SecretFindParams,
                     options?: RequestOptions
-                ): Promise<ExpressPlatby.Response<ExpressPlatby.Apps.Secret>>;
+                ): Promise<ExpressPayments.Response<ExpressPayments.Apps.Secret>>;
             }
         }
     }

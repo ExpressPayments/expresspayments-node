@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Subscription items allow you to create customer subscriptions with more than
          * one plan, making it easy to represent complex billing relationships.
@@ -30,34 +30,34 @@ declare module 'expressplatby' {
             deleted?: void;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
-             * You can now model subscriptions more flexibly using the [Prices API](https://expressplatby.cz/docs/api#prices). It replaces the Plans API and is backwards compatible to simplify your migration.
+             * You can now model subscriptions more flexibly using the [Prices API](https://docs.epayments.network/api#prices). It replaces the Plans API and is backwards compatible to simplify your migration.
              *
              * Plans define the base price, currency, and billing cycle for recurring purchases of products.
-             * [Products](https://expressplatby.cz/docs/api#products) help you track inventory or provisioning, and plans help you track pricing. Different physical goods or levels of service should be represented by products, and pricing options should be represented by plans. This approach lets you change prices without having to change your provisioning scheme.
+             * [Products](https://docs.epayments.network/api#products) help you track inventory or provisioning, and plans help you track pricing. Different physical goods or levels of service should be represented by products, and pricing options should be represented by plans. This approach lets you change prices without having to change your provisioning scheme.
              *
              * For example, you might have a single "gold" product that has plans for $10/month, $100/year, €9/month, and €90/year.
              *
-             * Related guides: [Set up a subscription](https://expressplatby.cz/docs/billing/subscriptions/set-up-subscription) and more about [products and prices](https://expressplatby.cz/docs/products-prices/overview).
+             * Related guides: [Set up a subscription](https://docs.epayments.network/billing/subscriptions/set-up-subscription) and more about [products and prices](https://docs.epayments.network/products-prices/overview).
              */
-            plan: ExpressPlatby.Plan;
+            plan: ExpressPayments.Plan;
 
             /**
              * Prices define the unit cost, currency, and (optional) billing cycle for both recurring and one-time purchases of products.
-             * [Products](https://expressplatby.cz/docs/api#products) help you track inventory or provisioning, and prices help you track payment terms. Different physical goods or levels of service should be represented by products, and pricing options should be represented by prices. This approach lets you change prices without having to change your provisioning scheme.
+             * [Products](https://docs.epayments.network/api#products) help you track inventory or provisioning, and prices help you track payment terms. Different physical goods or levels of service should be represented by products, and pricing options should be represented by prices. This approach lets you change prices without having to change your provisioning scheme.
              *
              * For example, you might have a single "gold" product that has prices for $10/month, $100/year, and €9 once.
              *
-             * Related guides: [Set up a subscription](https://expressplatby.cz/docs/billing/subscriptions/set-up-subscription), [create an invoice](https://expressplatby.cz/docs/billing/invoices/create), and more about [products and prices](https://expressplatby.cz/docs/products-prices/overview).
+             * Related guides: [Set up a subscription](https://docs.epayments.network/billing/subscriptions/set-up-subscription), [create an invoice](https://docs.epayments.network/billing/invoices/create), and more about [products and prices](https://docs.epayments.network/products-prices/overview).
              */
-            price: ExpressPlatby.Price;
+            price: ExpressPayments.Price;
 
             /**
-             * The [quantity](https://expressplatby.cz/docs/subscriptions/quantities) of the plan to which the customer should be subscribed.
+             * The [quantity](https://docs.epayments.network/subscriptions/quantities) of the plan to which the customer should be subscribed.
              */
             quantity?: number;
 
@@ -69,7 +69,7 @@ declare module 'expressplatby' {
             /**
              * The tax rates which apply to this `subscription_item`. When set, the `default_tax_rates` on the subscription do not apply to this `subscription_item`.
              */
-            tax_rates: Array<ExpressPlatby.TaxRate> | null;
+            tax_rates: Array<ExpressPayments.TaxRate> | null;
         }
 
         namespace SubscriptionItem {

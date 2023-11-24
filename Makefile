@@ -2,7 +2,7 @@
 update-version:
 	@echo "$(VERSION)" > VERSION
 	@perl -pi -e 's|"version": "[.\-\d\w]+"|"version": "$(VERSION)"|' package.json
-	@perl -pi -e "s|ExpressPlatby.PACKAGE_VERSION = '[.\-\d\w]+'|ExpressPlatby.PACKAGE_VERSION = '$(VERSION)'|" src/expressplatby.core.ts
+	@perl -pi -e "s|ExpressPayments.PACKAGE_VERSION = '[.\-\d\w]+'|ExpressPayments.PACKAGE_VERSION = '$(VERSION)'|" src/expresspayments.core.ts
 
 codegen-format:
 	yarn && yarn fix

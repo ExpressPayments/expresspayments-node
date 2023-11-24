@@ -1,22 +1,23 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const DebitReversals = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/treasury/debit_reversals',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/treasury/debit_reversals/{debit_reversal}',
-  }),
+export const DebitReversals = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/treasury/debit_reversals',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/treasury/debit_reversals',
-    methodType: 'list',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/treasury/debit_reversals/{debit_reversal}',
+    }),
+
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/treasury/debit_reversals',
+        methodType: 'list',
+    }),
 });

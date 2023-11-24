@@ -10,11 +10,11 @@ import {
 import {CryptoProvider} from './crypto/CryptoProvider.js';
 import {PlatformFunctions} from './platform/PlatformFunctions.js';
 import {RequestSender} from './RequestSender.js';
-import {ExpressPlatbyResource} from './ExpressPlatbyResource.js';
+import {ExpressPaymentsResource} from './ExpressPaymentsResource.js';
 import {createWebhooks} from './Webhooks.js';
-import {AppInfo, ExpressPlatbyObject, UserProvidedConfig} from './Types.js';
+import {AppInfo, ExpressPaymentsObject, UserProvidedConfig} from './Types.js';
 
-const DEFAULT_HOST = 'api.expressplatby.cz';
+const DEFAULT_HOST = 'api.epayments.network';
 const DEFAULT_PORT = '443';
 const DEFAULT_BASE_PATH = '/v1/';
 const DEFAULT_API_VERSION = apiVersion.ApiVersion;
@@ -37,45 +37,45 @@ const ALLOWED_CONFIG_PROPERTIES = [
     'protocol',
     'telemetry',
     'appInfo',
-    'expressPlatbyAccount',
+    'expressPaymentsAccount',
 ];
 
 type RequestSenderFactory = (
-    expressPlatby: ExpressPlatbyObject
+  expressPayments: ExpressPaymentsObject
 ) => RequestSender;
 
-const defaultRequestSenderFactory: RequestSenderFactory = (expressPlatby) =>
+const defaultRequestSenderFactory: RequestSenderFactory = (expressPayments) =>
     new RequestSender(
-        expressPlatby,
-        ExpressPlatbyResource.MAX_BUFFERED_REQUEST_METRICS
+        expressPayments,
+        ExpressPaymentsResource.MAX_BUFFERED_REQUEST_METRICS
     );
 
-export function createExpressPlatby(
+export function createExpressPayments(
     platformFunctions: PlatformFunctions,
     requestSender: RequestSenderFactory = defaultRequestSenderFactory
-): typeof ExpressPlatby {
-    ExpressPlatby.PACKAGE_VERSION = '1.0.3';
-    ExpressPlatby.USER_AGENT = {
-        bindings_version: ExpressPlatby.PACKAGE_VERSION,
+): typeof ExpressPayments {
+    ExpressPayments.PACKAGE_VERSION = '2.0.0';
+    ExpressPayments.USER_AGENT = {
+        bindings_version: ExpressPayments.PACKAGE_VERSION,
         lang: 'node',
-        publisher: 'expressplatby',
+        publisher: 'expresspayments',
         uname: null,
         typescript: false,
         ...determineProcessUserAgentProperties(),
     };
-    ExpressPlatby.ExpressPlatbyResource = ExpressPlatbyResource;
-    ExpressPlatby.resources = resources;
-    ExpressPlatby.HttpClient = HttpClient;
-    ExpressPlatby.HttpClientResponse = HttpClientResponse;
-    ExpressPlatby.CryptoProvider = CryptoProvider;
+    ExpressPayments.ExpressPaymentsResource = ExpressPaymentsResource;
+    ExpressPayments.resources = resources;
+    ExpressPayments.HttpClient = HttpClient;
+    ExpressPayments.HttpClientResponse = HttpClientResponse;
+    ExpressPayments.CryptoProvider = CryptoProvider;
 
-    function ExpressPlatby(
-        this: ExpressPlatbyObject,
+    function ExpressPayments(
+        this: ExpressPaymentsObject,
         key: string,
         config: Record<string, unknown> = {}
     ): void {
-        if (!(this instanceof ExpressPlatby)) {
-            return new (ExpressPlatby as any)(key, config);
+        if (!(this instanceof ExpressPayments)) {
+            return new (ExpressPayments as any)(key, config);
         }
 
         const props = this._getPropsFromConfig(config);
@@ -89,7 +89,7 @@ export function createExpressPlatby(
             writable: false,
         });
 
-        this.VERSION = ExpressPlatby.PACKAGE_VERSION;
+        this.VERSION = ExpressPayments.PACKAGE_VERSION;
 
         this.on = this._emitter.on.bind(this._emitter);
         this.once = this._emitter.once.bind(this._emitter);
@@ -98,10 +98,10 @@ export function createExpressPlatby(
         if (
             props.protocol &&
             props.protocol !== 'https' &&
-            (!props.host || /\.expressplatby\.cz$/.test(props.host))
+            (!props.host || /\.epayments\.network$/.test(props.host))
         ) {
             throw new Error(
-                'The `https` protocol must be used when sending requests to `*.expressplatby.cz`'
+                'The `https` protocol must be used when sending requests to `*.epayments.network`'
             );
         }
 
@@ -127,16 +127,16 @@ export function createExpressPlatby(
                     ? this._platformFunctions.createNodeHttpClient(agent)
                     : this._platformFunctions.createDefaultHttpClient()),
             dev: false,
-            expressPlatbyAccount: props.expressPlatbyAccount || null,
+            expressPaymentsAccount: props.expressPaymentsAccount || null,
         };
 
         const typescript = props.typescript || false;
-        if (typescript !== ExpressPlatby.USER_AGENT.typescript) {
+        if (typescript !== ExpressPayments.USER_AGENT.typescript) {
             // The mutation here is uncomfortable, but likely fastest;
             // serializing the user agent involves shelling out to the system,
             // and given some users may instantiate the library many times without switching between TS and non-TS,
             // we only want to incur the performance hit when that actually happens.
-            ExpressPlatby.USER_AGENT.typescript = typescript;
+            ExpressPayments.USER_AGENT.typescript = typescript;
         }
 
         if (props.appInfo) {
@@ -154,31 +154,32 @@ export function createExpressPlatby(
 
         this._requestSender = requestSender(this);
 
-        // Expose ExpressPlatbyResource on the instance too
+        // Expose ExpressPaymentsResource on the instance too
         // @ts-ignore
-        this.ExpressPlatbyResource = ExpressPlatby.ExpressPlatbyResource;
+        this.ExpressPaymentsResource = ExpressPayments.ExpressPaymentsResource;
     }
 
-    ExpressPlatby.errors = _Error;
-    ExpressPlatby.webhooks = createWebhooks;
+    ExpressPayments.errors = _Error;
+    ExpressPayments.webhooks = createWebhooks;
 
-    ExpressPlatby.createNodeHttpClient = platformFunctions.createNodeHttpClient;
+    ExpressPayments.createNodeHttpClient =
+        platformFunctions.createNodeHttpClient;
 
     /**
-     * Creates an HTTP client for issuing ExpressPlatby API requests which uses the Web
+     * Creates an HTTP client for issuing ExpressPayments API requests which uses the Web
      * Fetch API.
      *
      * A fetch function can optionally be passed in as a parameter. If none is
      * passed, will default to the default `fetch` function in the global scope.
      */
-    ExpressPlatby.createFetchHttpClient =
+    ExpressPayments.createFetchHttpClient =
         platformFunctions.createFetchHttpClient;
 
     /**
      * Create a CryptoProvider which uses the built-in Node crypto libraries for
      * its crypto operations.
      */
-    ExpressPlatby.createNodeCryptoProvider =
+    ExpressPayments.createNodeCryptoProvider =
         platformFunctions.createNodeCryptoProvider;
 
     /**
@@ -189,17 +190,17 @@ export function createExpressPlatby(
      * is passed, will default to the default `crypto.subtle` object in the global
      * scope.
      */
-    ExpressPlatby.createSubtleCryptoProvider =
+    ExpressPayments.createSubtleCryptoProvider =
         platformFunctions.createSubtleCryptoProvider;
 
-    ExpressPlatby.prototype = {
+    ExpressPayments.prototype = {
         // Properties are set in the constructor above
         _appInfo: undefined!,
         on: null!,
         off: null!,
         once: null!,
         VERSION: null!,
-        ExpressPlatbyResource: null!,
+        ExpressPaymentsResource: null!,
         webhooks: null!,
         errors: null!,
         _api: null!,
@@ -252,23 +253,23 @@ export function createExpressPlatby(
          * @private
          * This may be removed in the future.
          */
-        _setApiField<K extends keyof ExpressPlatbyObject['_api']>(
+        _setApiField<K extends keyof ExpressPaymentsObject['_api']>(
             key: K,
-            value: ExpressPlatbyObject['_api'][K]
+            value: ExpressPaymentsObject['_api'][K]
         ): void {
             this._api[key] = value;
         },
 
         /**
          * @private
-         * Please open or upvote an issue at github.com/expressplatby/expressplatby-node
+         * Please open or upvote an issue at github.com/expresspayments/expresspayments-node
          * if you use this, detailing your use-case.
          *
          * It may be deprecated and removed in the future.
          */
-        getApiField<K extends keyof ExpressPlatbyObject['_api']>(
+        getApiField<K extends keyof ExpressPaymentsObject['_api']>(
             key: K
-        ): ExpressPlatbyObject['_api'][K] {
+        ): ExpressPaymentsObject['_api'][K] {
             return this._api[key];
         },
 
@@ -282,7 +283,7 @@ export function createExpressPlatby(
 
         /**
          * @private
-         * Please open or upvote an issue at github.com/expressplatby/expressplatby-node
+         * Please open or upvote an issue at github.com/expresspayments/expresspayments-node
          * if you use this, detailing your use-case.
          *
          * It may be deprecated and removed in the future.
@@ -304,7 +305,7 @@ export function createExpressPlatby(
                 case 'INITIAL_NETWORK_RETRY_DELAY_SEC':
                     return INITIAL_NETWORK_RETRY_DELAY_SEC;
             }
-            return ((ExpressPlatby as unknown) as Record<string, unknown>)[c];
+            return ((ExpressPayments as unknown) as Record<string, unknown>)[c];
         },
 
         getMaxNetworkRetries(): number {
@@ -316,7 +317,7 @@ export function createExpressPlatby(
          * This may be removed in the future.
          */
         _setApiNumberField(
-            prop: keyof ExpressPlatbyObject['_api'],
+            prop: keyof ExpressPaymentsObject['_api'],
             n: number,
             defaultVal?: number
         ): void {
@@ -335,7 +336,7 @@ export function createExpressPlatby(
 
         /**
          * @private
-         * Please open or upvote an issue at github.com/expressplatby/expressplatby-node
+         * Please open or upvote an issue at github.com/expresspayments/expresspayments-node
          * if you use this, detailing your use-case.
          *
          * It may be deprecated and removed in the future.
@@ -344,12 +345,15 @@ export function createExpressPlatby(
          * speed advantage.
          */
         getClientUserAgent(cb: (userAgent: string) => void): void {
-            return this.getClientUserAgentSeeded(ExpressPlatby.USER_AGENT, cb);
+            return this.getClientUserAgentSeeded(
+                ExpressPayments.USER_AGENT,
+                cb
+            );
         },
 
         /**
          * @private
-         * Please open or upvote an issue at github.com/expressplatby/expressplatby-node
+         * Please open or upvote an issue at github.com/expresspayments/expresspayments-node
          * if you use this, detailing your use-case.
          *
          * It may be deprecated and removed in the future.
@@ -389,7 +393,7 @@ export function createExpressPlatby(
 
         /**
          * @private
-         * Please open or upvote an issue at github.com/expressplatby/expressplatby-node
+         * Please open or upvote an issue at github.com/expresspayments/expresspayments-node
          * if you use this, detailing your use-case.
          *
          * It may be deprecated and removed in the future.
@@ -470,7 +474,7 @@ export function createExpressPlatby(
 
             return config;
         },
-    } as ExpressPlatbyObject;
+    } as ExpressPaymentsObject;
 
-    return ExpressPlatby;
+    return ExpressPayments;
 }

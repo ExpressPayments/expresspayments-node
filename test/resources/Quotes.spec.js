@@ -1,6 +1,6 @@
 'use strict';
 
-const expressPlatby = require('../testUtils.js').getSpyableExpressPlatby();
+const expressPayments = require('../testUtils.js').getSpyableExpressPayments();
 const testUtils = require('../testUtils.js');
 const expect = require('chai').expect;
 
@@ -16,8 +16,8 @@ describe('Quotes Resource', () => {
                     {price: 'price_xyz'},
                 ],
             };
-            expressPlatby.quotes.create(params);
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.quotes.create(params);
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
                 url: '/v1/quotes',
                 headers: {},
@@ -29,8 +29,8 @@ describe('Quotes Resource', () => {
 
     describe('list', () => {
         it('Sends the correct request', () => {
-            expressPlatby.quotes.list();
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.quotes.list();
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: '/v1/quotes',
                 headers: {},
@@ -42,8 +42,8 @@ describe('Quotes Resource', () => {
 
     describe('retrieve', () => {
         it('Sends the correct request', () => {
-            expressPlatby.quotes.retrieve(QUOTE_TEST_ID);
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.quotes.retrieve(QUOTE_TEST_ID);
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: `/v1/quotes/${QUOTE_TEST_ID}`,
                 headers: {},
@@ -55,10 +55,10 @@ describe('Quotes Resource', () => {
 
     describe('update', () => {
         it('Sends the correct request', () => {
-            expressPlatby.quotes.update(QUOTE_TEST_ID, {
+            expressPayments.quotes.update(QUOTE_TEST_ID, {
                 metadata: {key: 'value'},
             });
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
                 url: `/v1/quotes/${QUOTE_TEST_ID}`,
                 headers: {},
@@ -70,8 +70,8 @@ describe('Quotes Resource', () => {
 
     describe('accept', () => {
         it('Sends the correct request', () => {
-            expressPlatby.quotes.accept(QUOTE_TEST_ID);
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.quotes.accept(QUOTE_TEST_ID);
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
                 url: `/v1/quotes/${QUOTE_TEST_ID}/accept`,
                 headers: {},
@@ -83,8 +83,8 @@ describe('Quotes Resource', () => {
 
     describe('cancel', () => {
         it('Sends the correct request', () => {
-            expressPlatby.quotes.cancel(QUOTE_TEST_ID);
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.quotes.cancel(QUOTE_TEST_ID);
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
                 url: `/v1/quotes/${QUOTE_TEST_ID}/cancel`,
                 headers: {},
@@ -96,8 +96,8 @@ describe('Quotes Resource', () => {
 
     describe('finalize', () => {
         it('Sends the correct request', () => {
-            expressPlatby.quotes.finalizeQuote(QUOTE_TEST_ID);
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.quotes.finalizeQuote(QUOTE_TEST_ID);
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
                 url: `/v1/quotes/${QUOTE_TEST_ID}/finalize`,
                 headers: {},
@@ -109,8 +109,8 @@ describe('Quotes Resource', () => {
 
     describe('listLineItems', () => {
         it('Sends the correct request', () => {
-            expressPlatby.quotes.listLineItems(QUOTE_TEST_ID);
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.quotes.listLineItems(QUOTE_TEST_ID);
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: `/v1/quotes/${QUOTE_TEST_ID}/line_items`,
                 headers: {},
@@ -122,8 +122,8 @@ describe('Quotes Resource', () => {
 
     describe('listComputedUpfrontLineItems', () => {
         it('Sends the correct request', () => {
-            expressPlatby.quotes.listComputedUpfrontLineItems(QUOTE_TEST_ID);
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.quotes.listComputedUpfrontLineItems(QUOTE_TEST_ID);
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: `/v1/quotes/${QUOTE_TEST_ID}/computed_upfront_line_items`,
                 headers: {},
@@ -136,19 +136,19 @@ describe('Quotes Resource', () => {
     describe('pdf', () => {
         it('success', (callback) => {
             const handleRequest = (req, res) => {
-                res.write('ExpressPlatby binary response');
+                res.write('ExpressPayments binary response');
                 res.end();
             };
 
-            testUtils.getTestServerExpressPlatby(
+            testUtils.getTestServerExpressPayments(
                 {},
                 handleRequest,
-                (err, expressPlatby, closeServer) => {
+                (err, expressPayments, closeServer) => {
                     if (err) {
                         return callback(err);
                     }
 
-                    return expressPlatby.quotes.pdf(
+                    return expressPayments.quotes.pdf(
                         'foo_123',
                         {host: 'localhost'},
                         (err, res) => {
@@ -162,7 +162,7 @@ describe('Quotes Resource', () => {
                             res.on('end', () => {
                                 expect(
                                     Buffer.concat(chunks).toString()
-                                ).to.equal('ExpressPlatby binary response');
+                                ).to.equal('ExpressPayments binary response');
                                 return callback();
                             });
                         }
@@ -184,15 +184,15 @@ describe('Quotes Resource', () => {
                 setTimeout(() => res.end(), 20);
             };
 
-            testUtils.getTestServerExpressPlatby(
+            testUtils.getTestServerExpressPayments(
                 {},
                 handleRequest,
-                (err, expressPlatby, closeServer) => {
+                (err, expressPayments, closeServer) => {
                     if (err) {
                         return callback(err);
                     }
 
-                    return expressPlatby.quotes.pdf(
+                    return expressPayments.quotes.pdf(
                         'foo_123',
                         {host: 'localhost'},
                         (err, res) => {

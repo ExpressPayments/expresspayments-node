@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Reporting {
             interface ReportTypeRetrieveParams {
                 /**
@@ -19,20 +19,20 @@ declare module 'expressplatby' {
 
             class ReportTypesResource {
                 /**
-                 * Retrieves the details of a Report Type. (Certain report types require a [live-mode API key](https://expressplatby.cz/docs/keys#test-live-modes).)
+                 * Retrieves the details of a Report Type. (Certain report types require a [live-mode API key](https://docs.epayments.network/keys#test-live-modes).)
                  */
                 retrieve(
                     id: string,
                     params?: ReportTypeRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Reporting.ReportType>
+                  ExpressPayments.Response<ExpressPayments.Reporting.ReportType>
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Reporting.ReportType>
+                  ExpressPayments.Response<ExpressPayments.Reporting.ReportType>
                 >;
 
                 /**
@@ -41,10 +41,10 @@ declare module 'expressplatby' {
                 list(
                     params?: ReportTypeListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Reporting.ReportType>;
+                ): ApiListPromise<ExpressPayments.Reporting.ReportType>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Reporting.ReportType>;
+                ): ApiListPromise<ExpressPayments.Reporting.ReportType>;
             }
         }
     }

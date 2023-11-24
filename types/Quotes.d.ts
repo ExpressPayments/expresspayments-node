@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * A Quote is a way to model prices that you'd like to provide to a customer.
          * Once accepted, it will automatically create an invoice, subscription or subscription schedule.
@@ -32,24 +32,24 @@ declare module 'expressplatby' {
              */
             application:
                 | string
-                | ExpressPlatby.Application
-                | ExpressPlatby.DeletedApplication
+                | ExpressPayments.Application
+                | ExpressPayments.DeletedApplication
                 | null;
 
             /**
-             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPlatby account. Only applicable if there are no line items with recurring prices on the quote.
+             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPayments account. Only applicable if there are no line items with recurring prices on the quote.
              */
             application_fee_amount: number | null;
 
             /**
-             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPlatby account. Only applicable if there are line items with recurring prices on the quote.
+             * A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's ExpressPayments account. Only applicable if there are line items with recurring prices on the quote.
              */
             application_fee_percent: number | null;
 
             automatic_tax: Quote.AutomaticTax;
 
             /**
-             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPlatby will attempt to pay invoices at the end of the subscription cycle or on finalization using the default payment method attached to the subscription or customer. When sending an invoice, ExpressPlatby will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
+             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPayments will attempt to pay invoices at the end of the subscription cycle or on finalization using the default payment method attached to the subscription or customer. When sending an invoice, ExpressPayments will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
              */
             collection_method: Quote.CollectionMethod;
 
@@ -61,7 +61,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string | null;
 
@@ -70,14 +70,14 @@ declare module 'expressplatby' {
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer
                 | null;
 
             /**
              * The tax rates applied to this quote.
              */
-            default_tax_rates?: Array<string | ExpressPlatby.TaxRate>;
+            default_tax_rates?: Array<string | ExpressPayments.TaxRate>;
 
             /**
              * A description that will be displayed on the quote PDF.
@@ -87,7 +87,7 @@ declare module 'expressplatby' {
             /**
              * The discounts applied to this quote.
              */
-            discounts: Array<string | ExpressPlatby.Discount>;
+            discounts: Array<string | ExpressPayments.Discount>;
 
             /**
              * The date on which the quote will be canceled if in `open` or `draft` status. Measured in seconds since the Unix epoch.
@@ -100,7 +100,7 @@ declare module 'expressplatby' {
             footer: string | null;
 
             /**
-             * Details of the quote that was cloned. See the [cloning documentation](https://expressplatby.cz/docs/quotes/clone) for more details.
+             * Details of the quote that was cloned. See the [cloning documentation](https://docs.epayments.network/quotes/clone) for more details.
              */
             from_quote: Quote.FromQuote | null;
 
@@ -114,8 +114,8 @@ declare module 'expressplatby' {
              */
             invoice:
                 | string
-                | ExpressPlatby.Invoice
-                | ExpressPlatby.DeletedInvoice
+                | ExpressPayments.Invoice
+                | ExpressPayments.DeletedInvoice
                 | null;
 
             /**
@@ -126,7 +126,7 @@ declare module 'expressplatby' {
             /**
              * A list of items the customer is being quoted for.
              */
-            line_items?: ApiList<ExpressPlatby.LineItem>;
+            line_items?: ApiList<ExpressPayments.LineItem>;
 
             /**
              * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -134,19 +134,19 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata;
+            metadata: ExpressPayments.Metadata;
 
             /**
-             * A unique number that identifies this particular quote. This number is assigned once the quote is [finalized](https://expressplatby.cz/docs/quotes/overview#finalize).
+             * A unique number that identifies this particular quote. This number is assigned once the quote is [finalized](https://docs.epayments.network/quotes/overview#finalize).
              */
             number: string | null;
 
             /**
-             * The account on behalf of which to charge. See the [Connect documentation](https://support.expressplatby.cz/questions/sending-invoices-on-behalf-of-connected-accounts) for details.
+             * The account on behalf of which to charge. See the [Connect documentation](https://support.epayments.network/questions/sending-invoices-on-behalf-of-connected-accounts) for details.
              */
-            on_behalf_of: string | ExpressPlatby.Account | null;
+            on_behalf_of: string | ExpressPayments.Account | null;
 
             /**
              * The status of the quote.
@@ -158,7 +158,7 @@ declare module 'expressplatby' {
             /**
              * The subscription that was created or updated from this quote.
              */
-            subscription: string | ExpressPlatby.Subscription | null;
+            subscription: string | ExpressPayments.Subscription | null;
 
             subscription_data: Quote.SubscriptionData;
 
@@ -167,13 +167,13 @@ declare module 'expressplatby' {
              */
             subscription_schedule:
                 | string
-                | ExpressPlatby.SubscriptionSchedule
+                | ExpressPayments.SubscriptionSchedule
                 | null;
 
             /**
              * ID of the test clock this quote belongs to.
              */
-            test_clock: string | ExpressPlatby.TestHelpers.TestClock | null;
+            test_clock: string | ExpressPayments.TestHelpers.TestClock | null;
 
             total_details: Quote.TotalDetails;
 
@@ -282,12 +282,12 @@ declare module 'expressplatby' {
                                 amount: number;
 
                                 /**
-                                 * A discount represents the actual application of a [coupon](https://expressplatby.cz/docs/api#coupons) or [promotion code](https://expressplatby.cz/docs/api#promotion_codes).
+                                 * A discount represents the actual application of a [coupon](https://docs.epayments.network/api#coupons) or [promotion code](https://docs.epayments.network/api#promotion_codes).
                                  * It contains information about when the discount began, when it will end, and what it is applied to.
                                  *
-                                 * Related guide: [Applying discounts to subscriptions](https://expressplatby.cz/docs/billing/subscriptions/discounts)
+                                 * Related guide: [Applying discounts to subscriptions](https://docs.epayments.network/billing/subscriptions/discounts)
                                  */
-                                discount: ExpressPlatby.Discount;
+                                discount: ExpressPayments.Discount;
                             }
 
                             interface Tax {
@@ -297,11 +297,11 @@ declare module 'expressplatby' {
                                 amount: number;
 
                                 /**
-                                 * Tax rates can be applied to [invoices](https://expressplatby.cz/docs/billing/invoices/tax-rates), [subscriptions](https://expressplatby.cz/docs/billing/subscriptions/taxes) and [Checkout Sessions](https://expressplatby.cz/docs/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
+                                 * Tax rates can be applied to [invoices](https://docs.epayments.network/billing/invoices/tax-rates), [subscriptions](https://docs.epayments.network/billing/subscriptions/taxes) and [Checkout Sessions](https://docs.epayments.network/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
                                  *
-                                 * Related guide: [Tax rates](https://expressplatby.cz/docs/billing/taxes/tax-rates)
+                                 * Related guide: [Tax rates](https://docs.epayments.network/billing/taxes/tax-rates)
                                  */
-                                rate: ExpressPlatby.TaxRate;
+                                rate: ExpressPayments.TaxRate;
 
                                 /**
                                  * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.
@@ -353,7 +353,7 @@ declare module 'expressplatby' {
                     /**
                      * The line items that will appear on the next invoice after this quote is accepted. This does not include pending invoice items that exist on the customer but may still be included in the next invoice.
                      */
-                    line_items?: ApiList<ExpressPlatby.LineItem>;
+                    line_items?: ApiList<ExpressPayments.LineItem>;
 
                     total_details: Upfront.TotalDetails;
                 }
@@ -399,12 +399,12 @@ declare module 'expressplatby' {
                                 amount: number;
 
                                 /**
-                                 * A discount represents the actual application of a [coupon](https://expressplatby.cz/docs/api#coupons) or [promotion code](https://expressplatby.cz/docs/api#promotion_codes).
+                                 * A discount represents the actual application of a [coupon](https://docs.epayments.network/api#coupons) or [promotion code](https://docs.epayments.network/api#promotion_codes).
                                  * It contains information about when the discount began, when it will end, and what it is applied to.
                                  *
-                                 * Related guide: [Applying discounts to subscriptions](https://expressplatby.cz/docs/billing/subscriptions/discounts)
+                                 * Related guide: [Applying discounts to subscriptions](https://docs.epayments.network/billing/subscriptions/discounts)
                                  */
-                                discount: ExpressPlatby.Discount;
+                                discount: ExpressPayments.Discount;
                             }
 
                             interface Tax {
@@ -414,11 +414,11 @@ declare module 'expressplatby' {
                                 amount: number;
 
                                 /**
-                                 * Tax rates can be applied to [invoices](https://expressplatby.cz/docs/billing/invoices/tax-rates), [subscriptions](https://expressplatby.cz/docs/billing/subscriptions/taxes) and [Checkout Sessions](https://expressplatby.cz/docs/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
+                                 * Tax rates can be applied to [invoices](https://docs.epayments.network/billing/invoices/tax-rates), [subscriptions](https://docs.epayments.network/billing/subscriptions/taxes) and [Checkout Sessions](https://docs.epayments.network/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
                                  *
-                                 * Related guide: [Tax rates](https://expressplatby.cz/docs/billing/taxes/tax-rates)
+                                 * Related guide: [Tax rates](https://docs.epayments.network/billing/taxes/tax-rates)
                                  */
-                                rate: ExpressPlatby.TaxRate;
+                                rate: ExpressPayments.TaxRate;
 
                                 /**
                                  * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.
@@ -466,7 +466,7 @@ declare module 'expressplatby' {
                 /**
                  * The quote that was cloned.
                  */
-                quote: string | ExpressPlatby.Quote;
+                quote: string | ExpressPayments.Quote;
             }
 
             interface InvoiceSettings {
@@ -552,12 +552,12 @@ declare module 'expressplatby' {
                         amount: number;
 
                         /**
-                         * A discount represents the actual application of a [coupon](https://expressplatby.cz/docs/api#coupons) or [promotion code](https://expressplatby.cz/docs/api#promotion_codes).
+                         * A discount represents the actual application of a [coupon](https://docs.epayments.network/api#coupons) or [promotion code](https://docs.epayments.network/api#promotion_codes).
                          * It contains information about when the discount began, when it will end, and what it is applied to.
                          *
-                         * Related guide: [Applying discounts to subscriptions](https://expressplatby.cz/docs/billing/subscriptions/discounts)
+                         * Related guide: [Applying discounts to subscriptions](https://docs.epayments.network/billing/subscriptions/discounts)
                          */
-                        discount: ExpressPlatby.Discount;
+                        discount: ExpressPayments.Discount;
                     }
 
                     interface Tax {
@@ -567,11 +567,11 @@ declare module 'expressplatby' {
                         amount: number;
 
                         /**
-                         * Tax rates can be applied to [invoices](https://expressplatby.cz/docs/billing/invoices/tax-rates), [subscriptions](https://expressplatby.cz/docs/billing/subscriptions/taxes) and [Checkout Sessions](https://expressplatby.cz/docs/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
+                         * Tax rates can be applied to [invoices](https://docs.epayments.network/billing/invoices/tax-rates), [subscriptions](https://docs.epayments.network/billing/subscriptions/taxes) and [Checkout Sessions](https://docs.epayments.network/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
                          *
-                         * Related guide: [Tax rates](https://expressplatby.cz/docs/billing/taxes/tax-rates)
+                         * Related guide: [Tax rates](https://docs.epayments.network/billing/taxes/tax-rates)
                          */
-                        rate: ExpressPlatby.TaxRate;
+                        rate: ExpressPayments.TaxRate;
 
                         /**
                          * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.
@@ -622,7 +622,7 @@ declare module 'expressplatby' {
                 /**
                  * The account where funds from the payment will be transferred to upon payment success.
                  */
-                destination: string | ExpressPlatby.Account;
+                destination: string | ExpressPayments.Account;
             }
         }
     }

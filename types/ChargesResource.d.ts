@@ -1,27 +1,27 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface ChargeCreateParams {
             /**
-             * Amount intended to be collected by this payment. A positive integer representing how much to charge in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://expressplatby.cz/docs/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
+             * Amount intended to be collected by this payment. A positive integer representing how much to charge in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://docs.epayments.network/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
              */
             amount?: number;
 
             application_fee?: number;
 
             /**
-             * A fee in cents (or local equivalent) that will be applied to the charge and transferred to the application owner's ExpressPlatby account. The request must be made with an OAuth key or the `ExpressPlatby-Account` header in order to take an application fee. For more information, see the application fees [documentation](https://expressplatby.cz/docs/connect/direct-charges#collecting-fees).
+             * A fee in cents (or local equivalent) that will be applied to the charge and transferred to the application owner's ExpressPayments account. The request must be made with an OAuth key or the `EP-Account` header in order to take an application fee. For more information, see the application fees [documentation](https://docs.epayments.network/connect/direct-charges#collecting-fees).
              */
             application_fee_amount?: number;
 
             /**
-             * Whether to immediately capture the charge. Defaults to `true`. When `false`, the charge issues an authorization (or pre-authorization), and will need to be [captured](https://expressplatby.cz/docs/api#capture_charge) later. Uncaptured charges expire after a set number of days (7 by default). For more information, see the [authorizing charges and settling later](https://expressplatby.cz/docs/charges/placing-a-hold) documentation.
+             * Whether to immediately capture the charge. Defaults to `true`. When `false`, the charge issues an authorization (or pre-authorization), and will need to be [captured](https://docs.epayments.network/api#capture_charge) later. Uncaptured charges expire after a set number of days (7 by default). For more information, see the [authorizing charges and settling later](https://docs.epayments.network/charges/placing-a-hold) documentation.
              */
             capture?: boolean;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency?: string;
 
@@ -31,7 +31,7 @@ declare module 'expressplatby' {
             customer?: string;
 
             /**
-             * An arbitrary string which you can attach to a `Charge` object. It is displayed when in the web interface alongside the charge. Note that if you use ExpressPlatby to send automatic email receipts to your customers, your receipt emails will include the `description` of the charge(s) that they are describing.
+             * An arbitrary string which you can attach to a `Charge` object. It is displayed when in the web interface alongside the charge. Note that if you use ExpressPayments to send automatic email receipts to your customers, your receipt emails will include the `description` of the charge(s) that they are describing.
              */
             description?: string;
 
@@ -43,22 +43,22 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
-             * The ExpressPlatby account ID for which these funds are intended. Automatically set if you use the `destination` parameter. For details, see [Creating Separate Charges and Transfers](https://expressplatby.cz/docs/connect/charges-transfers#on-behalf-of).
+             * The ExpressPayments account ID for which these funds are intended. Automatically set if you use the `destination` parameter. For details, see [Creating Separate Charges and Transfers](https://docs.epayments.network/connect/charges-transfers#on-behalf-of).
              */
             on_behalf_of?: string;
 
             /**
-             * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+             * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
              */
             radar_options?: ChargeCreateParams.RadarOptions;
 
             /**
-             * The email address to which this charge's [receipt](https://expressplatby.cz/docs/dashboard/receipts) will be sent. The receipt will not be sent until the charge is paid, and no receipts will be sent for test mode charges. If this charge is for a [Customer](https://expressplatby.cz/docs/api/customers/object), the email address specified here will override the customer's email address. If `receipt_email` is specified for a charge in live mode, a receipt will be sent regardless of your [email settings](https://dashboard.expressplatby.cz/account/emails).
+             * The email address to which this charge's [receipt](https://docs.epayments.network/dashboard/receipts) will be sent. The receipt will not be sent until the charge is paid, and no receipts will be sent for test mode charges. If this charge is for a [Customer](https://docs.epayments.network/api/customers/object), the email address specified here will override the customer's email address. If `receipt_email` is specified for a charge in live mode, a receipt will be sent regardless of your [email settings](https://dashboard.epayments.network/account/emails).
              */
             receipt_email?: string;
 
@@ -68,7 +68,7 @@ declare module 'expressplatby' {
             shipping?: ChargeCreateParams.Shipping;
 
             /**
-             * A payment source to be charged. This can be the ID of a [card](https://expressplatby.cz/docs/api#cards) (i.e., credit or debit card), a [bank account](https://expressplatby.cz/docs/api#bank_accounts), a [source](https://expressplatby.cz/docs/api#sources), a [token](https://expressplatby.cz/docs/api#tokens), or a [connected account](https://expressplatby.cz/docs/connect/account-debits#charging-a-connected-account). For certain sources---namely, [cards](https://expressplatby.cz/docs/api#cards), [bank accounts](https://expressplatby.cz/docs/api#bank_accounts), and attached [sources](https://expressplatby.cz/docs/api#sources)---you must also pass the ID of the associated customer.
+             * A payment source to be charged. This can be the ID of a [card](https://docs.epayments.network/api#cards) (i.e., credit or debit card), a [bank account](https://docs.epayments.network/api#bank_accounts), a [source](https://docs.epayments.network/api#sources), a [token](https://docs.epayments.network/api#tokens), or a [connected account](https://docs.epayments.network/connect/account-debits#charging-a-connected-account). For certain sources---namely, [cards](https://docs.epayments.network/api#cards), [bank accounts](https://docs.epayments.network/api#bank_accounts), and attached [sources](https://docs.epayments.network/api#sources)---you must also pass the ID of the associated customer.
              */
             source?: string;
 
@@ -83,12 +83,12 @@ declare module 'expressplatby' {
             statement_descriptor_suffix?: string;
 
             /**
-             * An optional dictionary including the account to automatically transfer to as part of a destination charge. [See the Connect documentation](https://expressplatby.cz/docs/connect/destination-charges) for details.
+             * An optional dictionary including the account to automatically transfer to as part of a destination charge. [See the Connect documentation](https://docs.epayments.network/connect/destination-charges) for details.
              */
             transfer_data?: ChargeCreateParams.TransferData;
 
             /**
-             * A string that identifies this transaction as part of a group. For details, see [Grouping transactions](https://expressplatby.cz/docs/connect/charges-transfers#transfer-options).
+             * A string that identifies this transaction as part of a group. For details, see [Grouping transactions](https://docs.epayments.network/connect/charges-transfers#transfer-options).
              */
             transfer_group?: string;
         }
@@ -96,7 +96,7 @@ declare module 'expressplatby' {
         namespace ChargeCreateParams {
             interface Destination {
                 /**
-                 * ID of an existing, connected ExpressPlatby account.
+                 * ID of an existing, connected ExpressPayments account.
                  */
                 account: string;
 
@@ -108,7 +108,7 @@ declare module 'expressplatby' {
 
             interface RadarOptions {
                 /**
-                 * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                 * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                  */
                 session?: string;
             }
@@ -117,7 +117,7 @@ declare module 'expressplatby' {
                 /**
                  * Shipping address.
                  */
-                address: ExpressPlatby.AddressParam;
+                address: ExpressPayments.AddressParam;
 
                 /**
                  * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
@@ -147,7 +147,7 @@ declare module 'expressplatby' {
                 amount?: number;
 
                 /**
-                 * ID of an existing, connected ExpressPlatby account.
+                 * ID of an existing, connected ExpressPayments account.
                  */
                 destination: string;
             }
@@ -167,7 +167,7 @@ declare module 'expressplatby' {
             customer?: string;
 
             /**
-             * An arbitrary string which you can attach to a charge object. It is displayed when in the web interface alongside the charge. Note that if you use ExpressPlatby to send automatic email receipts to your customers, your receipt emails will include the `description` of the charge(s) that they are describing.
+             * An arbitrary string which you can attach to a charge object. It is displayed when in the web interface alongside the charge. Note that if you use ExpressPayments send automatic email receipts to your customers, your receipt emails will include the `description` of the charge(s) that they are describing.
              */
             description?: string;
 
@@ -177,14 +177,14 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * A set of key-value pairs you can attach to a charge giving information about its riskiness. If you believe a charge is fraudulent, include a `user_report` key with a value of `fraudulent`. If you believe a charge is safe, include a `user_report` key with a value of `safe`. ExpressPlatby will use the information you send to improve our fraud detection algorithms.
+             * A set of key-value pairs you can attach to a charge giving information about its riskiness. If you believe a charge is fraudulent, include a `user_report` key with a value of `fraudulent`. If you believe a charge is safe, include a `user_report` key with a value of `safe`. ExpressPayments will use the information you send to improve our fraud detection algorithms.
              */
             fraud_details?: ChargeUpdateParams.FraudDetails;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * This is the email address that the receipt for this charge will be sent to. If this field is updated, then a new email receipt will be sent to the updated address.
@@ -197,7 +197,7 @@ declare module 'expressplatby' {
             shipping?: ChargeUpdateParams.Shipping;
 
             /**
-             * A string that identifies this transaction as part of a group. `transfer_group` may only be provided if it has not been set. See the [Connect documentation](https://expressplatby.cz/docs/connect/charges-transfers#transfer-options) for details.
+             * A string that identifies this transaction as part of a group. `transfer_group` may only be provided if it has not been set. See the [Connect documentation](https://docs.epayments.network/connect/charges-transfers#transfer-options) for details.
              */
             transfer_group?: string;
         }
@@ -207,7 +207,7 @@ declare module 'expressplatby' {
                 /**
                  * Either `safe` or `fraudulent`.
                  */
-                user_report: ExpressPlatby.Emptyable<FraudDetails.UserReport>;
+                user_report: ExpressPayments.Emptyable<FraudDetails.UserReport>;
             }
 
             namespace FraudDetails {
@@ -218,7 +218,7 @@ declare module 'expressplatby' {
                 /**
                  * Shipping address.
                  */
-                address: ExpressPlatby.AddressParam;
+                address: ExpressPayments.AddressParam;
 
                 /**
                  * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
@@ -243,7 +243,7 @@ declare module 'expressplatby' {
         }
 
         interface ChargeListParams extends PaginationParams {
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Only return charges for the customer specified by this customer ID.
@@ -303,12 +303,12 @@ declare module 'expressplatby' {
             statement_descriptor_suffix?: string;
 
             /**
-             * An optional dictionary including the account to automatically transfer to as part of a destination charge. [See the Connect documentation](https://expressplatby.cz/docs/connect/destination-charges) for details.
+             * An optional dictionary including the account to automatically transfer to as part of a destination charge. [See the Connect documentation](https://docs.epayments.network/connect/destination-charges) for details.
              */
             transfer_data?: ChargeCaptureParams.TransferData;
 
             /**
-             * A string that identifies this transaction as part of a group. `transfer_group` may only be provided if it has not been set. See the [Connect documentation](https://expressplatby.cz/docs/connect/charges-transfers#transfer-options) for details.
+             * A string that identifies this transaction as part of a group. `transfer_group` may only be provided if it has not been set. See the [Connect documentation](https://docs.epayments.network/connect/charges-transfers#transfer-options) for details.
              */
             transfer_group?: string;
         }
@@ -324,7 +324,7 @@ declare module 'expressplatby' {
 
         interface ChargeSearchParams {
             /**
-             * The search query string. See [search query language](https://expressplatby.cz/docs/search#search-query-language) and the list of supported [query fields for charges](https://expressplatby.cz/docs/search#query-fields-for-charges).
+             * The search query string. See [search query language](https://docs.epayments.network/search#search-query-language) and the list of supported [query fields for charges](https://docs.epayments.network/search#query-fields-for-charges).
              */
             query: string;
 
@@ -346,30 +346,30 @@ declare module 'expressplatby' {
 
         class ChargesResource {
             /**
-             * Use the [Payment Intents API](https://expressplatby.cz/docs/api/payment_intents) to initiate a new payment instead
+             * Use the [Payment Intents API](https://docs.epayments.network/api/payment_intents) to initiate a new payment instead
              * of using this method. Confirmation of the PaymentIntent creates the Charge
              * object used to request payment, so this method is limited to legacy integrations.
              */
             create(
                 params?: ChargeCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Charge>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Charge>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Charge>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Charge>>;
 
             /**
-             * Retrieves the details of a charge that has previously been created. Supply the unique charge ID that was returned from your previous request, and ExpressPlatby will return the corresponding charge information. The same information is returned when creating or refunding the charge.
+             * Retrieves the details of a charge that has previously been created. Supply the unique charge ID that was returned from your previous request, and ExpressPayments will return the corresponding charge information. The same information is returned when creating or refunding the charge.
              */
             retrieve(
                 id: string,
                 params?: ChargeRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Charge>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Charge>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Charge>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Charge>>;
 
             /**
              * Updates the specified charge by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
@@ -378,7 +378,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: ChargeUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Charge>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Charge>>;
 
             /**
              * Returns a list of charges you've previously created. The charges are returned in sorted order, with the most recent charges appearing first.
@@ -386,30 +386,30 @@ declare module 'expressplatby' {
             list(
                 params?: ChargeListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Charge>;
+            ): ApiListPromise<ExpressPayments.Charge>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.Charge>;
+            ): ApiListPromise<ExpressPayments.Charge>;
 
             /**
              * Capture the payment of an existing, uncaptured charge that was created with the capture option set to false.
              *
-             * Uncaptured payments expire a set number of days after they are created ([7 by default](https://expressplatby.cz/docs/charges/placing-a-hold)), after which they are marked as refunded and capture attempts will fail.
+             * Uncaptured payments expire a set number of days after they are created ([7 by default](https://docs.epayments.network/charges/placing-a-hold)), after which they are marked as refunded and capture attempts will fail.
              *
-             * Don't use this method to capture a PaymentIntent-initiated charge. Use [Capture a PaymentIntent](https://expressplatby.cz/docs/api/payment_intents/capture).
+             * Don't use this method to capture a PaymentIntent-initiated charge. Use [Capture a PaymentIntent](https://docs.epayments.network/api/payment_intents/capture).
              */
             capture(
                 id: string,
                 params?: ChargeCaptureParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Charge>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Charge>>;
             capture(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Charge>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Charge>>;
 
             /**
-             * Search for charges you've previously created using ExpressPlatby's [Search Query Language](https://expressplatby.cz/docs/search#search-query-language).
+             * Search for charges you've previously created using ExpressPayments' [Search Query Language](https://docs.epayments.network/search#search-query-language).
              * Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating
              * conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up
              * to an hour behind during outages. Search functionality is not available to merchants in India.
@@ -417,7 +417,7 @@ declare module 'expressplatby' {
             search(
                 params: ChargeSearchParams,
                 options?: RequestOptions
-            ): ApiSearchResultPromise<ExpressPlatby.Charge>;
+            ): ApiSearchResultPromise<ExpressPayments.Charge>;
         }
     }
 }

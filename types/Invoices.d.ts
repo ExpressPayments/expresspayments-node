@@ -1,44 +1,44 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Invoices are statements of amounts owed by a customer, and are either
          * generated one-off, or generated periodically from a subscription.
          *
-         * They contain [invoice items](https://expressplatby.cz/docs/api#invoiceitems), and proration adjustments
+         * They contain [invoice items](https://docs.epayments.network/api#invoiceitems), and proration adjustments
          * that may be caused by subscription upgrades/downgrades (if necessary).
          *
          * If your invoice is configured to be billed through automatic charges,
-         * ExpressPlatby automatically finalizes your invoice and attempts payment. Note
+         * ExpressPayments automatically finalizes your invoice and attempts payment. Note
          * that finalizing the invoice,
-         * [when automatic](https://expressplatby.cz/docs/invoicing/integration/automatic-advancement-collection), does
-         * not happen immediately as the invoice is created. ExpressPlatby waits
+         * [when automatic](https://docs.epayments.network/invoicing/integration/automatic-advancement-collection), does
+         * not happen immediately as the invoice is created. ExpressPayments waits
          * until one hour after the last webhook was successfully sent (or the last
          * webhook timed out after failing). If you (and the platforms you may have
-         * connected to) have no webhooks configured, ExpressPlatby waits one hour after
+         * connected to) have no webhooks configured, ExpressPayments waits one hour after
          * creation to finalize the invoice.
          *
          * If your invoice is configured to be billed by sending an email, then based on your
-         * [email settings](https://dashboard.expressplatby.cz/account/billing/automatic),
-         * ExpressPlatby will email the invoice to your customer and await payment. These
+         * [email settings](https://dashboard.epayments.network/account/billing/automatic),
+         * ExpressPayments will email the invoice to your customer and await payment. These
          * emails can contain a link to a hosted page to pay the invoice.
          *
-         * ExpressPlatby applies any customer credit on the account before determining the
+         * ExpressPayments applies any customer credit on the account before determining the
          * amount due for the invoice (i.e., the amount that will be actually
-         * charged). If the amount due for the invoice is less than ExpressPlatby's [minimum allowed charge
-         * per currency](https://expressplatby.cz/docs/currencies#minimum-and-maximum-charge-amounts), the
+         * charged). If the amount due for the invoice is less than ExpressPayments' [minimum allowed charge
+         * per currency](https://docs.epayments.network/currencies#minimum-and-maximum-charge-amounts), the
          * invoice is automatically marked paid, and we add the amount due to the
          * customer's credit balance which is applied to the next invoice.
          *
          * More details on the customer's credit balance are
-         * [here](https://expressplatby.cz/docs/billing/customer/balance).
+         * [here](https://docs.epayments.network/billing/customer/balance).
          *
-         * Related guide: [Send invoices to customers](https://expressplatby.cz/docs/billing/invoices/sending)
+         * Related guide: [Send invoices to customers](https://docs.epayments.network/billing/invoices/sending)
          */
         interface Invoice {
             /**
-             * Unique identifier for the object. This property is always present unless the invoice is an upcoming invoice. See [Retrieve an upcoming invoice](https://expressplatby.cz/docs/api/invoices/upcoming) for more details.
+             * Unique identifier for the object. This property is always present unless the invoice is an upcoming invoice. See [Retrieve an upcoming invoice](https://docs.epayments.network/api/invoices/upcoming) for more details.
              */
             id: string;
 
@@ -61,7 +61,7 @@ declare module 'expressplatby' {
              * The account tax IDs associated with the invoice. Only editable when the invoice is a draft.
              */
             account_tax_ids: Array<
-                string | ExpressPlatby.TaxId | ExpressPlatby.DeletedTaxId
+                string | ExpressPayments.TaxId | ExpressPayments.DeletedTaxId
             > | null;
 
             /**
@@ -89,12 +89,12 @@ declare module 'expressplatby' {
              */
             application:
                 | string
-                | ExpressPlatby.Application
-                | ExpressPlatby.DeletedApplication
+                | ExpressPayments.Application
+                | ExpressPayments.DeletedApplication
                 | null;
 
             /**
-             * The fee in %s that will be applied to the invoice and transferred to the application owner's ExpressPlatby account when the invoice is paid.
+             * The fee in %s that will be applied to the invoice and transferred to the application owner's ExpressPayments account when the invoice is paid.
              */
             application_fee_amount: number | null;
 
@@ -109,7 +109,7 @@ declare module 'expressplatby' {
             attempted: boolean;
 
             /**
-             * Controls whether ExpressPlatby performs [automatic collection](https://expressplatby.cz/docs/invoicing/integration/automatic-advancement-collection) of the invoice. If `false`, the invoice's state doesn't automatically advance without an explicit action.
+             * Controls whether ExpressPayments performs [automatic collection](https://docs.epayments.network/invoicing/integration/automatic-advancement-collection) of the invoice. If `false`, the invoice's state doesn't automatically advance without an explicit action.
              */
             auto_advance?: boolean;
 
@@ -123,10 +123,10 @@ declare module 'expressplatby' {
             /**
              * ID of the latest charge generated for this invoice, if any.
              */
-            charge: string | ExpressPlatby.Charge | null;
+            charge: string | ExpressPayments.Charge | null;
 
             /**
-             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPlatby will attempt to pay this invoice using the default source attached to the customer. When sending an invoice, ExpressPlatby will email this invoice to the customer with payment instructions.
+             * Either `charge_automatically`, or `send_invoice`. When charging automatically, ExpressPayments will attempt to pay this invoice using the default source attached to the customer. When sending an invoice, ExpressPayments will email this invoice to the customer with payment instructions.
              */
             collection_method: Invoice.CollectionMethod;
 
@@ -136,7 +136,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -150,14 +150,14 @@ declare module 'expressplatby' {
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer
                 | null;
 
             /**
              * The customer's address. Until the invoice is finalized, this field will equal `customer.address`. Once the invoice is finalized, this field will no longer be updated.
              */
-            customer_address: ExpressPlatby.Address | null;
+            customer_address: ExpressPayments.Address | null;
 
             /**
              * The customer's email. Until the invoice is finalized, this field will equal `customer.email`. Once the invoice is finalized, this field will no longer be updated.
@@ -192,17 +192,17 @@ declare module 'expressplatby' {
             /**
              * ID of the default payment method for the invoice. It must belong to the customer associated with the invoice. If not set, defaults to the subscription's default payment method, if any, or to the default payment method in the customer's invoice settings.
              */
-            default_payment_method: string | ExpressPlatby.PaymentMethod | null;
+            default_payment_method: string | ExpressPayments.PaymentMethod | null;
 
             /**
              * ID of the default payment source for the invoice. It must belong to the customer associated with the invoice and be in a chargeable state. If not set, defaults to the subscription's default source, if any, or to the customer's default source.
              */
-            default_source: string | ExpressPlatby.CustomerSource | null;
+            default_source: string | ExpressPayments.CustomerSource | null;
 
             /**
              * The tax rates applied to this invoice, if any.
              */
-            default_tax_rates: Array<ExpressPlatby.TaxRate>;
+            default_tax_rates: Array<ExpressPayments.TaxRate>;
 
             deleted?: void;
 
@@ -214,13 +214,13 @@ declare module 'expressplatby' {
             /**
              * Describes the current discount applied to this invoice, if there is one. Not populated if there are multiple discounts.
              */
-            discount: ExpressPlatby.Discount | null;
+            discount: ExpressPayments.Discount | null;
 
             /**
              * The discounts applied to the invoice. Line item discounts are applied before invoice discounts. Use `expand[]=discounts` to expand each discount.
              */
             discounts: Array<
-                string | ExpressPlatby.Discount | ExpressPlatby.DeletedDiscount
+                string | ExpressPayments.Discount | ExpressPayments.DeletedDiscount
             > | null;
 
             /**
@@ -239,7 +239,7 @@ declare module 'expressplatby' {
             footer: string | null;
 
             /**
-             * Details of the invoice that was cloned. See the [revision documentation](https://expressplatby.cz/docs/invoicing/invoice-revisions) for more details.
+             * Details of the invoice that was cloned. See the [revision documentation](https://docs.epayments.network/invoicing/invoice-revisions) for more details.
              */
             from_invoice: Invoice.FromInvoice | null;
 
@@ -261,12 +261,12 @@ declare module 'expressplatby' {
             /**
              * The ID of the most recent non-draft revision of this invoice
              */
-            latest_revision: string | ExpressPlatby.Invoice | null;
+            latest_revision: string | ExpressPayments.Invoice | null;
 
             /**
              * The individual line items that make up the invoice. `lines` is sorted as follows: (1) pending invoice items (including prorations) in reverse chronological order, (2) subscription items in reverse chronological order, and (3) invoice items added after invoice creation in chronological order.
              */
-            lines: ApiList<ExpressPlatby.InvoiceLineItem>;
+            lines: ApiList<ExpressPayments.InvoiceLineItem>;
 
             /**
              * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -274,9 +274,9 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             /**
              * The time at which payment will next be attempted. This value will be `null` for invoices where `collection_method=send_invoice`.
@@ -289,9 +289,9 @@ declare module 'expressplatby' {
             number: string | null;
 
             /**
-             * The account (if any) for which the funds of the invoice payment are intended. If set, the invoice will be presented with the branding and support information of the specified account. See the [Invoices with Connect](https://expressplatby.cz/docs/billing/invoices/connect) documentation for details.
+             * The account (if any) for which the funds of the invoice payment are intended. If set, the invoice will be presented with the branding and support information of the specified account. See the [Invoices with Connect](https://docs.epayments.network/billing/invoices/connect) documentation for details.
              */
-            on_behalf_of: string | ExpressPlatby.Account | null;
+            on_behalf_of: string | ExpressPayments.Account | null;
 
             /**
              * Whether payment was successfully collected for this invoice. An invoice can be paid (most commonly) with a charge or with credit from the customer's account balance.
@@ -299,14 +299,14 @@ declare module 'expressplatby' {
             paid: boolean;
 
             /**
-             * Returns true if the invoice was manually marked paid, returns false if the invoice hasn't been paid yet or was paid on ExpressPlatby.
+             * Returns true if the invoice was manually marked paid, returns false if the invoice hasn't been paid yet or was paid on ExpressPayments.
              */
             paid_out_of_band: boolean;
 
             /**
              * The PaymentIntent associated with this invoice. The PaymentIntent is generated when the invoice is finalized, and can then be used to pay the invoice. Note that voiding an invoice will cancel the PaymentIntent.
              */
-            payment_intent: string | ExpressPlatby.PaymentIntent | null;
+            payment_intent: string | ExpressPayments.PaymentIntent | null;
 
             payment_settings: Invoice.PaymentSettings;
 
@@ -333,7 +333,7 @@ declare module 'expressplatby' {
             /**
              * The quote this invoice was generated from.
              */
-            quote: string | ExpressPlatby.Quote | null;
+            quote: string | ExpressPayments.Quote | null;
 
             /**
              * This is the transaction number that appears on email receipts sent for this invoice.
@@ -366,7 +366,7 @@ declare module 'expressplatby' {
             statement_descriptor: string | null;
 
             /**
-             * The status of the invoice, one of `draft`, `open`, `paid`, `uncollectible`, or `void`. [Learn more](https://expressplatby.cz/docs/billing/invoices/workflow#workflow-overview)
+             * The status of the invoice, one of `draft`, `open`, `paid`, `uncollectible`, or `void`. [Learn more](https://docs.epayments.network/billing/invoices/workflow#workflow-overview)
              */
             status: Invoice.Status | null;
 
@@ -375,7 +375,7 @@ declare module 'expressplatby' {
             /**
              * The subscription that this invoice was prepared for, if any.
              */
-            subscription: string | ExpressPlatby.Subscription | null;
+            subscription: string | ExpressPayments.Subscription | null;
 
             /**
              * Only set for upcoming invoices that preview prorations. The time used to calculate prorations.
@@ -400,7 +400,7 @@ declare module 'expressplatby' {
             /**
              * ID of the test clock this invoice belongs to.
              */
-            test_clock: string | ExpressPlatby.TestHelpers.TestClock | null;
+            test_clock: string | ExpressPayments.TestHelpers.TestClock | null;
 
             threshold_reason?: Invoice.ThresholdReason;
 
@@ -430,7 +430,7 @@ declare module 'expressplatby' {
             transfer_data: Invoice.TransferData | null;
 
             /**
-             * Invoices are automatically paid or sent 1 hour after webhooks are delivered, or until all webhook delivery attempts have [been exhausted](https://expressplatby.cz/docs/billing/webhooks#understand). This field tracks the time when webhooks for this invoice were successfully delivered. If the invoice had no webhooks to deliver, this will be set while the invoice is being created.
+             * Invoices are automatically paid or sent 1 hour after webhooks are delivered, or until all webhook delivery attempts have [been exhausted](https://docs.epayments.network/billing/webhooks#understand). This field tracks the time when webhooks for this invoice were successfully delivered. If the invoice had no webhooks to deliver, this will be set while the invoice is being created.
              */
             webhooks_delivered_at: number | null;
         }
@@ -438,7 +438,7 @@ declare module 'expressplatby' {
         namespace Invoice {
             interface AutomaticTax {
                 /**
-                 * Whether ExpressPlatby automatically computes tax on this invoice. Note that incompatible invoice items (invoice items with manually specified [tax rates](https://expressplatby.cz/docs/api/tax_rates), negative amounts, or `tax_behavior=unspecified`) cannot be added to automatic tax invoices.
+                 * Whether ExpressPayments automatically computes tax on this invoice. Note that incompatible invoice items (invoice items with manually specified [tax rates](https://docs.epayments.network/api/tax_rates), negative amounts, or `tax_behavior=unspecified`) cannot be added to automatic tax invoices.
                  */
                 enabled: boolean;
 
@@ -469,7 +469,7 @@ declare module 'expressplatby' {
             type CollectionMethod = 'charge_automatically' | 'send_invoice';
 
             interface CustomerShipping {
-                address?: ExpressPlatby.Address;
+                address?: ExpressPayments.Address;
 
                 /**
                  * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
@@ -583,7 +583,7 @@ declare module 'expressplatby' {
                 /**
                  * The invoice that was cloned.
                  */
-                invoice: string | ExpressPlatby.Invoice;
+                invoice: string | ExpressPayments.Invoice;
             }
 
             interface LastFinalizationError {
@@ -593,17 +593,17 @@ declare module 'expressplatby' {
                 charge?: string;
 
                 /**
-                 * For some errors that could be handled programmatically, a short string indicating the [error code](https://expressplatby.cz/docs/error-codes) reported.
+                 * For some errors that could be handled programmatically, a short string indicating the [error code](https://docs.epayments.network/error-codes) reported.
                  */
                 code?: LastFinalizationError.Code;
 
                 /**
-                 * For card errors resulting from a card issuer decline, a short string indicating the [card issuer's reason for the decline](https://expressplatby.cz/docs/declines#issuer-declines) if they provide one.
+                 * For card errors resulting from a card issuer decline, a short string indicating the [card issuer's reason for the decline](https://docs.epayments.network/declines#issuer-declines) if they provide one.
                  */
                 decline_code?: string;
 
                 /**
-                 * A URL to more information about the [error code](https://expressplatby.cz/docs/error-codes) reported.
+                 * A URL to more information about the [error code](https://docs.epayments.network/error-codes) reported.
                  */
                 doc_url?: string;
 
@@ -624,22 +624,22 @@ declare module 'expressplatby' {
                  * see the history of payment attempts for a particular session.
                  *
                  * A PaymentIntent transitions through
-                 * [multiple statuses](https://expressplatby.cz/docs/payments/intents#intent-statuses)
-                 * throughout its lifetime as it interfaces with ExpressPlatby.js to perform
+                 * [multiple statuses](https://docs.epayments.network/payments/intents#intent-statuses)
+                 * throughout its lifetime as it interfaces with ExpressPayments.js to perform
                  * authentication flows and ultimately creates at most one successful charge.
                  *
-                 * Related guide: [Payment Intents API](https://expressplatby.cz/docs/payments/payment-intents)
+                 * Related guide: [Payment Intents API](https://docs.epayments.network/payments/payment-intents)
                  */
-                payment_intent?: ExpressPlatby.PaymentIntent;
+                payment_intent?: ExpressPayments.PaymentIntent;
 
                 /**
                  * PaymentMethod objects represent your customer's payment instruments.
-                 * You can use them with [PaymentIntents](https://expressplatby.cz/docs/payments/payment-intents) to collect payments or save them to
+                 * You can use them with [PaymentIntents](https://docs.epayments.network/payments/payment-intents) to collect payments or save them to
                  * Customer objects to store instrument details for future payments.
                  *
-                 * Related guides: [Payment Methods](https://expressplatby.cz/docs/payments/payment-methods) and [More Payment Scenarios](https://expressplatby.cz/docs/payments/more-payment-scenarios).
+                 * Related guides: [Payment Methods](https://docs.epayments.network/payments/payment-methods) and [More Payment Scenarios](https://docs.epayments.network/payments/more-payment-scenarios).
                  */
-                payment_method?: ExpressPlatby.PaymentMethod;
+                payment_method?: ExpressPayments.PaymentMethod;
 
                 /**
                  * If the error is specific to the type of payment method, the payment method type that had a problem. This field is only populated for invoice-related errors.
@@ -654,30 +654,30 @@ declare module 'expressplatby' {
                 /**
                  * A SetupIntent guides you through the process of setting up and saving a customer's payment credentials for future payments.
                  * For example, you could use a SetupIntent to set up and save your customer's card without immediately collecting a payment.
-                 * Later, you can use [PaymentIntents](https://expressplatby.cz/docs/api#payment_intents) to drive the payment flow.
+                 * Later, you can use [PaymentIntents](https://docs.epayments.network/api#payment_intents) to drive the payment flow.
                  *
                  * Create a SetupIntent as soon as you're ready to collect your customer's payment credentials.
                  * Do not maintain long-lived, unconfirmed SetupIntents as they may no longer be valid.
-                 * The SetupIntent then transitions through multiple [statuses](https://expressplatby.cz/docs/payments/intents#intent-statuses) as it guides
+                 * The SetupIntent then transitions through multiple [statuses](https://docs.epayments.network/payments/intents#intent-statuses) as it guides
                  * you through the setup process.
                  *
                  * Successful SetupIntents result in payment credentials that are optimized for future payments.
-                 * For example, cardholders in [certain regions](https://expressplatby.cz/guides/strong-customer-authentication) may need to be run through
-                 * [Strong Customer Authentication](https://expressplatby.cz/docs/strong-customer-authentication) at the time of payment method collection
-                 * in order to streamline later [off-session payments](https://expressplatby.cz/docs/payments/setup-intents).
-                 * If the SetupIntent is used with a [Customer](https://expressplatby.cz/docs/api#setup_intent_object-customer), upon success,
+                 * For example, cardholders in [certain regions](https://epayments.network/guides/strong-customer-authentication) may need to be run through
+                 * [Strong Customer Authentication](https://docs.epayments.network/strong-customer-authentication) at the time of payment method collection
+                 * in order to streamline later [off-session payments](https://docs.epayments.network/payments/setup-intents).
+                 * If the SetupIntent is used with a [Customer](https://docs.epayments.network/api#setup_intent_object-customer), upon success,
                  * it will automatically attach the resulting payment method to that Customer.
-                 * We recommend using SetupIntents or [setup_future_usage](https://expressplatby.cz/docs/api#payment_intent_object-setup_future_usage) on
+                 * We recommend using SetupIntents or [setup_future_usage](https://docs.epayments.network/api#payment_intent_object-setup_future_usage) on
                  * PaymentIntents to save payment methods in order to prevent saving invalid or unoptimized payment methods.
                  *
                  * By using SetupIntents, you ensure that your customers experience the minimum set of required friction,
                  * even as regulations change over time.
                  *
-                 * Related guide: [Setup Intents API](https://expressplatby.cz/docs/payments/setup-intents)
+                 * Related guide: [Setup Intents API](https://docs.epayments.network/payments/setup-intents)
                  */
-                setup_intent?: ExpressPlatby.SetupIntent;
+                setup_intent?: ExpressPayments.SetupIntent;
 
-                source?: ExpressPlatby.CustomerSource;
+                source?: ExpressPayments.CustomerSource;
 
                 /**
                  * The type of error returned. One of `api_error`, `card_error`, `idempotency_error`, or `invalid_request_error`
@@ -861,7 +861,7 @@ declare module 'expressplatby' {
                 payment_method_options: PaymentSettings.PaymentMethodOptions | null;
 
                 /**
-                 * The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, ExpressPlatby attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.expressplatby.cz/settings/billing/invoice).
+                 * The list of payment method types (e.g. card) to provide to the invoice's PaymentIntent. If not set, ExpressPayments attempts to automatically determine the types to use by looking at the invoice's default payment method, the subscription's default payment method, the customer's default payment method, and your [invoice template settings](https://dashboard.epayments.network/settings/billing/invoice).
                  */
                 payment_method_types: Array<
                     PaymentSettings.PaymentMethodType
@@ -944,7 +944,7 @@ declare module 'expressplatby' {
                         installments?: Card.Installments;
 
                         /**
-                         * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://expressplatby.cz/docs/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Read our guide on [manually requesting 3D Secure](https://expressplatby.cz/docs/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
+                         * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://docs.epayments.network/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Read our guide on [manually requesting 3D Secure](https://docs.epayments.network/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
                          */
                         request_three_d_secure: Card.RequestThreeDSecure | null;
                     }
@@ -1087,7 +1087,7 @@ declare module 'expressplatby' {
                 /**
                  * The ID of the ShippingRate for this invoice.
                  */
-                shipping_rate: string | ExpressPlatby.ShippingRate | null;
+                shipping_rate: string | ExpressPayments.ShippingRate | null;
 
                 /**
                  * The taxes applied to the shipping rate.
@@ -1103,11 +1103,11 @@ declare module 'expressplatby' {
                     amount: number;
 
                     /**
-                     * Tax rates can be applied to [invoices](https://expressplatby.cz/docs/billing/invoices/tax-rates), [subscriptions](https://expressplatby.cz/docs/billing/subscriptions/taxes) and [Checkout Sessions](https://expressplatby.cz/docs/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
+                     * Tax rates can be applied to [invoices](https://docs.epayments.network/billing/invoices/tax-rates), [subscriptions](https://docs.epayments.network/billing/subscriptions/taxes) and [Checkout Sessions](https://docs.epayments.network/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
                      *
-                     * Related guide: [Tax rates](https://expressplatby.cz/docs/billing/taxes/tax-rates)
+                     * Related guide: [Tax rates](https://docs.epayments.network/billing/taxes/tax-rates)
                      */
-                    rate: ExpressPlatby.TaxRate;
+                    rate: ExpressPayments.TaxRate;
 
                     /**
                      * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.
@@ -1144,7 +1144,7 @@ declare module 'expressplatby' {
             }
 
             interface ShippingDetails {
-                address?: ExpressPlatby.Address;
+                address?: ExpressPayments.Address;
 
                 /**
                  * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
@@ -1228,8 +1228,8 @@ declare module 'expressplatby' {
                  */
                 discount:
                     | string
-                    | ExpressPlatby.Discount
-                    | ExpressPlatby.DeletedDiscount;
+                    | ExpressPayments.Discount
+                    | ExpressPayments.DeletedDiscount;
             }
 
             interface TotalTaxAmount {
@@ -1246,7 +1246,7 @@ declare module 'expressplatby' {
                 /**
                  * The tax rate that was applied to get this tax amount.
                  */
-                tax_rate: string | ExpressPlatby.TaxRate;
+                tax_rate: string | ExpressPayments.TaxRate;
 
                 /**
                  * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.
@@ -1287,7 +1287,7 @@ declare module 'expressplatby' {
                 /**
                  * The account where funds from the payment will be transferred to upon payment success.
                  */
-                destination: string | ExpressPlatby.Account;
+                destination: string | ExpressPayments.Account;
             }
         }
 

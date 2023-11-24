@@ -1,11 +1,11 @@
 #!/usr/bin/env -S npm run-script run
 /* eslint-disable prettier/prettier */
 
-import env from 'dotenv';
-import * as fs from 'fs';
-import * as child_process from 'child_process';
-import ExpressPlatby from 'expressplatby';
-import * as http from 'http';
+import env from "dotenv";
+import * as fs from "fs";
+import * as child_process from "child_process";
+import ExpressPayments from "expresspayments";
+import * as http from "http";
 
 const path = process.argv[3];
 
@@ -39,9 +39,9 @@ env.config({
     path: `${path}/.env`,
 });
 
-const webhookSecret = process.env.EXPRESSPLATBY_WEBHOOK_SECRET;
-const expressPlatby = new ExpressPlatby(process.env.EXPRESSPLATBY_SECRET_KEY, {
-    apiVersion: '2023-06-01',
+const webhookSecret = process.env.EP_WEBHOOK_SECRET;
+const expressPayments = new ExpressPayments(process.env.EP_SECRET_KEY, {
+    apiVersion: '2023-11-01',
 });
 
 const payload = Buffer.from(
@@ -61,7 +61,7 @@ const payload = Buffer.from(
     )
 );
 
-const signatureHeader = expressPlatby.webhooks.generateTestHeaderString({
+const signatureHeader = expressPayments.webhooks.generateTestHeaderString({
     payload: payload.toString(),
     secret: webhookSecret,
 });
@@ -73,7 +73,7 @@ const sendTestRequest = async (url: string): Promise<string> => {
             {
                 method: 'POST',
                 headers: {
-                    'ExpressPlatby-Signature': signatureHeader,
+                    'EP-Signature': signatureHeader,
                     'Content-Length': payload.length,
                     'Content-Type': 'application/json',
                 },

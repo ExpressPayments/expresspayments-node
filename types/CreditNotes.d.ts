@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * Issue a credit note to adjust an invoice's amount after the invoice is finalized.
          *
-         * Related guide: [Credit notes](https://expressplatby.cz/docs/billing/invoices/credit-notes)
+         * Related guide: [Credit notes](https://docs.epayments.network/billing/invoices/credit-notes)
          */
         interface CreditNote {
             /**
@@ -34,7 +34,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
@@ -43,15 +43,15 @@ declare module 'expressplatby' {
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer;
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer;
 
             /**
              * Customer balance transaction related to this credit note.
              */
             customer_balance_transaction:
                 | string
-                | ExpressPlatby.CustomerBalanceTransaction
+                | ExpressPayments.CustomerBalanceTransaction
                 | null;
 
             /**
@@ -67,12 +67,12 @@ declare module 'expressplatby' {
             /**
              * ID of the invoice.
              */
-            invoice: string | ExpressPlatby.Invoice;
+            invoice: string | ExpressPayments.Invoice;
 
             /**
              * Line items that make up the credit note
              */
-            lines: ApiList<ExpressPlatby.CreditNoteLineItem>;
+            lines: ApiList<ExpressPayments.CreditNoteLineItem>;
 
             /**
              * Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -85,9 +85,9 @@ declare module 'expressplatby' {
             memo: string | null;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             /**
              * A unique number that identifies this particular credit note and appears on the PDF of the credit note and its associated invoice.
@@ -95,7 +95,7 @@ declare module 'expressplatby' {
             number: string;
 
             /**
-             * Amount that was credited outside ExpressPlatby.
+             * Amount that was credited outside ExpressPayments.
              */
             out_of_band_amount: number | null;
 
@@ -112,7 +112,7 @@ declare module 'expressplatby' {
             /**
              * Refund related to this credit note.
              */
-            refund: string | ExpressPlatby.Refund | null;
+            refund: string | ExpressPayments.Refund | null;
 
             /**
              * The details of the cost of shipping, including the ShippingRate applied to the invoice.
@@ -120,7 +120,7 @@ declare module 'expressplatby' {
             shipping_cost: CreditNote.ShippingCost | null;
 
             /**
-             * Status of this credit note, one of `issued` or `void`. Learn more about [voiding credit notes](https://expressplatby.cz/docs/billing/invoices/credit-notes#voiding).
+             * Status of this credit note, one of `issued` or `void`. Learn more about [voiding credit notes](https://docs.epayments.network/billing/invoices/credit-notes#voiding).
              */
             status: CreditNote.Status;
 
@@ -172,8 +172,8 @@ declare module 'expressplatby' {
                  */
                 discount:
                     | string
-                    | ExpressPlatby.Discount
-                    | ExpressPlatby.DeletedDiscount;
+                    | ExpressPayments.Discount
+                    | ExpressPayments.DeletedDiscount;
             }
 
             type Reason =
@@ -201,7 +201,7 @@ declare module 'expressplatby' {
                 /**
                  * The ID of the ShippingRate for this invoice.
                  */
-                shipping_rate: string | ExpressPlatby.ShippingRate | null;
+                shipping_rate: string | ExpressPayments.ShippingRate | null;
 
                 /**
                  * The taxes applied to the shipping rate.
@@ -217,11 +217,11 @@ declare module 'expressplatby' {
                     amount: number;
 
                     /**
-                     * Tax rates can be applied to [invoices](https://expressplatby.cz/docs/billing/invoices/tax-rates), [subscriptions](https://expressplatby.cz/docs/billing/subscriptions/taxes) and [Checkout Sessions](https://expressplatby.cz/docs/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
+                     * Tax rates can be applied to [invoices](https://docs.epayments.network/billing/invoices/tax-rates), [subscriptions](https://docs.epayments.network/billing/subscriptions/taxes) and [Checkout Sessions](https://docs.epayments.network/payments/checkout/set-up-a-subscription#tax-rates) to collect tax.
                      *
-                     * Related guide: [Tax rates](https://expressplatby.cz/docs/billing/taxes/tax-rates)
+                     * Related guide: [Tax rates](https://docs.epayments.network/billing/taxes/tax-rates)
                      */
-                    rate: ExpressPlatby.TaxRate;
+                    rate: ExpressPayments.TaxRate;
 
                     /**
                      * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.
@@ -273,7 +273,7 @@ declare module 'expressplatby' {
                 /**
                  * The tax rate that was applied to get this tax amount.
                  */
-                tax_rate: string | ExpressPlatby.TaxRate;
+                tax_rate: string | ExpressPayments.TaxRate;
 
                 /**
                  * The reasoning behind this tax, for example, if the product is tax-exempt. The possible values for this field may be extended as new tax rules are supported.

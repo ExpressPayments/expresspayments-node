@@ -1,6 +1,6 @@
 import {callbackifyPromiseWithTimeout, extractUrlParams} from './utils.js';
 import {makeAutoPaginationMethods} from './autoPagination.js';
-import {ExpressPlatbyResourceObject, MethodSpec} from './Types.js';
+import {ExpressPaymentsResourceObject, MethodSpec} from './Types.js';
 
 /**
  * Create an API method from the declared spec.
@@ -18,9 +18,9 @@ import {ExpressPlatbyResourceObject, MethodSpec} from './Types.js';
  *  Usefully for applying transforms to data on a per-method basis.
  * @param [spec.host] Hostname for the request.
  *
- * <!-- Public API accessible via ExpressPlatby.ExpressPlatbyResource.method -->
+ * <!-- Public API accessible via ExpressPayments.ExpressPaymentsResource.method -->
  */
-export function expressPlatbyMethod(
+export function expressPaymentsMethod(
     spec: MethodSpec
 ): (...args: any[]) => Promise<any> {
     if (spec.path !== undefined && spec.fullPath !== undefined) {
@@ -29,7 +29,7 @@ export function expressPlatbyMethod(
         );
     }
     return function(
-        this: ExpressPlatbyResourceObject,
+        this: ExpressPaymentsResourceObject,
         ...args: any[]
     ): Promise<any> {
         const callback =

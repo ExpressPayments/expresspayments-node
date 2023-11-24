@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface AccountLinkCreateParams {
             /**
              * The identifier of the account to create an account link for.
@@ -46,12 +46,12 @@ declare module 'expressplatby' {
 
         class AccountLinksResource {
             /**
-             * Creates an AccountLink object that includes a single-use ExpressPlatby URL that the platform can redirect their user to in order to take them through the Connect Onboarding flow.
+             * Creates an AccountLink object that includes a single-use ExpressPayments URL that the platform can redirect their user to in order to take them through the Connect Onboarding flow.
              */
             create(
                 params: AccountLinkCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.AccountLink>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.AccountLink>>;
         }
     }
 }

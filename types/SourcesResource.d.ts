@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface SourceCreateParams {
             /**
              * Amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for `single_use` sources. Not supported for `receiver` type sources, where charge amount may not be specified until funds land.
@@ -9,7 +9,7 @@ declare module 'expressplatby' {
             amount?: number;
 
             /**
-             * Three-letter [ISO code for the currency](https://expressplatby.cz/docs/currencies) associated with the source. This is the currency for which the source will be chargeable once ready.
+             * Three-letter [ISO code for the currency](https://docs.epayments.network/currencies) associated with the source. This is the currency for which the source will be chargeable once ready.
              */
             currency?: string;
 
@@ -33,7 +33,7 @@ declare module 'expressplatby' {
              */
             mandate?: SourceCreateParams.Mandate;
 
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * The source to share.
@@ -71,7 +71,7 @@ declare module 'expressplatby' {
             token?: string;
 
             /**
-             * The `type` of the source to create. Required unless `customer` and `original_source` are specified (see the [Cloning card Sources](https://expressplatby.cz/docs/sources/connect#cloning-card-sources) guide)
+             * The `type` of the source to create. Required unless `customer` and `original_source` are specified (see the [Cloning card Sources](https://docs.epayments.network/sources/connect#cloning-card-sources) guide)
              */
             type?: string;
 
@@ -83,14 +83,14 @@ declare module 'expressplatby' {
 
             interface Mandate {
                 /**
-                 * The parameters required to notify ExpressPlatby of a mandate acceptance or refusal by the customer.
+                 * The parameters required to notify ExpressPayments of a mandate acceptance or refusal by the customer.
                  */
                 acceptance?: Mandate.Acceptance;
 
                 /**
                  * The amount specified by the mandate. (Leave null for a mandate covering all amounts)
                  */
-                amount?: ExpressPlatby.Emptyable<number>;
+                amount?: ExpressPayments.Emptyable<number>;
 
                 /**
                  * The currency specified by the mandate. (Must match `currency` of the source)
@@ -103,7 +103,7 @@ declare module 'expressplatby' {
                 interval?: Mandate.Interval;
 
                 /**
-                 * The method ExpressPlatby should use to notify the customer of upcoming debit instructions and/or mandate confirmation as required by the underlying debit network. Either `email` (an email is sent directly to the customer), `manual` (a `source.mandate_notification` event is sent to your webhooks endpoint, and you should handle the notification) or `none` (the underlying debit network does not require any notification).
+                 * The method ExpressPayments should use to notify the customer of upcoming debit instructions and/or mandate confirmation as required by the underlying debit network. Either `email` (an email is sent directly to the customer), `manual` (a `source.mandate_notification` event is sent to your webhooks endpoint, and you should handle the notification) or `none` (the underlying debit network does not require any notification).
                  */
                 notification_method?: Mandate.NotificationMethod;
             }
@@ -187,14 +187,14 @@ declare module 'expressplatby' {
                     | 'email'
                     | 'manual'
                     | 'none'
-                    | 'expressplatby_email';
+                    | 'expresspayments_email';
             }
 
             interface Owner {
                 /**
                  * Owner's address.
                  */
-                address?: ExpressPlatby.AddressParam;
+                address?: ExpressPayments.AddressParam;
 
                 /**
                  * Owner's email address.
@@ -214,7 +214,7 @@ declare module 'expressplatby' {
 
             interface Receiver {
                 /**
-                 * The method ExpressPlatby should use to request information needed to process a refund or mispayment. Either `email` (an email is sent directly to the customer) or `manual` (a `source.refund_attributes_required` event is sent to your webhooks endpoint). Refer to each payment method's documentation to learn which refund attributes may be required.
+                 * The method ExpressPayments should use to request information needed to process a refund or mispayment. Either `email` (an email is sent directly to the customer) or `manual` (a `source.refund_attributes_required` event is sent to your webhooks endpoint). Refer to each payment method's documentation to learn which refund attributes may be required.
                  */
                 refund_attributes_method?: Receiver.RefundAttributesMethod;
             }
@@ -271,7 +271,7 @@ declare module 'expressplatby' {
                     /**
                      * Shipping address.
                      */
-                    address: ExpressPlatby.ShippingAddressParam;
+                    address: ExpressPayments.ShippingAddressParam;
 
                     /**
                      * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
@@ -327,9 +327,9 @@ declare module 'expressplatby' {
             mandate?: SourceUpdateParams.Mandate;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * Information about the owner of the payment instrument that may be used or required by particular source types.
@@ -345,14 +345,14 @@ declare module 'expressplatby' {
         namespace SourceUpdateParams {
             interface Mandate {
                 /**
-                 * The parameters required to notify ExpressPlatby of a mandate acceptance or refusal by the customer.
+                 * The parameters required to notify ExpressPayments of a mandate acceptance or refusal by the customer.
                  */
                 acceptance?: Mandate.Acceptance;
 
                 /**
                  * The amount specified by the mandate. (Leave null for a mandate covering all amounts)
                  */
-                amount?: ExpressPlatby.Emptyable<number>;
+                amount?: ExpressPayments.Emptyable<number>;
 
                 /**
                  * The currency specified by the mandate. (Must match `currency` of the source)
@@ -365,7 +365,7 @@ declare module 'expressplatby' {
                 interval?: Mandate.Interval;
 
                 /**
-                 * The method ExpressPlatby should use to notify the customer of upcoming debit instructions and/or mandate confirmation as required by the underlying debit network. Either `email` (an email is sent directly to the customer), `manual` (a `source.mandate_notification` event is sent to your webhooks endpoint, and you should handle the notification) or `none` (the underlying debit network does not require any notification).
+                 * The method ExpressPayments should use to notify the customer of upcoming debit instructions and/or mandate confirmation as required by the underlying debit network. Either `email` (an email is sent directly to the customer), `manual` (a `source.mandate_notification` event is sent to your webhooks endpoint, and you should handle the notification) or `none` (the underlying debit network does not require any notification).
                  */
                 notification_method?: Mandate.NotificationMethod;
             }
@@ -449,14 +449,14 @@ declare module 'expressplatby' {
                     | 'email'
                     | 'manual'
                     | 'none'
-                    | 'expressplatby_email';
+                    | 'expresspayments_email';
             }
 
             interface Owner {
                 /**
                  * Owner's address.
                  */
-                address?: ExpressPlatby.AddressParam;
+                address?: ExpressPayments.AddressParam;
 
                 /**
                  * Owner's email address.
@@ -515,7 +515,7 @@ declare module 'expressplatby' {
                     /**
                      * Shipping address.
                      */
-                    address: ExpressPlatby.ShippingAddressParam;
+                    address: ExpressPayments.ShippingAddressParam;
 
                     /**
                      * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
@@ -566,34 +566,34 @@ declare module 'expressplatby' {
             create(
                 params?: SourceCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Source>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Source>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Source>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Source>>;
 
             /**
-             * Retrieves an existing source object. Supply the unique source ID from a source creation request and ExpressPlatby will return the corresponding up-to-date source object information.
+             * Retrieves an existing source object. Supply the unique source ID from a source creation request and ExpressPayments will return the corresponding up-to-date source object information.
              */
             retrieve(
                 id: string,
                 params?: SourceRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Source>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Source>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Source>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Source>>;
 
             /**
              * Updates the specified source by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
              *
-             * This request accepts the metadata and owner as arguments. It is also possible to update type specific information for selected payment methods. Please refer to our [payment method guides](https://expressplatby.cz/docs/sources) for more detail.
+             * This request accepts the metadata and owner as arguments. It is also possible to update type specific information for selected payment methods. Please refer to our [payment method guides](https://docs.epayments.network/sources) for more detail.
              */
             update(
                 id: string,
                 params?: SourceUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Source>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Source>>;
 
             /**
              * List source transactions for a given source.
@@ -602,11 +602,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: SourceListSourceTransactionsParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.SourceTransaction>;
+            ): ApiListPromise<ExpressPayments.SourceTransaction>;
             listSourceTransactions(
                 id: string,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.SourceTransaction>;
+            ): ApiListPromise<ExpressPayments.SourceTransaction>;
 
             /**
              * Verify a given source.
@@ -615,7 +615,7 @@ declare module 'expressplatby' {
                 id: string,
                 params: SourceVerifyParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Source>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Source>>;
         }
     }
 }

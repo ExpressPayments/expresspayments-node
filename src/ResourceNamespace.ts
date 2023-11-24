@@ -1,28 +1,28 @@
-// ResourceNamespace allows you to create nested resources, i.e. `expressplatby.issuing.cards`.
+// ResourceNamespace allows you to create nested resources, i.e. `expresspayments.issuing.cards`.
 
-import {ExpressPlatbyObject, ExpressPlatbyResourceObject} from './Types.js';
+import {ExpressPaymentsObject, ExpressPaymentsResourceObject} from './Types.js';
 
-export type ExpressPlatbyResourceNamespaceObject = {
+export type ExpressPaymentsResourceNamespaceObject = {
     [key: string]:
-        | ExpressPlatbyResourceObject
-        | ExpressPlatbyResourceNamespaceObject;
+        | ExpressPaymentsResourceObject
+        | ExpressPaymentsResourceNamespaceObject;
 };
 
-// It also works recursively, so you could do i.e. `expressplatby.billing.invoicing.pay`.
+// It also works recursively, so you could do i.e. `expresspayments.billing.invoicing.pay`.
 function ResourceNamespace(
-    this: ExpressPlatbyResourceNamespaceObject,
-    expressPlatby: ExpressPlatbyObject,
+    this: ExpressPaymentsResourceNamespaceObject,
+    ExpressPayments: ExpressPaymentsObject,
     resources: Record<
         string,
         new (...args: any[]) =>
-            | ExpressPlatbyResourceObject
-            | ExpressPlatbyResourceNamespaceObject
+            | ExpressPaymentsResourceObject
+            | ExpressPaymentsResourceNamespaceObject
     >
 ): void {
     for (const name in resources) {
         const camelCaseName = name[0].toLowerCase() + name.substring(1);
 
-        const resource = new resources[name](expressPlatby);
+        const resource = new resources[name](ExpressPayments);
 
         this[camelCaseName] = resource;
     }
@@ -33,15 +33,15 @@ export function resourceNamespace(
     resources: Record<
         string,
         new (...args: any[]) =>
-            | ExpressPlatbyResourceObject
-            | ExpressPlatbyResourceNamespaceObject
+            | ExpressPaymentsResourceObject
+            | ExpressPaymentsResourceNamespaceObject
     >
 ): new (
-    expressPlatby: ExpressPlatbyObject
-) => ExpressPlatbyResourceNamespaceObject {
+    expressPayments: ExpressPaymentsObject
+) => ExpressPaymentsResourceNamespaceObject {
     return function(
-        expressPlatby: ExpressPlatbyObject
-    ): ExpressPlatbyResourceNamespaceObject {
-        return new (ResourceNamespace as any)(expressPlatby, resources);
+        expressPayments: ExpressPaymentsObject
+    ): ExpressPaymentsResourceNamespaceObject {
+        return new (ResourceNamespace as any)(expressPayments, resources);
     } as any;
 }

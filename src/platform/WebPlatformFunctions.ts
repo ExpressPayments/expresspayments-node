@@ -1,7 +1,7 @@
 import {CryptoProvider} from '../crypto/CryptoProvider.js';
 import {HttpClient} from '../net/HttpClient.js';
 import {PlatformFunctions} from './PlatformFunctions.js';
-import {ExpressPlatbyEmitter} from '../ExpressPlatbyEmitter.js';
+import {ExpressPaymentsEmitter} from '../ExpressPaymentsEmitter';
 import {BufferedFile, MultipartRequestData, RequestData} from '../Types.js';
 
 /**
@@ -14,8 +14,8 @@ export class WebPlatformFunctions extends PlatformFunctions {
     }
 
     /** @override */
-    createEmitter(): ExpressPlatbyEmitter {
-        return new ExpressPlatbyEmitter();
+    createEmitter(): ExpressPaymentsEmitter {
+        return new ExpressPaymentsEmitter();
     }
 
     /** @override */
@@ -24,7 +24,7 @@ export class WebPlatformFunctions extends PlatformFunctions {
     ): Promise<RequestData | BufferedFile> {
         if (data.file.data instanceof ReadableStream) {
             throw new Error(
-                'Uploading a file as a stream is not supported in non-Node environments. Please open or upvote an issue at github.com/expressplatby/expressplatby-node if you use this, detailing your use-case.'
+                'Uploading a file as a stream is not supported in non-Node environments. Please open or upvote an issue at github.com/expresspayments/expresspayments-node if you use this, detailing your use-case.'
             );
         }
         return Promise.resolve(data);
@@ -33,7 +33,7 @@ export class WebPlatformFunctions extends PlatformFunctions {
     /** @override */
     createNodeHttpClient(): HttpClient {
         throw new Error(
-            'ExpressPlatby: `createNodeHttpClient()` is not available in non-Node environments. Please use `createFetchHttpClient()` instead.'
+            'ExpressPayments: `createNodeHttpClient()` is not available in non-Node environments. Please use `createFetchHttpClient()` instead.'
         );
     }
 
@@ -45,7 +45,7 @@ export class WebPlatformFunctions extends PlatformFunctions {
     /** @override */
     createNodeCryptoProvider(): CryptoProvider {
         throw new Error(
-            'ExpressPlatby: `createNodeCryptoProvider()` is not available in non-Node environments. Please use `createSubtleCryptoProvider()` instead.'
+            'ExpressPayments: `createNodeCryptoProvider()` is not available in non-Node environments. Please use `createSubtleCryptoProvider()` instead.'
         );
     }
 

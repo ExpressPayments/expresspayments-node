@@ -2,10 +2,10 @@
 
 import {IncomingMessage} from 'http';
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * Encapsulates the logic for issuing a request to the ExpressPlatby API. This is
+         * Encapsulates the logic for issuing a request to the ExpressPayments API. This is
          * an experimental interface and is not yet stable.
          */
         export interface HttpClient<
@@ -26,7 +26,7 @@ declare module 'expressplatby' {
                 // - Fetch supports a Headers object.
                 headers: object,
                 requestData: string | null,
-                protocol: ExpressPlatby.HttpProtocol,
+                protocol: ExpressPayments.HttpProtocol,
                 timeout: number
             ): Promise<ResponseType>;
         }
@@ -67,12 +67,12 @@ declare module 'expressplatby' {
         ) => HttpClient<
             HttpClientResponse<
                 IncomingMessage,
-                ExpressPlatby.ExpressPlatbyStreamResponse
+              ExpressPayments.ExpressPaymentsStreamResponse
             >
         >;
 
         /**
-         * Creates an HTTP client for issuing ExpressPlatby API requests which uses the Web
+         * Creates an HTTP client for issuing ExpressPayments API requests which uses the Web
          * Fetch API.
          *
          * A fetch function can optionally be passed in as a parameter. If none is

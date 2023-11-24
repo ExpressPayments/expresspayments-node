@@ -1,20 +1,20 @@
-import ExpressPlatby from 'expressplatby';
+import ExpressPayments from 'expresspayments';
 
 export async function onRequestPost({env, request}) {
-    const sig = request.headers.get('ExpressPlatby-Signature');
+    const sig = request.headers.get('EP-Signature');
     const body = await request.text();
 
-    const expressPlatby = new ExpressPlatby(env.EXPRESSPLATBY_API_KEY, {
-        apiVersion: '2023-06-01',
-        httpClient: ExpressPlatby.createFetchHttpClient(),
+    const expressPayments = new ExpressPayments(env.EP_API_KEY, {
+        apiVersion: '2023-11-01',
+        httpClient: ExpressPayments.createFetchHttpClient(),
     });
-    const webCrypto = ExpressPlatby.createSubtleCryptoProvider();
+    const webCrypto = ExpressPayments.createSubtleCryptoProvider();
 
     try {
-        const event = await expressPlatby.webhooks.constructEventAsync(
+        const event = await expressPayments.webhooks.constructEventAsync(
             body, // raw request body
             sig, // signature header
-            env.EXPRESSPLATBY_SIGNING_SECRET,
+            env.EP_SIGNING_SECRET,
             undefined,
             webCrypto
         );

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface MandateRetrieveParams {
             /**
              * Specifies which fields in the response should be expanded.
@@ -17,11 +17,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: MandateRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Mandate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Mandate>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.Mandate>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.Mandate>>;
         }
     }
 }

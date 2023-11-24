@@ -1,17 +1,18 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource.js';
 
-export const ExchangeRates = ExpressPlatbyResource.extend({
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/exchange_rates/{rate_id}',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/exchange_rates',
-    methodType: 'list',
-  }),
+export const ExchangeRates = ExpressPaymentsResource.extend({
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/exchange_rates/{rate_id}',
+    }),
+
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/exchange_rates',
+        methodType: 'list',
+    }),
 });

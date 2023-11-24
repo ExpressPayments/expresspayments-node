@@ -1,32 +1,33 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const TestClocks = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/test_helpers/test_clocks',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/test_helpers/test_clocks/{test_clock}',
-  }),
+export const TestClocks = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/test_helpers/test_clocks',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/test_helpers/test_clocks',
-    methodType: 'list',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/test_helpers/test_clocks/{test_clock}',
+    }),
 
-  del: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/test_helpers/test_clocks/{test_clock}',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/test_helpers/test_clocks',
+        methodType: 'list',
+    }),
 
-  advance: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/test_helpers/test_clocks/{test_clock}/advance',
-  }),
+    del: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/test_helpers/test_clocks/{test_clock}',
+    }),
+
+    advance: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/test_helpers/test_clocks/{test_clock}/advance',
+    }),
 });

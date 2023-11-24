@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace FinancialConnections {
             /**
              * Describes a snapshot of the owners of an account at a particular point in time.
@@ -26,7 +26,7 @@ declare module 'expressplatby' {
                  * A paginated list of owners for this account.
                  */
                 owners: ApiList<
-                    ExpressPlatby.FinancialConnections.AccountOwner
+                  ExpressPayments.FinancialConnections.AccountOwner
                 >;
             }
         }

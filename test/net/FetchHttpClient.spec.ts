@@ -7,110 +7,121 @@ const {Readable} = require('stream');
 const {FetchHttpClient} = require('../../src/net/FetchHttpClient.js');
 
 const createFetchHttpClient = () => {
-  return new FetchHttpClient(fetch);
+    return new FetchHttpClient(fetch);
 };
 
 const {createHttpClientTestSuite, ArrayReadable} = require('./helpers.js');
 
 describe('FetchHttpClient', () => {
-  createHttpClientTestSuite(createFetchHttpClient, (setupNock, sendRequest) => {
-    describe('raw stream', () => {
-      it('getRawResponse()', async () => {
-        setupNock().reply(200);
-        const response = await sendRequest();
-        expect(response.getRawResponse()).to.be.an.instanceOf(fetch.Response);
-      });
+    createHttpClientTestSuite(
+        createFetchHttpClient,
+        (setupNock, sendRequest) => {
+            describe('raw stream', () => {
+                it('getRawResponse()', async () => {
+                    setupNock().reply(200);
+                    const response = await sendRequest();
+                    expect(response.getRawResponse()).to.be.an.instanceOf(
+                        fetch.Response
+                    );
+                });
 
-      it('toStream returns the body as a stream', async () => {
-        setupNock().reply(200, () => new ArrayReadable(['hello, world!']));
+                it('toStream returns the body as a stream', async () => {
+                    setupNock().reply(
+                        200,
+                        () => new ArrayReadable(['hello, world!'])
+                    );
 
-        const response = await sendRequest();
+                    const response = await sendRequest();
 
-        return new Promise((resolve) => {
-          const stream = response.toStream(() => true);
+                    return new Promise((resolve) => {
+                        const stream = response.toStream(() => true);
 
-          // node-fetch returns a Node Readable here. In a Web API context, this
-          // would be a Web ReadableStream.
-          expect(stream).to.be.an.instanceOf(Readable);
+                        // node-fetch returns a Node Readable here. In a Web API context, this
+                        // would be a Web ReadableStream.
+                        expect(stream).to.be.an.instanceOf(Readable);
 
-          let streamedContent = '';
-          stream.on('data', (chunk) => {
-            streamedContent += chunk;
-          });
-          stream.on('end', () => {
-            expect(streamedContent).to.equal('hello, world!');
-            resolve();
-          });
-        });
-      });
+                        let streamedContent = '';
+                        stream.on('data', (chunk) => {
+                            streamedContent += chunk;
+                        });
+                        stream.on('end', () => {
+                            expect(streamedContent).to.equal('hello, world!');
+                            resolve();
+                        });
+                    });
+                });
 
-      it('toStream invokes the streamCompleteCallback', async () => {
-        setupNock().reply(200, () => new ArrayReadable(['hello, world!']));
+                it('toStream invokes the streamCompleteCallback', async () => {
+                    setupNock().reply(
+                        200,
+                        () => new ArrayReadable(['hello, world!'])
+                    );
 
-        const response = await sendRequest();
+                    const response = await sendRequest();
 
-        return new Promise((resolve) => {
-          response.toStream(() => {
-            resolve();
-          });
-        });
-      });
+                    return new Promise((resolve) => {
+                        response.toStream(() => {
+                            resolve();
+                        });
+                    });
+                });
+            });
+        }
+    );
+
+    describe('it sets a body value for empty POST requests', () => {
+        let capturedBody;
+
+        const patchedFetch = (url, params) => {
+            capturedBody = params.body;
+            return fetch(url, params);
+        };
+
+        nock('http://epayments.network')
+            .post('/test', '')
+            .reply(200);
+
+        const client = new FetchHttpClient(patchedFetch);
+        client.makeRequest(
+            'epayments.network',
+            80,
+            '/test',
+            'POST',
+            {},
+            '', // requestData
+            'http',
+            1000
+        );
+
+        expect(capturedBody).to.equal('');
     });
-  });
 
-  describe('it sets a body value for empty POST requests', () => {
-    let capturedBody;
+    describe('it does not set a body value for empty GET requests', () => {
+        let capturedBody;
 
-    const patchedFetch = (url, params) => {
-      capturedBody = params.body;
-      return fetch(url, params);
-    };
+        const patchedFetch = (url, params) => {
+            capturedBody = params.body;
+            return fetch(url, params);
+        };
 
-    nock('http://expressplatby.cz')
-      .post('/test', '')
-      .reply(200);
+        nock('http://epayments.network')
+            .get('/test')
+            .reply(200);
 
-    const client = new FetchHttpClient(patchedFetch);
-    client.makeRequest(
-      'expressplatby.cz',
-      80,
-      '/test',
-      'POST',
-      {},
-      '', // requestData
-      'http',
-      1000
-    );
+        const client = new FetchHttpClient(patchedFetch);
+        client.makeRequest(
+            'epayments.network',
+            80,
+            '/test',
+            'GET',
+            {},
+            '', // requestData
+            'http',
+            1000
+        );
 
-    expect(capturedBody).to.equal('');
-  });
-
-  describe('it does not set a body value for empty GET requests', () => {
-    let capturedBody;
-
-    const patchedFetch = (url, params) => {
-      capturedBody = params.body;
-      return fetch(url, params);
-    };
-
-    nock('http://expressplatby.cz')
-      .get('/test')
-      .reply(200);
-
-    const client = new FetchHttpClient(patchedFetch);
-    client.makeRequest(
-      'expressplatby.cz',
-      80,
-      '/test',
-      'GET',
-      {},
-      '', // requestData
-      'http',
-      1000
-    );
-
-    expect(capturedBody).to.be.undefined;
-  });
+        expect(capturedBody).to.be.undefined;
+    });
 });
 
 export {};

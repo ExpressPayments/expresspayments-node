@@ -1,6 +1,6 @@
 'use strict';
 
-const expressPlatby = require('../testUtils.js').getSpyableExpressPlatby();
+const expressPayments = require('../testUtils.js').getSpyableExpressPayments();
 const expect = require('chai').expect;
 const fs = require('fs');
 const path = require('path');
@@ -10,8 +10,8 @@ const TEST_AUTH_KEY = 'aGN0bIwXnHdw5645VABjPdSn8nWY7G11';
 describe('Files Resource', () => {
     describe('retrieve', () => {
         it('Sends the correct request', () => {
-            expressPlatby.files.retrieve('fil_12345');
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.files.retrieve('fil_12345');
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: '/v1/files/fil_12345',
                 headers: {},
@@ -21,8 +21,8 @@ describe('Files Resource', () => {
         });
 
         it('Sends the correct request [with specified auth]', () => {
-            expressPlatby.files.retrieve('fil_12345', TEST_AUTH_KEY);
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.files.retrieve('fil_12345', TEST_AUTH_KEY);
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: '/v1/files/fil_12345',
                 headers: {},
@@ -35,8 +35,8 @@ describe('Files Resource', () => {
 
     describe('list', () => {
         it('Sends the correct request', () => {
-            expressPlatby.files.list();
-            expect(expressPlatby.LAST_REQUEST).to.deep.equal({
+            expressPayments.files.list();
+            expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'GET',
                 url: '/v1/files',
                 headers: {},
@@ -51,7 +51,7 @@ describe('Files Resource', () => {
             const testFilename = path.join(__dirname, 'data/minimal.pdf');
             const f = fs.readFileSync(testFilename);
 
-            expressPlatby.files.create({
+            expressPayments.files.create({
                 purpose: 'dispute_evidence',
                 file: {
                     data: f,
@@ -61,15 +61,15 @@ describe('Files Resource', () => {
                 file_link_data: {create: true},
             });
 
-            expect(expressPlatby.LAST_REQUEST).to.deep.property(
+            expect(expressPayments.LAST_REQUEST).to.deep.property(
                 'host',
-                'files.expressplatby.cz'
+                'files.epayments.network'
             );
-            expect(expressPlatby.LAST_REQUEST).to.deep.property(
+            expect(expressPayments.LAST_REQUEST).to.deep.property(
                 'method',
                 'POST'
             );
-            expect(expressPlatby.LAST_REQUEST).to.deep.property(
+            expect(expressPayments.LAST_REQUEST).to.deep.property(
                 'url',
                 '/v1/files'
             );
@@ -79,7 +79,7 @@ describe('Files Resource', () => {
             const testFilename = path.join(__dirname, 'data/minimal.pdf');
             const f = fs.readFileSync(testFilename);
 
-            expressPlatby.files.create(
+            expressPayments.files.create(
                 {
                     purpose: 'dispute_evidence',
                     file: {
@@ -92,19 +92,19 @@ describe('Files Resource', () => {
                 TEST_AUTH_KEY
             );
 
-            expect(expressPlatby.LAST_REQUEST).to.deep.property(
+            expect(expressPayments.LAST_REQUEST).to.deep.property(
                 'host',
-                'files.expressplatby.cz'
+                'files.epayments.network'
             );
-            expect(expressPlatby.LAST_REQUEST).to.deep.property(
+            expect(expressPayments.LAST_REQUEST).to.deep.property(
                 'method',
                 'POST'
             );
-            expect(expressPlatby.LAST_REQUEST).to.deep.property(
+            expect(expressPayments.LAST_REQUEST).to.deep.property(
                 'url',
                 '/v1/files'
             );
-            expect(expressPlatby.LAST_REQUEST).to.deep.property(
+            expect(expressPayments.LAST_REQUEST).to.deep.property(
                 'auth',
                 TEST_AUTH_KEY
             );
@@ -114,7 +114,7 @@ describe('Files Resource', () => {
             const testFilename = path.join(__dirname, 'data/minimal.pdf');
             const f = fs.createReadStream(testFilename);
 
-            return expressPlatby.files
+            return expressPayments.files
                 .create({
                     purpose: 'dispute_evidence',
                     file: {
@@ -125,15 +125,15 @@ describe('Files Resource', () => {
                     file_link_data: {create: true},
                 })
                 .then(() => {
-                    expect(expressPlatby.LAST_REQUEST).to.deep.property(
+                    expect(expressPayments.LAST_REQUEST).to.deep.property(
                         'host',
-                        'files.expressplatby.cz'
+                        'files.epayments.network'
                     );
-                    expect(expressPlatby.LAST_REQUEST).to.deep.property(
+                    expect(expressPayments.LAST_REQUEST).to.deep.property(
                         'method',
                         'POST'
                     );
-                    expect(expressPlatby.LAST_REQUEST).to.deep.property(
+                    expect(expressPayments.LAST_REQUEST).to.deep.property(
                         'url',
                         '/v1/files'
                     );
@@ -144,7 +144,7 @@ describe('Files Resource', () => {
             const testFilename = path.join(__dirname, 'data/minimal.pdf');
             const f = fs.createReadStream(testFilename);
 
-            return expressPlatby.files
+            return expressPayments.files
                 .create(
                     {
                         purpose: 'dispute_evidence',
@@ -158,19 +158,19 @@ describe('Files Resource', () => {
                     TEST_AUTH_KEY
                 )
                 .then(() => {
-                    expect(expressPlatby.LAST_REQUEST).to.deep.property(
+                    expect(expressPayments.LAST_REQUEST).to.deep.property(
                         'host',
-                        'files.expressplatby.cz'
+                        'files.epayments.network'
                     );
-                    expect(expressPlatby.LAST_REQUEST).to.deep.property(
+                    expect(expressPayments.LAST_REQUEST).to.deep.property(
                         'method',
                         'POST'
                     );
-                    expect(expressPlatby.LAST_REQUEST).to.deep.property(
+                    expect(expressPayments.LAST_REQUEST).to.deep.property(
                         'url',
                         '/v1/files'
                     );
-                    expect(expressPlatby.LAST_REQUEST).to.deep.property(
+                    expect(expressPayments.LAST_REQUEST).to.deep.property(
                         'auth',
                         TEST_AUTH_KEY
                     );

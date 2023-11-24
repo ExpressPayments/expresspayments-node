@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * A Promotion Code represents a customer-redeemable code for a [coupon](https://expressplatby.cz/docs/api#coupons). It can be used to
+         * A Promotion Code represents a customer-redeemable code for a [coupon](https://docs.epayments.network/api#coupons). It can be used to
          * create multiple codes for a single coupon.
          */
         interface PromotionCode {
@@ -29,10 +29,10 @@ declare module 'expressplatby' {
 
             /**
              * A coupon contains information about a percent-off or amount-off discount you
-             * might want to apply to a customer. Coupons may be applied to [subscriptions](https://expressplatby.cz/docs/api#subscriptions), [invoices](https://expressplatby.cz/docs/api#invoices),
-             * [checkout sessions](https://expressplatby.cz/docs/api/checkout/sessions), [quotes](https://expressplatby.cz/docs/api#quotes), and more. Coupons do not work with conventional one-off [charges](https://expressplatby.cz/docs/api#create_charge) or [payment intents](https://expressplatby.cz/docs/api/payment_intents).
+             * might want to apply to a customer. Coupons may be applied to [subscriptions](https://docs.epayments.network/api#subscriptions), [invoices](https://docs.epayments.network/api#invoices),
+             * [checkout sessions](https://docs.epayments.network/api/checkout/sessions), [quotes](https://docs.epayments.network/api#quotes), and more. Coupons do not work with conventional one-off [charges](https://docs.epayments.network/api#create_charge) or [payment intents](https://docs.epayments.network/api/payment_intents).
              */
-            coupon: ExpressPlatby.Coupon;
+            coupon: ExpressPayments.Coupon;
 
             /**
              * Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -44,8 +44,8 @@ declare module 'expressplatby' {
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer
                 | null;
 
             /**
@@ -64,9 +64,9 @@ declare module 'expressplatby' {
             max_redemptions: number | null;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             restrictions: PromotionCode.Restrictions;
 
@@ -79,7 +79,7 @@ declare module 'expressplatby' {
         namespace PromotionCode {
             interface Restrictions {
                 /**
-                 * Promotion code restrictions defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Promotion code restrictions defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency_options?: {
                     [key: string]: Restrictions.CurrencyOptions;
@@ -96,7 +96,7 @@ declare module 'expressplatby' {
                 minimum_amount: number | null;
 
                 /**
-                 * Three-letter [ISO code](https://expressplatby.cz/docs/currencies) for minimum_amount
+                 * Three-letter [ISO code](https://docs.epayments.network/currencies) for minimum_amount
                  */
                 minimum_amount_currency: string | null;
             }

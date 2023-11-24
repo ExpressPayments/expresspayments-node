@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Reporting {
             interface ReportRunCreateParams {
                 /**
-                 * The ID of the [report type](https://expressplatby.cz/docs/reporting/statements/api#report-types) to run, such as `"balance.summary.1"`.
+                 * The ID of the [report type](https://docs.epayments.network/reporting/statements/api#report-types) to run, such as `"balance.summary.1"`.
                  */
                 report_type: string;
 
@@ -15,7 +15,7 @@ declare module 'expressplatby' {
                 expand?: Array<string>;
 
                 /**
-                 * Parameters specifying how the report should be run. Different Report Types have different required and optional parameters, listed in the [API Access to Reports](https://expressplatby.cz/docs/reporting/statements/api) documentation.
+                 * Parameters specifying how the report should be run. Different Report Types have different required and optional parameters, listed in the [API Access to Reports](https://docs.epayments.network/reporting/statements/api) documentation.
                  */
                 parameters?: ReportRunCreateParams.Parameters;
             }
@@ -710,7 +710,7 @@ declare module 'expressplatby' {
             }
 
             interface ReportRunListParams extends PaginationParams {
-                created?: ExpressPlatby.RangeQueryParam | number;
+                created?: ExpressPayments.RangeQueryParam | number;
 
                 /**
                  * Specifies which fields in the response should be expanded.
@@ -720,13 +720,15 @@ declare module 'expressplatby' {
 
             class ReportRunsResource {
                 /**
-                 * Creates a new object and begin running the report. (Certain report types require a [live-mode API key](https://expressplatby.cz/docs/keys#test-live-modes).)
+                 * Creates a new object and begin running the report. (Certain report types require a [live-mode API key](https://docs.epayments.network/keys#test-live-modes).)
                  */
                 create(
                     params: ReportRunCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Reporting.ReportRun>
+                    ExpressPayments.Response<
+                        ExpressPayments.Reporting.ReportRun
+                    >
                 >;
 
                 /**
@@ -737,13 +739,17 @@ declare module 'expressplatby' {
                     params?: ReportRunRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Reporting.ReportRun>
+                    ExpressPayments.Response<
+                        ExpressPayments.Reporting.ReportRun
+                    >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<ExpressPlatby.Reporting.ReportRun>
+                    ExpressPayments.Response<
+                        ExpressPayments.Reporting.ReportRun
+                    >
                 >;
 
                 /**
@@ -752,10 +758,10 @@ declare module 'expressplatby' {
                 list(
                     params?: ReportRunListParams,
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Reporting.ReportRun>;
+                ): ApiListPromise<ExpressPayments.Reporting.ReportRun>;
                 list(
                     options?: RequestOptions
-                ): ApiListPromise<ExpressPlatby.Reporting.ReportRun>;
+                ): ApiListPromise<ExpressPayments.Reporting.ReportRun>;
             }
         }
     }

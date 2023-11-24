@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * A Mandate is a record of the permission a customer has given you to debit their payment method.
          */
@@ -28,7 +28,7 @@ declare module 'expressplatby' {
             /**
              * ID of the payment method associated with this mandate.
              */
-            payment_method: string | ExpressPlatby.PaymentMethod;
+            payment_method: string | ExpressPayments.PaymentMethod;
 
             payment_method_details: Mandate.PaymentMethodDetails;
 
@@ -112,7 +112,7 @@ declare module 'expressplatby' {
             namespace PaymentMethodDetails {
                 interface AcssDebit {
                     /**
-                     * List of ExpressPlatby products where this mandate can be selected automatically.
+                     * List of ExpressPayments products where this mandate can be selected automatically.
                      */
                     default_for?: Array<AcssDebit.DefaultFor>;
 

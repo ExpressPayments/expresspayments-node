@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * The UsageRecordSummary object.
          */
@@ -49,6 +49,7 @@ declare module 'expressplatby' {
                 /**
                  * The start date of this usage period. All usage after this point in time is included.
                  */
+
                 start: number | null;
             }
         }

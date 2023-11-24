@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace BillingPortal {
             /**
-             * The Billing customer portal is an ExpressPlatby-hosted UI for subscription and
+             * The Billing customer portal is an ExpressPayments-hosted UI for subscription and
              * billing management.
              *
              * A portal configuration describes the functionality and features that you
@@ -17,7 +17,7 @@ declare module 'expressplatby' {
              * Create sessions on-demand when customers intend to manage their subscriptions
              * and billing details.
              *
-             * Learn more in the [integration guide](https://expressplatby.cz/docs/billing/subscriptions/integrating-customer-portal).
+             * Learn more in the [integration guide](https://docs.epayments.network/billing/subscriptions/integrating-customer-portal).
              */
             interface Session {
                 /**
@@ -35,7 +35,7 @@ declare module 'expressplatby' {
                  */
                 configuration:
                     | string
-                    | ExpressPlatby.BillingPortal.Configuration;
+                    | ExpressPayments.BillingPortal.Configuration;
 
                 /**
                  * Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -48,7 +48,7 @@ declare module 'expressplatby' {
                 customer: string;
 
                 /**
-                 * Information about a specific flow for the customer to go through. See the [docs](https://expressplatby.cz/docs/customer-management/portal-deep-links) to learn more about using customer portal deep links and flows.
+                 * Information about a specific flow for the customer to go through. See the [docs](https://docs.epayments.network/customer-management/portal-deep-links) to learn more about using customer portal deep links and flows.
                  */
                 flow: Session.Flow | null;
 
@@ -63,7 +63,7 @@ declare module 'expressplatby' {
                 locale: Session.Locale | null;
 
                 /**
-                 * The account for which the session was created on behalf of. When specified, only subscriptions and invoices with this `on_behalf_of` account appear in the portal. For more information, see the [docs](https://expressplatby.cz/docs/connect/charges-transfers#on-behalf-of). Use the [Accounts API](https://expressplatby.cz/docs/api/accounts/object#account_object-settings-branding) to modify the `on_behalf_of` account's branding settings, which the portal displays.
+                 * The account for which the session was created on behalf of. When specified, only subscriptions and invoices with this `on_behalf_of` account appear in the portal. For more information, see the [docs](https://docs.epayments.network/connect/charges-transfers#on-behalf-of). Use the [Accounts API](https://docs.epayments.network/api/accounts/object#account_object-settings-branding) to modify the `on_behalf_of` account's branding settings, which the portal displays.
                  */
                 on_behalf_of: string | null;
 
@@ -165,7 +165,7 @@ declare module 'expressplatby' {
                         > | null;
 
                         /**
-                         * The [subscription item](https://expressplatby.cz/docs/api/subscription_items) to be updated through this flow. Currently, only up to one may be specified and subscriptions with multiple items are not updatable.
+                         * The [subscription item](https://docs.epayments.network/api/subscription_items) to be updated through this flow. Currently, only up to one may be specified and subscriptions with multiple items are not updatable.
                          */
                         items: Array<SubscriptionUpdateConfirm.Item>;
 
@@ -190,7 +190,7 @@ declare module 'expressplatby' {
 
                         interface Item {
                             /**
-                             * The ID of the [subscription item](https://expressplatby.cz/docs/api/subscriptions/object#subscription_object-items-data-id) to be updated.
+                             * The ID of the [subscription item](https://docs.epayments.network/api/subscriptions/object#subscription_object-items-data-id) to be updated.
                              */
                             id: string | null;
 
@@ -200,7 +200,7 @@ declare module 'expressplatby' {
                             price: string | null;
 
                             /**
-                             * [Quantity](https://expressplatby.cz/docs/subscriptions/quantities) for this item that the customer should subscribe to through this flow.
+                             * [Quantity](https://docs.epayments.network/subscriptions/quantities) for this item that the customer should subscribe to through this flow.
                              */
                             quantity?: number;
                         }

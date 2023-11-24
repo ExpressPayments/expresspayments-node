@@ -1,20 +1,20 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface PaymentIntentCreateParams {
             /**
-             * Amount intended to be collected by this PaymentIntent. A positive integer representing how much to charge in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://expressplatby.cz/docs/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
+             * Amount intended to be collected by this PaymentIntent. A positive integer representing how much to charge in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://docs.epayments.network/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
              */
             amount: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency: string;
 
             /**
-             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPlatby account. The amount of the application fee collected will be capped at the total payment amount. For more information, see the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts).
+             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPayments account. The amount of the application fee collected will be capped at the total payment amount. For more information, see the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts).
              */
             application_fee_amount?: number;
 
@@ -29,7 +29,7 @@ declare module 'expressplatby' {
             capture_method?: PaymentIntentCreateParams.CaptureMethod;
 
             /**
-             * Set to `true` to attempt to [confirm](https://expressplatby.cz/docs/api/payment_intents/confirm) this PaymentIntent immediately. This parameter defaults to `false`. When creating and confirming a PaymentIntent at the same time, parameters available in the [confirm](https://expressplatby.cz/docs/api/payment_intents/confirm) API may also be provided.
+             * Set to `true` to attempt to [confirm](https://docs.epayments.network/api/payment_intents/confirm) this PaymentIntent immediately. This parameter defaults to `false`. When creating and confirming a PaymentIntent at the same time, parameters available in the [confirm](https://docs.epayments.network/api/payment_intents/confirm) API may also be provided.
              */
             confirm?: boolean;
 
@@ -40,7 +40,7 @@ declare module 'expressplatby' {
              *
              * Payment methods attached to other Customers cannot be used with this PaymentIntent.
              *
-             * If present in combination with [setup_future_usage](https://expressplatby.cz/docs/api#payment_intent_object-setup_future_usage), this PaymentIntent's payment method will be attached to the Customer after the PaymentIntent has been confirmed and any required actions from the user are complete.
+             * If present in combination with [setup_future_usage](https://docs.epayments.network/api#payment_intent_object-setup_future_usage), this PaymentIntent's payment method will be attached to the Customer after the PaymentIntent has been confirmed and any required actions from the user are complete.
              */
             customer?: string;
 
@@ -50,7 +50,7 @@ declare module 'expressplatby' {
             description?: string;
 
             /**
-             * Set to `true` to fail the payment attempt if the PaymentIntent transitions into `requires_action`. This parameter is intended for simpler integrations that do not handle customer actions, like [saving cards without authentication](https://expressplatby.cz/docs/payments/save-card-without-authentication). This parameter can only be used with [`confirm=true`](https://expressplatby.cz/docs/api/payment_intents/create#create_payment_intent-confirm).
+             * Set to `true` to fail the payment attempt if the PaymentIntent transitions into `requires_action`. This parameter is intended for simpler integrations that do not handle customer actions, like [saving cards without authentication](https://docs.epayments.network/payments/save-card-without-authentication). This parameter can only be used with [`confirm=true`](https://docs.epayments.network/api/payment_intents/create#create_payment_intent-confirm).
              */
             error_on_requires_action?: boolean;
 
@@ -60,32 +60,32 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * ID of the mandate to be used for this payment. This parameter can only be used with [`confirm=true`](https://expressplatby.cz/docs/api/payment_intents/create#create_payment_intent-confirm).
+             * ID of the mandate to be used for this payment. This parameter can only be used with [`confirm=true`](https://docs.epayments.network/api/payment_intents/create#create_payment_intent-confirm).
              */
             mandate?: string;
 
             /**
-             * This hash contains details about the Mandate to create. This parameter can only be used with [`confirm=true`](https://expressplatby.cz/docs/api/payment_intents/create#create_payment_intent-confirm).
+             * This hash contains details about the Mandate to create. This parameter can only be used with [`confirm=true`](https://docs.epayments.network/api/payment_intents/create#create_payment_intent-confirm).
              */
             mandate_data?: PaymentIntentCreateParams.MandateData;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
-             * Set to `true` to indicate that the customer is not in your checkout flow during this payment attempt, and therefore is unable to authenticate. This parameter is intended for scenarios where you collect card details and [charge them later](https://expressplatby.cz/docs/payments/cards/charging-saved-cards). This parameter can only be used with [`confirm=true`](https://expressplatby.cz/docs/api/payment_intents/create#create_payment_intent-confirm).
+             * Set to `true` to indicate that the customer is not in your checkout flow during this payment attempt, and therefore is unable to authenticate. This parameter is intended for scenarios where you collect card details and [charge them later](https://docs.epayments.network/payments/cards/charging-saved-cards). This parameter can only be used with [`confirm=true`](https://docs.epayments.network/api/payment_intents/create#create_payment_intent-confirm).
              */
             off_session?: boolean | PaymentIntentCreateParams.OffSession;
 
             /**
-             * The ExpressPlatby account ID for which these funds are intended. For details, see the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts).
+             * The ExpressPayments account ID for which these funds are intended. For details, see the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts).
              */
             on_behalf_of?: string;
 
             /**
-             * ID of the payment method (a PaymentMethod, Card, or [compatible Source](https://expressplatby.cz/docs/payments/payment-methods#compatibility) object) to attach to this PaymentIntent.
+             * ID of the payment method (a PaymentMethod, Card, or [compatible Source](https://docs.epayments.network/payments/payment-methods#compatibility) object) to attach to this PaymentIntent.
              *
              * If neither the `payment_method` parameter nor the `source` parameter are provided with `confirm=true`, `source` will be automatically populated with `customer.default_source` to improve the migration experience for users of the Charges API. We recommend that you explicitly provide the `payment_method` going forward.
              */
@@ -93,7 +93,7 @@ declare module 'expressplatby' {
 
             /**
              * If provided, this hash will be used to create a PaymentMethod. The new PaymentMethod will appear
-             * in the [payment_method](https://expressplatby.cz/docs/api/payment_intents/object#payment_intent_object-payment_method)
+             * in the [payment_method](https://docs.epayments.network/api/payment_intents/object#payment_intent_object-payment_method)
              * property on the PaymentIntent.
              */
             payment_method_data?: PaymentIntentCreateParams.PaymentMethodData;
@@ -104,31 +104,31 @@ declare module 'expressplatby' {
             payment_method_options?: PaymentIntentCreateParams.PaymentMethodOptions;
 
             /**
-             * The list of payment method types (e.g. card) that this PaymentIntent is allowed to use. If this is not provided, defaults to ["card"]. Use automatic_payment_methods to manage payment methods from the [ExpressPlatby Dashboard](https://dashboard.expressplatby.cz/settings/payment_methods).
+             * The list of payment method types (e.g. card) that this PaymentIntent is allowed to use. If this is not provided, defaults to ["card"]. Use automatic_payment_methods to manage payment methods from the [ExpressPayments Dashboard](https://dashboard.epayments.network/settings/payment_methods).
              */
             payment_method_types?: Array<string>;
 
             /**
-             * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+             * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
              */
             radar_options?: PaymentIntentCreateParams.RadarOptions;
 
             /**
-             * Email address that the receipt for the resulting payment will be sent to. If `receipt_email` is specified for a payment in live mode, a receipt will be sent regardless of your [email settings](https://dashboard.expressplatby.cz/account/emails).
+             * Email address that the receipt for the resulting payment will be sent to. If `receipt_email` is specified for a payment in live mode, a receipt will be sent regardless of your [email settings](https://dashboard.epayments.network/account/emails).
              */
             receipt_email?: string;
 
             /**
-             * The URL to redirect your customer back to after they authenticate or cancel their payment on the payment method's app or site. If you'd prefer to redirect to a mobile application, you can alternatively supply an application URI scheme. This parameter can only be used with [`confirm=true`](https://expressplatby.cz/docs/api/payment_intents/create#create_payment_intent-confirm).
+             * The URL to redirect your customer back to after they authenticate or cancel their payment on the payment method's app or site. If you'd prefer to redirect to a mobile application, you can alternatively supply an application URI scheme. This parameter can only be used with [`confirm=true`](https://docs.epayments.network/api/payment_intents/create#create_payment_intent-confirm).
              */
             return_url?: string;
 
             /**
              * Indicates that you intend to make future payments with this PaymentIntent's payment method.
              *
-             * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+             * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
              *
-             * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+             * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
              */
             setup_future_usage?: PaymentIntentCreateParams.SetupFutureUsage;
 
@@ -149,19 +149,19 @@ declare module 'expressplatby' {
 
             /**
              * The parameters used to automatically create a Transfer when the payment succeeds.
-             * For more information, see the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts).
+             * For more information, see the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts).
              */
             transfer_data?: PaymentIntentCreateParams.TransferData;
 
             /**
-             * A string that identifies the resulting payment as part of a group. See the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts) for details.
+             * A string that identifies the resulting payment as part of a group. See the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts) for details.
              */
             transfer_group?: string;
 
             /**
-             * Set to `true` when confirming server-side and using ExpressPlatby.js, iOS, or Android client-side SDKs to handle the next actions.
+             * Set to `true` when confirming server-side and using ExpressPayments.js, iOS, or Android client-side SDKs to handle the next actions.
              */
-            use_expressplatby_sdk?: boolean;
+            use_expresspayments_sdk?: boolean;
         }
 
         namespace PaymentIntentCreateParams {
@@ -334,9 +334,9 @@ declare module 'expressplatby' {
                 link?: PaymentMethodData.Link;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * If this is an `oxxo` PaymentMethod, this hash contains details about the OXXO payment method.
@@ -369,7 +369,7 @@ declare module 'expressplatby' {
                 promptpay?: PaymentMethodData.Promptpay;
 
                 /**
-                 * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+                 * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
                  */
                 radar_options?: PaymentMethodData.RadarOptions;
 
@@ -458,14 +458,14 @@ declare module 'expressplatby' {
                     /**
                      * Billing address.
                      */
-                    address?: ExpressPlatby.Emptyable<
-                        ExpressPlatby.AddressParam
+                    address?: ExpressPayments.Emptyable<
+                        ExpressPayments.AddressParam
                     >;
 
                     /**
                      * Email address.
                      */
-                    email?: ExpressPlatby.Emptyable<string>;
+                    email?: ExpressPayments.Emptyable<string>;
 
                     /**
                      * Full name.
@@ -679,7 +679,7 @@ declare module 'expressplatby' {
 
                 interface RadarOptions {
                     /**
-                     * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                     * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                      */
                     session?: string;
                 }
@@ -776,191 +776,199 @@ declare module 'expressplatby' {
                 /**
                  * If this is a `acss_debit` PaymentMethod, this sub-hash contains details about the ACSS Debit payment method options.
                  */
-                acss_debit?: ExpressPlatby.Emptyable<
+                acss_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.AcssDebit
                 >;
 
                 /**
                  * If this is an `affirm` PaymentMethod, this sub-hash contains details about the Affirm payment method options.
                  */
-                affirm?: ExpressPlatby.Emptyable<PaymentMethodOptions.Affirm>;
+                affirm?: ExpressPayments.Emptyable<PaymentMethodOptions.Affirm>;
 
                 /**
                  * If this is a `afterpay_clearpay` PaymentMethod, this sub-hash contains details about the Afterpay Clearpay payment method options.
                  */
-                afterpay_clearpay?: ExpressPlatby.Emptyable<
+                afterpay_clearpay?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.AfterpayClearpay
                 >;
 
                 /**
                  * If this is a `alipay` PaymentMethod, this sub-hash contains details about the Alipay payment method options.
                  */
-                alipay?: ExpressPlatby.Emptyable<PaymentMethodOptions.Alipay>;
+                alipay?: ExpressPayments.Emptyable<PaymentMethodOptions.Alipay>;
 
                 /**
                  * If this is a `au_becs_debit` PaymentMethod, this sub-hash contains details about the AU BECS Direct Debit payment method options.
                  */
-                au_becs_debit?: ExpressPlatby.Emptyable<
+                au_becs_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.AuBecsDebit
                 >;
 
                 /**
                  * If this is a `bacs_debit` PaymentMethod, this sub-hash contains details about the BACS Debit payment method options.
                  */
-                bacs_debit?: ExpressPlatby.Emptyable<
+                bacs_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.BacsDebit
                 >;
 
                 /**
                  * If this is a `bancontact` PaymentMethod, this sub-hash contains details about the Bancontact payment method options.
                  */
-                bancontact?: ExpressPlatby.Emptyable<
+                bancontact?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.Bancontact
                 >;
 
                 /**
                  * If this is a `blik` PaymentMethod, this sub-hash contains details about the BLIK payment method options.
                  */
-                blik?: ExpressPlatby.Emptyable<PaymentMethodOptions.Blik>;
+                blik?: ExpressPayments.Emptyable<PaymentMethodOptions.Blik>;
 
                 /**
                  * If this is a `boleto` PaymentMethod, this sub-hash contains details about the Boleto payment method options.
                  */
-                boleto?: ExpressPlatby.Emptyable<PaymentMethodOptions.Boleto>;
+                boleto?: ExpressPayments.Emptyable<PaymentMethodOptions.Boleto>;
 
                 /**
                  * Configuration for any card payments attempted on this PaymentIntent.
                  */
-                card?: ExpressPlatby.Emptyable<PaymentMethodOptions.Card>;
+                card?: ExpressPayments.Emptyable<PaymentMethodOptions.Card>;
 
                 /**
                  * If this is a `card_present` PaymentMethod, this sub-hash contains details about the Card Present payment method options.
                  */
-                card_present?: ExpressPlatby.Emptyable<
+                card_present?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.CardPresent
                 >;
 
                 /**
                  * If this is a `cashapp` PaymentMethod, this sub-hash contains details about the Cash App Pay payment method options.
                  */
-                cashapp?: ExpressPlatby.Emptyable<PaymentMethodOptions.Cashapp>;
+                cashapp?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Cashapp
+                >;
 
                 /**
                  * If this is a `customer balance` PaymentMethod, this sub-hash contains details about the customer balance payment method options.
                  */
-                customer_balance?: ExpressPlatby.Emptyable<
+                customer_balance?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.CustomerBalance
                 >;
 
                 /**
                  * If this is a `eps` PaymentMethod, this sub-hash contains details about the EPS payment method options.
                  */
-                eps?: ExpressPlatby.Emptyable<PaymentMethodOptions.Eps>;
+                eps?: ExpressPayments.Emptyable<PaymentMethodOptions.Eps>;
 
                 /**
                  * If this is a `fpx` PaymentMethod, this sub-hash contains details about the FPX payment method options.
                  */
-                fpx?: ExpressPlatby.Emptyable<PaymentMethodOptions.Fpx>;
+                fpx?: ExpressPayments.Emptyable<PaymentMethodOptions.Fpx>;
 
                 /**
                  * If this is a `giropay` PaymentMethod, this sub-hash contains details about the Giropay payment method options.
                  */
-                giropay?: ExpressPlatby.Emptyable<PaymentMethodOptions.Giropay>;
+                giropay?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Giropay
+                >;
 
                 /**
                  * If this is a `grabpay` PaymentMethod, this sub-hash contains details about the Grabpay payment method options.
                  */
-                grabpay?: ExpressPlatby.Emptyable<PaymentMethodOptions.Grabpay>;
+                grabpay?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Grabpay
+                >;
 
                 /**
                  * If this is a `ideal` PaymentMethod, this sub-hash contains details about the Ideal payment method options.
                  */
-                ideal?: ExpressPlatby.Emptyable<PaymentMethodOptions.Ideal>;
+                ideal?: ExpressPayments.Emptyable<PaymentMethodOptions.Ideal>;
 
                 /**
                  * If this is a `interac_present` PaymentMethod, this sub-hash contains details about the Card Present payment method options.
                  */
-                interac_present?: ExpressPlatby.Emptyable<
+                interac_present?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.InteracPresent
                 >;
 
                 /**
                  * If this is a `klarna` PaymentMethod, this sub-hash contains details about the Klarna payment method options.
                  */
-                klarna?: ExpressPlatby.Emptyable<PaymentMethodOptions.Klarna>;
+                klarna?: ExpressPayments.Emptyable<PaymentMethodOptions.Klarna>;
 
                 /**
                  * If this is a `konbini` PaymentMethod, this sub-hash contains details about the Konbini payment method options.
                  */
-                konbini?: ExpressPlatby.Emptyable<PaymentMethodOptions.Konbini>;
+                konbini?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Konbini
+                >;
 
                 /**
                  * If this is a `link` PaymentMethod, this sub-hash contains details about the Link payment method options.
                  */
-                link?: ExpressPlatby.Emptyable<PaymentMethodOptions.Link>;
+                link?: ExpressPayments.Emptyable<PaymentMethodOptions.Link>;
 
                 /**
                  * If this is a `oxxo` PaymentMethod, this sub-hash contains details about the OXXO payment method options.
                  */
-                oxxo?: ExpressPlatby.Emptyable<PaymentMethodOptions.Oxxo>;
+                oxxo?: ExpressPayments.Emptyable<PaymentMethodOptions.Oxxo>;
 
                 /**
                  * If this is a `p24` PaymentMethod, this sub-hash contains details about the Przelewy24 payment method options.
                  */
-                p24?: ExpressPlatby.Emptyable<PaymentMethodOptions.P24>;
+                p24?: ExpressPayments.Emptyable<PaymentMethodOptions.P24>;
 
                 /**
                  * If this is a `paynow` PaymentMethod, this sub-hash contains details about the PayNow payment method options.
                  */
-                paynow?: ExpressPlatby.Emptyable<PaymentMethodOptions.Paynow>;
+                paynow?: ExpressPayments.Emptyable<PaymentMethodOptions.Paynow>;
 
                 /**
                  * If this is a `paypal` PaymentMethod, this sub-hash contains details about the PayPal payment method options.
                  */
-                paypal?: ExpressPlatby.Emptyable<PaymentMethodOptions.Paypal>;
+                paypal?: ExpressPayments.Emptyable<PaymentMethodOptions.Paypal>;
 
                 /**
                  * If this is a `pix` PaymentMethod, this sub-hash contains details about the Pix payment method options.
                  */
-                pix?: ExpressPlatby.Emptyable<PaymentMethodOptions.Pix>;
+                pix?: ExpressPayments.Emptyable<PaymentMethodOptions.Pix>;
 
                 /**
                  * If this is a `promptpay` PaymentMethod, this sub-hash contains details about the PromptPay payment method options.
                  */
-                promptpay?: ExpressPlatby.Emptyable<
+                promptpay?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.Promptpay
                 >;
 
                 /**
                  * If this is a `sepa_debit` PaymentIntent, this sub-hash contains details about the SEPA Debit payment method options.
                  */
-                sepa_debit?: ExpressPlatby.Emptyable<
+                sepa_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.SepaDebit
                 >;
 
                 /**
                  * If this is a `sofort` PaymentMethod, this sub-hash contains details about the SOFORT payment method options.
                  */
-                sofort?: ExpressPlatby.Emptyable<PaymentMethodOptions.Sofort>;
+                sofort?: ExpressPayments.Emptyable<PaymentMethodOptions.Sofort>;
 
                 /**
                  * If this is a `us_bank_account` PaymentMethod, this sub-hash contains details about the US bank account payment method options.
                  */
-                us_bank_account?: ExpressPlatby.Emptyable<
+                us_bank_account?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.UsBankAccount
                 >;
 
                 /**
                  * If this is a `wechat_pay` PaymentMethod, this sub-hash contains details about the WeChat Pay payment method options.
                  */
-                wechat_pay?: ExpressPlatby.Emptyable<
+                wechat_pay?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.WechatPay
                 >;
 
                 /**
                  * If this is a `zip` PaymentMethod, this sub-hash contains details about the Zip payment method options.
                  */
-                zip?: ExpressPlatby.Emptyable<PaymentMethodOptions.Zip>;
+                zip?: ExpressPayments.Emptyable<PaymentMethodOptions.Zip>;
             }
 
             namespace PaymentMethodOptions {
@@ -973,13 +981,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         AcssDebit.SetupFutureUsage
                     >;
 
@@ -996,7 +1004,7 @@ declare module 'expressplatby' {
                          * The URL will be rendered with additional GET parameters `payment_intent` and `payment_intent_client_secret` when confirming a Payment Intent,
                          * or `setup_intent` and `setup_intent_client_secret` when confirming a Setup Intent.
                          */
-                        custom_mandate_url?: ExpressPlatby.Emptyable<string>;
+                        custom_mandate_url?: ExpressPayments.Emptyable<string>;
 
                         /**
                          * Description of the mandate interval. Only required if 'payment_schedule' parameter is 'interval' or 'combined'.
@@ -1042,7 +1050,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Preferred language of the Affirm authorization page that the customer is redirected to.
@@ -1052,9 +1060,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1069,7 +1077,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Order identifier shown to the customer in Afterpay's online portal. We recommend using a value that helps you answer any questions a customer might have about
@@ -1080,9 +1088,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1093,13 +1101,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Alipay.SetupFutureUsage
                     >;
                 }
@@ -1112,13 +1120,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         AuBecsDebit.SetupFutureUsage
                     >;
                 }
@@ -1134,13 +1142,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         BacsDebit.SetupFutureUsage
                     >;
                 }
@@ -1161,13 +1169,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Bancontact.SetupFutureUsage
                     >;
                 }
@@ -1194,13 +1202,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Boleto.SetupFutureUsage
                     >;
                 }
@@ -1220,7 +1228,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * A single-use `cvc_update` Token that represents a card CVC value. When provided, the CVC value will be verified during the card payment attempt. This parameter can only be provided during confirmation.
@@ -1230,7 +1238,7 @@ declare module 'expressplatby' {
                     /**
                      * Installment configuration for payments attempted on this PaymentIntent (Mexico Only).
                      *
-                     * For more information, see the [installments integration guide](https://expressplatby.cz/docs/payments/installments).
+                     * For more information, see the [installments integration guide](https://docs.epayments.network/payments/installments).
                      */
                     installments?: Card.Installments;
 
@@ -1252,34 +1260,34 @@ declare module 'expressplatby' {
                     network?: Card.Network;
 
                     /**
-                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://expressplatby.cz/docs/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://expressplatby.cz/docs/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
+                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://docs.epayments.network/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://docs.epayments.network/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
                      */
                     request_three_d_secure?: Card.RequestThreeDSecure;
 
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Card.SetupFutureUsage
                     >;
 
                     /**
                      * Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters.
                      */
-                    statement_descriptor_suffix_kana?: ExpressPlatby.Emptyable<
+                    statement_descriptor_suffix_kana?: ExpressPayments.Emptyable<
                         string
                     >;
 
                     /**
                      * Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters.
                      */
-                    statement_descriptor_suffix_kanji?: ExpressPlatby.Emptyable<
+                    statement_descriptor_suffix_kanji?: ExpressPayments.Emptyable<
                         string
                     >;
                 }
@@ -1297,7 +1305,7 @@ declare module 'expressplatby' {
                          * The selected installment plan to use for this payment attempt.
                          * This parameter can only be provided during confirmation.
                          */
-                        plan?: ExpressPlatby.Emptyable<Installments.Plan>;
+                        plan?: ExpressPayments.Emptyable<Installments.Plan>;
                     }
 
                     namespace Installments {
@@ -1401,12 +1409,12 @@ declare module 'expressplatby' {
 
                 interface CardPresent {
                     /**
-                     * Request ability to capture this payment beyond the standard [authorization validity window](https://expressplatby.cz/docs/terminal/features/extended-authorizations#authorization-validity)
+                     * Request ability to capture this payment beyond the standard [authorization validity window](https://docs.epayments.network/terminal/features/extended-authorizations#authorization-validity)
                      */
                     request_extended_authorization?: boolean;
 
                     /**
-                     * Request ability to [increment](https://expressplatby.cz/docs/terminal/features/incremental-authorizations) this PaymentIntent if the combination of MCC and card brand is eligible. Check [incremental_authorization_supported](https://expressplatby.cz/docs/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported) in the [Confirm](https://expressplatby.cz/docs/api/payment_intents/confirm) response to verify support.
+                     * Request ability to [increment](https://docs.epayments.network/terminal/features/incremental-authorizations) this PaymentIntent if the combination of MCC and card brand is eligible. Check [incremental_authorization_supported](https://docs.epayments.network/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported) in the [Confirm](https://docs.epayments.network/api/payment_intents/confirm) response to verify support.
                      */
                     request_incremental_authorization_support?: boolean;
                 }
@@ -1419,18 +1427,18 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Cashapp.SetupFutureUsage
                     >;
                 }
@@ -1456,9 +1464,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1517,9 +1525,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1530,9 +1538,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1543,9 +1551,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1556,9 +1564,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1569,13 +1577,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Ideal.SetupFutureUsage
                     >;
                 }
@@ -1594,7 +1602,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Preferred language of the Klarna authorization page that the customer is redirected to
@@ -1604,9 +1612,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1670,12 +1678,12 @@ declare module 'expressplatby' {
                     /**
                      * The number of calendar days (between 1 and 60) after which Konbini payment instructions will expire. For example, if a PaymentIntent is confirmed with Konbini and `expires_after_days` set to 2 on Monday JST, the instructions will expire on Wednesday 23:59:59 JST. Defaults to 3 days.
                      */
-                    expires_after_days?: ExpressPlatby.Emptyable<number>;
+                    expires_after_days?: ExpressPayments.Emptyable<number>;
 
                     /**
                      * The timestamp at which the Konbini payment instructions will expire. Only one of `expires_after_days` or `expires_at` may be set.
                      */
-                    expires_at?: ExpressPlatby.Emptyable<number>;
+                    expires_at?: ExpressPayments.Emptyable<number>;
 
                     /**
                      * A product descriptor of up to 22 characters, which will appear to customers at the convenience store.
@@ -1685,9 +1693,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1702,7 +1710,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Token used for persistent Link logins.
@@ -1712,13 +1720,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Link.SetupFutureUsage
                     >;
                 }
@@ -1736,9 +1744,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1749,9 +1757,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1767,9 +1775,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1780,10 +1788,10 @@ declare module 'expressplatby' {
                     /**
                      * Controls when the funds will be captured from the customer's account.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
-                     * [Preferred locale](https://expressplatby.cz/docs/payments/paypal/supported-locales) of the PayPal checkout page that the customer is redirected to.
+                     * [Preferred locale](https://docs.epayments.network/payments/paypal/supported-locales) of the PayPal checkout page that the customer is redirected to.
                      */
                     preferred_locale?: Paypal.PreferredLocale;
 
@@ -1800,13 +1808,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Paypal.SetupFutureUsage
                     >;
                 }
@@ -1852,9 +1860,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1865,9 +1873,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -1883,13 +1891,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         SepaDebit.SetupFutureUsage
                     >;
                 }
@@ -1907,20 +1915,20 @@ declare module 'expressplatby' {
                     /**
                      * Language shown to the payer on redirect.
                      */
-                    preferred_language?: ExpressPlatby.Emptyable<
+                    preferred_language?: ExpressPayments.Emptyable<
                         Sofort.PreferredLanguage
                     >;
 
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Sofort.SetupFutureUsage
                     >;
                 }
@@ -1952,13 +1960,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         UsBankAccount.SetupFutureUsage
                     >;
 
@@ -2025,9 +2033,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -2042,9 +2050,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -2054,7 +2062,7 @@ declare module 'expressplatby' {
 
             interface RadarOptions {
                 /**
-                 * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                 * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                  */
                 session?: string;
             }
@@ -2065,10 +2073,10 @@ declare module 'expressplatby' {
                 /**
                  * Shipping address.
                  */
-                address: ExpressPlatby.AddressParam;
+                address: ExpressPayments.AddressParam;
 
                 /**
-                 * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
+                 * The delivery service that shipped a physical product, such as FedEx, UPS, USPS, etc.
                  */
                 carrier?: string;
 
@@ -2095,7 +2103,7 @@ declare module 'expressplatby' {
                  * the full amount is transferred.
                  *
                  * If you intend to collect a fee, and you need a more robust reporting experience, using
-                 * [application_fee_amount](https://expressplatby.cz/docs/api/payment_intents/create#create_payment_intent-application_fee_amount)
+                 * [application_fee_amount](https://docs.epayments.network/api/payment_intents/create#create_payment_intent-application_fee_amount)
                  * might be a better fit for your integration.
                  */
                 amount?: number;
@@ -2124,14 +2132,14 @@ declare module 'expressplatby' {
 
         interface PaymentIntentUpdateParams {
             /**
-             * Amount intended to be collected by this PaymentIntent. A positive integer representing how much to charge in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://expressplatby.cz/docs/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
+             * Amount intended to be collected by this PaymentIntent. A positive integer representing how much to charge in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://docs.epayments.network/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
              */
             amount?: number;
 
             /**
-             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPlatby account. The amount of the application fee collected will be capped at the total payment amount. For more information, see the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts).
+             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPayments account. The amount of the application fee collected will be capped at the total payment amount. For more information, see the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts).
              */
-            application_fee_amount?: ExpressPlatby.Emptyable<number>;
+            application_fee_amount?: ExpressPayments.Emptyable<number>;
 
             /**
              * Controls when the funds will be captured from the customer's account.
@@ -2139,7 +2147,7 @@ declare module 'expressplatby' {
             capture_method?: PaymentIntentUpdateParams.CaptureMethod;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency?: string;
 
@@ -2148,7 +2156,7 @@ declare module 'expressplatby' {
              *
              * Payment methods attached to other Customers cannot be used with this PaymentIntent.
              *
-             * If present in combination with [setup_future_usage](https://expressplatby.cz/docs/api#payment_intent_object-setup_future_usage), this PaymentIntent's payment method will be attached to the Customer after the PaymentIntent has been confirmed and any required actions from the user are complete.
+             * If present in combination with [setup_future_usage](https://docs.epayments.network/api#payment_intent_object-setup_future_usage), this PaymentIntent's payment method will be attached to the Customer after the PaymentIntent has been confirmed and any required actions from the user are complete.
              */
             customer?: string;
 
@@ -2163,18 +2171,18 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
-             * ID of the payment method (a PaymentMethod, Card, or [compatible Source](https://expressplatby.cz/docs/payments/payment-methods/transitioning#compatibility) object) to attach to this PaymentIntent.
+             * ID of the payment method (a PaymentMethod, Card, or [compatible Source](https://docs.epayments.network/payments/payment-methods/transitioning#compatibility) object) to attach to this PaymentIntent.
              */
             payment_method?: string;
 
             /**
              * If provided, this hash will be used to create a PaymentMethod. The new PaymentMethod will appear
-             * in the [payment_method](https://expressplatby.cz/docs/api/payment_intents/object#payment_intent_object-payment_method)
+             * in the [payment_method](https://docs.epayments.network/api/payment_intents/object#payment_intent_object-payment_method)
              * property on the PaymentIntent.
              */
             payment_method_data?: PaymentIntentUpdateParams.PaymentMethodData;
@@ -2185,32 +2193,32 @@ declare module 'expressplatby' {
             payment_method_options?: PaymentIntentUpdateParams.PaymentMethodOptions;
 
             /**
-             * The list of payment method types (e.g. card) that this PaymentIntent is allowed to use. Use automatic_payment_methods to manage payment methods from the [ExpressPlatby Dashboard](https://dashboard.expressplatby.cz/settings/payment_methods).
+             * The list of payment method types (e.g. card) that this PaymentIntent is allowed to use. Use automatic_payment_methods to manage payment methods from the [ExpressPayments Dashboard](https://dashboard.epayments.network/settings/payment_methods).
              */
             payment_method_types?: Array<string>;
 
             /**
-             * Email address that the receipt for the resulting payment will be sent to. If `receipt_email` is specified for a payment in live mode, a receipt will be sent regardless of your [email settings](https://dashboard.expressplatby.cz/account/emails).
+             * Email address that the receipt for the resulting payment will be sent to. If `receipt_email` is specified for a payment in live mode, a receipt will be sent regardless of your [email settings](https://dashboard.epayments.network/account/emails).
              */
-            receipt_email?: ExpressPlatby.Emptyable<string>;
+            receipt_email?: ExpressPayments.Emptyable<string>;
 
             /**
              * Indicates that you intend to make future payments with this PaymentIntent's payment method.
              *
-             * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+             * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
              *
-             * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+             * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
              *
              * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
              */
-            setup_future_usage?: ExpressPlatby.Emptyable<
+            setup_future_usage?: ExpressPayments.Emptyable<
                 PaymentIntentUpdateParams.SetupFutureUsage
             >;
 
             /**
              * Shipping information for this PaymentIntent.
              */
-            shipping?: ExpressPlatby.Emptyable<
+            shipping?: ExpressPayments.Emptyable<
                 PaymentIntentUpdateParams.Shipping
             >;
 
@@ -2225,12 +2233,12 @@ declare module 'expressplatby' {
             statement_descriptor_suffix?: string;
 
             /**
-             * The parameters used to automatically create a Transfer when the payment succeeds. For more information, see the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts).
+             * The parameters used to automatically create a Transfer when the payment succeeds. For more information, see the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts).
              */
             transfer_data?: PaymentIntentUpdateParams.TransferData;
 
             /**
-             * A string that identifies the resulting payment as part of a group. `transfer_group` may only be provided if it has not been set. See the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts) for details.
+             * A string that identifies the resulting payment as part of a group. `transfer_group` may only be provided if it has not been set. See the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts) for details.
              */
             transfer_group?: string;
         }
@@ -2345,9 +2353,9 @@ declare module 'expressplatby' {
                 link?: PaymentMethodData.Link;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * If this is an `oxxo` PaymentMethod, this hash contains details about the OXXO payment method.
@@ -2380,7 +2388,7 @@ declare module 'expressplatby' {
                 promptpay?: PaymentMethodData.Promptpay;
 
                 /**
-                 * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+                 * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
                  */
                 radar_options?: PaymentMethodData.RadarOptions;
 
@@ -2469,14 +2477,14 @@ declare module 'expressplatby' {
                     /**
                      * Billing address.
                      */
-                    address?: ExpressPlatby.Emptyable<
-                        ExpressPlatby.AddressParam
+                    address?: ExpressPayments.Emptyable<
+                        ExpressPayments.AddressParam
                     >;
 
                     /**
                      * Email address.
                      */
-                    email?: ExpressPlatby.Emptyable<string>;
+                    email?: ExpressPayments.Emptyable<string>;
 
                     /**
                      * Full name.
@@ -2690,7 +2698,7 @@ declare module 'expressplatby' {
 
                 interface RadarOptions {
                     /**
-                     * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                     * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                      */
                     session?: string;
                 }
@@ -2787,191 +2795,199 @@ declare module 'expressplatby' {
                 /**
                  * If this is a `acss_debit` PaymentMethod, this sub-hash contains details about the ACSS Debit payment method options.
                  */
-                acss_debit?: ExpressPlatby.Emptyable<
+                acss_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.AcssDebit
                 >;
 
                 /**
                  * If this is an `affirm` PaymentMethod, this sub-hash contains details about the Affirm payment method options.
                  */
-                affirm?: ExpressPlatby.Emptyable<PaymentMethodOptions.Affirm>;
+                affirm?: ExpressPayments.Emptyable<PaymentMethodOptions.Affirm>;
 
                 /**
                  * If this is a `afterpay_clearpay` PaymentMethod, this sub-hash contains details about the Afterpay Clearpay payment method options.
                  */
-                afterpay_clearpay?: ExpressPlatby.Emptyable<
+                afterpay_clearpay?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.AfterpayClearpay
                 >;
 
                 /**
                  * If this is a `alipay` PaymentMethod, this sub-hash contains details about the Alipay payment method options.
                  */
-                alipay?: ExpressPlatby.Emptyable<PaymentMethodOptions.Alipay>;
+                alipay?: ExpressPayments.Emptyable<PaymentMethodOptions.Alipay>;
 
                 /**
                  * If this is a `au_becs_debit` PaymentMethod, this sub-hash contains details about the AU BECS Direct Debit payment method options.
                  */
-                au_becs_debit?: ExpressPlatby.Emptyable<
+                au_becs_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.AuBecsDebit
                 >;
 
                 /**
                  * If this is a `bacs_debit` PaymentMethod, this sub-hash contains details about the BACS Debit payment method options.
                  */
-                bacs_debit?: ExpressPlatby.Emptyable<
+                bacs_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.BacsDebit
                 >;
 
                 /**
                  * If this is a `bancontact` PaymentMethod, this sub-hash contains details about the Bancontact payment method options.
                  */
-                bancontact?: ExpressPlatby.Emptyable<
+                bancontact?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.Bancontact
                 >;
 
                 /**
                  * If this is a `blik` PaymentMethod, this sub-hash contains details about the BLIK payment method options.
                  */
-                blik?: ExpressPlatby.Emptyable<PaymentMethodOptions.Blik>;
+                blik?: ExpressPayments.Emptyable<PaymentMethodOptions.Blik>;
 
                 /**
                  * If this is a `boleto` PaymentMethod, this sub-hash contains details about the Boleto payment method options.
                  */
-                boleto?: ExpressPlatby.Emptyable<PaymentMethodOptions.Boleto>;
+                boleto?: ExpressPayments.Emptyable<PaymentMethodOptions.Boleto>;
 
                 /**
                  * Configuration for any card payments attempted on this PaymentIntent.
                  */
-                card?: ExpressPlatby.Emptyable<PaymentMethodOptions.Card>;
+                card?: ExpressPayments.Emptyable<PaymentMethodOptions.Card>;
 
                 /**
                  * If this is a `card_present` PaymentMethod, this sub-hash contains details about the Card Present payment method options.
                  */
-                card_present?: ExpressPlatby.Emptyable<
+                card_present?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.CardPresent
                 >;
 
                 /**
                  * If this is a `cashapp` PaymentMethod, this sub-hash contains details about the Cash App Pay payment method options.
                  */
-                cashapp?: ExpressPlatby.Emptyable<PaymentMethodOptions.Cashapp>;
+                cashapp?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Cashapp
+                >;
 
                 /**
                  * If this is a `customer balance` PaymentMethod, this sub-hash contains details about the customer balance payment method options.
                  */
-                customer_balance?: ExpressPlatby.Emptyable<
+                customer_balance?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.CustomerBalance
                 >;
 
                 /**
                  * If this is a `eps` PaymentMethod, this sub-hash contains details about the EPS payment method options.
                  */
-                eps?: ExpressPlatby.Emptyable<PaymentMethodOptions.Eps>;
+                eps?: ExpressPayments.Emptyable<PaymentMethodOptions.Eps>;
 
                 /**
                  * If this is a `fpx` PaymentMethod, this sub-hash contains details about the FPX payment method options.
                  */
-                fpx?: ExpressPlatby.Emptyable<PaymentMethodOptions.Fpx>;
+                fpx?: ExpressPayments.Emptyable<PaymentMethodOptions.Fpx>;
 
                 /**
                  * If this is a `giropay` PaymentMethod, this sub-hash contains details about the Giropay payment method options.
                  */
-                giropay?: ExpressPlatby.Emptyable<PaymentMethodOptions.Giropay>;
+                giropay?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Giropay
+                >;
 
                 /**
                  * If this is a `grabpay` PaymentMethod, this sub-hash contains details about the Grabpay payment method options.
                  */
-                grabpay?: ExpressPlatby.Emptyable<PaymentMethodOptions.Grabpay>;
+                grabpay?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Grabpay
+                >;
 
                 /**
                  * If this is a `ideal` PaymentMethod, this sub-hash contains details about the Ideal payment method options.
                  */
-                ideal?: ExpressPlatby.Emptyable<PaymentMethodOptions.Ideal>;
+                ideal?: ExpressPayments.Emptyable<PaymentMethodOptions.Ideal>;
 
                 /**
                  * If this is a `interac_present` PaymentMethod, this sub-hash contains details about the Card Present payment method options.
                  */
-                interac_present?: ExpressPlatby.Emptyable<
+                interac_present?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.InteracPresent
                 >;
 
                 /**
                  * If this is a `klarna` PaymentMethod, this sub-hash contains details about the Klarna payment method options.
                  */
-                klarna?: ExpressPlatby.Emptyable<PaymentMethodOptions.Klarna>;
+                klarna?: ExpressPayments.Emptyable<PaymentMethodOptions.Klarna>;
 
                 /**
                  * If this is a `konbini` PaymentMethod, this sub-hash contains details about the Konbini payment method options.
                  */
-                konbini?: ExpressPlatby.Emptyable<PaymentMethodOptions.Konbini>;
+                konbini?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Konbini
+                >;
 
                 /**
                  * If this is a `link` PaymentMethod, this sub-hash contains details about the Link payment method options.
                  */
-                link?: ExpressPlatby.Emptyable<PaymentMethodOptions.Link>;
+                link?: ExpressPayments.Emptyable<PaymentMethodOptions.Link>;
 
                 /**
                  * If this is a `oxxo` PaymentMethod, this sub-hash contains details about the OXXO payment method options.
                  */
-                oxxo?: ExpressPlatby.Emptyable<PaymentMethodOptions.Oxxo>;
+                oxxo?: ExpressPayments.Emptyable<PaymentMethodOptions.Oxxo>;
 
                 /**
                  * If this is a `p24` PaymentMethod, this sub-hash contains details about the Przelewy24 payment method options.
                  */
-                p24?: ExpressPlatby.Emptyable<PaymentMethodOptions.P24>;
+                p24?: ExpressPayments.Emptyable<PaymentMethodOptions.P24>;
 
                 /**
                  * If this is a `paynow` PaymentMethod, this sub-hash contains details about the PayNow payment method options.
                  */
-                paynow?: ExpressPlatby.Emptyable<PaymentMethodOptions.Paynow>;
+                paynow?: ExpressPayments.Emptyable<PaymentMethodOptions.Paynow>;
 
                 /**
                  * If this is a `paypal` PaymentMethod, this sub-hash contains details about the PayPal payment method options.
                  */
-                paypal?: ExpressPlatby.Emptyable<PaymentMethodOptions.Paypal>;
+                paypal?: ExpressPayments.Emptyable<PaymentMethodOptions.Paypal>;
 
                 /**
                  * If this is a `pix` PaymentMethod, this sub-hash contains details about the Pix payment method options.
                  */
-                pix?: ExpressPlatby.Emptyable<PaymentMethodOptions.Pix>;
+                pix?: ExpressPayments.Emptyable<PaymentMethodOptions.Pix>;
 
                 /**
                  * If this is a `promptpay` PaymentMethod, this sub-hash contains details about the PromptPay payment method options.
                  */
-                promptpay?: ExpressPlatby.Emptyable<
+                promptpay?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.Promptpay
                 >;
 
                 /**
                  * If this is a `sepa_debit` PaymentIntent, this sub-hash contains details about the SEPA Debit payment method options.
                  */
-                sepa_debit?: ExpressPlatby.Emptyable<
+                sepa_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.SepaDebit
                 >;
 
                 /**
                  * If this is a `sofort` PaymentMethod, this sub-hash contains details about the SOFORT payment method options.
                  */
-                sofort?: ExpressPlatby.Emptyable<PaymentMethodOptions.Sofort>;
+                sofort?: ExpressPayments.Emptyable<PaymentMethodOptions.Sofort>;
 
                 /**
                  * If this is a `us_bank_account` PaymentMethod, this sub-hash contains details about the US bank account payment method options.
                  */
-                us_bank_account?: ExpressPlatby.Emptyable<
+                us_bank_account?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.UsBankAccount
                 >;
 
                 /**
                  * If this is a `wechat_pay` PaymentMethod, this sub-hash contains details about the WeChat Pay payment method options.
                  */
-                wechat_pay?: ExpressPlatby.Emptyable<
+                wechat_pay?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.WechatPay
                 >;
 
                 /**
                  * If this is a `zip` PaymentMethod, this sub-hash contains details about the Zip payment method options.
                  */
-                zip?: ExpressPlatby.Emptyable<PaymentMethodOptions.Zip>;
+                zip?: ExpressPayments.Emptyable<PaymentMethodOptions.Zip>;
             }
 
             namespace PaymentMethodOptions {
@@ -2984,13 +3000,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         AcssDebit.SetupFutureUsage
                     >;
 
@@ -3007,7 +3023,7 @@ declare module 'expressplatby' {
                          * The URL will be rendered with additional GET parameters `payment_intent` and `payment_intent_client_secret` when confirming a Payment Intent,
                          * or `setup_intent` and `setup_intent_client_secret` when confirming a Setup Intent.
                          */
-                        custom_mandate_url?: ExpressPlatby.Emptyable<string>;
+                        custom_mandate_url?: ExpressPayments.Emptyable<string>;
 
                         /**
                          * Description of the mandate interval. Only required if 'payment_schedule' parameter is 'interval' or 'combined'.
@@ -3053,7 +3069,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Preferred language of the Affirm authorization page that the customer is redirected to.
@@ -3063,9 +3079,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3080,7 +3096,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Order identifier shown to the customer in Afterpay's online portal. We recommend using a value that helps you answer any questions a customer might have about
@@ -3091,9 +3107,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3104,13 +3120,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Alipay.SetupFutureUsage
                     >;
                 }
@@ -3123,13 +3139,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         AuBecsDebit.SetupFutureUsage
                     >;
                 }
@@ -3145,13 +3161,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         BacsDebit.SetupFutureUsage
                     >;
                 }
@@ -3172,13 +3188,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Bancontact.SetupFutureUsage
                     >;
                 }
@@ -3205,13 +3221,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Boleto.SetupFutureUsage
                     >;
                 }
@@ -3231,7 +3247,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * A single-use `cvc_update` Token that represents a card CVC value. When provided, the CVC value will be verified during the card payment attempt. This parameter can only be provided during confirmation.
@@ -3241,7 +3257,7 @@ declare module 'expressplatby' {
                     /**
                      * Installment configuration for payments attempted on this PaymentIntent (Mexico Only).
                      *
-                     * For more information, see the [installments integration guide](https://expressplatby.cz/docs/payments/installments).
+                     * For more information, see the [installments integration guide](https://docs.epayments.network/payments/installments).
                      */
                     installments?: Card.Installments;
 
@@ -3263,34 +3279,34 @@ declare module 'expressplatby' {
                     network?: Card.Network;
 
                     /**
-                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://expressplatby.cz/docs/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://expressplatby.cz/docs/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
+                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://docs.epayments.network/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://docs.epayments.network/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
                      */
                     request_three_d_secure?: Card.RequestThreeDSecure;
 
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Card.SetupFutureUsage
                     >;
 
                     /**
                      * Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters.
                      */
-                    statement_descriptor_suffix_kana?: ExpressPlatby.Emptyable<
+                    statement_descriptor_suffix_kana?: ExpressPayments.Emptyable<
                         string
                     >;
 
                     /**
                      * Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters.
                      */
-                    statement_descriptor_suffix_kanji?: ExpressPlatby.Emptyable<
+                    statement_descriptor_suffix_kanji?: ExpressPayments.Emptyable<
                         string
                     >;
                 }
@@ -3308,7 +3324,7 @@ declare module 'expressplatby' {
                          * The selected installment plan to use for this payment attempt.
                          * This parameter can only be provided during confirmation.
                          */
-                        plan?: ExpressPlatby.Emptyable<Installments.Plan>;
+                        plan?: ExpressPayments.Emptyable<Installments.Plan>;
                     }
 
                     namespace Installments {
@@ -3412,12 +3428,12 @@ declare module 'expressplatby' {
 
                 interface CardPresent {
                     /**
-                     * Request ability to capture this payment beyond the standard [authorization validity window](https://expressplatby.cz/docs/terminal/features/extended-authorizations#authorization-validity)
+                     * Request ability to capture this payment beyond the standard [authorization validity window](https://docs.epayments.network/terminal/features/extended-authorizations#authorization-validity)
                      */
                     request_extended_authorization?: boolean;
 
                     /**
-                     * Request ability to [increment](https://expressplatby.cz/docs/terminal/features/incremental-authorizations) this PaymentIntent if the combination of MCC and card brand is eligible. Check [incremental_authorization_supported](https://expressplatby.cz/docs/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported) in the [Confirm](https://expressplatby.cz/docs/api/payment_intents/confirm) response to verify support.
+                     * Request ability to [increment](https://docs.epayments.network/terminal/features/incremental-authorizations) this PaymentIntent if the combination of MCC and card brand is eligible. Check [incremental_authorization_supported](https://docs.epayments.network/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported) in the [Confirm](https://docs.epayments.network/api/payment_intents/confirm) response to verify support.
                      */
                     request_incremental_authorization_support?: boolean;
                 }
@@ -3430,18 +3446,18 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Cashapp.SetupFutureUsage
                     >;
                 }
@@ -3467,9 +3483,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3528,9 +3544,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3541,9 +3557,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3554,9 +3570,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3567,9 +3583,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3580,13 +3596,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Ideal.SetupFutureUsage
                     >;
                 }
@@ -3605,7 +3621,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Preferred language of the Klarna authorization page that the customer is redirected to
@@ -3615,9 +3631,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3681,12 +3697,12 @@ declare module 'expressplatby' {
                     /**
                      * The number of calendar days (between 1 and 60) after which Konbini payment instructions will expire. For example, if a PaymentIntent is confirmed with Konbini and `expires_after_days` set to 2 on Monday JST, the instructions will expire on Wednesday 23:59:59 JST. Defaults to 3 days.
                      */
-                    expires_after_days?: ExpressPlatby.Emptyable<number>;
+                    expires_after_days?: ExpressPayments.Emptyable<number>;
 
                     /**
                      * The timestamp at which the Konbini payment instructions will expire. Only one of `expires_after_days` or `expires_at` may be set.
                      */
-                    expires_at?: ExpressPlatby.Emptyable<number>;
+                    expires_at?: ExpressPayments.Emptyable<number>;
 
                     /**
                      * A product descriptor of up to 22 characters, which will appear to customers at the convenience store.
@@ -3696,9 +3712,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3713,7 +3729,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Token used for persistent Link logins.
@@ -3723,13 +3739,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Link.SetupFutureUsage
                     >;
                 }
@@ -3747,9 +3763,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3760,9 +3776,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3778,9 +3794,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3791,10 +3807,10 @@ declare module 'expressplatby' {
                     /**
                      * Controls when the funds will be captured from the customer's account.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
-                     * [Preferred locale](https://expressplatby.cz/docs/payments/paypal/supported-locales) of the PayPal checkout page that the customer is redirected to.
+                     * [Preferred locale](https://docs.epayments.network/payments/paypal/supported-locales) of the PayPal checkout page that the customer is redirected to.
                      */
                     preferred_locale?: Paypal.PreferredLocale;
 
@@ -3811,13 +3827,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Paypal.SetupFutureUsage
                     >;
                 }
@@ -3863,9 +3879,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3876,9 +3892,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -3894,13 +3910,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         SepaDebit.SetupFutureUsage
                     >;
                 }
@@ -3918,20 +3934,20 @@ declare module 'expressplatby' {
                     /**
                      * Language shown to the payer on redirect.
                      */
-                    preferred_language?: ExpressPlatby.Emptyable<
+                    preferred_language?: ExpressPayments.Emptyable<
                         Sofort.PreferredLanguage
                     >;
 
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Sofort.SetupFutureUsage
                     >;
                 }
@@ -3963,13 +3979,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         UsBankAccount.SetupFutureUsage
                     >;
 
@@ -4036,9 +4052,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -4053,9 +4069,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -4069,10 +4085,10 @@ declare module 'expressplatby' {
                 /**
                  * Shipping address.
                  */
-                address: ExpressPlatby.AddressParam;
+                address: ExpressPayments.AddressParam;
 
                 /**
-                 * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
+                 * The delivery service that shipped a physical product, such as FedEx, UPS, USPS, etc.
                  */
                 carrier?: string;
 
@@ -4104,7 +4120,7 @@ declare module 'expressplatby' {
             /**
              * A filter on the list, based on the object `created` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.
              */
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Only return PaymentIntents for the customer specified by this customer ID.
@@ -4121,7 +4137,7 @@ declare module 'expressplatby' {
             /**
              * Amount intended to be applied to this PaymentIntent from the customer's cash balance.
              *
-             * A positive integer representing how much to charge in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).
+             * A positive integer representing how much to charge in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).
              *
              * The maximum amount is the amount of the PaymentIntent.
              *
@@ -4130,7 +4146,7 @@ declare module 'expressplatby' {
             amount?: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency?: string;
 
@@ -4167,7 +4183,7 @@ declare module 'expressplatby' {
             amount_to_capture?: number;
 
             /**
-             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPlatby account. The amount of the application fee collected will be capped at the total payment amount. For more information, see the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts).
+             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPayments account. The amount of the application fee collected will be capped at the total payment amount. For more information, see the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts).
              */
             application_fee_amount?: number;
 
@@ -4177,9 +4193,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * For non-card charges, you can use this value as the complete description that appears on your customers' statements. Must contain at least one letter, maximum 22 characters.
@@ -4193,7 +4209,7 @@ declare module 'expressplatby' {
 
             /**
              * The parameters used to automatically create a Transfer when the payment
-             * is captured. For more information, see the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts).
+             * is captured. For more information, see the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts).
              */
             transfer_data?: PaymentIntentCaptureParams.TransferData;
         }
@@ -4214,7 +4230,7 @@ declare module 'expressplatby' {
             capture_method?: PaymentIntentConfirmParams.CaptureMethod;
 
             /**
-             * Set to `true` to fail the payment attempt if the PaymentIntent transitions into `requires_action`. This parameter is intended for simpler integrations that do not handle customer actions, like [saving cards without authentication](https://expressplatby.cz/docs/payments/save-card-without-authentication).
+             * Set to `true` to fail the payment attempt if the PaymentIntent transitions into `requires_action`. This parameter is intended for simpler integrations that do not handle customer actions, like [saving cards without authentication](https://docs.epayments.network/payments/save-card-without-authentication).
              */
             error_on_requires_action?: boolean;
 
@@ -4236,18 +4252,18 @@ declare module 'expressplatby' {
                 | PaymentIntentConfirmParams.MandateData2;
 
             /**
-             * Set to `true` to indicate that the customer is not in your checkout flow during this payment attempt, and therefore is unable to authenticate. This parameter is intended for scenarios where you collect card details and [charge them later](https://expressplatby.cz/docs/payments/cards/charging-saved-cards).
+             * Set to `true` to indicate that the customer is not in your checkout flow during this payment attempt, and therefore is unable to authenticate. This parameter is intended for scenarios where you collect card details and [charge them later](https://docs.epayments.network/payments/cards/charging-saved-cards).
              */
             off_session?: boolean | PaymentIntentConfirmParams.OffSession;
 
             /**
-             * ID of the payment method (a PaymentMethod, Card, or [compatible Source](https://expressplatby.cz/docs/payments/payment-methods/transitioning#compatibility) object) to attach to this PaymentIntent.
+             * ID of the payment method (a PaymentMethod, Card, or [compatible Source](https://docs.epayments.network/payments/payment-methods/transitioning#compatibility) object) to attach to this PaymentIntent.
              */
             payment_method?: string;
 
             /**
              * If provided, this hash will be used to create a PaymentMethod. The new PaymentMethod will appear
-             * in the [payment_method](https://expressplatby.cz/docs/api/payment_intents/object#payment_intent_object-payment_method)
+             * in the [payment_method](https://docs.epayments.network/api/payment_intents/object#payment_intent_object-payment_method)
              * property on the PaymentIntent.
              */
             payment_method_data?: PaymentIntentConfirmParams.PaymentMethodData;
@@ -4258,14 +4274,14 @@ declare module 'expressplatby' {
             payment_method_options?: PaymentIntentConfirmParams.PaymentMethodOptions;
 
             /**
-             * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+             * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
              */
             radar_options?: PaymentIntentConfirmParams.RadarOptions;
 
             /**
-             * Email address that the receipt for the resulting payment will be sent to. If `receipt_email` is specified for a payment in live mode, a receipt will be sent regardless of your [email settings](https://dashboard.expressplatby.cz/account/emails).
+             * Email address that the receipt for the resulting payment will be sent to. If `receipt_email` is specified for a payment in live mode, a receipt will be sent regardless of your [email settings](https://dashboard.epayments.network/account/emails).
              */
-            receipt_email?: ExpressPlatby.Emptyable<string>;
+            receipt_email?: ExpressPayments.Emptyable<string>;
 
             /**
              * The URL to redirect your customer back to after they authenticate or cancel their payment on the payment method's app or site.
@@ -4277,27 +4293,27 @@ declare module 'expressplatby' {
             /**
              * Indicates that you intend to make future payments with this PaymentIntent's payment method.
              *
-             * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+             * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
              *
-             * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+             * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
              *
              * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
              */
-            setup_future_usage?: ExpressPlatby.Emptyable<
+            setup_future_usage?: ExpressPayments.Emptyable<
                 PaymentIntentConfirmParams.SetupFutureUsage
             >;
 
             /**
              * Shipping information for this PaymentIntent.
              */
-            shipping?: ExpressPlatby.Emptyable<
+            shipping?: ExpressPayments.Emptyable<
                 PaymentIntentConfirmParams.Shipping
             >;
 
             /**
-             * Set to `true` when confirming server-side and using ExpressPlatby.js, iOS, or Android client-side SDKs to handle the next actions.
+             * Set to `true` when confirming server-side and using ExpressPayments.js, iOS, or Android client-side SDKs to handle the next actions.
              */
-            use_expressplatby_sdk?: boolean;
+            use_expresspayments_sdk?: boolean;
         }
 
         namespace PaymentIntentConfirmParams {
@@ -4496,9 +4512,9 @@ declare module 'expressplatby' {
                 link?: PaymentMethodData.Link;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * If this is an `oxxo` PaymentMethod, this hash contains details about the OXXO payment method.
@@ -4531,7 +4547,7 @@ declare module 'expressplatby' {
                 promptpay?: PaymentMethodData.Promptpay;
 
                 /**
-                 * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+                 * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
                  */
                 radar_options?: PaymentMethodData.RadarOptions;
 
@@ -4620,14 +4636,14 @@ declare module 'expressplatby' {
                     /**
                      * Billing address.
                      */
-                    address?: ExpressPlatby.Emptyable<
-                        ExpressPlatby.AddressParam
+                    address?: ExpressPayments.Emptyable<
+                        ExpressPayments.AddressParam
                     >;
 
                     /**
                      * Email address.
                      */
-                    email?: ExpressPlatby.Emptyable<string>;
+                    email?: ExpressPayments.Emptyable<string>;
 
                     /**
                      * Full name.
@@ -4841,7 +4857,7 @@ declare module 'expressplatby' {
 
                 interface RadarOptions {
                     /**
-                     * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                     * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                      */
                     session?: string;
                 }
@@ -4938,191 +4954,199 @@ declare module 'expressplatby' {
                 /**
                  * If this is a `acss_debit` PaymentMethod, this sub-hash contains details about the ACSS Debit payment method options.
                  */
-                acss_debit?: ExpressPlatby.Emptyable<
+                acss_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.AcssDebit
                 >;
 
                 /**
                  * If this is an `affirm` PaymentMethod, this sub-hash contains details about the Affirm payment method options.
                  */
-                affirm?: ExpressPlatby.Emptyable<PaymentMethodOptions.Affirm>;
+                affirm?: ExpressPayments.Emptyable<PaymentMethodOptions.Affirm>;
 
                 /**
                  * If this is a `afterpay_clearpay` PaymentMethod, this sub-hash contains details about the Afterpay Clearpay payment method options.
                  */
-                afterpay_clearpay?: ExpressPlatby.Emptyable<
+                afterpay_clearpay?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.AfterpayClearpay
                 >;
 
                 /**
                  * If this is a `alipay` PaymentMethod, this sub-hash contains details about the Alipay payment method options.
                  */
-                alipay?: ExpressPlatby.Emptyable<PaymentMethodOptions.Alipay>;
+                alipay?: ExpressPayments.Emptyable<PaymentMethodOptions.Alipay>;
 
                 /**
                  * If this is a `au_becs_debit` PaymentMethod, this sub-hash contains details about the AU BECS Direct Debit payment method options.
                  */
-                au_becs_debit?: ExpressPlatby.Emptyable<
+                au_becs_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.AuBecsDebit
                 >;
 
                 /**
                  * If this is a `bacs_debit` PaymentMethod, this sub-hash contains details about the BACS Debit payment method options.
                  */
-                bacs_debit?: ExpressPlatby.Emptyable<
+                bacs_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.BacsDebit
                 >;
 
                 /**
                  * If this is a `bancontact` PaymentMethod, this sub-hash contains details about the Bancontact payment method options.
                  */
-                bancontact?: ExpressPlatby.Emptyable<
+                bancontact?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.Bancontact
                 >;
 
                 /**
                  * If this is a `blik` PaymentMethod, this sub-hash contains details about the BLIK payment method options.
                  */
-                blik?: ExpressPlatby.Emptyable<PaymentMethodOptions.Blik>;
+                blik?: ExpressPayments.Emptyable<PaymentMethodOptions.Blik>;
 
                 /**
                  * If this is a `boleto` PaymentMethod, this sub-hash contains details about the Boleto payment method options.
                  */
-                boleto?: ExpressPlatby.Emptyable<PaymentMethodOptions.Boleto>;
+                boleto?: ExpressPayments.Emptyable<PaymentMethodOptions.Boleto>;
 
                 /**
                  * Configuration for any card payments attempted on this PaymentIntent.
                  */
-                card?: ExpressPlatby.Emptyable<PaymentMethodOptions.Card>;
+                card?: ExpressPayments.Emptyable<PaymentMethodOptions.Card>;
 
                 /**
                  * If this is a `card_present` PaymentMethod, this sub-hash contains details about the Card Present payment method options.
                  */
-                card_present?: ExpressPlatby.Emptyable<
+                card_present?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.CardPresent
                 >;
 
                 /**
                  * If this is a `cashapp` PaymentMethod, this sub-hash contains details about the Cash App Pay payment method options.
                  */
-                cashapp?: ExpressPlatby.Emptyable<PaymentMethodOptions.Cashapp>;
+                cashapp?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Cashapp
+                >;
 
                 /**
                  * If this is a `customer balance` PaymentMethod, this sub-hash contains details about the customer balance payment method options.
                  */
-                customer_balance?: ExpressPlatby.Emptyable<
+                customer_balance?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.CustomerBalance
                 >;
 
                 /**
                  * If this is a `eps` PaymentMethod, this sub-hash contains details about the EPS payment method options.
                  */
-                eps?: ExpressPlatby.Emptyable<PaymentMethodOptions.Eps>;
+                eps?: ExpressPayments.Emptyable<PaymentMethodOptions.Eps>;
 
                 /**
                  * If this is a `fpx` PaymentMethod, this sub-hash contains details about the FPX payment method options.
                  */
-                fpx?: ExpressPlatby.Emptyable<PaymentMethodOptions.Fpx>;
+                fpx?: ExpressPayments.Emptyable<PaymentMethodOptions.Fpx>;
 
                 /**
                  * If this is a `giropay` PaymentMethod, this sub-hash contains details about the Giropay payment method options.
                  */
-                giropay?: ExpressPlatby.Emptyable<PaymentMethodOptions.Giropay>;
+                giropay?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Giropay
+                >;
 
                 /**
                  * If this is a `grabpay` PaymentMethod, this sub-hash contains details about the Grabpay payment method options.
                  */
-                grabpay?: ExpressPlatby.Emptyable<PaymentMethodOptions.Grabpay>;
+                grabpay?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Grabpay
+                >;
 
                 /**
                  * If this is a `ideal` PaymentMethod, this sub-hash contains details about the Ideal payment method options.
                  */
-                ideal?: ExpressPlatby.Emptyable<PaymentMethodOptions.Ideal>;
+                ideal?: ExpressPayments.Emptyable<PaymentMethodOptions.Ideal>;
 
                 /**
                  * If this is a `interac_present` PaymentMethod, this sub-hash contains details about the Card Present payment method options.
                  */
-                interac_present?: ExpressPlatby.Emptyable<
+                interac_present?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.InteracPresent
                 >;
 
                 /**
                  * If this is a `klarna` PaymentMethod, this sub-hash contains details about the Klarna payment method options.
                  */
-                klarna?: ExpressPlatby.Emptyable<PaymentMethodOptions.Klarna>;
+                klarna?: ExpressPayments.Emptyable<PaymentMethodOptions.Klarna>;
 
                 /**
                  * If this is a `konbini` PaymentMethod, this sub-hash contains details about the Konbini payment method options.
                  */
-                konbini?: ExpressPlatby.Emptyable<PaymentMethodOptions.Konbini>;
+                konbini?: ExpressPayments.Emptyable<
+                    PaymentMethodOptions.Konbini
+                >;
 
                 /**
                  * If this is a `link` PaymentMethod, this sub-hash contains details about the Link payment method options.
                  */
-                link?: ExpressPlatby.Emptyable<PaymentMethodOptions.Link>;
+                link?: ExpressPayments.Emptyable<PaymentMethodOptions.Link>;
 
                 /**
                  * If this is a `oxxo` PaymentMethod, this sub-hash contains details about the OXXO payment method options.
                  */
-                oxxo?: ExpressPlatby.Emptyable<PaymentMethodOptions.Oxxo>;
+                oxxo?: ExpressPayments.Emptyable<PaymentMethodOptions.Oxxo>;
 
                 /**
                  * If this is a `p24` PaymentMethod, this sub-hash contains details about the Przelewy24 payment method options.
                  */
-                p24?: ExpressPlatby.Emptyable<PaymentMethodOptions.P24>;
+                p24?: ExpressPayments.Emptyable<PaymentMethodOptions.P24>;
 
                 /**
                  * If this is a `paynow` PaymentMethod, this sub-hash contains details about the PayNow payment method options.
                  */
-                paynow?: ExpressPlatby.Emptyable<PaymentMethodOptions.Paynow>;
+                paynow?: ExpressPayments.Emptyable<PaymentMethodOptions.Paynow>;
 
                 /**
                  * If this is a `paypal` PaymentMethod, this sub-hash contains details about the PayPal payment method options.
                  */
-                paypal?: ExpressPlatby.Emptyable<PaymentMethodOptions.Paypal>;
+                paypal?: ExpressPayments.Emptyable<PaymentMethodOptions.Paypal>;
 
                 /**
                  * If this is a `pix` PaymentMethod, this sub-hash contains details about the Pix payment method options.
                  */
-                pix?: ExpressPlatby.Emptyable<PaymentMethodOptions.Pix>;
+                pix?: ExpressPayments.Emptyable<PaymentMethodOptions.Pix>;
 
                 /**
                  * If this is a `promptpay` PaymentMethod, this sub-hash contains details about the PromptPay payment method options.
                  */
-                promptpay?: ExpressPlatby.Emptyable<
+                promptpay?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.Promptpay
                 >;
 
                 /**
                  * If this is a `sepa_debit` PaymentIntent, this sub-hash contains details about the SEPA Debit payment method options.
                  */
-                sepa_debit?: ExpressPlatby.Emptyable<
+                sepa_debit?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.SepaDebit
                 >;
 
                 /**
                  * If this is a `sofort` PaymentMethod, this sub-hash contains details about the SOFORT payment method options.
                  */
-                sofort?: ExpressPlatby.Emptyable<PaymentMethodOptions.Sofort>;
+                sofort?: ExpressPayments.Emptyable<PaymentMethodOptions.Sofort>;
 
                 /**
                  * If this is a `us_bank_account` PaymentMethod, this sub-hash contains details about the US bank account payment method options.
                  */
-                us_bank_account?: ExpressPlatby.Emptyable<
+                us_bank_account?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.UsBankAccount
                 >;
 
                 /**
                  * If this is a `wechat_pay` PaymentMethod, this sub-hash contains details about the WeChat Pay payment method options.
                  */
-                wechat_pay?: ExpressPlatby.Emptyable<
+                wechat_pay?: ExpressPayments.Emptyable<
                     PaymentMethodOptions.WechatPay
                 >;
 
                 /**
                  * If this is a `zip` PaymentMethod, this sub-hash contains details about the Zip payment method options.
                  */
-                zip?: ExpressPlatby.Emptyable<PaymentMethodOptions.Zip>;
+                zip?: ExpressPayments.Emptyable<PaymentMethodOptions.Zip>;
             }
 
             namespace PaymentMethodOptions {
@@ -5135,13 +5159,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         AcssDebit.SetupFutureUsage
                     >;
 
@@ -5158,7 +5182,7 @@ declare module 'expressplatby' {
                          * The URL will be rendered with additional GET parameters `payment_intent` and `payment_intent_client_secret` when confirming a Payment Intent,
                          * or `setup_intent` and `setup_intent_client_secret` when confirming a Setup Intent.
                          */
-                        custom_mandate_url?: ExpressPlatby.Emptyable<string>;
+                        custom_mandate_url?: ExpressPayments.Emptyable<string>;
 
                         /**
                          * Description of the mandate interval. Only required if 'payment_schedule' parameter is 'interval' or 'combined'.
@@ -5204,7 +5228,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Preferred language of the Affirm authorization page that the customer is redirected to.
@@ -5214,9 +5238,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5231,7 +5255,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Order identifier shown to the customer in Afterpay's online portal. We recommend using a value that helps you answer any questions a customer might have about
@@ -5242,9 +5266,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5255,13 +5279,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Alipay.SetupFutureUsage
                     >;
                 }
@@ -5274,13 +5298,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         AuBecsDebit.SetupFutureUsage
                     >;
                 }
@@ -5296,13 +5320,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         BacsDebit.SetupFutureUsage
                     >;
                 }
@@ -5323,13 +5347,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Bancontact.SetupFutureUsage
                     >;
                 }
@@ -5356,13 +5380,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Boleto.SetupFutureUsage
                     >;
                 }
@@ -5382,7 +5406,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * A single-use `cvc_update` Token that represents a card CVC value. When provided, the CVC value will be verified during the card payment attempt. This parameter can only be provided during confirmation.
@@ -5392,7 +5416,7 @@ declare module 'expressplatby' {
                     /**
                      * Installment configuration for payments attempted on this PaymentIntent (Mexico Only).
                      *
-                     * For more information, see the [installments integration guide](https://expressplatby.cz/docs/payments/installments).
+                     * For more information, see the [installments integration guide](https://docs.epayments.network/payments/installments).
                      */
                     installments?: Card.Installments;
 
@@ -5414,34 +5438,34 @@ declare module 'expressplatby' {
                     network?: Card.Network;
 
                     /**
-                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://expressplatby.cz/docs/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://expressplatby.cz/docs/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
+                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://docs.epayments.network/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://docs.epayments.network/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
                      */
                     request_three_d_secure?: Card.RequestThreeDSecure;
 
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Card.SetupFutureUsage
                     >;
 
                     /**
                      * Provides information about a card payment that customers see on their statements. Concatenated with the Kana prefix (shortened Kana descriptor) or Kana statement descriptor that's set on the account to form the complete statement descriptor. Maximum 22 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 22 characters.
                      */
-                    statement_descriptor_suffix_kana?: ExpressPlatby.Emptyable<
+                    statement_descriptor_suffix_kana?: ExpressPayments.Emptyable<
                         string
                     >;
 
                     /**
                      * Provides information about a card payment that customers see on their statements. Concatenated with the Kanji prefix (shortened Kanji descriptor) or Kanji statement descriptor that's set on the account to form the complete statement descriptor. Maximum 17 characters. On card statements, the *concatenation* of both prefix and suffix (including separators) will appear truncated to 17 characters.
                      */
-                    statement_descriptor_suffix_kanji?: ExpressPlatby.Emptyable<
+                    statement_descriptor_suffix_kanji?: ExpressPayments.Emptyable<
                         string
                     >;
                 }
@@ -5459,7 +5483,7 @@ declare module 'expressplatby' {
                          * The selected installment plan to use for this payment attempt.
                          * This parameter can only be provided during confirmation.
                          */
-                        plan?: ExpressPlatby.Emptyable<Installments.Plan>;
+                        plan?: ExpressPayments.Emptyable<Installments.Plan>;
                     }
 
                     namespace Installments {
@@ -5563,12 +5587,12 @@ declare module 'expressplatby' {
 
                 interface CardPresent {
                     /**
-                     * Request ability to capture this payment beyond the standard [authorization validity window](https://expressplatby.cz/docs/terminal/features/extended-authorizations#authorization-validity)
+                     * Request ability to capture this payment beyond the standard [authorization validity window](https://docs.epayments.network/terminal/features/extended-authorizations#authorization-validity)
                      */
                     request_extended_authorization?: boolean;
 
                     /**
-                     * Request ability to [increment](https://expressplatby.cz/docs/terminal/features/incremental-authorizations) this PaymentIntent if the combination of MCC and card brand is eligible. Check [incremental_authorization_supported](https://expressplatby.cz/docs/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported) in the [Confirm](https://expressplatby.cz/docs/api/payment_intents/confirm) response to verify support.
+                     * Request ability to [increment](https://docs.epayments.network/terminal/features/incremental-authorizations) this PaymentIntent if the combination of MCC and card brand is eligible. Check [incremental_authorization_supported](https://docs.epayments.network/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported) in the [Confirm](https://docs.epayments.network/api/payment_intents/confirm) response to verify support.
                      */
                     request_incremental_authorization_support?: boolean;
                 }
@@ -5581,18 +5605,18 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Cashapp.SetupFutureUsage
                     >;
                 }
@@ -5618,9 +5642,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5679,9 +5703,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5692,9 +5716,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5705,9 +5729,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5718,9 +5742,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5731,13 +5755,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Ideal.SetupFutureUsage
                     >;
                 }
@@ -5756,7 +5780,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Preferred language of the Klarna authorization page that the customer is redirected to
@@ -5766,9 +5790,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5832,12 +5856,12 @@ declare module 'expressplatby' {
                     /**
                      * The number of calendar days (between 1 and 60) after which Konbini payment instructions will expire. For example, if a PaymentIntent is confirmed with Konbini and `expires_after_days` set to 2 on Monday JST, the instructions will expire on Wednesday 23:59:59 JST. Defaults to 3 days.
                      */
-                    expires_after_days?: ExpressPlatby.Emptyable<number>;
+                    expires_after_days?: ExpressPayments.Emptyable<number>;
 
                     /**
                      * The timestamp at which the Konbini payment instructions will expire. Only one of `expires_after_days` or `expires_at` may be set.
                      */
-                    expires_at?: ExpressPlatby.Emptyable<number>;
+                    expires_at?: ExpressPayments.Emptyable<number>;
 
                     /**
                      * A product descriptor of up to 22 characters, which will appear to customers at the convenience store.
@@ -5847,9 +5871,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5864,7 +5888,7 @@ declare module 'expressplatby' {
                      *
                      * If `capture_method` is already set on the PaymentIntent, providing an empty value for this parameter will unset the stored value for this payment method type.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
                      * Token used for persistent Link logins.
@@ -5874,13 +5898,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Link.SetupFutureUsage
                     >;
                 }
@@ -5898,9 +5922,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5911,9 +5935,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5929,9 +5953,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -5942,10 +5966,10 @@ declare module 'expressplatby' {
                     /**
                      * Controls when the funds will be captured from the customer's account.
                      */
-                    capture_method?: ExpressPlatby.Emptyable<'manual'>;
+                    capture_method?: ExpressPayments.Emptyable<'manual'>;
 
                     /**
-                     * [Preferred locale](https://expressplatby.cz/docs/payments/paypal/supported-locales) of the PayPal checkout page that the customer is redirected to.
+                     * [Preferred locale](https://docs.epayments.network/payments/paypal/supported-locales) of the PayPal checkout page that the customer is redirected to.
                      */
                     preferred_locale?: Paypal.PreferredLocale;
 
@@ -5962,13 +5986,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Paypal.SetupFutureUsage
                     >;
                 }
@@ -6014,9 +6038,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -6027,9 +6051,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -6045,13 +6069,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         SepaDebit.SetupFutureUsage
                     >;
                 }
@@ -6069,20 +6093,20 @@ declare module 'expressplatby' {
                     /**
                      * Language shown to the payer on redirect.
                      */
-                    preferred_language?: ExpressPlatby.Emptyable<
+                    preferred_language?: ExpressPayments.Emptyable<
                         Sofort.PreferredLanguage
                     >;
 
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         Sofort.SetupFutureUsage
                     >;
                 }
@@ -6114,13 +6138,13 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
-                    setup_future_usage?: ExpressPlatby.Emptyable<
+                    setup_future_usage?: ExpressPayments.Emptyable<
                         UsBankAccount.SetupFutureUsage
                     >;
 
@@ -6187,9 +6211,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -6204,9 +6228,9 @@ declare module 'expressplatby' {
                     /**
                      * Indicates that you intend to make future payments with this PaymentIntent's payment method.
                      *
-                     * Providing this parameter will [attach the payment method](https://expressplatby.cz/docs/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://expressplatby.cz/docs/api/payment_methods/attach) to a Customer after the transaction completes.
+                     * Providing this parameter will [attach the payment method](https://docs.epayments.network/payments/save-during-payment) to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be [attached](https://docs.epayments.network/api/payment_methods/attach) to a Customer after the transaction completes.
                      *
-                     * When processing card payments, ExpressPlatby also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://expressplatby.cz/docs/strong-customer-authentication).
+                     * When processing card payments, ExpressPayments also uses `setup_future_usage` to dynamically optimize your payment flow and comply with regional legislation and network rules, such as [SCA](https://docs.epayments.network/strong-customer-authentication).
                      *
                      * If `setup_future_usage` is already set, and you are performing a request using a publishable key, you may only update the value from `on_session` to `off_session`.
                      */
@@ -6216,7 +6240,7 @@ declare module 'expressplatby' {
 
             interface RadarOptions {
                 /**
-                 * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                 * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                  */
                 session?: string;
             }
@@ -6227,10 +6251,10 @@ declare module 'expressplatby' {
                 /**
                  * Shipping address.
                  */
-                address: ExpressPlatby.AddressParam;
+                address: ExpressPayments.AddressParam;
 
                 /**
-                 * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
+                 * The delivery service that shipped a physical product, such as FedEx, UPS, USPS, etc.
                  */
                 carrier?: string;
 
@@ -6258,7 +6282,7 @@ declare module 'expressplatby' {
             amount: number;
 
             /**
-             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPlatby account. The amount of the application fee collected will be capped at the total payment amount. For more information, see the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts).
+             * The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's ExpressPayments account. The amount of the application fee collected will be capped at the total payment amount. For more information, see the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts).
              */
             application_fee_amount?: number;
 
@@ -6273,9 +6297,9 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * For non-card charges, you can use this value as the complete description that appears on your customers' statements. Must contain at least one letter, maximum 22 characters.
@@ -6284,7 +6308,7 @@ declare module 'expressplatby' {
 
             /**
              * The parameters used to automatically create a Transfer when the payment is captured.
-             * For more information, see the PaymentIntents [use case for connected accounts](https://expressplatby.cz/docs/payments/connected-accounts).
+             * For more information, see the PaymentIntents [use case for connected accounts](https://docs.epayments.network/payments/connected-accounts).
              */
             transfer_data?: PaymentIntentIncrementAuthorizationParams.TransferData;
         }
@@ -6300,7 +6324,7 @@ declare module 'expressplatby' {
 
         interface PaymentIntentSearchParams {
             /**
-             * The search query string. See [search query language](https://expressplatby.cz/docs/search#search-query-language) and the list of supported [query fields for payment intents](https://expressplatby.cz/docs/search#query-fields-for-payment-intents).
+             * The search query string. See [search query language](https://docs.epayments.network/search#search-query-language) and the list of supported [query fields for payment intents](https://docs.epayments.network/search#query-fields-for-payment-intents).
              */
             query: string;
 
@@ -6341,36 +6365,36 @@ declare module 'expressplatby' {
             /**
              * Creates a PaymentIntent object.
              *
-             * After the PaymentIntent is created, attach a payment method and [confirm](https://expressplatby.cz/docs/api/payment_intents/confirm)
+             * After the PaymentIntent is created, attach a payment method and [confirm](https://docs.epayments.network/api/payment_intents/confirm)
              * to continue the payment. You can read more about the different payment flows
-             * available via the Payment Intents API [here](https://expressplatby.cz/docs/payments/payment-intents).
+             * available via the Payment Intents API [here](https://docs.epayments.network/payments/payment-intents).
              *
              * When confirm=true is used during creation, it is equivalent to creating
              * and confirming the PaymentIntent in the same call. You may use any parameters
-             * available in the [confirm API](https://expressplatby.cz/docs/api/payment_intents/confirm) when confirm=true
+             * available in the [confirm API](https://docs.epayments.network/api/payment_intents/confirm) when confirm=true
              * is supplied.
              */
             create(
                 params: PaymentIntentCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
 
             /**
              * Retrieves the details of a PaymentIntent that has previously been created.
              *
              * Client-side retrieval using a publishable key is allowed when the client_secret is provided in the query string.
              *
-             * When retrieved with a publishable key, only a subset of properties will be returned. Please refer to the [payment intent](https://expressplatby.cz/docs/api#payment_intent_object) object reference for more details.
+             * When retrieved with a publishable key, only a subset of properties will be returned. Please refer to the [payment intent](https://docs.epayments.network/api#payment_intent_object) object reference for more details.
              */
             retrieve(
                 id: string,
                 params?: PaymentIntentRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
 
             /**
              * Updates properties on a PaymentIntent object without confirming.
@@ -6379,13 +6403,13 @@ declare module 'expressplatby' {
              * PaymentIntent again. For example, updating the payment_method will
              * always require you to confirm the PaymentIntent again. If you prefer to
              * update and confirm at the same time, we recommend updating properties via
-             * the [confirm API](https://expressplatby.cz/docs/api/payment_intents/confirm) instead.
+             * the [confirm API](https://docs.epayments.network/api/payment_intents/confirm) instead.
              */
             update(
                 id: string,
                 params?: PaymentIntentUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
 
             /**
              * Returns a list of PaymentIntents.
@@ -6393,10 +6417,10 @@ declare module 'expressplatby' {
             list(
                 params?: PaymentIntentListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PaymentIntent>;
+            ): ApiListPromise<ExpressPayments.PaymentIntent>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PaymentIntent>;
+            ): ApiListPromise<ExpressPayments.PaymentIntent>;
 
             /**
              * Manually reconcile the remaining amount for a customer_balance PaymentIntent.
@@ -6405,45 +6429,45 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PaymentIntentApplyCustomerBalanceParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
             applyCustomerBalance(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
 
             /**
-             * A PaymentIntent object can be canceled when it is in one of these statuses: requires_payment_method, requires_capture, requires_confirmation, requires_action or, [in rare cases](https://expressplatby.cz/docs/payments/intents), processing.
+             * A PaymentIntent object can be canceled when it is in one of these statuses: requires_payment_method, requires_capture, requires_confirmation, requires_action or, [in rare cases](https://docs.epayments.network/payments/intents), processing.
              *
              * Once canceled, no additional charges will be made by the PaymentIntent and any operations on the PaymentIntent will fail with an error. For PaymentIntents with a status of requires_capture, the remaining amount_capturable will automatically be refunded.
              *
-             * You cannot cancel the PaymentIntent for a Checkout Session. [Expire the Checkout Session](https://expressplatby.cz/docs/api/checkout/sessions/expire) instead.
+             * You cannot cancel the PaymentIntent for a Checkout Session. [Expire the Checkout Session](https://docs.epayments.network/api/checkout/sessions/expire) instead.
              */
             cancel(
                 id: string,
                 params?: PaymentIntentCancelParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
             cancel(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
 
             /**
              * Capture the funds of an existing uncaptured PaymentIntent when its status is requires_capture.
              *
              * Uncaptured PaymentIntents will be canceled a set number of days after they are created (7 by default).
              *
-             * Learn more about [separate authorization and capture](https://expressplatby.cz/docs/payments/capture-later).
+             * Learn more about [separate authorization and capture](https://docs.epayments.network/payments/capture-later).
              */
             capture(
                 id: string,
                 params?: PaymentIntentCaptureParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
             capture(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
 
             /**
              * Confirm that your customer intends to pay with current or provided
@@ -6457,8 +6481,8 @@ declare module 'expressplatby' {
              * payment succeeds, the PaymentIntent will transition to the succeeded
              * status (or requires_capture, if capture_method is set to manual).
              * If the confirmation_method is automatic, payment may be attempted
-             * using our [client SDKs](https://expressplatby.cz/docs/expressplatby-js/reference#expressplatby-handle-card-payment)
-             * and the PaymentIntent's [client_secret](https://expressplatby.cz/docs/api#payment_intent_object-client_secret).
+             * using our [client SDKs](https://docs.epayments.network/expresspayments-js/reference#expresspayments-handle-card-payment)
+             * and the PaymentIntent's [client_secret](https://docs.epayments.network/api#payment_intent_object-client_secret).
              * After next_actions are handled by the client, no additional
              * confirmation is required to complete the payment.
              * If the confirmation_method is manual, all payment attempts must be
@@ -6467,24 +6491,24 @@ declare module 'expressplatby' {
              * return to the requires_confirmation state
              * after those actions are completed. Your server needs to then
              * explicitly re-confirm the PaymentIntent to initiate the next payment
-             * attempt. Read the [expanded documentation](https://expressplatby.cz/docs/payments/payment-intents/web-manual)
+             * attempt. Read the [expanded documentation](https://docs.epayments.network/payments/payment-intents/web-manual)
              * to learn more about manual confirmation.
              */
             confirm(
                 id: string,
                 params?: PaymentIntentConfirmParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
             confirm(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
 
             /**
              * Perform an incremental authorization on an eligible
-             * [PaymentIntent](https://expressplatby.cz/docs/api/payment_intents/object). To be eligible, the
+             * [PaymentIntent](https://docs.epayments.network/api/payment_intents/object). To be eligible, the
              * PaymentIntent's status must be requires_capture and
-             * [incremental_authorization_supported](https://expressplatby.cz/docs/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported)
+             * [incremental_authorization_supported](https://docs.epayments.network/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported)
              * must be true.
              *
              * Incremental authorizations attempt to increase the authorized amount on
@@ -6495,25 +6519,25 @@ declare module 'expressplatby' {
              *
              * If the incremental authorization succeeds, the PaymentIntent object is
              * returned with the updated
-             * [amount](https://expressplatby.cz/docs/api/payment_intents/object#payment_intent_object-amount).
+             * [amount](https://docs.epayments.network/api/payment_intents/object#payment_intent_object-amount).
              * If the incremental authorization fails, a
-             * [card_declined](https://expressplatby.cz/docs/error-codes#card-declined) error is returned, and no
+             * [card_declined](https://docs.epayments.network/error-codes#card-declined) error is returned, and no
              * fields on the PaymentIntent or Charge are updated. The PaymentIntent
              * object remains capturable for the previously authorized amount.
              *
              * Each PaymentIntent can have a maximum of 10 incremental authorization attempts, including declines.
              * Once captured, a PaymentIntent can no longer be incremented.
              *
-             * Learn more about [incremental authorizations](https://expressplatby.cz/docs/terminal/features/incremental-authorizations).
+             * Learn more about [incremental authorizations](https://docs.epayments.network/terminal/features/incremental-authorizations).
              */
             incrementAuthorization(
                 id: string,
                 params: PaymentIntentIncrementAuthorizationParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
 
             /**
-             * Search for PaymentIntents you've previously created using ExpressPlatby's [Search Query Language](https://expressplatby.cz/docs/search#search-query-language).
+             * Search for PaymentIntents you've previously created using ExpressPayments' [Search Query Language](https://docs.epayments.network/search#search-query-language).
              * Don't use search in read-after-write flows where strict consistency is necessary. Under normal operating
              * conditions, data is searchable in less than a minute. Occasionally, propagation of new or updated data can be up
              * to an hour behind during outages. Search functionality is not available to merchants in India.
@@ -6521,7 +6545,7 @@ declare module 'expressplatby' {
             search(
                 params: PaymentIntentSearchParams,
                 options?: RequestOptions
-            ): ApiSearchResultPromise<ExpressPlatby.PaymentIntent>;
+            ): ApiSearchResultPromise<ExpressPayments.PaymentIntent>;
 
             /**
              * Verifies microdeposits on a PaymentIntent object.
@@ -6530,11 +6554,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PaymentIntentVerifyMicrodepositsParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
             verifyMicrodeposits(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentIntent>>;
         }
     }
 }

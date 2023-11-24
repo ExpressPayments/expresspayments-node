@@ -1,6 +1,6 @@
 'use strict';
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 import {stringifyRequestData} from '../utils.js';
 
 type OAuthAuthorizeUrlParams = {
@@ -15,11 +15,11 @@ type OAuthDeauthorizeParams = {
     client_id?: string;
 };
 
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-const oAuthHost = 'connect.expressplatby.cz';
+const oAuthHost = 'connect.epayments.network';
 
-export const OAuth = ExpressPlatbyResource.extend({
+export const OAuth = ExpressPaymentsResource.extend({
     basePath: '/',
 
     authorizeUrl(
@@ -41,7 +41,7 @@ export const OAuth = ExpressPlatbyResource.extend({
         }
 
         if (!params.client_id) {
-            params.client_id = this._expressPlatby.getClientId();
+            params.client_id = this._expressPayments.getClientId();
         }
 
         if (!params.scope) {
@@ -51,7 +51,7 @@ export const OAuth = ExpressPlatbyResource.extend({
         return `https://${oAuthHost}/${path}?${stringifyRequestData(params)}`;
     },
 
-    token: expressPlatbyMethod({
+    token: expressPaymentsMethod({
         method: 'POST',
         path: 'oauth/token',
         host: oAuthHost,
@@ -59,10 +59,10 @@ export const OAuth = ExpressPlatbyResource.extend({
 
     deauthorize(spec: OAuthDeauthorizeParams, ...args: any[]) {
         if (!spec.client_id) {
-            spec.client_id = this._expressPlatby.getClientId();
+            spec.client_id = this._expressPayments.getClientId();
         }
 
-        return expressPlatbyMethod({
+        return expressPaymentsMethod({
             method: 'POST',
             path: 'oauth/deauthorize',
             host: oAuthHost,

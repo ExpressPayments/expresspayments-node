@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface InvoiceItemCreateParams {
             /**
              * The ID of the customer who will be billed when this invoice item is billed.
@@ -14,7 +14,7 @@ declare module 'expressplatby' {
             amount?: number;
 
             /**
-             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+             * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
              */
             currency?: string;
 
@@ -31,7 +31,7 @@ declare module 'expressplatby' {
             /**
              * The coupons to redeem into discounts for the invoice item or invoice line item.
              */
-            discounts?: ExpressPlatby.Emptyable<
+            discounts?: ExpressPayments.Emptyable<
                 Array<InvoiceItemCreateParams.Discount>
             >;
 
@@ -46,12 +46,12 @@ declare module 'expressplatby' {
             invoice?: string;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
-             * The period associated with this invoice item. When set to different values, the period will be rendered on the invoice. If you have [ExpressPlatby Revenue Recognition](https://expressplatby.cz/docs/revenue-recognition) enabled, the period will be used to recognize and defer revenue. See the [Revenue Recognition documentation](https://expressplatby.cz/docs/revenue-recognition/methodology/subscriptions-and-invoicing) for details.
+             * The period associated with this invoice item. When set to different values, the period will be rendered on the invoice. If you have [ExpressPayments Revenue Recognition](https://docs.epayments.network/revenue-recognition) enabled, the period will be used to recognize and defer revenue. See the [Revenue Recognition documentation](https://docs.epayments.network/revenue-recognition/methodology/subscriptions-and-invoicing) for details.
              */
             period?: InvoiceItemCreateParams.Period;
 
@@ -61,7 +61,7 @@ declare module 'expressplatby' {
             price?: string;
 
             /**
-             * Data used to generate a new [Price](https://expressplatby.cz/docs/api/prices) object inline.
+             * Data used to generate a new [Price](https://docs.epayments.network/api/prices) object inline.
              */
             price_data?: InvoiceItemCreateParams.PriceData;
 
@@ -76,14 +76,14 @@ declare module 'expressplatby' {
             subscription?: string;
 
             /**
-             * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+             * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
              */
             tax_behavior?: InvoiceItemCreateParams.TaxBehavior;
 
             /**
-             * A [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID.
+             * A [tax code](https://docs.epayments.network/tax/tax-categories) ID.
              */
-            tax_code?: ExpressPlatby.Emptyable<string>;
+            tax_code?: ExpressPayments.Emptyable<string>;
 
             /**
              * The tax rates which apply to the invoice item. When set, the `default_tax_rates` on the invoice do not apply to this invoice item.
@@ -128,7 +128,7 @@ declare module 'expressplatby' {
 
             interface PriceData {
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -138,7 +138,7 @@ declare module 'expressplatby' {
                 product: string;
 
                 /**
-                 * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                 * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                  */
                 tax_behavior?: PriceData.TaxBehavior;
 
@@ -186,7 +186,7 @@ declare module 'expressplatby' {
             /**
              * The coupons & existing discounts which apply to the invoice item or invoice line item. Item discounts are applied before invoice discounts. Pass an empty string to remove previously-defined discounts.
              */
-            discounts?: ExpressPlatby.Emptyable<
+            discounts?: ExpressPayments.Emptyable<
                 Array<InvoiceItemUpdateParams.Discount>
             >;
 
@@ -196,12 +196,12 @@ declare module 'expressplatby' {
             expand?: Array<string>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
-             * The period associated with this invoice item. When set to different values, the period will be rendered on the invoice. If you have [ExpressPlatby Revenue Recognition](https://expressplatby.cz/docs/revenue-recognition) enabled, the period will be used to recognize and defer revenue. See the [Revenue Recognition documentation](https://expressplatby.cz/docs/revenue-recognition/methodology/subscriptions-and-invoicing) for details.
+             * The period associated with this invoice item. When set to different values, the period will be rendered on the invoice. If you have [ExpressPayments Revenue Recognition](https://docs.epayments.network/revenue-recognition) enabled, the period will be used to recognize and defer revenue. See the [Revenue Recognition documentation](https://docs.epayments.network/revenue-recognition/methodology/subscriptions-and-invoicing) for details.
              */
             period?: InvoiceItemUpdateParams.Period;
 
@@ -211,7 +211,7 @@ declare module 'expressplatby' {
             price?: string;
 
             /**
-             * Data used to generate a new [Price](https://expressplatby.cz/docs/api/prices) object inline.
+             * Data used to generate a new [Price](https://docs.epayments.network/api/prices) object inline.
              */
             price_data?: InvoiceItemUpdateParams.PriceData;
 
@@ -221,19 +221,19 @@ declare module 'expressplatby' {
             quantity?: number;
 
             /**
-             * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+             * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
              */
             tax_behavior?: InvoiceItemUpdateParams.TaxBehavior;
 
             /**
-             * A [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID.
+             * A [tax code](https://docs.epayments.network/tax/tax-categories) ID.
              */
-            tax_code?: ExpressPlatby.Emptyable<string>;
+            tax_code?: ExpressPayments.Emptyable<string>;
 
             /**
              * The tax rates which apply to the invoice item. When set, the `default_tax_rates` on the invoice do not apply to this invoice item. Pass an empty string to remove previously-defined tax rates.
              */
-            tax_rates?: ExpressPlatby.Emptyable<Array<string>>;
+            tax_rates?: ExpressPayments.Emptyable<Array<string>>;
 
             /**
              * The integer unit amount in cents (or local equivalent) of the charge to be applied to the upcoming invoice. This unit_amount will be multiplied by the quantity to get the full amount. If you want to apply a credit to the customer's account, pass a negative unit_amount.
@@ -273,7 +273,7 @@ declare module 'expressplatby' {
 
             interface PriceData {
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -283,7 +283,7 @@ declare module 'expressplatby' {
                 product: string;
 
                 /**
-                 * Only required if a [default tax behavior](https://expressplatby.cz/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPlatby Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
+                 * Only required if a [default tax behavior](https://docs.epayments.network/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)) was not provided in the ExpressPayments Tax settings. Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it cannot be changed.
                  */
                 tax_behavior?: PriceData.TaxBehavior;
 
@@ -306,7 +306,7 @@ declare module 'expressplatby' {
         }
 
         interface InvoiceItemListParams extends PaginationParams {
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * The identifier of the customer whose invoice items to return. If none is provided, all invoice items will be returned.
@@ -338,7 +338,7 @@ declare module 'expressplatby' {
             create(
                 params: InvoiceItemCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.InvoiceItem>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.InvoiceItem>>;
 
             /**
              * Retrieves the invoice item with the given ID.
@@ -347,11 +347,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: InvoiceItemRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.InvoiceItem>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.InvoiceItem>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.InvoiceItem>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.InvoiceItem>>;
 
             /**
              * Updates the amount or description of an invoice item on an upcoming invoice. Updating an invoice item is only possible before the invoice it's attached to is closed.
@@ -360,7 +360,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: InvoiceItemUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.InvoiceItem>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.InvoiceItem>>;
 
             /**
              * Returns a list of your invoice items. Invoice items are returned sorted by creation date, with the most recently created invoice items appearing first.
@@ -368,10 +368,10 @@ declare module 'expressplatby' {
             list(
                 params?: InvoiceItemListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.InvoiceItem>;
+            ): ApiListPromise<ExpressPayments.InvoiceItem>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.InvoiceItem>;
+            ): ApiListPromise<ExpressPayments.InvoiceItem>;
 
             /**
              * Deletes an invoice item, removing it from an invoice. Deleting invoice items is only possible when they're not attached to invoices, or if it's attached to a draft invoice.
@@ -381,13 +381,13 @@ declare module 'expressplatby' {
                 params?: InvoiceItemDeleteParams,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.DeletedInvoiceItem>
+                ExpressPayments.Response<ExpressPayments.DeletedInvoiceItem>
             >;
             del(
                 id: string,
                 options?: RequestOptions
             ): Promise<
-                ExpressPlatby.Response<ExpressPlatby.DeletedInvoiceItem>
+                ExpressPayments.Response<ExpressPayments.DeletedInvoiceItem>
             >;
         }
     }

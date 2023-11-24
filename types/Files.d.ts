@@ -1,15 +1,15 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * This is an object representing a file hosted on ExpressPlatby's servers. The
-         * file may have been uploaded by yourself using the [create file](https://expressplatby.cz/docs/api#create_file)
+         * This is an object representing a file hosted on ExpressPayments' servers. The
+         * file may have been uploaded by yourself using the [create file](https://docs.epayments.network/api#create_file)
          * request (for example, when uploading dispute evidence) or it may have
-         * been created by ExpressPlatby (for example, the results of a [Sigma scheduled
-         * query](https://expressplatby.cz/docs/api#scheduled_queries)).
+         * been created by ExpressPayments (for example, the results of a [Sigma scheduled
+         * query](https://docs.epayments.network/api#scheduled_queries)).
          *
-         * Related guide: [File upload guide](https://expressplatby.cz/docs/file-upload)
+         * Related guide: [File upload guide](https://docs.epayments.network/file-upload)
          */
         interface File {
             /**
@@ -38,12 +38,12 @@ declare module 'expressplatby' {
             filename: string | null;
 
             /**
-             * A list of [file links](https://expressplatby.cz/docs/api#file_links) that point at this file.
+             * A list of [file links](https://docs.epayments.network/api#file_links) that point at this file.
              */
-            links?: ApiList<ExpressPlatby.FileLink> | null;
+            links?: ApiList<ExpressPayments.FileLink> | null;
 
             /**
-             * The [purpose](https://expressplatby.cz/docs/file-upload#uploading-a-file) of the uploaded file.
+             * The [purpose](https://docs.epayments.network/file-upload#uploading-a-file) of the uploaded file.
              */
             purpose: File.Purpose;
 

@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Apps {
             /**
-             * Secret Store is an API that allows ExpressPlatby Apps developers to securely persist secrets for use by UI Extensions and app backends.
+             * Secret Store is an API that allows ExpressPayments Apps developers to securely persist secrets for use by UI Extensions and app backends.
              *
              * The primary resource in Secret Store is a `secret`. Other apps can't view secrets created by an app. Additionally, secrets are scoped to provide further permission control.
              *
@@ -12,7 +12,7 @@ declare module 'expressplatby' {
              *
              * A `user` scoped secret is accessible by the app backend and one specific Dashboard user. Use the `user` scope for per-user secrets like per-user OAuth tokens, where different users might have different permissions.
              *
-             * Related guide: [Store data between page reloads](https://expressplatby.cz/docs/expressplatby-apps/store-auth-data-custom-objects)
+             * Related guide: [Store data between page reloads](https://docs.epayments.network/expresspayments-apps/store-auth-data-custom-objects)
              */
             interface Secret {
                 /**

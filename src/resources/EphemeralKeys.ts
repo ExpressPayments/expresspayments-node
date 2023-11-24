@@ -1,23 +1,23 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource.js';
 
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-export const EphemeralKeys = ExpressPlatbyResource.extend({
-    create: expressPlatbyMethod({
+export const EphemeralKeys = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
         method: 'POST',
         fullPath: '/v1/ephemeral_keys',
         validator: (data, options) => {
-            if (!options.headers || !options.headers['expressplatby-Version']) {
+            if (!options.headers || !options.headers['EP-Version']) {
                 throw new Error(
-                    'Passing apiVersion in a separate options hash is required to create an ephemeral key. See https://expressplatby.cz/docs/api/versioning?lang=node'
+                    'Passing apiVersion in a separate options hash is required to create an ephemeral key. See https://docs.epayments.network/api/versioning?lang=node'
                 );
             }
         },
     }),
 
-    del: expressPlatbyMethod({
+    del: expressPaymentsMethod({
         method: 'DELETE',
         fullPath: '/v1/ephemeral_keys/{key}',
     }),

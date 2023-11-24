@@ -87,11 +87,11 @@ export type StreamingFile = {
     type: string;
     file: {data: EventEmitter};
 };
-export type ExpressPlatbyConstructor = {
-    new (key: string, config: Record<string, unknown>): ExpressPlatbyObject;
+export type ExpressPaymentsConstructor = {
+    new (key: string, config: Record<string, unknown>): ExpressPaymentsObject;
 };
-declare const ExpressPlatby: ExpressPlatbyConstructor;
-export type ExpressPlatbyObject = {
+declare const ExpressPayments: ExpressPaymentsConstructor;
+export type ExpressPaymentsObject = {
     getClientUserAgentSeeded: (
         seed: Record<string, string | boolean | null>,
         callback: (userAgent: string) => void
@@ -103,20 +103,20 @@ export type ExpressPlatbyObject = {
     getMaxNetworkRetryDelay: () => number;
     getMaxNetworkRetries: () => number;
     getConstant: <T = string>(name: string) => T;
-    _setApiField: <K extends keyof ExpressPlatbyObject['_api']>(
+    _setApiField: <K extends keyof ExpressPaymentsObject['_api']>(
         name: K,
-        value: ExpressPlatbyObject['_api'][K]
+        value: ExpressPaymentsObject['_api'][K]
     ) => void;
-    getApiField: <K extends keyof ExpressPlatbyObject['_api']>(
+    getApiField: <K extends keyof ExpressPaymentsObject['_api']>(
         key: K
-    ) => ExpressPlatbyObject['_api'][K];
+    ) => ExpressPaymentsObject['_api'][K];
     _setApiNumberField: (name: string, value: number) => unknown;
     _appInfo: any;
     on: any;
     off: any;
     once: any;
     VERSION: string;
-    ExpressPlatbyResource: ExpressPlatbyResourceConstructor;
+    ExpressPaymentsResource: ExpressPaymentsResourceConstructor;
     errors: any;
     webhooks: any;
     _prepResources: () => void;
@@ -138,7 +138,7 @@ export type ExpressPlatbyObject = {
         agent: string;
         httpClient: any;
         dev: boolean;
-        expressPlatbyAccount: string | null;
+        expressPaymentsAccount: string | null;
     };
     _emitter: EventEmitter;
     _enableTelemetry: boolean;
@@ -161,7 +161,7 @@ export type RequestSender = {
         requestDataProcessor: RequestDataProcessor | undefined
     ): void;
 };
-export type ExpressPlatbyRawError = {
+export type ExpressPaymentsRawError = {
     message?: string;
     type?: RawErrorType;
     headers?: {[header: string]: string};
@@ -180,14 +180,14 @@ export type ExpressPlatbyRawError = {
     source?: any;
     exception?: any;
 };
-export type ExpressPlatbyResourceConstructor = {
+export type ExpressPaymentsResourceConstructor = {
     new (
-        expressPlatby: ExpressPlatbyObject,
+        expressPayments: ExpressPaymentsObject,
         deprecatedUrlData?: never
-    ): ExpressPlatbyResourceObject;
+    ): ExpressPaymentsResourceObject;
 };
-export type ExpressPlatbyResourceObject = {
-    _expressPlatby: ExpressPlatbyObject;
+export type ExpressPaymentsResourceObject = {
+    _expressPayments: ExpressPaymentsObject;
     basePath: UrlInterpolator;
     path: UrlInterpolator;
     resourcePath: string;
@@ -226,7 +226,7 @@ export type UserProvidedConfig = {
     port?: number;
     maxNetworkRetries?: number;
     httpClient?: HttpClientInterface;
-    expressPlatbyAccount?: string;
+    expressPaymentsAccount?: string;
     typescript?: boolean;
     telemetry?: boolean;
     appInfo?: AppInfo;

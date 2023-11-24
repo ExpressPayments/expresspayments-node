@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace FinancialConnections {
             interface SessionCreateParams {
                 /**
@@ -35,12 +35,12 @@ declare module 'expressplatby' {
             namespace SessionCreateParams {
                 interface AccountHolder {
                     /**
-                     * The ID of the ExpressPlatby account whose accounts will be retrieved. Should only be present if `type` is `account`.
+                     * The ID of the ExpressPayments account whose accounts will be retrieved. Should only be present if `type` is `account`.
                      */
                     account?: string;
 
                     /**
-                     * The ID of the ExpressPlatby customer whose accounts will be retrieved. Should only be present if `type` is `customer`.
+                     * The ID of the ExpressPayments customer whose accounts will be retrieved. Should only be present if `type` is `customer`.
                      */
                     customer?: string;
 
@@ -77,14 +77,14 @@ declare module 'expressplatby' {
 
             class SessionsResource {
                 /**
-                 * To launch the Financial Connections authorization flow, create a Session. The session's client_secret can be used to launch the flow using ExpressPlatby.js.
+                 * To launch the Financial Connections authorization flow, create a Session. The session's client_secret can be used to launch the flow using ExpressPayments.js.
                  */
                 create(
                     params: SessionCreateParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.FinancialConnections.Session
+                    ExpressPayments.Response<
+                        ExpressPayments.FinancialConnections.Session
                     >
                 >;
 
@@ -96,16 +96,16 @@ declare module 'expressplatby' {
                     params?: SessionRetrieveParams,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.FinancialConnections.Session
+                    ExpressPayments.Response<
+                        ExpressPayments.FinancialConnections.Session
                     >
                 >;
                 retrieve(
                     id: string,
                     options?: RequestOptions
                 ): Promise<
-                    ExpressPlatby.Response<
-                        ExpressPlatby.FinancialConnections.Session
+                    ExpressPayments.Response<
+                        ExpressPayments.FinancialConnections.Session
                     >
                 >;
             }

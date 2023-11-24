@@ -1,27 +1,28 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../../ExpressPaymentsResource.js';
 
-export const Transactions = ExpressPlatbyResource.extend({
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/tax/transactions/{transaction}',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  createFromCalculation: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/tax/transactions/create_from_calculation',
-  }),
+export const Transactions = ExpressPaymentsResource.extend({
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/tax/transactions/{transaction}',
+    }),
 
-  createReversal: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/tax/transactions/create_reversal',
-  }),
+    createFromCalculation: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/tax/transactions/create_from_calculation',
+    }),
 
-  listLineItems: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/tax/transactions/{transaction}/line_items',
-    methodType: 'list',
-  }),
+    createReversal: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/tax/transactions/create_reversal',
+    }),
+
+    listLineItems: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/tax/transactions/{transaction}/line_items',
+        methodType: 'list',
+    }),
 });

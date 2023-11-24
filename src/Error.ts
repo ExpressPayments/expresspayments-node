@@ -1,35 +1,41 @@
 /* eslint-disable camelcase */
 
-import {RawErrorType, ExpressPlatbyRawError} from './Types.js';
+import { ExpressPaymentsRawError, RawErrorType } from "./Types.js";
 
 export const generate = (
-    rawExpressPlatbyError: ExpressPlatbyRawError
-): ExpressPlatbyError => {
-    switch (rawExpressPlatbyError.type) {
+    rawExpressPaymentsError: ExpressPaymentsRawError
+): ExpressPaymentsError => {
+    switch (rawExpressPaymentsError.type) {
         case 'card_error':
-            return new ExpressPlatbyCardError(rawExpressPlatbyError);
+            return new ExpressPaymentsCardError(rawExpressPaymentsError);
         case 'invalid_request_error':
-            return new ExpressPlatbyInvalidRequestError(rawExpressPlatbyError);
+            return new ExpressPaymentsInvalidRequestError(
+                rawExpressPaymentsError
+            );
         case 'api_error':
-            return new ExpressPlatbyAPIError(rawExpressPlatbyError);
+            return new ExpressPaymentsAPIError(rawExpressPaymentsError);
         case 'authentication_error':
-            return new ExpressPlatbyAuthenticationError(rawExpressPlatbyError);
+            return new ExpressPaymentsAuthenticationError(
+                rawExpressPaymentsError
+            );
         case 'rate_limit_error':
-            return new ExpressPlatbyRateLimitError(rawExpressPlatbyError);
+            return new ExpressPaymentsRateLimitError(rawExpressPaymentsError);
         case 'idempotency_error':
-            return new ExpressPlatbyIdempotencyError(rawExpressPlatbyError);
+            return new ExpressPaymentsIdempotencyError(rawExpressPaymentsError);
         case 'invalid_grant':
-            return new ExpressPlatbyInvalidGrantError(rawExpressPlatbyError);
+            return new ExpressPaymentsInvalidGrantError(
+                rawExpressPaymentsError
+            );
         default:
-            return new ExpressPlatbyUnknownError(rawExpressPlatbyError);
+            return new ExpressPaymentsUnknownError(rawExpressPaymentsError);
     }
 };
 
 /**
- * ExpressPlatbyError is the base error from which all other more specific ExpressPlatby errors derive.
- * Specifically for errors returned from ExpressPlatby's REST API.
+ * ExpressPaymentsError is the base error from which all other more specific ExpressPayments errors derive.
+ * Specifically for errors returned from ExpressPayments' REST API.
  */
-export class ExpressPlatbyError extends Error {
+export class ExpressPaymentsError extends Error {
     readonly message: string;
     readonly type: string;
     readonly raw: unknown;
@@ -51,7 +57,7 @@ export class ExpressPlatbyError extends Error {
     readonly setup_intent?: any;
     readonly source?: any;
 
-    constructor(raw: ExpressPlatbyRawError = {}) {
+    constructor(raw: ExpressPaymentsRawError = {}) {
         super(raw.message);
         this.type = this.constructor.name;
 
@@ -77,71 +83,71 @@ export class ExpressPlatbyError extends Error {
     }
 
     /**
-     * Helper factory which takes raw ExpressPlatby errors and outputs wrapping instances
+     * Helper factory which takes raw ExpressPayments errors and outputs wrapping instances
      */
     static generate = generate;
 }
 
-// Specific ExpressPlatby Error types:
+// Specific ExpressPayments Error types:
 
 /**
  * CardError is raised when a user enters a card that can't be charged for
  * some reason.
  */
-export class ExpressPlatbyCardError extends ExpressPlatbyError {}
+export class ExpressPaymentsCardError extends ExpressPaymentsError {}
 
 /**
  * InvalidRequestError is raised when a request is initiated with invalid
  * parameters.
  */
-export class ExpressPlatbyInvalidRequestError extends ExpressPlatbyError {}
+export class ExpressPaymentsInvalidRequestError extends ExpressPaymentsError {}
 
 /**
  * APIError is a generic error that may be raised in cases where none of the
  * other named errors cover the problem. It could also be raised in the case
  * that a new error has been introduced in the API, but this version of the
- * Node.JS SDK doesn't know how to handle it.
+ * Node.js SDK doesn't know how to handle it.
  */
-export class ExpressPlatbyAPIError extends ExpressPlatbyError {}
+export class ExpressPaymentsAPIError extends ExpressPaymentsError {}
 
 /**
  * AuthenticationError is raised when invalid credentials are used to connect
- * to ExpressPlatby's servers.
+ * to ExpressPayments' servers.
  */
-export class ExpressPlatbyAuthenticationError extends ExpressPlatbyError {}
+export class ExpressPaymentsAuthenticationError extends ExpressPaymentsError {}
 
 /**
  * PermissionError is raised in cases where access was attempted on a resource
  * that wasn't allowed.
  */
-export class ExpressPlatbyPermissionError extends ExpressPlatbyError {}
+export class ExpressPaymentsPermissionError extends ExpressPaymentsError {}
 
 /**
  * RateLimitError is raised in cases where an account is putting too much load
- * on ExpressPlatby's API servers (usually by performing too many requests). Please
+ * on ExpressPayments' API servers (usually by performing too many requests). Please
  * back off on request rate.
  */
-export class ExpressPlatbyRateLimitError extends ExpressPlatbyError {}
+export class ExpressPaymentsRateLimitError extends ExpressPaymentsError {}
 
 /**
- * ExpressPlatbyConnectionError is raised in the event that the SDK can't connect to
- * ExpressPlatby's servers. That can be for a variety of different reasons from a
+ * ExpressPaymentsConnectionError is raised in the event that the SDK can't connect to
+ * ExpressPayments' servers. That can be for a variety of different reasons from a
  * downed network to a bad TLS certificate.
  */
-export class ExpressPlatbyConnectionError extends ExpressPlatbyError {}
+export class ExpressPaymentsConnectionError extends ExpressPaymentsError {}
 
 /**
  * SignatureVerificationError is raised when the signature verification for a
  * webhook fails
  */
-export class ExpressPlatbySignatureVerificationError extends ExpressPlatbyError {
+export class ExpressPaymentsSignatureVerificationError extends ExpressPaymentsError {
     header: string | Uint8Array;
     payload: string | Uint8Array;
 
     constructor(
         header: string | Uint8Array,
         payload: string | Uint8Array,
-        raw: ExpressPlatbyRawError = {}
+        raw: ExpressPaymentsRawError = {}
     ) {
         super(raw);
         this.header = header;
@@ -153,7 +159,7 @@ export class ExpressPlatbySignatureVerificationError extends ExpressPlatbyError 
  * IdempotencyError is raised in cases where an idempotency key was used
  * improperly.
  */
-export class ExpressPlatbyIdempotencyError extends ExpressPlatbyError {}
+export class ExpressPaymentsIdempotencyError extends ExpressPaymentsError {}
 
 /**
  * InvalidGrantError is raised when a specified code doesn't exist, is
@@ -161,9 +167,9 @@ export class ExpressPlatbyIdempotencyError extends ExpressPlatbyError {}
  * exist, or doesn't belong to you; or if an API key's mode (live or test)
  * doesn't match the mode of a code or refresh token.
  */
-export class ExpressPlatbyInvalidGrantError extends ExpressPlatbyError {}
+export class ExpressPaymentsInvalidGrantError extends ExpressPaymentsError {}
 
 /**
- * Any other error from ExpressPlatby not specifically captured above
+ * Any other error from ExpressPayments not specifically captured above
  */
-export class ExpressPlatbyUnknownError extends ExpressPlatbyError {}
+export class ExpressPaymentsUnknownError extends ExpressPaymentsError {}

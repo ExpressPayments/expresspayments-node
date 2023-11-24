@@ -1,126 +1,127 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource.js';
 
-// Since path can either be `account` or `accounts`, support both through expressPlatbyMethod path;
-export const Accounts = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/accounts',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve(id: string, ...args: any[]) {
-    // No longer allow an api key to be passed as the first string to this function due to ambiguity between
-    // old account ids and api keys. To request the account for an api key, send null as the id
-    if (typeof id === 'string') {
-      return expressPlatbyMethod({
+// Since path can either be `account` or `accounts`, support both through expressPaymentsMethod path;
+export const Accounts = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/accounts',
+    }),
+
+    retrieve(id: string, ...args: any[]) {
+        // No longer allow an api key to be passed as the first string to this function due to ambiguity between
+        // old account ids and api keys. To request the account for an api key, send null as the id
+        if (typeof id === 'string') {
+            return expressPaymentsMethod({
+                method: 'GET',
+                fullPath: '/v1/accounts/{id}',
+            }).apply(this, [id, ...args]);
+        } else {
+            if (id === null || id === undefined) {
+                // Remove id as expressPaymentsMethod would complain of unexpected argument
+                [].shift.apply([id, ...args]);
+            }
+            return expressPaymentsMethod({
+                method: 'GET',
+                fullPath: '/v1/account',
+            }).apply(this, [id, ...args]);
+        }
+    },
+
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/accounts/{account}',
+    }),
+
+    list: expressPaymentsMethod({
         method: 'GET',
-        fullPath: '/v1/accounts/{id}',
-      }).apply(this, [id, ...args]);
-    } else {
-      if (id === null || id === undefined) {
-        // Remove id as expressPlatbyMethod would complain of unexpected argument
-        [].shift.apply([id, ...args]);
-      }
-      return expressPlatbyMethod({
+        fullPath: '/v1/accounts',
+        methodType: 'list',
+    }),
+
+    del: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/accounts/{account}',
+    }),
+
+    createExternalAccount: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/accounts/{account}/external_accounts',
+    }),
+
+    createLoginLink: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/accounts/{account}/login_links',
+    }),
+
+    createPerson: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/accounts/{account}/persons',
+    }),
+
+    deleteExternalAccount: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/accounts/{account}/external_accounts/{id}',
+    }),
+
+    deletePerson: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/accounts/{account}/persons/{person}',
+    }),
+
+    listCapabilities: expressPaymentsMethod({
         method: 'GET',
-        fullPath: '/v1/account',
-      }).apply(this, [id, ...args]);
-    }
-  },
+        fullPath: '/v1/accounts/{account}/capabilities',
+        methodType: 'list',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/accounts/{account}',
-  }),
+    listExternalAccounts: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/accounts/{account}/external_accounts',
+        methodType: 'list',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/accounts',
-    methodType: 'list',
-  }),
+    listPersons: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/accounts/{account}/persons',
+        methodType: 'list',
+    }),
 
-  del: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/accounts/{account}',
-  }),
+    reject: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/accounts/{account}/reject',
+    }),
 
-  createExternalAccount: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/accounts/{account}/external_accounts',
-  }),
+    retrieveCapability: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/accounts/{account}/capabilities/{capability}',
+    }),
 
-  createLoginLink: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/accounts/{account}/login_links',
-  }),
+    retrieveExternalAccount: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/accounts/{account}/external_accounts/{id}',
+    }),
 
-  createPerson: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/accounts/{account}/persons',
-  }),
+    retrievePerson: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/accounts/{account}/persons/{person}',
+    }),
 
-  deleteExternalAccount: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/accounts/{account}/external_accounts/{id}',
-  }),
+    updateCapability: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/accounts/{account}/capabilities/{capability}',
+    }),
 
-  deletePerson: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/accounts/{account}/persons/{person}',
-  }),
+    updateExternalAccount: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/accounts/{account}/external_accounts/{id}',
+    }),
 
-  listCapabilities: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/accounts/{account}/capabilities',
-    methodType: 'list',
-  }),
-
-  listExternalAccounts: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/accounts/{account}/external_accounts',
-    methodType: 'list',
-  }),
-
-  listPersons: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/accounts/{account}/persons',
-    methodType: 'list',
-  }),
-
-  reject: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/accounts/{account}/reject',
-  }),
-
-  retrieveCapability: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/accounts/{account}/capabilities/{capability}',
-  }),
-
-  retrieveExternalAccount: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/accounts/{account}/external_accounts/{id}',
-  }),
-
-  retrievePerson: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/accounts/{account}/persons/{person}',
-  }),
-
-  updateCapability: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/accounts/{account}/capabilities/{capability}',
-  }),
-
-  updateExternalAccount: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/accounts/{account}/external_accounts/{id}',
-  }),
-
-  updatePerson: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/accounts/{account}/persons/{person}',
-  }),
+    updatePerson: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/accounts/{account}/persons/{person}',
+    }),
 });

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * A SetupAttempt describes one attempted confirmation of a SetupIntent,
          * whether that confirmation was successful or unsuccessful. You can use
@@ -20,14 +20,14 @@ declare module 'expressplatby' {
             object: 'setup_attempt';
 
             /**
-             * The value of [application](https://expressplatby.cz/docs/api/setup_intents/object#setup_intent_object-application) on the SetupIntent at the time of this confirmation.
+             * The value of [application](https://docs.epayments.network/api/setup_intents/object#setup_intent_object-application) on the SetupIntent at the time of this confirmation.
              */
-            application: string | ExpressPlatby.Application | null;
+            application: string | ExpressPayments.Application | null;
 
             /**
-             * If present, the SetupIntent's payment method will be attached to the in-context ExpressPlatby Account.
+             * If present, the SetupIntent's payment method will be attached to the in-context ExpressPayments Account.
              *
-             * It can only be used for this ExpressPlatby Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
+             * It can only be used for this ExpressPayments Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
              */
             attach_to_self?: boolean;
 
@@ -37,12 +37,12 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * The value of [customer](https://expressplatby.cz/docs/api/setup_intents/object#setup_intent_object-customer) on the SetupIntent at the time of this confirmation.
+             * The value of [customer](https://docs.epayments.network/api/setup_intents/object#setup_intent_object-customer) on the SetupIntent at the time of this confirmation.
              */
             customer:
                 | string
-                | ExpressPlatby.Customer
-                | ExpressPlatby.DeletedCustomer
+                | ExpressPayments.Customer
+                | ExpressPayments.DeletedCustomer
                 | null;
 
             /**
@@ -58,14 +58,14 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * The value of [on_behalf_of](https://expressplatby.cz/docs/api/setup_intents/object#setup_intent_object-on_behalf_of) on the SetupIntent at the time of this confirmation.
+             * The value of [on_behalf_of](https://docs.epayments.network/api/setup_intents/object#setup_intent_object-on_behalf_of) on the SetupIntent at the time of this confirmation.
              */
-            on_behalf_of: string | ExpressPlatby.Account | null;
+            on_behalf_of: string | ExpressPayments.Account | null;
 
             /**
              * ID of the payment method used with this SetupAttempt.
              */
-            payment_method: string | ExpressPlatby.PaymentMethod;
+            payment_method: string | ExpressPayments.PaymentMethod;
 
             payment_method_details: SetupAttempt.PaymentMethodDetails;
 
@@ -77,7 +77,7 @@ declare module 'expressplatby' {
             /**
              * ID of the SetupIntent that this attempt belongs to.
              */
-            setup_intent: string | ExpressPlatby.SetupIntent;
+            setup_intent: string | ExpressPayments.SetupIntent;
 
             /**
              * Status of this SetupAttempt, one of `requires_confirmation`, `requires_action`, `processing`, `succeeded`, `failed`, or `abandoned`.
@@ -85,7 +85,7 @@ declare module 'expressplatby' {
             status: string;
 
             /**
-             * The value of [usage](https://expressplatby.cz/docs/api/setup_intents/object#setup_intent_object-usage) on the SetupIntent at the time of this confirmation, one of `off_session` or `on_session`.
+             * The value of [usage](https://docs.epayments.network/api/setup_intents/object#setup_intent_object-usage) on the SetupIntent at the time of this confirmation, one of `off_session` or `on_session`.
              */
             usage: string;
         }
@@ -160,7 +160,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit:
                         | string
-                        | ExpressPlatby.PaymentMethod
+                        | ExpressPayments.PaymentMethod
                         | null;
 
                     /**
@@ -168,7 +168,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit_mandate:
                         | string
-                        | ExpressPlatby.Mandate
+                        | ExpressPayments.Mandate
                         | null;
 
                     /**
@@ -360,7 +360,7 @@ declare module 'expressplatby' {
                     /**
                      * The ID of the Card PaymentMethod which was generated by this SetupAttempt.
                      */
-                    generated_card: string | ExpressPlatby.PaymentMethod | null;
+                    generated_card: string | ExpressPayments.PaymentMethod | null;
                 }
 
                 interface Cashapp {}
@@ -381,7 +381,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit:
                         | string
-                        | ExpressPlatby.PaymentMethod
+                        | ExpressPayments.PaymentMethod
                         | null;
 
                     /**
@@ -389,7 +389,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit_mandate:
                         | string
-                        | ExpressPlatby.Mandate
+                        | ExpressPayments.Mandate
                         | null;
 
                     /**
@@ -468,7 +468,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit:
                         | string
-                        | ExpressPlatby.PaymentMethod
+                        | ExpressPayments.PaymentMethod
                         | null;
 
                     /**
@@ -476,7 +476,7 @@ declare module 'expressplatby' {
                      */
                     generated_sepa_debit_mandate:
                         | string
-                        | ExpressPlatby.Mandate
+                        | ExpressPayments.Mandate
                         | null;
 
                     /**
@@ -511,17 +511,17 @@ declare module 'expressplatby' {
                 charge?: string;
 
                 /**
-                 * For some errors that could be handled programmatically, a short string indicating the [error code](https://expressplatby.cz/docs/error-codes) reported.
+                 * For some errors that could be handled programmatically, a short string indicating the [error code](https://docs.epayments.network/error-codes) reported.
                  */
                 code?: SetupError.Code;
 
                 /**
-                 * For card errors resulting from a card issuer decline, a short string indicating the [card issuer's reason for the decline](https://expressplatby.cz/docs/declines#issuer-declines) if they provide one.
+                 * For card errors resulting from a card issuer decline, a short string indicating the [card issuer's reason for the decline](https://docs.epayments.network/declines#issuer-declines) if they provide one.
                  */
                 decline_code?: string;
 
                 /**
-                 * A URL to more information about the [error code](https://expressplatby.cz/docs/error-codes) reported.
+                 * A URL to more information about the [error code](https://docs.epayments.network/error-codes) reported.
                  */
                 doc_url?: string;
 
@@ -542,22 +542,22 @@ declare module 'expressplatby' {
                  * see the history of payment attempts for a particular session.
                  *
                  * A PaymentIntent transitions through
-                 * [multiple statuses](https://expressplatby.cz/docs/payments/intents#intent-statuses)
-                 * throughout its lifetime as it interfaces with ExpressPlatby.js to perform
+                 * [multiple statuses](https://docs.epayments.network/payments/intents#intent-statuses)
+                 * throughout its lifetime as it interfaces with ExpressPayments.js to perform
                  * authentication flows and ultimately creates at most one successful charge.
                  *
-                 * Related guide: [Payment Intents API](https://expressplatby.cz/docs/payments/payment-intents)
+                 * Related guide: [Payment Intents API](https://docs.epayments.network/payments/payment-intents)
                  */
-                payment_intent?: ExpressPlatby.PaymentIntent;
+                payment_intent?: ExpressPayments.PaymentIntent;
 
                 /**
                  * PaymentMethod objects represent your customer's payment instruments.
-                 * You can use them with [PaymentIntents](https://expressplatby.cz/docs/payments/payment-intents) to collect payments or save them to
+                 * You can use them with [PaymentIntents](https://docs.epayments.network/payments/payment-intents) to collect payments or save them to
                  * Customer objects to store instrument details for future payments.
                  *
-                 * Related guides: [Payment Methods](https://expressplatby.cz/docs/payments/payment-methods) and [More Payment Scenarios](https://expressplatby.cz/docs/payments/more-payment-scenarios).
+                 * Related guides: [Payment Methods](https://docs.epayments.network/payments/payment-methods) and [More Payment Scenarios](https://docs.epayments.network/payments/more-payment-scenarios).
                  */
-                payment_method?: ExpressPlatby.PaymentMethod;
+                payment_method?: ExpressPayments.PaymentMethod;
 
                 /**
                  * If the error is specific to the type of payment method, the payment method type that had a problem. This field is only populated for invoice-related errors.
@@ -572,30 +572,30 @@ declare module 'expressplatby' {
                 /**
                  * A SetupIntent guides you through the process of setting up and saving a customer's payment credentials for future payments.
                  * For example, you could use a SetupIntent to set up and save your customer's card without immediately collecting a payment.
-                 * Later, you can use [PaymentIntents](https://expressplatby.cz/docs/api#payment_intents) to drive the payment flow.
+                 * Later, you can use [PaymentIntents](https://docs.epayments.network/api#payment_intents) to drive the payment flow.
                  *
                  * Create a SetupIntent as soon as you're ready to collect your customer's payment credentials.
                  * Do not maintain long-lived, unconfirmed SetupIntents as they may no longer be valid.
-                 * The SetupIntent then transitions through multiple [statuses](https://expressplatby.cz/docs/payments/intents#intent-statuses) as it guides
+                 * The SetupIntent then transitions through multiple [statuses](https://docs.epayments.network/payments/intents#intent-statuses) as it guides
                  * you through the setup process.
                  *
                  * Successful SetupIntents result in payment credentials that are optimized for future payments.
-                 * For example, cardholders in [certain regions](https://expressplatby.cz/guides/strong-customer-authentication) may need to be run through
-                 * [Strong Customer Authentication](https://expressplatby.cz/docs/strong-customer-authentication) at the time of payment method collection
-                 * in order to streamline later [off-session payments](https://expressplatby.cz/docs/payments/setup-intents).
-                 * If the SetupIntent is used with a [Customer](https://expressplatby.cz/docs/api#setup_intent_object-customer), upon success,
+                 * For example, cardholders in [certain regions](https://epayments.network/guides/strong-customer-authentication) may need to be run through
+                 * [Strong Customer Authentication](https://docs.epayments.network/strong-customer-authentication) at the time of payment method collection
+                 * in order to streamline later [off-session payments](https://docs.epayments.network/payments/setup-intents).
+                 * If the SetupIntent is used with a [Customer](https://docs.epayments.network/api#setup_intent_object-customer), upon success,
                  * it will automatically attach the resulting payment method to that Customer.
-                 * We recommend using SetupIntents or [setup_future_usage](https://expressplatby.cz/docs/api#payment_intent_object-setup_future_usage) on
+                 * We recommend using SetupIntents or [setup_future_usage](https://docs.epayments.network/api#payment_intent_object-setup_future_usage) on
                  * PaymentIntents to save payment methods in order to prevent saving invalid or unoptimized payment methods.
                  *
                  * By using SetupIntents, you ensure that your customers experience the minimum set of required friction,
                  * even as regulations change over time.
                  *
-                 * Related guide: [Setup Intents API](https://expressplatby.cz/docs/payments/setup-intents)
+                 * Related guide: [Setup Intents API](https://docs.epayments.network/payments/setup-intents)
                  */
-                setup_intent?: ExpressPlatby.SetupIntent;
+                setup_intent?: ExpressPayments.SetupIntent;
 
-                source?: ExpressPlatby.CustomerSource;
+                source?: ExpressPayments.CustomerSource;
 
                 /**
                  * The type of error returned. One of `api_error`, `card_error`, `idempotency_error`, or `invalid_request_error`

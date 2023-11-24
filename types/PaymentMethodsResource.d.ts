@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface PaymentMethodCreateParams {
             /**
              * If this is an `acss_debit` PaymentMethod, this hash contains details about the ACSS Debit payment method.
@@ -54,7 +54,7 @@ declare module 'expressplatby' {
             boleto?: PaymentMethodCreateParams.Boleto;
 
             /**
-             * If this is a `card` PaymentMethod, this hash contains the user's card details. For backwards compatibility, you can alternatively provide an ExpressPlatby token (e.g., for Apple Pay, Amex Express Checkout, or legacy Checkout) into the card hash with format `card: {token: "tok_visa"}`. When providing a card number, you must meet the requirements for [PCI compliance](https://expressplatby.cz/docs/security#validating-pci-compliance). We strongly recommend using ExpressPlatby.js instead of interacting with this API directly.
+             * If this is a `card` PaymentMethod, this hash contains the user's card details. For backwards compatibility, you can alternatively provide an ExpressPayments token (e.g., for Apple Pay, Amex Express Checkout, or legacy Checkout) into the card hash with format `card: {token: "tok_visa"}`. When providing a card number, you must meet the requirements for [PCI compliance](https://docs.epayments.network/security#validating-pci-compliance). We strongly recommend using ExpressPayments.js instead of interacting with this API directly.
              */
             card?:
                 | PaymentMethodCreateParams.Card1
@@ -126,9 +126,9 @@ declare module 'expressplatby' {
             link?: PaymentMethodCreateParams.Link;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
              * If this is an `oxxo` PaymentMethod, this hash contains details about the OXXO payment method.
@@ -166,7 +166,7 @@ declare module 'expressplatby' {
             promptpay?: PaymentMethodCreateParams.Promptpay;
 
             /**
-             * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+             * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
              */
             radar_options?: PaymentMethodCreateParams.RadarOptions;
 
@@ -255,12 +255,12 @@ declare module 'expressplatby' {
                 /**
                  * Billing address.
                  */
-                address?: ExpressPlatby.Emptyable<ExpressPlatby.AddressParam>;
+                address?: ExpressPayments.Emptyable<ExpressPayments.AddressParam>;
 
                 /**
                  * Email address.
                  */
-                email?: ExpressPlatby.Emptyable<string>;
+                email?: ExpressPayments.Emptyable<string>;
 
                 /**
                  * Full name.
@@ -500,7 +500,7 @@ declare module 'expressplatby' {
 
             interface RadarOptions {
                 /**
-                 * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                 * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                  */
                 session?: string;
             }
@@ -653,9 +653,9 @@ declare module 'expressplatby' {
             link?: PaymentMethodUpdateParams.Link;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * This is a legacy parameter that will be removed in the future. It is a hash that does not accept any keys.
@@ -686,12 +686,12 @@ declare module 'expressplatby' {
                 /**
                  * Billing address.
                  */
-                address?: ExpressPlatby.Emptyable<ExpressPlatby.AddressParam>;
+                address?: ExpressPayments.Emptyable<ExpressPayments.AddressParam>;
 
                 /**
                  * Email address.
                  */
-                email?: ExpressPlatby.Emptyable<string>;
+                email?: ExpressPayments.Emptyable<string>;
 
                 /**
                  * Full name.
@@ -812,30 +812,30 @@ declare module 'expressplatby' {
 
         class PaymentMethodsResource {
             /**
-             * Creates a PaymentMethod object. Read the [ExpressPlatby.js reference](https://expressplatby.cz/docs/expressplatby-js/reference#expressplatby-create-payment-method) to learn how to create PaymentMethods via ExpressPlatby.js.
+             * Creates a PaymentMethod object. Read the [ExpressPayments.js reference](https://docs.epayments.network/expresspayments-js/reference#expresspayments-create-payment-method) to learn how to create PaymentMethods via ExpressPayments.js.
              *
-             * Instead of creating a PaymentMethod directly, we recommend using the [PaymentIntents API to accept a payment immediately or the <a href="/docs/payments/save-and-reuse">SetupIntent](https://expressplatby.cz/docs/payments/accept-a-payment) API to collect payment method details ahead of a future payment.
+             * Instead of creating a PaymentMethod directly, we recommend using the [PaymentIntents API to accept a payment immediately or the <a href="/docs/payments/save-and-reuse">SetupIntent](https://docs.epayments.network/payments/accept-a-payment) API to collect payment method details ahead of a future payment.
              */
             create(
                 params?: PaymentMethodCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
 
             /**
-             * Retrieves a PaymentMethod object attached to the ExpressPlatbyAccount. To retrieve a payment method attached to a Customer, you should use [Retrieve a Customer's PaymentMethods](https://expressplatby.cz/docs/api/payment_methods/customer)
+             * Retrieves a PaymentMethod object attached to the ExpressPaymentsAccount. To retrieve a payment method attached to a Customer, you should use [Retrieve a Customer's PaymentMethods](https://docs.epayments.network/api/payment_methods/customer)
              */
             retrieve(
                 id: string,
                 params?: PaymentMethodRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
 
             /**
              * Updates a PaymentMethod object. A PaymentMethod must be attached a customer to be updated.
@@ -844,39 +844,39 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PaymentMethodUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
 
             /**
-             * Returns a list of PaymentMethods for Treasury flows. If you want to list the PaymentMethods attached to a Customer for payments, you should use the [List a Customer's PaymentMethods](https://expressplatby.cz/docs/api/payment_methods/customer_list) API instead.
+             * Returns a list of PaymentMethods for Treasury flows. If you want to list the PaymentMethods attached to a Customer for payments, you should use the [List a Customer's PaymentMethods](https://docs.epayments.network/api/payment_methods/customer_list) API instead.
              */
             list(
                 params?: PaymentMethodListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PaymentMethod>;
+            ): ApiListPromise<ExpressPayments.PaymentMethod>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.PaymentMethod>;
+            ): ApiListPromise<ExpressPayments.PaymentMethod>;
 
             /**
              * Attaches a PaymentMethod object to a Customer.
              *
-             * To attach a new PaymentMethod to a customer for future payments, we recommend you use a [SetupIntent](https://expressplatby.cz/docs/api/setup_intents)
-             * or a PaymentIntent with [setup_future_usage](https://expressplatby.cz/docs/api/payment_intents/create#create_payment_intent-setup_future_usage).
+             * To attach a new PaymentMethod to a customer for future payments, we recommend you use a [SetupIntent](https://docs.epayments.network/api/setup_intents)
+             * or a PaymentIntent with [setup_future_usage](https://docs.epayments.network/api/payment_intents/create#create_payment_intent-setup_future_usage).
              * These approaches will perform any necessary steps to set up the PaymentMethod for future payments. Using the /v1/payment_methods/:id/attach
              * endpoint without first using a SetupIntent or PaymentIntent with setup_future_usage does not optimize the PaymentMethod for
              * future use, which makes later declines and payment friction more likely.
-             * See [Optimizing cards for future payments](https://expressplatby.cz/docs/payments/payment-intents#future-usage) for more information about setting up
+             * See [Optimizing cards for future payments](https://docs.epayments.network/payments/payment-intents#future-usage) for more information about setting up
              * future payments.
              *
              * To use this PaymentMethod as the default for invoice or subscription payments,
-             * set [invoice_settings.default_payment_method](https://expressplatby.cz/docs/api/customers/update#update_customer-invoice_settings-default_payment_method),
+             * set [invoice_settings.default_payment_method](https://docs.epayments.network/api/customers/update#update_customer-invoice_settings-default_payment_method),
              * on the Customer to the PaymentMethod's ID.
              */
             attach(
                 id: string,
                 params: PaymentMethodAttachParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
 
             /**
              * Detaches a PaymentMethod object from a Customer. After a PaymentMethod is detached, it can no longer be used for a payment or re-attached to a Customer.
@@ -885,11 +885,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: PaymentMethodDetachParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
             detach(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.PaymentMethod>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.PaymentMethod>>;
         }
     }
 }

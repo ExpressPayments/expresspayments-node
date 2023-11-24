@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Identity {
             /**
              * A VerificationReport is the result of an attempt to collect and verify data from a user.
@@ -10,11 +10,11 @@ declare module 'expressplatby' {
              * appropriate sub-resource: `document`, `id_number`, `selfie`.
              *
              * Each VerificationReport contains a copy of any data collected by the user as well as
-             * reference IDs which can be used to access collected images through the [FileUpload](https://expressplatby.cz/docs/api/files)
+             * reference IDs which can be used to access collected images through the [FileUpload](https://docs.epayments.network/api/files)
              * API. To configure and create VerificationReports, use the
-             * [VerificationSession](https://expressplatby.cz/docs/api/identity/verification_sessions) API.
+             * [VerificationSession](https://docs.epayments.network/api/identity/verification_sessions) API.
              *
-             * Related guides: [Accessing verification results](https://expressplatby.cz/docs/identity/verification-sessions#results).
+             * Related guides: [Accessing verification results](https://docs.epayments.network/identity/verification-sessions#results).
              */
             interface VerificationReport {
                 /**
@@ -70,7 +70,7 @@ declare module 'expressplatby' {
                     /**
                      * Address as it appears in the document.
                      */
-                    address: ExpressPlatby.Address | null;
+                    address: ExpressPayments.Address | null;
 
                     /**
                      * Date of birth as it appears in the document.
@@ -88,7 +88,7 @@ declare module 'expressplatby' {
                     expiration_date: Document.ExpirationDate | null;
 
                     /**
-                     * Array of [File](https://expressplatby.cz/docs/api/files) ids containing images for this document.
+                     * Array of [File](https://docs.epayments.network/api/files) ids containing images for this document.
                      */
                     files: Array<string> | null;
 
@@ -297,7 +297,7 @@ declare module 'expressplatby' {
                         allowed_types?: Array<Document.AllowedType>;
 
                         /**
-                         * Collect an ID number and perform an [ID number check](https://expressplatby.cz/docs/identity/verification-checks?type=id-number) with the document's extracted name and date of birth.
+                         * Collect an ID number and perform an [ID number check](https://docs.epayments.network/identity/verification-checks?type=id-number) with the document's extracted name and date of birth.
                          */
                         require_id_number?: boolean;
 
@@ -307,7 +307,7 @@ declare module 'expressplatby' {
                         require_live_capture?: boolean;
 
                         /**
-                         * Capture a face image and perform a [selfie check](https://expressplatby.cz/docs/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://expressplatby.cz/docs/identity/selfie).
+                         * Capture a face image and perform a [selfie check](https://docs.epayments.network/identity/verification-checks?type=selfie) comparing a photo ID and a picture of your user's face. [Learn more](https://docs.epayments.network/identity/selfie).
                          */
                         require_matching_selfie?: boolean;
                     }
@@ -324,7 +324,7 @@ declare module 'expressplatby' {
 
                 interface Selfie {
                     /**
-                     * ID of the [File](https://expressplatby.cz/docs/api/files) holding the image of the identity document used in this check.
+                     * ID of the [File](https://docs.epayments.network/api/files) holding the image of the identity document used in this check.
                      */
                     document: string | null;
 
@@ -334,7 +334,7 @@ declare module 'expressplatby' {
                     error: Selfie.Error | null;
 
                     /**
-                     * ID of the [File](https://expressplatby.cz/docs/api/files) holding the image of the selfie used in this check.
+                     * ID of the [File](https://docs.epayments.network/api/files) holding the image of the selfie used in this check.
                      */
                     selfie: string | null;
 

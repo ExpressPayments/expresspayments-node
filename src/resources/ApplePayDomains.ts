@@ -1,27 +1,28 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource.js';
 
-export const ApplePayDomains = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/apple_pay/domains',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/apple_pay/domains/{domain}',
-  }),
+export const ApplePayDomains = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/apple_pay/domains',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/apple_pay/domains',
-    methodType: 'list',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/apple_pay/domains/{domain}',
+    }),
 
-  del: expressPlatbyMethod({
-    method: 'DELETE',
-    fullPath: '/v1/apple_pay/domains/{domain}',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/apple_pay/domains',
+        methodType: 'list',
+    }),
+
+    del: expressPaymentsMethod({
+        method: 'DELETE',
+        fullPath: '/v1/apple_pay/domains/{domain}',
+    }),
 });

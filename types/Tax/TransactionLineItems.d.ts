@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         namespace Tax {
             /**
              * The TransactionLineItem object.
@@ -33,9 +33,9 @@ declare module 'expressplatby' {
                 livemode: boolean;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
                  */
-                metadata: ExpressPlatby.Metadata | null;
+                metadata: ExpressPayments.Metadata | null;
 
                 /**
                  * The number of units of the item being purchased. For reversals, this is the quantity reversed.
@@ -58,7 +58,7 @@ declare module 'expressplatby' {
                 tax_behavior: TransactionLineItem.TaxBehavior;
 
                 /**
-                 * The [tax code](https://expressplatby.cz/docs/tax/tax-categories) ID used for this resource.
+                 * The [tax code](https://docs.epayments.network/tax/tax-categories) ID used for this resource.
                  */
                 tax_code: string;
 

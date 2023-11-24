@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
-         * `Exchange Rate` objects allow you to determine the rates that ExpressPlatby is
+         * `Exchange Rate` objects allow you to determine the rates that ExpressPayments is
          * currently using to convert from one currency to another. Since this number is
          * variable throughout the day, there are various reasons why you might want to
          * know the current rate (for example, to dynamically price an item for a user
@@ -12,7 +12,7 @@ declare module 'expressplatby' {
          * If you want a guarantee that the charge is made with a certain exchange rate
          * you expect is current, you can pass in `exchange_rate` to charges endpoints.
          * If the value is no longer up to date, the charge won't go through. Please
-         * refer to our [Exchange Rates API](https://expressplatby.cz/docs/exchange-rates) guide for more
+         * refer to our [Exchange Rates API](https://docs.epayments.network/exchange-rates) guide for more
          * details.
          */
         interface ExchangeRate {

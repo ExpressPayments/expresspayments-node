@@ -1,18 +1,18 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         /**
          * `Source` objects allow you to accept a variety of payment methods. They
-         * represent a customer's payment instrument, and can be used with the ExpressPlatby API
+         * represent a customer's payment instrument, and can be used with the ExpressPayments API
          * just like a `Card` object: once chargeable, they can be charged, or can be
          * attached to customers.
          *
-         * ExpressPlatby doesn't recommend using the deprecated [Sources API](https://expressplatby.cz/docs/api/sources).
-         * We recommend that you adopt the [PaymentMethods API](https://expressplatby.cz/docs/api/payment_methods).
+         * ExpressPayments doesn't recommend using the deprecated [Sources API](https://docs.epayments.network/api/sources).
+         * We recommend that you adopt the [PaymentMethods API](https://docs.epayments.network/api/payment_methods).
          * This newer API provides access to our latest features and payment method types.
          *
-         * Related guides: [Sources API](https://expressplatby.cz/docs/sources) and [Sources & Customers](https://expressplatby.cz/docs/sources/customers).
+         * Related guides: [Sources API](https://docs.epayments.network/sources) and [Sources & Customers](https://docs.epayments.network/sources/customers).
          */
         interface Source {
             /**
@@ -59,7 +59,7 @@ declare module 'expressplatby' {
             created: number;
 
             /**
-             * Three-letter [ISO code for the currency](https://expressplatby.cz/docs/currencies) associated with the source. This is the currency for which the source will be chargeable once ready. Required for `single_use` sources.
+             * Three-letter [ISO code for the currency](https://docs.epayments.network/currencies) associated with the source. This is the currency for which the source will be chargeable once ready. Required for `single_use` sources.
              */
             currency: string | null;
 
@@ -87,9 +87,9 @@ declare module 'expressplatby' {
             livemode: boolean;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
              */
-            metadata: ExpressPlatby.Metadata | null;
+            metadata: ExpressPayments.Metadata | null;
 
             multibanco?: Source.Multibanco;
 
@@ -125,7 +125,7 @@ declare module 'expressplatby' {
             three_d_secure?: Source.ThreeDSecure;
 
             /**
-             * The `type` of the source. The `type` is a payment method, one of `ach_credit_transfer`, `ach_debit`, `alipay`, `bancontact`, `card`, `card_present`, `eps`, `giropay`, `ideal`, `multibanco`, `klarna`, `p24`, `sepa_debit`, `sofort`, `three_d_secure`, or `wechat`. An additional hash is included on the source with a name matching this value. It contains additional information specific to the [payment method](https://expressplatby.cz/docs/sources) used.
+             * The `type` of the source. The `type` is a payment method, one of `ach_credit_transfer`, `ach_debit`, `alipay`, `bancontact`, `card`, `card_present`, `eps`, `giropay`, `ideal`, `multibanco`, `klarna`, `p24`, `sepa_debit`, `sofort`, `three_d_secure`, or `wechat`. An additional hash is included on the source with a name matching this value. It contains additional information specific to the [payment method](https://docs.epayments.network/sources) used.
              */
             type: Source.Type;
 
@@ -430,7 +430,7 @@ declare module 'expressplatby' {
                 /**
                  * Owner's address.
                  */
-                address: ExpressPlatby.Address | null;
+                address: ExpressPayments.Address | null;
 
                 /**
                  * Owner's email address.
@@ -450,7 +450,7 @@ declare module 'expressplatby' {
                 /**
                  * Verified owner's address. Verified values are verified or provided by the payment method directly (and if supported) at the time of authorization or settlement. They cannot be set or mutated.
                  */
-                verified_address: ExpressPlatby.Address | null;
+                verified_address: ExpressPayments.Address | null;
 
                 /**
                  * Verified owner's email address. Verified values are verified or provided by the payment method directly (and if supported) at the time of authorization or settlement. They cannot be set or mutated.
@@ -589,7 +589,7 @@ declare module 'expressplatby' {
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
 
@@ -640,7 +640,7 @@ declare module 'expressplatby' {
                 }
 
                 interface Shipping {
-                    address?: ExpressPlatby.Address;
+                    address?: ExpressPayments.Address;
 
                     /**
                      * The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.

@@ -1,42 +1,43 @@
 // File generated from our OpenAPI spec
 
-import {ExpressPlatbyResource} from '../ExpressPlatbyResource.js';
-const expressPlatbyMethod = ExpressPlatbyResource.method;
+import {ExpressPaymentsResource} from '../ExpressPaymentsResource';
 
-export const SetupIntents = ExpressPlatbyResource.extend({
-  create: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/setup_intents',
-  }),
+const expressPaymentsMethod = ExpressPaymentsResource.method;
 
-  retrieve: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/setup_intents/{intent}',
-  }),
+export const SetupIntents = ExpressPaymentsResource.extend({
+    create: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/setup_intents',
+    }),
 
-  update: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/setup_intents/{intent}',
-  }),
+    retrieve: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/setup_intents/{intent}',
+    }),
 
-  list: expressPlatbyMethod({
-    method: 'GET',
-    fullPath: '/v1/setup_intents',
-    methodType: 'list',
-  }),
+    update: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/setup_intents/{intent}',
+    }),
 
-  cancel: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/setup_intents/{intent}/cancel',
-  }),
+    list: expressPaymentsMethod({
+        method: 'GET',
+        fullPath: '/v1/setup_intents',
+        methodType: 'list',
+    }),
 
-  confirm: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/setup_intents/{intent}/confirm',
-  }),
+    cancel: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/setup_intents/{intent}/cancel',
+    }),
 
-  verifyMicrodeposits: expressPlatbyMethod({
-    method: 'POST',
-    fullPath: '/v1/setup_intents/{intent}/verify_microdeposits',
-  }),
+    confirm: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/setup_intents/{intent}/confirm',
+    }),
+
+    verifyMicrodeposits: expressPaymentsMethod({
+        method: 'POST',
+        fullPath: '/v1/setup_intents/{intent}/verify_microdeposits',
+    }),
 });

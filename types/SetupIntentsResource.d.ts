@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
 
-declare module 'expressplatby' {
-    namespace ExpressPlatby {
+declare module 'expresspayments' {
+    namespace ExpressPayments {
         interface SetupIntentCreateParams {
             /**
-             * If present, the SetupIntent's payment method will be attached to the in-context ExpressPlatby Account.
+             * If present, the SetupIntent's payment method will be attached to the in-context ExpressPayments Account.
              *
-             * It can only be used for this ExpressPlatby Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
+             * It can only be used for this ExpressPayments Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
              */
             attach_to_self?: boolean;
 
@@ -45,17 +45,17 @@ declare module 'expressplatby' {
             flow_directions?: Array<SetupIntentCreateParams.FlowDirection>;
 
             /**
-             * This hash contains details about the Mandate to create. This parameter can only be used with [`confirm=true`](https://expressplatby.cz/docs/api/setup_intents/create#create_setup_intent-confirm).
+             * This hash contains details about the Mandate to create. This parameter can only be used with [`confirm=true`](https://docs.epayments.network/api/setup_intents/create#create_setup_intent-confirm).
              */
             mandate_data?: SetupIntentCreateParams.MandateData;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.MetadataParam;
+            metadata?: ExpressPayments.MetadataParam;
 
             /**
-             * The ExpressPlatby account ID for which this SetupIntent is created.
+             * The ExpressPayments account ID for which this SetupIntent is created.
              */
             on_behalf_of?: string;
 
@@ -65,7 +65,7 @@ declare module 'expressplatby' {
             payment_method?: string;
 
             /**
-             * When included, this hash creates a PaymentMethod that is set as the [`payment_method`](https://expressplatby.cz/docs/api/setup_intents/object#setup_intent_object-payment_method)
+             * When included, this hash creates a PaymentMethod that is set as the [`payment_method`](https://docs.epayments.network/api/setup_intents/object#setup_intent_object-payment_method)
              * value in the SetupIntent.
              */
             payment_method_data?: SetupIntentCreateParams.PaymentMethodData;
@@ -81,7 +81,7 @@ declare module 'expressplatby' {
             payment_method_types?: Array<string>;
 
             /**
-             * The URL to redirect your customer back to after they authenticate or cancel their payment on the payment method's app or site. If you'd prefer to redirect to a mobile application, you can alternatively supply an application URI scheme. This parameter can only be used with [`confirm=true`](https://expressplatby.cz/docs/api/setup_intents/create#create_setup_intent-confirm).
+             * The URL to redirect your customer back to after they authenticate or cancel their payment on the payment method's app or site. If you'd prefer to redirect to a mobile application, you can alternatively supply an application URI scheme. This parameter can only be used with [`confirm=true`](https://docs.epayments.network/api/setup_intents/create#create_setup_intent-confirm).
              */
             return_url?: string;
 
@@ -262,9 +262,9 @@ declare module 'expressplatby' {
                 link?: PaymentMethodData.Link;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * If this is an `oxxo` PaymentMethod, this hash contains details about the OXXO payment method.
@@ -297,7 +297,7 @@ declare module 'expressplatby' {
                 promptpay?: PaymentMethodData.Promptpay;
 
                 /**
-                 * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+                 * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
                  */
                 radar_options?: PaymentMethodData.RadarOptions;
 
@@ -386,14 +386,14 @@ declare module 'expressplatby' {
                     /**
                      * Billing address.
                      */
-                    address?: ExpressPlatby.Emptyable<
-                        ExpressPlatby.AddressParam
+                    address?: ExpressPayments.Emptyable<
+                        ExpressPayments.AddressParam
                     >;
 
                     /**
                      * Email address.
                      */
-                    email?: ExpressPlatby.Emptyable<string>;
+                    email?: ExpressPayments.Emptyable<string>;
 
                     /**
                      * Full name.
@@ -607,7 +607,7 @@ declare module 'expressplatby' {
 
                 interface RadarOptions {
                     /**
-                     * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                     * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                      */
                     session?: string;
                 }
@@ -740,7 +740,7 @@ declare module 'expressplatby' {
             namespace PaymentMethodOptions {
                 interface AcssDebit {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency?: AcssDebit.Currency;
 
@@ -764,10 +764,10 @@ declare module 'expressplatby' {
                          * The URL will be rendered with additional GET parameters `payment_intent` and `payment_intent_client_secret` when confirming a Payment Intent,
                          * or `setup_intent` and `setup_intent_client_secret` when confirming a Setup Intent.
                          */
-                        custom_mandate_url?: ExpressPlatby.Emptyable<string>;
+                        custom_mandate_url?: ExpressPayments.Emptyable<string>;
 
                         /**
-                         * List of ExpressPlatby products where this mandate can be selected automatically.
+                         * List of ExpressPayments products where this mandate can be selected automatically.
                          */
                         default_for?: Array<MandateOptions.DefaultFor>;
 
@@ -830,7 +830,7 @@ declare module 'expressplatby' {
                     network?: Card.Network;
 
                     /**
-                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://expressplatby.cz/docs/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://expressplatby.cz/docs/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
+                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://docs.epayments.network/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://docs.epayments.network/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
                      */
                     request_three_d_secure?: Card.RequestThreeDSecure;
                 }
@@ -848,7 +848,7 @@ declare module 'expressplatby' {
                         amount_type: MandateOptions.AmountType;
 
                         /**
-                         * Currency in which future payments will be charged. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                         * Currency in which future payments will be charged. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                          */
                         currency: string;
 
@@ -998,12 +998,12 @@ declare module 'expressplatby' {
 
             interface SingleUse {
                 /**
-                 * Amount the customer is granting permission to collect later. A positive integer representing how much to charge in the [smallest currency unit](https://expressplatby.cz/docs/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://expressplatby.cz/docs/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
+                 * Amount the customer is granting permission to collect later. A positive integer representing how much to charge in the [smallest currency unit](https://docs.epayments.network/currencies#zero-decimal) (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or [equivalent in charge currency](https://docs.epayments.network/currencies#minimum-and-maximum-charge-amounts). The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
                  */
                 amount: number;
 
                 /**
-                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                 * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                  */
                 currency: string;
             }
@@ -1025,9 +1025,9 @@ declare module 'expressplatby' {
 
         interface SetupIntentUpdateParams {
             /**
-             * If present, the SetupIntent's payment method will be attached to the in-context ExpressPlatby Account.
+             * If present, the SetupIntent's payment method will be attached to the in-context ExpressPayments Account.
              *
-             * It can only be used for this ExpressPlatby Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
+             * It can only be used for this ExpressPayments Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
              */
             attach_to_self?: boolean;
 
@@ -1056,9 +1056,9 @@ declare module 'expressplatby' {
             flow_directions?: Array<SetupIntentUpdateParams.FlowDirection>;
 
             /**
-             * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+             * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
              */
-            metadata?: ExpressPlatby.Emptyable<ExpressPlatby.MetadataParam>;
+            metadata?: ExpressPayments.Emptyable<ExpressPayments.MetadataParam>;
 
             /**
              * ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to this SetupIntent.
@@ -1066,7 +1066,7 @@ declare module 'expressplatby' {
             payment_method?: string;
 
             /**
-             * When included, this hash creates a PaymentMethod that is set as the [`payment_method`](https://expressplatby.cz/docs/api/setup_intents/object#setup_intent_object-payment_method)
+             * When included, this hash creates a PaymentMethod that is set as the [`payment_method`](https://docs.epayments.network/api/setup_intents/object#setup_intent_object-payment_method)
              * value in the SetupIntent.
              */
             payment_method_data?: SetupIntentUpdateParams.PaymentMethodData;
@@ -1192,9 +1192,9 @@ declare module 'expressplatby' {
                 link?: PaymentMethodData.Link;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * If this is an `oxxo` PaymentMethod, this hash contains details about the OXXO payment method.
@@ -1227,7 +1227,7 @@ declare module 'expressplatby' {
                 promptpay?: PaymentMethodData.Promptpay;
 
                 /**
-                 * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+                 * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
                  */
                 radar_options?: PaymentMethodData.RadarOptions;
 
@@ -1316,14 +1316,14 @@ declare module 'expressplatby' {
                     /**
                      * Billing address.
                      */
-                    address?: ExpressPlatby.Emptyable<
-                        ExpressPlatby.AddressParam
+                    address?: ExpressPayments.Emptyable<
+                        ExpressPayments.AddressParam
                     >;
 
                     /**
                      * Email address.
                      */
-                    email?: ExpressPlatby.Emptyable<string>;
+                    email?: ExpressPayments.Emptyable<string>;
 
                     /**
                      * Full name.
@@ -1537,7 +1537,7 @@ declare module 'expressplatby' {
 
                 interface RadarOptions {
                     /**
-                     * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                     * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                      */
                     session?: string;
                 }
@@ -1670,7 +1670,7 @@ declare module 'expressplatby' {
             namespace PaymentMethodOptions {
                 interface AcssDebit {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency?: AcssDebit.Currency;
 
@@ -1694,10 +1694,10 @@ declare module 'expressplatby' {
                          * The URL will be rendered with additional GET parameters `payment_intent` and `payment_intent_client_secret` when confirming a Payment Intent,
                          * or `setup_intent` and `setup_intent_client_secret` when confirming a Setup Intent.
                          */
-                        custom_mandate_url?: ExpressPlatby.Emptyable<string>;
+                        custom_mandate_url?: ExpressPayments.Emptyable<string>;
 
                         /**
-                         * List of ExpressPlatby products where this mandate can be selected automatically.
+                         * List of ExpressPayments products where this mandate can be selected automatically.
                          */
                         default_for?: Array<MandateOptions.DefaultFor>;
 
@@ -1760,7 +1760,7 @@ declare module 'expressplatby' {
                     network?: Card.Network;
 
                     /**
-                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://expressplatby.cz/docs/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://expressplatby.cz/docs/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
+                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://docs.epayments.network/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://docs.epayments.network/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
                      */
                     request_three_d_secure?: Card.RequestThreeDSecure;
                 }
@@ -1778,7 +1778,7 @@ declare module 'expressplatby' {
                         amount_type: MandateOptions.AmountType;
 
                         /**
-                         * Currency in which future payments will be charged. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                         * Currency in which future payments will be charged. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                          */
                         currency: string;
 
@@ -1929,16 +1929,16 @@ declare module 'expressplatby' {
 
         interface SetupIntentListParams extends PaginationParams {
             /**
-             * If present, the SetupIntent's payment method will be attached to the in-context ExpressPlatby Account.
+             * If present, the SetupIntent's payment method will be attached to the in-context ExpressPayments Account.
              *
-             * It can only be used for this ExpressPlatby Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
+             * It can only be used for this ExpressPayments Account's own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
              */
             attach_to_self?: boolean;
 
             /**
              * A filter on the list, based on the object `created` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.
              */
-            created?: ExpressPlatby.RangeQueryParam | number;
+            created?: ExpressPayments.RangeQueryParam | number;
 
             /**
              * Only return SetupIntents for the customer specified by this customer ID.
@@ -1994,7 +1994,7 @@ declare module 'expressplatby' {
             payment_method?: string;
 
             /**
-             * When included, this hash creates a PaymentMethod that is set as the [`payment_method`](https://expressplatby.cz/docs/api/setup_intents/object#setup_intent_object-payment_method)
+             * When included, this hash creates a PaymentMethod that is set as the [`payment_method`](https://docs.epayments.network/api/setup_intents/object#setup_intent_object-payment_method)
              * value in the SetupIntent.
              */
             payment_method_data?: SetupIntentConfirmParams.PaymentMethodData;
@@ -2204,9 +2204,9 @@ declare module 'expressplatby' {
                 link?: PaymentMethodData.Link;
 
                 /**
-                 * Set of [key-value pairs](https://expressplatby.cz/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+                 * Set of [key-value pairs](https://docs.epayments.network/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
                  */
-                metadata?: ExpressPlatby.MetadataParam;
+                metadata?: ExpressPayments.MetadataParam;
 
                 /**
                  * If this is an `oxxo` PaymentMethod, this hash contains details about the OXXO payment method.
@@ -2239,7 +2239,7 @@ declare module 'expressplatby' {
                 promptpay?: PaymentMethodData.Promptpay;
 
                 /**
-                 * Options to configure Radar. See [Radar Session](https://expressplatby.cz/docs/radar/radar-session) for more information.
+                 * Options to configure Radar. See [Radar Session](https://docs.epayments.network/radar/radar-session) for more information.
                  */
                 radar_options?: PaymentMethodData.RadarOptions;
 
@@ -2328,14 +2328,14 @@ declare module 'expressplatby' {
                     /**
                      * Billing address.
                      */
-                    address?: ExpressPlatby.Emptyable<
-                        ExpressPlatby.AddressParam
+                    address?: ExpressPayments.Emptyable<
+                        ExpressPayments.AddressParam
                     >;
 
                     /**
                      * Email address.
                      */
-                    email?: ExpressPlatby.Emptyable<string>;
+                    email?: ExpressPayments.Emptyable<string>;
 
                     /**
                      * Full name.
@@ -2549,7 +2549,7 @@ declare module 'expressplatby' {
 
                 interface RadarOptions {
                     /**
-                     * A [Radar Session](https://expressplatby.cz/docs/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
+                     * A [Radar Session](https://docs.epayments.network/radar/radar-session) is a snapshot of the browser metadata and device details that help Radar make more accurate predictions on your payments.
                      */
                     session?: string;
                 }
@@ -2682,7 +2682,7 @@ declare module 'expressplatby' {
             namespace PaymentMethodOptions {
                 interface AcssDebit {
                     /**
-                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                     * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                      */
                     currency?: AcssDebit.Currency;
 
@@ -2706,10 +2706,10 @@ declare module 'expressplatby' {
                          * The URL will be rendered with additional GET parameters `payment_intent` and `payment_intent_client_secret` when confirming a Payment Intent,
                          * or `setup_intent` and `setup_intent_client_secret` when confirming a Setup Intent.
                          */
-                        custom_mandate_url?: ExpressPlatby.Emptyable<string>;
+                        custom_mandate_url?: ExpressPayments.Emptyable<string>;
 
                         /**
-                         * List of ExpressPlatby products where this mandate can be selected automatically.
+                         * List of ExpressPayments products where this mandate can be selected automatically.
                          */
                         default_for?: Array<MandateOptions.DefaultFor>;
 
@@ -2772,7 +2772,7 @@ declare module 'expressplatby' {
                     network?: Card.Network;
 
                     /**
-                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://expressplatby.cz/docs/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://expressplatby.cz/docs/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
+                     * We strongly recommend that you rely on our SCA Engine to automatically prompt your customers for authentication based on risk level and [other requirements](https://docs.epayments.network/strong-customer-authentication). However, if you wish to request 3D Secure based on logic from your own fraud engine, provide this option. Permitted values include: `automatic` or `any`. If not provided, defaults to `automatic`. Read our guide on [manually requesting 3D Secure](https://docs.epayments.network/payments/3d-secure#manual-three-ds) for more information on how this configuration interacts with Radar and our SCA Engine.
                      */
                     request_three_d_secure?: Card.RequestThreeDSecure;
                 }
@@ -2790,7 +2790,7 @@ declare module 'expressplatby' {
                         amount_type: MandateOptions.AmountType;
 
                         /**
-                         * Currency in which future payments will be charged. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://expressplatby.cz/docs/currencies).
+                         * Currency in which future payments will be charged. Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://docs.epayments.network/currencies).
                          */
                         currency: string;
 
@@ -2960,33 +2960,33 @@ declare module 'expressplatby' {
             /**
              * Creates a SetupIntent object.
              *
-             * After the SetupIntent is created, attach a payment method and [confirm](https://expressplatby.cz/docs/api/setup_intents/confirm)
+             * After the SetupIntent is created, attach a payment method and [confirm](https://docs.epayments.network/api/setup_intents/confirm)
              * to collect any required permissions to charge the payment method later.
              */
             create(
                 params?: SetupIntentCreateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
             create(
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
 
             /**
              * Retrieves the details of a SetupIntent that has previously been created.
              *
              * Client-side retrieval using a publishable key is allowed when the client_secret is provided in the query string.
              *
-             * When retrieved with a publishable key, only a subset of properties will be returned. Please refer to the [SetupIntent](https://expressplatby.cz/docs/api#setup_intent_object) object reference for more details.
+             * When retrieved with a publishable key, only a subset of properties will be returned. Please refer to the [SetupIntent](https://docs.epayments.network/api#setup_intent_object) object reference for more details.
              */
             retrieve(
                 id: string,
                 params?: SetupIntentRetrieveParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
             retrieve(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
 
             /**
              * Updates a SetupIntent object.
@@ -2995,7 +2995,7 @@ declare module 'expressplatby' {
                 id: string,
                 params?: SetupIntentUpdateParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
 
             /**
              * Returns a list of SetupIntents.
@@ -3003,10 +3003,10 @@ declare module 'expressplatby' {
             list(
                 params?: SetupIntentListParams,
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.SetupIntent>;
+            ): ApiListPromise<ExpressPayments.SetupIntent>;
             list(
                 options?: RequestOptions
-            ): ApiListPromise<ExpressPlatby.SetupIntent>;
+            ): ApiListPromise<ExpressPayments.SetupIntent>;
 
             /**
              * A SetupIntent object can be canceled when it is in one of these statuses: requires_payment_method, requires_confirmation, or requires_action.
@@ -3017,11 +3017,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: SetupIntentCancelParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
             cancel(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
 
             /**
              * Confirm that your customer intends to set up the current or
@@ -3043,11 +3043,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: SetupIntentConfirmParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
             confirm(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
 
             /**
              * Verifies microdeposits on a SetupIntent object.
@@ -3056,11 +3056,11 @@ declare module 'expressplatby' {
                 id: string,
                 params?: SetupIntentVerifyMicrodepositsParams,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
             verifyMicrodeposits(
                 id: string,
                 options?: RequestOptions
-            ): Promise<ExpressPlatby.Response<ExpressPlatby.SetupIntent>>;
+            ): Promise<ExpressPayments.Response<ExpressPayments.SetupIntent>>;
         }
     }
 }
