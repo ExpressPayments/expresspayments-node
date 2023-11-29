@@ -90,7 +90,7 @@ declare module 'expresspayments' {
                 object: Data.Object;
 
                 /**
-                 * Object containing the names of the updated attributes and their values prior to the event (only included in events of type `*.updated`). If an array attribute has any updated elements, this object contains the entire array. In ExpressPayments API versions 2022-12-31 or earlier, an updated array attribute in this object includes only the updated array elements.
+                 * Object containing the names of the updated attributes and their values prior to the event (only included in events of type `*.updated`). If an array attribute has any updated elements, this object contains the entire array. In ExpressPayments API versions 2023-11-01 or earlier, an updated array attribute in this object includes only the updated array elements.
                  */
                 previous_attributes?: Data.PreviousAttributes;
             }

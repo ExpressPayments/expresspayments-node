@@ -32,7 +32,7 @@ declare module 'expresspayments' {
              *
              * Use `pending_if_incomplete` to update the subscription using [pending updates](https://docs.epayments.network/billing/subscriptions/pending-updates). When you use `pending_if_incomplete` you can only pass the parameters [supported by pending updates](https://docs.epayments.network/billing/pending-updates-reference#supported-attributes).
              *
-             * Use `error_if_incomplete` if you want ExpressPayments to return an HTTP 402 status code if a subscription's invoice cannot be paid. For example, if a payment method requires 3DS authentication due to SCA regulation and further user action is needed, this parameter does not update the subscription and returns an error instead. This was the default behavior for API versions prior to 2022-12-31. See the [changelog](https://docs.epayments.network/upgrades#2022-12-31) to learn more.
+             * Use `error_if_incomplete` if you want ExpressPayments to return an HTTP 402 status code if a subscription's invoice cannot be paid. For example, if a payment method requires 3DS authentication due to SCA regulation and further user action is needed, this parameter does not update the subscription and returns an error instead. This was the default behavior for API versions prior to 2023-11-01. See the [changelog](https://docs.epayments.network/upgrades#2023-11-01) to learn more.
              */
             payment_behavior?: SubscriptionItemCreateParams.PaymentBehavior;
 
@@ -181,7 +181,7 @@ declare module 'expresspayments' {
              *
              * Use `pending_if_incomplete` to update the subscription using [pending updates](https://docs.epayments.network/billing/subscriptions/pending-updates). When you use `pending_if_incomplete` you can only pass the parameters [supported by pending updates](https://docs.epayments.network/billing/pending-updates-reference#supported-attributes).
              *
-             * Use `error_if_incomplete` if you want ExpressPayments to return an HTTP 402 status code if a subscription's invoice cannot be paid. For example, if a payment method requires 3DS authentication due to SCA regulation and further user action is needed, this parameter does not update the subscription and returns an error instead. This was the default behavior for API versions prior to 2022-12-31. See the [changelog](https://docs.epayments.network/upgrades#2022-12-31) to learn more.
+             * Use `error_if_incomplete` if you want ExpressPayments to return an HTTP 402 status code if a subscription's invoice cannot be paid. For example, if a payment method requires 3DS authentication due to SCA regulation and further user action is needed, this parameter does not update the subscription and returns an error instead. This was the default behavior for API versions prior to 2023-11-01. See the [changelog](https://docs.epayments.network/upgrades#2023-11-01) to learn more.
              */
             payment_behavior?: SubscriptionItemUpdateParams.PaymentBehavior;
 

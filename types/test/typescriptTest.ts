@@ -19,7 +19,7 @@ expressPayments = new ExpressPayments('sk_test_123');
 
 expressPayments = new ExpressPayments('sk_test_123', {
     // @ts-ignore ignore specific apiVersion.
-    apiVersion: '2022-12-31',
+    apiVersion: '2023-11-01',
 });
 
 expressPayments = new ExpressPayments('sk_test_123', {

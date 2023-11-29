@@ -1,10 +1,10 @@
 # ExpressPayments Node.js Library
 
 [//]: # ([![Build Status]&#40;https://github.com/expresspayments/expresspayments-node/actions/workflows/main.yml/badge.svg?branch=master&#41;]&#40;https://github.com/expresspayments/expresspayments-node/actions?query=branch%3Amaster&#41;)
-[![Version](https://img.shields.io/npm/v/@expresspayments/expresspayments.svg)](https://www.npmjs.org/package/@expresspayments/expresspayments)
-[![Coverage Status](https://coveralls.io/repos/github/expresspayments/expresspayments-node/badge.svg?branch=master)](https://coveralls.io/github/expresspayments/expresspayments-node?branch=master)
-[![Downloads](https://img.shields.io/npm/dm/@expresspayments/expresspayments.svg)](https://www.npmjs.com/package/@expresspayments/expresspayments)
-[![Try on RunKit](https://badge.runkitcdn.com/@expresspayments/expresspayments.svg)](https://runkit.com/npm/@expresspayments/expresspayments)
+[![Version](https://img.shields.io/npm/v/expresspayments.svg)](https://www.npmjs.org/package/expresspayments)
+[![Downloads](https://img.shields.io/npm/dm/expresspayments.svg)](https://www.npmjs.com/package/expresspayments)
+[![Try on RunKit](https://badge.runkitcdn.com/expresspayments.svg)](https://runkit.com/npm/expresspayments)
+[![Code Coverage](https://coveralls.io/repos/github/expresspayments/expresspayments-node/badge.svg?branch=master)](https://coveralls.io/github/expresspayments/expresspayments-node?branch=master)
 
 The ExpressPayments Node library provides convenient access to the ExpressPayments API from
 applications written in server-side JavaScript.
@@ -97,7 +97,7 @@ so our types only reflect the latest API version.
 We therefore encourage [upgrading your API version][api-version-upgrading]
 if you would like to take advantage of ExpressPayments' TypeScript definitions.
 
-If you are on an older API version (e.g., `2022-12-31`) and not able to upgrade,
+If you are on an older API version (e.g., `2023-11-01`) and not able to upgrade,
 you may pass another version and use a comment like `// @ts-ignore ep-Version-2023-11-01` to silence type errors here
 and anywhere the types differ between your API version and the latest.
 When you upgrade, you should remove these comments.
@@ -501,7 +501,7 @@ If your beta feature requires a `EP-Version` header to be sent, use the `apiVers
 
 ```js
 const expressPayments = new ExpressPayments('sk_test_...', {
-  apiVersion: '2022-12-31; feature_beta=v3',
+  apiVersion: '2023-11-01; feature_beta=v3',
 });
 ```
 

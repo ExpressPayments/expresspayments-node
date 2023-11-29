@@ -1,6 +1,6 @@
 {
-    "name": "@expresspayments/expresspayments",
-    "version": "2.0.0",
+    "name": "expresspayments",
+    "version": "2.0.1",
     "description": "ExpressPayments API wrapper",
     "keywords": [
         "epayments",

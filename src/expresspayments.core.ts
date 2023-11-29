@@ -54,7 +54,7 @@ export function createExpressPayments(
     platformFunctions: PlatformFunctions,
     requestSender: RequestSenderFactory = defaultRequestSenderFactory
 ): typeof ExpressPayments {
-    ExpressPayments.PACKAGE_VERSION = '2.0.0';
+    ExpressPayments.PACKAGE_VERSION = '2.0.1';
     ExpressPayments.USER_AGENT = {
         bindings_version: ExpressPayments.PACKAGE_VERSION,
         lang: 'node',

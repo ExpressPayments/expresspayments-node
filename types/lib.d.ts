@@ -132,7 +132,7 @@ declare module 'expresspayments' {
             expressPaymentsAccount?: string;
 
             /**
-             * The [API Version](https://docs.epayments.network/upgrades) to use for a given request (e.g., '2022-12-31').
+             * The [API Version](https://docs.epayments.network/upgrades) to use for a given request (e.g., '2023-11-01').
              */
             apiVersion?: string;
 

@@ -267,7 +267,7 @@ describe('utils', () => {
                 {
                     apiKey: 'sk_test_iiiiiiiiiiiiiiiiiiiiiiii',
                     idempotencyKey: 'foo',
-                    apiVersion: '2022-12-31',
+                    apiVersion: '2023-11-01',
                 },
             ];
             expect(utils.getOptionsFromArgs(args)).to.deep.equal({
@@ -275,7 +275,7 @@ describe('utils', () => {
                 host: null,
                 headers: {
                     'Idempotency-Key': 'foo',
-                    'EP-Version': '2022-12-31',
+                    'EP-Version': '2023-11-01',
                 },
                 settings: {},
             });
@@ -327,7 +327,7 @@ describe('utils', () => {
                 {
                     apiKey: 'sk_test_iiiiiiiiiiiiiiiiiiiiiiii',
                     idempotencyKey: 'foo',
-                    apiVersion: '2022-12-31',
+                    apiVersion: '2023-11-01',
                     fishsticks: true,
                     custard: true,
                 },

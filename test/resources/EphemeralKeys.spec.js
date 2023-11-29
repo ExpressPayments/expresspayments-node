@@ -15,7 +15,7 @@ function errorsOnNoExpressPaymentsVersion(expressPayments) {
 function sendsCorrectExpressPaymentsVersion(expressPayments) {
     expressPayments.ephemeralKeys.create(
         {customer: 'cus_123'},
-        {apiVersion: '2022-12-31'}
+        {apiVersion: '2023-11-01'}
     );
 
     expect(expressPayments.LAST_REQUEST).to.deep.equal({
@@ -25,7 +25,7 @@ function sendsCorrectExpressPaymentsVersion(expressPayments) {
             customer: 'cus_123',
         },
         headers: {
-            'EP-Version': '2022-12-31',
+            'EP-Version': '2023-11-01',
         },
         settings: {},
     });
@@ -38,7 +38,7 @@ describe('EphemeralKey Resource', () => {
         it('Sends the correct request', () => {
             expressPayments.ephemeralKeys.create(
                 {customer: 'cus_123'},
-                {apiVersion: '2022-12-31'}
+                {apiVersion: '2023-11-01'}
             );
             expect(expressPayments.LAST_REQUEST).to.deep.equal({
                 method: 'POST',
@@ -47,7 +47,7 @@ describe('EphemeralKey Resource', () => {
                     customer: 'cus_123',
                 },
                 headers: {
-                    'EP-Version': '2022-12-31',
+                    'EP-Version': '2023-11-01',
                 },
                 settings: {},
             });
@@ -55,7 +55,7 @@ describe('EphemeralKey Resource', () => {
 
         describe('when an api version is set', () => {
             const expressPayments = getSpyableExpressPayments({
-                apiVersion: '2022-12-31',
+                apiVersion: '2023-11-01',
             });
 
             it('Errors if no ep-Version is specified', () =>

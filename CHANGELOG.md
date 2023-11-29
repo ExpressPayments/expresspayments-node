@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1 - 2023-11-29
+* Move package from `@expresspayments/expresspayments` to `expresspayments` on NPM
+* Modify API version in SDK tests
+
 ## 2.0.0 - 2023-11-23
 * Introduce separating of resources across domain names, versions prior to this one are no longer supported as of this update.
 * Rename the SDK from `ExpressPlatby/ExpressPlatby-Node` to `ExpressPayments/ExpressPayments-Node`.
@@ -13,5 +17,5 @@
 ## 1.0.1 - 2023-06-01
 - Bug fixes
 
-## 1.0.0 - 2022-12-31
+## 1.0.0 - 2023-11-01
 - Initial release

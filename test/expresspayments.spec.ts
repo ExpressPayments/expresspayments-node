@@ -31,11 +31,11 @@ describe('ExpressPayments Module', function() {
             }).to.throw(/Config must either be an object or a string/);
 
             expect(() => {
-                ExpressPayments(FAKE_API_KEY, ['2022-12-31']);
+                ExpressPayments(FAKE_API_KEY, ['2023-11-01']);
             }).to.throw(/Config must either be an object or a string/);
 
             expect(() => {
-                ExpressPayments(FAKE_API_KEY, '2022-12-31');
+                ExpressPayments(FAKE_API_KEY, '2023-11-01');
             }).to.not.throw();
 
             expect(() => {
@@ -55,7 +55,7 @@ describe('ExpressPayments Module', function() {
 
             expect(() => {
                 ExpressPayments(FAKE_API_KEY, {
-                    apiVersion: '2022-12-31',
+                    apiVersion: '2023-11-01',
                     maxNetworkRetries: 2,
                     httpAgent: 'agent',
                     timeout: 123,

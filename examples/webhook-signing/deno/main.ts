@@ -3,7 +3,7 @@
 import {serveListener} from 'https://deno.land/std@0.116.0/http/server.ts';
 import 'https://deno.land/x/dotenv/load.ts';
 
-import ExpressPayments from 'npm:expresspayments@^2.0.0';
+import ExpressPayments from 'npm:expresspayments@^2.0.1';
 
 const expressPayments = ExpressPayments(Deno.env.get('EXPRESSPAYMENTS_API_KEY'));
 

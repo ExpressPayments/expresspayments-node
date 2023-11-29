@@ -82,7 +82,7 @@ declare module 'expresspayments' {
             tax_code?: string;
 
             /**
-             * The type of the product. Defaults to `service` if not explicitly specified, enabling use of this product with Subscriptions and Plans. Set this parameter to `good` to use this product with Orders and SKUs. On API versions before `2022-12-31`, this field defaults to `good` for compatibility reasons.
+             * The type of the product. Defaults to `service` if not explicitly specified, enabling use of this product with Subscriptions and Plans. Set this parameter to `good` to use this product with Orders and SKUs. On API versions before `2023-11-01`, this field defaults to `good` for compatibility reasons.
              */
             type?: ProductCreateParams.Type;
 
